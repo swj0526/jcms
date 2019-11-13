@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>锦程职校学生管理系统</title>
-
+    <link type="text/css" href="layui-v2.5.5/layui-v2.5.5/layui/css/layui.css">
+    <script type="text/javascript"  src="layui-v2.5.5/layui-v2.5.5/layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
