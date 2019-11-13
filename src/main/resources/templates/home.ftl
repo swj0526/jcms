@@ -13,7 +13,7 @@
     <#include "header.ftl"/>
     <#include "left.ftl"/>
     <div class="layui-body">
-        <!-- 内容主体区域!-->
+        <<#--!-- 内容主体区域 &ndash;&gt;
         <div style="padding: 15px;">
             <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
                 <ul class="layui-tab-title">
@@ -21,7 +21,7 @@
                 <div class="layui-tab-content">
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     <#include "footer.ftl"/>
 </div>
