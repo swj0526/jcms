@@ -16,11 +16,11 @@
         }
     </style>
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body"   >
 <div class="layui-layout layui-layout-admin">
   <#include "../header.ftl"/>
     <#include "../left.ftl"/>
-    <div class="layui-body">
+    <div class="layui-body" style="overflow-y:hidden;">
 
         <div style="padding: 15px;">
             <div class="txt-scroll txt-scroll-default">
@@ -49,7 +49,7 @@
         //默认生成首页的页面
         element.tabAdd('demo', {
             title: "首页", //新增学生信息
-            content: '<iframe src="/homeContext" frameborder="0" height="550px" width="100%"></iframe>',
+            content: '<iframe src="/homeContext" frameborder="0" height="550px" width="100%" ></iframe>',
             id: 'first-tab' //实际使用一般是规定好的id，这里以时间戳模拟下
         });
         //点击左边的按钮,然后判断是否新增tab还是需要定位一个tab
