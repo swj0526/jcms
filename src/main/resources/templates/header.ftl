@@ -1,7 +1,7 @@
 <div class="layui-header">
     <div class="layui-logo">锦程职校学生管理系统</div>
     <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item"><a>最新提醒<span class="layui-badge">9</span></a></li>
+        <li class="layui-nav-item" id="remind"><a>最新提醒<span class="layui-badge">9</span></a></li>
         <li class="layui-nav-item">
             <a href="javascript:;">
                 <#if Session["name"]?exists>

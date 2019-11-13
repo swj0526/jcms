@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
     @RequestMapping("/home")
     private String home(){
-        return "home";
+        return "/home/home";
+    }
+    @RequestMapping("/homeContext")
+    private String homeContext(){
+        return "/home/homeContext";
     }
 }
