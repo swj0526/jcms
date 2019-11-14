@@ -74,7 +74,7 @@
         });
         table.render({
             elem: '#currentTableId',
-            url: '../api/table.json',
+            url: '/table.json',
             cols: [
                 [{
                     field: 'username',
