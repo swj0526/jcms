@@ -10,44 +10,96 @@
 <body>
 <div style="padding: 15px;">
     <div class="demoTable">
-        <#--查询条件-->
-        <form class="layui-form  layui-form-pane" id="formStudent" method="post">
-            <div class="layui-form-item" >
-                <label class="layui-form-label">学生姓名</label>
-                <div class="layui-input-block">
-                    <input type="text" name="name" placeholder="学生姓名"
-                           autocomplete="off" class="layui-input" id="name">
-                </div>
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <select name="city" lay-verify="">
+                                <option value="01">一年级</option>
+                                <option value="02">二年级</option>
+                                <option value="03">三年级</option>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">日期范围</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="test6" type="text" placeholder=" - ">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
 
-            </div>
-            <div class="layui-form-item" >
-                <label class="layui-form-label">学生班级</label>
-                <div class="layui-input-block">
-                    <select name="gradeId" id="gradeId">
-                        <option value="0">全部</option>
-                        <option value="1">一年级</option>
-                        <option value="2">二年级</option>
-                        <option value="3">三年级</option>
-                    </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formD" data-type="reload" id="subStudent">
-                        查询
-                    </button>
-                    <button class="layui-btn" id="excel">
-                        导出表格
-                    </button>
-                </div>
-            </div>
-        </form>
     </div>
     <table class="layui-hide" id="test" lay-filter="test"></table>
     <script id="barDemo" type="text/html">
-        <a class="layui-btn layui-btn-xs" lay-event="download">下载</a>
-        <a class="layui-btn layui-btn-xs" lay-event="download">修改</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">下载作业</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="updata">修改评分</a>
+
     </script>
+    <script id="toolbarDemo" type="text/html">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" lay-event="add">发布作业</button>
+            <button class="layui-btn layui-btn-sm" lay-event="add">导出</button>
+        </div>
+    </script>
+</div>
+<div id="aa" style="display: none">
+    <fieldset class="layui-elem-field layuimini-search">
+        <legend>发布作业</legend>
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">作业名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="workname" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">作业内容</label>
+                        <div class="layui-input-inline">
+                            <textarea name="content" required lay-verify="required" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">发布年级</label>
+                        <div class="layui-inline"  style="width: 190px">
+                            <select  lay-verify="" name="grade" id="grade">
+                                <option value="一年级">一年级</option>
+                                <option value="二年级">二年级</option>
+                                <option value="三年级">三年级</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">发布日期</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="date" id="test1" type="text" placeholder="yyyy-MM-dd">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">作业期限</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="Validity" id="test2" type="text" placeholder="yyyy-MM-dd">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
 </div>
 </body>
 </html>

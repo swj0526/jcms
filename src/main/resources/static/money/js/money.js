@@ -11,8 +11,7 @@ layui.use(['table','jquery','laydate','form','element'],function(){
         ,defaultToolbar: []
         ,title: '用户数据表'
         ,cols: [[
-            {type: 'checkbox', fixed: 'left'}
-            ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
+            {field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
             ,{field:'name', title:'姓名'  }
             ,{field:'grade', title:'年级'  }
             ,{field:'type', title:'缴费类型'}

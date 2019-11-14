@@ -8,7 +8,12 @@
     <script type="text/javascript" src="../work/js/uploading.js"></script>
 </head>
 <body>
-<div class="layui-upload" style="text-align: center">
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script id="barDemo" type="text/html">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">上传作业</a>
+</script>
+
+<div id="up" class="layui-upload" style="text-align: center;display: none ">
     <button class="layui-btn layui-btn-normal" id="testList" type="button" >选择上传文件</button>
     <div class="layui-upload-list">
         <table class="layui-table">
