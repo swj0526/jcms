@@ -24,20 +24,25 @@ public class LoginController {
     }
 
     /**
-     *
      * 登录
      * @return
      */
     @RequestMapping("/login")
     private String login(){
-        return "login";
+        return "login/to";
     }
     /**
-     *
      * 注册页面
      */
     @RequestMapping("/register")
     private String register(){
         return"register";
+    }
+    /**
+     * 修改密码
+     */
+    @RequestMapping("/modify")
+    private String modify(){
+        return "login/modify";
     }
 }

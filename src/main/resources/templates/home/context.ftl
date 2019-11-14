@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../home/css/styleContext.css"/>
-    <script type="text/javascript" src="../static/layui/layui.js">
+    <script type="text/javascript" src="../layui/layui.js">
     </script>
     <style>
         .case-example-item{
@@ -17,7 +17,7 @@
 <div class="layui-layout layui-layout-admin">
 
 
-    <div class="layui-body">
+ <div class="layui-body">
         <div style="padding: 15px;">
             <div class="case-index-content">
                 <ul class="clearfix">

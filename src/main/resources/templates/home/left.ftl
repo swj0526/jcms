@@ -14,7 +14,8 @@
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="../student">学生档案管理</a></dd>
-                    <dd><a href="">招生信息管理</a></dd>
+                    <dd><a href="/recruit//torecruit">招生信息管理</a></dd>
+                    <dd><a href="/recruit/tofollow">招生跟进管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">

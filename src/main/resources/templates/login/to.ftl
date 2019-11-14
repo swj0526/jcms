@@ -2,15 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>后台管理-登陆</title>
+    <title>锦程后台管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="login/css/login.css"/>
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../login/css/login.css"/>
 
 </head>
 <body>
@@ -19,7 +19,7 @@
         <div class="layui-form login-form">
             <form class="layui-form" action="">
                 <div class="layui-form-item logo-title">
-                    <h1>登录</h1>
+                    <h1>锦程后台管理登录</h1>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username" for="username"></label>
@@ -33,7 +33,7 @@
                     <label class="layui-icon layui-icon-vercode" for="captcha"></label>
                     <input type="text" name="captcha" lay-verify="required|captcha" placeholder="图形验证码" autocomplete="off" class="layui-input verification captcha" value="xszg">
                     <div class="captcha-img">
-                        <img id="captchaPic" src="login/images/captcha.jpg">
+                        <img id="captchaPic" src="../login/images/captcha.jpg">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -49,9 +49,9 @@
         </div>
     </div>
 </div>
-<script src="login/js/jquery.js" charset="utf-8"></script>
-<script src="layui/layui.js" charset="utf-8"></script>
-<script src="login/js/jquery.particleground.min.js" charset="utf-8"></script>
-<script src="login/js/login.js"></script>
+<script src="../../login/js/jquery.js" charset="utf-8"></script>
+<script src="../../layui/layui.js" charset="utf-8"></script>
+<script src="../../login/js/jquery.particleground.min.js" charset="utf-8"></script>
+<script src="../../login/js/login.js"></script>
 </body>
 </html>
