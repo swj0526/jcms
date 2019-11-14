@@ -53,7 +53,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">积分管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="integral">查询积分</a></dd>
+                    <dd><a href="integral"：>积分查询</a></dd>
+                    <dd><a href="integral"：>积分修改</a></dd>
                     <dd><a href=""></a></dd>
                 </dl>
             </li>
