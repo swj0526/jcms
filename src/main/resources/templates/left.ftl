@@ -50,6 +50,13 @@
                     <dd><a href="">作业列表</a></dd>
                 </dl>
             </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">积分管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href=""></a></dd>
+                    <dd><a href=""></a></dd>
+                </dl>
+            </li>
 
         </ul>
     </div>
