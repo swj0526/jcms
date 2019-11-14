@@ -24,10 +24,8 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">缴费管理</a>
+                <a href="money/add">缴费管理</a>
                 <#--<dl class="layui-nav-child">
-
-
                 </dl>-->
             </li>
             <li class="layui-nav-item">
@@ -46,11 +44,10 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">上传作业</a></dd>
-                    <dd><a href="">作业列表</a></dd>
+                    <dd><a href="work/uploading">上传作业</a></dd>
+                    <dd><a href="work/query">作业列表</a></dd>
                 </dl>
             </li>
-
         </ul>
     </div>
 </div>
