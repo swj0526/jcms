@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ArticleController {
     @RequestMapping("/dispatch")
     public String funds(){
-        return "article/articleDispatch";
+        return "article/dispatch";
     }
 
-    @RequestMapping("/query")
+    @RequestMapping("/list")
     public String leave(){
-        return "article/articleQuery";
+        return "article/list";
     }
 
 }
