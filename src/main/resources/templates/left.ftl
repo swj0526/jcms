@@ -11,44 +11,50 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">学生档案管理</a></dd>
-                    <dd><a href="recruit">招生信息管理</a></dd>
-                    <dd><a href=""></a></dd>
+                    <dd><a href="student">学生档案管理</a></dd>
+                    <dd><a href="">招生信息管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">流程管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">新增流程</a></dd>
                     <dd><a href="">查看所有流程</a></dd>
                     <dd><a href="">请假流程管理</a></dd>
                     <dd><a href="">经费申请流程管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="money/add">缴费管理</a>
+                <a href="javascript:;">缴费管理</a>
                 <#--<dl class="layui-nav-child">
+
+
                 </dl>-->
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">发文管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href=""></a></dd>
-                    <dd><a href=""></a></dd>
+                    <dd><a href="">发布文章</a></dd>
+                    <dd><a href="">查询文章</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a >提醒管理</a>
                 <dl class="layui-nav-child">
                     <dd><a class="add" id="4">未看消息列表</a></dd>
-                    <dd><a href=""></a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="work/uploading">上传作业</a></dd>
-                    <dd><a href="work/list">作业列表</a></dd>
+                    <dd><a href="">上传作业</a></dd>
+                    <dd><a href="">作业列表</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">积分管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="integral">查询积分</a></dd>
+                    <dd><a href=""></a></dd>
                 </dl>
             </li>
 
