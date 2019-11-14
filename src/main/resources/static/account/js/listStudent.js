@@ -14,6 +14,7 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'name', title: '学生姓名'},
             {field: 'major', title: '所属专业'},
             {field: 'grade', title: '所属班级'},
+            {field: 'role', title: '角色'},
             {field: 'lockDemo', title: '是否激活账号',templet: '#checkboxTpl', unresize: true},
             {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
@@ -22,81 +23,49 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+           role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         },{
             stuID:"201932094",
             name: "张三",
             major: '影视',
             grade: '影视一班',
-            lastTime:'2019-1-1',
-            lastMoney:'5000元',
-            expireTime:'2019-10-10',
-            thisMoney:'5000元',
-            parentPhone:'18934219987',
+            role:'学生'
         }]
         ,page:true
     });
