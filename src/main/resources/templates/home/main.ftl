@@ -18,8 +18,8 @@
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-    <#include "../header.ftl"/>
-    <#include "../left.ftl"/>
+    <#include "header.ftl"/>
+    <#include "left.ftl"/>
     <div class="layui-body">
         <div style="padding: 15px;">
             <div class="txt-scroll txt-scroll-default">
@@ -39,16 +39,16 @@
             </div>
         </div>
     </div>
-    <#include "../footer.ftl"/>
+    <#include "footer.ftl"/>
 </div>
 <script>
-    layui.use(['element', 'jquery'], function () {
-        var $ = layui.jquery,
-            element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+    layui.use(['element', 'jquery','layer'], function () {
+        var $ = layui.jquery, element = layui.element, layer = layui.layer;
+        //Tab的切换功能，切换事件监听等，需要依赖element模块
         //默认生成首页的页面
         element.tabAdd('demo', {
             title: "首页", //新增学生信息
-            content: '<iframe src="/homeContext" frameborder="0" height="550px" width="100%"></iframe>',
+            content: '<iframe src="/home/context" frameborder="0" height="550px" width="100%"></iframe>',
             id: 'first-tab' //实际使用一般是规定好的id，这里以时间戳模拟下
         });
         //点击左边的按钮,然后判断是否新增tab还是需要定位一个tab
@@ -66,25 +66,25 @@
                 //根据id判断嵌入什么页面
                 if (id == "remind_pay") {
                     element.tabAdd('demo', {
-                        title: $(this).text(), //新增学生信息
+                        title: $(this).text(), //提醒-缴费提醒
                         content: '<iframe src="/remind/toPay" frameborder="0" height="550px" width="100%"></iframe>',
                         id: id //实际使用一般是规定好的id，这里以时间戳模拟下
                     });
                     //$(this).attr('data-type', 'tabChange');
                     element.tabChange('demo', id);
-                } else if (id == "3") {
+                } else if (id == "remind_article") {
                     element.tabAdd('demo', {
-                        title: $(this).text(), //学生信息查询
-                        content: '<iframe src="/student/toList" frameborder="0" height="700px" width="100%"></iframe>',
+                        title: $(this).text(), //提醒-文章提醒
+                        content: '<iframe src="/remind/toArticle" frameborder="0" height="700px" width="100%"></iframe>',
                         id: id //实际使用一般是规定好的id，这里以时间戳模拟下
                     });
                     //$(this).attr('data-type', 'tabChange');
                     //切换到指定Tab项
                     element.tabChange('demo', id);
-                } else if (id == "4") {
+                } else if (id == "account_list") {
                     element.tabAdd('demo', {
-                        title: $(this).text(), //学生信息查询
-                        content: '<iframe src="/notSee" frameborder="0" height="700px" width="100%"></iframe>',
+                        title: $(this).text(), //提醒-文章提醒
+                        content: '<iframe src="/account/toList" frameborder="0" height="700px" width="100%"></iframe>',
                         id: id //实际使用一般是规定好的id，这里以时间戳模拟下
                     });
                     //$(this).attr('data-type', 'tabChange');
@@ -106,9 +106,9 @@
         });
         $('#remind').click(function () {
             //配置一个透明的询问框
-            layer.msg('您有9条为阅读的消息', {
-                time: 20000, //20s后自动关闭
-                btn: ['查看消息', '忽略']
+            layer.msg('您有9条提醒信息<br/>缴费提醒3条<br/>文章提醒6条', {
+                time: false, //20s后自动关闭
+                btn: ['忽略','发文提醒', '缴费提醒']
             });
         });
     });

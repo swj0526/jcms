@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>缴费提醒</title>
+    <title>账户列表管理</title>
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
-    <script type="text/javascript" src="/remind/js/pay.js">
+    <script type="text/javascript" src="/account/js/list.js">
     </script>
 </head>
 <body>
@@ -36,25 +36,34 @@
                                     </optgroup>
                                 </select>
                             </div>
+                            <label class="layui-form-label">是否被激活</label>
+                            <div class="layui-inline">
+                                <select name="city" lay-verify="">
+                                    <option value=""></option>
+                                    <option value="">激活</option>
+                                    <option value="">锁定</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
-                        <div class="layui-inline">
-                            <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
-                        </div>
+
                     </div>
                 </form>
             </div>
         </fieldset>
 
         <table class="layui-hide" id="test" lay-filter="test"></table>
-
+        <script type="text/html" id="checkboxTpl">
+            <!-- 这里的 checked 的状态只是演示 -->
+            <input type="checkbox" name="lock" value="{{d.id}}" title="激活" lay-filter="lockDemo" {{ d.id == 10006 ? 'checked' : '' }}>
+        </script>
         <script type="text/html" id="barDemo">
-            <button type="button" class="layui-btn layui-btn-xs" id="see" data-method="notice">查看详细信息</button>
+            <button type="button" class="layui-btn layui-btn-xs" id="reset"  data-method="confirmTrans">重置密码</button>
+
         </script>
     </div>
 </div>
 </body>
-
-</html>
+</html> 

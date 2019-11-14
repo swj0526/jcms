@@ -7,21 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 登录
- * @author swj
+ * @author 于振华
  *
  * @create 2019-11-13 16:09
  */
 @Controller
 public class LoginController {
-    @RequestMapping("/home")
-    private String home(){
-        return "/home/home";
-    }
 
-    @RequestMapping("/homeContext")
-    private String homeContext(){
-        return "/home/homeContext";
-    }
 
     /**
      *

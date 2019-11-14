@@ -20,9 +20,31 @@ public class RemindController {
     @Autowired
     private HttpServletRequest request;
 
+    /**
+     * 提醒管理/缴费提醒
+     * @return
+     */
     @RequestMapping("/toPay")
     public String toPay() {
 
         return "/remind/pay";
+    }
+    /**
+     * 提醒管理/发布的未看的文章提醒
+     * @return
+     */
+    @RequestMapping("/toArticle")
+    public String toAticle() {
+
+        return "/remind/article";
+    }
+    /**
+     * 提醒管理/发布的未看的文章提醒
+     * @return
+     */
+    @RequestMapping("/toBroadcast")
+    public String toBroadcast() {
+
+        return "/remind/broadcast";
     }
 }

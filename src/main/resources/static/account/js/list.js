@@ -14,11 +14,7 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'name', title: '学生姓名'},
             {field: 'major', title: '所属专业'},
             {field: 'grade', title: '所属班级'},
-            {field: 'lastTime', title: '上次缴费时间'},
-            {field: 'lastMoney', title: '上次缴费金额'},
-            {field: 'expireTime', title: '学费到期时间'},
-            {field: 'thisMoney', title: '本次缴费金额'},
-            {field: 'parentPhone', title: '父母联系方式'},
+            {field: 'lockDemo', title: '是否激活账号',templet: '#checkboxTpl', unresize: true},
             {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
         , data: [{
@@ -104,9 +100,21 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
         }]
         ,page:true
     });
-    $('#see').click(function () {
-       layer.msg("跳到学生档案页面查看详情");
+    $('#reset').click(function () {
+       layer.msg("该账号的密码重置为123456?", {
+           time: false, //20s后自动关闭
+           btn: ['确定','取消重置']
+       });
     });
+    //监听锁定操作
+    form.on('checkbox(lockDemo)', function(obj){
+       // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+       if( obj.elem.checked ){
+           layer.msg("账号已激活,初始密码为123456,请提醒用户重新进行密码更改!");
+       }else{
+           layer.msg("账号已锁定!");
+       }
 
+    });
 
 });
