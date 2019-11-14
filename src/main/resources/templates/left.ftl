@@ -54,7 +54,7 @@
                 <a href="javascript:;">积分管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="integral">查询积分</a></dd>
-                    <dd><a href=""></a></dd>
+                    <dd><a href="">修改积分</a></dd>
                 </dl>
             </li>
 
