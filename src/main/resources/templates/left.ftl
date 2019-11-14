@@ -40,9 +40,9 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">提醒管理</a>
+                <a >提醒管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">未看消息列表</a></dd>
+                    <dd><a class="add" id="4">未看消息列表</a></dd>
                     <dd><a href=""></a></dd>
                 </dl>
             </li>
