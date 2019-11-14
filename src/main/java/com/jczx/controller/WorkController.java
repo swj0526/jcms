@@ -9,7 +9,7 @@ public class WorkController {
     public String workUploadPage(){
      return "work/uploading";
     }
-    @RequestMapping("/query")
+    @RequestMapping("/list")
     public String workQuery(){
         return "work/Query";
     }

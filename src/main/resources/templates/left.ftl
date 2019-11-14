@@ -45,7 +45,7 @@
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="work/uploading">上传作业</a></dd>
-                    <dd><a href="work/query">作业列表</a></dd>
+                    <dd><a href="work/list">作业列表</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">

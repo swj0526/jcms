@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/money")
 @Controller
 public class MoneyController {
-    @RequestMapping("/add")
+    @RequestMapping("/list")
     public String money(){
         return "money/money";
     }

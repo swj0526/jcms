@@ -3,7 +3,7 @@ layui.use('table', function(){
 
     table.render({
         elem: '#test'
-        ,url:'/test/table/demo1.json'
+        /*,url:'/test/table/demo1.json'*/
         ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
         ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
             title: '提示'
@@ -15,17 +15,27 @@ layui.use('table', function(){
             {type: 'checkbox', fixed: 'left'}
             ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
             ,{field:'name', title:'姓名',  edit: 'text'}
-            ,{field:'grade', title:'班级',  edit: 'text'}
             ,{field:'type', title:'缴费类型',  edit: 'text'}
             ,{field:'money', title:'学费金额',  edit: 'text'}
-            ,{field:'data', title:'缴费日期',  edit: 'text'}
+            ,{field:'date', title:'缴费日期',  edit: 'text',edit:"date"}
             ,{field:'paymentMethod', title:'缴费方式'}
             ,{field:'Installments', title:'是否一次性缴费',  edit: 'text'}
             ,{field:'discount', title:'优惠金额',  edit: 'text'}
-            ,{field:'Validity', title:'费用有效期',  edit: 'text'}
+            ,{field:'Validity', title:'费用有效期',  edit: 'date'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo',}
         ]]
         ,page: true
+        ,data:[{
+            id:10001
+            ,name:'张三'
+            ,type:'学费'
+            ,money:3000
+            ,date:2020-11-14
+            ,paymentMethod:"支付宝"
+            ,Installments:"是"
+            ,discount:0
+            ,Validity:2020-11-14
+        }]
     });
 
     //头工具栏事件
