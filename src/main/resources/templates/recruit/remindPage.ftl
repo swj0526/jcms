@@ -6,9 +6,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="layui/css/public.css" media="all">
-    <script src="layui/layui.js"></script>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../static/layui/css/public.css" media="all">
+    <script src="../../static/layui/layui.js"></script>
 </head>
 <body>
 <div class="layuimini-container">
@@ -43,6 +43,16 @@
                             <input type="radio" name="intention" value="nv" title="无" checked>
                         </div>
                         <div class="layui-inline">
+                            <select name="city" lay-verify="">
+                                <option value="">来源渠道</option>
+                                <option value="010">学校网站</option>
+                                <option value="021">自己找上门</option>
+                                <option value="0571">qq</option>
+                                <option value="0571">微信</option>
+                                <option value="0571">介绍</option>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
                         </div>
                     </div>
@@ -61,6 +71,7 @@
         </script>
     </div>
 </div>
+<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'table', 'laydate'], function() {
         var $ = layui.jquery,
@@ -74,7 +85,7 @@
         });
         table.render({
             elem: '#currentTableId',
-            url: '../api/table.json',
+            url: 'json/table.json',
             cols: [
                 [{
                     field: 'username',
@@ -131,6 +142,11 @@
                     {
                         field: 'wealth',
                         title: '意向',
+                        align: 'center'
+                    },
+                    {
+                        field: 'wealth',
+                        title: '渠道',
                         align: 'center'
                     },
                     {
