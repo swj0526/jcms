@@ -11,16 +11,17 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="student/studentPage.ftl">学生档案管理</a></dd>
+                    <dd><a href="student">学生档案管理</a></dd>
                     <dd><a href="">招生信息管理</a></dd>
+                    <dd><a href=""></a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">流程管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">查看所有流程</a></dd>
-                    <dd><a href="">请假流程管理</a></dd>
-                    <dd><a href="">经费申请流程管理</a></dd>
+                    <dd><a href="flow/approver">查看所有流程</a></dd>
+                    <dd><a href="flow/leave">请假流程管理</a></dd>
+                    <dd><a href="flow/funds">经费申请流程管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -31,14 +32,15 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">发文管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">发布文章</a></dd>
-                    <dd><a href="">查询文章</a></dd>
+                    <dd><a href="article/dispatch">发布文章</a></dd>
+                    <dd><a href="article/query">查询发文</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a >提醒管理</a>
+                <a href="javascript:;">提醒管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a class="add" id="4">未看消息列表</a></dd>
+                    <dd><a href="">未看消息列表</a></dd>
+                    <dd><a href=""></a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -51,7 +53,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">积分管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="integral/integralPage.ftl">查询积分</a></dd>
+                    <dd><a href="integral">查询积分</a></dd>
                     <dd><a href=""></a></dd>
                 </dl>
             </li>
