@@ -26,7 +26,7 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">缴费管理</a>
+                <a href="../money/list">缴费管理</a>
                 <#--<dl class="layui-nav-child">
 
 
@@ -50,8 +50,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">上传作业</a></dd>
-                    <dd><a href="">作业列表</a></dd>
+                    <dd><a href="../work/upload">上传作业</a></dd>
+                    <dd><a href="../work/list">作业列表</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
