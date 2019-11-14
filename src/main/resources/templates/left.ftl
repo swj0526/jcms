@@ -2,10 +2,11 @@
     <div class="layui-side-scroll">
         <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
             <li class="layui-nav-item">
-                <a href="javascript:;">权限管理</a>
+                <a href="javascript:;">账号管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;" class="add" id="1">角色管理</a></dd>
-                    <dd><a href="javascript:;"  class="add" id="3">权限管理</a></dd>
+                    <dd><a href="javascript:;"  class="add" id="2">权限管理</a></dd>
+                    <dd><a href="javascript:;"  class="add" id="3">账号管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -40,7 +41,9 @@
             <li class="layui-nav-item">
                 <a >提醒管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a class="add" id="4">未看消息列表</a></dd>
+                    <dd><a class="add" id="remind_pay">缴费提醒</a></dd>
+                    <dd><a class="add" id="5">发文提醒</a></dd>
+                    <dd><a class="add" id="6">首页循环播报设置</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">

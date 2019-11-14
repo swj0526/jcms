@@ -2,18 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
-    <script type="text/javascript" src="../layui/layui.js">
+    <title>未看文章提醒</title>
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
+    <script type="text/javascript" src="/layui/layui.js">
     </script>
 </head>
 <body>
-<#--<body class="layui-layout-body" style="overflow-x:hidden;">-->
-<#--<div class="layui-layout layui-layout-admin">-->
-
-
-
-
 
             <table class="layui-hide" id="test" lay-filter="test"></table>
 
