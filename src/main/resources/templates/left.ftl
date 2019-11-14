@@ -13,7 +13,6 @@
                 <dl class="layui-nav-child">
                     <dd><a href="">学生档案管理</a></dd>
                     <dd><a href="recruit">招生信息管理</a></dd>
-                    <dd><a href="recruit">招生跟进管理</a></dd>
                     <dd><a href=""></a></dd>
                 </dl>
             </li>
@@ -27,7 +26,7 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="money/list">缴费管理</a>
+                <a href="money/add">缴费管理</a>
                 <#--<dl class="layui-nav-child">
                 </dl>-->
             </li>
@@ -48,7 +47,6 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">发布作业</a></dd>
                     <dd><a href="work/uploading">上传作业</a></dd>
                     <dd><a href="work/list">作业列表</a></dd>
                 </dl>
