@@ -15,7 +15,6 @@ public class LoginController {
     private String home(){
         return "/home/home";
     }
-
     @RequestMapping("/homeContext")
     private String homeContext(){
         return "/home/homeContext";
