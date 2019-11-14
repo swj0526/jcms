@@ -13,12 +13,62 @@ layui.use('table', function(){
         ,title: '用户数据表'
         ,cols: [[
             {type: 'checkbox', fixed: 'left'}
-            ,{field:'id', title:'标题', width:80, fixed: 'left', unresize: true, sort: true}
-            ,{field:'name', title:'角色', width:100, edit: 'text'}
-            ,{field:'age', title:'发布人', width:100, edit: 'text'}
-			,{field:'age', title:'发布时间', width:100, edit: 'text'}
+            ,{field:'id', title:'序号', width:100, edit: 'text'}
+            ,{field:'title', title:'标题', width:80, fixed: 'left', unresize: true, sort: true}
+            ,{field:'role', title:'角色', width:100, edit: 'text'}
+            ,{field:'publisher', title:'发布人', width:100, edit: 'text'}
+			,{field:'joinTime', title:'发布时间', width:100, edit: 'text'}
         ]]
         ,page: true
+        ,data: [{
+            "id": "10001"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "杜甫"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10002"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "杜甫"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10003"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "杜甫"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10004"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "杜甫"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10005"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "杜甫"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10006"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "杜甫"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10007"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "贤心"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            ,"title":"Hi"
+            ,"role": "学生"
+            ,"publisher": "贤心"
+            ,"joinTime": "2016-10-14"
+        }]
     });
 
     var form = layui.form;

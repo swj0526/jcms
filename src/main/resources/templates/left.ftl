@@ -13,6 +13,7 @@
                 <dl class="layui-nav-child">
                     <dd><a href="">学生档案管理</a></dd>
                     <dd><a href="">招生信息管理</a></dd>
+                    <dd><a href=""></a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -34,13 +35,14 @@
                 <a href="javascript:;">发文管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="">发布文章</a></dd>
-                    <dd><a href="">查询文章</a></dd>
+                    <dd><a href=""></a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a >提醒管理</a>
+                <a href="javascript:;">提醒管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a class="add" id="4">未看消息列表</a></dd>
+                    <dd><a href="">未看消息列表</a></dd>
+                    <dd><a href=""></a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
