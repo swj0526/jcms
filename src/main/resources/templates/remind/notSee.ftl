@@ -8,20 +8,21 @@
     </script>
 </head>
 <body>
-<body class="layui-layout-body" style="overflow-x:hidden;">
-<div class="layui-layout layui-layout-admin">
+<#--<body class="layui-layout-body" style="overflow-x:hidden;">-->
+<#--<div class="layui-layout layui-layout-admin">-->
 
 
-    <div class="layui-body">
-        <div style="padding: 15px;">
+
+
 
             <table class="layui-hide" id="test" lay-filter="test"></table>
 
-        </div>
-    </div>
+<script type="text/html" id="barDemo">
+    <button type="button" class="layui-btn layui-btn-xs">查看</button>
+</script>
 
-
-</div>
+<#--
+</div>-->
 
 <script>
     //JavaScript代码区域
@@ -35,13 +36,20 @@
         //渲染数据表格
         var tableIns = table.render({
             elem: '#test'//渲染目标
-            , url: '/student/list'//数据接口
+           /* , url: '/json/table.json'//数据接口*/
             , id: 'userTableReload'
             , cols: [[
                 {field: 'title', title: '标题'},
-                {field: 'context', title: '内容摘要'}
+                {field: 'explain', title: '内容说明'},
+                {field:'issuer',title:'发布人'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
             ]]
+            ,data:[{
+                title:"作息时间表",
+                explain:'最新的作息时间表',
+                issuer:'管理老师'
+
+            }]
         });
 
 
@@ -66,5 +74,5 @@
     });
 </script>
 </body>
-</body>
+<#--</body>-->
 </html>
