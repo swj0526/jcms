@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css"/>
-    <script type="text/javascript" src="../static/layui/layui.js">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+    <script type="text/javascript" src="../layui/layui.js">
     </script>
 </head>
 <body>

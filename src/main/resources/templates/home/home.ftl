@@ -82,6 +82,15 @@
                     //$(this).attr('data-type', 'tabChange');
                     //切换到指定Tab项
                     element.tabChange('demo', id);
+                }else if (id == "4") {
+                    element.tabAdd('demo', {
+                        title: $(this).text(), //学生信息查询
+                        content: '<iframe src="/notSee" frameborder="0" height="700px" width="100%"></iframe>',
+                        id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                    });
+                    //$(this).attr('data-type', 'tabChange');
+                    //切换到指定Tab项
+                    element.tabChange('demo', id);
                 }
             }
         });

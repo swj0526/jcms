@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class RemindController {
-    @RequestMapping("/noSee")
-    public String noSee(){
-        return "/remind/noSee";
+    @RequestMapping("/notSee")
+    public String notSee(){
+        return "/remind/notSee";
     }
 }
