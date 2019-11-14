@@ -29,7 +29,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">入学时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
+                                <input type="text" name="city" autocomplete="off" class="layui-input" id="time">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -70,7 +70,7 @@
         laydate = layui.laydate;
 
         laydate.render({
-            elem: '#a',
+            elem: '#time',
             range: true
         });
         table.render({
