@@ -104,6 +104,18 @@
         element.on('tab(test)', function (elem) {
             location.hash = 'test=' + $(this).attr('lay-id');
         });
+        $('#remind').click(function () {
+            //配置一个透明的询问框
+            layer.msg('您有9条为阅读的消息', {
+                time: 20000, //20s后自动关闭
+                btn: ['查看消息', '忽略']
+            });
+        });
+    });
+    $(function () {
+        $('.txt-scroll').txtscroll({
+            'speed': 50
+        });
     });
 </script>
 </body>
