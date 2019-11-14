@@ -12,7 +12,7 @@
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="">学生档案管理</a></dd>
-                    <dd><a href="/recruit">招生信息管理</a></dd>
+                    <dd><a href="">招生信息管理</a></dd>
                     <dd><a href=""></a></dd>
                 </dl>
             </li>
