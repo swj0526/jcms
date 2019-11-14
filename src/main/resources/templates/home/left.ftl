@@ -2,16 +2,18 @@
     <div class="layui-side-scroll">
         <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
             <li class="layui-nav-item">
-                <a href="javascript:;">权限管理</a>
+                <a href="javascript:;">账号管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" class="add" id="1">角色管理</a></dd>
-                    <dd><a href="javascript:;"  class="add" id="3">权限管理</a></dd>
+                    <dd><a href="javascript:;"  class="add" id="account_tab">账号管理</a></dd>
+                    <dd><a href="javascript:;" class="add" id="account_role">角色管理</a></dd>
+                    <dd><a href="javascript:;"  class="add" id="account_privilege">权限管理</a></dd>
+
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="student">学生档案管理</a></dd>
+                    <dd><a href="../student">学生档案管理</a></dd>
                     <dd><a href="">招生信息管理</a></dd>
                 </dl>
             </li>
@@ -24,7 +26,7 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">缴费管理</a>
+                <a href="../money/list">缴费管理</a>
                 <#--<dl class="layui-nav-child">
 
 
@@ -40,20 +42,22 @@
             <li class="layui-nav-item">
                 <a >提醒管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a class="add" id="4">未看消息列表</a></dd>
+                    <dd><a class="add" id="remind_pay">缴费提醒</a></dd>
+                    <dd><a class="add" id="remind_article">发文提醒</a></dd>
+                   <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">上传作业</a></dd>
-                    <dd><a href="">作业列表</a></dd>
+                    <dd><a href="../work/upload">上传作业</a></dd>
+                    <dd><a href="../work/list">作业列表</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">积分管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="integral">查询积分</a></dd>
+                    <dd><a href="../../static/integral">查询积分</a></dd>
                     <dd><a href=""></a></dd>
                 </dl>
             </li>

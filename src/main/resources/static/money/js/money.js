@@ -1,53 +1,61 @@
-layui.use('table', function(){
-    var table = layui.table;
 
+layui.use(['table','jquery','laydate','form','element'],function(){
+    var table = layui.table;
+    var $ = layui.jquery;
+    laydate = layui.laydate;
+    form = layui.form,
     table.render({
         elem: '#test'
         /*,url:'/test/table/demo1.json'*/
         ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-        ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-            title: '提示'
-            ,layEvent: 'LAYTABLE_TIPS'
-            ,icon: 'layui-icon-tips'
-        }]
+        ,defaultToolbar: []
         ,title: '用户数据表'
         ,cols: [[
             {type: 'checkbox', fixed: 'left'}
             ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-            ,{field:'name', title:'姓名',  edit: 'text'}
-            ,{field:'type', title:'缴费类型',  edit: 'text'}
-            ,{field:'money', title:'学费金额',  edit: 'text'}
-            ,{field:'date', title:'缴费日期',  edit: 'text',edit:"date"}
+            ,{field:'name', title:'姓名'  }
+            ,{field:'grade', title:'年级'  }
+            ,{field:'type', title:'缴费类型'}
             ,{field:'paymentMethod', title:'缴费方式'}
-            ,{field:'Installments', title:'是否一次性缴费',  edit: 'text'}
-            ,{field:'discount', title:'优惠金额',  edit: 'text'}
-            ,{field:'Validity', title:'费用有效期',  edit: 'date'}
-            ,{fixed: 'right', title:'操作', toolbar: '#barDemo',}
+            ,{field:'money', title:'金额' }
+            ,{field:'date', title:'缴费日期'}
+            ,{field:'instalments', title:'是否一次性缴费'}
+            ,{field:'discount', title:'优惠金额'}
+            ,{field:'Validity', title:'费用有效期'}
+            ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
         ]]
         ,page: true
         ,data:[{
-            id:10001
+            id:"10001"
             ,name:'张三'
+            ,grade:'一年级'
             ,type:'学费'
-            ,money:3000
-            ,date:2020-11-14
+            ,money:"3000"
+            ,date:"2019-11-14"
             ,paymentMethod:"支付宝"
-            ,Installments:"是"
-            ,discount:0
-            ,Validity:2020-11-14
+            ,instalments:"是"
+            ,discount:"0"
+            ,Validity:"2020-11-14"
         }]
     });
 
     //头工具栏事件
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id);
+        //添加
         switch(obj.event){
             case 'add':
                 layer.open({
-                    title: '在线调试'
-                    ,btnAlign: 'c'
-                    ,btn:['按钮一']
-                    ,content:'from'
+                    btnAlign: 'c'
+                    ,type:1
+                    ,btn:['提交']
+                    ,content:$("#aa")
+                    ,yes: function(index, layero){
+                        layer.close(index);
+                    }
+                    ,success: function(index) {
+                        $("#dataFor")[0].reset();
+                    }
                 });
         };
     });
@@ -56,21 +64,29 @@ layui.use('table', function(){
     table.on('tool(test)', function(obj){
         var data = obj.data;
         //console.log(obj)
-        if(obj.event === 'del'){
-            layer.confirm('真的删除行么', function(index){
-                obj.del();
-                layer.close(index);
-            });
-        } else if(obj.event === 'edit'){
-            layer.prompt({
-                formType: 2
-                ,value: data.email
-            }, function(value, index){
-                obj.update({
-                    email: value
-                });
-                layer.close(index);
+        if(obj.event === 'edit'){
+            layer.open({
+                btnAlign: 'c'
+                ,type:1
+                ,btn:['提交']
+                ,content:$("#aa")
+                ,yes: function(index, layero){
+                    layer.close(index);
+                }
+                ,success: function(index) {
+                    form.val("dataForm",data);
+                }
             });
         }
+    });
+    laydate.render({
+        elem: '#test6'
+        ,range: true
+    });
+    laydate.render({
+        elem: '#test1'
+    });
+    laydate.render({
+        elem: '#test2'
     });
 });
