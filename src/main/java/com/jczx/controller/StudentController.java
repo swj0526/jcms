@@ -13,9 +13,9 @@ public class StudentController {
     public String student(){
         return "student/studentPage";
     }
-    @RequestMapping("/recruit")
+   /* @RequestMapping("/recruit")
     public String recruit(){
         return "recruit/recruit";
-    }
+    }*/
 
 }
