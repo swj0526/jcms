@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>发文查询</title>
-    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
-    <script type="text/javascript" src="../static/jquery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../static/layui/layui.js"></script>
-    <script type="text/javascript" src="../static/article/js/articleQuery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="../article/js/articleQuery.js"></script>
 </head>
 <body>
 <div class="layui-form-item">

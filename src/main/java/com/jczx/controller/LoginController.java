@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
+ * 登录
  * @author swj
+ *
  * @create 2019-11-13 16:09
  */
 @Controller
@@ -22,7 +24,7 @@ public class LoginController {
     }
 
     /**
-     * 于振华
+     *
      * 登录
      * @return
      */
@@ -31,7 +33,7 @@ public class LoginController {
         return "login";
     }
     /**
-     * 于振华
+     *
      * 注册页面
      */
     @RequestMapping("/register")

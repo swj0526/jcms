@@ -26,7 +26,7 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="money/add">缴费管理</a>
+                <a href="money/list">缴费管理</a>
                 <#--<dl class="layui-nav-child">
                 </dl>-->
             </li>
