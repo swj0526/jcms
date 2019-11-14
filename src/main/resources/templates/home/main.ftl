@@ -81,10 +81,19 @@
                     //$(this).attr('data-type', 'tabChange');
                     //切换到指定Tab项
                     element.tabChange('demo', id);
-                } else if (id == "account_tab") {
+                } else if (id == "account_list") {
                     element.tabAdd('demo', {
-                        title: $(this).text(), //提醒-文章提醒
-                        content: '<iframe src="/account/toTab" frameborder="0" height="700px" width="100%"></iframe>',
+                        title: $(this).text(), //账号-账号列表
+                        content: '<iframe src="/account/toList" frameborder="0" height="700px" width="100%"></iframe>',
+                        id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                    });
+                    //$(this).attr('data-type', 'tabChange');
+                    //切换到指定Tab项
+                    element.tabChange('demo', id);
+                }else if (id == "account_role") {
+                    element.tabAdd('demo', {
+                        title: $(this).text(), //账号-角色管理
+                        content: '<iframe src="/account/toRole" frameborder="0" height="700px" width="100%"></iframe>',
                         id: id //实际使用一般是规定好的id，这里以时间戳模拟下
                     });
                     //$(this).attr('data-type', 'tabChange');

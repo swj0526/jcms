@@ -4,9 +4,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">账号管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;"  class="add" id="account_tab">账号管理</a></dd>
-                    <dd><a href="javascript:;" class="add" id="account_role">角色管理</a></dd>
-                    <dd><a href="javascript:;"  class="add" id="account_privilege">权限管理</a></dd>
+                    <dd><a href="javascript:;"  class="add" id="account_list">账号管理</a></dd>
+                    <dd><a href="javascript:;" class="add" id="account_role">角色权限管理</a></dd>
 
                 </dl>
             </li>
