@@ -12,27 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AccountController {
     /**
-     * 账号列表选项卡总和页面
+     * 账号列表页面
      * @return
      */
-    @RequestMapping("/toTab")
-    public String toTab(){
-        return "account/tab";
+    @RequestMapping("/toList")
+    public String toList(){
+        return "account/list";
     }
     /**
-     * 学生账号管理列表
+     * 角色列表页面
      * @return
      */
-    @RequestMapping("/toListStudent")
-    public String toListStudent(){
-        return "account/listStudent";
-    }
-    /**
-     * 职工账号管理列表
-     * @return
-     */
-    @RequestMapping("/toListStaff")
-    public String toListStaff(){
-        return "account/listStaff";
+    @RequestMapping("/toRole")
+    public String toRole(){
+        return "account/role";
     }
 }
