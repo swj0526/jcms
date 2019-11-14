@@ -3,6 +3,8 @@ package com.jczx.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+
 /**
  * @author swj
  * @create 2019-11-13 16:09
@@ -16,5 +18,23 @@ public class LoginController {
     @RequestMapping("/homeContext")
     private String homeContext(){
         return "/home/homeContext";
+    }
+
+    /**
+     * 于振华
+     * 登录
+     * @return
+     */
+    @RequestMapping("/login")
+    private String login(){
+        return "login";
+    }
+    /**
+     * 于振华
+     * 注册页面
+     */
+    @RequestMapping("/register")
+    private String register(){
+        return"register";
     }
 }
