@@ -16,19 +16,16 @@
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-inline">
-            <input type="text" name="name"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input type="text" name="name"  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
-        </div>
 
-        <div class="layui-form-item">
             <label class="layui-form-label">性别</label>
             <div class="layui-inline">
-                <div class="layui-inline">
+                <div class="layui-inline" style="width: 190px">
                     <select name="sex" lay-verify="">
                         <option value=""></option>
                         <option value="0">男</option>
                         <option value="1">女</option>
-
                     </select>
                 </div>
             </div>
@@ -41,38 +38,60 @@
                 <input type="text" name="age" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
-        </div>
-        <div class="layui-form-item">
+
             <label class="layui-form-label">学校</label>
             <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">手机号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">QQ号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">微信号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">家长联系方式</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+            <label class="layui-form-label">QQ号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+            <label class="layui-form-label">家长电话</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">来源渠道</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+            <label class="layui-form-label">渠道内容</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">意向</label>
+            <div class="layui-inline">
+                <div class="layui-inline" style="width: 190px">
+                    <select name="sex" lay-verify="">
+                        <option value=""></option>
+                        <option value="0">有</option>
+                        <option value="1">无</option>
+
+                    </select>
+                </div>
+            </div>
+
+        </div>
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
@@ -89,6 +108,7 @@
         <div style="">
             <ul>
                 <li>跟进时间:</li>
+                <li>来源渠道:</li>
                 <li>意向:</li>
                 <li>谈话内容:</li>
             </ul>

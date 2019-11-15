@@ -177,7 +177,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "修改招生学生信息",
             skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['800px','600px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //获取
@@ -195,7 +195,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "添加跟进学生信息",
             // skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['800px','600px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //清空

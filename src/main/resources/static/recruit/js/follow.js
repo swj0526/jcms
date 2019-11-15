@@ -82,20 +82,8 @@ layui.use(['form', 'table', 'laydate'], function () {
             ,"intention":"有"
         }],
         cols: [
-            [{
-                field: 'name',
-                title: '姓名',
-                align: 'center',
-                width: 100
-            },
-                {
-                    field: 'sex',
-                    title: '性别',
+            [
 
-                    align: 'center',
-                    width: 80
-
-                },
 
                 {
                     field: 'time',
