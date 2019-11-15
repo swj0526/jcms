@@ -6,16 +6,17 @@
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;"  class="add" id="account_list">账号管理</a></dd>
                     <dd><a href="javascript:;" class="add" id="account_role">角色权限管理</a></dd>
-                    <dd><a href="javascript:;" class="add" id="account_modPassword">角色权限管理</a></dd>
+                    <dd><a href="javascript:;" class="add" id="account_modPassword">修改密码</a></dd>
 
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">档案管理</a>
+                <a href="javascript:;">信息管理</a>
                 <dl class="layui-nav-child">
                     <dd><a  class="add" id="student_list">学生档案管理</a></dd>
+                    <dd><a  class="add" id="">教职工档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
-                    <dd><a class="add" id="recruit_follow">招生跟进管理</a></dd>
+                    <dd><a class="add" id="recruit_follow">来源渠道管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -37,11 +38,11 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a class="add" id="money_list">缴费管理</a>
-                <#--<dl class="layui-nav-child">
+                <a >缴费管理</a>
+                <dl class="layui-nav-child">
 
-
-                </dl>-->
+                    <dd><a  class="add" id="money_list">费用列表</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">发文管理</a>
@@ -54,10 +55,9 @@
                 <a >提醒管理</a>
                 <dl class="layui-nav-child">
                     <dd><a class="add" id="remind_pay">缴费提醒</a></dd>
-                    <dd><a class="add" id="remind_article">发文提醒</a></dd>
-                    <dd><a class="add" >公告提醒</a></dd>
-
-                    <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->
+                    <dd><a class="add" id="remind_article">公告提醒</a></dd>
+                   <#-- <dd><a class="add" id="remind_annunciate">通知提醒</a></dd>-->
+                   <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->
                 </dl>
             </li>
             <li class="layui-nav-item">

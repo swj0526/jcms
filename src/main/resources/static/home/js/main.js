@@ -30,7 +30,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 element.tabChange('demo', id);
             } else if (id == "remind_article") {
                 element.tabAdd('demo', {
-                    title: $(this).text(), //提醒-文章提醒
+                    title: $(this).text(), //提醒-公告提醒
                     content: '<iframe src="/remind/toArticle" frameborder="0" height="700px" width="100%"></iframe>',
                     id: id //实际使用一般是规定好的id，这里以时间戳模拟下
                 });
@@ -163,6 +163,24 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
+            }else if (id == "money_list") {
+                element.tabAdd('demo', {
+                    title: $(this).text(), //发文管理-查询文章
+                    content: '<iframe src="/money/list" frameborder="0" height="700px" width="100%"></iframe>',
+                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                });
+                //$(this).attr('data-type', 'tabChange');
+                //切换到指定Tab项
+                element.tabChange('demo', id);
+            }else if (id == "remind_annunciate") {
+                element.tabAdd('demo', {
+                    title: $(this).text(), //通知管理-公告管理
+                    content: '<iframe src="/remind/toAnnunciate" frameborder="0" height="700px" width="100%"></iframe>',
+                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                });
+                //$(this).attr('data-type', 'tabChange');
+                //切换到指定Tab项
+                element.tabChange('demo', id);
             }
 
         }
@@ -180,10 +198,37 @@ layui.use(['element', 'jquery','layer'], function () {
     });
     $('#remind').click(function () {
         //配置一个透明的询问框
-        layer.msg('您有9条提醒信息<br/>缴费提醒3条<br/>文章提醒6条', {
+        layer.msg('缴费提醒3条<br/>文章提醒6条', {
             time: false, //20s后自动关闭
-            btn: ['忽略','发文提醒', '缴费提醒']
+            btn: ['忽略','公告提醒', '缴费提醒'],
+            btn2:function () {
+                var id="remind_article";
+                if ($("[lay-id=" + id + "]").length ==0) { //不存在
+                    element.tabAdd('demo', {
+                        title: "公告提醒", //提醒-缴费提醒
+                        content: '<iframe src="/remind/toArticle" frameborder="0" height="550px" width="100%"></iframe>',
+                        id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                    });
+                }
+                element.tabChange('demo', id);
+            },
+            btn3:function () {
+                var id="remind_pay";
+                if ($("[lay-id=" + id + "]").length ==0) { //不存在
+                    element.tabAdd('demo', {
+                        title: "缴费提醒", //提醒-缴费提醒
+                        content: '<iframe src="/remind/toPay" frameborder="0" height="550px" width="100%"></iframe>',
+                        id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                    });
+                }
+                element.tabChange('demo', id);
+            }
         });
+    });
+    $('.layui-layer-btn1').click(function () {
+
+        var id = $(this).attr('id');
+
     });
 });
 $(function () {
