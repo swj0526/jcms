@@ -10,23 +10,10 @@
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <script src="/layui/layui.js"></script>
     <script>
-        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-        layui.use('element', function(){
-            var element = layui.element;
-
-            //…
-        });
-
-        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-        layui.use('element', function(){
-            var element = layui.element;
-
-            //…
-        });
-
-        layui.use('table', function(){
+        layui.use(['element','jquery','table'], function(){
             var table = layui.table;
-
+            var element = layui.element;
+            var $ = layui.jquery;
             table.render({
                 elem: '#test',
                 data: [{
@@ -69,16 +56,14 @@
                     ,{field:'time',  title: '时间'}
                 ]]
             });
+            $('.layui-tab-close').click(function () {
+
+            });
         });
     </script>
 </head>
 <body>
-<!-- 第一层tab************************* -->
-<div class="layui-tab "lay-allowClose="true">
-    <ul class="layui-tab-title">
-        <li class="layui-this">张三</li>
-    </ul>
-    <div class="layui-tab-content">
+    <div class="layui-tab-content" style="background-color: #ffffff">
         <!-- 第二层tab***************************** -->
         <div class="layui-tab-item layui-show">
             <div class="layui-tab">
@@ -160,7 +145,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 </body>
 </html>

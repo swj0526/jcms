@@ -10,8 +10,8 @@
 </head>
 <body>
 <#--条件查询-->
-<div class="layui-form-item"  >
-    <form class="layui-form" action="" >
+<div class="layui-form-item">
+    <form class="layui-form" action="">
 
         <div class="layui-inline">
             <label class="layui-form-label">姓名</label>
@@ -47,7 +47,6 @@
         </div>
         <button class="layui-btn" data-type="reload">查询</button>
     </form>
-    <button id="add" class="layui-btn" data-type="reload">请假申请</button>
 </div>
 <#--数据表格-->
 <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -66,130 +65,46 @@
                        class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年级</label>
-            <div class="layui-input-inline">
-                <input type="text" name="grade" required lay-verify="required" placeholder="请输入年龄" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">请假时长</label>
-            <div class="layui-input-inline">
-                <input type="text" name="days" required lay-verify="required" placeholder="请输成绩" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="apply" required lay-verify="required" placeholder="请输成绩" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">请假日期</label>
-            <div class="layui-input-inline">
-                <input type="text" name="leaveTime" required lay-verify="required" placeholder="请输成绩" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">请假事由</label>
-            <div class="layui-input-block">
-                <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-input-inline">
-                <input type="text" name="state" required lay-verify="required" placeholder="请输成绩" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="but">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-            </div>
-        </div>
+        <table border="1" width="300" height="500" align="center" cellspacing="0">
+            <caption>学生档案</caption>
+            <tr align="center">
+                <td bgcolor="#ededed">姓名</td>
+                <td colspan="7">张三</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">年级</td>
+                <td colspan="7">影视一班</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">请假时长</td>
+                <td colspan="7">3天</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">申请日期</td>
+                <td colspan="7">2016-10-14</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">请假日期</td>
+                <td colspan="7">2016-10-15</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">结束日期</td>
+                <td colspan="7">2016-10-18</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">请假事由</td>
+                <td colspan="7">有事</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">状态</td>
+                <td colspan="7">拒绝</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">拒绝理由</td>
+                <td colspan="7">拒绝</td>
+            </tr>
+        </table>
     </form>
-</div>
-
-<#--添加请假审批-->
-<div id="aaa" style="display: none">
-    <fieldset class="layui-elem-field layuimini-search">
-        <legend>添加信息</legend>
-        <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" action="">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">用户姓名</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">姓名</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入学生姓名" autocomplete="off"
-                                   class="layui-input" id="xname">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">年级</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入学生年级" autocomplete="off"
-                                   class="layui-input" id="xname">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">类型</label>
-                        <div class="layui-input-inline">
-                            <select name="modules" lay-search="" lay-verify="required">
-                                <option value="">所有状态</option>
-                                <option value="1">事假</option>
-                                <option value="2">病假</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">请假时长</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入请假时长" autocomplete="off"
-                                   class="layui-input" id="xname">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">申请日期</label>
-                        <div class="layui-input-inline">
-                            <input class="layui-input" id="test1" type="text" placeholder="yyyy-MM-dd">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">开始日期</label>
-                        <div class="layui-input-inline">
-                            <input class="layui-input" id="test2" type="text" placeholder="yyyy-MM-dd">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">请假事由</label>
-                        <div class="layui-input-block">
-                            <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
-                        </div>
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </fieldset>
 </div>
 
 <script>

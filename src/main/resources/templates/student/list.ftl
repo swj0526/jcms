@@ -22,7 +22,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="例：1990/张三">
+                                <input type="text" name="username" autocomplete="off" class="layui-input"
+                                       placeholder="例：1990/张三">
                             </div>
                         </div>
 
@@ -53,10 +54,11 @@
     </div>
 </div>
 <script>
-    layui.use(['form', 'table', 'laydate'], function() {
+    layui.use(['form', 'table', 'laydate', 'layer'], function () {
         var $ = layui.jquery,
             form = layui.form,
             table = layui.table;
+        layer = layui.layer;
         laydate = layui.laydate;
 
         laydate.render({
@@ -77,7 +79,7 @@
                 [{
                     field: 'id',
                     title: '学号',
-                    city:"",
+                    city: "",
                     sort: true,
                     align: 'center'
                 },
@@ -85,7 +87,7 @@
                         field: 'username',
                         title: '姓名',
                         align: 'center',
-                        templet: '<div><a href="information"target="_blank">张三</a></div>'
+                        templet: '<div><a id="info" >张三</a></div>'
                     },
                     {
                         field: 'sex',
@@ -152,7 +154,7 @@
         });
 
         // 监听搜索操作
-        form.on('submit(data-search-btn)', function(data) {
+        form.on('submit(data-search-btn)', function (data) {
             var result = JSON.stringify(data.field);
             layer.alert(result, {
                 title: '最终的搜索信息'
@@ -172,34 +174,42 @@
         });
 
         // 监听添加操作
-        $(".data-add-btn").on("click", function() {
+        $(".data-add-btn").on("click", function () {
             layer.msg('添加数据');
         });
 
         // 监听删除操作
-        $(".data-delete-btn").on("click", function() {
+        $(".data-delete-btn").on("click", function () {
             var checkStatus = table.checkStatus('currentTableId'),
                 data = checkStatus.data;
             layer.alert(JSON.stringify(data));
         });
 
         //监听表格复选框选择
-        table.on('checkbox(currentTableFilter)', function(obj) {
+        table.on('checkbox(currentTableFilter)', function (obj) {
             console.log(obj)
         });
 
-        table.on('tool(currentTableFilter)', function(obj) {
+        table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
                 layer.alert('编辑行：<br>' + JSON.stringify(data))
             } else if (obj.event === 'delete') {
-                layer.confirm('真的删除行么', function(index) {
+                layer.confirm('真的删除行么', function (index) {
                     obj.del();
                     layer.close(index);
                 });
             }
         });
-
+        $("#info").click(function () {
+            layer.open({
+                type: 2,
+                title: "张三",
+                area: ['100%', '100%'],
+                maxmin: true,
+                content: '/student/information'
+            });
+        });
     });
 </script>
 <script>
