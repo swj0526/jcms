@@ -120,8 +120,8 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">是否分期</label>
                         <div class="layui-input-block">
-                            <input name="instalments" type="radio" value="是" title="是">
-                            <input name="instalments" type="radio" value="否" title="否" checked>
+                            <input name="instalment" type="radio" value="是" title="是">
+                            <input name="instalment" type="radio" value="否" title="否" checked>
                         </div>
                     </div>
                     <div class="layui-inline">

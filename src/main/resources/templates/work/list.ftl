@@ -47,7 +47,6 @@
     <script id="barDemo" type="text/html">
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">下载作业</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="updata">修改评分</a>
-
     </script>
     <script id="toolbarDemo" type="text/html">
         <div class="layui-btn-container">

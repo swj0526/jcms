@@ -18,7 +18,7 @@ layui.use(['table','jquery','laydate','form','element'],function(){
             ,{field:'paymentMethod', title:'缴费方式'}
             ,{field:'money', title:'金额' }
             ,{field:'date', title:'缴费日期'}
-            ,{field:'instalments', title:'是否一次性缴费'}
+            ,{field:'instalment', title:'是否一次性缴费'}
             ,{field:'discount', title:'优惠金额'}
             ,{field:'Validity', title:'费用有效期'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
@@ -32,7 +32,7 @@ layui.use(['table','jquery','laydate','form','element'],function(){
             ,money:"3000"
             ,date:"2019-11-14"
             ,paymentMethod:"支付宝"
-            ,instalments:"是"
+            ,instalment:"是"
             ,discount:"0"
             ,Validity:"2020-11-14"
         }]

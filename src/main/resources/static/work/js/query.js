@@ -18,7 +18,6 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
             ,{field:'grade', title:'年级'  }
             ,{field:'date', title:'发布日期'}
             ,{field:'commitDate', title:'提交时间'}
-            ,{field:'commitWork', title:'提交作业'}
             ,{field:'work', title:'作业'}
             ,{field:'score', title:'评分'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
@@ -30,7 +29,6 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
             , grade: "三年级"
             , date: "2019-11-14"
             , commitDate: "2019-11-14"
-            , commitWork: "尚未提交"
             , work: "11111111"
             , score: "20"
         }]
