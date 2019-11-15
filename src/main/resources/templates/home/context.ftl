@@ -26,8 +26,8 @@
                             <img src="../home/images/img001.jpg" alt="" class="case-pad">
                             <div class="case-item-info">
                                 <div class="case-info-logo"><img src="../home/images/logo-001.jpg" alt=""></div>
-                                <div class="case-info-title">经营类目：服装服饰</div>
-                                <div class="case-info-text">对现在社会来说，服装已经是每个人装饰自己，保护自己，不仅仅为穿，还是一个身份、一种生活态度、一个展示个人魅力的表现。
+                                <div class="case-info-title">学生积分排列</div>
+                                <div class="case-info-text">积分小明星:张三,总分100
                                 </div>
                             </div>
 
@@ -38,8 +38,8 @@
                             <img src="../home/images/img002.jpg" alt="" class="case-pad">
                             <div class="case-item-info">
                                 <div class="case-info-logo"><img src="../home/images/logo-002.jpg" alt=""></div>
-                                <div class="case-info-title">经营类目：食品生鲜</div>
-                                <div class="case-info-text">生鲜是指未经烹调、制作等深加工过程，只做必要保鲜和简单整理上架而出售的初级产品，以及面包。</div>
+                                <div class="case-info-title">学费提醒</div>
+                                <div class="case-info-text"></div>
                             </div>
                         </a>
                     </li>
@@ -48,8 +48,8 @@
                             <img src="../home/images/img003.jpg" alt="" class="case-pad">
                             <div class="case-item-info">
                                 <div class="case-info-logo"><img src="../home/images/logo-003.jpg" alt=""></div>
-                                <div class="case-info-title">经营类目：电脑／配件</div>
-                                <div class="case-info-text">雷神科技是一家致力于专业游戏装备的互联网公司，向玩家提供国际一流品质和性能的游戏本。</div>
+                                <div class="case-info-title"></div>
+                                <div class="case-info-text"></div>
                             </div>
                         </a>
                     </li>
