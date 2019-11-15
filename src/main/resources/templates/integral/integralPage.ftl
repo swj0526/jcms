@@ -20,45 +20,52 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">姓名</label>
+                            <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                                <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="例：1981/张三">
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">分数范围</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
                             <div class="layui-inline">
-                                <select name="city" lay-verify="">
-                                    <option value="">事由</option>
-                                    <option value="010">好人好事</option>
-                                    <option value="021">打架斗殴</option>
-                                    <option value="021">调皮捣蛋</option>
-                                    <option value="021">乐观向上</option>
-                                    <option value="021">品学兼优</option>
-                                </select>
+                                <label class="layui-form-label">范围</label>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" name="price_min" placeholder="分数" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" name="price_max" placeholder="分数" autocomplete="off" class="layui-input">
+                                </div>
                             </div>
-                        </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
                         </div>
+                        <div class="layui-btn-group">
+                            <button class="layui-btn data-add-btn">添加</button>
+                            <button class="layui-btn layui-btn-danger data-delete-btn">导出</button>
+                        </div>
                     </div>
+
                 </form>
             </div>
         </fieldset>
+        <form class="layui-form layui-form-pane" action="">
+        <div class="layui-inline">
+            <div class="layui-inline">
+                <select name="city" lay-verify="">
 
-        <div class="layui-btn-group">
-            <button class="layui-btn data-add-btn">添加</button>
-            <button class="layui-btn layui-btn-danger data-delete-btn">导出积分信息</button>
+                    <option value="">事由</option>
+                    <option value="010">好人好事</option>
+                    <option value="021">打架斗殴</option>
+                    <option value="021">调皮捣蛋</option>
+                    <option value="021">乐观向上</option>
+                    <option value="021">品学兼优</option>
+                </select>
+            </div>
         </div>
+        </form>
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
-            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+
         </script>
     </div>
 </div>
@@ -70,7 +77,15 @@
 
         table.render({
             elem: '#currentTableId',
-            url: 'json/table.json',
+            data: [{
+                "username": "张三",
+                "banji":"影视一班",
+                "sex": "打架斗殴",
+                "jiafenjianfen":"加分",
+                "xuefen":95,
+
+
+            }],
             cols: [
                 [{
                     field: 'username',
@@ -78,32 +93,17 @@
                     align: 'center'
                 },
                     {
-                        field: 'sex',
+                        field: 'banji',
                         title: '班级',
                         sort: true,
                         align: 'center'
                     },
                     {
-                        field: 'city',
-                        title: '加分减分',
-                        align: 'center'
-                    },
-                    {
-                        field: 'sex',
-                        title: '事由',
-                        sort: true,
-                        align: 'center'
-                    },
-                    {
-                        field: 'sign',
+                        field: 'xuefen',
                         title: '分数',
                         align: 'center'
                     },
-                    {
-                        field: 'experience',
-                        title: '时间',
-                        align: 'center'
-                    },
+
                     {
                         title: '操作',
                         minWidth: 50,

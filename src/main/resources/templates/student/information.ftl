@@ -54,15 +54,19 @@
             table.render({
                 elem: '#information',
                 data: [{
-                    "username": "张三",
-                    "sex": "100",
+                    "banji": "影视一班",
+                    "shiyou": "打架斗殴",
+                    "jiajian": "加分",
+                    "fenshu": "5",
+                    "time": "2019-10-1",
                 }]
                 ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 ,cols: [[
-                    {field:'username', title: '姓名'}
-                    ,{field:'sex',  title: '积分'}
-
-
+                    {field:'banji', title: '班级'}
+                    ,{field:'shiyou',  title: '事由'}
+                    ,{field:'jiajian',  title: '加减'}
+                    ,{field:'fenshu',  title: '分数'}
+                    ,{field:'time',  title: '时间'}
                 ]]
             });
         });
