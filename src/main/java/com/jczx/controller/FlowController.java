@@ -8,17 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FlowController {
     @RequestMapping("/funds")
     public String funds(){
-        return "flow/flowFunds";
+        return "flow/funds";
+    }
+
+    @RequestMapping("/fundsApprover")
+    public String fundsApprover(){
+        return "flow/fundsApprover";
     }
 
     @RequestMapping("/leave")
     public String leave(){
-        return "flow/flowLeave";
+        return "flow/leave";
     }
 
-    @RequestMapping("/approver")
-    public String approver(){
-        return "flow/approver";
+    @RequestMapping("/leaveApprover")
+    public String leaveApprover(){
+        return "flow/leaveApprover";
     }
+
+
+
 
 }
