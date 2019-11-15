@@ -13,15 +13,16 @@
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="../student">学生档案管理</a></dd>
-                    <dd><a href="">招生信息管理</a></dd>
+                    <dd><a href="/recruit//torecruit">招生信息管理</a></dd>
+                    <dd><a href="/recruit/tofollow">招生跟进管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">流程管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">查看所有流程</a></dd>
-                    <dd><a href="">请假流程管理</a></dd>
-                    <dd><a href="">经费申请流程管理</a></dd>
+                    <dd><a href="/flow/approver">查看所有流程</a></dd>
+                    <dd><a href="/flow/leave">请假流程管理</a></dd>
+                    <dd><a href="/flow/funds">经费申请流程管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -34,8 +35,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">发文管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">发布文章</a></dd>
-                    <dd><a href="">查询文章</a></dd>
+                    <dd><a href="/article/dispatch">发布文章</a></dd>
+                    <dd><a href="/article/list">查询文章</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">

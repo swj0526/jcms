@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
 		<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="../layui/layui.js"></script>
-		<script type="text/javascript" src="../article/js/articleDispatch.js"></script>
+		<script type="text/javascript" src="../article/js/dispatch.js"></script>
 	</head>
 	<body>
 		<form class="layui-form" action="">
@@ -17,13 +17,23 @@
 		    </div>
 		  </div>
 		  
-		  <div class="layui-form-item">
+		  <div class="layui-form-item" >
 		    <label class="layui-form-label">接收角色</label>
-		    <div class="layui-input-inline">
+		    <div class="layui-input-inline" style="width: 300px">
 		      <input name="like[write]" title="老师" type="checkbox">
 		      <input name="like[read]" title="学生" type="checkbox" checked="">
 		      <input name="like[game]" title="管理员" type="checkbox">
 		    </div>
+			  <div class="layui-inline">
+				  <label class="layui-form-label">类型</label>
+				  <div class="layui-input-inline">
+					  <select name="modules" lay-search="" lay-verify="required">
+						  <option value="">请选择类型</option>
+						  <option value="1">公告</option>
+						  <option value="2">通知</option>
+					  </select>
+				  </div>
+			  </div>
 		    <div class="layui-inline">
 		          <label class="layui-form-label">发布时间</label>
 		          <div class="layui-input-inline">
