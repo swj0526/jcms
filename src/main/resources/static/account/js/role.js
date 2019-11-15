@@ -14,30 +14,30 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
         , id: 'userTableReload'
         , cols: [[
             {field: 'name', title: '角色名称'},
-            {field: 'major', title: '角色描述'},
-            {field: 'grade', title: '备注'},
+            {field: 'describe', title: '角色描述'},
+            {field: 'remark', title: '备注'},
             {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
         , data: [{
-            name: "老师",
-            major: '教务部',
-            grade: '教务老师'
+            name: "超级管理员",
+            describe: '权限最大',
+            remark: '该角色不可以进行修改或删除'
         },{
             name: "学生",
-            major: '教务部',
-            grade: '教务老师'
+            describe: '学生',
+            remark: '该角色不可以进行修改或删除'
+        },{
+            name: "任课老师",
+            describe: '负责具体的讲课内容',
+            remark: '无'
         },{
             name: "教务",
-            major: '教务部',
-            grade: '教务老师'
-        },{
-            name: "超级管理员",
-            major: '教务部',
-            grade: '教务老师'
+            describe: '对学生进行日常管理',
+            remark: '无'
         },{
             name: "校长",
-            major: '教务部',
-            grade: '教务老师'
+            describe: '管理者',
+            remark: '无'
         }]
         , page: true
     });
@@ -47,7 +47,6 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
         ,{"value": "2", "title": "李四"}
         ,{"value": "3", "title": "王五"}
         ,{"value": "4", "title": "种丹妮"}
-        ,{"value": "5", "title": "鲁迅", "disabled": true}
         ,{"value": "6", "title": "巴金"}
         ,{"value": "7", "title": "冰心"}
         ,{"value": "8", "title": "矛盾"}
@@ -139,35 +138,23 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
             ,field: ''
             ,spread: true
             ,children: [{
-                title: '三级2-1-1'
+                title: '发文管理'
                 ,id: 11
                 ,field: ''
             },{
-                title: '三级2-1-2'
+                title: '查看文章'
                 ,id: 12
                 ,field: ''
             }]
-        },{
-            title: '二级2-2'
-            ,id: 6
-            ,field: ''
-            ,children: [{
-                title: '三级2-2-1'
-                ,id: 13
-                ,field: ''
-            },{
-                title: '三级2-2-2'
-                ,id: 14
-                ,field: ''
-                ,disabled: true
-            }]
+
         }]
     }]
     //基础效果
     transfer.render({
-        title: ['所有用户', '学生'] , //自定义标题
+        title: ['所有用户', '教师'] , //自定义标题
         elem: '#test2'
         ,data: data1
+        ,showSearch: true
     });
     //开启复选框
     tree.render({
@@ -175,10 +162,68 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
         ,data: data2
         ,showCheckbox: true
     });
-    transfer.render({
-        title: ['所有用户', '老师'] , //自定义标题
-        elem: '#test3'
-        ,data: data1
+    //添加弹窗
+   $('#roleAdd').click(function () {
+       mainIndex = layer.open({
+           type: 1,
+           title: "添加新角色",
+           // skin: 'layui-layer-rim', //加上边框
+           area: ['350px','300px'], //设置宽高
+           content: $("#add"),
+           success: function (index) {
+               //清空
+               $("#dataFor")[0].reset();
+               url = "/";
+
+           }
+       });
+   });
+    //监听工具条
+    table.on('tool(test)', function(obj){
+        var data = obj.data;
+        if(obj.event === 'detail'){
+            layer.msg('ID：'+ data.id + ' 的查看操作');
+        } else if(obj.event === 'delete'){
+            layer.confirm('真的删除行么', function(index){
+                obj.del();
+                layer.close(index);
+            });
+        } else if(obj.event === 'edit'){
+            //layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            mainIndex = layer.open({
+                type: 1,
+                title: "修改角色",
+                // skin: 'layui-layer-rim', //加上边框
+                area: ['350px','300px'], //设置宽高
+                content: $("#update"),
+                success: function (index) {
+                    form.val("dataForm1", data);
+                    //清空
+                    $("#dataFor")[0].reset();
+                    url = "/";
+
+                }
+            });
+        }
     });
+
+   $('#affirm').click(function () {
+       layer.msg('修改成功!');
+   });
+    $('#cancel ').click(function () {
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
