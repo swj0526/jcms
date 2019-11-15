@@ -31,20 +31,20 @@
         </div>
         <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">跟进时间</label>
+            <label class="layui-form-label">时间</label>
             <div class="layui-input-inline">
-                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="time" autocomplete="off" class="layui-input" id="date">
             </div>
         </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">跟进内容</label>
+            <label class="layui-form-label">内容</label>
             <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                <input type="text" name="content" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">来源渠道</label>
+            <label class="layui-form-label">渠道</label>
             <div class="layui-input-inline">
                 <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
             </div>
@@ -59,18 +59,7 @@
     </form>
 
 </div>
-<#--跟进弹出框-->
-<div style="display: none;"  id="updateOrDelete">
-    <fieldset class="layui-elem-field layuimini-search">
-        <div style="">
-            <ul>
-                <li>跟进时间:</li>
-                <li>意向:</li>
-                <li>谈话内容:</li>
-            </ul>
-        </div>
-    </fieldset>
-</div>
+
 <div class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field layuimini-search">
@@ -79,23 +68,19 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学生姓名</label>
+                            <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">跟进时间</label>
+                            <label class="layui-form-label">时间</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
                             </div>
                         </div>
 
-                        <div class="layui-inline">
-                            <label class="layui-form-label">意向</label>
-                            <input type="radio" name="intention" value="nan" title="有">
-                            <input type="radio" name="intention" value="nv" title="无" checked>
-                        </div>
+
                         <div class="layui-inline">
                             <select name="city" lay-verify="">
                                 <option value="">来源渠道</option>
@@ -114,7 +99,7 @@
             </div>
         </fieldset>
         <div class="layui-btn-group">
-            <button class="layui-btn data-add-btn">添加跟进消息</button>
+            <button class="layui-btn data-add-btn">添加渠道信息</button>
 
         </div>
         <!-- 表格 -->

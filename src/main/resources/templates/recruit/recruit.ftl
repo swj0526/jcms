@@ -22,16 +22,23 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" value="男" title="男">
-                <input type="radio" name="sex" value="女" title="女" checked>
+            <div class="layui-inline">
+                <div class="layui-inline">
+                    <select name="sex" lay-verify="">
+                        <option value=""></option>
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+
+                    </select>
+                </div>
             </div>
         </div>
+
         <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">出生年月</label>
             <div class="layui-input-inline">
-                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="age" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
         </div>
@@ -96,7 +103,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学生姓名</label>
+                            <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
@@ -107,16 +114,20 @@
                                 <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
                             </div>
                         </div>
+
                         <div class="layui-inline">
                             <label class="layui-form-label">性别</label>
-                            <input type="radio" name="sex" value="nan" title="男">
-                            <input type="radio" name="sex" value="nv" title="女" checked>
+                            <div class="layui-input-inline">
+                                <div class="layui-inline">
+                                    <select name="sex" lay-verify="">
+                                        <option value="">男</option>
+                                        <option value="">女</option>
+
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">意向</label>
-                            <input type="radio" name="intention" value="nan" title="有">
-                            <input type="radio" name="intention" value="nv" title="无" checked>
-                        </div>
+
                         <div class="layui-inline">
                             <select name="city" lay-verify="">
                                 <option value="">来源渠道</option>
@@ -128,7 +139,7 @@
                             </select>
                         </div>
                         <div class="layui-inline">
-                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                     </div>
                 </form>
@@ -141,7 +152,7 @@
         <!-- 表格 -->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="follow">跟进</a>
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="follow">跟进详情</a>
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>

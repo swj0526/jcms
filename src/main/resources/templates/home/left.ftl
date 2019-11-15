@@ -15,7 +15,7 @@
                 <dl class="layui-nav-child">
                     <dd><a  class="add" id="student_list">学生档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
-                    <dd><a class="add" id="recruit_follow">招生跟进管理</a></dd>
+                    <dd><a class="add" id="recruit_follow">招生渠道管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">

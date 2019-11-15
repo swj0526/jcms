@@ -1,20 +1,16 @@
 layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.jquery,
         form = layui.form,
-        table = layui.table;
-    laydate = layui.laydate;
+        table = layui.table,
+        laydate = layui.laydate;
 
     laydate.render({
-        elem: '#a',
-        range: true
-    });
-    laydate.render({
-        elem: '#b' //指定元素
-        , range: true
+        elem: '#a' //指定元素
+        ,range: true
     });
     laydate.render({
         elem: '#date' //指定元素
-        , range: true
+
     });
 
 
@@ -129,7 +125,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
                 {
                     title: '操作',
-                    minWidth: 50,
+                    Width: 80,
                     templet: '#currentTableBar',
                     fixed: "right",
                     align: "center",
@@ -179,7 +175,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
-            title: "添加跟进学生信息",
+            title: "修改招生学生信息",
             skin: 'layui-layer-rim', //加上边框
             area: ['500px'], //设置宽高
             content: $("#recruit"),
