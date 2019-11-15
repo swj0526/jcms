@@ -120,32 +120,31 @@ layui.use('table', function () {
     let mainIndex;
 
     //修改弹窗
-    function modify(data) {
+ /*   function modify(data) {
         mainIndex = layer.open({
             type: 1,
             title: "查看请假审批详情",
             skin: 'layui-layer-rim', //加上边框
-            area: ['400px', '600px'], //设置宽高
+            area: ['500px', '600px'], //设置宽高
             content: $("#updateOrDelete"),
             success: function (index) {
                 form.val("dataForm", data);
                 url = "/update"
             }
         });
-    }
+    }*/
 
     //监听行单击事件（单击事件为：rowDouble）
     table.on('row(test)', function(obj){
         var data = obj.data;
         layer.alert(JSON.stringify(data), {
             type: 1,
-            title: '当前行数据：',
+            title: '请假审批详情：',
             content: $("#updateOrDelete"),
             success: function (index) {
                 form.val("dataForm", data);
             }
         });
-
         //标注选中样式
         obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
     });

@@ -17,5 +17,14 @@ public class StudentController {
     public String recruit(){
         return "recruit/recruit";
     }*/
-
+@RequestMapping("information")
+    public String information(){
+    return "student/information";
 }
+    @RequestMapping("cost")
+    public String cost(){
+        return "student/cost";
+    }
+}
+
+
