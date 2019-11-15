@@ -6,27 +6,38 @@
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;"  class="add" id="account_list">账号管理</a></dd>
                     <dd><a href="javascript:;" class="add" id="account_role">角色权限管理</a></dd>
+                    <dd><a href="javascript:;" class="add" id="account_modPassword">角色权限管理</a></dd>
 
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">档案管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="../student">学生档案管理</a></dd>
-                    <dd><a href="/recruit//torecruit">招生信息管理</a></dd>
-                    <dd><a href="/recruit/tofollow">招生跟进管理</a></dd>
+                    <dd><a  class="add" id="student_list">学生档案管理</a></dd>
+                    <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
+                    <dd><a class="add" id="recruit_follow">招生跟进管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">流程管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/flow/approver">查看所有流程</a></dd>
-                    <dd><a href="/flow/leave">请假流程管理</a></dd>
-                    <dd><a href="/flow/funds">经费申请流程管理</a></dd>
+                   <#-- <dd><a href="/flow/approver"  class="add" id="flow_approver">流程列表</a></dd>-->
+                    <dd><a  class="add" id="flow_leave">请假流程管理</a></dd>
+                    <dd><a  class="add" id="flow_funds">经费申请流程管理</a></dd>
+
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="../money/list">缴费管理</a>
+                <a href="javascript:;">审批管理</a>
+                <dl class="layui-nav-child">
+                    <#-- <dd><a href="/flow/approver"  class="add" id="flow_approver">流程列表</a></dd>-->
+                    <dd><a class="add" id="flow_fundsApprover">经费审批</a></dd>
+                    <dd><a class="add" id="flow_leaveApprover">请假审批</a></dd>
+
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="add" id="money_list">缴费管理</a>
                 <#--<dl class="layui-nav-child">
 
 
@@ -35,8 +46,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">发文管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/article/dispatch">发布文章</a></dd>
-                    <dd><a href="/article/list">查询文章</a></dd>
+                    <dd><a  class="add" id="article_dispatch">发布文章</a></dd>
+                    <dd><a   class="add" id="article_list">查询文章</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -50,15 +61,14 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">作业管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="../work/upload">上传作业</a></dd>
-                    <dd><a href="../work/list">作业列表</a></dd>
+                    <dd><a class="add" id="work_upload">上传作业</a></dd>
+                    <dd><a   class="add" id="work_list">作业列表</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">积分管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="../../static/integral">查询积分</a></dd>
-                    <dd><a href=""></a></dd>
+                    <dd><a>积分制度列表</a></dd>
                 </dl>
             </li>
 

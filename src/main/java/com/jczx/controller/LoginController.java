@@ -13,15 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class LoginController {
-    @RequestMapping("/home")
-    private String home(){
-        return "/home/home";
-    }
 
-    @RequestMapping("/homeContext")
-    private String homeContext(){
-        return "/home/homeContext";
-    }
 
     /**
      * 登录
@@ -38,11 +30,5 @@ public class LoginController {
     private String register(){
         return"register";
     }
-    /**
-     * 修改密码
-     */
-    @RequestMapping("/modify")
-    private String modify(){
-        return "login/modify";
-    }
+
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>修改密码</title>
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
 </head>
 <body>
 <form class="layui-form" action="">

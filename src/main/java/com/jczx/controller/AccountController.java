@@ -27,4 +27,11 @@ public class AccountController {
     public String toRole(){
         return "account/role";
     }
+    /**
+     * 修改密码
+     */
+    @RequestMapping("/toModPassword")
+    private String modify(){
+        return "account/modPassword";
+    }
 }

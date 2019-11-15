@@ -3,8 +3,8 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
     var layer = layui.layer;
     var $ = layui.jquery;
     var form = layui.form;
-    var transfer = layui.transfer
-    var layer = layui.layer
+    var transfer = layui.transfer;
+    var layer = layui.layer;
     var util = layui.util;
     var tree = layui.tree;
     //渲染数据表格
