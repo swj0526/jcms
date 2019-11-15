@@ -92,7 +92,7 @@ layui.use(['table','jquery','laydate','form','element'],function(){
         layer.open({
             btnAlign: 'c'
             ,type:2
-            ,area:['500px','750px']
+            ,area:['500px','650px']
             ,btn:['确定']
             ,content:'kkk'
         });

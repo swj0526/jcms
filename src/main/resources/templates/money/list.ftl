@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                     </div>
                 </form>

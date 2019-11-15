@@ -18,7 +18,36 @@ layui.use(['table','jquery','laydate','form','element'],function() {
             , data: [{
                 id:1
                 , type: '学费'
-                , Validity: "2020-11-14"
+            },{
+                id:2
+                , type: '学费'
+            },{
+                id:3
+                , type: '学费'
+            },{
+                id:4
+                , type: '学费'
+            },{
+                id:5
+                , type: '学费'
+            },{
+                id:6
+                , type: '学费'
+            },{
+                id:7
+                , type: '学费'
+            },{
+                id:8
+                , type: '学费'
+            },{
+                id:9
+                , type: '学费'
+            },{
+                id:10
+                , type: '学费'
+            },{
+                id:11
+                , type: '学费'
             }]
         });
 

@@ -30,4 +30,8 @@ public class WorkController {
     public String workQuery() {
         return "work/list";
     }
+    @RequestMapping("/download")
+    public String  download() {
+        return "work/studentwork";
+    }
 }

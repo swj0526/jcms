@@ -21,6 +21,10 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         ,error: function(){
             //请求异常回调
         }
+        ,progress: function(n){
+            var percent = n + '%' //获取进度百分比
+            element.progress('demo', percent); //可配合 layui 进度条元素使用
+        }
     });
 
 
@@ -66,15 +70,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             layer.open({
                 btnAlign: 'c'
                 , type: 1
-                , area: '500px'
-                , btn: ['确定']
+                , area: ['500px','155px']
+                , btn: ''
                 , content: $("#up")
                 , yes: function (index, layero) {
                     layer.close(index);
                 }
             });
         }else if (obj.event === 'del'){
-            layer.confirm('真的删除行么', function(index){
+            layer.confirm('确定要删除上传的作业么？', function(index){
 
                 layer.close(index);
             });

@@ -14,7 +14,7 @@
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">作业名称</label>
+                    <label class="layui-form-label">关键字</label>
                     <div class="layui-input-inline">
                         <input type="text" name="username" autocomplete="off" class="layui-input">
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                    <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                 </div>
             </div>
         </form>
@@ -49,6 +49,10 @@
     <div id="test" class="layui-upload">
         <button class="layui-btn layui-btn-normal" id="test8" type="button">选择文件</button>
         <button class="layui-btn" id="test9" type="button">开始上传</button>
+
+        <div class="layui-progress layui-progress-big" lay-filter="demo"  lay-showPercent="yes" style="margin-top: 20px">
+            <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
+        </div>
     </div>
 </div>
 </body>
