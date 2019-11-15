@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
     <link rel="stylesheet" href="layui/css/public.css" media="all">
-    <script src="layui/layui.js"></script>
+    <script src="../layui/layui.js"></script>
 </head>
 <body>
 <div class="layuimini-container">
@@ -20,15 +20,27 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">分数范围</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">事由</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="city" autocomplete="off" class="layui-input">
+                            <div class="layui-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">事由</option>
+                                    <option value="010">好人好事</option>
+                                    <option value="021">打架斗殴</option>
+                                    <option value="021">调皮捣蛋</option>
+                                    <option value="021">乐观向上</option>
+                                    <option value="021">品学兼优</option>
+                                </select>
                             </div>
                         </div>
                         <div class="layui-inline">

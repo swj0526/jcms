@@ -20,9 +20,9 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学生姓名</label>
+                            <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                                <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="例：1990/张三">
                             </div>
                         </div>
 
@@ -33,28 +33,18 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">学生学号</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="classify" autocomplete="off" class="layui-input">
-                            </div>
+                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">性别</label>
-                            <input type="radio" name="sex" value="nan" title="男">
-                            <input type="radio" name="sex" value="nv" title="女" checked>
-                        </div>
-                        <div class="layui-inline">
-                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                        <div class="layui-btn-group">
+                            <button class="layui-btn data-add-btn">添加</button>
+                            <button class="layui-btn layui-btn-danger data-delete-btn">导出</button>
                         </div>
                     </div>
                 </form>
             </div>
         </fieldset>
 
-        <div class="layui-btn-group">
-            <button class="layui-btn data-add-btn">添加学生信息</button>
-            <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
-        </div>
+
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
@@ -75,18 +65,27 @@
         });
         table.render({
             elem: '#currentTableId',
-            url: 'json/table.json',
+            data: [{
+                "id": 1901001,
+                "username": "张三",
+                "sex": "男",
+                "xuefen": 95,
+                "time": '2019-10-1'
+
+            }],
             cols: [
                 [{
                     field: 'id',
                     title: '学号',
+                    city:"",
                     sort: true,
                     align: 'center'
                 },
                     {
                         field: 'username',
                         title: '姓名',
-                        align: 'center'
+                        align: 'center',
+                        templet: '<div><a href="information"target="_blank">张三</a></div>'
                     },
                     {
                         field: 'sex',
@@ -106,11 +105,6 @@
                         align: 'center'
                     },
                     {
-                        field: 'sign',
-                        title: '身份证号',
-                        align: 'center'
-                    },
-                    {
                         field: 'experience',
                         title: '家庭住址',
                         align: 'center'
@@ -127,27 +121,7 @@
                     },
                     {
                         field: 'wealth',
-                        title: '照片',
-                        align: 'center'
-                    },
-                    {
-                        field: 'wealth',
                         title: '血型',
-                        align: 'center'
-                    },
-                    {
-                        field: 'wealth',
-                        title: '爱好',
-                        align: 'center'
-                    },
-                    {
-                        field: 'wealth',
-                        title: '特长',
-                        align: 'center'
-                    },
-                    {
-                        field: 'wealth',
-                        title: '学生状态',
                         align: 'center'
                     },
                     {
