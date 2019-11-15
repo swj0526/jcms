@@ -12,16 +12,16 @@ layui.use('table', function(){
         }]
         ,title: '用户数据表'
         ,cols: [[
-            {type: 'checkbox', fixed: 'left'}
-            ,{field:'id', title:'序号', fixed: 'left', unresize: true, sort: true}
-            ,{field:'name', title:'姓名'}
-            ,{field:'grade', title:'年级'}
-            ,{field:'cause', title:'申请事由'}
-            ,{field:'money', title:'申请金额'}
-            ,{field:'apply', title:'申请日期'}
-            ,{field: 'start', title: '开始日期'}
-            ,{field: 'state', title: '状态'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
+            {type: 'checkbox', fixed: 'left',align: 'center'}
+            ,{field:'id', title:'序号', fixed: 'left',align: 'center', sort: true}
+            ,{field:'name', title:'姓名',align: 'center'}
+            ,{field:'grade', title:'年级',align: 'center'}
+            ,{field:'cause', title:'申请事由',align: 'center'}
+            ,{field:'money', title:'申请金额',align: 'center'}
+            ,{field:'apply', title:'申请日期',align: 'center'}
+            ,{field: 'start', title: '开始日期',align: 'center'}
+            ,{field: 'state', title: '状态',align: 'center'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
         ]]
         , data: [{
             "id": "10001",
@@ -30,7 +30,7 @@ layui.use('table', function(){
             "money": "3000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "拒绝",
+            "state": "yi",
             "cause": "有事asdasdasdasfasfasdgdfsdf12"
         }, {
             "id": "10001",

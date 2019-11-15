@@ -11,44 +11,64 @@
 </head>
 <body>
 <#--条件查询-->
-<div class="layui-form-item"  >
-<form class="layui-form" action="" >
-
-        <div class="layui-inline">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-inline">
-                <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
-            </div>
+<div class="layui-form-item">
+    <fieldset class="layui-elem-field layuimini-search">
+        <legend>查询请假申请</legend>
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form layui-form-pane" action="">
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键字</label>
+                    <div class="layui-input-inline">
+                        <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-inline">
+                        <select name="modules" lay-search="" lay-verify="required">
+                            <option value="">请选择类型</option>
+                            <option value="1">事假</option>
+                            <option value="2">病假</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">专业-班级</label>
+                    <div class="layui-input-inline" lay-verify="required" lay-search="">
+                        <select name="major">
+                            <option value="">请选择专业-班级</option>
+                            <optgroup label="影视专业">
+                                <option value="">所有影视专业</option>
+                                <option value="">影视一班</option>
+                            </optgroup>
+                            <optgroup label="美术专业">
+                                <option value="">所有美术专业</option>
+                                <option value="">美术一班</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-inline">
+                        <select name="modules" lay-search="" lay-verify="required">
+                            <option value="">所有状态</option>
+                            <option value="1">同意</option>
+                            <option value="2">拒绝</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">日期范围</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" id="test6" type="text" placeholder=" - ">
+                    </div>
+                </div>
+                <button class="layui-btn" data-type="reload">查询</button>
+            </form>
+            <button id="add" class="layui-btn" data-type="reload">请假申请</button>
         </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">类型</label>
-            <div class="layui-input-inline">
-                <select name="modules" lay-search="" lay-verify="required">
-                    <option value="">请选择类型</option>
-                    <option value="1">事假</option>
-                    <option value="2">病假</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-input-inline">
-                <select name="modules" lay-search="" lay-verify="required">
-                    <option value="">所有状态</option>
-                    <option value="1">同意</option>
-                    <option value="2">拒绝</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">日期范围</label>
-            <div class="layui-input-inline">
-                <input class="layui-input" id="test6" type="text" placeholder=" - ">
-            </div>
-        </div>
-        <button class="layui-btn" data-type="reload">查询</button>
-</form>
-    <button id="add" class="layui-btn" data-type="reload">请假申请</button>
+    </fieldset>
 </div>
 <#--数据表格-->
 <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -70,15 +90,29 @@
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off"
-                       class="layui-input">
+                <table class="layui-table" >
+                    <thead>
+                    <tr>
+                        <th id="name">姓名</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年级</label>
-            <div class="layui-input-inline">
-                <input type="text" name="grade" required lay-verify="required" placeholder="请输入年龄" autocomplete="off"
-                       class="layui-input">
+        <div class="layui-inline">
+            <label class="layui-form-label">专业-班级</label>
+            <div class="layui-input-inline" lay-verify="required" lay-search="">
+                <select name="major">
+                    <option value="">请选择专业-班级</option>
+                    <optgroup label="影视专业">
+                        <option value="">所有影视专业</option>
+                        <option value="">影视一班</option>
+                    </optgroup>
+                    <optgroup label="美术专业">
+                        <option value="">所有美术专业</option>
+                        <option value="">美术一班</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
@@ -102,11 +136,10 @@
                        class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">请假事由</label>
-            <div class="layui-input-inline">
-                <input type="text" name="cause" required lay-verify="required" placeholder="请输入请假事由" autocomplete="off"
-                       class="layui-textarea" id="age">
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -125,31 +158,42 @@
     </form>
 </div>
 
+<fieldset class="layui-elem-field layuimini-search">
+    <legend>添加信息</legend>
+    <div style="margin: 10px 10px 10px 10px">
+    </div>
+</fieldset>
+
 <#--添加请假审批-->
 <div id="aaa" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>添加信息</legend>
+        <legend>添加请假审批</legend>
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" action="">
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">用户姓名</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
+
                     <div class="layui-form-item">
                         <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入学生姓名" autocomplete="off"
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入学生姓名"
+                                   autocomplete="off"
                                    class="layui-input" id="xname">
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">年级</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入学生年级" autocomplete="off"
-                                   class="layui-input" id="xname">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">专业-班级</label>
+                        <div class="layui-input-inline" lay-verify="required" lay-search="">
+                            <select name="major">
+                                <option value="">请选择专业-班级</option>
+                                <optgroup label="影视专业">
+                                    <option value="">所有影视专业</option>
+                                    <option value="">影视一班</option>
+                                </optgroup>
+                                <optgroup label="美术专业">
+                                    <option value="">所有美术专业</option>
+                                    <option value="">美术一班</option>
+                                </optgroup>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -162,30 +206,22 @@
                             </select>
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">请假时长</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入请假时长" autocomplete="off"
-                                   class="layui-input" id="xname">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">申请日期</label>
-                        <div class="layui-input-inline">
-                            <input class="layui-input" id="test1" type="text" placeholder="yyyy-MM-dd">
-                        </div>
-                    </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">开始日期</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" id="test2" type="text" placeholder="yyyy-MM-dd">
+                            <input class="layui-input" id="test5" type="text" placeholder="yyyy-MM-dd HH:mm:ss">
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">请假事由</label>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束日期</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入请假事由" autocomplete="off"
-                                   class="layui-textarea" id="age">
+                            <input class="layui-input" id="test7" type="text" placeholder="yyyy-MM-dd HH:mm:ss">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">请假事由</label>
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea" name="title" placeholder="请输入请假事由"></textarea>
                         </div>
                     </div>
 

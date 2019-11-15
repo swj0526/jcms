@@ -10,13 +10,31 @@
 </head>
 <body>
 <#--条件查询-->
-<div class="layui-form-item"  >
-    <form class="layui-form" action="" >
-
+<div class="layui-form-item">
+    <fieldset class="layui-elem-field layuimini-search">
+        <legend>添加信息</legend>
+        <div style="margin: 10px 10px 10px 10px">
+    <form class="layui-form layui-form-pane" action="">
         <div class="layui-inline">
             <label class="layui-form-label">申请人</label>
             <div class="layui-input-inline">
                 <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">专业-班级</label>
+            <div class="layui-input-inline" lay-verify="required" lay-search="">
+                <select name="major">
+                    <option value="">请选择专业-班级</option>
+                    <optgroup label="影视专业">
+                        <option value="">所有影视专业</option>
+                        <option value="">影视一班</option>
+                    </optgroup>
+                    <optgroup label="美术专业">
+                        <option value="">所有美术专业</option>
+                        <option value="">美术一班</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
         <div class="layui-inline">
@@ -38,6 +56,8 @@
         <button class="layui-btn" data-type="reload">查询</button>
     </form>
     <button id="add" class="layui-btn layui-btn-sm">经费申请</button>
+        </div>
+    </fieldset>
 </div>
 
 <#--数据表格-->
@@ -72,9 +92,8 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">申请事由</label>
-            <div class="layui-input-inline">
-                <input type="text" name="cause" required lay-verify="required" placeholder="请输入申请事由" autocomplete="off"
-                       class="layui-textarea" id="age">
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -100,7 +119,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-inline">
-                <input type="text" name="state" required lay-verify="required"  autocomplete="off"
+                <input type="text" name="state" required lay-verify="required" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
@@ -115,54 +134,75 @@
 
 <#--添加经费审批-->
 <div style="display: none" id="aaa">
-    <form class="layui-form" action="">
+    <fieldset class="layui-elem-field layuimini-search">
+        <legend>添加信息</legend>
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form  layui-form-pane" action="">
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请人</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入申请人姓名" autocomplete="off"
-                       class="layui-input" id="xname">
-            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">申请人</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入申请人姓名"
+                               autocomplete="off"
+                               class="layui-input" id="xname">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">专业-班级</label>
+                    <div class="layui-input-inline" lay-verify="required" lay-search="">
+                        <select name="major">
+                            <option value="">请选择专业-班级</option>
+                            <optgroup label="影视专业">
+                                <option value="">所有影视专业</option>
+                                <option value="">影视一班</option>
+                            </optgroup>
+                            <optgroup label="美术专业">
+                                <option value="">所有美术专业</option>
+                                <option value="">美术一班</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">申请事由</label>
+                    <div class="layui-input-block">
+                        <textarea class="layui-textarea" name="cause" placeholder="请输入申请事由"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">申请金额</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入申请金额"
+                               autocomplete="off"
+                               class="layui-input" id="age">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">申请日期</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" id="test1" type="text" placeholder="yyyy-MM-dd">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始日期</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" id="test5" type="text" placeholder="yyyy-MM-dd HH:mm:ss">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束日期</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" id="test7" type="text" placeholder="yyyy-MM-dd HH:mm:ss">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo" id="student">立即提交</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年级</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入学生年级" autocomplete="off"
-                       class="layui-input" id="xname">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请事由</label>
-            <div class="layui-input-inline">
-                <input type="text" name="cause" required lay-verify="required" placeholder="请输入申请事由" autocomplete="off"
-                       class="layui-textarea" id="age">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请金额</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入申请金额" autocomplete="off"
-                       class="layui-input" id="age">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">申请日期</label>
-            <div class="layui-input-inline">
-                <input class="layui-input" id="test1" type="text" placeholder="yyyy-MM-dd">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">开始日期</label>
-            <div class="layui-input-inline">
-                <input class="layui-input" id="test2" type="text" placeholder="yyyy-MM-dd">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="student">立即提交</button>
-            </div>
-        </div>
-    </form>
+    </fieldset>
 </div>
 <script>
     //JavaScript代码区域

@@ -55,7 +55,9 @@
                 <dl class="layui-nav-child">
                     <dd><a class="add" id="remind_pay">缴费提醒</a></dd>
                     <dd><a class="add" id="remind_article">发文提醒</a></dd>
-                   <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->
+                    <dd><a class="add" >公告提醒</a></dd>
+
+                    <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->
                 </dl>
             </li>
             <li class="layui-nav-item">

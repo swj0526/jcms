@@ -103,9 +103,8 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">请假事由</label>
-            <div class="layui-input-inline">
-                <input type="text" name="cause" required lay-verify="required" placeholder="请输入请假事由" autocomplete="off"
-                       class="layui-textarea" id="age">
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -182,9 +181,8 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">请假事由</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入请假事由" autocomplete="off"
-                                   class="layui-textarea" id="age">
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
                         </div>
                     </div>
 
