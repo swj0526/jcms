@@ -34,12 +34,7 @@
 					  </select>
 				  </div>
 			  </div>
-		    <div class="layui-inline">
-		          <label class="layui-form-label">发布时间</label>
-		          <div class="layui-input-inline">
-		            <input class="layui-input" id="test1" type="text" placeholder="yyyy-MM-dd">
-		          </div>
-		        </div>
+
 		  </div>
 		  
 		  <div class="layui-form-item layui-form-text">
