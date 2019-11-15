@@ -25,7 +25,6 @@
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-
                         <div class="layui-inline">
                             <label class="layui-form-label">事由</label>
                             <div class="layui-input-inline">
