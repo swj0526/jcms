@@ -43,6 +43,7 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
                     btnAlign: 'c'
                     ,type:1
                     ,btn:['提交']
+                    ,area:['350px','500px']
                     ,content:$("#aa")
                     ,yes: function(index, layero){
                         layer.close(index);
@@ -58,7 +59,16 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
 
 
         } else if (obj.event === 'edit') {
-
+            layer.open({
+                btnAlign: 'c'
+                ,type:2
+                ,area: ['500px','550px']
+                ,btn:''
+                ,content:'download'
+                ,yes: function(index, layero){
+                    layer.close(index);
+                }
+            });
         }
     });
     var $ = layui.$, active = {

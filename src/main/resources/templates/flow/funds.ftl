@@ -21,22 +21,7 @@
                 <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
             </div>
         </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">专业-班级</label>
-            <div class="layui-input-inline" lay-verify="required" lay-search="">
-                <select name="major">
-                    <option value="">请选择专业-班级</option>
-                    <optgroup label="影视专业">
-                        <option value="">所有影视专业</option>
-                        <option value="">影视一班</option>
-                    </optgroup>
-                    <optgroup label="美术专业">
-                        <option value="">所有美术专业</option>
-                        <option value="">美术一班</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
+
         <div class="layui-inline">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-inline">
@@ -54,8 +39,9 @@
             </div>
         </div>
         <button class="layui-btn" data-type="reload">查询</button>
+        <button id="add" class="layui-btn layui-btn-sm">经费申请</button>
+
     </form>
-    <button id="add" class="layui-btn layui-btn-sm">经费申请</button>
         </div>
     </fieldset>
 </div>
@@ -76,59 +62,42 @@
                        class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请人</label>
-            <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="请输入申请人姓名" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">年级</label>
-            <div class="layui-input-inline">
-                <input type="text" name="grade" required lay-verify="required" placeholder="请输入年龄" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请事由</label>
-            <div class="layui-input-block">
-                <textarea class="layui-textarea" name="cause" placeholder="请输入请假事由"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请金额</label>
-            <div class="layui-input-inline">
-                <input type="text" name="money" required lay-verify="required" placeholder="请输入申请金额" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">申请时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="apply" required lay-verify="required" placeholder="请输入申请日期" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">开始日期</label>
-            <div class="layui-input-inline">
-                <input class="layui-input" name="start" type="text" placeholder="yyyy-MM-dd">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-input-inline">
-                <input type="text" name="state" required lay-verify="required" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="but">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-            </div>
-        </div>
+        <table border="1" width="300" height="500" align="center" cellspacing="0">
+            <caption>学生档案</caption>
+            <tr align="center">
+                <td bgcolor="#ededed">姓名</td>
+                <td colspan="7">张三</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">年级</td>
+                <td colspan="7">影视一班</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">申请事由</td>
+                <td colspan="7">团建</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">申请金额</td>
+                <td colspan="7">3000</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">申请日期</td>
+                <td colspan="7">2016-10-15</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">开始日期</td>
+                <td colspan="7">2016-10-18</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">状态</td>
+                <td colspan="7">拒绝</td>
+            </tr>
+            <tr align="center">
+                <td bgcolor="#ededed">拒绝理由</td>
+                <td colspan="7">拒绝</td>
+            </tr>
+        </table>
+
     </form>
 </div>
 
