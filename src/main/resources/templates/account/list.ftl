@@ -51,6 +51,15 @@
                                         </div>
                                     </div>
                                     <div class="layui-inline">
+                                        <label class="layui-form-label">是否被激活</label>
+                                        <div class="layui-input-inline">
+                                            <select name="lock1" lay-verify="">
+                                                <option value=""></option>
+                                                <option value="">激活</option>
+                                                <option value="">锁定</option>
+                                            </select>
+                                        </div>
+                                    <div class="layui-inline">
                                         <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                                     </div>
                                 </div>
@@ -65,7 +74,7 @@
                                ? 'checked' : '' }}>
                     </script>
                     <script type="text/html" id="barDemo">
-                        <button type="button" class="layui-btn layui-btn-xs" id="reset" data-method="confirmTrans">
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset" data-method="confirmTrans">
                             重置密码
                         </button>
                     </script>
@@ -84,32 +93,34 @@
                                     <div class="layui-inline">
                                         <label class="layui-form-label">关键字</label>
                                         <div class="layui-input-inline">
-                                            <input type="text" name="keys1" autocomplete="off" class="layui-input" placeholder="张三/201932094/5000">
+                                            <input type="text" name="keys1" autocomplete="off" class="layui-input"
+                                                   placeholder="张三/201932094/5000">
                                         </div>
                                     </div>
                                     <div class="layui-inline">
                                         <label class="layui-form-label">角色</label>
                                         <div class="layui-input-inline">
-                                        <select name="role1" lay-verify="">
-                                            <option value=""></option>
-                                            <option value="">校长</option>
-                                            <option value="">任课老师</option>
-                                            <option value="">教务</option>
-                                        </select>
+                                            <select name="role1" lay-verify="">
+                                                <option value=""></option>
+                                                <option value="">校长</option>
+                                                <option value="">任课老师</option>
+                                                <option value="">教务</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="layui-inline">
                                         <label class="layui-form-label">是否被激活</label>
                                         <div class="layui-input-inline">
-                                        <select name="lock1" lay-verify="">
-                                            <option value=""></option>
-                                            <option value="">激活</option>
-                                            <option value="">锁定</option>
-                                        </select>
-                                    </div>
-                                    </div>
-                                    <div class="layui-inline">
-                                        <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                                            <select name="lock1" lay-verify="">
+                                                <option value=""></option>
+                                                <option value="">激活</option>
+                                                <option value="">锁定</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="layui-inline">
+                                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -123,7 +134,7 @@
                                10006 ? 'checked' : '' }}>
                     </script>
                     <script type="text/html" id="barDemo1">
-                        <button type="button" class="layui-btn layui-btn-xs" id="reset1" data-method="confirmTrans">
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1" data-method="confirmTrans">
                             重置密码
                         </button>
 

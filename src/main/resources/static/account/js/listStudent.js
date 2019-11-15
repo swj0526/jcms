@@ -69,11 +69,15 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
         }]
         ,page:true
     });
-    $('#reset').click(function () {
-       layer.msg("该账号的密码重置为123456?", {
-           time: false, //20s后自动关闭
-           btn: ['确定','取消重置']
-       });
+    //监听工具条
+    table.on('tool(test)', function(obj){
+        var data = obj.data;
+        if(obj.event === 'reset'){
+            layer.msg("该账号的密码重置为123456?", {
+                time: false, //20s后自动关闭
+                btn: ['确定','取消重置']
+            });
+        }
     });
     //监听锁定操作
     form.on('checkbox(lockDemo)', function(obj){

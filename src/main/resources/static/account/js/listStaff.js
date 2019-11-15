@@ -14,8 +14,8 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'major', title: '所属部门'},
             {field: 'grade', title: '岗位名称'},
             {field: 'role', title: '角色'},
-            {field: 'lockDemo', title: '是否激活账号',templet: '#checkboxTpl', unresize: true},
-            {fixed: 'right', title: '操作', toolbar: '#barDemo'}
+            {field: 'lockDemo1', title: '是否激活账号',templet: '#checkboxTpl1', unresize: true},
+            {fixed: 'right', title: '操作', toolbar: '#barDemo1'}
         ]]
         , data: [{
             name: "王老师",
@@ -60,12 +60,20 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
         }]
         ,page:true
     });
-    $('#reset1').click(function () {
-       layer.msg("该账号的密码重置为abcd?", {
-           time: false, //20s后自动关闭
-           btn: ['确定','取消重置']
-       });
+    //监听工具条
+    table.on('tool(test1)', function(obj){
+        var data = obj.data;
+        if(obj.event === 'reset1'){
+            layer.msg("该账号的密码重置为abcd?", {
+                time: false, //20s后自动关闭
+                btn: ['确定','取消重置']
+            });
+        }
     });
+ /*   $('#reset1').click(function () {
+        alert(123);
+
+    });*/
     //监听锁定操作
     form.on('checkbox(lockDemo1)', function(obj){
        // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);

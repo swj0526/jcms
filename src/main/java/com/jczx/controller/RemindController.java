@@ -42,9 +42,9 @@ public class RemindController {
      * 提醒管理/发布的未看的文章提醒
      * @return
      */
-    @RequestMapping("/toBroadcast")
+    @RequestMapping("/toAnnunciate")
     public String toBroadcast() {
 
-        return "/remind/broadcast";
+        return "/remind/annunciate";
     }
 }

@@ -6,16 +6,17 @@
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;"  class="add" id="account_list">账号管理</a></dd>
                     <dd><a href="javascript:;" class="add" id="account_role">角色权限管理</a></dd>
-                    <dd><a href="javascript:;" class="add" id="account_modPassword">角色权限管理</a></dd>
+                    <dd><a href="javascript:;" class="add" id="account_modPassword">修改密码</a></dd>
 
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">档案管理</a>
+                <a href="javascript:;">信息管理</a>
                 <dl class="layui-nav-child">
                     <dd><a  class="add" id="student_list">学生档案管理</a></dd>
+                    <dd><a  class="add" id="">教职工档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
-                    <dd><a class="add" id="recruit_follow">招生渠道管理</a></dd>
+                    <dd><a class="add" id="recruit_follow">来源渠道管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
