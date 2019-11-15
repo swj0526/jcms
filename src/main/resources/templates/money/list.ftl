@@ -16,13 +16,14 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">用户姓名</label>
+                            <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <select name="city" lay-verify="">
+                                <option value="">选择年级</option>
                                 <option value="01">一年级</option>
                                 <option value="02">二年级</option>
                                 <option value="03">三年级</option>
@@ -64,7 +65,7 @@
 </div>
 <div id="aa" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>添加信息</legend>
+        <legend>信息</legend>
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFor">
                 <div class="layui-form-item">
@@ -86,13 +87,15 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">缴费类型</label>
-                        <div class="layui-inline" style="width: 190px">
-                            <select  lay-verify="" name="type" id="type">
+                        <div class="layui-inline" style="width: 115px">
+                            <select  lay-verify="" name="type" id="type" >
                                 <option value="学费">学费</option>
                                 <option value="住宿费">住宿费</option>
                                 <option value="学杂费">学杂费</option>
                             </select>
                         </div>
+                        <button type="button" class="layui-btn" id="ss">设置</button>
+
                     </div>
 
                     <div class="layui-inline">

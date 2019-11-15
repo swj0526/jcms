@@ -43,6 +43,7 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
                     btnAlign: 'c'
                     ,type:1
                     ,btn:['提交']
+                    ,area:['350px','500px']
                     ,content:$("#aa")
                     ,yes: function(index, layero){
                         layer.close(index);

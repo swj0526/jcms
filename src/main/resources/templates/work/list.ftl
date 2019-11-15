@@ -16,7 +16,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">用户姓名</label>
+                            <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
@@ -68,12 +68,6 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">作业内容</label>
-                        <div class="layui-input-inline">
-                            <textarea name="content" required lay-verify="required" class="layui-textarea"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">发布年级</label>
                         <div class="layui-inline"  style="width: 190px">
                             <select  lay-verify="" name="grade" id="grade">
@@ -81,6 +75,12 @@
                                 <option value="二年级">二年级</option>
                                 <option value="三年级">三年级</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">作业内容</label>
+                        <div class="layui-input-inline">
+                            <textarea name="content" required lay-verify="required" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-inline">

@@ -88,4 +88,13 @@ layui.use(['table','jquery','laydate','form','element'],function(){
     laydate.render({
         elem: '#test2'
     });
+    $("#ss").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            ,type:2
+            ,area:['500px','750px']
+            ,btn:['确定']
+            ,content:'kkk'
+        });
+    });
 });
