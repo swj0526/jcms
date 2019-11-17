@@ -23,12 +23,7 @@
             </div>
         </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">内容</label>
-            <div class="layui-input-inline">
-                <input type="text" name="content" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">渠道</label>
             <div class="layui-input-inline">
