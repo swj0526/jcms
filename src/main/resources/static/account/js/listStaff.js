@@ -16,8 +16,8 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'phone', title: '电话号码'},
             {
                 field: 'role',
-                title: '权限',
-                template:'#roleDemo'
+                title: '角色',
+                templet: '#roleDemo'
             },
             {field: 'lockDemo1', title: '是否激活账号', templet: '#checkboxTpl1', unresize: true},
             {fixed: 'right', title: '操作', toolbar: '#barDemo1'}
@@ -39,6 +39,84 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             department: '教务部',
             postName: '教务老师',
             role: '  ',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
+            phone: '18653525596'
+        }, {
+            name: "王老师",
+            department: '教务部',
+            postName: '教务老师',
+            role: '',
             phone: '18653525596'
         }, {
             name: "王老师",
@@ -77,6 +155,15 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
                 }
             });
         }*/
+    });
+    var demo1 = xmSelect.render({
+        el: '.demo1',
+        language: 'zn',
+        data: [
+            {name: '校长', value: 1},
+            {name: '管理老师', value: 2},
+            {name: '教务', value: 3},
+        ]
     });
 
     //监听锁定操作
