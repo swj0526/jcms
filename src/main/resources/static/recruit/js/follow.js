@@ -12,6 +12,10 @@ layui.use(['form', 'table', 'laydate'], function () {
         elem: '#date' //指定元素
 
     });
+    laydate.render({
+        elem: '#dat' //指定元素
+
+    });
 
 
     var tableIns = table.render({
@@ -83,23 +87,11 @@ layui.use(['form', 'table', 'laydate'], function () {
         }],
         cols: [
             [
-
-
-                {
-                    field: 'time',
-                    title: '时间',
-                    align: 'center'
-                },
-
                 {
                     field: 'content',
-                    title: '内容',
+                    title: '来源渠道',
+                },
 
-                },
-                {
-                    field: 'classify',
-                    title: '渠道',
-                },
                 {
                     title: '操作',
                     minWidth: 50,

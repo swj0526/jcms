@@ -18,7 +18,7 @@
 
 
  <div class="layui-body">
-        <div style="padding: 15px;">
+        <div style="padding:15px">
             <div class="case-index-content">
                 <ul class="clearfix">
                     <li class="case-example-item">
