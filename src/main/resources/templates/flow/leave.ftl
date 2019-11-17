@@ -50,8 +50,9 @@
                     </div>
                 </div>
                 <button class="layui-btn" data-type="reload">查询</button>
-                <button id="add" class="layui-btn" data-type="reload">请假申请</button>
+
             </form>
+            <button id="add" class="layui-btn" data-type="reload">请假申请</button>
         </div>
     </fieldset>
 </div>

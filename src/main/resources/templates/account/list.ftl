@@ -6,11 +6,29 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
+    <script type="text/javascript" src="/account/js/xm-select.js"></script>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/listStudent.js">
     </script>
     <script type="text/javascript" src="/account/js/listStaff.js">
     </script>
+    <style>
+        /* 防止下拉框的下拉列表被隐藏---必须设置--- */
+        .layui-table-cell {
+            overflow: visible !important;
+        }
+
+        /* 使得下拉框与单元格刚好合适 */
+        td .layui-form-select {
+            margin-top: -10px;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .layui-table-body .layui-table-main {
+            height: 700px;
+        }
+    </style>
 </head>
 <body>
 <div class="layui-tab layui-tab-card" lay-filter="demo">
@@ -31,7 +49,7 @@
                                         <label class="layui-form-label">关键字</label>
                                         <div class="layui-input-inline">
                                             <input type="text" name="keys" autocomplete="off" class="layui-input"
-                                                   placeholder="张三/201932094/5000">
+                                                   placeholder="姓名/手机号码/学号">
                                         </div>
                                     </div>
                                     <div class="layui-inline">
@@ -59,10 +77,10 @@
                                                 <option value="">锁定</option>
                                             </select>
                                         </div>
-                                    <div class="layui-inline">
-                                        <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                                        </div>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </fieldset>
@@ -74,7 +92,8 @@
                                ? 'checked' : '' }}>
                     </script>
                     <script type="text/html" id="barDemo">
-                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset" data-method="confirmTrans">
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset"
+                                data-method="confirmTrans">
                             重置密码
                         </button>
                     </script>
@@ -101,6 +120,18 @@
                                         <label class="layui-form-label">角色</label>
                                         <div class="layui-input-inline">
                                             <select name="role1" lay-verify="">
+                                                <option value=""></option>
+                                                <option value="">校长</option>
+                                                <option value="">任课老师</option>
+                                                <option value="">教务</option>
+                                                <option value=""></option>
+                                                <option value="">校长</option>
+                                                <option value="">任课老师</option>
+                                                <option value="">教务</option>
+                                                <option value=""></option>
+                                                <option value="">校长</option>
+                                                <option value="">任课老师</option>
+                                                <option value="">教务</option>
                                                 <option value=""></option>
                                                 <option value="">校长</option>
                                                 <option value="">任课老师</option>
@@ -133,8 +164,13 @@
                         <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1" {{ d.id==
                                10006 ? 'checked' : '' }}>
                     </script>
+                    <script type="text/html" id="roleDemo">
+                        <div class="demo1" class="xm-select-demo" ></div>
+                    </script>
                     <script type="text/html" id="barDemo1">
-                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1" data-method="confirmTrans">
+
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1"
+                                data-method="confirmTrans">
                             重置密码
                         </button>
 

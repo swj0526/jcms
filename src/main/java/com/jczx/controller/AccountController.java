@@ -31,7 +31,7 @@ public class AccountController {
      * 修改密码
      */
     @RequestMapping("/toModPassword")
-    private String modify(){
+    private String toModPassword(){
         return "account/modPassword";
     }
 }
