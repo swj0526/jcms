@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
     <link rel="stylesheet" href="../../layui/css/public.css" media="all">
+
+
 </head>
 <body>
 
@@ -159,6 +161,13 @@
                         </div>
                     </div>
                 </form>
+
+
+                <div id="demo1" class="xm-select-demo"></div>
+                <button class="btn" id="demo1-getValue">获取选中值</button>
+                <pre id="demo1-value"></pre>
+
+
                 <div class="layui-btn-group" style="position: relative;left: 75%">
                     <button class="layui-btn data-add-btn">添加学生信息</button>
                     <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
@@ -179,5 +188,23 @@
 
 <script src="../../layui/layui.js" charset="utf-8"></script>
 <script src="../../recruit/js/recruit.js"></script>
+<script src="/recruit/js/xm.js" type="text/javascript"></script>
+<script>
+    var demo1 = xmSelect.render({
+        el: '#demo1',
+        language: 'zn',
+        data: [
+            {name: '张三', value: 1},
+            {name: '李四', value: 2},
+            {name: '王五', value: 3},
+        ]
+    })
+
+     document.getElementById('demo1-getValue').onclick = function(){
+        //获取当前多选选中的值
+        var selectArr = demo1.getValue();
+        document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
+    }
+</script>
 </body>
 </html>
