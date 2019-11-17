@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
+    <script type="text/javascript" src="/account/js/xm-select.js"></script>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/listStudent.js">
     </script>
@@ -31,7 +32,7 @@
                                         <label class="layui-form-label">关键字</label>
                                         <div class="layui-input-inline">
                                             <input type="text" name="keys" autocomplete="off" class="layui-input"
-                                                   placeholder="张三/201932094/5000">
+                                                   placeholder="姓名/手机号码/学号">
                                         </div>
                                     </div>
                                     <div class="layui-inline">
@@ -72,6 +73,9 @@
                         <input type="checkbox" name="lock" value="{{d.id}}" title="激活" lay-filter="lockDemo" {{ d.id==
                                10006
                                ? 'checked' : '' }}>
+                    </script>
+                    <script type="text/html" id="role">
+                      <#--  <div id="demo1" class="xm-select-demo" ></div>-->
                     </script>
                     <script type="text/html" id="barDemo">
                         <button type="button" class="layui-btn layui-btn-xs" lay-event="reset" data-method="confirmTrans">
@@ -134,6 +138,9 @@
                                10006 ? 'checked' : '' }}>
                     </script>
                     <script type="text/html" id="barDemo1">
+                       <#-- <button type="button" class="layui-btn layui-btn-warm layui-btn-xs" lay-event="reset2" data-method="notice">
+                          设置角色
+                        </button>-->
                         <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1" data-method="confirmTrans">
                             重置密码
                         </button>
