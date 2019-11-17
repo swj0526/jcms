@@ -74,9 +74,6 @@
                                10006
                                ? 'checked' : '' }}>
                     </script>
-                    <script type="text/html" id="role">
-                      <#--  <div id="demo1" class="xm-select-demo" ></div>-->
-                    </script>
                     <script type="text/html" id="barDemo">
                         <button type="button" class="layui-btn layui-btn-xs" lay-event="reset" data-method="confirmTrans">
                             重置密码
@@ -137,10 +134,18 @@
                         <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1" {{ d.id==
                                10006 ? 'checked' : '' }}>
                     </script>
+                    <script type="text/html" id="roleDemo">
+                        <select name="interest" lay-filter="role">
+                            <option value=""></option>
+                            <option value="0">写作</option>
+                            <option value="1" selected="">阅读</option>
+                            <option value="2">游戏</option>
+                            <option value="3">音乐</option>
+                            <option value="4">旅行</option>
+                        </select>
+                    </script>
                     <script type="text/html" id="barDemo1">
-                       <#-- <button type="button" class="layui-btn layui-btn-warm layui-btn-xs" lay-event="reset2" data-method="notice">
-                          设置角色
-                        </button>-->
+
                         <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1" data-method="confirmTrans">
                             重置密码
                         </button>
