@@ -9,58 +9,7 @@
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <script src="/layui/layui.js"></script>
-    <script>
-        layui.use(['element','jquery','table'], function(){
-            var table = layui.table;
-            var element = layui.element;
-            var $ = layui.jquery;
-            table.render({
-                elem: '#test',
-                data: [{
-                    "username": "定金",
-                    "sex": "微信",
-                    "city": "100",
-                    "sign": "2019-10-1",
-                    "experience": "否",
-                    "logins": 0,
-                    "classify": "2019-10-1",
-                    "score": 57
-                }]
-                ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-                ,cols: [[
-                    {field:'username', title: '缴费类型'}
-                    ,{field:'sex',  title: '缴费方式'}
-                    ,{field:'city',  title: '金额'}
-                    ,{field:'sign', title: '缴费日期', } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                    ,{field:'experience', title: '是否一次性缴费'}
-                    ,{field:'score', title: '优惠金额'}
-                    ,{field:'classify', title: '费用有效期'}
-
-                ]]
-            });
-            table.render({
-                elem: '#information',
-                data: [{
-                    "banji": "影视一班",
-                    "shiyou": "打架斗殴",
-                    "jiajian": "加分",
-                    "fenshu": "5",
-                    "time": "2019-10-1",
-                }]
-                ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-                ,cols: [[
-                    {field:'banji', title: '班级'}
-                    ,{field:'shiyou',  title: '事由'}
-                    ,{field:'jiajian',  title: '加减'}
-                    ,{field:'fenshu',  title: '分数'}
-                    ,{field:'time',  title: '时间'}
-                ]]
-            });
-            $('.layui-tab-close').click(function () {
-
-            });
-        });
-    </script>
+    <script src="/student/js/information.js"></script>
 </head>
 <body>
     <div class="layui-tab-content" style="background-color: #ffffff">
@@ -145,7 +94,5 @@
             </div>
         </div>
     </div>
-
-
 </body>
 </html>

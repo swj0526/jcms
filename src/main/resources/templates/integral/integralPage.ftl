@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,171 +8,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
     <link rel="stylesheet" href="layui/css/public.css" media="all">
-    <script src="../layui/layui.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="integral/js/integral.js"></script>
 </head>
 <body>
 <div class="layuimini-container">
-    <div class="layuimini-main">
 
-        <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索信息</legend>
-            <div style="margin: 10px 10px 10px 10px">
-                <form class="layui-form layui-form-pane" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">关键词</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="例：1981/张三">
-                            </div>
+    <div class="layuimini-main">
+        <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%" id="add">加分</button>
+        <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%" id="points">减分</button>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter" ></table>
+    </div>
+</div>
+<#--id=aa 弹窗************************************-->
+<div id="aa" style="display: none">
+    <fieldset class="layui-elem-field layuimini-search">
+        <legend>添加信息</legend>
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">选择事由</label>
+                        <div class="layui-inline" style="width: 190px">
+                            <select name="city" lay-verify="">
+                                <option value="">事由选择</option>
+                                <option value="010">打架斗殴</option>
+                                <option value="021">抽烟喝酒</option>
+                                <option value="0571">烫发染发</option>
+                            </select>
                         </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">范围</label>
-                                <div class="layui-input-inline" style="width: 100px;">
-                                    <input type="text" name="price_min" placeholder="分数" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-form-mid">-</div>
-                                <div class="layui-input-inline" style="width: 100px;">
-                                    <input type="text" name="price_max" placeholder="分数" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                        <div class="layui-inline">
-                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">学生学号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
                         </div>
-                        <div class="layui-btn-group">
-                            <button class="layui-btn data-add-btn">添加</button>
-                            <button class="layui-btn layui-btn-danger data-delete-btn">导出</button>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">学生姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">班级</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
-                </form>
-            </div>
-        </fieldset>
-        <form class="layui-form layui-form-pane" action="">
-        <div class="layui-inline">
-            <div class="layui-inline">
-                <select name="city" lay-verify="">
-
-                    <option value="">事由</option>
-                    <option value="010">好人好事</option>
-                    <option value="021">打架斗殴</option>
-                    <option value="021">调皮捣蛋</option>
-                    <option value="021">乐观向上</option>
-                    <option value="021">品学兼优</option>
-                </select>
-            </div>
+                </div>
+            </form>
         </div>
-        </form>
-        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
-        <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
-
-        </script>
-    </div>
+    </fieldset>
 </div>
-<script>
-    layui.use(['form', 'table'], function() {
-        var $ = layui.jquery,
-            form = layui.form,
-            table = layui.table;
+<#--points点击弹窗-->
+<div id="aaa" style="display: none">
+    <fieldset class="layui-elem-field layuimini-search">
+        <legend>添加信息</legend>
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">选择事由</label>
+                        <div class="layui-inline" style="width: 190px">
+                            <select name="city" lay-verify="">
+                                <option value="">品学兼优</option>
+                                <option value="010">乐于助人</option>
+                                <option value="021">勤奋好学</option>
+                                <option value="0571">成绩上升</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">学生学号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">学生姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">班级</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
 
-        table.render({
-            elem: '#currentTableId',
-            data: [{
-                "username": "张三",
-                "banji":"影视一班",
-                "sex": "打架斗殴",
-                "jiafenjianfen":"加分",
-                "xuefen":95,
-
-
-            }],
-            cols: [
-                [{
-                    field: 'username',
-                    title: '姓名',
-                    align: 'center'
-                },
-                    {
-                        field: 'banji',
-                        title: '班级',
-                        sort: true,
-                        align: 'center'
-                    },
-                    {
-                        field: 'xuefen',
-                        title: '分数',
-                        align: 'center'
-                    },
-
-                    {
-                        title: '操作',
-                        minWidth: 50,
-                        templet: '#currentTableBar',
-                        fixed: "right",
-                        align: "center",
-
-                    }
-                ]
-            ],
-            limits: [10, 15, 20, 25, 50, 100],
-            limit: 10,
-            page: true
-        });
-
-        // 监听搜索操作
-        form.on('submit(data-search-btn)', function(data) {
-            var result = JSON.stringify(data.field);
-            layer.alert(result, {
-                title: '最终的搜索信息'
-            });
-
-            //执行搜索重载
-            table.reload('currentTableId', {
-                page: {
-                    curr: 1
-                },
-                where: {
-                    searchParams: result
-                }
-            }, 'data');
-
-            return false;
-        });
-
-        // 监听添加操作
-        $(".data-add-btn").on("click", function() {
-            layer.msg('添加数据');
-        });
-
-        // 监听删除操作
-        $(".data-delete-btn").on("click", function() {
-            var checkStatus = table.checkStatus('currentTableId'),
-                data = checkStatus.data;
-            layer.alert(JSON.stringify(data));
-        });
-
-        //监听表格复选框选择
-        table.on('checkbox(currentTableFilter)', function(obj) {
-            console.log(obj)
-        });
-
-        table.on('tool(currentTableFilter)', function(obj) {
-            var data = obj.data;
-            if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
-            } else if (obj.event === 'delete') {
-                layer.confirm('真的删除行么', function(index) {
-                    obj.del();
-                    layer.close(index);
-                });
-            }
-        });
-
-    });
-</script>
-<script>
-
-</script>
-
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>
 </body>
 </html>
