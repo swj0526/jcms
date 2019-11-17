@@ -17,4 +17,16 @@ public class RecruitController {
     public String follow(){
         return "recruit/follow";
     }
+    @RequestMapping("/modifyfollow")
+    public String upFollow(){
+        return "recruit/modifyfollow";
+    }
+    @RequestMapping("/data")
+    private String recruitData(){
+        return"recruit/recruitdata";
+    }
+
+
+
+
 }

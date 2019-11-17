@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../layui/css/public.css" media="all">
 </head>
 <body>
+
 <#--新增信息弹出框-->
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
@@ -69,27 +70,34 @@
         <div class="layui-form-item">
             <label class="layui-form-label">来源渠道</label>
             <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <div class="layui-inline">
+                    <select name="city" lay-verify="">
+                        <option value="">来源渠道</option>
+                        <option value="010">学校网站</option>
+                        <option value="021">自己找上门</option>
+                        <option value="0571">qq</option>
+                        <option value="0571">微信</option>
+                        <option value="0571">介绍</option>
+                    </select>
+                </div>
             </div>
-            <label class="layui-form-label">渠道内容</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">意向</label>
             <div class="layui-inline">
+                <label class="layui-form-label">意向</label>
                 <div class="layui-inline" style="width: 190px">
+                    <div id="demo1" class="xm-select-demo" style=" width: 18.75rem";></div>
                     <select name="sex" lay-verify="">
                         <option value=""></option>
                         <option value="0">有</option>
                         <option value="1">无</option>
-
                     </select>
                 </div>
             </div>
+            <label class="layui-form-label">录入时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="age" id="dat" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">            </div>
 
         </div>
 
@@ -102,19 +110,7 @@
     </form>
 
 </div>
-<#--跟进弹出框-->
-<div style="display: none;"  id="updateOrDelete">
-    <fieldset class="layui-elem-field layuimini-search">
-        <div style="">
-            <ul>
-                <li>跟进时间:</li>
-                <li>来源渠道:</li>
-                <li>意向:</li>
-                <li>谈话内容:</li>
-            </ul>
-        </div>
-    </fieldset>
-</div>
+
 <div class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field layuimini-search">
@@ -163,12 +159,14 @@
                         </div>
                     </div>
                 </form>
+                <div class="layui-btn-group" style="position: relative;left: 75%">
+                    <button class="layui-btn data-add-btn">添加学生信息</button>
+                    <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
+                    <button class="layui-btn layui-btn-danger data-delete-btn">导入学生信息</button>
+                </div>
             </div>
         </fieldset>
-        <div class="layui-btn-group">
-            <button class="layui-btn data-add-btn">添加学生信息</button>
-            <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
-        </div>
+
         <!-- 表格 -->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
@@ -178,8 +176,8 @@
         </script>
     </div>
 </div>
-<script src="../../layui/layui.js" charset="utf-8"></script>
 
+<script src="../../layui/layui.js" charset="utf-8"></script>
 <script src="../../recruit/js/recruit.js"></script>
 </body>
 </html>

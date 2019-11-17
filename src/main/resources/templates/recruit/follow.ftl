@@ -59,24 +59,7 @@
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">时间</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
-                            </div>
-                        </div>
 
-
-                        <div class="layui-inline">
-                            <select name="city" lay-verify="">
-                                <option value="">来源渠道</option>
-                                <option value="010">学校网站</option>
-                                <option value="021">自己找上门</option>
-                                <option value="0571">qq</option>
-                                <option value="0571">微信</option>
-                                <option value="0571">介绍</option>
-                            </select>
-                        </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
                         </div>
@@ -84,7 +67,7 @@
                 </form>
             </div>
         </fieldset>
-        <div class="layui-btn-group">
+        <div class="layui-btn-group"style="position: relative;left: 90%">
             <button class="layui-btn data-add-btn">添加渠道信息</button>
 
         </div>
