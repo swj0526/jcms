@@ -28,6 +28,14 @@ public class AccountController {
         return "account/role";
     }
     /**
+     * 权限树状图
+     * @return
+     */
+    @RequestMapping("/toPrivilege")
+    public String toPrivilege(){
+        return "account/privilege";
+    }
+    /**
      * 修改密码
      */
     @RequestMapping("/toModPassword")

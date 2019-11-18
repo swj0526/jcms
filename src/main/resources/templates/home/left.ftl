@@ -5,7 +5,7 @@
                 <a href="javascript:;">账号管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;"  class="add" id="account_list">账号管理</a></dd>
-                    <dd><a href="javascript:;" class="add" id="account_role">角色权限管理</a></dd>
+                    <dd><a href="javascript:;" class="add" id="account_role">权限管理</a></dd>
                     <dd><a href="javascript:;" class="add" id="account_modPassword">修改密码</a></dd>
 
                 </dl>
@@ -57,7 +57,7 @@
                 <dl class="layui-nav-child">
                     <dd><a class="add" id="remind_pay">缴费提醒</a></dd>
                     <dd><a class="add" id="remind_article">发文提醒</a></dd>
-                    <dd><a class="add" >公告提醒</a></dd>
+                   <#-- <dd><a class="add" >公告提醒</a></dd>-->
 
                     <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->
                 </dl>

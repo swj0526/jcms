@@ -17,9 +17,6 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     });
 
-    $("#addtab01").click(function () {
-        addtab();
-    });
 
     var tableIns = table.render({
         elem: '#currentTableId'
@@ -189,6 +186,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     //修改弹窗
+
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
@@ -222,7 +220,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         });
     }
-    //跟踪详情
+    //测试
     function text() {
         layer.tab({
             type: 1,
@@ -239,6 +237,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             }]
         });
     }
+
     //查看跟踪信息
     function recruit() {
         layer.open({
@@ -255,7 +254,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 } */
         });
     }
-//监听删除
+
     table.on('tool(currentTableFilter)', function (obj) {
         var data = obj.data;
         if (obj.event === 'edit') {
@@ -271,16 +270,5 @@ layui.use(['form', 'table', 'laydate'], function () {
         }
     });
 
-    //添加标签
-    function addtab() {
-        layer.open({
-            type: 1,
-            title: "自定义标签",
-            skin: 'layui-layer-rim', //加上边框
-            area: ['900px','500px'], //设置宽高
-            content: $("#addlabe"),
-
-        });
-    }
 
 });
