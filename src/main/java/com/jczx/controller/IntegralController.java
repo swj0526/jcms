@@ -13,4 +13,8 @@ public class IntegralController {
     public String integral(){
     return "integral/integralPage";
     }
+    @RequestMapping("/list")
+    public String list(){
+        return "integral/list";
+    }
 }
