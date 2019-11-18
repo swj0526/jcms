@@ -178,7 +178,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             title: "添加跟进学生信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['730px', '500px'], //设置宽高
-            content: $("#recruit"),
+            content: $(""),
 
         });
 

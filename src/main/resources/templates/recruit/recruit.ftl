@@ -152,12 +152,12 @@
                             </select>
                         </div>
                         <div class="layui-inline">
-                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                            <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                         <div class="layui-btn-group" >
                             <button class="layui-btn data-add-btn"type="button">添加学生信息</button>
-                            <button class="layui-btn layui-btn-danger "type="button" id="download">导出学生信息</button>
-                            <button class="layui-btn layui-btn-danger "type="button" id="upload">导入学生信息</button>
+                            <button class="layui-btn layui-btn-warm "type="button" id="download">导出学生信息</button>
+                            <button class="layui-btn layui-btn-warm "type="button" id="upload">导入学生信息</button>
                         </div>
                     </div>
 
@@ -182,7 +182,7 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="follow">跟进详情</a>
-            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>

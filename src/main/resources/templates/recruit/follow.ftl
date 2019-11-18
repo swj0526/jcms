@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="layui-inline">
-                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
+                            <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                         <div class="layui-btn-group">
                             <button class="layui-btn data-add-btn"type="button">添加渠道信息</button>
@@ -70,7 +70,7 @@
         <table class="layui-hide" id="followTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
 
-            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>
