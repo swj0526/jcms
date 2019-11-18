@@ -16,37 +16,18 @@
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
+        <div class="layui-inline">
+            <label class="layui-form-label">时间</label>
             <div class="layui-input-inline">
-            <input type="text" name="name"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                <input type="text" name="time" autocomplete="off" class="layui-input" id="date">
             </div>
+        </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" value="男" title="男">
-                <input type="radio" name="sex" value="女" title="女" checked>
-            </div>
-        </div>
-        <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">跟进时间</label>
+            <label class="layui-form-label">渠道</label>
             <div class="layui-input-inline">
-                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">跟进内容</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">来源渠道</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -59,18 +40,7 @@
     </form>
 
 </div>
-<#--跟进弹出框-->
-<div style="display: none;"  id="updateOrDelete">
-    <fieldset class="layui-elem-field layuimini-search">
-        <div style="">
-            <ul>
-                <li>跟进时间:</li>
-                <li>意向:</li>
-                <li>谈话内容:</li>
-            </ul>
-        </div>
-    </fieldset>
-</div>
+
 <div class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field layuimini-search">
@@ -79,33 +49,12 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学生姓名</label>
+                            <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">跟进时间</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
-                            </div>
-                        </div>
 
-                        <div class="layui-inline">
-                            <label class="layui-form-label">意向</label>
-                            <input type="radio" name="intention" value="nan" title="有">
-                            <input type="radio" name="intention" value="nv" title="无" checked>
-                        </div>
-                        <div class="layui-inline">
-                            <select name="city" lay-verify="">
-                                <option value="">来源渠道</option>
-                                <option value="010">学校网站</option>
-                                <option value="021">自己找上门</option>
-                                <option value="0571">qq</option>
-                                <option value="0571">微信</option>
-                                <option value="0571">介绍</option>
-                            </select>
-                        </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
                         </div>
@@ -113,8 +62,8 @@
                 </form>
             </div>
         </fieldset>
-        <div class="layui-btn-group">
-            <button class="layui-btn data-add-btn">添加跟进消息</button>
+        <div class="layui-btn-group"style="position: relative;left: 90%">
+            <button class="layui-btn data-add-btn">添加渠道信息</button>
 
         </div>
         <!-- 表格 -->

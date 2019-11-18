@@ -70,10 +70,6 @@
 
 </div>
 <div class="layui-tab layui-tab-card" lay-filter="demo">
-    <ul class="layui-tab-title">
-        <li class="layui-this" lay-id="tab_student">角色列表</li>
-        <li lay-id="tab_staff">角色权限管理</li>
-    </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
             <div class="layuimini-container">
@@ -87,6 +83,9 @@
                         <button type="button" class="layui-btn layui-btn-xs" lay-event="edit" data-method="confirmTrans">
                             修改
                         </button>
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="fun" data-method="confirmTrans">
+                            设置权限
+                        </button>
                         <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete" data-method="confirmTrans">
                             删除
                         </button>
@@ -95,7 +94,7 @@
             </div>
 
         </div>
-        <div class="layui-tab-item">
+        <#--<div class="layui-tab-item">
            <div id="role1">
                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;" style="display: inline-block;">
                    <legend>老师角色管理</legend>
@@ -109,7 +108,7 @@
                    <button type="button" class="layui-btn layui-btn-danger" id="cancel">取消</button>
                </div>
            </div>
-        </div>
+        </div>-->
     </div>
 </div>
 </body>

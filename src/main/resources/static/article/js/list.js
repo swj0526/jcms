@@ -3,21 +3,21 @@ layui.use('table', function () {
 
     table.render({
         elem: '#test',
-        defaultToolbar: [, { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+        defaultToolbar: [ { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
             title: '提示',
             layEvent: 'LAYTABLE_TIPS',
             icon: 'layui-icon-tips'
         }],
         title: '用户数据表',
         cols: [[{type: 'checkbox',fixed: 'left'}
-            , {field: 'id', title: '序号', edit: 'text'}
-            , {field: 'title', title: '标题', edit: 'text'}
-            , {field: 'role', title: '角色', edit: 'text'}
-            , {field: 'publisher', title: '发布人', edit: 'text'}
-            , {field: 'articleype', title: '类型', edit: 'text'}
-            , {field: 'joinTime', title: '发布时间', edit: 'text'}
-            , {field: 'state', title: '状态', edit: 'text'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
+            , {field: 'id', title: '序号',align: 'center'}
+            , {field: 'title', title: '标题',align: 'center'}
+            , {field: 'role', title: '角色',align: 'center'}
+            , {field: 'publisher', title: '发布人',align: 'center'}
+            , {field: 'articleype', title: '类型',align: 'center'}
+            , {field: 'joinTime', title: '发布时间',align: 'center'}
+            , {field: 'see', title: '查看人数',align: 'center'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
             ]],
         data: [{
             "id": "10001",
@@ -25,100 +25,87 @@ layui.use('table', function () {
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "公告",
-            "state": "已读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
+
         }, {
             "id": "10002",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "公告",
-            "state": "未读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
+
         }, {
             "id": "10003",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "通知",
-            "state": "未读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
         }, {
             "id": "10004",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "公告",
-            "state": "未读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
         }, {
             "id": "10005",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "公告",
-            "state": "已读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
         }, {
             "id": "10006",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "通知",
-            "state": "未读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
         }, {
             "id": "10007",
             "title": "Hi",
             "role": "学生",
             "publisher": "贤心",
             "articleype": "公告",
-            "state": "已读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
         }, {
             "id": "10008",
             "title": "Hi",
             "role": "学生",
             "publisher": "贤心",
             "articleype": "通知",
-            "state": "已读",
-            "joinTime": "2016-10-14"
+            "joinTime": "2016-10-14",
+            "see": "10/50"
         }],
     });
-
     var form = layui.form;
     var layer = layui.layer;
-
     $ = layui.jquery;
-
-    $("#add").on('click', function () {
-        layer.open({
+    //监听行单击事件（单击事件为：rowDouble）
+    table.on('row(test)', function(obj){
+        var data = obj.data;
+        layer.alert(JSON.stringify(data), {
             type: 1,
-            title: "学生录入",
-            skin: "myclass", // 自定样式
-            area: ["400px", "600px"],
-            content: $("#aaa"),
-
-            success: function (layero, index) {
-            },
-            yes: function () {
+            title: '请假审批详情：',
+            content: $("#updateOrDelete"),
+            success: function (index) {
+                form.val("dataForm", data);
             }
         });
-
-        $('#student').click(function () {
-            var xName = $('#xname').val();
-            var age = $('#age').val();
-            var gradeId = $('#grade').val();
-            $.post('/studentAdd', {
-                name: xName,
-                age: age,
-                gradeid: gradeId
-            }, function (a, b) {
-                alert(b.id);
-            });
-        });
-        form.render(); // 动态渲染
+        //标注选中样式
+        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
     });
+
+
 });
 //日期方法
 layui.use('laydate', function () {

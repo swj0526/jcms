@@ -9,7 +9,7 @@
 		<script type="text/javascript" src="../article/js/dispatch.js"></script>
 	</head>
 	<body>
-		<form class="layui-form" action="">
+		<form class="layui-form layui-form-pane" action="">
 		  <div class="layui-form-item">
 		    <label class="layui-form-label">标题</label>
 		    <div class="layui-input-block">
@@ -50,5 +50,20 @@
 		    </div>
 		  </div>
 		</form>
+		<div class="layui-upload">
+			<button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+			<div class="layui-upload-list">
+				<table class="layui-table">
+					<thead>
+					<tr><th>文件名</th>
+						<th>大小</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr></thead>
+					<tbody id="demoList"></tbody>
+				</table>
+			</div>
+			<button class="layui-btn" id="testListAction" type="button">开始上传</button>
+		</div>
 	</body>
 </html>

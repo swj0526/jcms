@@ -1,0 +1,35 @@
+.labelS {
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#labelDiv {
+    width: 500px;
+    height: 100%;
+    position: relative;
+    margin: 40px auto;
+}
+
+#addBut {
+    font-size: 20px;
+    height:36px;
+    width: 100px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border: 1px cornflowerblue solid;
+    border-radius: 5px;
+}
+
+#newLabel {
+    width: 200px;
+    height: 34px;
+    border-radius: 5px;
+    border: cornflowerblue 2px solid;
+    margin: 0 15px;
+}

@@ -1,20 +1,20 @@
 layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.jquery,
         form = layui.form,
-        table = layui.table;
-    laydate = layui.laydate;
+        table = layui.table,
+        laydate = layui.laydate;
 
     laydate.render({
-        elem: '#a',
-        range: true
-    });
-    laydate.render({
-        elem: '#b' //指定元素
-        , range: true
+        elem: '#a' //指定元素
+        ,range: true
     });
     laydate.render({
         elem: '#date' //指定元素
-        , range: true
+
+    });
+    laydate.render({
+        elem: '#dat' //指定元素
+
     });
 
 
@@ -81,17 +81,27 @@ layui.use(['form', 'table', 'laydate'], function () {
             [{
                 field: 'name',
                 title: '姓名',
-                align: 'center',
-                width: 100
+
+                width: 80
             },
                 {
                     field: 'sex',
                     title: '性别',
                     sort: true,
                     align: 'center',
-                    width: 80
+                    width:80
 
                 },
+                {
+                    field: '',
+                    title: '意向',
+                    sort: true,
+                    align: 'center',
+                    width:80
+
+                },
+
+
                 {
                     field: 'age',
                     title: '出生年月',
@@ -122,14 +132,15 @@ layui.use(['form', 'table', 'laydate'], function () {
                 },
                 {
                     field: 'wealth',
-                    title: '家长联系方式',
+                    title: '家长联系方式'
 
                 },
 
 
+
                 {
                     title: '操作',
-                    minWidth: 50,
+                    Width: 80,
                     templet: '#currentTableBar',
                     fixed: "right",
                     align: "center",
@@ -179,9 +190,9 @@ layui.use(['form', 'table', 'laydate'], function () {
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
-            title: "添加跟进学生信息",
+            title: "修改招生学生信息",
             skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['800px','600px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //获取
@@ -199,7 +210,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "添加跟进学生信息",
             // skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['800px','600px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //清空
@@ -207,6 +218,23 @@ layui.use(['form', 'table', 'laydate'], function () {
                 url = "/";
 
             }
+        });
+    }
+    //测试
+    function text() {
+        layer.tab({
+            type: 1,
+            area: ['100%','100%'],
+            tab: [{
+                title: '杜甫跟进详情',
+                content: '<iframe src="/recruit/modifyfollow" frameborder="0" height="550px" width="100%"></iframe>',
+            }, {
+                title: '',
+                content: '内容2'
+            }, {
+                title: '',
+                content: '内容3'
+            }]
         });
     }
 
@@ -237,7 +265,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 layer.close(index);
             });
         } else if (obj.event === 'follow') {
-            recruit()
+            text();
 
         }
     });

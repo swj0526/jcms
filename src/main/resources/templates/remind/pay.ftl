@@ -36,6 +36,12 @@
                                     </optgroup>
                                 </select>
                             </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">时间范围</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
+                                </div>
+                            </div>
                         </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>

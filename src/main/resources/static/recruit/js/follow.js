@@ -1,20 +1,20 @@
 layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.jquery,
         form = layui.form,
-        table = layui.table;
+        table = layui.table,
     laydate = layui.laydate;
 
     laydate.render({
-        elem: '#a',
-        range: true
-    });
-    laydate.render({
-        elem: '#b' //指定元素
-        , range: true
+        elem: '#a' //指定元素
+        ,range: true
     });
     laydate.render({
         elem: '#date' //指定元素
-        , range: true
+
+    });
+    laydate.render({
+        elem: '#dat' //指定元素
+
     });
 
 
@@ -23,16 +23,16 @@ layui.use(['form', 'table', 'laydate'], function () {
         , data: [{
             "name": "杜甫"
             , "sex": "女"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
         }, {
 
             "name": "李白"
             , "sex": "女"
             , "email": "xianxin@layui.com"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
 
             , "LAY_CHECKED": true
@@ -42,89 +42,54 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "email": "xianxin@layui.com"
             , "sex": "男"
             ,"intention":"有"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
         }, {
 
             "name": "贤心"
             , "email": "xianxin@layui.com"
             , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
         }, {
 
             "name": "贤心"
             , "email": "xianxin@layui.com"
             , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
         }, {
 
             "name": "贤心"
             , "email": "xianxin@layui.com"
             , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
         }, {
 
             "name": "贤心"
             , "email": "xianxin@layui.com"
             , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
         }, {
 
             "name": "贤心"
             , "email": "xianxin@layui.com"
             , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
+            , "time": "1994/11/20"
+            , "content": "威海"
             ,"intention":"有"
         }],
         cols: [
-            [{
-                field: 'name',
-                title: '姓名',
-                align: 'center',
-                width: 100
-            },
+            [
                 {
-                    field: 'sex',
-                    title: '性别',
-                    sort: true,
-                    align: 'center',
-                    width: 80
-
-                },
-                {
-                    field: 'intention',
-                    title: '意向',
-                    align: 'center',
-                    width: 80
-
-                },
-
-                {
-                    field: 'age',
-                    title: '跟进时间',
-                    align: 'center'
-                },
-
-
-
-                {
-                    field: 'score',
-                    title: '跟进内容',
-
-                },
-                {
-                    field: 'classify',
+                    field: 'content',
                     title: '来源渠道',
-
                 },
 
                 {
@@ -133,7 +98,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                     templet: '#currentTableBar',
                     fixed: "right",
                     align: "center",
-
                 }
             ]
         ],
@@ -187,6 +151,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 //获取
                 form.val("dataForm", data);
                 url = "";
+                //刷新
                 tableIns.reload();
 
             }
@@ -218,12 +183,12 @@ layui.use(['form', 'table', 'laydate'], function () {
             // skin: 'layui-layer-rim', //加上边框
             area: ['800px'], //设置宽高
             content: $("#updateOrDelete"),
-            /* 	success: function(index) {
+             	success: function(index) {
                     //清空
                     $("#dataFor")[0].reset();
                     url = "";
 
-                } */
+                }
         });
     }
 

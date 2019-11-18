@@ -13,7 +13,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">关键字</label>
+                            <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="keys" autocomplete="off" class="layui-input" placeholder="张三/201932094/5000">
                             </div>
