@@ -9,6 +9,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , title: '用户数据表'
             , cols: [[
                 {field: 'name', title: '学生姓名'}
+                ,{field: 'name', title: '学生姓名'}
                 , {field: 'work', title: '作业'}
                 , {fixed: 'right', title: '下载', toolbar: '#barDemo', width: 80}
             ]]
