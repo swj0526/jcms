@@ -10,13 +10,15 @@
     <div class="layui-form-item">
         <label class="layui-form-label">旧密码</label>
         <div class="layui-input-inline">
-            <input type="text" name="title" required  lay-verify="required" placeholder="请输入原密码" autocomplete="off" class="layui-input">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入原密码" autocomplete="off"
+                   class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">新密码</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入新密码"
+                   autocomplete="off" class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux">密码由英文数字组成,长度不能低于6位数</div>
     </div>
@@ -24,7 +26,8 @@
     <div class="layui-form-item">
         <label class="layui-form-label">确认新密码</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入新密码"
+                   autocomplete="off" class="layui-input">
         </div>
     </div>
 
@@ -39,14 +42,17 @@
 
 <script>
     //Demo
-    layui.use('form', function(){
+    layui.use('form', function () {
         var form = layui.form;
 
         //监听提交
-        form.on('submit(formDemo)', function(data){
+        form.on('submit(formDemo)', function (data) {
             layer.msg(JSON.stringify(data.field));
             return false;
         });
+
+
+
     });
 </script>
 </body>

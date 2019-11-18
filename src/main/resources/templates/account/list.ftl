@@ -13,24 +13,8 @@
     <script type="text/javascript" src="/account/js/listStaff.js">
     </script>
     <style>
-        /* 防止下拉框的下拉列表被隐藏---必须设置--- */
-        .layui-table-cell {
-            overflow: visible !important;
-        }
-
-        /* 使得下拉框与单元格刚好合适 */
-        td .layui-form-select {
-            margin-top: -10px;
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-
-        .layui-table-body .layui-table-main {
-            height: 700px;
-        }
-        .layui-input-block{
-            margin: 2%;
-            padding: 2%;
+        .layui-layer-btn{
+            text-align: center;
         }
     </style>
 </head>
@@ -93,12 +77,10 @@
                     <table class="layui-hide" id="test" lay-filter="test"></table>
                     <script type="text/html" id="checkboxTpl">
                         <!-- 这里的 checked 的状态只是演示 -->
-                        <input type="checkbox" name="lock" value="{{d.id}}" title="激活" lay-filter="lockDemo" {{ d.id==
-                               10006
-                               ? 'checked' : '' }}>
+                        <input type="checkbox" name="lock" value="{{d.id}}" title="激活" lay-filter="lockDemo">
                     </script>
                     <script type="text/html" id="barDemo">
-                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset"
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="reset"
                                 data-method="confirmTrans">
                             重置密码
                         </button>
@@ -107,21 +89,12 @@
             </div>
 
         </div>
-        <div id="roleDemo" style="display: none;">
-            <form class="layui-form" action="">
-                <#--  <label class="layui-form-label">复选框</label>-->
-                <div class="layui-input-block">
+        <div id="roleDemo" style="display: none; padding: 20px;">
+            <form class="layui-form" action="" style="border: 1px solid #d5d5d5;height: 200px;">
+                <div class="layui-input-block" style="margin: 10px;">
                     <input type="checkbox" name="like[write]" title="教师">
                     <input type="checkbox" name="like[read]" title="管理员" checked="">
                     <input type="checkbox" name="like[game]" title="校长">
-                </div>
-                <div style="text-align: center;margin-top: 20px;">
-                    <button type="button" class="layui-btn layui-btn-normal  " data-method="confirmTrans">
-                        确定
-                    </button>
-                    <button type="button" class="layui-btn layui-btn-primary  " data-method="confirmTrans">
-                        取消
-                    </button>
                 </div>
             </form>
         </div>
@@ -185,15 +158,14 @@
                     <table class="layui-hide" id="test1" lay-filter="test1"></table>
                     <script type="text/html" id="checkboxTpl1">
                         <!-- 这里的 checked 的状态只是演示 -->
-                        <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1" {{ d.id==
-                               10006 ? 'checked' : '' }}>
+                        <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1" >
                     </script>
                     <#--<script type="text/html" id="roleDemo">
                         <div class="demo1" class="xm-select-demo" ></div>
                     </script>-->
                     <script type="text/html" id="barDemo1">
 
-                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1"
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="reset1"
                                 data-method="confirmTrans">
                             重置密码
                         </button>

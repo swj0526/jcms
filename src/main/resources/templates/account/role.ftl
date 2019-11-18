@@ -80,10 +80,10 @@
                     <table class="layui-hide" id="test" lay-filter="test"></table>
 
                     <script type="text/html" id="barDemo">
-                        <button type="button" class="layui-btn layui-btn-xs" lay-event="edit" data-method="confirmTrans">
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit" data-method="confirmTrans">
                             修改
                         </button>
-                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="fun" data-method="confirmTrans">
+                        <button type="button" class="layui-btn  layui-btn-xs" lay-event="fun" data-method="confirmTrans">
                             设置权限
                         </button>
                         <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete" data-method="confirmTrans">

@@ -22,17 +22,17 @@ layui.use(['element', 'jquery','layer'], function () {
             //根据id判断嵌入什么页面
             if (id == "remind_pay") {
                 element.tabAdd('demo', {
-                    title: $(this).text(), //提醒-缴费提醒
+                    title: "缴费提醒", //提醒-缴费提醒
                     content: '<iframe src="/remind/toPay" frameborder="0"   height="800px" width="100%"></iframe>',
-                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                    id: "remind_pay"//实际使用一般是规定好的id，这里以时间戳模拟下
                 });
                 //$(this).attr('data-type', 'tabChange');
                 element.tabChange('demo', id);
             } else if (id == "remind_article") {
                 element.tabAdd('demo', {
-                    title: $(this).text(), //提醒-公告提醒
+                    title:"公告提醒", //提醒-公告提醒
                     content: '<iframe src="/remind/toArticle" frameborder="0"  height="800px" width="100%"></iframe>',
-                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                    id: "remind_article" //实际使用一般是规定好的id，这里以时间戳模拟下
                 });
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
