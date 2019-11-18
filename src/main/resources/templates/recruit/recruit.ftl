@@ -6,8 +6,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../layui/css/public.css" media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
@@ -104,7 +104,6 @@
                 <input type="text" name="age" id="dat" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">            </div>
 
         </div>
-
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
                 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
@@ -112,9 +111,7 @@
             </div>
         </div>
     </form>
-
 </div>
-
 <div class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field layuimini-search">
@@ -134,7 +131,6 @@
                                 <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
                             </div>
                         </div>
-
                         <div class="layui-inline" style="width: 210px">
                             <label class="layui-form-label" style="width: 100px">性别</label>
 
@@ -142,12 +138,9 @@
                                     <select name="sex" lay-verify="">
                                         <option value="">男</option>
                                         <option value="">女</option>
-
                                     </select>
                                 </div>
-
                         </div>
-
                         <div class="layui-inline">
                             <select name="city" lay-verify="">
                                 <option value="">来源渠道</option>
@@ -163,8 +156,8 @@
                         </div>
                         <div class="layui-btn-group" >
                             <button class="layui-btn data-add-btn"type="button">添加学生信息</button>
-                            <button class="layui-btn layui-btn-danger data-delete-btn"type="button">导出学生信息</button>
-                            <button class="layui-btn layui-btn-danger data-delete-btn"type="button">导入学生信息</button>
+                            <button class="layui-btn layui-btn-danger "type="button" id="download">导出学生信息</button>
+                            <button class="layui-btn layui-btn-danger "type="button" id="upload">导入学生信息</button>
                         </div>
                     </div>
 
@@ -194,6 +187,13 @@
         </script>
     </div>
 </div>
+
+<div id="download1"style="height: 250px;display: none">
+    <p><span style="font-size: 20px;color: red">注意导入时请按照指定的格式模板上传文件,点击下载模板按钮</span></p>
+    <button class="layui-btn layui-btn-danger "type="button" >下载模板</button>
+    <button class="layui-btn  "type="button" >上传文件</button>
+</div>
+
 
 <script src="../../layui/layui.js" charset="utf-8"></script>
 <script src="../../recruit/js/recruit.js"></script>

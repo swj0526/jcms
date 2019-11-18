@@ -6,7 +6,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     laydate.render({
         elem: '#a' //指定元素
-        ,range: true
+        , range: true
     });
     laydate.render({
         elem: '#date' //指定元素
@@ -81,7 +81,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             [{
                 field: 'name',
                 title: '姓名',
-
+                templet: '<div><a href="/detail/{{d.name}}" class="layui-table-link">{{d.name}}</a></div>',
                 width: 80
             },
                 {
@@ -89,7 +89,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                     title: '性别',
                     sort: true,
                     align: 'center',
-                    width:80
+                    width: 80
 
                 },
                 {
@@ -97,7 +97,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                     title: '意向',
                     sort: true,
                     align: 'center',
-                    width:80
+                    width: 80
 
                 },
 
@@ -106,6 +106,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                     field: 'age',
                     title: '出生年月',
                     align: 'center'
+
                 },
                 {
                     field: 'city',
@@ -128,25 +129,22 @@ layui.use(['form', 'table', 'laydate'], function () {
                 {
                     field: 'wealth',
                     title: '微信',
-                    Width: 50,
+
 
                 },
                 {
                     field: 'wealth',
                     title: '家长联系方式'
-
                 },
-
-
-
                 {
                     title: '操作',
-                    Width: 200,
+                    Width: 300,
                     templet: '#currentTableBar',
                     fixed: "right",
                     align: "center",
-
                 }
+
+
             ]
         ],
         limits: [10, 15, 20, 25, 50, 100],
@@ -173,18 +171,41 @@ layui.use(['form', 'table', 'laydate'], function () {
 
         return false;
     });
+    //监听到出事件
+    $("#download").click(function () {
+        layer.open({
+            type: 1,
+            title: "添加跟进学生信息",
+            // skin: 'layui-layer-rim', //加上边框
+            area: ['730px', '500px'], //设置宽高
+            content: $("#recruit"),
 
+        });
+
+    });
+    //监听导入事件
+    $("#upload").click(function () {
+        layer.open({
+            type: 1,
+            title: "添加跟进学生信息",
+            // skin: 'layui-layer-rim', //加上边框
+            area: ['730px', '500px'], //设置宽高
+            content: $("#download1"),
+
+        });
+    });
     // 监听添加操作
     $(".data-add-btn").on("click", function () {
         addStudents();
     });
 
-    // 监听删除操作
-    $(".data-delete-btn").on("click", function () {
-        var checkStatus = table.checkStatus('currentTableId'),
-            data = checkStatus.data;
-        layer.alert(JSON.stringify(data));
-    });
+    /* // 监听删除操作
+     $(".data-delete-btn").on("click", function () {
+         var checkStatus = table.checkStatus('currentTableId'),
+             data = checkStatus.data;
+         alert("hello");
+         layer.alert(JSON.stringify(data));
+     });*/
 
     //修改弹窗
 
@@ -193,7 +214,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "修改招生学生信息",
             skin: 'layui-layer-rim', //加上边框
-            area: ['800px','600px'], //设置宽高
+            area: ['800px', '600px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //获取
@@ -211,7 +232,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "添加跟进学生信息",
             // skin: 'layui-layer-rim', //加上边框
-            area: ['800px','600px'], //设置宽高
+            area: ['730px', '500px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //清空
@@ -221,12 +242,13 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         });
     }
-    //测试
+
+    //tab弹窗修改详情
     function text() {
         layer.tab({
             type: 1,
 
-            area: ['100%','100%'],
+            area: ['100%', '100%'],
             tab: [{
                 skin: 'layui-layer-rim',
                 title: '杜甫跟进详情',
@@ -240,6 +262,23 @@ layui.use(['form', 'table', 'laydate'], function () {
             }]
         });
     }
+
+    //添加标签弹窗
+    $("#addtab01").click(function () {
+        layer.open({
+            type: 1,
+            title: "跟进情况",
+            skin: 'layui-layer-rim', //加上边框
+            area: ['720px', '350px'], //设置宽高
+            content: $("#addlabe"),
+            /* 	success: function(index) {
+                    //清空
+                    $("#dataFor")[0].reset();
+                    url = "";
+
+                } */
+        });
+    });
 
     //查看跟踪信息
     function recruit() {

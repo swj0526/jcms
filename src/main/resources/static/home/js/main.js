@@ -181,6 +181,15 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
+            }else if (id == "recruit_data") {
+                element.tabAdd('demo', {
+                    title: $(this).text(), //通知管理-公告管理
+                    content: '<iframe src="/recruit/data" frameborder="0"  height="800px"  width="100%"></iframe>',
+                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+                });
+                //$(this).attr('data-type', 'tabChange');
+                //切换到指定Tab项
+                element.tabChange('demo', id);
             }
 
         }
