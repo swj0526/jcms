@@ -16,7 +16,7 @@
         <div style="margin: 10px 10px 10px 10px">
     <form class="layui-form layui-form-pane" action="">
         <div class="layui-inline">
-            <label class="layui-form-label">申请人</label>
+            <label class="layui-form-label">关键词</label>
             <div class="layui-input-inline">
                 <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
             </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <button class="layui-btn" data-type="reload">查询</button>
-        <button id="add" class="layui-btn layui-btn-sm">经费申请</button>
+        <button id="add" class="layui-btn" data-type="reload" type="button">经费申请</button>
 
     </form>
         </div>
@@ -104,7 +104,7 @@
 <#--添加经费审批-->
 <div style="display: none" id="aaa">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>添加信息</legend>
+        <legend>查询经费申请</legend>
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form  layui-form-pane" action="">
 

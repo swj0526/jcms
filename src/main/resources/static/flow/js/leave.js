@@ -1,6 +1,5 @@
 layui.use('table', function () {
     var table = layui.table;
-
     table.render({
         elem: '#test'
         , title: '用户数据表'
@@ -8,7 +7,6 @@ layui.use('table', function () {
             {field: 'id', title: '序号', fixed: 'left',align: 'center', sort: true}
             , {field: 'name', title: '姓名',align: 'center'}
             , {field: 'grade', title: '年级',align: 'center'}
-            , {field: 'days', title: '请假时长',align: 'center'}
             , {field: 'apply', title: '申请日期',align: 'center'}
             , {field: 'leaveTime', title: '请假日期',align: 'center'}
             , {field: 'cause', title: '请假事由',align: 'center'}
