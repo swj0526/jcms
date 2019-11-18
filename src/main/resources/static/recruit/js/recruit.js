@@ -128,6 +128,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 {
                     field: 'wealth',
                     title: '微信',
+                    Width: 50,
 
                 },
                 {
@@ -140,7 +141,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
                 {
                     title: '操作',
-                    Width: 80,
+                    Width: 200,
                     templet: '#currentTableBar',
                     fixed: "right",
                     align: "center",
