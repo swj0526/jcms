@@ -131,23 +131,31 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     table.on('tool(test1)', function (obj) {
         var data = obj.data;
         if (obj.event === 'reset1') {
-            layer.msg("该账号的密码重置为abcd?", {
-                time: false, //20s后自动关闭
-                btn: ['确定重置密码', '取消']
+            layer.open( {
+                type:1,
+                title:"重置密码",
+                content:"<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为abcd?</div>",
+                area: ['300px','150px'], //设置宽高
+                btn: ['确定重置密码', '取消'],
+                btnAlign:"c"
             });
         }else if(obj.event === 'reset2'){
-            mainIndex = layer.open({
+           layer.open({
              type: 1,
              title: "设置角色",
-             area: ['400px','300px'], //设置宽高
+             area: ['720px','350px'], //设置宽高
              content: $("#roleDemo"),
+                btn: ['确定', '取消'],
              success: function (index) {
-                 //获取
-                 form.val("dataForm", data);
-                 url = "";
-                 tableIns.reload();
 
-             }
+             },
+                yes:function (index) {
+
+                    layer.close(index);
+                },
+                btn2:function () {
+                    alert('取消');
+                }
          });
         }
     });
