@@ -36,17 +36,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         , title: '用户数据表'
         , cols: [[
             {field: 'workName', title: '作业名称'}
-            , {field: 'name', title: '学生姓名'}
             , {field: 'issuer', title: '发布人'}
             , {field: 'date', title: '发布日期', sort: true}
             , {field: 'commitDate', title: '提交时间', sort: true}
-            , {field: 'work', title: '作业'}
+            , {field: 'work', title: '作业内容'}
             , {field: 'score', title: '评分'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
         , data: [{
             workName: "英语作业"
-            , name: "张三"
             , issuer: "王丽"
             , date: "2019-11-14"
             , commitDate: "尚未提交"
@@ -54,7 +52,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             , score: "20"
         }, {
             workName: "英语作业"
-            , name: "张三"
             , issuer: "王丽"
             , date: "2019-11-15"
             , commitDate: "2019-11-15"
