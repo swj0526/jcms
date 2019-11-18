@@ -8,7 +8,7 @@ layui.use(['jquery','layer','table'],function () {
             "id": "1902001",
             "username": "张三",
             "theClass": "影视一班",
-            "Total score": 95,
+            "totalScore": 95,
         }],
         cols: [
             [{
@@ -26,7 +26,7 @@ layui.use(['jquery','layer','table'],function () {
                     align: 'center'
                 },
                 {
-                    field: 'Total score',
+                    field: 'totalScore',
                     title: '剩余积分',
                     align: 'center'
                 },
