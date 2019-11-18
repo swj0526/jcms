@@ -21,10 +21,10 @@
     ,cols: [[ //标题栏
       {field: 'id', title: '跟进时间', width: 100, sort: true}
       ,{field: 'username', title: '跟进状态', width: 120}
-      ,{field: 'email', title: '跟进渠道', minWidth: 80}
+      ,{field: 'email', title: '跟进渠道', width: 80}
       ,{field: 'sign', title: '备注', minWidth: 100}
-      
-     
+
+
 
     ]]
     ,data: [{

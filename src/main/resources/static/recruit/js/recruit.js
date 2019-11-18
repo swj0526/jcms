@@ -224,8 +224,10 @@ layui.use(['form', 'table', 'laydate'], function () {
     function text() {
         layer.tab({
             type: 1,
+
             area: ['100%','100%'],
             tab: [{
+                skin: 'layui-layer-rim',
                 title: '杜甫跟进详情',
                 content: '<iframe src="/recruit/modifyfollow" frameborder="0" height="550px" width="100%"></iframe>',
             }, {

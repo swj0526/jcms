@@ -61,8 +61,8 @@ $(document).ready(function(){
 			</thead>
 			<tbody>
 				<tr>
-					<th>1200</th>
-					<td>540</td>
+					<th>1000</th>
+					<td>500</td>
 					<td>300</td>
 					<td>150</td>
 					<td>180</td>

@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
     <link rel="stylesheet" href="../../layui/css/public.css" media="all">
-
+    <link rel="stylesheet" href="/recruit/css/label.css">
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/recruit/js/label.js"></script>
 
 </head>
 <body>
@@ -89,12 +91,12 @@
             <div class="layui-inline">
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline" style="width: 190px">
-                    <div id="demo1" class="xm-select-demo" style=" width: 18.75rem";></div>
-                    <select name="sex" lay-verify="">
-                        <option value=""></option>
-                        <option value="0">有</option>
-                        <option value="1">无</option>
-                    </select>
+                    <div id="demo1" class="xm-select-demo" style=" width:190px";></div>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-inline" style="width:50px">
+                   <button class="layui-btn layui-btn-normal" id="addtab01">添加标签</button>
                 </div>
             </div>
             <label class="layui-form-label">录入时间</label>
@@ -120,9 +122,9 @@
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">关键词</label>
-                            <div class="layui-input-inline">
+                        <div class="layui-inline" style="width: 210px">
+                            <label class="layui-form-label" style="width:100px">关键词</label>
+                            <div class="layui-input-inline" style="width:100px ">
                                 <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -133,17 +135,17 @@
                             </div>
                         </div>
 
-                        <div class="layui-inline">
-                            <label class="layui-form-label">性别</label>
-                            <div class="layui-input-inline">
-                                <div class="layui-inline">
+                        <div class="layui-inline" style="width: 210px">
+                            <label class="layui-form-label" style="width: 100px">性别</label>
+
+                                <div class="layui-inline" style="width: 100px">
                                     <select name="sex" lay-verify="">
                                         <option value="">男</option>
                                         <option value="">女</option>
 
                                     </select>
                                 </div>
-                            </div>
+
                         </div>
 
                         <div class="layui-inline">
@@ -159,22 +161,29 @@
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
+                        <div class="layui-btn-group" >
+                            <button class="layui-btn data-add-btn"type="button">添加学生信息</button>
+                            <button class="layui-btn layui-btn-danger data-delete-btn"type="button">导出学生信息</button>
+                            <button class="layui-btn layui-btn-danger data-delete-btn"type="button">导入学生信息</button>
+                        </div>
                     </div>
+
                 </form>
 
-
-                <div id="demo1" class="xm-select-demo"></div>
-                <button class="btn" id="demo1-getValue">获取选中值</button>
-                <pre id="demo1-value"></pre>
-
-
-                <div class="layui-btn-group" style="position: relative;left: 75%">
-                    <button class="layui-btn data-add-btn">添加学生信息</button>
-                    <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
-                    <button class="layui-btn layui-btn-danger data-delete-btn">导入学生信息</button>
-                </div>
             </div>
         </fieldset>
+
+        <#--自定义标签-->
+        <div id="addlabe"style="display: none">
+            <div id="labelDiv" >
+                <div style="margin-bottom: 10px;"><span style="font-size: 20px">输入标签 : </span><input type="text" id="newLabel">
+                    <button id="addBut" onclick="submitDiyLabel()">添加</button>
+                </div>
+                <div id="SelectLabelDiv">
+                </div>
+            </div>
+        </div >
+
 
         <!-- 表格 -->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
@@ -194,17 +203,18 @@
         el: '#demo1',
         language: 'zn',
         data: [
-            {name: '张三', value: 1},
-            {name: '李四', value: 2},
-            {name: '王五', value: 3},
+            {name: '有意向', value: 1},
+            {name: '还在考虑', value: 2},
+            {name: '完全不考虑', value: 3},
+            {name: '不太明确', value: 4},
+            {name: '完全没有', value: 5},
         ]
     })
-
-     document.getElementById('demo1-getValue').onclick = function(){
+    /* document.getElementById('demo1-getValue').onclick = function(){
         //获取当前多选选中的值
         var selectArr = demo1.getValue();
         document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
-    }
+    }*/
 </script>
 </body>
 </html>

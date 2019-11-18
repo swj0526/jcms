@@ -58,14 +58,14 @@
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>
                         </div>
+                        <div class="layui-btn-group">
+                            <button class="layui-btn data-add-btn"type="button">添加渠道信息</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </fieldset>
-        <div class="layui-btn-group"style="position: relative;left: 90%">
-            <button class="layui-btn data-add-btn">添加渠道信息</button>
 
-        </div>
         <!-- 表格 -->
         <table class="layui-hide" id="followTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
