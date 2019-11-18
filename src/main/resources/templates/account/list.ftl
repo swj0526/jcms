@@ -28,9 +28,15 @@
         .layui-table-body .layui-table-main {
             height: 700px;
         }
+        .layui-input-block{
+            margin: 2%;
+            padding: 2%;
+        }
     </style>
 </head>
 <body>
+
+
 <div class="layui-tab layui-tab-card" lay-filter="demo">
     <ul class="layui-tab-title">
         <li class="layui-this" lay-id="tab_student">学生账号管理</li>
@@ -101,6 +107,24 @@
             </div>
 
         </div>
+        <div id="roleDemo" style="display: none;">
+            <form class="layui-form" action="">
+                <#--  <label class="layui-form-label">复选框</label>-->
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[write]" title="教师">
+                    <input type="checkbox" name="like[read]" title="管理员" checked="">
+                    <input type="checkbox" name="like[game]" title="校长">
+                </div>
+                <div style="text-align: center;margin-top: 20px;">
+                    <button type="button" class="layui-btn layui-btn-normal  " data-method="confirmTrans">
+                        确定
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-primary  " data-method="confirmTrans">
+                        取消
+                    </button>
+                </div>
+            </form>
+        </div>
         <div class="layui-tab-item">
             <div class="layuimini-container">
                 <div class="layuimini-main">
@@ -164,16 +188,19 @@
                         <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1" {{ d.id==
                                10006 ? 'checked' : '' }}>
                     </script>
-                    <script type="text/html" id="roleDemo">
+                    <#--<script type="text/html" id="roleDemo">
                         <div class="demo1" class="xm-select-demo" ></div>
-                    </script>
+                    </script>-->
                     <script type="text/html" id="barDemo1">
 
                         <button type="button" class="layui-btn layui-btn-xs" lay-event="reset1"
                                 data-method="confirmTrans">
                             重置密码
                         </button>
-
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="reset2"
+                                data-method="confirmTrans">
+                            设置角色
+                        </button>
                     </script>
                 </div>
             </div>
