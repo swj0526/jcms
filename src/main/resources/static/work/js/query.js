@@ -12,26 +12,25 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
         , defaultToolbar: []
         , title: '用户数据表'
         ,cols: [[
-            {field:'workName', title:'作业名称'  }
-            ,{field:'name', title:'学生姓名'  }
+            {field:'id', title:'作业序号'  }
+            ,{field:'Name', title:'作业名称'  }
             ,{field:'issuer', title:'发布人'  }
             ,{field:'grade', title:'年级'  }
-            ,{field:'date', title:'发布日期'}
-            ,{field:'commitDate', title:'提交时间'}
-            ,{field:'work', title:'作业'}
-            ,{field:'work', title:'提交人数'}
-            ,{field:'score', title:'评分'}
+            ,{field:'releaseTime', title:'发布日期'}
+            ,{field:'deadline', title:'截止日期时间'}
+            ,{field:'content', title:'内容'}
+            ,{field:'submitTheNumber', title:'提交人数'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
         ]]
         , data: [{
-            workName: "英语作业"
-            , name: "张三"
+            Name: "英语作业"
+            ,id: "1"
             ,issuer:"王丽"
             , grade: "三年级"
-            , date: "2019-11-14"
-            , commitDate: "2019-11-14"
-            , work: "11111111"
-            , score: "20"
+            , releaseTime: "2019-11-14"
+            , deadline: "2019-11-14"
+            , content: "11111111"
+            , submitTheNumber: "20"
         }]
         , page: true
     });

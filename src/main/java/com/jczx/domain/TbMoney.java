@@ -1,20 +1,26 @@
 package com.jczx.domain;
 
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
 /**
- * @author 37346
+ * @author 丛枭钰
  * @create 2019-11-19 13:14
  */
-public class TbMoney {
-    Integer id;
-    Integer studentId;//学生id
-    String theClassId;//班级id
-    Integer type;//缴费类型
-    Integer method;//缴费方式
-    Integer money;//金额
-    String paymentDate;//缴费日期
-    Boolean instalment;//是否分期
-    Integer discount;//优惠金额
-    String Validity;//费用有效期
+@Component
+public class TbMoney extends Domain {
+    private Integer id;
+    private Integer studentId;//学生id
+    private String theClassId;//班级id
+    private Integer paymentType;//缴费类型
+    private Integer method;//缴费方式
+    private Integer money;//金额
+    private String paymentDate;//缴费日期
+    private Boolean instalment;//是否分期
+    private Integer discount;//优惠金额
+    private String Validity;//费用有效期
+    private Integer operatorId;//操作人id
+    private String createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -24,12 +30,28 @@ public class TbMoney {
         this.id = id;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getTheClassId() {
+        return theClassId;
+    }
+
+    public void setTheClassId(String theClassId) {
+        this.theClassId = theClassId;
+    }
+
+    public Integer getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(Integer paymentType) {
+        this.paymentType = paymentType;
     }
 
     public Integer getMethod() {
@@ -78,5 +100,21 @@ public class TbMoney {
 
     public void setValidity(String validity) {
         Validity = validity;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }

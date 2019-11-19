@@ -13,7 +13,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'name', title: '姓名'}
                 , {field: 'grade', title: '年级'}
-                , {field: 'type', title: '缴费类型'}
+                , {field: 'paymentType', title: '缴费类型'}
                 , {field: 'paymentMethod', title: '缴费方式'}
                 , {field: 'money', title: '金额'}
                 , {field: 'date', title: '缴费日期'}
