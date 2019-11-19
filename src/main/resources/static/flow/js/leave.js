@@ -11,7 +11,7 @@ layui.use('table', function () {
             , {field: 'leaveTime', title: '请假日期',align: 'center'}
             , {field: 'cause', title: '请假事由',align: 'center'}
             , {field: 'state', title: '状态',align: 'center'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center',width:300}
         ]]
         , data: [{
             "id": "10001",
@@ -20,7 +20,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "拒绝",
+            "state": "待审批",
             "cause": "有事asdasdasdasfasfasdgdfsdf12"
         }, {
             "id": "10001",
@@ -29,7 +29,43 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "拒绝",
+            "state": "已撤销",
+            "cause": "有事"
+        }, {
+            "id": "10001",
+            "name": "张三",
+            "grade": "三年级",
+            "days": "3天",
+            "apply": "2016-10-14",
+            "leaveTime": "2016-10-15",
+            "state": "一审通过",
+            "cause": "有事"
+        }, {
+            "id": "10001",
+            "name": "张三",
+            "grade": "三年级",
+            "days": "3天",
+            "apply": "2016-10-14",
+            "leaveTime": "2016-10-15",
+            "state": "一审拒绝",
+            "cause": "有事"
+        }, {
+            "id": "10001",
+            "name": "张三",
+            "grade": "三年级",
+            "days": "3天",
+            "apply": "2016-10-14",
+            "leaveTime": "2016-10-15",
+            "state": "二审拒绝",
+            "cause": "有事"
+        }, {
+            "id": "10001",
+            "name": "张三",
+            "grade": "三年级",
+            "days": "3天",
+            "apply": "2016-10-14",
+            "leaveTime": "2016-10-15",
+            "state": "通过",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -39,51 +75,6 @@ layui.use('table', function () {
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
             "state": "拒绝",
-            "cause": "有事"
-        }, {
-            "id": "10001",
-            "name": "张三",
-            "grade": "三年级",
-            "days": "3天",
-            "apply": "2016-10-14",
-            "leaveTime": "2016-10-15",
-            "state": "拒绝",
-            "cause": "有事"
-        }, {
-            "id": "10001",
-            "name": "张三",
-            "grade": "三年级",
-            "days": "3天",
-            "apply": "2016-10-14",
-            "leaveTime": "2016-10-15",
-            "state": "同意",
-            "cause": "有事"
-        }, {
-            "id": "10001",
-            "name": "张三",
-            "grade": "三年级",
-            "days": "3天",
-            "apply": "2016-10-14",
-            "leaveTime": "2016-10-15",
-            "state": "拒绝",
-            "cause": "有事"
-        }, {
-            "id": "10001",
-            "name": "张三",
-            "grade": "三年级",
-            "days": "3天",
-            "apply": "2016-10-14",
-            "leaveTime": "2016-10-15",
-            "state": "拒绝",
-            "cause": "有事"
-        }, {
-            "id": "10001",
-            "name": "张三",
-            "grade": "三年级",
-            "days": "3天",
-            "apply": "2016-10-14",
-            "leaveTime": "2016-10-15",
-            "state": "同意",
             "cause": "有事"
         }]
         , page: true
@@ -97,7 +88,7 @@ layui.use('table', function () {
     $("#add").on('click', function () {
         layer.open({
             type: 1,
-            title: "学生录入",
+            title: "请假申请",
             btn:['提交'],
             skin: "myclass", // 自定样式
             area: ["400px", "650px"],
@@ -112,39 +103,70 @@ layui.use('table', function () {
         form.render(); // 动态渲染
     });
 
-    //请求路径
-    var url;
-    //标记弹出层
-    let mainIndex;
 
-    //修改弹窗
- /*   function modify(data) {
-        mainIndex = layer.open({
-            type: 1,
-            title: "查看请假审批详情",
-            skin: 'layui-layer-rim', //加上边框
-            area: ['500px', '600px'], //设置宽高
-            content: $("#updateOrDelete"),
-            success: function (index) {
-                form.val("dataForm", data);
-                url = "/update"
-            }
-        });
-    }*/
-
-    //监听行单击事件（单击事件为：rowDouble）
-    table.on('row(test)', function(obj){
+    table.on('tool(test)', function(obj){
         var data = obj.data;
-        layer.alert(JSON.stringify(data), {
-            type: 1,
-            title: '请假审批详情：',
-            content: $("#updateOrDelete"),
-            success: function (index) {
-                form.val("dataForm", data);
-            }
+        //console.log(obj)
+        if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                obj.del();
+                layer.close(index);
+            });
+        }else if(obj.event === 'edit'){
+            layer.open({
+                type: 1,
+                title: "请假申请",
+                btn:['提交'],
+                skin: "myclass", // 自定样式
+                area: ["100%", "100%"],
+                content: $("#updateOrDelete"),
+                success: function (layero, index) {
+                },
+                yes: function () {
+                }
+            });
+
+            form.render(); // 动态渲染
+
+        }else if(obj.event === 'revoke'){
+            layer.confirm('真的撤销吗', function(index){
+                obj.del();
+                layer.close(index);
+            });
+        }else if(obj.event === 'again'){
+            layer.open({
+                type: 1,
+                title: "请假申请",
+                btn:['提交'],
+                skin: "myclass", // 自定样式
+                area: ["400px", "650px"],
+                content: $("#aaa"),
+                success: function (layero, index) {
+                },
+                yes: function () {
+                }
+            });
+
+            form.render(); // 动态渲染
+        }
+    });
+    $(document).on('click',"#id1",function(){
+        layer.prompt({
+            formType: 2
+            ,value: data.email
+            ,content: $("#updateOrDelete")
+        }, function(value, index){
+            obj.update({
+                email: value
+            });
+            layer.close(index);
         });
-        //标注选中样式
-        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+    });
+    $(document).on('click',"#id2",function(){
+        layer.msg("按钮点击2");
+    });
+    $(document).on('click',"#id3",function(){
+        layer.msg("按钮点击3");
     });
 
 });
@@ -166,3 +188,4 @@ layui.use('laydate', function () {
         , type: 'datetime'
     });
 });
+

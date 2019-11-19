@@ -17,26 +17,25 @@
             <form class="layui-form layui-form-pane" action="">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">关键词</label>
+                        <label class="layui-form-label" style="width:80px">关键词</label>
                         <div class="layui-input-inline">
                             <input name="phone" class="layui-input" type="tel" autocomplete="off"
                                    lay-verify="required|phone">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">发布人</label>
+                        <label class="layui-form-label" style="width:80px">发布人</label>
                         <div class="layui-input-inline">
                             <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">类型</label>
-                        <div class="layui-input-inline">
+                        <label class="layui-form-label" style="width:60px">类型</label>
+                        <div class="layui-input-inline" style="width:120px">
                             <select name="modules" lay-search="" lay-verify="required">
                                 <option value="">请选择类型</option>
                                 <option value="1">公告</option>
                                 <option value="2">通知</option>
-                                <option value="3">layim</option>
                             </select>
                         </div>
                     </div>
@@ -55,9 +54,6 @@
 </div>
 <#--数据表格-->
 <table class="layui-hide" id="test" lay-filter="test"></table>
-<div class="layui-btn-container">
-    <table class="layui-hide" id="test" lay-filter="test"></table>
-</div>
 <#--文章详情-->
 <div style="display: none" id="updateOrDelete">
     <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFor">
@@ -85,25 +81,7 @@
                 <td bgcolor="#ededed">内容</td>
                 <td colspan="7" width="200" height="100">有事</td>
             </tr>
-
         </table>
-        <div class="layui-inline">
-            <label class="layui-form-label">是否同意</label>
-            <div class="layui-input-inline">
-                <select name="modules" lay-search="" lay-verify="required">
-                    <option value="">请选择类型</option>
-                    <option value="1">同意</option>
-                    <option value="2">不同意</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">审批意见</label>
-            <div class="layui-input-block">
-                <textarea class="layui-textarea" name="title"></textarea>
-            </div>
-        </div>
-        <button class="layui-btn" data-type="reload">查询</button>
     </form>
 </div>
 <script id="barDemo" type="text/html">

@@ -21,14 +21,17 @@
                 <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
             </div>
         </div>
-
         <div class="layui-inline">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-input-inline">
+            <label class="layui-form-label" style="width:80px">状态</label>
+            <div class="layui-input-inline" style="width:130px">
                 <select name="modules" lay-search="" lay-verify="required">
                     <option value="">所有状态</option>
+                    <option value="1">待审核</option>
+                    <option value="1">已撤销</option>
+                    <option value="1">一审通过</option>
+                    <option value="1">一审拒绝</option>
+                    <option value="1">二审拒绝</option>
                     <option value="1">同意</option>
-                    <option value="2">拒绝</option>
                 </select>
             </div>
         </div>
@@ -48,9 +51,6 @@
 
 <#--数据表格-->
 <table class="layui-hide" id="test" lay-filter="test"></table>
-<div class="layui-btn-container">
-    <table class="layui-hide" id="test" lay-filter="test"></table>
-</div>
 <br><br>
 <#--经费申请详情-->
 <div style="display: none" id="updateOrDelete">
@@ -116,22 +116,6 @@
                                class="layui-input" id="xname">
                     </div>
                 </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">专业-班级</label>
-                    <div class="layui-input-inline" lay-verify="required" lay-search="">
-                        <select name="major">
-                            <option value="">请选择专业-班级</option>
-                            <optgroup label="影视专业">
-                                <option value="">所有影视专业</option>
-                                <option value="">影视一班</option>
-                            </optgroup>
-                            <optgroup label="美术专业">
-                                <option value="">所有美术专业</option>
-                                <option value="">美术一班</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">申请事由</label>
                     <div class="layui-input-block">
@@ -181,6 +165,9 @@
 </script>
 <script id="barDemo" type="text/html">
     <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
+    <a class="layui-btn layui-btn-xs" lay-event="revoke">撤销</a>
+    <a class="layui-btn layui-btn-xs" lay-event="again">重新提交</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 </body>
