@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @create 2019-11-17 12:57
  */
 @Component
-public class TbIntegral {
+public class TbIntegral extends Domain {
     private Integer id;
     private String name;
     private String time;//时间

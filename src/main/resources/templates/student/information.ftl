@@ -20,6 +20,7 @@
                     <li class="layui-this">基本信息</li>
                     <li>缴费信息</li>
                     <li>积分信息</li>
+                    <li>请假信息</li>
                 </ul>
                 <div class="layui-tab-content">
                     <!-- 基本细腻 ********************************-->
@@ -90,6 +91,7 @@
                         <table class="layui-hide" id="information"></table>
 
                     </div>
+
                 </div>
             </div>
         </div>
