@@ -15,6 +15,24 @@ public class TbIntegral extends Domain {
     private String reason;//事由
     private Integer score;//分数，加了多少分，减了多少分
     private int operatorId;//操作人
+    private String bonusPoints;//加分项
+    private String reductionOf;//减分项
+
+    public String getBonusPoints() {
+        return bonusPoints;
+    }
+
+    public void setBonusPoints(String bonusPoints) {
+        this.bonusPoints = bonusPoints;
+    }
+
+    public String getReductionOf() {
+        return reductionOf;
+    }
+
+    public void setReductionOf(String reductionOf) {
+        this.reductionOf = reductionOf;
+    }
 
     public int getOperatorId() {
         return operatorId;
