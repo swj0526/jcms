@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TbStudentWork extends Domain {
     private Integer id;
-    private Integer TbStudentId;//学生表id
-    private Integer TbWorkListId;//作业列表id
+    private Integer studentId;//学生表id
+    private Integer workListId;//作业列表id
     private String fileUrl;//作业文件地址
     private Integer score;//分数
     private Integer operatorId;//操作人id
@@ -27,19 +27,19 @@ public class TbStudentWork extends Domain {
     }
 
     public Integer getTbStudentId() {
-        return TbStudentId;
+        return studentId;
     }
 
     public void setTbStudentId(Integer tbStudentId) {
-        TbStudentId = tbStudentId;
+        studentId = tbStudentId;
     }
 
     public Integer getTbWorkListId() {
-        return TbWorkListId;
+        return workListId;
     }
 
     public void setTbWorkListId(Integer tbWorkListId) {
-        TbWorkListId = tbWorkListId;
+        workListId = tbWorkListId;
     }
 
     public String getFileUrl() {
