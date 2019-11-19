@@ -13,7 +13,16 @@ public class TbIntegral extends Domain {
     private String name;
     private String time;//时间
     private String reason;//事由
-private Integer score;//分数，加了多少分，减了多少分
+    private Integer score;//分数，加了多少分，减了多少分
+    private int operatorId;//操作人
+
+    public int getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(int operatorId) {
+        this.operatorId = operatorId;
+    }
 
     public Integer getId() {
         return id;
