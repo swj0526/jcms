@@ -21,7 +21,7 @@
 		    <label class="layui-form-label">接收角色</label>
 		    <div class="layui-input-inline" style="width: 300px">
 		      <input name="like[write]" title="老师" type="checkbox">
-		      <input name="like[read]" title="学生" type="checkbox" checked="">
+		      <input name="like[read]" title="学生" type="checkbox" >
 		      <input name="like[game]" title="管理员" type="checkbox">
 		    </div>
 			  <div class="layui-inline">
@@ -43,6 +43,23 @@
 		      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
 		    </div>
 		  </div>
+			<div class="layui-upload">
+				<button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+				<div class="layui-upload-list">
+					<table class="layui-table">
+						<thead>
+						<tr><th>文件名</th>
+							<th>大小</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr></thead>
+						<tbody id="demoList"></tbody>
+					</table>
+				</div>
+				<button class="layui-btn" id="testListAction" type="button">开始上传</button>
+			</div>
+			<br>
+			<br>
 		  <div class="layui-form-item">
 		    <div class="layui-input-block">
 		      <button class="layui-btn" type="submit" lay-filter="demo1" lay-submit="">立即提交</button>
@@ -50,20 +67,5 @@
 		    </div>
 		  </div>
 		</form>
-		<div class="layui-upload">
-			<button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
-			<div class="layui-upload-list">
-				<table class="layui-table">
-					<thead>
-					<tr><th>文件名</th>
-						<th>大小</th>
-						<th>状态</th>
-						<th>操作</th>
-					</tr></thead>
-					<tbody id="demoList"></tbody>
-				</table>
-			</div>
-			<button class="layui-btn" id="testListAction" type="button">开始上传</button>
-		</div>
 	</body>
 </html>
