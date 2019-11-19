@@ -72,7 +72,6 @@
                 <div class="pageCont">
                     <div id="page1" class="stepPage">
                         <table border="1" width="300" height="500" align="center" cellspacing="0">
-                            <caption>学生档案</caption>
                             <tr align="center">
                                 <td bgcolor="#ededed">姓名</td>
                                 <td colspan="7">张三</td>
@@ -101,25 +100,39 @@
                                 <td bgcolor="#ededed">请假事由</td>
                                 <td colspan="7">有事</td>
                             </tr>
-                            <tr align="center">
-                                <td bgcolor="#ededed">状态</td>
-                                <td colspan="7">拒绝</td>
-                            </tr>
-                            <tr align="center">
-                                <td bgcolor="#ededed">拒绝理由</td>
-                                <td colspan="7">拒绝</td>
-                            </tr>
                         </table>
                     </div>
                     <div id="page2" class="stepPage">
-                        <h1>
-                            page2
-                        </h1>
+                        <table border="1" width="300" height="500" align="center" cellspacing="0">
+                            <tr align="center">
+                                <td bgcolor="#ededed">审批人</td>
+                                <td colspan="7">丛老师</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">是否同意</td>
+                                <td colspan="7">同意</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">审批意见</td>
+                                <td colspan="7">通过</td>
+                            </tr>
+                        </table>
                     </div>
                     <div id="page3" class="stepPage">
-                        <h1>
-                            page3
-                        </h1>
+                        <table border="1" width="300" height="500" align="center" cellspacing="0">
+                            <tr align="center">
+                                <td bgcolor="#ededed">审批人</td>
+                                <td colspan="7">胡老师</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">是否同意</td>
+                                <td colspan="7">拒绝</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">审批意见</td>
+                                <td colspan="7">不通过</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
