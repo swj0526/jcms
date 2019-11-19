@@ -159,7 +159,6 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
     table.on('tool(currentTableFilter)', function (obj) {
         var data = obj.data;
         if (obj.event === 'edit') {
-            alert(1)
             modify(data);
         } else if (obj.event === 'delete') {
             layer.confirm('真的删除行么', function (index) {
@@ -176,6 +175,18 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
             maxmin: true,
             content: '/student/information'
         });
+    });
+    $("#add").click(function () {
+        layer.open({
+            type: 1,
+            title:"添加学生信息",
+            content: $("#aaa"),
+            btn:"提交",
+            success:function (index) {
+                //清空表单数据
+                $("#dataFrm")[0].reset();
+            }
+        })
     });
 });
 

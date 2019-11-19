@@ -22,6 +22,15 @@ public class TbStudent extends Domain {
     private String graduationTime;//毕业时间
     private int state;//状态
     private String theClass;//班级
+    private int operatorId;//操作人
+
+    public int getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(int operatorId) {
+        this.operatorId = operatorId;
+    }
 
     public String getTheClass() {
         return theClass;

@@ -15,9 +15,8 @@
 
 <div id="aaa" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>添加信息</legend>
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFrm">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">学生学号</label>
@@ -106,7 +105,7 @@
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                         <div class="layui-btn-group">
-                            <button type="button" class="layui-btn">添加</button>
+                            <button type="button" class="layui-btn" id="add">添加</button>
                             <button type="button" class="layui-btn ">导入</button>
                             <button type="button" class="layui-btn">导出</button>
                         </div>

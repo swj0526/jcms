@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <title>请假申请</title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
-    <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../flow/css/ystep.css">
+    <script type="text/javascript" src="../jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../layui/layui.js"></script>
     <script type="text/javascript" src="../flow/js/leave.js"></script>
-    <script type="text/javascript" src="../layui/config.js"></script>
-    <link rel="stylesheet" href="../layui/extend/steps/style.css">
+    <script type="text/javascript" src=../flow/js/setStep.js></script>
 </head>
 <body>
 <#--条件查询-->
@@ -62,111 +62,68 @@
 <#--数据表格-->
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <br><br>
-<div id="step_demo" class="step-body">
-    <div class="step-header" style="width:80%;overflow: hidden;">
-        <ul>
-            <li>
-                <span class="step-name">填写申请表</span>
-            </li>
-            <li>
-                <span class="step-name">上传资料</span>
-            </li>
-            <li>
-                <span class="step-name">待确认</span>
-            </li>
-            <li>
-                <span class="step-name">已确认</span>
-            </li>
-            <li>
-                <span class="step-name">待受理</span>
-            </li>
-            <li>
-                <span class="step-name">已受理</span>
-            </li>
-            <li>
-                <span class="step-name">预约完成</span>
-            </li>
-            <li>
-                <span class="step-name">签证单已发放</span>
-            </li>
-        </ul>
-    </div>
-    <div class="step-content">
-        <div class="step-list">填写申请表</div>
-        <div class="step-list">上传资料</div>
-        <div class="step-list">待确认</div>
-        <div class="step-list">已确认</div>
-        <div class="step-list">待受理</div>
-        <div class="step-list">已受理</div>
-        <div class="step-list">预约完成</div>
-        <div class="step-list">签证单已发放</div>
-        <div class="step-list">完成</div>
-    </div>
-
-</div>
-
-<button id="preBtn">上一步</button>
-<button id="nextBtn">下一步</button>
-<button id="goBtn">跳转的指定的步骤</button>
-
 <#--请假审批详情-->
 <div style="display: none" id="updateOrDelete">
-    <form class="layui-form" lay-filter="dataForm" id="dataFor">
-        <div class="layui-form-item" style="display: none">
-            <label class="layui-form-label">n</label>
-            <div class="layui-input-block">
-                <input type="text" name="id" required lay-verify="required" placeholder="id" autocomplete="off"
-                       class="layui-input">
+        <div >
+            <div class="stepCont stepCont1" style="width: 1600px">
+                <!-- 菜单导航显示-->
+                <div class='ystep-container ystep-lg ystep-blue' ></div>
+                <!-- 分页容器-->
+                <div class="pageCont">
+                    <div id="page1" class="stepPage">
+                        <table border="1" width="300" height="500" align="center" cellspacing="0">
+                            <caption>学生档案</caption>
+                            <tr align="center">
+                                <td bgcolor="#ededed">姓名</td>
+                                <td colspan="7">张三</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">年级</td>
+                                <td colspan="7">影视一班</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">请假时长</td>
+                                <td colspan="7">3天</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">申请日期</td>
+                                <td colspan="7">2016-10-14</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">请假日期</td>
+                                <td colspan="7">2016-10-15</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">结束日期</td>
+                                <td colspan="7">2016-10-18</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">请假事由</td>
+                                <td colspan="7">有事</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">状态</td>
+                                <td colspan="7">拒绝</td>
+                            </tr>
+                            <tr align="center">
+                                <td bgcolor="#ededed">拒绝理由</td>
+                                <td colspan="7">拒绝</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="page2" class="stepPage">
+                        <h1>
+                            page2
+                        </h1>
+                    </div>
+                    <div id="page3" class="stepPage">
+                        <h1>
+                            page3
+                        </h1>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <button class="layui-btn layui-btn-radius" type="button" id="id1">1</button>
-            <button class="layui-btn layui-btn-radius" type="button" id="id2">2</button>
-            <button class="layui-btn layui-btn-radius" type="button" id="id3">3</button>
-
-            <button class="layui-btn layui-btn-disabled layui-btn-radius" type="button">禁用按钮</button>
-        </div>
-        <table border="1" width="300" height="500" align="center" cellspacing="0">
-            <caption>学生档案</caption>
-            <tr align="center">
-                <td bgcolor="#ededed">姓名</td>
-                <td colspan="7">张三</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">年级</td>
-                <td colspan="7">影视一班</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">请假时长</td>
-                <td colspan="7">3天</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">申请日期</td>
-                <td colspan="7">2016-10-14</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">请假日期</td>
-                <td colspan="7">2016-10-15</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">结束日期</td>
-                <td colspan="7">2016-10-18</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">请假事由</td>
-                <td colspan="7">有事</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">状态</td>
-                <td colspan="7">拒绝</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">拒绝理由</td>
-                <td colspan="7">拒绝</td>
-            </tr>
-        </table>
-
-    </form>
 </div>
 
 <#--添加请假审批-->
@@ -227,6 +184,19 @@
         rendersteps(page-1);
         $("#step"+page).removeClass("layui-hide").siblings(".layui-step-content").addClass("layui-hide");
     }
+</script>
+<script>
+    var step1=new SetStep({
+        content:'.stepCont1',
+        showBtn:false,
+    })
+    var step2=new SetStep({
+        content:'.stepCont2',
+        clickAble:false
+    })
+    var step3=new SetStep({
+        content:'.stepCont3'
+    })
 </script>
 <script id="barDemo" type="text/html">
     <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
