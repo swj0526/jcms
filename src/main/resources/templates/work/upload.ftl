@@ -44,17 +44,25 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除作业</a>
 </script>
 
-<div id="up" class="layui-upload" style="text-align: center;display: none ">
-    <p style="color: red">只能长传一个文件切是文件类型必须是压缩文件</p><br>
-    <div id="test" class="layui-upload">
-
-        <button class="layui-btn layui-btn-normal" id="test8" type="button">选择文件</button>
-        <textarea name="" required lay-verify="required" placeholder="备注" class="layui-textarea"></textarea>
-        <button class="layui-btn" id="test9" type="button">开始上传</button>
-
-        <div class="layui-progress layui-progress-big" lay-filter="demo"  lay-showPercent="yes" style="margin-top: 20px">
-            <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
-        </div>
+<div class="layui-upload" id="up" style="display: none;text-align: center" >
+    <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+    <div class="layui-upload-list">
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>文件名</th>
+                <th>大小</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="demoList"></tbody>
+        </table>
+    </div>
+    <textarea name="" required lay-verify="required" placeholder="备注" class="layui-textarea"></textarea>
+    <button class="layui-btn" id="testListAction" type="button">开始上传</button>
+    <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="yes" style="margin-top: 20px">
+        <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
     </div>
 </div>
 </body>

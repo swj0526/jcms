@@ -24,6 +24,11 @@ public class MoneyController {
     public String kkk() {
         return "money/kkk";
     }
+    @RequestMapping("/add")
+    public String add(){
+
+        return "money/add";
+    }
 
 
 }
