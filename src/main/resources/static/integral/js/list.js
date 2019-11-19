@@ -46,7 +46,7 @@ layui.use(['jquery','layer','table'],function () {
     $("#edit").click(function () {
         layer.open({
             type: 1,
-            area:['35%','40%'],
+            area:['720px','350px'],
             content:$("#table")
         });
     })
