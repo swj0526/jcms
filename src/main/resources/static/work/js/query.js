@@ -1,6 +1,6 @@
 layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
     var table = layui.table;
-    var jquery = layui.jquery;
+    var $ = layui.jquery;
     var element = layui.element;
     laydate = layui.laydate;
     form = layui.form,
@@ -19,6 +19,7 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
             ,{field:'date', title:'发布日期'}
             ,{field:'commitDate', title:'提交时间'}
             ,{field:'work', title:'作业'}
+            ,{field:'work', title:'提交人数'}
             ,{field:'score', title:'评分'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
         ]]
@@ -34,23 +35,18 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
         }]
         , page: true
     });
-    table.on('toolbar(test)', function(obj){
-        var checkStatus = table.checkStatus(obj.config.id);
-        //添加
-        switch(obj.event){
-            case 'add':
-                layer.open({
-                    btnAlign: 'c'
-                    ,type:1
-                    ,btn:['提交']
-                    ,area:['350px','450px']
-                    ,content:$("#aa")
-                    ,yes: function(index, layero){
-                        layer.close(index);
-                    }
-                });
-        };
-    });
+    $("#1").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            ,type:1
+            ,btn:['提交']
+            ,area:['350px','450px']
+            ,content:$("#aa")
+            ,yes: function(index, layero){
+                layer.close(index);
+            }
+        });
+    })
     //监听行工具事件
     table.on('tool(test)', function (obj) {
         var data = obj.data;
@@ -59,15 +55,20 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
 
 
         } else if (obj.event === 'edit') {
-            layer.open({
-                btnAlign: 'c'
-                ,type:2
-                ,area: ['500px','550px']
-                ,btn:''
-                ,content:'download'
-                ,yes: function(index, layero){
-                    layer.close(index);
-                }
+            layer.tab({
+                type: 1,
+
+                area: ['100%','100%'],
+                tab: [{
+                    title: '学生作业下载',
+                    content:'<iframe src="/work/download" frameborder="0" height="800px" width="100%"></iframe>',
+                }, {
+                    title: '',
+                    content: '内容2'
+                }, {
+                    title: '',
+                    content: '内容3'
+                }]
             });
         }
     });

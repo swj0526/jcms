@@ -36,6 +36,8 @@
                         </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                            <button class="layui-btn" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">发布作业</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">导出</button>
                         </div>
                     </div>
                 </form>
@@ -46,12 +48,10 @@
     <table class="layui-hide" id="test" lay-filter="test"></table>
     <script id="barDemo" type="text/html">
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">下载作业</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="updata">修改评分</a>
     </script>
     <script id="toolbarDemo" type="text/html">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-sm" lay-event="add">发布作业</button>
-            <button class="layui-btn layui-btn-sm" lay-event="add">导出</button>
+
         </div>
     </script>
 </div>
