@@ -75,25 +75,26 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         , cols: [[
             {field: 'workName', title: '作业名称'}
             , {field: 'issuer', title: '发布人'}
-            , {field: 'date', title: '发布日期', sort: true}
-            , {field: 'commitDate', title: '提交时间', sort: true}
-            , {field: 'work', title: '作业内容'}
-            , {field: 'score', title: '提交数量'}
+            , {field: 'releaseTime', title: '发布日期', sort: true}
+            , {field: 'submissionTime', title: '提交时间', sort: true}
+            , {field: 'content', title: '作业内容'}
+            , {field: 'file ', title: '作业文件'}
+            , {field: 'score ', title: '分数',width:120}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
         , data: [{
             workName: "英语作业"
             , issuer: "王丽"
-            , date: "2019-11-14"
-            , commitDate: "尚未提交"
-            , work: ""
+            , releaseTime: "2019-11-14"
+            , submissionTime: "尚未提交"
+            , content: ""
             , score: "20"
         }, {
             workName: "英语作业"
             , issuer: "王丽"
-            , date: "2019-11-15"
-            , commitDate: "2019-11-15"
-            , work: ""
+            , releaseTime: "2019-11-15"
+            , submissionTime: "2019-11-15"
+            , content: ""
             , score: "20"
         }]
         , page: true

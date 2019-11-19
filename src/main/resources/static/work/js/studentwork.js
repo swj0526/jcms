@@ -12,7 +12,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 ,{field: 'grade', title: '年级',width: 200}
                 ,{field: 'name', title: '提交时间',width: 200}
                 , {field: 'picture', title: '作业',event:'img',sore:true,templet:function (d) {
-                        return '<div><img src="'+d.brand_img_url+'" alt="" width="50px" height="50px"></div>';
+                        return '<div><img src="'+d.picture+'" alt="" width="50px" height="50px"></div>';
                     }}
                 ,{field: 'name', title: '评分',width: 200}
                 , {fixed: 'right', title: '下载', toolbar: '#barDemo', width: 200}
@@ -59,7 +59,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 skin: 'layui-layer-rim', //加上边框
                 area: ['80%', '80%'], //宽高
                 shadeClose: true, //开启遮罩关闭
-                content: '<div style="text-align:center"><img src="' + data.brand_img_url + '" /></div>'
+                content: '<div style="text-align:center"><img src="' + data.picture + '" /></div>'
             });
 
         }else if (obj.event === 'del'){
