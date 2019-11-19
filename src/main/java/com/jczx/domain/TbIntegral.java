@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author cjw
  * @create 2019-11-17 12:57
+ * 积分表
  */
 @Component
 public class TbIntegral extends Domain {

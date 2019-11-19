@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author cjw
  * @create 2019-11-17 12:52
+ * 学生表
  */
 @Component
 public class TbStudent extends Domain {
