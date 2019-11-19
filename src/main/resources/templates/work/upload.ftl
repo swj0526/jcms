@@ -40,10 +40,8 @@
 </fieldset>
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script id="barDemo" type="text/html">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">上传作业</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除作业</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">作业管理</a>
 </script>
-
 <div class="layui-upload" id="up" style="display: none;text-align: center" >
     <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
     <div class="layui-upload-list">

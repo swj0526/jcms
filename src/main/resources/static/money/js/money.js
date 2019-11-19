@@ -37,23 +37,16 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             }]
         });
     $("#add").click(function () {
-        layer.open({
-            btnAlign: 'c'
-            , type: 1
-            , skin: 'layer-ext-myskin'
-            , btn: ['提交']
-            , area: ['720px', '350px']
-            , content: $("#aa")
-            , yes: function (index, layero) {
-                layer.close(index);
-            }
-            , success: function (index) {
-                $("#dataFor")[0].reset();
-            }
+        layer.tab({
+            type: 1,
+            area: ['100%','100%'],
+            tab: [{
+                title: '添加缴费',
+                content:'<iframe src="/money/add" frameborder="0" height="800px" width="100%"></iframe>',
+            }]
         });
     });
     $("#export").click(function () {
-
     })
     //监听行工具事件
     table.on('tool(test)', function (obj) {

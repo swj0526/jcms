@@ -30,8 +30,16 @@ public class WorkController {
     public String workQuery() {
         return "work/list";
     }
+    @RequestMapping("/uploading")
+    public String  uploading() {
+        return "work/studentwork";
+    }
     @RequestMapping("/download")
     public String  download() {
-        return "work/studentwork";
+        return "work/workDownload";
+    }
+    @RequestMapping("/add")
+    public String  add() {
+        return "work/addwork";
     }
 }

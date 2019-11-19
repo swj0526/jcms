@@ -5,8 +5,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
     laydate = layui.laydate;
     var upload = layui.upload;
     form = layui.form;
-
-
         //选完文件后不自动上传
     var demoListView = $('#demoList')
         ,uploadListIns = upload.render({
@@ -77,7 +75,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             , {field: 'issuer', title: '发布人'}
             , {field: 'releaseTime', title: '发布日期', sort: true}
             , {field: 'submissionTime', title: '提交时间', sort: true}
-            , {field: 'content', title: '作业内容'}
             , {field: 'file ', title: '作业文件'}
             , {field: 'score ', title: '分数',width:120}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
@@ -103,20 +100,14 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         var data = obj.data;
         //console.log(obj)
         if (obj.event === 'edit') {
-            layer.open({
-                btnAlign: 'c'
-                , type: 1
-                , area: ['720px','350']
-                , btn: ''
-                , content: $("#up")
-                , yes: function (index, layero) {
-                    layer.close(index);
-                }
-            });
-        }else if (obj.event === 'del'){
-            layer.confirm('确定要删除上传的作业么？', function(index){
+            layer.tab({
+                type: 1,
 
-                layer.close(index);
+                area: ['100%','100%'],
+                tab: [{
+                    title: '作业管理',
+                    content:'<iframe src="/work/uploading" frameborder="0" height="800px" width="100%"></iframe>',
+                }]
             });
         }
     });
