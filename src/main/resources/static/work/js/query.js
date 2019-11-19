@@ -17,7 +17,7 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
             ,{field:'issuer', title:'发布人'  }
             ,{field:'grade', title:'年级'  }
             ,{field:'releaseTime', title:'发布日期'}
-            ,{field:'deadline', title:'截止日期时间'}
+            ,{field:'endTime', title:'截止日期时间'}
             ,{field:'content', title:'内容'}
             ,{field:'submitTheNumber', title:'提交人数'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
@@ -28,7 +28,7 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
             ,issuer:"王丽"
             , grade: "三年级"
             , releaseTime: "2019-11-14"
-            , deadline: "2019-11-14"
+            , endTime: "2019-11-14"
             , content: "11111111"
             , submitTheNumber: "20"
         }]

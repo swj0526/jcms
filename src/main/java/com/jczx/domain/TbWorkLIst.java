@@ -15,7 +15,7 @@ public class TbWorkLIst extends Domain {
     private String issuer;//发布人
     private Integer grade;//年级
     private String releaseTime;//发布日期
-    private String deadline;//截止日期
+    private String endTime;//截止日期
     private String content;//内容
     private Integer submitTheNumber;//提交人数
     private Integer operatorId;//操作人id
@@ -61,11 +61,11 @@ public class TbWorkLIst extends Domain {
     }
 
     public String getDeadline() {
-        return deadline;
+        return endTime;
     }
 
     public void setDeadline(String deadline) {
-        this.deadline = deadline;
+        this.endTime = deadline;
     }
 
     public String getContent() {

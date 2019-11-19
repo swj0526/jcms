@@ -1,4 +1,4 @@
-layui.use(['table','jquery','laydate','form','element'],function() {
+layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     var table = layui.table;
     var $ = layui.jquery;
     laydate = layui.laydate;
@@ -12,41 +12,41 @@ layui.use(['table','jquery','laydate','form','element'],function() {
             , cols: [[
                 {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'type', title: '缴费类型'}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo' ,width:130}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 130}
             ]]
             , page: true
             , data: [{
-                id:1
+                id: 1
                 , type: '学费'
-            },{
-                id:2
+            }, {
+                id: 2
                 , type: '学费'
-            },{
-                id:3
+            }, {
+                id: 3
                 , type: '学费'
-            },{
-                id:4
+            }, {
+                id: 4
                 , type: '学费'
-            },{
-                id:5
+            }, {
+                id: 5
                 , type: '学费'
-            },{
-                id:6
+            }, {
+                id: 6
                 , type: '学费'
-            },{
-                id:7
+            }, {
+                id: 7
                 , type: '学费'
-            },{
-                id:8
+            }, {
+                id: 8
                 , type: '学费'
-            },{
-                id:9
+            }, {
+                id: 9
                 , type: '学费'
-            },{
-                id:10
+            }, {
+                id: 10
                 , type: '学费'
-            },{
-                id:11
+            }, {
+                id: 11
                 , type: '学费'
             }]
         });
@@ -80,18 +80,18 @@ layui.use(['table','jquery','laydate','form','element'],function() {
         if (obj.event === 'edit') {
             layer.open({
                 btnAlign: 'c'
-                ,type:1
-                ,btn:['提交']
-                ,content:$("#up")
-                ,yes: function(index, layero){
+                , type: 1
+                , btn: ['提交']
+                , content: $("#up")
+                , yes: function (index, layero) {
                     layer.close(index);
                 }
-                ,success: function(index) {
-                    form.val("dataForm1",data);
+                , success: function (index) {
+                    form.val("dataForm1", data);
                 }
             });
-        }else if(obj.event === 'del'){
-            layer.confirm('真的删除行么', function(index){
+        } else if (obj.event === 'del') {
+            layer.confirm('真的删除行么', function (index) {
                 obj.del();
                 layer.close(index);
             });
