@@ -23,6 +23,15 @@ public class TbStudent extends Domain {
     private int state;//状态
     private String theClass;//班级
     private int operatorId;//操作人
+    private String createTime;//操作时间
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
     public int getOperatorId() {
         return operatorId;

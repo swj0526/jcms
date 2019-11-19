@@ -17,6 +17,15 @@ public class TbIntegral extends Domain {
     private int operatorId;//操作人
     private String bonusPoints;//加分项
     private String reductionOf;//减分项
+    private String createTime;//操作时间
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
     public String getBonusPoints() {
         return bonusPoints;
