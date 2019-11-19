@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author 宋家新
  * @create 2019-11-19 14:58
+ * 经费申请一审
  */
 @Component
 public class TbOneFunds extends Domain {

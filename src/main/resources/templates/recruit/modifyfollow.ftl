@@ -21,10 +21,10 @@
     ,cols: [[ //标题栏
       {field: 'id', title: '跟进时间', width: 100, sort: true}
       ,{field: 'username', title: '跟进状态', width: 120}
-      ,{field: 'email', title: '跟进渠道', minWidth: 80}
+      ,{field: 'email', title: '跟进渠道', width: 90}
       ,{field: 'sign', title: '备注', minWidth: 100}
-      
-     
+
+
 
     ]]
     ,data: [{
@@ -61,7 +61,7 @@
 </script></div>
 			</div>
 			<div class="layui-col-md6">
-				<div style="border:red solid 0.0625rem;width:50%;padding:3.125rem; background: rgb(242,242,242);">
+				<div style="width:50%;padding:3.125rem; background: rgb(242,242,242);">
 					<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
 						<legend>添加跟进记录</legend>
 					</fieldset>

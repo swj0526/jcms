@@ -1,23 +1,27 @@
 package com.jczx.domain;
 
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
 /**
  * @author swj
  * @description 角色类
  * @create 2019-11-18 16:11
  */
-public class TbRole {
-    private  int id;
+@Component
+public class TbRole extends Domain {
+    private Integer id;
     private String name;//角色名称
     private String remark;//角色备注
     private String privilegeList;//权限列表
-    private int operatorId;//操作人
+    private Integer operatorId;//操作人
     private String createTime;//操作时间
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -45,11 +49,11 @@ public class TbRole {
         this.privilegeList = privilegeList;
     }
 
-    public int getOperatorId() {
+    public Integer getOperatorId() {
         return operatorId;
     }
 
-    public void setOperatorId(int operatorId) {
+    public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
     }
 

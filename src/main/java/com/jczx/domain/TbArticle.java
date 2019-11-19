@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author 宋家新
  * @create 2019-11-18 21:11
+ * 发文
  */
 @Component
 public class TbArticle  extends Domain {

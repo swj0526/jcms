@@ -23,12 +23,6 @@ public class LoginController {
     private String login(){
         return "login/to";
     }
-    /**
-     * 注册页面
-     */
-    @RequestMapping("/register")
-    private String register(){
-        return"register";
-    }
+
 
 }

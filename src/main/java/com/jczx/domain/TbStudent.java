@@ -24,7 +24,6 @@ public class TbStudent extends Domain {
     private Integer state;//状态
     private String theClass;//班级
     private Integer operatorId;//操作人
-    private String createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -136,13 +135,5 @@ public class TbStudent extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
     }
 }

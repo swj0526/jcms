@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author 丛枭钰
  * @create 2019-11-19 13:14
+ * 缴费表
  */
 @Component
 public class TbMoney extends Domain {
@@ -18,7 +19,7 @@ public class TbMoney extends Domain {
     private String paymentDate;//缴费日期
     private Boolean instalment;//是否分期
     private Integer discount;//优惠金额
-    private String Validity;//费用有效期
+    private String validity;//费用有效期
     private Integer operatorId;//操作人id
     private String createTime;//操作时间
 
@@ -95,11 +96,11 @@ public class TbMoney extends Domain {
     }
 
     public String getValidity() {
-        return Validity;
+        return validity;
     }
 
     public void setValidity(String validity) {
-        Validity = validity;
+        this.validity = validity;
     }
 
     public Integer getOperatorId() {

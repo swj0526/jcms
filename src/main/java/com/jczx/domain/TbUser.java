@@ -1,40 +1,44 @@
 package com.jczx.domain;
 
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
 /**
  * @author swj
  * @description 用户表,用来登录跟盘算权限的
  * @create 2019-11-18 16:45
  */
-public class TbUser {
-    private  int id;
-    private int type;//类型 1.学生 2.教职工
-    private int accountId;//跟具体的信息表关联id
+@Component
+public class TbUser  extends Domain {
+    private  Integer id;
+    private Integer type;//类型 1.学生 2.教职工
+    private Integer accountId;//跟具体的信息表关联id
     private String phone;//手机号码,登录时的用户名
     private String password;//密码
-    private int operatorId;//操作人
+    private Integer operatorId;//操作人
     private String createTime;//操作时间
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public int getAccountId() {
+    public Integer getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(Integer accountId) {
         this.accountId = accountId;
     }
 
@@ -54,11 +58,11 @@ public class TbUser {
         this.password = password;
     }
 
-    public int getOperatorId() {
+    public Integer getOperatorId() {
         return operatorId;
     }
 
-    public void setOperatorId(int operatorId) {
+    public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
     }
 
