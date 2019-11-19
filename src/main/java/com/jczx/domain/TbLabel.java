@@ -4,16 +4,25 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 丛枭钰
- * @create 2019-11-19 14:15
- * 缴费类型表
+ * @author 于振华
+ * @describe
+ * @create 2019-11-19 14:14
+ * 标签
  */
 @Component
-public class TbPaymentType extends Domain {
+public class TbLabel  extends Domain {
     private Integer id;
-    private String name;
-    private Integer operatorId;//操作人id
-    private String createTime;//操作时间
+    private String name;//标签名
+    private Integer operatorId;//操作人
+    private String createTime;//创建时间
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
     public Integer getId() {
         return id;
@@ -37,13 +46,5 @@ public class TbPaymentType extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author cjw
  * @create 2019-11-17 12:52
+ * 学生表
  */
 @Component
 public class TbStudent extends Domain {
@@ -20,25 +21,9 @@ public class TbStudent extends Domain {
     private String bloodType;//血型
     private String admissionTime;//入学时间
     private String graduationTime;//毕业时间
-    private int state;//状态
+    private Integer state;//状态
     private String theClass;//班级
-    private int operatorId;//操作人
-
-    public int getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(int operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public String getTheClass() {
-        return theClass;
-    }
-
-    public void setTheClass(String theClass) {
-        this.theClass = theClass;
-    }
+    private Integer operatorId;//操作人
 
     public Integer getId() {
         return id;
@@ -128,11 +113,27 @@ public class TbStudent extends Domain {
         this.graduationTime = graduationTime;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
+    }
+
+    public String getTheClass() {
+        return theClass;
+    }
+
+    public void setTheClass(String theClass) {
+        this.theClass = theClass;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
     }
 }

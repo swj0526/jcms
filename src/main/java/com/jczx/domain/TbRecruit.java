@@ -1,13 +1,17 @@
 package com.jczx.domain;
 
 
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
 /**
  * @author 于振华
  * @describe
  * @create 2019-11-18 16:27
  * 招生信息表
  */
-public class TbRecruit {
+@Component
+public class TbRecruit extends Domain {
     private Integer id;
     private String name;//招生姓名
     private Boolean sex;//招生的性别
@@ -18,7 +22,7 @@ public class TbRecruit {
     private String qq;//qq号
     private String weChat;//微信
     private String parPhone;//家长电话;
-    private String createTime;//录入时间
+    private String createTime;//创建时间
     private Integer operatorId;//操作人
 
     public Integer getId() {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class TbFunds extends Domain {
     private Integer id;
     private String name;//学生姓名
-    private String cause;//请假事由
+    private String cause;//申请事由
     private String money;//申请金额
     private String apply;//申请日期
     private String start;//开始日期

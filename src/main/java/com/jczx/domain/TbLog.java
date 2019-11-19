@@ -1,30 +1,34 @@
 package com.jczx.domain;
 
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
 /**
  * @author swj
  * @description 日志表
  * @create 2019-11-18 16:25
  */
-public class TbLog {
-    private int id;
-    private int type;//操作类型 1.增加 2.删除 3.修改
+@Component
+public class TbLog  extends Domain {
+    private Integer id;
+    private Integer type;//操作类型 1.增加 2.删除 3.修改
     private String content; //操作内容
-    private int operatorId;//操作人
+    private Integer operatorId;//操作人
     private String createTime;//操作时间
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -36,11 +40,11 @@ public class TbLog {
         this.content = content;
     }
 
-    public int getOperatorId() {
+    public Integer getOperatorId() {
         return operatorId;
     }
 
-    public void setOperatorId(int operatorId) {
+    public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
     }
 

@@ -43,9 +43,7 @@
                     <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="login">登 入</button>
                 </div>
             </form>
-            <div class="layui-form-item">
-                <a href="register"> <button class="layui-btn layui-btn-fluid" id="register">注 册</button></a>
-            </div>
+           
         </div>
     </div>
 </div>

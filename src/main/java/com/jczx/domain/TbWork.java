@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author 丛枭钰
  * @create 2019-11-19 13:25
+ *
  */
 @Component
 public class TbWork extends Domain {
