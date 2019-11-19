@@ -70,7 +70,7 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
             });
         } else if(obj.event === 'edit'){
             //layer.alert('编辑行：<br>'+ JSON.stringify(data))
-            mainIndex = layer.open({
+            layer.open({
                 type: 1,
                 title: "修改角色",
                 // skin: 'layui-layer-rim', //加上边框
@@ -82,13 +82,14 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
                 }
             });
         } else if(obj.event === 'fun'){
-            mainIndex = layer.open({
-                type: 2,
-                title: "权限设置",
-                area: ['400px','400px'], //设置宽高
-                content: "/account/toPrivilege",
-                success: function (index) {
-                }
+           layer.tab({
+                type: 1,
+               area: ['100%','100%'],
+               tab: [{
+                   skin: 'layui-layer-rim',
+                   title: '设置角色权限',
+                   content:"<iframe src=\"/account/toPrivilege\" frameborder=\"0\" height=\"550px\" width=\"100%\"></iframe>",
+               }]
             });
         }
     });

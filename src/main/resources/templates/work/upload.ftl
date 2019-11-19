@@ -47,7 +47,9 @@
 <div id="up" class="layui-upload" style="text-align: center;display: none ">
     <p style="color: red">只能长传一个文件切是文件类型必须是压缩文件</p><br>
     <div id="test" class="layui-upload">
+
         <button class="layui-btn layui-btn-normal" id="test8" type="button">选择文件</button>
+        <textarea name="" required lay-verify="required" placeholder="备注" class="layui-textarea"></textarea>
         <button class="layui-btn" id="test9" type="button">开始上传</button>
 
         <div class="layui-progress layui-progress-big" lay-filter="demo"  lay-showPercent="yes" style="margin-top: 20px">

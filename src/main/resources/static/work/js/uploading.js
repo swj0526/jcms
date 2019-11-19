@@ -67,7 +67,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             layer.open({
                 btnAlign: 'c'
                 , type: 1
-                , area: ['500px','155px']
+                , area: ['500px','300px']
                 , btn: ''
                 , content: $("#up")
                 , yes: function (index, layero) {

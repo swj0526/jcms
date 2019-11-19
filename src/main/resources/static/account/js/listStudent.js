@@ -11,7 +11,7 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
         , id: 'userTableReload'
         , cols: [[
             {field: 'stuID', title: '学号'},
-            {field: 'name', title: '学生姓名'},
+            {field: 'name', title: '学生姓名', templet:'<div><a href="" class="layui-table-link">{{d.name}}</a></div>'},
             {field: 'major', title: '所属专业'},
             {field: 'grade', title: '所属班级'},
             {field: 'phone', title: '手机号码'},
@@ -73,9 +73,13 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     table.on('tool(test)', function(obj){
         var data = obj.data;
         if(obj.event === 'reset'){
-            layer.msg("该账号的密码重置为123456?", {
-                time: false, //20s后自动关闭
-                btn: ['确定重置密码','取消']
+            layer.open( {
+                type:1,
+                title:"重置密码",
+                content:"<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为123456?</div>",
+                area: ['300px','150px'], //设置宽高
+                btn: ['确定重置密码', '取消'],
+                btnAlign:"c"
             });
         }
     });

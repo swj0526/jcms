@@ -11,6 +11,7 @@
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script id="barDemo" type="text/html">
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">下载</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">查看</a>
 </script>
 </body>
 </html>

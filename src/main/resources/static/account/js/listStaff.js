@@ -16,8 +16,8 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'phone', title: '电话号码'},
             {
                 field: 'role',
-                title: '角色',
-                templet: '#roleDemo'
+                title: '角色'
+               /* templet: '#roleDemo'*/
             },
             {field: 'lockDemo1', title: '是否激活账号', templet: '#checkboxTpl1', unresize: true},
             {fixed: 'right', title: '操作', toolbar: '#barDemo1'}
@@ -26,103 +26,103 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: ' ',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: ' ',
+            role: ' 教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '  ',
+            role: ' 教师,管理员 ',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }, {
             name: "王老师",
             department: '教务部',
             postName: '教务老师',
-            role: '',
+            role: '教师,管理员',
             phone: '18653525596'
         }]
         , page: true
@@ -131,30 +131,33 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     table.on('tool(test1)', function (obj) {
         var data = obj.data;
         if (obj.event === 'reset1') {
-            layer.msg("该账号的密码重置为abcd?", {
-                time: false, //20s后自动关闭
-                btn: ['确定重置密码', '取消']
+            layer.open( {
+                type:1,
+                title:"重置密码",
+                content:"<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为abcd?</div>",
+                area: ['300px','150px'], //设置宽高
+                btn: ['确定重置密码', '取消'],
+                btnAlign:"c"
             });
-        }/*else if(obj.event === 'reset2'){
-            layer.open({
-                type: 1
-                ,title: false //不显示标题栏
-                ,closeBtn: false
-                ,area: '800px;'
-                ,shade: 0.5
-                ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-                ,btn: ['确认设置','取消']
-                ,btnAlign: 'c'
-                ,moveType: 1 //拖拽模式，0或者1
-                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">'+selectRole+'</div>'
-                ,success: function(layero){
-                    var btn = layero.find('.layui-layer-btn');
-                    btn.find('.layui-layer-btn0').attr({
-                        target: '_blank'
-                    });
+        }else if(obj.event === 'reset2'){
+           layer.open({
+             type: 1,
+             title: "设置角色",
+             area: ['720px','350px'], //设置宽高
+             content: $("#roleDemo"),
+                btn: ['确定', '取消'],
+             success: function (index) {
+
+             },
+                yes:function (index) {
+
+                    layer.close(index);
+                },
+                btn2:function () {
+                    alert('取消');
                 }
-            });
-        }*/
+         });
+        }
     });
     var demo1 = xmSelect.render({
         el: '.demo1',
