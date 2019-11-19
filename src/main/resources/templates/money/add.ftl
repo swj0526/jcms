@@ -6,9 +6,13 @@
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
     <script type="text/javascript" src="../layui/layui.js"></script>
     <script type="text/javascript" src="../money/js/111.js"></script>
+    <style>
+        body .layer-ext-myskin .layui-layer-content {
+            overflow: visible;
+        }
+    </style>
 </head>
 <body>
-<div id="aa">
     <fieldset class="layui-elem-field layuimini-search">
         <legend>缴费信息填写</legend>
         <div style="margin: 10px 10px 10px 10px;margin-left:25%">
@@ -55,7 +59,7 @@
                                     <option value="现金">现金</option>
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="ss"
+                            <button type="button" class="layui-btn" id="aaaaaawww"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>
@@ -115,7 +119,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">结束时间</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="Validity" id="test2" type="text"
+                                <input class="layui-input" name="Validity" id="test3" type="text"
                                        placeholder="yyyy-MM-dd">
                             </div>
                         </div>
@@ -127,6 +131,5 @@
             </button>
         </div>
     </fieldset>
-</div>
 </body>
 </html>

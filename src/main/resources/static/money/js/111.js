@@ -13,6 +13,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     laydate.render({
         elem: '#test2'
     });
+    laydate.render({
+        elem: '#test3'
+    });
     $("#ss").click(function () {
         layer.open({
             btnAlign: 'c'
