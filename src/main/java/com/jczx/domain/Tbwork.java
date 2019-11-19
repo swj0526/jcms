@@ -8,5 +8,4 @@ public class Tbwork {
     Integer id;
     String name;//作业名称
     String issuer;//发布人
-    String
 }

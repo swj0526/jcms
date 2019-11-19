@@ -17,9 +17,9 @@ function SetStep(arg){
         stepContainerMar:20,
         nextBtn:'.nextBtn',
         prevBtn:'.prevBtn',
-        steps:['发起','募捐','进行','结束','庆祝'],
+        steps:['详情','一审','二审'],
         //pageClass:'',//分页的类或则id
-        stepCounts:5,//总共的步骤数
+        stepCounts:3,//总共的步骤数
         curStep:1,//当前显示第几页
         animating:false,
         showBtn:true,//是否生成上一步下一步操作按钮
@@ -36,7 +36,7 @@ SetStep.prototype.init=function(arg){
     extend(this.opt,arg);
     this.opt.stepCounts=this.opt.steps.length;
     this.content=$(this.opt.content);
-    this.pageCont=this.content.find(this.opt.pageCont)
+    this.pageCont=this.content.find(this.opt.pageCont);
     var w_con=$(this.content).width();
     var w_li=(w_con-this.opt.stepContainerMar*2)/this.opt.stepCounts/2;
     var stepContainer=this.content.find('.ystep-container');
@@ -49,7 +49,7 @@ SetStep.prototype.init=function(arg){
     var stepButtonHtml =$( "<div class='step-button'><button type='button' class='btn btn-default prevBtn' id='prevBtn' class='prevBtn'>上一步</button>"+
                         "<button type='button' class='btn btn-default nextBtn' id='nextBtn' class='nextBtn'>下一步</button></div>");
     stepP.css('width',w_li*2*(this.opt.stepCounts-1));
-    stepP.find('.ystep-progress-bar').css('width',w_li*2*(this.opt.stepCounts-1))
+    stepP.find('.ystep-progress-bar').css('width',w_li*2*(this.opt.stepCounts-1));
     for(var i=0;i<this.opt.stepCounts;i++){
         if(i==0){
             var _s=$(stepDisc).text(this.opt.steps[i]).addClass('')
@@ -58,17 +58,17 @@ SetStep.prototype.init=function(arg){
         }
         stepsHtml.append(_s);
     }
-    stepsHtml.find('li').css('width','40px').css('marginRight',w_li*2-40)
+    stepsHtml.find('li').css('width','40px').css('marginRight',w_li*2-40);
     stepContainer.append(stepsHtml).append(stepP);
     
-    stepContainer.css('left',(w_con-stepP.width()-this.opt.imgWidth-10-this.opt.stepContainerMar*2)/2)
-    this.content.css('overflow','hidden')
-    this.setProgress(this.stepContainer,this.opt.curStep,this.opt.stepCounts)
+    stepContainer.css('left',(w_con-stepP.width()-this.opt.imgWidth-10-this.opt.stepContainerMar*2)/2);
+    this.content.css('overflow','hidden');
+    this.setProgress(this.stepContainer,this.opt.curStep,this.opt.stepCounts);
     //判断参数 是否显示按钮 并绑定点击事件
     if(this.opt.showBtn){
-        this.content.append(stepButtonHtml)
-        this.prevBtn=this.content.find(this.opt.prevBtn)
-        this.nextBtn=this.content.find(this.opt.nextBtn)
+        this.content.append(stepButtonHtml);
+        this.prevBtn=this.content.find(this.opt.prevBtn);
+        this.nextBtn=this.content.find(this.opt.nextBtn);
         this.prevBtn.on('click',function(){
             // if($(this).hasClass('handleAble')){
             if($(_that).attr('disabled')||_that.opt.animating){
@@ -78,7 +78,7 @@ SetStep.prototype.init=function(arg){
                 _that.opt.curStep--;
                 _that.setProgress(_that.stepContainer,_that.opt.curStep,_that.opt.stepCounts)
             }
-        })
+        });
         this.nextBtn.on('click',function(){
             // if($(this).hasClass('handleAble')){
             if($(_that).attr('disabled')||_that.opt.animating){
@@ -105,7 +105,7 @@ SetStep.prototype.init=function(arg){
         stepsHtml.find('li').css('width','40px').css('marginRight',w_li*2-40)
         stepContainer.css('left',(w_con-stepP.width()-_that.opt.imgWidth-10-_that.opt.stepContainerMar*2)/2)
      })
-}
+};
 //设置进度条
 SetStep.prototype.setProgress=function(n,curIndex,stepsLen){
       var _that=this;
@@ -133,7 +133,7 @@ SetStep.prototype.setProgress=function(n,curIndex,stepsLen){
                 }else if(_j > curIndex){
                   _$m.attr("class","ystep-step-undone");
                 }
-              })
+              });
               if(_that.opt.showBtn){
                   if(curIndex==1){
                       _that.prevBtn.attr('disabled','true')
@@ -153,7 +153,7 @@ SetStep.prototype.setProgress=function(n,curIndex,stepsLen){
         }else{
             return false;
         }
-}
+};
 //改变 分页显示
 SetStep.prototype.checkPage=function(pageCont,curStep,steps){
     for(var i = 1; i <= steps; i++){
@@ -163,4 +163,4 @@ SetStep.prototype.checkPage=function(pageCont,curStep,steps){
           pageCont.find('#page'+i).css("display","none");
         }
     }
-}
+};

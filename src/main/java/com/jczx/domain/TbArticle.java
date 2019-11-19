@@ -1,10 +1,14 @@
 package com.jczx.domain;
 
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
 /**
  * @author 宋家新
  * @create 2019-11-18 21:11
  */
-public class Article {
+@Component
+public class TbArticle  extends Domain {
     private Integer id;
     private String title;//标题
     private String receiver;//接收人
