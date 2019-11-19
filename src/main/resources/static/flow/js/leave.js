@@ -116,7 +116,6 @@ layui.use('table', function () {
             layer.open({
                 type: 1,
                 title: "请假申请",
-                btn:['提交'],
                 skin: "myclass", // 自定样式
                 area: ["100%", "100%"],
                 content: $("#updateOrDelete"),

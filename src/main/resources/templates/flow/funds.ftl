@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <title>经费申请</title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
-    <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../flow/css/ystep.css">
+    <script type="text/javascript" src="../jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../layui/layui.js"></script>
     <script type="text/javascript" src="../flow/js/funds.js"></script>
+    <script type="text/javascript" src=../flow/js/setStep.js></script>
 </head>
 <body>
 <#--条件查询-->
@@ -54,51 +56,62 @@
 <br><br>
 <#--经费申请详情-->
 <div style="display: none" id="updateOrDelete">
-    <form class="layui-form" lay-filter="dataForm" id="dataFor">
-        <div class="layui-form-item" style="display: none">
-            <label class="layui-form-label">n</label>
-            <div class="layui-input-block">
-                <input type="text" name="id" required lay-verify="required" placeholder="id" autocomplete="off"
-                       class="layui-input">
+    <div >
+        <div class="stepCont stepCont1" style="width: 1600px">
+            <!-- 菜单导航显示-->
+            <div class='ystep-container ystep-lg ystep-blue' ></div>
+            <!-- 分页容器-->
+            <div class="pageCont">
+                <div id="page1" class="stepPage">
+                    <table border="1" width="300" height="500" align="center" cellspacing="0">
+                        <caption>学生档案</caption>
+                        <tr align="center">
+                            <td bgcolor="#ededed">姓名</td>
+                            <td colspan="7">张三</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">年级</td>
+                            <td colspan="7">影视一班</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">申请事由</td>
+                            <td colspan="7">团建</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">申请金额</td>
+                            <td colspan="7">3000</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">申请日期</td>
+                            <td colspan="7">2016-10-15</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">开始日期</td>
+                            <td colspan="7">2016-10-18</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">状态</td>
+                            <td colspan="7">拒绝</td>
+                        </tr>
+                        <tr align="center">
+                            <td bgcolor="#ededed">拒绝理由</td>
+                            <td colspan="7">拒绝</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="page2" class="stepPage">
+                    <h1>
+                        page2
+                    </h1>
+                </div>
+                <div id="page3" class="stepPage">
+                    <h1>
+                        page3
+                    </h1>
+                </div>
             </div>
         </div>
-        <table border="1" width="300" height="500" align="center" cellspacing="0">
-            <caption>学生档案</caption>
-            <tr align="center">
-                <td bgcolor="#ededed">姓名</td>
-                <td colspan="7">张三</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">年级</td>
-                <td colspan="7">影视一班</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">申请事由</td>
-                <td colspan="7">团建</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">申请金额</td>
-                <td colspan="7">3000</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">申请日期</td>
-                <td colspan="7">2016-10-15</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">开始日期</td>
-                <td colspan="7">2016-10-18</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">状态</td>
-                <td colspan="7">拒绝</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">拒绝理由</td>
-                <td colspan="7">拒绝</td>
-            </tr>
-        </table>
-
-    </form>
+    </div>
 </div>
 
 <#--添加经费审批-->
@@ -162,6 +175,19 @@
     layui.use('element', function () {
         var element = layui.element;
     });
+</script>
+<script>
+    var step1=new SetStep({
+        content:'.stepCont1',
+        showBtn:false,
+    })
+    var step2=new SetStep({
+        content:'.stepCont2',
+        clickAble:false
+    })
+    var step3=new SetStep({
+        content:'.stepCont3'
+    })
 </script>
 <script id="barDemo" type="text/html">
     <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
