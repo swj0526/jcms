@@ -5,14 +5,18 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 招生信息表
  * @author 于振华
  * @describe
  * @create 2019-11-18 16:27
- * 招生信息表
+ *
  */
 @Component
 public class TbRecruit extends Domain {
     private Integer id;
+    private Integer labelId;//意向标签
+    private Integer recruitDetailID;//招生详情表id
+    private Integer channelId;//渠道表id
     private String name;//招生姓名
     private Boolean sex;//招生的性别
     private String intention;//招生意向
@@ -24,6 +28,30 @@ public class TbRecruit extends Domain {
     private String parPhone;//家长电话;
     private String createTime;//创建时间
     private Integer operatorId;//操作人
+
+    public Integer getLabelId() {
+        return labelId;
+    }
+
+    public void setLabelId(Integer labelId) {
+        this.labelId = labelId;
+    }
+
+    public Integer getRecruitDetailID() {
+        return recruitDetailID;
+    }
+
+    public void setRecruitDetailID(Integer recruitDetailID) {
+        this.recruitDetailID = recruitDetailID;
+    }
+
+    public Integer getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Integer channelId) {
+        this.channelId = channelId;
+    }
 
     public Integer getId() {
         return id;

@@ -4,19 +4,26 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
- * 渠道表
  * @author 于振华
- * @describe
- * @create 2019-11-18 23:32
- *
+ * @describ 招生详情表
+ * @create 2019-11-19 20:26
  */
 @Component
-public class TbChannel extends Domain {
+public class RecruitDetail  extends Domain {
     private Integer id;
-    private String name;//来源渠道名
+    private Integer channelId;//招生渠道表id;
+    private String followTime;//跟进时间
+    private String followState;//跟进状态
     private String createTime;//创建时间
     private Integer operatorId;//操作人
-    private String remark;//备注
+
+    public Integer getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Integer channelId) {
+        this.channelId = channelId;
+    }
 
     public Integer getId() {
         return id;
@@ -26,12 +33,20 @@ public class TbChannel extends Domain {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFollowTime() {
+        return followTime;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFollowTime(String followTime) {
+        this.followTime = followTime;
+    }
+
+    public String getFollowState() {
+        return followState;
+    }
+
+    public void setFollowState(String followState) {
+        this.followState = followState;
     }
 
     public String getCreateTime() {
@@ -48,13 +63,5 @@ public class TbChannel extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 }

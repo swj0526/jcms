@@ -4,8 +4,9 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
- * @author swj
  * @description 日志表
+ * @author swj
+ *
  * @create 2019-11-18 16:25
  */
 @Component

@@ -143,7 +143,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
-            title: "添加跟进学生信息",
+            title: "修改渠道信息",
             skin: 'layui-layer-rim', //加上边框
             area: ['500px'], //设置宽高
             content: $("#recruit"),
@@ -162,7 +162,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     function addStudents() {
         mainIndex = layer.open({
             type: 1,
-            title: "添加跟进学生信息",
+            title: "添加渠道信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['500px'], //设置宽高
             content: $("#recruit"),
