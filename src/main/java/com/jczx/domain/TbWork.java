@@ -15,6 +15,8 @@ public class TbWork extends Domain {
    private  Integer TbWorkListId;//作业列表id
     private String file;//作业文件
     private  Integer score;//分数
+    private Integer operatorId;//操作人id
+    private String createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -54,5 +56,21 @@ public class TbWork extends Domain {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }

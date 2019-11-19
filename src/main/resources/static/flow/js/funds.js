@@ -123,16 +123,19 @@ layui.use('table', function () {
                 layer.close(index);
             });
         }else if(obj.event === 'edit'){
-            layer.prompt({
-                formType: 2
-                ,value: data.email
-                ,content: $("#updateOrDelete")
-            }, function(value, index){
-                obj.update({
-                    email: value
-                });
-                layer.close(index);
+            layer.open({
+                type: 1,
+                title: "经费申请",
+                skin: "myclass", // 自定样式
+                area: ["100%", "100%"],
+                content: $("#updateOrDelete"),
+                success: function (layero, index) {
+                },
+                yes: function () {
+                }
             });
+
+            form.render(); // 动态渲染
         }else if(obj.event === 'revoke'){
             layer.confirm('真的撤销吗', function(index){
                 obj.del();
