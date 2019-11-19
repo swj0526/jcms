@@ -11,9 +11,7 @@ layui.use(['form', 'table', 'jquery','layer'], function () {
             "time":"1990-10-1",
             "theClass": "影视一班",
             "reason": "打架斗殴",
-            "score": 95,
-
-
+            "score": -5
         }],
         cols: [
             [{
