@@ -16,7 +16,7 @@ public class TbChannel extends Domain {
     private String name;//来源渠道名
     private String createTime;//创建时间
     private Integer operatorId;//操作人
-    private String remark;//备注
+
 
     public Integer getId() {
         return id;
@@ -50,11 +50,5 @@ public class TbChannel extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getRemark() {
-        return remark;
-    }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
 }

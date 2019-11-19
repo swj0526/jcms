@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TbRecruit extends Domain {
     private Integer id;
-    private Integer labelId;//意向标签
-    private Integer recruitDetailID;//招生详情表id
+    private Integer labelId;//意向标签表
+    private Integer recruitDetailID;//招生跟进详情表id
     private Integer channelId;//渠道表id
     private String name;//招生姓名
     private Boolean sex;//招生的性别
