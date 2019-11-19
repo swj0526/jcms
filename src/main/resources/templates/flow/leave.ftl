@@ -7,7 +7,8 @@
     <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../layui/layui.js"></script>
     <script type="text/javascript" src="../flow/js/leave.js"></script>
-
+    <script type="text/javascript" src="../layui/config.js"></script>
+    <link rel="stylesheet" href="../layui/extend/steps/style.css">
 </head>
 <body>
 <#--条件查询-->
@@ -17,29 +18,32 @@
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" action="">
                 <div class="layui-inline">
-                    <label class="layui-form-label">关键字</label>
+                    <label class="layui-form-label" style="width:80px">关键字</label>
                     <div class="layui-input-inline">
                         <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">类型</label>
-                    <div class="layui-input-inline">
-                        <select name="modules" lay-search="" lay-verify="required">
+                    <label class="layui-form-label" style="width:80px">类型</label>
+                    <div class="layui-input-inline" style="width:150px">
+                        <select name="modules" lay-search="" lay-verify="required" >
                             <option value="">请选择类型</option>
                             <option value="1">事假</option>
                             <option value="2">病假</option>
                         </select>
                     </div>
                 </div>
-
                 <div class="layui-inline">
-                    <label class="layui-form-label">状态</label>
-                    <div class="layui-input-inline">
+                    <label class="layui-form-label" style="width:80px">状态</label>
+                    <div class="layui-input-inline" style="width:130px">
                         <select name="modules" lay-search="" lay-verify="required">
                             <option value="">所有状态</option>
+                            <option value="1">待审核</option>
+                            <option value="1">已撤销</option>
+                            <option value="1">一审通过</option>
+                            <option value="1">一审拒绝</option>
+                            <option value="1">二审拒绝</option>
                             <option value="1">同意</option>
-                            <option value="2">拒绝</option>
                         </select>
                     </div>
                 </div>
@@ -50,18 +54,60 @@
                     </div>
                 </div>
                 <button class="layui-btn" data-type="reload">查询</button>
-
+                <button id="add" class="layui-btn" data-type="reload" class="layui-btn" type="button">请假申请</button>
             </form>
-            <button id="add" class="layui-btn" data-type="reload">请假申请</button>
         </div>
     </fieldset>
 </div>
 <#--数据表格-->
 <table class="layui-hide" id="test" lay-filter="test"></table>
-<div class="layui-btn-container">
-    <table class="layui-hide" id="test" lay-filter="test"></table>
-</div>
 <br><br>
+<div id="step_demo" class="step-body">
+    <div class="step-header" style="width:80%;overflow: hidden;">
+        <ul>
+            <li>
+                <span class="step-name">填写申请表</span>
+            </li>
+            <li>
+                <span class="step-name">上传资料</span>
+            </li>
+            <li>
+                <span class="step-name">待确认</span>
+            </li>
+            <li>
+                <span class="step-name">已确认</span>
+            </li>
+            <li>
+                <span class="step-name">待受理</span>
+            </li>
+            <li>
+                <span class="step-name">已受理</span>
+            </li>
+            <li>
+                <span class="step-name">预约完成</span>
+            </li>
+            <li>
+                <span class="step-name">签证单已发放</span>
+            </li>
+        </ul>
+    </div>
+    <div class="step-content">
+        <div class="step-list">填写申请表</div>
+        <div class="step-list">上传资料</div>
+        <div class="step-list">待确认</div>
+        <div class="step-list">已确认</div>
+        <div class="step-list">待受理</div>
+        <div class="step-list">已受理</div>
+        <div class="step-list">预约完成</div>
+        <div class="step-list">签证单已发放</div>
+        <div class="step-list">完成</div>
+    </div>
+
+</div>
+
+<button id="preBtn">上一步</button>
+<button id="nextBtn">下一步</button>
+<button id="goBtn">跳转的指定的步骤</button>
 
 <#--请假审批详情-->
 <div style="display: none" id="updateOrDelete">
@@ -72,6 +118,13 @@
                 <input type="text" name="id" required lay-verify="required" placeholder="id" autocomplete="off"
                        class="layui-input">
             </div>
+        </div>
+        <div>
+            <button class="layui-btn layui-btn-radius" type="button" id="id1">1</button>
+            <button class="layui-btn layui-btn-radius" type="button" id="id2">2</button>
+            <button class="layui-btn layui-btn-radius" type="button" id="id3">3</button>
+
+            <button class="layui-btn layui-btn-disabled layui-btn-radius" type="button">禁用按钮</button>
         </div>
         <table border="1" width="300" height="500" align="center" cellspacing="0">
             <caption>学生档案</caption>
@@ -133,22 +186,6 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">专业-班级</label>
-                        <div class="layui-input-inline" lay-verify="required" lay-search="">
-                            <select name="major">
-                                <option value="">请选择专业-班级</option>
-                                <optgroup label="影视专业">
-                                    <option value="">所有影视专业</option>
-                                    <option value="">影视一班</option>
-                                </optgroup>
-                                <optgroup label="美术专业">
-                                    <option value="">所有美术专业</option>
-                                    <option value="">美术一班</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">类型</label>
                         <div class="layui-input-inline">
                             <select name="modules" lay-search="" lay-verify="required">
@@ -183,14 +220,19 @@
     </fieldset>
 </div>
 
+
 <script>
     //JavaScript代码区域
-    layui.use('element', function () {
-        var element = layui.element;
-    });
+    function showpage(page){
+        rendersteps(page-1);
+        $("#step"+page).removeClass("layui-hide").siblings(".layui-step-content").addClass("layui-hide");
+    }
 </script>
 <script id="barDemo" type="text/html">
     <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
+    <a class="layui-btn layui-btn-xs" lay-event="revoke">撤销</a>
+    <a class="layui-btn layui-btn-xs" lay-event="again">重新提交</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 </body>

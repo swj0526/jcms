@@ -18,7 +18,6 @@ layui.use('table', function () {
             }
         });
     });
-
 });
 //日期方法
 layui.use('laydate', function () {
