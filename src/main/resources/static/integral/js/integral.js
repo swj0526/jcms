@@ -52,7 +52,7 @@ layui.use(['form', 'table', 'jquery','layer'], function () {
 $("#add").click(function () {
     layer.open({
         type: 1,
-        area:['720px','350px'],
+        area:['350px','720px'],
         content:$("#aa"),
         btn:'提交'
     });
@@ -60,7 +60,7 @@ $("#add").click(function () {
     $("#points").click(function () {
         layer.open({
             type: 1,
-            area:['720px','350px'],
+            area:['350px','720px'],
             content:$("#aaa"),
             btn:'提交'
         });
