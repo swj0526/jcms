@@ -6,41 +6,19 @@ import org.springframework.stereotype.Component;
 /**
  * @author cjw
  * @create 2019-11-17 12:57
+ * 积分表
  */
 @Component
 public class TbIntegral extends Domain {
     private Integer id;
     private String name;
-    private String time;//时间
+    private String recordTime;//时间
     private String reason;//事由
     private Integer score;//分数，加了多少分，减了多少分
-    private int operatorId;//操作人
+    private Integer operatorId;//操作人
     private String bonusPoints;//加分项
     private String reductionOf;//减分项
-
-    public String getBonusPoints() {
-        return bonusPoints;
-    }
-
-    public void setBonusPoints(String bonusPoints) {
-        this.bonusPoints = bonusPoints;
-    }
-
-    public String getReductionOf() {
-        return reductionOf;
-    }
-
-    public void setReductionOf(String reductionOf) {
-        this.reductionOf = reductionOf;
-    }
-
-    public int getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(int operatorId) {
-        this.operatorId = operatorId;
-    }
+    private String createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -58,12 +36,12 @@ public class TbIntegral extends Domain {
         this.name = name;
     }
 
-    public String getTime() {
-        return time;
+    public String getRecordTime() {
+        return recordTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setRecordTime(String recordTime) {
+        this.recordTime = recordTime;
     }
 
     public String getReason() {
@@ -82,13 +60,35 @@ public class TbIntegral extends Domain {
         this.score = score;
     }
 
-    public Integer getTotalScore() {
-        return totalScore;
+    public Integer getOperatorId() {
+        return operatorId;
     }
 
-    public void setTotalScore(Integer totalScore) {
-        this.totalScore = totalScore;
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
     }
 
-    private Integer totalScore;//总分
+    public String getBonusPoints() {
+        return bonusPoints;
+    }
+
+    public void setBonusPoints(String bonusPoints) {
+        this.bonusPoints = bonusPoints;
+    }
+
+    public String getReductionOf() {
+        return reductionOf;
+    }
+
+    public void setReductionOf(String reductionOf) {
+        this.reductionOf = reductionOf;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 }

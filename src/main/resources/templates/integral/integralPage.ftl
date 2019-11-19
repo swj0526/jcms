@@ -71,13 +71,16 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">选择事由</label>
-                        <div class="layui-inline" style="width: 190px">
-                            <select name="city" lay-verify="">
+                        <div class="layui-inline" style="width: 100px">
+                            <select name="city" lay-verify="" >
                                 <option value="">品学兼优</option>
                                 <option value="010">乐于助人</option>
                                 <option value="021">勤奋好学</option>
                                 <option value="0571">成绩上升</option>
                             </select>
+                        </div>
+                        <div class="layui-inline" style="width: 110px">
+                            <button class="layui-btn">设置</button>
                         </div>
                     </div>
                     <div class="layui-inline">
