@@ -11,16 +11,66 @@ import org.springframework.stereotype.Component;
 @Component
 public class TbLeave  extends Domain {
     private Integer id;
-    private String name;//学生姓名
+    private Integer studentId;//学生姓名
     private String leaveTime; //请假时间
     private String endTime;//结束时间
     private String apply;//申请时间
     private String cause;//请假事由
     private String days;//请假天数
-    private String oneTrial;//一审老师
-    private String oneAdopt;//一审是否通过
-    private String oneReason;//一审意见
-    private String twoTrial;//二审老师
-    private String twoAdopt;//二审是否通过
-    private String twoReason;//二审意见
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getLeaveTime() {
+        return leaveTime;
+    }
+
+    public void setLeaveTime(String leaveTime) {
+        this.leaveTime = leaveTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getApply() {
+        return apply;
+    }
+
+    public void setApply(String apply) {
+        this.apply = apply;
+    }
+
+    public String getCause() {
+        return cause;
+    }
+
+    public void setCause(String cause) {
+        this.cause = cause;
+    }
+
+    public String getDays() {
+        return days;
+    }
+
+    public void setDays(String days) {
+        this.days = days;
+    }
 }
