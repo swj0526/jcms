@@ -4,9 +4,9 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
- * 意向标签表
+ * @describe 意向标签表
  * @author 于振华
- * @describe
+ *
  * @create 2019-11-19 14:14
  *
  */

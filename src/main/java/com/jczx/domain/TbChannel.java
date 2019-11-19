@@ -4,9 +4,9 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
- * 渠道表
+ * @describe 渠道表
  * @author 于振华
- * @describe
+ *
  * @create 2019-11-18 23:32
  *
  */
