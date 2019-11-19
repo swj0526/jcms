@@ -72,7 +72,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">积分管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/integral">积分制度列表</a></dd>
+                    <dd><a  class="add" id="integral_list">查看积分</a></dd>
+                    <dd><a  class="add" id="integral_add">修改积分</a></dd>
                 </dl>
             </li>
 

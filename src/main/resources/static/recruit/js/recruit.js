@@ -81,7 +81,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             [{
                 field: 'name',
                 title: '姓名',
-                templet: '<div><a href="/detail/{{d.name}}" class="layui-table-link">{{d.name}}</a></div>',
+                templet: '<div><a href="/home/main" class="layui-table-link">{{d.name}}</a></div>',
                 width: 80
             },
                 {
@@ -187,7 +187,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     $("#upload").click(function () {
         layer.open({
             type: 1,
-            title: "添加跟进学生信息",
+            title: "导入跟进学生信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['730px', '500px'], //设置宽高
             content: $("#download1"),
