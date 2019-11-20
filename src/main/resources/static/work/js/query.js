@@ -8,7 +8,6 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
         elem: '#test'
         /*, url: '/query'
         , id: 'userTableReload'*/
-        , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
         , defaultToolbar: []
         , title: '用户数据表'
         ,cols: [[
@@ -20,6 +19,7 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
             ,{field:'endTime', title:'截止日期时间'}
             ,{field:'content', title:'内容'}
             ,{field:'submitTheNumber', title:'提交人数'}
+            ,{field:'submitTheNumber', title:'总人数'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
         ]]
         , data: [{

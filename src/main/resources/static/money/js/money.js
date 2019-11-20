@@ -12,26 +12,29 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , cols: [[
                 {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'name', title: '姓名'}
-                , {field: 'grade', title: '年级'}
+                , {field: 'class', title: '学年'}
                 , {field: 'paymentType', title: '缴费类型'}
                 , {field: 'paymentMethod', title: '缴费方式'}
-                , {field: 'money', title: '金额'}
+                , {field: 'money', title: '总金额'}
+                , {field: 'instalment', title: '是否分期'}
                 , {field: 'date', title: '缴费日期'}
-                , {field: 'instalment', title: '是否一次性缴费'}
                 , {field: 'discount', title: '优惠金额'}
-                , {field: 'Validity', title: '费用有效期'}
+                , {field: 'money', title: '金额'}
+                , {field: 'money', title: '总计'}
+                , {field: 'Validity', title: '开始时间'}
+                , {field: 'Validity', title: '结束时间'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
             ]]
             , page: true
             , data: [{
                 id: "10001"
                 , name: '张三'
-                , grade: '一年级'
-                , type: '学费'
+                , class: '19学年'
+                , paymentType: '学费'
                 , money: "3000"
                 , date: "2019-11-14"
                 , paymentMethod: "支付宝"
-                , instalment: "是"
+                , instalment: "否"
                 , discount: "0"
                 , Validity: "2020-11-14"
             }]
