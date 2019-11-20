@@ -14,10 +14,8 @@ import java.util.Date;
 public class TbTeacher extends Domain {
     private Integer id;
     private String name;
-    private Date birthDate;//出生日期
-    private Integer age;//年龄
+    private  Integer majorId;//班级
     private String Phone;//手机号
-    private String card;//身份证
 
     public Integer getId() {
         return id;
@@ -35,20 +33,12 @@ public class TbTeacher extends Domain {
         this.name = name;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Integer getMajorId() {
+        return majorId;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setMajorId(Integer majorId) {
+        this.majorId = majorId;
     }
 
     public String getPhone() {
@@ -57,13 +47,5 @@ public class TbTeacher extends Domain {
 
     public void setPhone(String phone) {
         Phone = phone;
-    }
-
-    public String getCard() {
-        return card;
-    }
-
-    public void setCard(String card) {
-        this.card = card;
     }
 }

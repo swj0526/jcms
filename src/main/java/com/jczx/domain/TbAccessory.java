@@ -13,7 +13,7 @@ import java.util.Date;
 @Component
 public class TbAccessory extends Domain {
     private Integer id;
-    private String URl;
+    private String URL;
     private Integer operatorId;//操作人id
     private Date createTime;//创建时间
 
@@ -26,11 +26,11 @@ public class TbAccessory extends Domain {
     }
 
     public String getURl() {
-        return URl;
+        return URL;
     }
 
     public void setURl(String URl) {
-        this.URl = URl;
+        this.URL = URl;
     }
 
     public Integer getOperatorId() {

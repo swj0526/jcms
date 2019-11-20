@@ -12,17 +12,19 @@ import java.util.Date;
  *
  */
 @Component
-public class TbHomeWork extends Domain {
+public class TbHomework extends Domain {
     private Integer id;
     private String name;//作业名称
     private String teacherId;//发布人
     private Integer classId;//年级
     private Date endTime;//截止日期
     private String content;//内容
-    private Boolean enclosure;//是否有附件
-    private Integer submitTheNumber;//提交人数
-    private Integer headcount;//总人数
-    private Integer operatorId;//操作人id
+    private Boolean hasEnclosure;//是否有附件
+    private Integer submitCount;//提交人数
+    private String submitIds;//提交人
+    private String notSubmitIds;//未提交人
+    private Integer totalCount;//总人数
+    //private Integer operatorId;//操作人id
     private Date createTime;//创建时间
 
     public Integer getId() {
@@ -73,36 +75,44 @@ public class TbHomeWork extends Domain {
         this.content = content;
     }
 
-    public Boolean getEnclosure() {
-        return enclosure;
+    public Boolean getHasEnclosure() {
+        return hasEnclosure;
     }
 
-    public void setEnclosure(Boolean enclosure) {
-        this.enclosure = enclosure;
+    public void setHasEnclosure(Boolean hasEnclosure) {
+        this.hasEnclosure = hasEnclosure;
     }
 
-    public Integer getSubmitTheNumber() {
-        return submitTheNumber;
+    public Integer getSubmitCount() {
+        return submitCount;
     }
 
-    public void setSubmitTheNumber(Integer submitTheNumber) {
-        this.submitTheNumber = submitTheNumber;
+    public void setSubmitCount(Integer submitCount) {
+        this.submitCount = submitCount;
     }
 
-    public Integer getHeadcount() {
-        return headcount;
+    public String getSubmitIds() {
+        return submitIds;
     }
 
-    public void setHeadcount(Integer headcount) {
-        this.headcount = headcount;
+    public void setSubmitIds(String submitIds) {
+        this.submitIds = submitIds;
     }
 
-    public Integer getOperatorId() {
-        return operatorId;
+    public String getNotSubmitIds() {
+        return notSubmitIds;
     }
 
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
+    public void setNotSubmitIds(String notSubmitIds) {
+        this.notSubmitIds = notSubmitIds;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 
     public Date getCreateTime() {

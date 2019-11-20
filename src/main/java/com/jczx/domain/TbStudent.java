@@ -15,43 +15,49 @@ import java.util.Date;
 @Component
 public class TbStudent extends Domain {
     @NotCreate
-    public static final int STATE_noEntrance=0;
+    public static final int STATE_NOT_ENTRANCE=0;//未入学
     @NotCreate
-    public static final int STATE_entrance=1;
-
+    public static final int STATE_ENTRANCE=1;//入学
+    @NotCreate
+    public static final int STATE_GRADUATE=3;//毕业
     private Integer id;
+    private Integer majorId;//班级id
     private String name;//姓名
-    private Integer gender;//性别
+    private Integer sex;//性别
     private Integer age;//年龄
     private String address;//家庭住址
     private String nativePlace;//籍贯
-    private String contact;//联系方式
     private String bloodType;//血型
     private Date createTime;//操作时间
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
-    private String theClass;//班级//
     private Integer operatorId;//操作人
     private String motherPhone;//母亲联系方式
     private String fatherPhone;//父亲联系方式
     private String emergencyPhone;//应急联系方式
-    //private Integer labelIds;//意向标签表
+    private String labelIds;//意向标签表
     private Integer channelId;//渠道表id
     private String intention;//招生意向
     private Date birthDate;//出生年月
     private String card;//身份证
-
-    public String getCard() {
-        return card;
-    }
-
-    public void setCard(String card) {
-        this.card = card;
-    }
-
     private String school;//学校
     private String stuPhone;//学生电话
     private String qq;//qq号
+    private String weChat;//微信
+    private String parPhone;//家长电话;
+
+    public static int getStateNotEntrance() {
+        return STATE_NOT_ENTRANCE;
+    }
+
+    public static int getStateEntrance() {
+        return STATE_ENTRANCE;
+    }
+
+    public static int getStateGraduate() {
+        return STATE_GRADUATE;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -68,12 +74,12 @@ public class TbStudent extends Domain {
         this.name = name;
     }
 
-    public Integer getGender() {
-        return gender;
+    public Integer getSex() {
+        return sex;
     }
 
-    public void setGender(Integer gender) {
-        this.gender = gender;
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public Integer getAge() {
@@ -98,14 +104,6 @@ public class TbStudent extends Domain {
 
     public void setNativePlace(String nativePlace) {
         this.nativePlace = nativePlace;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
     }
 
     public String getBloodType() {
@@ -140,13 +138,6 @@ public class TbStudent extends Domain {
         this.state = state;
     }
 
-    public String getTheClass() {
-        return theClass;
-    }
-
-    public void setTheClass(String theClass) {
-        this.theClass = theClass;
-    }
 
     public Integer getOperatorId() {
         return operatorId;
@@ -204,6 +195,14 @@ public class TbStudent extends Domain {
         this.birthDate = birthDate;
     }
 
+    public String getCard() {
+        return card;
+    }
+
+    public void setCard(String card) {
+        this.card = card;
+    }
+
     public String getSchool() {
         return school;
     }
@@ -244,7 +243,19 @@ public class TbStudent extends Domain {
         this.parPhone = parPhone;
     }
 
-    private String weChat;//微信
-    private String parPhone;//家长电话;
+    public String getLabelIds() {
+        return labelIds;
+    }
 
+    public void setLabelIds(String labelIds) {
+        this.labelIds = labelIds;
+    }
+
+    public Integer getMajorId() {
+        return majorId;
+    }
+
+    public void setMajorId(Integer majorId) {
+        this.majorId = majorId;
+    }
 }

@@ -57,6 +57,12 @@
                 <input type="text" name="username" autocomplete="off" class="layui-input">
             </div>
         </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="city" autocomplete="off" class="layui-input" id="t1">
+                </div>
+            </div>
         <div class="layui-inline">
             <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
         </div>
@@ -114,8 +120,13 @@
 </div>
 
 <script>
-    layui.use('table', function () {
-        var table = layui.table;
+    layui.use(['form', 'table', 'laydate'], function () {
+        var table = layui.table,
+        laydate = layui.laydate;
+        laydate.render({
+            elem: '#t1' //指定元素
+            , range: true
+        });
 
         //展示已知数据
         table.render({
@@ -123,6 +134,7 @@
             , cols: [[ //标题栏
                 {field: 'id', title: '渠道', width: 180, sort: true}
                 , {field: 'username', title: '人数', width: 180}
+                , {field: 'username', title: '百分比', width: 180}
 
                 , {field: 'sex', title: '男', width: 180}
                 , {field: 'sex', title: '女', width: 180}

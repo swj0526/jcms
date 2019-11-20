@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * @description 角色类
  * @author 孙文举
@@ -15,7 +17,7 @@ public class TbRole extends Domain {
     private String remark;//角色备注
     private String functionIds;//权限列表
     private Integer operatorId;//操作人
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -57,11 +59,11 @@ public class TbRole extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

@@ -162,13 +162,10 @@
                             <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                         <div class="layui-btn-group" >
-                            <button class="layui-btn data-add-btn"type="button">添加学生信息</button>
-                            <button class="layui-btn layui-btn-warm "type="button" id="download">导出学生信息</button>
-                            <button class="layui-btn layui-btn-warm "type="button" id="upload">导入学生信息</button>
+                            <button class="layui-btn data-add-btn"type="button">添加</button>
+                            <button class="layui-btn layui-btn-warm "type="button" id="download">导出</button>
+                            <button class="layui-btn layui-btn-warm "type="button" id="upload">导入</button>
                         </div>
-
-
-
                 </form>
 
             </div>

@@ -12,20 +12,22 @@ import java.util.Date;
  * @create 2019-11-19 13:14
  */
 @Component
-public class TbPayment extends Domain {
+public class TbPayBill extends Domain {
     private Integer id;
+    private Integer parentId;//关联上次交费数据id
     private Integer studentId;//学生id
     private Integer dictionariesId;//缴费类型
-    private Integer totalAmount;//总金额
-    private Integer payableAccount;//金额
+    private Integer totalAmount;//应付金额
+    private Integer payableAmount;//金额
     private Date paymentDate;//缴费日期
     private Boolean instalment;//是否分期
     private Integer discountAmount;//优惠金额
-    private Integer paidAmount;//总计
+    private Integer paidAmount;//实付金额
     private Date startTime;//开始时间
     private Date entTime;//结束时间
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
+    private String remark;//备注
 
     public Integer getId() {
         return id;
@@ -33,6 +35,14 @@ public class TbPayment extends Domain {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public Integer getStudentId() {
@@ -59,12 +69,12 @@ public class TbPayment extends Domain {
         this.totalAmount = totalAmount;
     }
 
-    public Integer getPayableAccount() {
-        return payableAccount;
+    public Integer getPayableAmount() {
+        return payableAmount;
     }
 
-    public void setPayableAccount(Integer payableAccount) {
-        this.payableAccount = payableAccount;
+    public void setPayableAmount(Integer payableAmount) {
+        this.payableAmount = payableAmount;
     }
 
     public Date getPaymentDate() {
@@ -129,5 +139,13 @@ public class TbPayment extends Domain {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
