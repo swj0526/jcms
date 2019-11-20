@@ -10,7 +10,17 @@ layui.use('table', function () {
             , {field: 'apply', title: '申请日期',align: 'center'}
             , {field: 'leaveTime', title: '请假日期',align: 'center'}
             , {field: 'cause', title: '请假事由',align: 'center'}
-            , {field: 'state', title: '状态',align: 'center'}
+            , {field: 'state', title: '状态',align: 'center',templet: function(d) {
+                if (d.state == "1"){
+                    return '待审批';
+                }
+                if (d.state == "2"){
+                    return '已撤销';
+                }
+                if (d.state == "3"){
+                    return '查看详情';
+                }
+                }}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center',width:300}
         ]]
         , data: [{
@@ -79,6 +89,7 @@ layui.use('table', function () {
         }]
         , page: true
     });
+
 
     var form = layui.form;
     var layer = layui.layer;

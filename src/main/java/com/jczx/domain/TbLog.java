@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @description 日志表
- * @author swj
- *
+ * @author 孙文举
  * @create 2019-11-18 16:25
  */
 @Component

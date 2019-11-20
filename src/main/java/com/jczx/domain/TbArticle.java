@@ -19,7 +19,6 @@ public class TbArticle  extends Domain {
     private String total;//应读
     private boolean enclosure;//是否有上传文件
     private Integer operatorId;//操作人
-    private Integer type;//类型
     private static final Integer TYPE_ARTICLE=1;//类型常量
 
     public Integer getId() {
@@ -92,14 +91,6 @@ public class TbArticle  extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     public static Integer getTypeArticle() {

@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @description 用户表,用来登录跟盘算权限的
- * @author swj
- *
+ * @author 孙文举
  * @create 2019-11-18 16:45
  */
 @Component
