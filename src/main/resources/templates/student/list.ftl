@@ -12,8 +12,11 @@
     <script src="/student/js/list.js"></script>
 </head>
 <body>
-<div class="layui-tab" lay-tilter="demo">
+<div class="layui-tab layui-tab-brief" lay-filter="studentName" lay-allowClose="true">
     <ul class="layui-tab-title"></ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item">a</div>
+    </div>
 </div>
 
 <div id="aaa" style="display: none">

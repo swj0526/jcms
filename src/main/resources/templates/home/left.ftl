@@ -14,6 +14,7 @@
                 <a href="javascript:;">信息管理</a>
                 <dl class="layui-nav-child">
                     <dd><a  class="add" id="student_list">学生档案管理</a></dd>
+                    <dd><a  class="add" id="">专业管理</a></dd>
                     <dd><a  class="add" id="">教职工档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
                     <dd><a class="add" id="recruit_follow">来源渠道管理</a></dd>

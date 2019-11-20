@@ -15,9 +15,9 @@ import java.util.Date;
 @Component
 public class TbStudent extends Domain {
     @NotCreate
-    public static final int STATE_noEntrance=0;
+    public static final int STATE_noEntrance=0;//未入学
     @NotCreate
-    public static final int STATE_entrance=1;
+    public static final int STATE_entrance=1;//入学
 
     private Integer id;
     private String name;//姓名

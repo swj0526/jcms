@@ -186,9 +186,9 @@ layui.use(['form', 'table', 'laydate', 'layer','element'], function () {
     $(".info").click(function () {
         var name=$(this).attr("value");
         alert(name)
-        element.tabAdd('demo', {
+        element.tabAdd('studentName', {
             title: name
-            ,content: '选项卡的内容' //支持传入html
+            ,content: $("#aaa") //支持传入html
             ,id: '选项卡标题的lay-id属性值'
         });
     });

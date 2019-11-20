@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * 专业表
  * @author cjw
- * @create 2019-11-20 14:51
+ * @create 2019-11-20 14:511
  */
 @Component
 public class TbProfessional extends Domain {
