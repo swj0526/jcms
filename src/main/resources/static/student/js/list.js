@@ -188,5 +188,14 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
             }
         })
     });
+    $("#import").click(function () {
+        alert(1)
+        layer.open({
+            type: 1,
+            title:"添加学生信息",
+            content: $("#importForm"),
+            btn:"提交"
+        })
+    });
 });
 

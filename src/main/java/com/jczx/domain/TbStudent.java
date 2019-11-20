@@ -4,9 +4,10 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 学生表
  * @author cjw
  * @create 2019-11-17 12:52
- * 学生表
+ *
  */
 @Component
 public class TbStudent extends Domain {
@@ -19,7 +20,7 @@ public class TbStudent extends Domain {
     private String nativePlace;//籍贯
     private String contact;//联系方式
     private String bloodType;//血型
-    private String admissionTime;//入学时间
+    private String createTime;//操作时间
     private String graduationTime;//毕业时间
     private Integer state;//状态
     private String theClass;//班级
@@ -97,12 +98,12 @@ public class TbStudent extends Domain {
         this.bloodType = bloodType;
     }
 
-    public String getAdmissionTime() {
-        return admissionTime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setAdmissionTime(String admissionTime) {
-        this.admissionTime = admissionTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getGraduationTime() {

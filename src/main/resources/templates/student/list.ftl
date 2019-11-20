@@ -79,6 +79,11 @@
     </fieldset>
 </div>
 
+<div style="display: none" id="importForm" >
+    <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传</blockquote>
+    <button class="layui-btn layui-btn-danger">下载文件</button>
+    <button class="layui-btn ">上传文件</button>
+</div>
 <div class="layuimini-container">
     <div class="layuimini-main">
 
@@ -106,7 +111,7 @@
                         </div>
                         <div class="layui-btn-group">
                             <button type="button" class="layui-btn" id="add">添加</button>
-                            <button type="button" class="layui-btn ">导入</button>
+                            <button type="button" class="layui-btn " id="import">导入</button>
                             <button type="button" class="layui-btn">导出</button>
                         </div>
                     </div>
