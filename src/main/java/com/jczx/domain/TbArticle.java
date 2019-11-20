@@ -1,7 +1,10 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 /**
  * 发布文章
@@ -10,16 +13,23 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class TbArticle  extends Domain {
+    @NotCreate
+    private static final int TYPE_ARTICLE=1;//类型常量
     private Integer id;
     private String title;//标题
-    private String receiverRolIds;//接收人
+    private String receiverRoleIds;//接收人,长度40够用
     private String content;//内容
-    private byte createTime;//发布时间
-    private String read;//已读
-    private String total;//应读
-    private boolean enclosure;//是否有上传文件
+    private Date createTime;//发布时间
+    private Integer read;//已读数
+    private Integer total;//应读数
+    private String readIds;//已读
+    private String totalIds;//应读
+    private Boolean hasEnclosure;//是否有上传文件
     private Integer operatorId;//操作人
-    private static final Integer TYPE_ARTICLE=1;//类型常量
+
+    public static int getTypeArticle() {
+        return TYPE_ARTICLE;
+    }
 
     public Integer getId() {
         return id;
@@ -37,12 +47,12 @@ public class TbArticle  extends Domain {
         this.title = title;
     }
 
-    public String getReceiverRolIds() {
-        return receiverRolIds;
+    public String getReceiverRoleIds() {
+        return receiverRoleIds;
     }
 
-    public void setReceiverRolIds(String receiverRolIds) {
-        this.receiverRolIds = receiverRolIds;
+    public void setReceiverRoleIds(String receiverRoleIds) {
+        this.receiverRoleIds = receiverRoleIds;
     }
 
     public String getContent() {
@@ -53,36 +63,52 @@ public class TbArticle  extends Domain {
         this.content = content;
     }
 
-    public byte getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(byte createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getRead() {
+    public Integer getRead() {
         return read;
     }
 
-    public void setRead(String read) {
+    public void setRead(Integer read) {
         this.read = read;
     }
 
-    public String getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 
-    public boolean isEnclosure() {
-        return enclosure;
+    public String getReadIds() {
+        return readIds;
     }
 
-    public void setEnclosure(boolean enclosure) {
-        this.enclosure = enclosure;
+    public void setReadIds(String readIds) {
+        this.readIds = readIds;
+    }
+
+    public String getTotalIds() {
+        return totalIds;
+    }
+
+    public void setTotalIds(String totalIds) {
+        this.totalIds = totalIds;
+    }
+
+    public Boolean getHasEnclosure() {
+        return hasEnclosure;
+    }
+
+    public void setHasEnclosure(Boolean hasEnclosure) {
+        this.hasEnclosure = hasEnclosure;
     }
 
     public Integer getOperatorId() {
@@ -91,9 +117,5 @@ public class TbArticle  extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
-    }
-
-    public static Integer getTypeArticle() {
-        return TYPE_ARTICLE;
     }
 }

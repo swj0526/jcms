@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * @description 日志表
  * @author 孙文举
@@ -14,7 +16,7 @@ public class TbLog  extends Domain {
     private Integer type;//操作类型 1.增加 2.删除 3.修改
     private String content; //操作内容
     private Integer operatorId;//操作人
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -48,11 +50,11 @@ public class TbLog  extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

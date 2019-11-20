@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * @description 用户表,用来登录跟盘算权限的
  * @author 孙文举
@@ -16,7 +18,7 @@ public class TbUser  extends Domain {
     private String phone;//手机号码,登录时的用户名
     private String password;//密码
     private Integer operatorId;//操作人
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -66,11 +68,11 @@ public class TbUser  extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 学生作业上传表
  * @author 丛枭钰
@@ -13,11 +15,11 @@ import org.springframework.stereotype.Component;
 public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
-    private Integer workListId;//作业列表id
-    private String fileUrl;//作业文件地址
+    private Integer workId;//作业id
+    private Boolean hasEnclosure;//是否有附件
     private Integer score;//分数
     private Integer operatorId;//操作人id
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -27,28 +29,28 @@ public class TbStudentWork extends Domain {
         this.id = id;
     }
 
-    public Integer getTbStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setTbStudentId(Integer tbStudentId) {
-        studentId = tbStudentId;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
-    public Integer getTbWorkListId() {
-        return workListId;
+    public Integer getWorkId() {
+        return workId;
     }
 
-    public void setTbWorkListId(Integer tbWorkListId) {
-        workListId = tbWorkListId;
+    public void setWorkId(Integer workId) {
+        this.workId = workId;
     }
 
-    public String getFileUrl() {
-        return fileUrl;
+    public Boolean getHasEnclosure() {
+        return hasEnclosure;
     }
 
-    public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl;
+    public void setHasEnclosure(Boolean hasEnclosure) {
+        this.hasEnclosure = hasEnclosure;
     }
 
     public Integer getScore() {
@@ -67,11 +69,11 @@ public class TbStudentWork extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

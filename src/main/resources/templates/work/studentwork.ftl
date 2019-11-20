@@ -10,21 +10,28 @@
 <body>
 <div id="aa">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>作业管理</legend>
         <div style="margin: 10px 10px 10px 10px;">
             <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFor">
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">作业内容</label>
-                    <div class="layui-input-block">
-                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                <fieldset class="layui-elem-field layuimini-search">
+                    <legend>作业内容</legend>
+                    <div style="margin: 10px 10px 10px 10px;">
+                        <div>
+                            <p>作业内容</p>
+                        </div>
                     </div>
-                </div>
+                </fieldset>
                 <fieldset class="layui-elem-field layuimini-search">
                     <legend>作业样式展示</legend>
                     <div style="margin: 10px 10px 10px 10px;">
                         <img src="../work/img/1.png" style="width: 100px;height: 100px">
                     </div>
                 </fieldset>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+                    </div>
+                </div>
             </form>
             <div class="layui-upload" id="up" style="text-align: center">
                 <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
@@ -41,7 +48,6 @@
                         <tbody id="demoList"></tbody>
                     </table>
                 </div>
-                <textarea name="" required lay-verify="required" placeholder="备注" class="layui-textarea" style="height: 100px"></textarea>
                 <button class="layui-btn" id="testListAction" type="button">开始上传</button>
                 <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="yes"
                      style="margin-top: 20px">

@@ -3,18 +3,20 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
- * 积分表
- * @author cjw
+ * 学生积分列表
+ * @author 池炯武
  * @create 2019-11-17 12:57
  *
  */
 @Component
 public class TbIntegral extends Domain {
     private Integer id;
-    private String recordTime;//时间
+    private Date recordTime;//事情发生时间
     private Integer operatorId;//操作人
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
     private Integer studentId;// 学生id
     private Integer totalScore;//总分
 
@@ -26,12 +28,11 @@ public class TbIntegral extends Domain {
         this.id = id;
     }
 
-
-    public String getRecordTime() {
+    public Date getRecordTime() {
         return recordTime;
     }
 
-    public void setRecordTime(String recordTime) {
+    public void setRecordTime(Date recordTime) {
         this.recordTime = recordTime;
     }
 
@@ -43,17 +44,20 @@ public class TbIntegral extends Domain {
         this.operatorId = operatorId;
     }
 
-
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     public Integer getStudentId() {
         return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
     public Integer getTotalScore() {
@@ -62,9 +66,5 @@ public class TbIntegral extends Domain {
 
     public void setTotalScore(Integer totalScore) {
         this.totalScore = totalScore;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
     }
 }

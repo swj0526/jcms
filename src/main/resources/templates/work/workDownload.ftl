@@ -18,15 +18,15 @@
                         <div class="layui-inline">
                             <label class="layui-form-label" style="padding-left: 0px">提交时间</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="date" id="test1" type="text" disabled
+                                <input style="border: 0" class="layui-input" name="date" id="test1" type="text" disabled
                                        value="2019-11-19:21:41">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label" style="padding-left: 0px">分数</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="date" id="test1" type="text" disabled
-                                       value="2019-11-19:21:41">
+                                <input style="border: 0" class="layui-input" name="date" id="test1" type="text" disabled
+                                       value="100分">
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label" style="padding-left: 0px">学生班级</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="date" id="test1" type="text" disabled value="艺术一班">
+                                <input style="border: 0" class="layui-input" name="date" id="test1" type="text" disabled value="艺术一班">
                             </div>
                         </div>
                         <div class="layui-inline">
