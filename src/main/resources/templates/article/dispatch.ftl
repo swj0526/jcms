@@ -24,17 +24,6 @@
 		      <input name="like[read]" title="学生" type="checkbox" >
 		      <input name="like[game]" title="管理员" type="checkbox">
 		    </div>
-			  <div class="layui-inline">
-				  <label class="layui-form-label">类型</label>
-				  <div class="layui-input-inline">
-					  <select name="modules" lay-search="" lay-verify="required">
-						  <option value="">请选择类型</option>
-						  <option value="1">公告</option>
-						  <option value="2">通知</option>
-					  </select>
-				  </div>
-			  </div>
-
 		  </div>
 		  
 		  <div class="layui-form-item layui-form-text">

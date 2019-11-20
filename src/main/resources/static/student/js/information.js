@@ -44,5 +44,19 @@ layui.use(['element','jquery','table'], function(){
             ,{field:'time',  title: '时间'}
         ]]
     });
+    table.render({
+        elem: '#leaveInformation',
+        data: [{
+            "leaveTime": "2019-10-1-21.15",
+            "overTime": "2019-10-2-21.15",
+            "reason": "有事"
+        }]
+        ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+        ,cols: [[
+            {field:'leaveTime', title: '请假时间'}
+            ,{field:'overTime',  title: '截止时间'}
+            ,{field:'reason',  title: '事由'}
+        ]]
+    });
 
 });

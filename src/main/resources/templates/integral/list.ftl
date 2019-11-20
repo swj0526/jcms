@@ -16,7 +16,6 @@
         <div class="layuimini-main">
 
             <fieldset class="layui-elem-field layuimini-search">
-                <legend>搜索信息</legend>
                 <div style="margin: 10px 10px 10px 10px">
                     <form class="layui-form layui-form-pane" action="">
                         <div class="layui-form-item">
@@ -60,18 +59,7 @@
                 </div>
             </fieldset>
 <div id="table" style="display: none">
-    <table border="1" style="width: 100%">
-        <tr>
-            <th>时间</th>
-            <th>事由</th>
-            <th>分数</th>
-        </tr>
-        <tr>
-            <td>2019-10-4</td>
-            <td>打架斗殴</td>
-            <td>-5</td>
-        </tr>
-    </table>
+    <table class="layui-hide" id="test"></table>
 </div>
 
             <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>

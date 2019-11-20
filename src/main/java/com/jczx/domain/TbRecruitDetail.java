@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @create 2019-11-19 20:26
  */
 @Component
-public class RecruitDetail  extends Domain {
+public class TbRecruitDetail extends Domain {
     private Integer id;
    // private Integer channelId;//招生渠道表id;
     private String followTime;//跟进时间

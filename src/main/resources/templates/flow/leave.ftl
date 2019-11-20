@@ -24,16 +24,6 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label" style="width:80px">类型</label>
-                    <div class="layui-input-inline" style="width:150px">
-                        <select name="modules" lay-search="" lay-verify="required" >
-                            <option value="">请选择类型</option>
-                            <option value="1">事假</option>
-                            <option value="2">病假</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-inline">
                     <label class="layui-form-label" style="width:80px">状态</label>
                     <div class="layui-input-inline" style="width:130px">
                         <select name="modules" lay-search="" lay-verify="required">
@@ -144,23 +134,12 @@
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" action="">
                 <div class="layui-form-item">
-
-                    <div class="layui-form-item">
+                    <div class="layui-inline">
                         <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
                             <input type="text" name="title" required lay-verify="required" placeholder="请输入学生姓名"
                                    autocomplete="off"
                                    class="layui-input" id="xname">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">类型</label>
-                        <div class="layui-input-inline">
-                            <select name="modules" lay-search="" lay-verify="required">
-                                <option value="">所有状态</option>
-                                <option value="1">事假</option>
-                                <option value="2">病假</option>
-                            </select>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -175,7 +154,7 @@
                             <input class="layui-input" id="test7" type="text" placeholder="yyyy-MM-dd HH:mm:ss">
                         </div>
                     </div>
-                    <div class="layui-form-item layui-form-text">
+                    <div class="layui-form-item layui-form-text" style="width: 945px">
                         <label class="layui-form-label">请假事由</label>
                         <div class="layui-input-block">
                             <textarea class="layui-textarea" name="title" placeholder="请输入请假事由"></textarea>
@@ -199,11 +178,11 @@
     var step1=new SetStep({
         content:'.stepCont1',
         showBtn:false,
-    })
+    });
     var step2=new SetStep({
         content:'.stepCont2',
         clickAble:false
-    })
+    });
     var step3=new SetStep({
         content:'.stepCont3'
     })
@@ -221,6 +200,5 @@
     {{# } }}
 
 </script>
-
 </body>
 </html>

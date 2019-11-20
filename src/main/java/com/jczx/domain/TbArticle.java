@@ -12,14 +12,15 @@ import org.springframework.stereotype.Component;
 public class TbArticle  extends Domain {
     private Integer id;
     private String title;//标题
-    private String receiver;//接收人
-    private String type;//类型
-    private String publisher;//发布人
+    private String receiverRolIds;//接收人
     private String content;//内容
-    private String createTime;//发布时间
-    private String number;//查看人数
-    private boolean fileUrl;//是否有上传文件
+    private byte createTime;//发布时间
+    private String read;//已读
+    private String total;//应读
+    private boolean enclosure;//是否有上传文件
     private Integer operatorId;//操作人
+    private Integer type;//类型
+    private static final Integer TYPE_ARTICLE=1;//类型常量
 
     public Integer getId() {
         return id;
@@ -37,28 +38,12 @@ public class TbArticle  extends Domain {
         this.title = title;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public String getReceiverRolIds() {
+        return receiverRolIds;
     }
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setReceiverRolIds(String receiverRolIds) {
+        this.receiverRolIds = receiverRolIds;
     }
 
     public String getContent() {
@@ -69,28 +54,36 @@ public class TbArticle  extends Domain {
         this.content = content;
     }
 
-    public String getCreateTime() {
+    public byte getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(byte createTime) {
         this.createTime = createTime;
     }
 
-    public String getNumber() {
-        return number;
+    public String getRead() {
+        return read;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setRead(String read) {
+        this.read = read;
     }
 
-    public boolean isFileUrl() {
-        return fileUrl;
+    public String getTotal() {
+        return total;
     }
 
-    public void setFileUrl(boolean fileUrl) {
-        this.fileUrl = fileUrl;
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public boolean isEnclosure() {
+        return enclosure;
+    }
+
+    public void setEnclosure(boolean enclosure) {
+        this.enclosure = enclosure;
     }
 
     public Integer getOperatorId() {
@@ -99,5 +92,17 @@ public class TbArticle  extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public static Integer getTypeArticle() {
+        return TYPE_ARTICLE;
     }
 }

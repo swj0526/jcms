@@ -91,7 +91,7 @@ layui.use('table', function () {
             title: "请假申请",
             btn:['提交'],
             skin: "myclass", // 自定样式
-            area: ["400px", "650px"],
+            area: ["1000px", "450px"],
             content: $("#aaa"),
 
             success: function (layero, index) {

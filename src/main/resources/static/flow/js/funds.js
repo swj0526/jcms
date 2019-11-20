@@ -99,8 +99,9 @@ layui.use('table', function () {
         layer.open({
             type: 1,
             title: "学生录入",
+            btn:['提交'],
             skin: "myclass", // 自定样式
-            area: ["400px", "600px"],
+            area: ["1330px", "500px"],
             content: $("#aaa"),
 
             success: function (layero, index) {

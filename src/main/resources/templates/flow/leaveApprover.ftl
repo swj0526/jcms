@@ -25,16 +25,6 @@
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">类型</label>
-            <div class="layui-input-inline">
-                <select name="modules" lay-search="" lay-verify="required">
-                    <option value="">请选择类型</option>
-                    <option value="1">事假</option>
-                    <option value="2">病假</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-inline">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-inline">
                 <select name="modules" lay-search="" lay-verify="required">

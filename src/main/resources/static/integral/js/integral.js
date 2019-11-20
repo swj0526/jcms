@@ -49,19 +49,34 @@ layui.use(['form', 'table', 'jquery','layer'], function () {
         limit: 10,
         page: true
     });
+
 $("#add").click(function () {
     layer.open({
         type: 1,
-        area:['350px','720px'],
+        area:['750px','320px'],
         content:$("#aa"),
-        btn:'提交'
+        btn:'提交',
+        shade:0
     });
 })
+
     $("#points").click(function () {
         layer.open({
             type: 1,
-            area:['350px','720px'],
+            area:['750px','320px'],
             content:$("#aaa"),
+            btn:'提交',
+            shade:0
+        });
+    })
+
+    $("#Setup").click(function () {
+        alert(1)
+        layer.open({
+            type: 1,
+            area:['380px','500px'],
+            content:$("#aaa"),
+            shade:0,
             btn:'提交'
         });
     })
