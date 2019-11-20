@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 经费流程
  * @author 宋家新
@@ -11,17 +13,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class TbFund extends Domain {
     private Integer id;
-    private Integer studentId;//学生姓名
+    private Integer studentId;//学生id
     private String content;//申请事由
     private String activityAmount;//申请金额
-    private byte createTime;//申请日期
-    private byte startDate;//开始日期
+    private Date startDate;//开始日期
     private Integer firstTeacherId;//一审老师
-    private boolean firstReason;//一审是否通过
+    private Boolean firstReason;//一审是否通过
     private String firstContent;//一审意见
+    private Date firstCreateTime;//一审操作时间
     private Integer secondTeacherId;//二审老师
-    private boolean secondReason;//二审是否通过
+    private Boolean secondReason;//二审是否通过
     private String secondContent;//二审意见
+    private Date secondCreateTime;//二审操作时间
+    //private Integer operatorId;//操作人
+
 
     public Integer getId() {
         return id;
@@ -55,19 +60,11 @@ public class TbFund extends Domain {
         this.activityAmount = activityAmount;
     }
 
-    public byte getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(byte createTime) {
-        this.createTime = createTime;
-    }
-
-    public byte getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(byte startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -79,11 +76,11 @@ public class TbFund extends Domain {
         this.firstTeacherId = firstTeacherId;
     }
 
-    public boolean isFirstReason() {
+    public Boolean getFirstReason() {
         return firstReason;
     }
 
-    public void setFirstReason(boolean firstReason) {
+    public void setFirstReason(Boolean firstReason) {
         this.firstReason = firstReason;
     }
 
@@ -95,6 +92,14 @@ public class TbFund extends Domain {
         this.firstContent = firstContent;
     }
 
+    public Date getFirstCreateTime() {
+        return firstCreateTime;
+    }
+
+    public void setFirstCreateTime(Date firstCreateTime) {
+        this.firstCreateTime = firstCreateTime;
+    }
+
     public Integer getSecondTeacherId() {
         return secondTeacherId;
     }
@@ -103,11 +108,11 @@ public class TbFund extends Domain {
         this.secondTeacherId = secondTeacherId;
     }
 
-    public boolean isSecondReason() {
+    public Boolean getSecondReason() {
         return secondReason;
     }
 
-    public void setSecondReason(boolean secondReason) {
+    public void setSecondReason(Boolean secondReason) {
         this.secondReason = secondReason;
     }
 
@@ -117,5 +122,13 @@ public class TbFund extends Domain {
 
     public void setSecondContent(String secondContent) {
         this.secondContent = secondContent;
+    }
+
+    public Date getSecondCreateTime() {
+        return secondCreateTime;
+    }
+
+    public void setSecondCreateTime(Date secondCreateTime) {
+        this.secondCreateTime = secondCreateTime;
     }
 }

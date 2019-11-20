@@ -15,8 +15,8 @@ import java.util.Date;
 public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
-    private Integer workListId;//作业列表id
-    private Boolean enclosure;//是否有附件
+    private Integer workId;//作业id
+    private Boolean hasEnclosure;//是否有附件
     private Integer score;//分数
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
@@ -37,20 +37,20 @@ public class TbStudentWork extends Domain {
         this.studentId = studentId;
     }
 
-    public Integer getWorkListId() {
-        return workListId;
+    public Integer getWorkId() {
+        return workId;
     }
 
-    public void setWorkListId(Integer workListId) {
-        this.workListId = workListId;
+    public void setWorkId(Integer workId) {
+        this.workId = workId;
     }
 
-    public Boolean getEnclosure() {
-        return enclosure;
+    public Boolean getHasEnclosure() {
+        return hasEnclosure;
     }
 
-    public void setEnclosure(Boolean enclosure) {
-        this.enclosure = enclosure;
+    public void setHasEnclosure(Boolean hasEnclosure) {
+        this.hasEnclosure = hasEnclosure;
     }
 
     public Integer getScore() {

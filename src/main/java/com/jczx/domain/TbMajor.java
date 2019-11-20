@@ -5,14 +5,14 @@ import org.springframework.stereotype.Component;
 
 /**
  * 专业表
- * @author cjw
+ * @author 池炯武
  * @create 2019-11-20 14:51
  */
 @Component
-public class TbProfessional extends Domain {
+public class TbMajor extends Domain {
     private Integer id;
-    private String name;
-    private String grade;
+    private String name; //专业名称
+    private String grade; //学年
 
     public String getGrade() {
         return grade;
