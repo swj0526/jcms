@@ -30,16 +30,6 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label" style="width:60px">类型</label>
-                        <div class="layui-input-inline" style="width:120px">
-                            <select name="modules" lay-search="" lay-verify="required">
-                                <option value="">请选择类型</option>
-                                <option value="1">公告</option>
-                                <option value="2">通知</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">日期范围</label>
                         <div class="layui-input-inline">
                             <input class="layui-input" id="test6" type="text" placeholder=" - ">
@@ -72,10 +62,6 @@
             <tr align="center">
                 <td bgcolor="#ededed">发布人</td>
                 <td colspan="7">老师</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">类型</td>
-                <td colspan="7">通知</td>
             </tr>
             <tr align="center">
                 <td bgcolor="#ededed">内容</td>
