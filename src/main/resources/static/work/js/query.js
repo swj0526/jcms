@@ -35,15 +35,13 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
         , page: true
     });
     $("#1").click(function () {
-        layer.open({
-            btnAlign: 'c'
-            ,type:1
-            ,btn:['提交']
-            ,area:['350px','450px']
-            ,content:$("#aa")
-            ,yes: function(index, layero){
-                layer.close(index);
-            }
+        layer.tab({
+            type: 1,
+            area: ['100%','100%'],
+            tab: [{
+                title: '作业管理',
+                content:'<iframe src="/work//add" frameborder="0" height="800px" width="100%"></iframe>',
+            }]
         });
     })
     //监听行工具事件
@@ -56,17 +54,10 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
         } else if (obj.event === 'edit') {
             layer.tab({
                 type: 1,
-
                 area: ['100%','100%'],
                 tab: [{
                     title: '学生作业下载',
                     content:'<iframe src="/work/download" frameborder="0" height="800px" width="100%"></iframe>',
-                }, {
-                    title: '',
-                    content: '内容2'
-                }, {
-                    title: '',
-                    content: '内容3'
                 }]
             });
         }

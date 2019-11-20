@@ -64,4 +64,10 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             element.progress('demo', percent); //可配合 layui 进度条元素使用
         }
     });
+    laydate.render({
+        elem: '#test1'
+    });
+    laydate.render({
+        elem: '#test2'
+    });
 });
