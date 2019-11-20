@@ -88,7 +88,6 @@
     <div class="layuimini-main">
 
         <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
