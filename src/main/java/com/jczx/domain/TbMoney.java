@@ -4,20 +4,24 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 缴费表
  * @author 丛枭钰
  * @create 2019-11-19 13:14
- * 缴费表
+ *
  */
 @Component
 public class TbMoney extends Domain {
     private Integer id;
     private Integer studentId;//学生id
-    private Integer paymentType;//缴费类型
+    private Integer paymentTypeId;//缴费类型
     private Integer method;//缴费方式
+    private Integer totalMoney;//总金额
     private Integer money;//金额
     private String paymentDate;//缴费日期
     private Boolean instalment;//是否分期
     private Integer discount;//优惠金额
+    private Integer aggregate;//总计
+    private Integer startTime;//开始时间
     private String validity;//费用有效期
     private Integer operatorId;//操作人id
     private String createTime;//操作时间
@@ -38,12 +42,12 @@ public class TbMoney extends Domain {
         this.studentId = studentId;
     }
 
-    public Integer getPaymentType() {
-        return paymentType;
+    public Integer getPaymentTypeId() {
+        return paymentTypeId;
     }
 
-    public void setPaymentType(Integer paymentType) {
-        this.paymentType = paymentType;
+    public void setPaymentTypeId(Integer paymentTypeId) {
+        this.paymentTypeId = paymentTypeId;
     }
 
     public Integer getMethod() {
@@ -52,6 +56,14 @@ public class TbMoney extends Domain {
 
     public void setMethod(Integer method) {
         this.method = method;
+    }
+
+    public Integer getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(Integer totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
     public Integer getMoney() {
@@ -84,6 +96,22 @@ public class TbMoney extends Domain {
 
     public void setDiscount(Integer discount) {
         this.discount = discount;
+    }
+
+    public Integer getAggregate() {
+        return aggregate;
+    }
+
+    public void setAggregate(Integer aggregate) {
+        this.aggregate = aggregate;
+    }
+
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
     }
 
     public String getValidity() {

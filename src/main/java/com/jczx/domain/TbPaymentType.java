@@ -4,9 +4,10 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 缴费类型表
  * @author 丛枭钰
  * @create 2019-11-19 14:15
- * 缴费类型表
+ *
  */
 @Component
 public class TbPaymentType extends Domain {

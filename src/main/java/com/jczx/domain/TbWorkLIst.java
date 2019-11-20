@@ -4,9 +4,10 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 发布作业表
  * @author 丛枭钰
  * @create 2019-11-19 13:25
- * 发布作业表
+ *
  */
 @Component
 public class TbWorkLIst extends Domain {

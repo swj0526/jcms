@@ -4,9 +4,10 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 学生作业上传表
  * @author 丛枭钰
  * @create 2019-11-19 13:58
- * 学生作业上传表
+ *
  */
 @Component
 public class TbStudentWork extends Domain {
