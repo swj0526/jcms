@@ -105,7 +105,7 @@ layui.use('table', function () {
             type: 1,
             title: "查看人数",
             skin: "myclass", // 自定样式
-            area: ["400px", "650px"],
+            area: ["1000px", "500px"],
             content: $("#aaa"),
 
             success: function (layero, index) {

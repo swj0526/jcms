@@ -46,67 +46,8 @@
     </fieldset>
 </div>
 <#--数据表格-->
-<table class="layui-table layui-hide" lay-data="{ cellMinWidth: 80, page: true}" lay-filter="test">
-    <thead>
-    <tr>
-        <th rowspan="3" lay-data="{checkbox:true, fixed:'left'}"></th>
-        <th rowspan="3" lay-data="{field:'name',align:'center'}">姓名</th>
-        <th rowspan="3" lay-data="{field:'grade',align:'center'}">年级</th>
-        <th rowspan="3" lay-data="{field:'cause',align:'center'}">申请事由</th>
-        <th rowspan="3" lay-data="{field:'money',align:'center'}">申请金额</th>
-        <th rowspan="3" lay-data="{field:'apply',align:'center'}">申请日期</th>
-        <th rowspan="3" lay-data="{field:'start',align:'center'}">开始日期</th>
-        <th rowspan="3" lay-data="{field:'state',align:'center'}">状态</th>
-        <th colspan="3" lay-data="{align:'center'}">一审</th>
-        <th colspan="3" lay-data="{align:'center'}">二审</th>
-        <th rowspan="3" lay-data="{fixed: 'right', toolbar: '#barDemo',align: 'center',width: 140}">操作</th>
-    </tr>
-    <tr>
-        <th rowspan="2" lay-data="{field:'oneTrial',align:'center'}">一审老师</th>
-        <th rowspan="2" lay-data="{field:'oneAdopt',align:'center'}">是否同意</th>
-        <th rowspan="2" lay-data="{field:'oneReason',align:'center'}">审批意见</th>
-        <th rowspan="2" lay-data="{field:'twoTrial',align:'center'}">二审老师</th>
-        <th rowspan="2" lay-data="{field:'twoAdopt',align:'center'}">是否同意</th>
-        <th rowspan="2" lay-data="{field:'twoReason',align:'center'}">审批意见</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td lay-data="{checkbox:true}"></td>
-        <td>张三111</td>
-        <td>影视一班</td>
-        <td>团建</td>
-        <td>2016-10-14</td>
-        <td>2016-10-15</td>
-        <td>2016-10-18</td>
-        <td>1</td>
-        <td>丛老师</td>
-        <td>丛老师</td>
-        <td>同意</td>
-        <td>通过</td>
-        <td>胡老师</td>
-        <td>拒绝</td>
-        <td>不同意</td>
-    </tr>
-    <tr>
-        <td lay-data="{checkbox:true}"></td>
-        <td>张三</td>
-        <td>影视一班</td>
-        <td>团建</td>
-        <td>2016-10-14</td>
-        <td>2016-10-15</td>
-        <td>2016-10-18</td>
-        <td>2</td>
-        <td>丛老师</td>
-        <td>丛老师</td>
-        <td>同意</td>
-        <td>通过</td>
-        <td>胡老师</td>
-        <td>拒绝</td>
-        <td>不同意</td>
-    </tr>
-    </tbody>
-</table>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
 <#--经费申请详情-->
 <div style="display: none" id="updateOrDelete">
     <div >
