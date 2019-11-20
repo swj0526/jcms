@@ -1,22 +1,33 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 /**
- * @describe 字典表
  * @author 于振华
- *
+ * @describe 字典表
  * @create 2019-11-18 23:32
- *
  */
 @Component
 public class TbDictionary extends Domain {
+    @NotCreate
+    private static final Integer TYPE_LABEL = 1;//意向标签
+    @NotCreate
+    private static final Integer TYPE_CHANNEL = 2;//渠道
+    @NotCreate
+    private static final Integer TYPE_PAYMENT = 3;//缴费类型
+    @NotCreate
+    private static final Integer TYPE_PAY = 4;//支付类型
+    @NotCreate
+    private static final Integer TYPE_TERM=5;//学年,学期
+
     private Integer id;//字典表 就 id  和name和备注,类型type
-    private String key;
-    private String value;//
+    private String name;
+    private String remark;//备注
+    private String type;
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
 
@@ -28,20 +39,28 @@ public class TbDictionary extends Domain {
         this.id = id;
     }
 
-    public String getKey() {
-        return key;
+    public String getName() {
+        return name;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getValue() {
-        return value;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getCreateTime() {

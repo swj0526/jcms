@@ -14,8 +14,8 @@ public class TbRecruitDetail extends Domain {
     private Integer id;
     private Integer studentId;//学生(招生)表id;
     private Date followTime;//跟进时间
-    private Integer followNumber;//第几次跟进//count
-    private String followIds;//跟进状态(标签)
+    private Integer followCount;//第几次跟进//count
+    private String labelIds;//跟进意向(标签)
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
     private String remark;//备注
@@ -43,21 +43,20 @@ public class TbRecruitDetail extends Domain {
     public void setFollowTime(Date followTime) {
         this.followTime = followTime;
     }
-
-    public Integer getFollowNumber() {
-        return followNumber;
+    public Integer getFollowCount() {
+        return followCount;
     }
 
-    public void setFollowNumber(Integer followNumber) {
-        this.followNumber = followNumber;
+    public void setFollowCount(Integer followCount) {
+        this.followCount = followCount;
     }
 
-    public String getFollowIds() {
-        return followIds;
+    public String getLabelIds() {
+        return labelIds;
     }
 
-    public void setFollowIds(String followIds) {
-        this.followIds = followIds;
+    public void setLabelIds(String labelIds) {
+        this.labelIds = labelIds;
     }
 
     public Date getCreateTime() {

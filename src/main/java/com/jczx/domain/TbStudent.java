@@ -227,9 +227,7 @@ public class TbStudent extends Domain {
         this.weChat = weChat;
     }
 
-    public static int getStateEntrance() {
-        return STATE_ENTRANCE;
-    }
+
 
     public static int getStateGraduate() {
         return STATE_GRADUATE;
