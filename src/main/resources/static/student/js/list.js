@@ -1,3 +1,32 @@
+var a=new Array();
+a=[{
+    "id": 1901001,
+    "name": "张三",
+    "gender": "男",
+    "birthday": "1997-8-10",
+    "age":18,
+    "address":"花果山水帘洞",
+    "nativePlace":"山东威海**市**县**镇",
+    "contact":"186693989898",
+    "bloodType":"O",
+    "admissionTime":"1999-9-9",
+    "graduationTime":"2999-9-9",
+    "state":"在校",
+},{
+    "id": 1901002,
+    "name": "李四",
+    "gender": "男",
+    "birthday": "1997-8-10",
+    "age":18,
+    "address":"花果山水帘洞",
+    "nativePlace":"山东威海**市**县**镇",
+    "contact":"186693989898",
+    "bloodType":"O",
+    "admissionTime":"1999-9-9",
+    "graduationTime":"2999-9-9",
+    "state":"在校"
+
+}]
 layui.use(['form', 'table', 'laydate', 'layer'], function () {
     var $ = layui.jquery,
         form = layui.form,
@@ -11,21 +40,7 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
     });
     table.render({
         elem: '#currentTableId',
-        data: [{
-            "id": 1901001,
-            "name": "张三",
-            "gender": "男",
-            "birthday": "1997-8-10",
-            "age":18,
-            "address":"花果山水帘洞",
-            "nativePlace":"山东威海**市**县**镇",
-            "contact":"186693989898",
-            "bloodType":"O",
-            "admissionTime":"1999-9-9",
-            "graduationTime":"2999-9-9",
-            "state":"在校",
-
-        }],
+        data: a,
         cols: [
             [{
                 field: 'id',
@@ -33,12 +48,11 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
                 city: "",
                 sort: true,
                 align: 'center'
-            },
-                {
+            }, {
                     field: 'name',
                     title: '姓名',
                     align: 'center',
-                    templet: '<div><a id="info" >张三</a></div>'
+                    templet: '<div><a class="info" value={{d.id}} >{{d.name}}</a></div>'
                 },
                 {
                     field: 'gender',
@@ -151,13 +165,14 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
             title:"修改学生信息",
             content: $("#aaa"),
             btn:"提交",
+            area:['750px','320px'],
             success:function (index) {
                 form.val("dataForm",data)
             }
         })
     }
     table.on('tool(currentTableFilter)', function (obj) {
-        var data = obj.data;
+         data = obj.data;
         if (obj.event === 'edit') {
             modify(data);
         } else if (obj.event === 'delete') {
@@ -167,14 +182,9 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
             });
         }
     });
-    $("#info").click(function () {
-        layer.open({
-            type: 2,
-            title: "张三",
-            area: ['100%', '100%'],
-            maxmin: true,
-            content: '/student/information'
-        });
+    $(".info").click(function () {
+        var val=$(this).attr("value");
+        alert(val)
     });
     $("#add").click(function () {
         layer.open({
@@ -182,6 +192,7 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
             title:"添加学生信息",
             content: $("#aaa"),
             btn:"提交",
+            area:['750px','320px'],
             success:function (index) {
                 //清空表单数据
                 $("#dataFrm")[0].reset();
@@ -194,7 +205,8 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
             type: 1,
             title:"添加学生信息",
             content: $("#importForm"),
-            btn:"提交"
+            btn:"提交",
+            area:['750px','320px'],
         })
     });
 });

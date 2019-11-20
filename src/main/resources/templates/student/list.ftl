@@ -106,6 +106,14 @@
                             </div>
                         </div>
                         <div class="layui-inline">
+
+                            <select name="state" lay-verify="">
+                                <option value="">选择状态</option>
+                                <option value="010">在校</option>
+                                <option value="021">毕业</option>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                         <div class="layui-btn-group">
@@ -123,6 +131,7 @@
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="list">查看详情</a>
         </script>
     </div>
 </div>
