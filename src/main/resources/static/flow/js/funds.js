@@ -22,7 +22,7 @@ layui.use('table', function () {
             "money": "3000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "待审核",
+            "state": "1",
             "cause": "有事asdasdasdasfasfasdgdfsdf12"
         }, {
             "id": "10001",
@@ -31,7 +31,7 @@ layui.use('table', function () {
             "money": "1000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "已撤销",
+            "state": "2",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -40,7 +40,7 @@ layui.use('table', function () {
             "money": "300",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "一审通过",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -49,7 +49,7 @@ layui.use('table', function () {
             "money": "1000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "一审拒绝",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -58,7 +58,7 @@ layui.use('table', function () {
             "money": "2000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "二审拒绝",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -67,7 +67,7 @@ layui.use('table', function () {
             "money": "10000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "通过",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -76,7 +76,7 @@ layui.use('table', function () {
             "money": "3000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "拒绝",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -85,12 +85,11 @@ layui.use('table', function () {
             "money": "2000",
             "apply": "2016-10-14",
             "start": "2016-10-15",
-            "state": "同意",
+            "state": "3",
             "cause": "有事"
         }]
         , page: true
     });
-
     var form = layui.form;
     var layer = layui.layer;
 
@@ -109,8 +108,6 @@ layui.use('table', function () {
             yes: function () {
             }
         });
-
-
         form.render(); // 动态渲染
     });
 
@@ -134,7 +131,6 @@ layui.use('table', function () {
                 yes: function () {
                 }
             });
-
             form.render(); // 动态渲染
         }else if(obj.event === 'revoke'){
             layer.confirm('真的撤销吗', function(index){
@@ -154,11 +150,9 @@ layui.use('table', function () {
                 yes: function () {
                 }
             });
-
             form.render(); // 动态渲染
         }
     });
-
 });
 //日期方法
 layui.use('laydate', function () {

@@ -13,9 +13,11 @@
     <script type="text/javascript" src="/account/js/listStaff.js">
     </script>
     <style>
-        .layui-layer-btn{
+        .layui-layer-btn {
             text-align: center;
         }
+
+
     </style>
 </head>
 <body>
@@ -71,6 +73,7 @@
                                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                                         </div>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </fieldset>
@@ -158,7 +161,7 @@
                     <table class="layui-hide" id="test1" lay-filter="test1"></table>
                     <script type="text/html" id="checkboxTpl1">
                         <!-- 这里的 checked 的状态只是演示 -->
-                        <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1" >
+                        <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1">
                     </script>
                     <#--<script type="text/html" id="roleDemo">
                         <div class="demo1" class="xm-select-demo" ></div>

@@ -6,9 +6,16 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <#--上传-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
+    <#--上传-->
+
+
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
 
@@ -115,10 +122,10 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索信息</legend>
+            <legend>搜索招生信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
-                    <div class="layui-form-item">
+
                         <div class="layui-inline" style="width: 210px">
                             <label class="layui-form-label" style="width:100px">关键词</label>
                             <div class="layui-input-inline" style="width:100px ">
@@ -159,7 +166,8 @@
                             <button class="layui-btn layui-btn-warm "type="button" id="download">导出学生信息</button>
                             <button class="layui-btn layui-btn-warm "type="button" id="upload">导入学生信息</button>
                         </div>
-                    </div>
+
+
 
                 </form>
 
@@ -188,11 +196,35 @@
     </div>
 </div>
 
-<div id="download1"style="height: 250px;display: none">
-    <p><span style="font-size: 20px;color: red">注意导入时请按照指定的格式模板上传文件,点击下载模板按钮</span></p>
+<div id="download1"style="display: none;width:60%;margin: 0 auto">
+    <div style="margin-top: 10%">
+    <p><span style="font-size: 15px;color: red">注意:请按照指定的格式上传文件,点击下载模板</span></p>
     <button class="layui-btn layui-btn-danger "type="button" >下载模板</button>
-    <button class="layui-btn  "type="button" >上传文件</button>
+    </div>
+    <div class="layui-upload"style="margin-top: 10%">
+
+        <div class="layui-upload-list"style="width: 100%;height: 100%">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>文件名</th>
+                    <th>大小</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+
+    </div>
+
 </div>
+
+<#--上传文件-->
+
 
 
 <script src="../../layui/layui.js" charset="utf-8"></script>
@@ -216,5 +248,6 @@
         document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
     }*/
 </script>
+<script src="/recruit/js/updata.js"></script>
 </body>
 </html>

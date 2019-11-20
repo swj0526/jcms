@@ -171,7 +171,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
         return false;
     });
-    //监听到出事件
+    //监听导出事件
     $("#download").click(function () {
         layer.open({
             type: 1,
@@ -212,7 +212,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
-            title: "修改招生学生信息",
+            title: "修改招生信息",
             skin: 'layui-layer-rim', //加上边框
             area: ['800px', '600px'], //设置宽高
             content: $("#recruit"),
@@ -230,7 +230,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     function addStudents() {
         mainIndex = layer.open({
             type: 1,
-            title: "添加跟进学生信息",
+            title: "添加招生信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['730px', '500px'], //设置宽高
             content: $("#recruit"),

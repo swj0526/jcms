@@ -4,8 +4,9 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
- * @author swj
  * @description 用户表,用来登录跟盘算权限的
+ * @author swj
+ *
  * @create 2019-11-18 16:45
  */
 @Component

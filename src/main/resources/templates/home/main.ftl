@@ -12,8 +12,12 @@
     <script type="text/javascript" src="/home/js/main.js"></script>
     <style>
 
-        #first-tab i.layui-tab-close{
-            display:none!important;
+        #first-tab i.layui-tab-close {
+            display: none !important;
+        }
+
+        .layui-body::-webkit-scrollbar {
+            display: none
         }
     </style>
 </head>
