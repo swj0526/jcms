@@ -1,13 +1,17 @@
-layui.use(['element', 'jquery','layer'], function () {
+layui.use(['element', 'jquery', 'layer'], function () {
     var $ = layui.jquery, element = layui.element, layer = layui.layer;
     //Tab的切换功能，切换事件监听等，需要依赖element模块
     //默认生成首页的页面
-    element.tabAdd('demo', {
-        title: "首页", //新增学生信息
-        content: '<iframe src="/home/context" frameborder="0" height="800px" height="100%"></iframe>',
-        id: 'first-tab' //实际使用一般是规定好的id，这里以时间戳模拟下
-    });
-    //点击左边的按钮,然后判断是否新增tab还是需要定位一个tab
+    /* element.tabAdd('demo', {
+         title: "首页", //新增学生信息
+         content: '<iframe src="/home/context" frameborder="0" height="800px" height="100%"></iframe>',
+         id: 'first-tab' //实际使用一般是规定好的id，这里以时间戳模拟下
+     });*/
+    var id = "first-tab";
+    var title = "首页";
+    var src = "/home/context";
+    dynamicTab(id, title, src);
+  /*  //点击左边的按钮,然后判断是否新增tab还是需要定位一个tab
     $(".add").click(function () {
         //获取被点击的元素id,来取得准确的元素
         var id = $(this).attr('id');
@@ -30,7 +34,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 element.tabChange('demo', id);
             } else if (id == "remind_article") {
                 element.tabAdd('demo', {
-                    title:"公告提醒", //提醒-公告提醒
+                    title: "公告提醒", //提醒-公告提醒
                     content: '<iframe src="/remind/toArticle" frameborder="0"  height="800px" width="100%"></iframe>',
                     id: "remind_article" //实际使用一般是规定好的id，这里以时间戳模拟下
                 });
@@ -46,7 +50,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "account_role") {
+            } else if (id == "account_role") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //账号-角色管理
                     content: '<iframe src="/account/toRole" frameborder="0"   height="800px" width="100%"></iframe>',
@@ -55,7 +59,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "account_modPassword") {
+            } else if (id == "account_modPassword") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //账号-修改密码
                     content: '<iframe src="/account/toModPassword" frameborder="0" height="800px"  width="100%"></iframe>',
@@ -64,7 +68,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "recruit_recruit") {
+            } else if (id == "recruit_recruit") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生信息管理
                     content: '<iframe src="/recruit//torecruit" frameborder="0"   height="800px" width="100%"></iframe>',
@@ -73,7 +77,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "recruit_follow") {
+            } else if (id == "recruit_follow") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生跟进管理
                     content: '<iframe src="/recruit//tofollow" frameborder="0"   height="800px"width="100%"></iframe>',
@@ -82,7 +86,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "student_list") {
+            } else if (id == "student_list") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生跟进管理
                     content: '<iframe src="/student/tolist" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -91,7 +95,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "flow_leave") {
+            } else if (id == "flow_leave") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生跟进管理
                     content: '<iframe src="/flow/leave" frameborder="0"   height="800px"  width="100%"></iframe>',
@@ -100,7 +104,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "flow_funds") {
+            } else if (id == "flow_funds") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生跟进管理
                     content: '<iframe src="/flow/funds" frameborder="0"   height="800px" width="100%"></iframe>',
@@ -109,7 +113,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "flow_fundsApprover") {
+            } else if (id == "flow_fundsApprover") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生跟进管理
                     content: '<iframe src="/flow/fundsApprover" frameborder="0"  height="800px" width="100%"></iframe>',
@@ -118,7 +122,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "flow_leaveApprover") {
+            } else if (id == "flow_leaveApprover") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //档案管理-招生跟进管理
                     content: '<iframe src="/flow/leaveApprover" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -127,7 +131,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "article_dispatch") {
+            } else if (id == "article_dispatch") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //发文管理-发布文章
                     content: '<iframe src="/article/dispatch" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -136,7 +140,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "article_list") {
+            } else if (id == "article_list") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //发文管理-查询文章
                     content: '<iframe src="/article/list" frameborder="0"  height="800px" width="100%"></iframe>',
@@ -145,7 +149,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "work_upload") {
+            } else if (id == "work_upload") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //发文管理-查询文章
                     content: '<iframe src="/work/upload" frameborder="0"  height="800px" width="100%"></iframe>',
@@ -154,7 +158,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "work_list") {
+            } else if (id == "work_list") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //发文管理-查询文章
                     content: '<iframe src="/work/list" frameborder="0" height="800px" width="100%"></iframe>',
@@ -163,7 +167,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "money_list") {
+            } else if (id == "money_list") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //发文管理-查询文章
                     content: '<iframe src="/money/list" frameborder="0"   height="800px"  width="100%"></iframe>',
@@ -172,7 +176,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "remind_annunciate") {
+            } else if (id == "remind_annunciate") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //通知管理-公告管理
                     content: '<iframe src="/remind/toAnnunciate" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -181,7 +185,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "recruit_data") {
+            } else if (id == "recruit_data") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //通知管理-公告管理
                     content: '<iframe src="/recruit/data" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -190,7 +194,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "integral_list") {
+            } else if (id == "integral_list") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //通知管理-公告管理
                     content: '<iframe src="/integral/list" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -199,7 +203,7 @@ layui.use(['element', 'jquery','layer'], function () {
                 //$(this).attr('data-type', 'tabChange');
                 //切换到指定Tab项
                 element.tabChange('demo', id);
-            }else if (id == "integral_add") {
+            } else if (id == "integral_add") {
                 element.tabAdd('demo', {
                     title: $(this).text(), //通知管理-公告管理
                     content: '<iframe src="/integral/add" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -211,7 +215,7 @@ layui.use(['element', 'jquery','layer'], function () {
             }
 
         }
-    });
+    });*/
     $('.site-demo-active').on('click', function () {
         var othis = $(this),
             type = othis.data('type');
@@ -227,10 +231,10 @@ layui.use(['element', 'jquery','layer'], function () {
         //配置一个透明的询问框
         layer.msg('缴费提醒3条<br/>文章提醒6条', {
             time: false, //20s后自动关闭
-            btn: ['忽略','公告提醒', '缴费提醒'],
-            btn2:function () {
-                var id="remind_article";
-                if ($("[lay-id=" + id + "]").length ==0) { //不存在
+            btn: ['忽略', '公告提醒', '缴费提醒'],
+            btn2: function () {
+                var id = "remind_article";
+                if ($("[lay-id=" + id + "]").length == 0) { //不存在
                     element.tabAdd('demo', {
                         title: "公告提醒", //提醒-缴费提醒
                         content: '<iframe src="/remind/toArticle" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -239,9 +243,9 @@ layui.use(['element', 'jquery','layer'], function () {
                 }
                 element.tabChange('demo', id);
             },
-            btn3:function () {
-                var id="remind_pay";
-                if ($("[lay-id=" + id + "]").length ==0) { //不存在
+            btn3: function () {
+                var id = "remind_pay";
+                if ($("[lay-id=" + id + "]").length == 0) { //不存在
                     element.tabAdd('demo', {
                         title: "缴费提醒", //提醒-缴费提醒
                         content: '<iframe src="/remind/toPay" frameborder="0"  height="800px"  width="100%"></iframe>',
@@ -253,13 +257,7 @@ layui.use(['element', 'jquery','layer'], function () {
         });
     });
     $('.layui-layer-btn1').click(function () {
-
         var id = $(this).attr('id');
 
-    });
-});
-$(function () {
-    $('.txt-scroll').txtscroll({
-        'speed': 50
     });
 });

@@ -23,7 +23,7 @@ public class TbRecruit extends Domain {
     private String birthDate;//出生年月
     private String school;//学校
     private String stuPhone;//学生电话
-    private String qq;//qq号
+    private String qqNumber;//qq号
     private String weChat;//微信
     private String parPhone;//家长电话;
     private String createTime;//创建时间
@@ -109,12 +109,12 @@ public class TbRecruit extends Domain {
         this.stuPhone = stuPhone;
     }
 
-    public String getQq() {
-        return qq;
+    public String getQqNumber() {
+        return qqNumber;
     }
 
-    public void setQq(String qq) {
-        this.qq = qq;
+    public void setQqNumber(String qqNumber) {
+        this.qqNumber = qqNumber;
     }
 
     public String getWeChat() {
