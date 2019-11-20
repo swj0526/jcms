@@ -127,6 +127,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item" style="width: 620px">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
         <button type="button" class="layui-btn" id="ss"
