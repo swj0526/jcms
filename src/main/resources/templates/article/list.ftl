@@ -84,6 +84,32 @@
         </table>
     </form>
 </div>
+<div id="aaa" style="display: none">
+    <div>
+        <h1>已读</h1>
+    <table >
+        <tbody>
+        <tr>
+            <td bgcolor="#ededed">张三</td>
+            <td bgcolor="#ededed">李四</td>
+            <td bgcolor="#ededed">王五</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    <div>
+        <h1>未读</h1>
+        <table >
+            <tbody>
+            <tr>
+                <td bgcolor="#ededed">张三</td>
+                <td bgcolor="#ededed">李四</td>
+                <td bgcolor="#ededed">王五</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <script id="barDemo" type="text/html">
     <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
 </script>

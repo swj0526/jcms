@@ -4,9 +4,9 @@ import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
 /**
+ * 发布文章
  * @author 宋家新
  * @create 2019-11-18 21:11
- * 发文
  */
 @Component
 public class TbArticle  extends Domain {
@@ -16,9 +16,9 @@ public class TbArticle  extends Domain {
     private String type;//类型
     private String publisher;//发布人
     private String content;//内容
-    private String releaseTime;//发布时间
+    private String createTime;//发布时间
     private String number;//查看人数
-    private String fileUrl;//文件地址
+    private boolean fileUrl;//是否有上传文件
     private Integer operatorId;//操作人
 
     public Integer getId() {
@@ -69,12 +69,12 @@ public class TbArticle  extends Domain {
         this.content = content;
     }
 
-    public String getReleaseTime() {
-        return releaseTime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setReleaseTime(String releaseTime) {
-        this.releaseTime = releaseTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getNumber() {
@@ -85,11 +85,11 @@ public class TbArticle  extends Domain {
         this.number = number;
     }
 
-    public String getFileUrl() {
+    public boolean isFileUrl() {
         return fileUrl;
     }
 
-    public void setFileUrl(String fileUrl) {
+    public void setFileUrl(boolean fileUrl) {
         this.fileUrl = fileUrl;
     }
 

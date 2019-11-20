@@ -57,69 +57,69 @@
 <#--经费申请详情-->
 <div style="display: none" id="updateOrDelete">
     <div >
-        <div class="stepCont stepCont1" style="width: 1600px">
+        <div class="stepCont stepCont1" style="width: 1650px">
             <!-- 菜单导航显示-->
             <div class='ystep-container ystep-lg ystep-blue' ></div>
             <!-- 分页容器-->
             <div class="pageCont">
                 <div id="page1" class="stepPage">
-                    <table border="1" width="300" height="500" align="center" cellspacing="0">
-                        <tr align="center">
-                            <td bgcolor="#ededed">姓名</td>
-                            <td colspan="7">张三</td>
+                    <table class="layui-table" lay-data="{width:100%, limit: 10, limits:[10]}">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'name',align:'center'}">姓名</th>
+                            <th lay-data="{field:'grade',align:'center'}">申请事由</th>
+                            <th lay-data="{field:'days',align:'center'}">申请金额</th>
+                            <th lay-data="{field:'apply',align:'center'}">申请日期</th>
+                            <th lay-data="{field:'leaveTime',align:'center'}">开始日期</th>
                         </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">年级</td>
-                            <td colspan="7">影视一班</td>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>张三111</td>
+                            <td>团建</td>
+                            <td>3000</td>
+                            <td>2016-10-15</td>
+                            <td>2016-10-18</td>
                         </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">申请事由</td>
-                            <td colspan="7">团建</td>
-                        </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">申请金额</td>
-                            <td colspan="7">3000</td>
-                        </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">申请日期</td>
-                            <td colspan="7">2016-10-15</td>
-                        </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">开始日期</td>
-                            <td colspan="7">2016-10-18</td>
-                        </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div id="page2" class="stepPage">
-                    <table border="1" width="300" height="500" align="center" cellspacing="0">
-                        <tr align="center">
-                            <td bgcolor="#ededed">审批人</td>
-                            <td colspan="7">丛老师</td>
+                    <table class="layui-table" lay-data="{width:100%,   limit: 10, limits:[10]}">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'name',align:'center'}">审批老师</th>
+                            <th lay-data="{field:'grade',align:'center'}">是否同意</th>
+                            <th lay-data="{field:'cause',align:'center'}">审批意见</th>
                         </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">是否同意</td>
-                            <td colspan="7">同意</td>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>丛老师</td>
+                            <td>同意</td>
+                            <td >通过</td>
                         </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">审批意见</td>
-                            <td colspan="7">通过</td>
-                        </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div id="page3" class="stepPage">
-                    <table border="1" width="300" height="500" align="center" cellspacing="0">
-                        <tr align="center">
-                            <td bgcolor="#ededed">审批人</td>
-                            <td colspan="7">胡老师</td>
+                    <table class="layui-table" lay-data="{width:100%,   limit: 10, limits:[10]}">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'name',align:'center'}">审批老师</th>
+                            <th lay-data="{field:'grade',align:'center'}">是否同意</th>
+                            <th lay-data="{field:'cause',align:'center'}">审批意见</th>
                         </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">是否同意</td>
-                            <td colspan="7">拒绝</td>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>胡老师</td>
+                            <td>拒绝</td>
+                            <td>不同意</td>
                         </tr>
-                        <tr align="center">
-                            <td bgcolor="#ededed">审批意见</td>
-                            <td colspan="7">不通过</td>
-                        </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -203,10 +203,17 @@
     })
 </script>
 <script id="barDemo" type="text/html">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
+    {{# if(d.state=="1"){ }}
     <a class="layui-btn layui-btn-xs" lay-event="revoke">撤销</a>
+    {{# } }}
+    {{# if(d.state=="2"){ }}
     <a class="layui-btn layui-btn-xs" lay-event="again">重新提交</a>
     <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+    {{# } }}
+    {{# if(d.state=="3"){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
+    {{# } }}
+
 </script>
 
 </body>
