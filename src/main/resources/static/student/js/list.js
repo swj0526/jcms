@@ -27,11 +27,12 @@ a=[{
     "state":"在校"
 
 }]
-layui.use(['form', 'table', 'laydate', 'layer'], function () {
+layui.use(['form', 'table', 'laydate', 'layer','element'], function () {
     var $ = layui.jquery,
         form = layui.form,
-        table = layui.table;
-    layer = layui.layer;
+        element=layui.element,
+        table = layui.table,
+    layer = layui.layer,
     laydate = layui.laydate;
 
     laydate.render({
@@ -52,7 +53,7 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
                     field: 'name',
                     title: '姓名',
                     align: 'center',
-                    templet: '<div><a class="info" value={{d.id}} >{{d.name}}</a></div>'
+                    templet: '<div><a class="info" value={{d.name}} >{{d.name}}</a></div>'
                 },
                 {
                     field: 'gender',
@@ -183,8 +184,13 @@ layui.use(['form', 'table', 'laydate', 'layer'], function () {
         }
     });
     $(".info").click(function () {
-        var val=$(this).attr("value");
-        alert(val)
+        var name=$(this).attr("value");
+        alert(name)
+        element.tabAdd('demo', {
+            title: name
+            ,content: '选项卡的内容' //支持传入html
+            ,id: '选项卡标题的lay-id属性值'
+        });
     });
     $("#add").click(function () {
         layer.open({

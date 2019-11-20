@@ -12,6 +12,9 @@
     <script src="/student/js/list.js"></script>
 </head>
 <body>
+<div class="layui-tab" lay-tilter="demo">
+    <ul class="layui-tab-title"></ul>
+</div>
 
 <div id="aaa" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
