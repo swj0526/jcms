@@ -121,28 +121,36 @@
         table.render({
             elem: '#demo'
             , cols: [[ //标题栏
-                {field: 'id', title: '个人渠道', width: 180, sort: true}
-                , {field: 'username', title: '学校渠道', width: 180}
-                , {field: 'email', title: '网络渠道', width: 180}
-                , {field: 'sign', title: '介绍渠道', width: 180}
-                , {field: 'sex', title: '城市渠道', width: 180}
-                , {field: 'city', title: '其他渠道', width: 180}
-                , {field: 'city', title: '男', width: 180}
-                , {field: 'city', title: '女', width: 180}
+                {field: 'id', title: '渠道', width: 180, sort: true}
+                , {field: 'username', title: '人数', width: 180}
+
+                , {field: 'sex', title: '男', width: 180}
+                , {field: 'sex', title: '女', width: 180}
 
             ]]
             , data: [{
-                "id": "100"
+                "id": "学校渠道"
                 , "username": "200"
-                , "email": "300"
-                , "sex": "400"
-                , "city": "500"
-                , "sign": "600"
-                , "experience": "116"
-                , "ip": "192.168.0.8"
-                , "logins": "108"
-                , "joinTime": "2016-10-14"
-            },]
+                , "sex": "100"
+
+            },
+                {
+                    "id": "个人渠道"
+                    , "username": "200"
+                    , "sex": "100"
+
+                },
+                {
+                    "id": "网络渠道"
+                    , "username": "200"
+                    , "sex": "100"
+
+                }, {
+                    "id": "其他渠道"
+                    , "username": "200"
+                    , "sex": "100"
+
+                }]
             //,skin: 'line' //表格风格
             , even: true
             //,page: true //是否显示分页
