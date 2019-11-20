@@ -14,22 +14,20 @@ import java.util.Date;
 @Component
 public class TbArticle  extends Domain {
     @NotCreate
-    private static final int TYPE_ARTICLE=1;//类型常量
+    private static final int TYPE_ARTICLE=1;//类型常量不要   //换用字典表加type字段
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
     private String content;//内容
     private Date createTime;//发布时间
-    private Integer read;//已读数
-    private Integer total;//应读数
+    private Integer read;//已读数//count
+    private Integer total;//应读数//count
     private String readIds;//已读
     private String totalIds;//应读
-    private Boolean hasEnclosure;//是否有上传文件
+    private Boolean hasEnclosure;//是否有上传文件//单词
     private Integer operatorId;//操作人
 
-    public static int getTypeArticle() {
-        return TYPE_ARTICLE;
-    }
+
 
     public Integer getId() {
         return id;

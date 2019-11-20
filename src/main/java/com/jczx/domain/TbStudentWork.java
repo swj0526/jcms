@@ -15,8 +15,9 @@ import java.util.Date;
 public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
-    private Integer workId;//作业id
-    private Boolean hasEnclosure;//是否有附件
+    private Integer workId;//作业id//homeworkId
+    private Boolean hasEnclosure;//是否有附件//
+    //缺俩content考虑长度,那个老师打得分,attachment附件
     private Integer score;//分数
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间

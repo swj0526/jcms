@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class TbMajor extends Domain {
     private Integer id;
     private String name; //专业名称
-    private String grade; //学年
+    private String grade; //学年换pid父类在同一表//专业,班级//加type//备注
 
     public String getGrade() {
         return grade;

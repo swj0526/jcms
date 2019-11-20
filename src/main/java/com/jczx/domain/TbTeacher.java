@@ -14,8 +14,8 @@ import java.util.Date;
 public class TbTeacher extends Domain {
     private Integer id;
     private String name;
-    private  Integer majorId;//班级
-    private String Phone;//手机号
+   // private  Integer majorId;//班级
+    private String phone;//手机号
 
     public Integer getId() {
         return id;
@@ -33,19 +33,11 @@ public class TbTeacher extends Domain {
         this.name = name;
     }
 
-    public Integer getMajorId() {
-        return majorId;
-    }
-
-    public void setMajorId(Integer majorId) {
-        this.majorId = majorId;
-    }
-
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 }

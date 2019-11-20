@@ -13,6 +13,7 @@ import java.util.Date;
 @Component
 public class TbAccessory extends Domain {
     private Integer id;
+    private Integer type;// linkId;
     private String URL;
     private Integer operatorId;//操作人id
     private Date createTime;//创建时间

@@ -19,7 +19,7 @@ public class TbUser  extends Domain {
     private String password;//密码
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
-
+//加enable,老师加状态 状态字典
     public Integer getId() {
         return id;
     }
