@@ -14,17 +14,17 @@ import java.util.Date;
 @Component
 public class TbPayBill extends Domain {
     private Integer id;
-    private Integer parentId;//关联上次交费数据id
+    private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
-    private Integer dictionariesId;//缴费类型//改
+    private Integer typeId;//缴费类型//改
     private Integer totalAmount;//应付金额
-    private Integer payableAmount;//金额//
-    private Date paymentDate;//缴费日期//
-    private Boolean instalment;//是否分期
+    private Integer payAmount;//金额//
+    private Date payDate;//缴费日期//
+    private Boolean hasInstalment;//是否分期
     private Integer discountAmount;//优惠金额
-    private Integer paidAmount;//实付金额//加fact
+    private Integer factAmount;//实付金额//加fact
     private Date startTime;//开始时间
-    private Date entTime;//结束时间//end
+    private Date endTime;//结束时间//end
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
     private String remark;//备注
@@ -37,12 +37,12 @@ public class TbPayBill extends Domain {
         this.id = id;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Integer getPid() {
+        return pid;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
     public Integer getStudentId() {
@@ -53,12 +53,12 @@ public class TbPayBill extends Domain {
         this.studentId = studentId;
     }
 
-    public Integer getDictionariesId() {
-        return dictionariesId;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setDictionariesId(Integer dictionariesId) {
-        this.dictionariesId = dictionariesId;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Integer getTotalAmount() {
@@ -69,28 +69,28 @@ public class TbPayBill extends Domain {
         this.totalAmount = totalAmount;
     }
 
-    public Integer getPayableAmount() {
-        return payableAmount;
+    public Integer getPayAmount() {
+        return payAmount;
     }
 
-    public void setPayableAmount(Integer payableAmount) {
-        this.payableAmount = payableAmount;
+    public void setPayAmount(Integer payAmount) {
+        this.payAmount = payAmount;
     }
 
-    public Date getPaymentDate() {
-        return paymentDate;
+    public Date getPayDate() {
+        return payDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
-        this.paymentDate = paymentDate;
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
     }
 
-    public Boolean getInstalment() {
-        return instalment;
+    public Boolean getHasInstalment() {
+        return hasInstalment;
     }
 
-    public void setInstalment(Boolean instalment) {
-        this.instalment = instalment;
+    public void setHasInstalment(Boolean hasInstalment) {
+        this.hasInstalment = hasInstalment;
     }
 
     public Integer getDiscountAmount() {
@@ -101,12 +101,12 @@ public class TbPayBill extends Domain {
         this.discountAmount = discountAmount;
     }
 
-    public Integer getPaidAmount() {
-        return paidAmount;
+    public Integer getFactAmount() {
+        return factAmount;
     }
 
-    public void setPaidAmount(Integer paidAmount) {
-        this.paidAmount = paidAmount;
+    public void setFactAmount(Integer factAmount) {
+        this.factAmount = factAmount;
     }
 
     public Date getStartTime() {
@@ -117,12 +117,12 @@ public class TbPayBill extends Domain {
         this.startTime = startTime;
     }
 
-    public Date getEntTime() {
-        return entTime;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEntTime(Date entTime) {
-        this.entTime = entTime;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public Integer getOperatorId() {

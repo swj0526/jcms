@@ -15,10 +15,13 @@ import java.util.Date;
 public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
-    private Integer workId;//作业id//homeworkId
-    private Boolean hasEnclosure;//是否有附件//
+    private Integer homeworkId;//作业id//homeworkId
+    private Boolean hasAttachment;//是否有附件//
     //缺俩content考虑长度,那个老师打得分,attachment附件
+    private String content;//内容
+    private String estimateContent;//评价
     private Integer score;//分数
+    private  Integer teacherId;//评价老师
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
 
@@ -38,20 +41,36 @@ public class TbStudentWork extends Domain {
         this.studentId = studentId;
     }
 
-    public Integer getWorkId() {
-        return workId;
+    public Integer getHomeworkId() {
+        return homeworkId;
     }
 
-    public void setWorkId(Integer workId) {
-        this.workId = workId;
+    public void setHomeworkId(Integer homeworkId) {
+        this.homeworkId = homeworkId;
     }
 
-    public Boolean getHasEnclosure() {
-        return hasEnclosure;
+    public Boolean getHasAttachment() {
+        return hasAttachment;
     }
 
-    public void setHasEnclosure(Boolean hasEnclosure) {
-        this.hasEnclosure = hasEnclosure;
+    public void setHasAttachment(Boolean hasAttachment) {
+        this.hasAttachment = hasAttachment;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getEstimateContent() {
+        return estimateContent;
+    }
+
+    public void setEstimateContent(String estimateContent) {
+        this.estimateContent = estimateContent;
     }
 
     public Integer getScore() {
@@ -60,6 +79,14 @@ public class TbStudentWork extends Domain {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 
     public Integer getOperatorId() {

@@ -11,9 +11,10 @@ import java.util.Date;
  * @create 2019-11-20 14:00
  */
 @Component
-public class TbAccessory extends Domain {
+public class TbAttachment extends Domain {
     private Integer id;
-    private Integer type;// linkId;
+    private Integer type;
+    private Integer linkId;
     private String URL;
     private Integer operatorId;//操作人id
     private Date createTime;//创建时间
