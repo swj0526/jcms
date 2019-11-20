@@ -12,7 +12,7 @@ import java.util.Date;
  * @create 2019-11-19 13:14
  */
 @Component
-public class TbMoney extends Domain {
+public class TbPayment extends Domain {
     private Integer id;
     private Integer studentId;//学生id
     private Integer dictionariesId;//缴费类型

@@ -12,7 +12,7 @@ import java.util.Date;
  *
  */
 @Component
-public class TbWorkLIst extends Domain {
+public class TbHomeWork extends Domain {
     private Integer id;
     private String name;//作业名称
     private String teacherId;//发布人
