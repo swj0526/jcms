@@ -30,16 +30,6 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label" style="width:60px">类型</label>
-                        <div class="layui-input-inline" style="width:120px">
-                            <select name="modules" lay-search="" lay-verify="required">
-                                <option value="">请选择类型</option>
-                                <option value="1">公告</option>
-                                <option value="2">通知</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">日期范围</label>
                         <div class="layui-input-inline">
                             <input class="layui-input" id="test6" type="text" placeholder=" - ">
@@ -56,36 +46,22 @@
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <#--文章详情-->
 <div style="display: none" id="updateOrDelete">
-    <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFor">
-        <div class="layui-form-item" style="display: none">
-            <label class="layui-form-label">n</label>
-            <div class="layui-input-block">
-                <input type="text" name="id" required lay-verify="required" placeholder="id" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-        <table border="1" width="310" height="400" align="center" cellspacing="0">
-            <tr align="center">
-                <td bgcolor="#ededed">标题</td>
-                <td colspan="7">hi</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">发布人</td>
-                <td colspan="7">老师</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">类型</td>
-                <td colspan="7">通知</td>
-            </tr>
-            <tr align="center">
-                <td bgcolor="#ededed">内容</td>
-                <td colspan="7" width="200" height="100">有事</td>
-            </tr>
-        </table>
-    </form>
+    <h1 align="center">标题</h1>
+    <hr />
+    <p align="center">发布时间:&nbsp;<span>2019-11-20</span>&nbsp;<span>12:00</span></p>
+    <div align="center" style="margin: 10px;">
+        <p>我这个人走得很慢，但是我从不后退。</p>
+        <p>等待的方法有两种：一种是什么事也不做的空等；一种是一边等一边把事业向前推动。</p>
+        <p>当幻想和现实面对面时，总是很痛苦的。要么你被痛苦击倒，要么你把痛苦踩在脚下。</p>
+        <p>如果你希望成功，当以恒心为良友，以经验为参谋，以当心为兄弟，以希望为哨兵。</p>
+        <p>当我以为我无法继续走下去时，我强迫自己要继续前进。我的成功是基于我的坚持，并非运气。</p>
+        <p>若是自己没有尽力，就没有资格批评别人不用心。开口抱怨很容易，但是闭嘴努力的人更加值得尊敬。</p>
+        <br />
+        <p  style="float:right;">作者：<span>长路漫漫</span></p>
+    </div>
 </div>
 <div id="aaa" style="display: none">
-    <div>
+    <div >
         <h1>已读</h1>
     <table >
         <tbody>
@@ -97,7 +73,7 @@
         </tbody>
     </table>
     </div>
-    <div>
+    <div style="float:right;">
         <h1>未读</h1>
         <table >
             <tbody>

@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @description 角色类
- * @author swj
- *
+ * @author 孙文举
  * @create 2019-11-18 16:11
  */
 @Component
@@ -14,7 +13,7 @@ public class TbRole extends Domain {
     private Integer id;
     private String name;//角色名称
     private String remark;//角色备注
-    private String privilegeList;//权限列表
+    private String functionIds;//权限列表
     private Integer operatorId;//操作人
     private String createTime;//操作时间
 
@@ -42,12 +41,12 @@ public class TbRole extends Domain {
         this.remark = remark;
     }
 
-    public String getPrivilegeList() {
-        return privilegeList;
+    public String getFunctionIds() {
+        return functionIds;
     }
 
-    public void setPrivilegeList(String privilegeList) {
-        this.privilegeList = privilegeList;
+    public void setFunctionIds(String functionIds) {
+        this.functionIds = functionIds;
     }
 
     public Integer getOperatorId() {
