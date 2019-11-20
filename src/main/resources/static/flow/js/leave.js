@@ -20,7 +20,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "待审批",
+            "state": "1",
             "cause": "有事asdasdasdasfasfasdgdfsdf12"
         }, {
             "id": "10001",
@@ -29,7 +29,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "已撤销",
+            "state": "2",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -38,7 +38,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "一审通过",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -47,7 +47,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "一审拒绝",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -56,7 +56,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "二审拒绝",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -65,7 +65,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "通过",
+            "state": "3",
             "cause": "有事"
         }, {
             "id": "10001",
@@ -74,7 +74,7 @@ layui.use('table', function () {
             "days": "3天",
             "apply": "2016-10-14",
             "leaveTime": "2016-10-15",
-            "state": "拒绝",
+            "state": "3",
             "cause": "有事"
         }]
         , page: true
@@ -103,7 +103,6 @@ layui.use('table', function () {
         form.render(); // 动态渲染
     });
 
-
     table.on('tool(test)', function(obj){
         var data = obj.data;
         //console.log(obj)
@@ -124,9 +123,7 @@ layui.use('table', function () {
                 yes: function () {
                 }
             });
-
             form.render(); // 动态渲染
-
         }else if(obj.event === 'revoke'){
             layer.confirm('真的撤销吗', function(index){
                 obj.del();
@@ -149,24 +146,7 @@ layui.use('table', function () {
             form.render(); // 动态渲染
         }
     });
-    $(document).on('click',"#id1",function(){
-        layer.prompt({
-            formType: 2
-            ,value: data.email
-            ,content: $("#updateOrDelete")
-        }, function(value, index){
-            obj.update({
-                email: value
-            });
-            layer.close(index);
-        });
-    });
-    $(document).on('click',"#id2",function(){
-        layer.msg("按钮点击2");
-    });
-    $(document).on('click',"#id3",function(){
-        layer.msg("按钮点击3");
-    });
+
 
 });
 //日期方法

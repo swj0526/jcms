@@ -44,10 +44,10 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
         <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索信息</legend>
+            <legend>搜索渠道</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
-                    <div class="layui-form-item">
+
                         <div class="layui-inline">
                             <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
@@ -61,7 +61,7 @@
                         <div class="layui-btn-group">
                             <button class="layui-btn data-add-btn"type="button">添加渠道信息</button>
                         </div>
-                    </div>
+
                 </form>
             </div>
         </fieldset>

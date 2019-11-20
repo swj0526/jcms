@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
 </head>
 <body>
+<div style="width: 600px;margin: 0 auto">
 <form class="layui-form" action="">
     <div class="layui-form-item">
         <label class="layui-form-label">旧密码</label>
@@ -38,6 +39,7 @@
         </div>
     </div>
 </form>
+</div>
 <script src="../../layui/layui.js" charset="utf-8"></script>
 
 <script>
