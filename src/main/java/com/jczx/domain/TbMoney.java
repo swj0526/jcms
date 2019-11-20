@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class TbMoney extends Domain {
     private Integer id;
     private Integer studentId;//学生id
-    private String theClassId;//班级id
     private Integer paymentType;//缴费类型
     private Integer method;//缴费方式
     private Integer money;//金额
@@ -37,14 +36,6 @@ public class TbMoney extends Domain {
 
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
-    }
-
-    public String getTheClassId() {
-        return theClassId;
-    }
-
-    public void setTheClassId(String theClassId) {
-        this.theClassId = theClassId;
     }
 
     public Integer getPaymentType() {

@@ -26,7 +26,7 @@ layui.use('table', function () {
             "publisher": "杜甫",
             "articleype": "公告",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
 
         }, {
             "id": "10002",
@@ -35,7 +35,7 @@ layui.use('table', function () {
             "publisher": "杜甫",
             "articleype": "公告",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
 
         }, {
             "id": "10003",
@@ -44,7 +44,7 @@ layui.use('table', function () {
             "publisher": "杜甫",
             "articleype": "通知",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
         }, {
             "id": "10004",
             "title": "Hi",
@@ -52,7 +52,7 @@ layui.use('table', function () {
             "publisher": "杜甫",
             "articleype": "公告",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
         }, {
             "id": "10005",
             "title": "Hi",
@@ -60,7 +60,7 @@ layui.use('table', function () {
             "publisher": "杜甫",
             "articleype": "公告",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
         }, {
             "id": "10006",
             "title": "Hi",
@@ -68,7 +68,7 @@ layui.use('table', function () {
             "publisher": "杜甫",
             "articleype": "通知",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
         }, {
             "id": "10007",
             "title": "Hi",
@@ -76,7 +76,7 @@ layui.use('table', function () {
             "publisher": "贤心",
             "articleype": "公告",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
         }, {
             "id": "10008",
             "title": "Hi",
@@ -84,25 +84,45 @@ layui.use('table', function () {
             "publisher": "贤心",
             "articleype": "通知",
             "joinTime": "2016-10-14",
-            "see": "10/50"
+            "see": '<div><a id="info" >10/50</a></div>'
         }],
     });
     var form = layui.form;
     var layer = layui.layer;
     $ = layui.jquery;
-    //监听行单击事件（单击事件为：rowDouble）
-    table.on('row(test)', function(obj){
+
+    table.on('tool(test)', function(obj){
         var data = obj.data;
-        layer.alert(JSON.stringify(data), {
+        //console.log(obj)
+            layer.open({
+                type: 1,
+                title: "经费申请",
+                skin: "myclass", // 自定样式
+                area: ["100%", "100%"],
+                content: $("#updateOrDelete"),
+                success: function (layero, index) {
+                },
+                yes: function () {
+                }
+            });
+            form.render(); // 动态渲染
+
+    });
+    $("#info").on('click', function () {
+        layer.open({
             type: 1,
-            title: '请假审批详情：',
-            content: $("#updateOrDelete"),
-            success: function (index) {
-                form.val("dataForm", data);
+            title: "查看人数",
+            skin: "myclass", // 自定样式
+            area: ["400px", "650px"],
+            content: $("#aaa"),
+
+            success: function (layero, index) {
+            },
+            yes: function () {
             }
         });
-        //标注选中样式
-        obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+
+        form.render(); // 动态渲染
     });
 
 
