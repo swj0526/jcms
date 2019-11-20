@@ -18,13 +18,13 @@ public class TbHomework extends Domain {
     private String teacherId;//发布人
     private Integer classId;//年级
     private Date endTime;//截止日期
-    private String content;//内容
+    private String content;//内容//长度问题
     private Boolean hasEnclosure;//是否有附件
     private Integer submitCount;//提交人数
     private String submitIds;//提交人
     private String notSubmitIds;//未提交人
     private Integer totalCount;//总人数
-    //private Integer operatorId;//操作人id
+    private Integer operatorId;//操作人id
     private Date createTime;//创建时间
 
     public Integer getId() {

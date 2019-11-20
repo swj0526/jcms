@@ -14,9 +14,9 @@ import java.util.Date;
  */
 @Component
 public class TbDictionary extends Domain {
-    private Integer id;
+    private Integer id;//字典表 就 id  和name和备注,类型type
     private String key;
-    private String value;
+    private String value;//
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
 

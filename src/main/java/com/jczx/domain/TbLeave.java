@@ -29,6 +29,7 @@ public class TbLeave extends Domain {
     private String secondContent;//二审意见
     private Boolean secondState;//二审是否通过
     private Date secondCreateTime;//二审操作时间
+    //缺操作人
 
     public Integer getId() {
         return id;

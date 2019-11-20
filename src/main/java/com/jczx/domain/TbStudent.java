@@ -14,6 +14,7 @@ import java.util.Date;
  */
 @Component
 public class TbStudent extends Domain {
+    //缺积分,状态性别
     @NotCreate
     public static final int STATE_NOT_ENTRANCE=0;//未入学
     @NotCreate
@@ -23,7 +24,7 @@ public class TbStudent extends Domain {
     private Integer id;
     private Integer majorId;//班级id
     private String name;//姓名
-    private Integer sex;//性别
+    private Integer sex;//性别//string
     private Integer age;//年龄
     private String address;//家庭住址
     private String nativePlace;//籍贯
@@ -32,6 +33,7 @@ public class TbStudent extends Domain {
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
     private Integer operatorId;//操作人
+    //name
     private String motherPhone;//母亲联系方式
     private String fatherPhone;//父亲联系方式
     private String emergencyPhone;//应急联系方式
@@ -39,24 +41,14 @@ public class TbStudent extends Domain {
     private Integer channelId;//渠道表id
     private String intention;//招生意向
     private Date birthDate;//出生年月
-    private String card;//身份证
+    private String card;//身份证//IDCard
     private String school;//学校
-    private String stuPhone;//学生电话
+    private String stuPhone;//学生电话//student
     private String qq;//qq号
     private String weChat;//微信
-    private String parPhone;//家长电话;
+  //  private String parPhone;//家长电话;//
 
-    public static int getStateNotEntrance() {
-        return STATE_NOT_ENTRANCE;
-    }
 
-    public static int getStateEntrance() {
-        return STATE_ENTRANCE;
-    }
-
-    public static int getStateGraduate() {
-        return STATE_GRADUATE;
-    }
 
     public Integer getId() {
         return id;
@@ -235,12 +227,12 @@ public class TbStudent extends Domain {
         this.weChat = weChat;
     }
 
-    public String getParPhone() {
-        return parPhone;
+    public static int getStateEntrance() {
+        return STATE_ENTRANCE;
     }
 
-    public void setParPhone(String parPhone) {
-        this.parPhone = parPhone;
+    public static int getStateGraduate() {
+        return STATE_GRADUATE;
     }
 
     public String getLabelIds() {

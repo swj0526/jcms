@@ -16,15 +16,15 @@ public class TbPayBill extends Domain {
     private Integer id;
     private Integer parentId;//关联上次交费数据id
     private Integer studentId;//学生id
-    private Integer dictionariesId;//缴费类型
+    private Integer dictionariesId;//缴费类型//改
     private Integer totalAmount;//应付金额
-    private Integer payableAmount;//金额
-    private Date paymentDate;//缴费日期
+    private Integer payableAmount;//金额//
+    private Date paymentDate;//缴费日期//
     private Boolean instalment;//是否分期
     private Integer discountAmount;//优惠金额
-    private Integer paidAmount;//实付金额
+    private Integer paidAmount;//实付金额//加fact
     private Date startTime;//开始时间
-    private Date entTime;//结束时间
+    private Date entTime;//结束时间//end
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
     private String remark;//备注

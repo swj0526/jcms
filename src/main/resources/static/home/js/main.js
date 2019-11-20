@@ -7,11 +7,11 @@ layui.use(['element', 'jquery', 'layer'], function () {
          content: '<iframe src="/home/context" frameborder="0" height="800px" height="100%"></iframe>',
          id: 'first-tab' //实际使用一般是规定好的id，这里以时间戳模拟下
      });*/
-    var id = "first-tab";
+  /*  var id = "first-tab";
     var title = "首页";
     var src = "/home/context";
-    dynamicTab(id, title, src);
-  /*  //点击左边的按钮,然后判断是否新增tab还是需要定位一个tab
+    dynamicTab(id, title, src);*/
+  //点击左边的按钮,然后判断是否新增tab还是需要定位一个tab
     $(".add").click(function () {
         //获取被点击的元素id,来取得准确的元素
         var id = $(this).attr('id');
@@ -215,7 +215,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             }
 
         }
-    });*/
+    });
     $('.site-demo-active').on('click', function () {
         var othis = $(this),
             type = othis.data('type');
