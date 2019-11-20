@@ -28,7 +28,6 @@ public class TbPayBill extends Domain {
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
     private String remark;//备注
-
     public Integer getId() {
         return id;
     }

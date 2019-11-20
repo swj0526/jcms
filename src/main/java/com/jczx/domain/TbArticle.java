@@ -8,13 +8,14 @@ import java.util.Date;
 
 /**
  * 发布文章
+ *
  * @author 宋家新
  * @create 2019-11-18 21:11
  */
 @Component
-public class TbArticle  extends Domain {
+public class TbArticle extends Domain {
     @NotCreate
-    private static final int TYPE_ARTICLE=1;//类型常量不要   //换用字典表加type字段
+    private static final int TYPE_ARTICLE = 1;//类型常量不要   //换用字典表加type字段
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
@@ -26,7 +27,6 @@ public class TbArticle  extends Domain {
     private String totalIds;//应读
     private Boolean hasEnclosure;//是否有上传文件//单词
     private Integer operatorId;//操作人
-
 
 
     public Integer getId() {
