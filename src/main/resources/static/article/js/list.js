@@ -14,7 +14,6 @@ layui.use('table', function () {
             , {field: 'title', title: '标题',align: 'center'}
             , {field: 'role', title: '角色',align: 'center'}
             , {field: 'publisher', title: '发布人',align: 'center'}
-            , {field: 'articleype', title: '类型',align: 'center'}
             , {field: 'joinTime', title: '发布时间',align: 'center'}
             , {field: 'see', title: '查看人数',align: 'center'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
@@ -24,7 +23,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "articleype": "公告",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
 
@@ -33,7 +31,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "articleype": "公告",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
 
@@ -50,7 +47,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "articleype": "公告",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
         }, {
@@ -58,7 +54,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "articleype": "公告",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
         }, {
@@ -66,7 +61,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "articleype": "通知",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
         }, {
@@ -74,7 +68,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "贤心",
-            "articleype": "公告",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
         }, {
@@ -82,7 +75,6 @@ layui.use('table', function () {
             "title": "Hi",
             "role": "学生",
             "publisher": "贤心",
-            "articleype": "通知",
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
         }],
@@ -96,7 +88,7 @@ layui.use('table', function () {
         //console.log(obj)
             layer.open({
                 type: 1,
-                title: "经费申请",
+                title: "文章详情",
                 skin: "myclass", // 自定样式
                 area: ["100%", "100%"],
                 content: $("#updateOrDelete"),
@@ -113,7 +105,7 @@ layui.use('table', function () {
             type: 1,
             title: "查看人数",
             skin: "myclass", // 自定样式
-            area: ["400px", "650px"],
+            area: ["1000px", "500px"],
             content: $("#aaa"),
 
             success: function (layero, index) {
