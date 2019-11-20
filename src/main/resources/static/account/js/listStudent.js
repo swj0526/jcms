@@ -11,7 +11,7 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
         , id: 'userTableReload'
         , cols: [[
             {field: 'stuID', title: '学号'},
-            {field: 'name', title: '学生姓名', templet:'<div><a href="" class="layui-table-link">{{d.name}}</a></div>'},
+            {field: 'name', title: '学生姓名', templet:'<div><a href="student/information" class="layui-table-link">{{d.name}}</a></div>'},
             {field: 'major', title: '所属专业'},
             {field: 'grade', title: '所属班级'},
             {field: 'phone', title: '手机号码'},
