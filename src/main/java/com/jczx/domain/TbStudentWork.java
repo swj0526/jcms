@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 学生作业上传表
  * @author 丛枭钰
@@ -14,10 +16,10 @@ public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
     private Integer workListId;//作业列表id
-    private String fileUrl;//作业文件地址
+    private Boolean enclosure;//是否有附件
     private Integer score;//分数
     private Integer operatorId;//操作人id
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -27,28 +29,28 @@ public class TbStudentWork extends Domain {
         this.id = id;
     }
 
-    public Integer getTbStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setTbStudentId(Integer tbStudentId) {
-        studentId = tbStudentId;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
-    public Integer getTbWorkListId() {
+    public Integer getWorkListId() {
         return workListId;
     }
 
-    public void setTbWorkListId(Integer tbWorkListId) {
-        workListId = tbWorkListId;
+    public void setWorkListId(Integer workListId) {
+        this.workListId = workListId;
     }
 
-    public String getFileUrl() {
-        return fileUrl;
+    public Boolean getEnclosure() {
+        return enclosure;
     }
 
-    public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl;
+    public void setEnclosure(Boolean enclosure) {
+        this.enclosure = enclosure;
     }
 
     public Integer getScore() {
@@ -67,11 +69,11 @@ public class TbStudentWork extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

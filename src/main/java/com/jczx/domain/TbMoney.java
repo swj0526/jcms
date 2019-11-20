@@ -3,28 +3,29 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 缴费表
+ *
  * @author 丛枭钰
  * @create 2019-11-19 13:14
- *
  */
 @Component
 public class TbMoney extends Domain {
     private Integer id;
     private Integer studentId;//学生id
-    private Integer paymentTypeId;//缴费类型
-    private Integer method;//缴费方式
-    private Integer totalMoney;//总金额
-    private Integer money;//金额
-    private String paymentDate;//缴费日期
+    private Integer dictionariesId;//缴费类型
+    private Integer totalAmount;//总金额
+    private Integer payableAccount;//金额
+    private Date paymentDate;//缴费日期
     private Boolean instalment;//是否分期
-    private Integer discount;//优惠金额
-    private Integer aggregate;//总计
-    private Integer startTime;//开始时间
-    private String validity;//费用有效期
+    private Integer discountAmount;//优惠金额
+    private Integer paidAmount;//总计
+    private Date startTime;//开始时间
+    private Date entTime;//结束时间
     private Integer operatorId;//操作人id
-    private String createTime;//操作时间
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -42,43 +43,35 @@ public class TbMoney extends Domain {
         this.studentId = studentId;
     }
 
-    public Integer getPaymentTypeId() {
-        return paymentTypeId;
+    public Integer getDictionariesId() {
+        return dictionariesId;
     }
 
-    public void setPaymentTypeId(Integer paymentTypeId) {
-        this.paymentTypeId = paymentTypeId;
+    public void setDictionariesId(Integer dictionariesId) {
+        this.dictionariesId = dictionariesId;
     }
 
-    public Integer getMethod() {
-        return method;
+    public Integer getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setMethod(Integer method) {
-        this.method = method;
+    public void setTotalAmount(Integer totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
-    public Integer getTotalMoney() {
-        return totalMoney;
+    public Integer getPayableAccount() {
+        return payableAccount;
     }
 
-    public void setTotalMoney(Integer totalMoney) {
-        this.totalMoney = totalMoney;
+    public void setPayableAccount(Integer payableAccount) {
+        this.payableAccount = payableAccount;
     }
 
-    public Integer getMoney() {
-        return money;
-    }
-
-    public void setMoney(Integer money) {
-        this.money = money;
-    }
-
-    public String getPaymentDate() {
+    public Date getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(String paymentDate) {
+    public void setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
     }
 
@@ -90,36 +83,36 @@ public class TbMoney extends Domain {
         this.instalment = instalment;
     }
 
-    public Integer getDiscount() {
-        return discount;
+    public Integer getDiscountAmount() {
+        return discountAmount;
     }
 
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
+    public void setDiscountAmount(Integer discountAmount) {
+        this.discountAmount = discountAmount;
     }
 
-    public Integer getAggregate() {
-        return aggregate;
+    public Integer getPaidAmount() {
+        return paidAmount;
     }
 
-    public void setAggregate(Integer aggregate) {
-        this.aggregate = aggregate;
+    public void setPaidAmount(Integer paidAmount) {
+        this.paidAmount = paidAmount;
     }
 
-    public Integer getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getValidity() {
-        return validity;
+    public Date getEntTime() {
+        return entTime;
     }
 
-    public void setValidity(String validity) {
-        this.validity = validity;
+    public void setEntTime(Date entTime) {
+        this.entTime = entTime;
     }
 
     public Integer getOperatorId() {
@@ -130,11 +123,11 @@ public class TbMoney extends Domain {
         this.operatorId = operatorId;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

@@ -16,7 +16,7 @@
 <div style="padding: 15px;">
     <div class="demoTable">
         <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索信息</legend>
+            <legend>缴费查询信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" >
                     <div class="layui-form-item">
