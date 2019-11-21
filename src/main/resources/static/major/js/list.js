@@ -1,10 +1,13 @@
 var a=new Array();
 a=[{
     "name": "影视专业",
+    "type":0
 },{
-    "name":"」一班"
+    "name":"」一班",
+    "type":1
 },{
-    "name":"」一班"
+    "name":"」一班",
+    "type":1
 }]
 layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () {
     var $ = layui.jquery,
@@ -28,7 +31,11 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
                 title: '',
                 city: "",
                 sort: true,
-                templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.name}} >{{d.name}}</a></div>'
+                templet: '{{#  if(d.id < 100){ }}\n' +
+                    '    <a href="/detail/{{d.id}}" class="layui-table-link">{{d.title}}</a>\n' +
+                    '  {{#  } else { }}\n' +
+                    '    {{d.title}}(普通用户)\n' +
+                    '  {{#  } }}'
             }
             ]
         ],
@@ -36,6 +43,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
         limit: 10,
         page: true
     });
+
 
     // 监听搜索操作
     form.on('submit(data-search-btn)', function (data) {

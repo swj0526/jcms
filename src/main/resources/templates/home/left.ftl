@@ -14,8 +14,8 @@
                 <a href="javascript:;">信息管理</a>
                 <dl class="layui-nav-child">
                     <dd><a  class="add" id="student_list">学生档案管理</a></dd>
-                    <dd><a  class="add" id="">专业管理</a></dd>
-                    <dd><a  class="add" id="">教职工档案管理</a></dd>
+                    <dd><a  class="add" id="major_list">专业管理</a></dd>
+                    <dd><a  class="add" id="teacher_list">教职工档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
                     <dd><a class="add" id="recruit_follow">来源渠道管理</a></dd>
                     <dd><a class="add" id="recruit_data">渠道统计</a></dd>
@@ -34,8 +34,9 @@
                 <a href="javascript:;">审批管理</a>
                 <dl class="layui-nav-child">
                     <#-- <dd><a href="/flow/approver"  class="add" id="flow_approver">流程列表</a></dd>-->
-                    <dd><a class="add" id="flow_fundsApprover">经费审批</a></dd>
+
                     <dd><a class="add" id="flow_leaveApprover">请假审批</a></dd>
+                    <dd><a class="add" id="flow_fundsApprover">经费审批</a></dd>
 
                 </dl>
             </li>
@@ -49,8 +50,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">发文管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a  class="add" id="article_dispatch">发布文章</a></dd>
-                    <dd><a   class="add" id="article_list">查询文章</a></dd>
+                    <dd><a  class="add" id="article_dispatch">发布公告</a></dd>
+                    <dd><a   class="add" id="article_list">公告列表</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
