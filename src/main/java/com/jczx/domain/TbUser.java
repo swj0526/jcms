@@ -17,22 +17,22 @@ public class TbUser  extends Domain {
      * 学生
      */
     @NotCreate
-    public static final Integer TYPE_STUDENT=1;
+    public static final int TYPE_STUDENT=1;
     /**
      * 教职工
      */
     @NotCreate
-    public static final Integer TYPE_TEACHER=2;
+    public static final int TYPE_TEACHER=2;
     /**
      * 未激活
      */
     @NotCreate
-    public static final Integer TYPE_NO_ENABLE=0;
+    public static final int TYPE_NO_ENABLE=0;
     /**
      * 已激活
      */
     @NotCreate
-    public static final Integer TYPE_ENABLE=1;
+    public static final int TYPE_ENABLE=1;
     private  Integer id;
     private Integer type;//类型 1.学生 2.教职工
     private Integer accountId;//跟具体的信息表关联id
