@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
-    <script type="text/javascript" src="/account/js/xm-select.js"></script>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/listStudent.js">
     </script>

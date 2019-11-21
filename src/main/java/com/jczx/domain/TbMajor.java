@@ -4,6 +4,8 @@ import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 专业表
  * @author 池炯武
@@ -19,6 +21,8 @@ public class TbMajor extends Domain {
     private String name; //专业名称
     private Integer pid; //班级关联
     private Integer type;//类型，区分班级和专业
+    private Integer operatorId;//操作人
+    private Date createTime;//操作时间
     private String remark;//备注
 
     public String getRemark() {
@@ -59,5 +63,21 @@ public class TbMajor extends Domain {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

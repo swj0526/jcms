@@ -15,12 +15,12 @@ import java.util.Date;
 public class TbIntegral extends Domain {
     private Integer id;
     private Date recordTime;//事情发生时间
-    private Integer operatorId;//操作人
-    private Date createTime;//操作时间
     private Integer studentId;// 学生id
     private Integer totalScore;//总分
     private Integer score;//记录加分减分
     private Integer itemId;//关联规则表
+    private Integer operatorId;//操作人
+    private Date createTime;//操作时间
 
 
     public Integer getScore() {

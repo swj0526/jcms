@@ -1,11 +1,5 @@
 layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form', 'tree'], function () {
-    var table = layui.table;
     var layer = layui.layer;
-    var $ = layui.jquery;
-    var form = layui.form;
-    var transfer = layui.transfer;
-    var layer = layui.layer;
-    var util = layui.util;
     var tree = layui.tree;
     var data2 = [{
         title: '权限管理'

@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 事由表
  *
@@ -23,6 +25,8 @@ public class TbIntegralItem extends Domain {
     private Integer score;//记录加分减分
     private String reason;//事由
     private Integer type;//判断加分减分
+    private Integer operatorId;//操作人
+    private Date createTime;//操作时间
 
     public Integer getType() {
         return type;
@@ -54,5 +58,21 @@ public class TbIntegralItem extends Domain {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

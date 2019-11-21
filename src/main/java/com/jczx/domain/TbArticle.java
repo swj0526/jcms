@@ -16,12 +16,12 @@ public class TbArticle  extends Domain {
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
     private String content;//内容
-    private Date createTime;//发布时间
-    private Integer readCount;//已读数//count
-    private Integer totalCount;//应读数//count
+    private Integer readCount;//已读数
+    private Integer totalCount;//应读数
     private String readIds;//已读
     private String totalIds;//应读
-    private Boolean hasAttachment;//是否有上传文件//单词
+    private Boolean hasAttachment;//是否有上传文件
+    private Date createTime;//发布时间
     private Integer operatorId;//操作人
 
     public Integer getId() {

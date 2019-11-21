@@ -3,6 +3,8 @@ package com.jczx.domain;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * 老师表
  *
@@ -17,6 +19,8 @@ public class TbTeacher extends Domain {
     private String gender;//性别
     private String phone;//手机号
     private Boolean hasQuit;//老师状态
+    private Integer operatorId;//操作人
+    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
@@ -56,5 +60,21 @@ public class TbTeacher extends Domain {
 
     public void setHasQuit(Boolean hasQuit) {
         this.hasQuit = hasQuit;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

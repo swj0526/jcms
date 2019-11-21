@@ -1,6 +1,8 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.annotation.NotCreate;
+import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -27,20 +29,21 @@ public class TbUser  extends Domain {
      * 未激活
      */
     @NotCreate
-    public static final int TYPE_NO_ENABLE=0;
+    public static final Boolean TYPE_NO_ENABLE=false;
     /**
      * 已激活
      */
     @NotCreate
-    public static final int TYPE_ENABLE=1;
+    public static final Boolean TYPE_ENABLE=true;
     private  Integer id;
     private Integer type;//类型 1.学生 2.教职工
     private Integer accountId;//跟具体的信息表关联id
     private String phone;//手机号码,登录时的用户名
     private String password;//密码
     private Integer operatorId;//操作人
+    @FieldType(type = Type.DATETIME)
     private Date createTime;//操作时间
-    private Integer enable;//该账号是否被激活//0.未激活,1.已激活
+    private Boolean enable;//该账号是否被激活//0.未激活,1.已激活
     public Integer getId() {
         return id;
     }
@@ -97,11 +100,11 @@ public class TbUser  extends Domain {
         this.createTime = createTime;
     }
 
-    public Integer getEnable() {
+    public Boolean getEnable() {
         return enable;
     }
 
-    public void setEnable(Integer enable) {
+    public void setEnable(Boolean enable) {
         this.enable = enable;
     }
 }

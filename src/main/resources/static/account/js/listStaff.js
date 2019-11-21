@@ -158,15 +158,6 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             });
         }
     });
-    var demo1 = xmSelect.render({
-        el: '.demo1',
-        language: 'zn',
-        data: [
-            {name: '校长', value: 1},
-            {name: '管理老师', value: 2},
-            {name: '教务', value: 3},
-        ]
-    });
 
     //监听锁定操作
     form.on('checkbox(lockDemo1)', function (obj) {
