@@ -44,8 +44,7 @@
                     </div>
                 </div>
                 <button class="layui-btn" data-type="reload">查询</button>
-                <button id="add" class="layui-btn" data-type="reload" type="button">经费申请</button>
-
+                <button id="add" class="layui-btn layui-btn-normal" data-type="reload" type="button">经费申请</button>
             </form>
         </div>
     </fieldset>
@@ -200,14 +199,14 @@
 </script>
 <script id="barDemo" type="text/html">
     {{# if(d.state=="1"){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="revoke">撤销</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="revoke">撤销</a>
     {{# } }}
     {{# if(d.state=="2"){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="again">重新提交</a>
-    <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="again">重新提交</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     {{# } }}
     {{# if(d.state=="3"){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit">查看详细</a>
     {{# } }}
 
 </script>

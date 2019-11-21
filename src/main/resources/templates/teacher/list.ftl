@@ -57,7 +57,7 @@
 <#--修改-->
 <div id="modify1" style="display: none">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFrm">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFrm">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">姓名</label>
@@ -74,10 +74,10 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">状态</label>
                         <div class="layui-input-inline">
-                            <select name="modules" lay-search="" lay-verify="required">
+                            <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit">
                                 <option value="">所有状态</option>
-                                <option value="1">在职</option>
-                                <option value="2">离职</option>
+                                <option value="在职">在职</option>
+                                <option value="离职">离职</option>
                             </select>
                         </div>
                     </div>
@@ -126,14 +126,14 @@
                                 <option value="021">离职</option>
                             </select>
                         </div>
-                        <div class="layui-inline">
+                        <#--<div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-                        </div>
-                        <div class="layui-btn-group">
-                            <button type="button" class="layui-btn" id="add1">添加</button>
-                            <button type="button"class="layui-btn layui-btn-warm"  id="import">导入</button>
-                            <button type="button"class="layui-btn layui-btn-warm" >导出</button>
-                        </div>
+                        </div>-->
+                        <button class="layui-btn" data-type="reload" >查询</button>
+
+                        <button type="button" class="layui-btn " id="add1">添加</button>
+                        <button type="button" class="layui-btn layui-btn-warm"  id="import">导入</button>
+                        <button type="button" class="layui-btn layui-btn-warm" >导出</button>
                     </div>
                 </form>
             </div>

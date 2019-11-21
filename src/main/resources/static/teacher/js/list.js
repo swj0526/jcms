@@ -11,7 +11,6 @@ a = [{
     "gender": "男",
     "phone": "15333333333",
     "hasQuit": "在职"
-
 }];
 layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
     var $ = layui.jquery,
@@ -27,7 +26,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
     });
     table.render({
         elem: '#currentTableId',
-        url:'/teacher/list',
+        //url:'/teacher/list',
         data: a,
         cols: [[{field: 'id', title: '学号', city: "", sort: true, align: 'center'}
             , {field: 'name', title: '姓名', align: 'center'}
@@ -65,6 +64,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
         layer.msg('添加数据');
     });
 
+
     //监听表格复选框选择
     table.on('checkbox(currentTableFilter)', function (obj) {
         console.log(obj)
@@ -73,14 +73,14 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
     function modify(data) {
         layer.open({
             type: 1,
-            title: "修改学生信息",
+            title: "修改老师信息",
             content: $("#modify1"),
             area: ['1000px', '300px'],
             success: function (index) {
-                form.val("dataForm", data)
+                form.val("dataForm1", data);
             }
         });
-        $('#modifyTeacher').click(function() {
+        /*$('#modifyTeacher').click(function() {
             var name=$('#name').val();
             var gender=$('#gender').val();
             var hasQuit=$('#hasQuit').val();
@@ -92,7 +92,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
                 alert(b.id);
             });
         });
-        form.render(); // 动态渲染
+        form.render(); // 动态渲染*/
     }
     table.on('tool(currentTableFilter)', function (obj) {
         data = obj.data;
@@ -102,7 +102,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
     $("#add1").click(function () {
         layer.open({
             type: 1,
-            title: "添加学生信息",
+            title: "添加老师信息",
             content: $("#add"),
             area: ['1000px', '300px'],
             success: function (index) {
@@ -123,6 +123,15 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
             });
         });
         form.render(); // 动态渲染
+    });
+    $("#import").click(function () {
+        layer.open({
+            type: 1,
+            title: "添加学生信息",
+            content: $("#importForm"),
+            btn: "提交",
+            area: ['750px', '320px'],
+        })
     });
 });
 
