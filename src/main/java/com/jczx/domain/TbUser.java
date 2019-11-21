@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,26 @@ import java.util.Date;
  */
 @Component
 public class TbUser  extends Domain {
+    /**
+     * 学生
+     */
+    @NotCreate
+    public static final int TYPE_STUDENT=1;
+    /**
+     * 教职工
+     */
+    @NotCreate
+    public static final int TYPE_TEACHER=2;
+    /**
+     * 未激活
+     */
+    @NotCreate
+    public static final int TYPE_NO_ENABLE=0;
+    /**
+     * 已激活
+     */
+    @NotCreate
+    public static final int TYPE_ENABLE=1;
     private  Integer id;
     private Integer type;//类型 1.学生 2.教职工
     private Integer accountId;//跟具体的信息表关联id

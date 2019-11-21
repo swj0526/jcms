@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,21 @@ import java.util.Date;
  */
 @Component
 public class TbLog  extends Domain {
+    /**
+     * 添加
+     */
+    @NotCreate
+    public static final int TYPE_ADD=1;
+    /**
+     * 删除
+     */
+    @NotCreate
+    public static final int TYPE_DEL=2;
+    /**
+     * 删除
+     */
+    @NotCreate
+    public static final int TYPE_MOD=3;
     private Integer id;
     private Integer type;//操作类型 1.增加 2.删除 3.修改
     private String content; //操作内容
