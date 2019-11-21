@@ -16,7 +16,7 @@ public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
     private Integer homeworkId;//作业id//homeworkId
-    private Boolean hasAttachment;//是否有附件//
+    private Boolean hasAttachment;//是否有附件
 
     private String content;//内容
     private String estimateContent;//评价

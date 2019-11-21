@@ -1,9 +1,17 @@
 package com.jczx.controller;
 
-import com.jczx.bean.ResultBean;
 
-public class BaseController extends ResultBean {
-    public static ResultBean success() {//成功，没有数据
+import com.jczx.bean.ResultBean;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author 于振华
+ * @create 2019-11-04 22:18
+ */
+@Service
+public class BaseController {
+
+    public static ResultBean success() {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(true);
         resultBean.setCode("0");
@@ -11,14 +19,13 @@ public class BaseController extends ResultBean {
         return resultBean;
     }
 
-    public static ResultBean success(Object data) {//成功，有数据
+    public static ResultBean success(Object data) {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(true);
         resultBean.setCode("0");
         resultBean.setData(data);
         return resultBean;
     }
-
     public static ResultBean success(Object data,int count) {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(true);
@@ -28,35 +35,35 @@ public class BaseController extends ResultBean {
         return resultBean;
     }
 
-    public static  ResultBean failure() {//失败
+    public static  ResultBean failure() {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(false);
         resultBean.setCode("-1");
-        resultBean.setMsg("msg", "");
+        resultBean.setMsg( "");
         return resultBean;
     }
 
-    public static ResultBean failure(String msg) {//失败有数据
+    public static ResultBean failure(String msg) {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(false);
         resultBean.setCode("-1");
-        resultBean.setMsg("msg", msg);
+        resultBean.setMsg( msg);
         return resultBean;
     }
 
-    public static ResultBean failure(int code) {//失败，带错误编码
+    public static ResultBean failure(int code) {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(false);
         resultBean.setCode("-1");
-        resultBean.setMsg("msg", "");
+        resultBean.setMsg( "");
         return resultBean;
     }
 
-    public static ResultBean failure(int code, String msg) {//失败，给错误编码和信息
+    public static ResultBean failure(int code, String msg) {
         ResultBean resultBean = new ResultBean();
         resultBean.setSuccess(false);
         resultBean.setCode("-1");
-        resultBean.setMsg("msg", msg);
+        resultBean.setMsg( msg);
         return resultBean;
     }
 }

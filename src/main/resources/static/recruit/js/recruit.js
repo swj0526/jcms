@@ -125,20 +125,14 @@ layui.use(['form', 'table', 'laydate'], function () {
                 {
                     field: 'classify',
                     title: 'QQ号',
-
-
                 },
                 {
                     field: 'wealth',
-                    title: '微信',
-
-
-
+                    title: '微信'
                 },
                 {
                     field: 'wealth',
                     title: '家长联系方式'
-
                 },
                 {
                     title: '操作',
@@ -177,7 +171,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
     //监听导出事件
     $("#download").click(function () {
-       alert("导出")
+        alert("导出")
 
     });
     //监听导入事件
@@ -195,6 +189,29 @@ layui.use(['form', 'table', 'laydate'], function () {
     $(".data-add-btn").on("click", function () {
         addStudents();
     });
+    //添加招生信息
+    $("#addSubmit").click(function () {
+        var seList = new Array();
+        var selectArr = demo1.getValue().valueOf();
+        $.each(selectArr, function (k, v) {
+            $.each(v, function (k1, v1) {
+                if (k1 == "value") {
+                    seList.push(v1);
+                }
+            });
+        });
+        let label = seList.join(",");
+        var labelIds = ("," + label + ",");
+        alert(labelIds);
+        var recruit = $("#dataFor").serialize();
+        //发送ajax请求
+        $.post(url, {
+            recruit: recruit,
+            labelIds: labelIds
+        }, function (result) {
+
+        })
+    });
 
     /* // 监听删除操作
      $(".data-delete-btn").on("click", function () {
@@ -205,19 +222,20 @@ layui.use(['form', 'table', 'laydate'], function () {
      });*/
 
     //修改弹窗
+    var mainIndex;
+    var url;
 
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
             title: "修改招生信息",
-            skin: 'layui-layer-rim', //加上边框
-            area: ['800px', '500px'], //设置宽高
+            area: ['800px', '600px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
-                url = "";
                 tableIns.reload();//渲染数据表格
+                url = "/recruit/modify";
 
             }
         });
@@ -228,17 +246,19 @@ layui.use(['form', 'table', 'laydate'], function () {
         mainIndex = layer.open({
             type: 1,
             title: "添加招生信息",
-            // skin: 'layui-layer-rim', //加上边框
-            area: ['730px', '500px'], //设置宽高
+            skin: 'layui-layer-rim', //加上边框
+            area: ['100%', '100%'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
-                //清空
                 $("#dataFor")[0].reset();
-                url = "/";
+                layer.close(mainIndex);
+                url = '/recruit/add';
+
 
             }
         });
     }
+
 
     //tab弹窗修改详情
     function text() {
@@ -250,12 +270,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                 skin: 'layui-layer-rim',
                 title: '杜甫跟进详情',
                 content: '<iframe src="/recruit/modifyfollow" frameborder="0" height="550px" width="100%"></iframe>',
-            }, {
-                title: '',
-                content: '内容2'
-            }, {
-                title: '',
-                content: '内容3'
             }]
         });
     }
@@ -267,7 +281,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             title: "跟进情况",
             skin: 'layui-layer-rim', //加上边框
             area: ['720px', '350px'], //设置宽高
-            content: $("#addlabe"),
+            content: $(""),
             /* 	success: function(index) {
                     //清空
                     $("#dataFor")[0].reset();
@@ -302,6 +316,9 @@ layui.use(['form', 'table', 'laydate'], function () {
             layer.confirm('真的删除行么', function (index) {
                 obj.del();
                 layer.close(index);
+                $.post('/recruit/delete', {id: data.id}, function (data) {
+
+                })
             });
         } else if (obj.event === 'follow') {
             text();

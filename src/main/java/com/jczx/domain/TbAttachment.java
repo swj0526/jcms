@@ -1,5 +1,7 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.FieldType;
+import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,7 @@ public class TbAttachment extends Domain {
     private Integer linkId;//链接
     private String URL;//附件地址
     private Integer operatorId;//操作人id
+    @FieldType(type = Type.DATETIME)
     private Date createTime;//创建时间
 
     public Integer getId() {
