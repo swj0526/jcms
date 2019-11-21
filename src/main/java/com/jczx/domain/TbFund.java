@@ -20,13 +20,12 @@ public class TbFund extends Domain {
     private Integer firstTeacherId;//一审老师
     private Boolean firstReason;//一审是否通过
     private String firstContent;//一审意见
-    private Date firstCreateTime;//一审操作时间//operatorTime
+    private Date firstOperatorTime;//一审操作时间//operatorTime
     private Integer secondTeacherId;//二审老师
     private Boolean secondReason;//二审是否通过
     private String secondContent;//二审意见
-    private Date secondCreateTime;//二审操作时间
+    private Date secondOperatorTime;//二审操作时间
     private Integer operatorId;//操作人//必有,学生id
-
 
     public Integer getId() {
         return id;
@@ -92,12 +91,12 @@ public class TbFund extends Domain {
         this.firstContent = firstContent;
     }
 
-    public Date getFirstCreateTime() {
-        return firstCreateTime;
+    public Date getFirstOperatorTime() {
+        return firstOperatorTime;
     }
 
-    public void setFirstCreateTime(Date firstCreateTime) {
-        this.firstCreateTime = firstCreateTime;
+    public void setFirstOperatorTime(Date firstOperatorTime) {
+        this.firstOperatorTime = firstOperatorTime;
     }
 
     public Integer getSecondTeacherId() {
@@ -124,11 +123,19 @@ public class TbFund extends Domain {
         this.secondContent = secondContent;
     }
 
-    public Date getSecondCreateTime() {
-        return secondCreateTime;
+    public Date getSecondOperatorTime() {
+        return secondOperatorTime;
     }
 
-    public void setSecondCreateTime(Date secondCreateTime) {
-        this.secondCreateTime = secondCreateTime;
+    public void setSecondOperatorTime(Date secondOperatorTime) {
+        this.secondOperatorTime = secondOperatorTime;
+    }
+
+    public Integer getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
     }
 }

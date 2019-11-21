@@ -1,6 +1,5 @@
 package com.jczx.domain;
 
-import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -8,26 +7,22 @@ import java.util.Date;
 
 /**
  * 发布文章
- *
  * @author 宋家新
  * @create 2019-11-18 21:11
  */
 @Component
-public class TbArticle extends Domain {
-    @NotCreate
-    private static final int TYPE_ARTICLE = 1;//类型常量不要   //换用字典表加type字段
+public class TbArticle  extends Domain {
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
     private String content;//内容
     private Date createTime;//发布时间
-    private Integer read;//已读数//count
-    private Integer total;//应读数//count
+    private Integer readCount;//已读数//count
+    private Integer totalCount;//应读数//count
     private String readIds;//已读
     private String totalIds;//应读
-    private Boolean hasEnclosure;//是否有上传文件//单词
+    private Boolean hasAttachment;//是否有上传文件//单词
     private Integer operatorId;//操作人
-
 
     public Integer getId() {
         return id;
@@ -69,20 +64,20 @@ public class TbArticle extends Domain {
         this.createTime = createTime;
     }
 
-    public Integer getRead() {
-        return read;
+    public Integer getReadCount() {
+        return readCount;
     }
 
-    public void setRead(Integer read) {
-        this.read = read;
+    public void setReadCount(Integer readCount) {
+        this.readCount = readCount;
     }
 
-    public Integer getTotal() {
-        return total;
+    public Integer getTotalCount() {
+        return totalCount;
     }
 
-    public void setTotal(Integer total) {
-        this.total = total;
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 
     public String getReadIds() {
@@ -101,12 +96,12 @@ public class TbArticle extends Domain {
         this.totalIds = totalIds;
     }
 
-    public Boolean getHasEnclosure() {
-        return hasEnclosure;
+    public Boolean getHasAttachment() {
+        return hasAttachment;
     }
 
-    public void setHasEnclosure(Boolean hasEnclosure) {
-        this.hasEnclosure = hasEnclosure;
+    public void setHasAttachment(Boolean hasAttachment) {
+        this.hasAttachment = hasAttachment;
     }
 
     public Integer getOperatorId() {

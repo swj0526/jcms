@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <script src="/layui/layui.js"></script>
-    <script src="/student/js/list.js"></script>
+    <script src="/major/js/list.js"></script>
 </head>
 <body>
 
@@ -84,7 +84,6 @@
     <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传</blockquote>
     <div class="layui-upload">
         <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
-        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
         <div class="layui-upload-list">
             <table class="layui-table">
                 <thead>
@@ -96,7 +95,7 @@
                 <tbody id="demoList"></tbody>
             </table>
         </div>
-
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
     </div>
 </div>
 <div class="layuimini-container">

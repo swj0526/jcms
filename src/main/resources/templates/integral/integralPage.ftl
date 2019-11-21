@@ -12,15 +12,52 @@
     <script src="/integral/js/integral.js"></script>
 </head>
 <body>
-<div class="layuimini-container">
 
-    <div class="layuimini-main">
-        <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%" id="add">加分</button>
-        <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%" id="points">减分</button>
-        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter" ></table>
-    </div>
+<div class="layuimini-container">
+    <fieldset class="layui-elem-field layuimini-search">
+        <form class="layui-form layui-form-pane" action="">
+        <div style="margin: 10px 10px 10px 10px">
+            <div class="layui-inline">
+                <label class="layui-form-label">关键字</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" autocomplete="off" class="layui-input"
+                           placeholder="例：张三">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" autocomplete="off" class="layui-input"
+                           placeholder="-" id="time">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <select name="city" lay-verify="">
+                    <option value="010">选择班级</option>
+                    <option value="021" >影视一班</option>
+                    <option value="0571" >Java一班</option>
+                </select>
+
+
+            </div>
+            <div class="layui-inline">
+                <div class="layuimini-main">
+                    <button class="layui-btn">查询</button>
+                    <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%"
+                            id="add">加分
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%"
+                            id="points">减分
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        </form>
+    </fieldset>
 </div>
-<#--*******************id=aa 弹窗************************************-->
+<#--*******************points.click 弹窗************************************-->
 <div id="aa" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
         <div style="margin: 10px 10px 10px 10px">
@@ -46,13 +83,19 @@
                                        placeholder="例：张三">
                             </div>
                         </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">分数</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </fieldset>
 </div>
-<#--***********points点击弹窗****************-->
+<#--***********add.click****************-->
 <div id="aaa" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
 
@@ -62,7 +105,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">选择事由</label>
                         <div class="layui-inline" style="width: 100px">
-                            <select name="city" lay-verify="" >
+                            <select name="city" lay-verify="">
                                 <option value="">品学兼优</option>
                                 <option value="+10">乐于助人</option>
                                 <option value="+10">勤奋好学</option>
@@ -77,6 +120,12 @@
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" class="layui-input"
                                        placeholder="例：张三">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">分数</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@
     <script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
-    <script type="text/javascript" src="/bb.js"></script>
+    <script type="text/javascript" src="/all.js"></script>
     <script type="text/javascript" src="/home/js/main.js"></script>
     <style>
 
