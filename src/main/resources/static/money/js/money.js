@@ -57,10 +57,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             tab: [{
                 title: '添加缴费',
                 content: '<iframe src="/money/add" frameborder="0" height="800px" width="100%"></iframe>',
-                success: function (index) {
-                    $("#name").val("张色")
-                    form.val("dataForm", data);
-                }
             }]
         });
     });
@@ -80,7 +76,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     form.val("dataForm1", data);
                 }
                 , tab: [{
-                    title: '添加缴费'
+                    title: '修改信息'
                     , content: $("#addpage").html()
 
                 }]

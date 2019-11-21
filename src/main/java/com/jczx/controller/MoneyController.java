@@ -1,5 +1,7 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbPayBill;
+import net.atomarrow.bean.ServiceResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,10 +26,15 @@ public class MoneyController {
     public String kkk() {
         return "money/kkk";
     }
-    @RequestMapping("/add")
-    public String add(){
+    @RequestMapping("/addBill")
+    public String addBill(){
 
         return "money/add";
+    }
+    @RequestMapping("/add")
+    public ServiceResult add(TbPayBill payBill){
+
+        return null;
     }
 
 
