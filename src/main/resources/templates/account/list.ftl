@@ -158,7 +158,7 @@
                         </div>
                     </fieldset>
 
-                    <table class="layui-hide" id="test1" lay-filter="test1"></table>
+                    <table class="layui-hide" id="test1" lay-filter="test1" style="overflow:Scroll;overflow-x:hidden;"></table>
                     <script type="text/html" id="checkboxTpl1">
                         <!-- 这里的 checked 的状态只是演示 -->
                         <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1">

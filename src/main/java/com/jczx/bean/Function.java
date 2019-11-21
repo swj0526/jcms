@@ -11,15 +11,16 @@ public class Function {
     /**
      * 账号管理-账号管理
      */
-    public   static final int FUNC_ACCOUNT = 101;
+    public   static final int FUNC_ACCOUNT = 1001;
+    public   static final String FUNC_ACCOUNT_NAME = "账号管理看                                                      ";
     /**
      * 账号管理-权限管理
      */
-    public  static final int FUNC_FUNCTION = 102;
+    public  static final int FUNC_FUNCTION = 1002;
     /**
      * 信息管理-学生档案管理
      */
-    public  static final int FUNC_STUDENT = 201;
+    public  static final int FUNC_STUDENT = 2001;
     /**
      * 信息管理-专业管理
      */

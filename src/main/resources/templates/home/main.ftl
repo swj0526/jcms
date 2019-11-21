@@ -11,28 +11,24 @@
     <script type="text/javascript" src="/all.js"></script>
     <script type="text/javascript" src="/home/js/main.js"></script>
     <style>
+    .layui-body{
+        overflow-y: hidden;
+        padding-bottom: 100px;
+    }
 
-        #first-tab i.layui-tab-close {
-            display: none !important;
-        }
-
-        .layui-body::-webkit-scrollbar {
-            display: none
-        }
     </style>
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body" >
 <div class="layui-layout layui-layout-admin">
     <#include "header.ftl"/>
     <#include "left.ftl"/>
-    <div class="layui-body">
-        <div style="padding: 15px;">
+    <div class="layui-body" >
+        <div style="padding: 15px;height: 100%;">
 
-
-            <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+            <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="height: 100%;">
                 <ul class="layui-tab-title">
                 </ul>
-                <div class="layui-tab-content">
+                <div class="layui-tab-content" style="height: 100%;">
                 </div>
             </div>
         </div>
