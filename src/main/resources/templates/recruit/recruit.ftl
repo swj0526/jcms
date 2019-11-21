@@ -148,7 +148,7 @@
                                     </select>
                                 </div>
                         </div>
-                        <div class="layui-inline">
+                        <div class="layui-inline"style="width: 150px">
                             <select name="city" lay-verify="">
                                 <option value="">来源渠道</option>
                                 <option value="010">学校网站</option>

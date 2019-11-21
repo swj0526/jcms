@@ -21,7 +21,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     var tableIns = table.render({
         elem: '#currentTableId'
         , data: [{
-            "name": "杜甫"
+            "name": "杜甫甫甫"
             , "sex": "女"
             , "age": "1994/11/20"
             , "city": "威海"
@@ -82,12 +82,12 @@ layui.use(['form', 'table', 'laydate'], function () {
                 field: 'name',
                 title: '姓名',
                 templet: '<div><a href="/home/main" class="layui-table-link">{{d.name}}</a></div>',
-                width: 80
+                width: 90
             },
                 {
                     field: 'sex',
                     title: '性别',
-                    sort: true,
+
                     align: 'center',
                     width: 80
 
@@ -95,7 +95,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 {
                     field: '',
                     title: '意向',
-                    sort: true,
+
                     align: 'center',
                     width: 80
 
@@ -111,8 +111,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                 {
                     field: 'city',
                     title: '学校',
-                    sort: true,
-                    align: 'center'
+
+
                 },
 
 
@@ -120,10 +120,12 @@ layui.use(['form', 'table', 'laydate'], function () {
                     field: 'score',
                     title: '手机号',
 
+
                 },
                 {
                     field: 'classify',
                     title: 'QQ号',
+
 
                 },
                 {
@@ -131,17 +133,19 @@ layui.use(['form', 'table', 'laydate'], function () {
                     title: '微信',
 
 
+
                 },
                 {
                     field: 'wealth',
                     title: '家长联系方式'
+
                 },
                 {
                     title: '操作',
                     Width: 300,
                     templet: '#currentTableBar',
                     fixed: "right",
-                    align: "center",
+
                 }
 
 
@@ -213,7 +217,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 //获取
                 form.val("dataForm", data);
                 url = "";
-                tableIns.reload();
+                tableIns.reload();//渲染数据表格
 
             }
         });
