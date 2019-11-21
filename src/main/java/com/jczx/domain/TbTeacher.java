@@ -1,10 +1,7 @@
 package com.jczx.domain;
 
-import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 /**
  * 老师表
@@ -16,10 +13,10 @@ import java.util.Date;
 public class TbTeacher extends Domain {
 
     private Integer id;
-    private String name;
-
+    private String name;//姓名
+    private String gender;//性别
     private String phone;//手机号
-    private Integer state;//老师状态
+    private Boolean hasQuit;//老师状态
 
     public Integer getId() {
         return id;
@@ -37,11 +34,27 @@ public class TbTeacher extends Domain {
         this.name = name;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Boolean getHasQuit() {
+        return hasQuit;
+    }
+
+    public void setHasQuit(Boolean hasQuit) {
+        this.hasQuit = hasQuit;
     }
 }
