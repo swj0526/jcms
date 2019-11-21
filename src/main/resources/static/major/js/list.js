@@ -31,11 +31,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
                 title: '',
                 city: "",
                 sort: true,
-                templet: '{{#  if(d.id < 100){ }}\n' +
-                    '    <a href="/detail/{{d.id}}" class="layui-table-link">{{d.title}}</a>\n' +
-                    '  {{#  } else { }}\n' +
-                    '    {{d.title}}(普通用户)\n' +
-                    '  {{#  } }}'
+                templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.name}} >{{d.name}}</a></div>'
             }
             ]
         ],

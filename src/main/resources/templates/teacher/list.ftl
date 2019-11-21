@@ -20,60 +20,17 @@
             <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFrm">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">学生学号</label>
+                        <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
                             <input type="text" name="id" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">学生姓名</label>
+                        <label class="layui-form-label">性别</label>
                         <div class="layui-input-inline">
                             <input type="text" name="name" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">性别</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="gender" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">出生年月</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="birthday" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">年龄</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="age" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">家庭住址</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="address" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">籍贯</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="nativePlace" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">联系方式</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="contact" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">在校状态</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="state" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>
@@ -82,8 +39,22 @@
 
 <div style="display: none" id="importForm" >
     <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传</blockquote>
-    <button class="layui-btn layui-btn-danger">下载文件</button>
-    <button class="layui-btn ">上传文件</button>
+    <div class="layui-upload">
+        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+        <div class="layui-upload-list">
+            <table class="layui-table">
+                <thead>
+                <tr><th>文件名</th>
+                    <th>大小</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr></thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+
+    </div>
 </div>
 <div class="layuimini-container">
     <div class="layuimini-main">
