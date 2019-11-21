@@ -14,6 +14,7 @@
                 <a href="javascript:;">信息管理</a>
                 <dl class="layui-nav-child">
                     <dd><a  class="add" id="student_list">学生档案管理</a></dd>
+                    <dd><a  class="add" id="">专业管理</a></dd>
                     <dd><a  class="add" id="">教职工档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
                     <dd><a class="add" id="recruit_follow">来源渠道管理</a></dd>
@@ -56,7 +57,7 @@
                 <a >提醒管理</a>
                 <dl class="layui-nav-child">
                     <dd><a class="add" id="remind_pay">缴费提醒</a></dd>
-                    <dd><a class="add" id="remind_article">发文提醒</a></dd>
+                    <dd><a class="add" id="remind_article">公告提醒</a></dd>
                    <#-- <dd><a class="add" >公告提醒</a></dd>-->
 
                     <#-- <dd><a class="add" id="remind_broadcast">首页循环播报设置</a></dd>-->

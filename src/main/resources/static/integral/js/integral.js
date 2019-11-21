@@ -1,8 +1,9 @@
-layui.use(['form', 'table', 'jquery','layer'], function () {
+layui.use(['form', 'table', 'jquery','layer','laydate'], function () {
     var $=layui.jquery,
         form = layui.form,
-        table = layui.table;
-        layer=layui.layer;
+        table = layui.table,
+        layer=layui.layer,
+        laydate=layui.laydate;
     table.render({
         elem: '#currentTableId',
         data: [{
@@ -54,7 +55,7 @@ $("#add").click(function () {
     layer.open({
         type: 1,
         area:['750px','320px'],
-        content:$("#aa"),
+        content:$("#aaa"),
         btn:'提交',
         shade:0
     });
@@ -64,7 +65,7 @@ $("#add").click(function () {
         layer.open({
             type: 1,
             area:['750px','320px'],
-            content:$("#aaa"),
+            content:$("#aa"),
             btn:'提交',
             shade:0
         });
@@ -81,6 +82,10 @@ $("#add").click(function () {
         });
     })
 
-
+    laydate.render({
+        elem: '#time'
+        ,type: 'datetime'
+        ,range: true
+    });
 
 });

@@ -19,7 +19,9 @@ public class TbIntegral extends Domain {
     private Date createTime;//操作时间
     private Integer studentId;// 学生id
     private Integer totalScore;//总分
-//缺加分减分字段,  规范表IntegralItem  加分规则字段
+    //private Integer score;//记录加分减分
+
+//缺加分减分字段,规范表IntegralItem  加分规则字段
     public Integer getId() {
         return id;
     }

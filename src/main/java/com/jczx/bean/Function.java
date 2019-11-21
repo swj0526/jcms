@@ -1,5 +1,7 @@
 package com.jczx.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author 孙文举
  * @description

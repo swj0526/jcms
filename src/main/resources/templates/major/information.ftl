@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <script src="/layui/layui.js"></script>
-    <script src="/student/js/information.js"></script>
+    <script src="/major/js/information.js"></script>
 </head>
 <body>
 <div class="layui-tab-content" style="background-color: #ffffff">

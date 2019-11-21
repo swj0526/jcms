@@ -1,40 +1,19 @@
 var a=new Array();
 a=[{
-    "id": 1901001,
-    "name": "张三",
-    "gender": "男",
-    "birthday": "1997-8-10",
-    "age":18,
-    "address":"花果山水帘洞",
-    "nativePlace":"山东威海**市**县**镇",
-    "contact":"186693989898",
-    "bloodType":"O",
-    "admissionTime":"1999-9-9",
-    "graduationTime":"2999-9-9",
-    "state":"在校",
+    "name": "影视专业",
 },{
-    "id": 1901002,
-    "name": "李四",
-    "gender": "男",
-    "birthday": "1997-8-10",
-    "age":18,
-    "address":"花果山水帘洞",
-    "nativePlace":"山东威海**市**县**镇",
-    "contact":"186693989898",
-    "bloodType":"O",
-    "admissionTime":"1999-9-9",
-    "graduationTime":"2999-9-9",
-    "state":"在校"
-
+    "name":"」一班"
+},{
+    "name":"」一班"
 }]
 layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () {
     var $ = layui.jquery,
         form = layui.form,
         element=layui.element,
         table = layui.table,
-    layer = layui.layer,
+        layer = layui.layer,
         upload=layui.upload,
-    laydate = layui.laydate;
+        laydate = layui.laydate;
 
     laydate.render({
         elem: '#time',
@@ -45,66 +24,12 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
         data: a,
         cols: [
             [{
-                field: 'id',
-                title: '学号',
+                field: 'name',
+                title: '',
                 city: "",
                 sort: true,
-                align: 'center'
-            }, {
-                    field: 'name',
-                    title: '姓名',
-                    align: 'center',
-                    templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.name}} >{{d.name}}</a></div>'
-                },
-                {
-                    field: 'gender',
-                    title: '性别',
-                    sort: true,
-                    align: 'center'
-                },
-                {
-                    field: 'birthday',
-                    title: '出生年月',
-                    align: 'center'
-                },
-                {
-                    field: 'age',
-                    title: '年龄',
-                    sort: true,
-                    align: 'center'
-                },
-
-                {
-                    field: 'contact',
-                    title: '联系方式',
-                    align: 'center'
-                },
-
-                {
-                    field: 'admissionTime',
-                    title: '入学时间',
-                    sort: true,
-                    align: 'center'
-                },
-                {
-                    field: 'graduationTime',
-                    title: '毕业时间',
-                    sort: true,
-                    align: 'center'
-                },
-                {
-                    field: 'state',
-                    title: '在校状态',
-                    align: 'center'
-                },
-                {
-                    title: '操作',
-                    minWidth: 50,
-                    toolbar: '#currentTableBar',
-                    fixed: "right",
-                    align: "center",
-
-                }
+                templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.name}} >{{d.name}}</a></div>'
+            }
             ]
         ],
         limits: [10, 15, 20, 25, 50, 100],
@@ -161,7 +86,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
         })
     }
     table.on('tool(currentTableFilter)', function (obj) {
-         data = obj.data;
+        data = obj.data;
         if (obj.event === 'edit') {
             modify(data);
         } else if (obj.event === 'delete') {
@@ -204,7 +129,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
     $("#import").click(function () {
         layer.open({
             type: 1,
-            title:"导入excel表格",
+            title:"添加学生信息",
             content: $("#importForm"),
             btn:"提交",
             area:['750px','320px'],
