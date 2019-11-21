@@ -170,10 +170,10 @@
 
 <script id="barDemo" type="text/html">
     {{# if(d.state=="1"){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="edit">审批</a>
+    <a class="layui-btn layui-btn-xs  layui-btn-warm" lay-event="edit">审批</a>
     {{# } }}
     {{# if(d.state=="2"){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="see">查看详情</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="see">查看详情</a>
     {{# } }}
 
 </script>

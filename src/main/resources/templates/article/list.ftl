@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <button class="layui-btn" data-type="reload">查询</button>
-                    <button class="layui-btn" lay-submit lay-filter="formDemo" id="excel">导出</button>
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo" id="excel">导出</button>
                 </div>
             </form>
         </div>
@@ -79,7 +79,7 @@
     </div>
 </div>
 <script id="barDemo" type="text/html">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">查看详细</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit">查看详细</a>
 </script>
 </body>
 </html>

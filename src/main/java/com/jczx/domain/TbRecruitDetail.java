@@ -14,8 +14,8 @@ public class TbRecruitDetail extends Domain {
     private Integer id;
     private Integer studentId;//学生(招生)表id;
     private Date followTime;//跟进时间
-    private Integer followCount;//第几次跟进//count
-    private String labelIds;//跟进意向(标签)
+    private Integer followCount;//第几次跟进
+    private String labelIds;//跟进意向(标签)tbDictionary
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
     private String remark;//备注

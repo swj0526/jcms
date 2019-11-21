@@ -9,9 +9,9 @@
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/privilege.js"></script>
 </head>
-<body>
+<body style="position:relative;">
 <div id="tree2" class="demo-tree demo-tree-box"></div>
-<div style="text-align: center;margin-top: 20px;">
+<div style="text-align: left; position: fixed;bottom: 0px;">
     <button type="button" class="layui-btn layui-btn-normal  " data-method="confirmTrans"  >
         确定
     </button>

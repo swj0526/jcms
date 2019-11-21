@@ -32,6 +32,8 @@
 		  </div>
 			<div class="layui-upload">
 				<button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+				<button class="layui-btn layui-btn-warm" id="testListAction" type="button">开始上传</button>
+				<blockquote class="layui-elem-quote layui-quote-nm">如需要上传(文件，图片)，请先选择(文件，图片)，选择完点击上传，在提交</blockquote>
 				<div class="layui-upload-list">
 					<table class="layui-table">
 						<thead>
@@ -43,15 +45,12 @@
 						<tbody id="demoList"></tbody>
 					</table>
 				</div>
-				<button class="layui-btn" id="testListAction" type="button">开始上传</button>
 			</div>
 			<br>
 			<br>
 		  <div class="layui-form-item">
-		    <div class="layui-input-block">
 		      <button class="layui-btn" type="submit" lay-filter="demo1" lay-submit="">立即提交</button>
 		      <button class="layui-btn layui-btn-primary" type="reset">重置</button>
-		    </div>
 		  </div>
 		</form>
 	</body>

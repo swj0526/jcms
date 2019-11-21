@@ -12,82 +12,102 @@
     <script src="/teacher/js/list.js"></script>
 </head>
 <body>
-
-
-<div id="aaa" style="display: none">
-    <fieldset class="layui-elem-field layuimini-search">
+<#--添加-->
+<div id="add" style="display: none">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFrm">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm"  id="dataFrm">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">学生学号</label>
+                        <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="id" autocomplete="off" class="layui-input">
+                            <input type="text" name="name" autocomplete="off" class="layui-input" id="name">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">学生姓名</label>
+                        <label class="layui-form-label">手机号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone">
                         </div>
                     </div>
+                    <#--<div class="layui-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <select name="modules" lay-search="" lay-verify="required">
+                                <option value="">所有状态</option>
+                                <option value="1">在职</option>
+                                <option value="2">离职</option>
+                            </select>
+                        </div>
+                    </div>-->
                     <div class="layui-inline">
                         <label class="layui-form-label">性别</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="gender" autocomplete="off" class="layui-input">
+                            <select name="gender" lay-verify="" id="gender">
+                                <option value="">选择性别</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">出生年月</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="birthday" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">年龄</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="age" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">家庭住址</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="address" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">籍贯</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="nativePlace" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">联系方式</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="contact" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">在校状态</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="state" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
                 </div>
+                <button type="button" class="layui-btn" id="addTeacher">提交</button>
             </form>
         </div>
-    </fieldset>
+</div>
+<#--修改-->
+<div id="modify1" style="display: none">
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFrm">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input" id="name">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit">
+                                <option value="">所有状态</option>
+                                <option value="在职">在职</option>
+                                <option value="离职">离职</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="layui-btn" id="modifyTeacher">提交</button>
+            </form>
+        </div>
 </div>
 
 <div style="display: none" id="importForm" >
     <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传</blockquote>
-    <button class="layui-btn layui-btn-danger">下载文件</button>
-    <button class="layui-btn ">上传文件</button>
+    <div class="layui-upload">
+        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+        <div class="layui-upload-list">
+            <table class="layui-table">
+                <thead>
+                <tr><th>文件名</th>
+                    <th>大小</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr></thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+    </div>
 </div>
+<#--添加弹窗-->
 <div class="layuimini-container">
     <div class="layuimini-main">
-
         <fieldset class="layui-elem-field layuimini-search">
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
@@ -100,31 +120,28 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-
                             <select name="state" lay-verify="">
                                 <option value="">选择状态</option>
                                 <option value="010">在任</option>
                                 <option value="021">离职</option>
                             </select>
                         </div>
-                        <div class="layui-inline">
+                        <#--<div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-                        </div>
-                        <div class="layui-btn-group">
-                            <button type="button" class="layui-btn" id="add">添加</button>
-                            <button type="button"class="layui-btn layui-btn-warm"  id="import">导入</button>
-                            <button type="button"class="layui-btn layui-btn-warm" >导出</button>
-                        </div>
+                        </div>-->
+                        <button class="layui-btn" data-type="reload" >查询</button>
+
+                        <button type="button" class="layui-btn " id="add1">添加</button>
+                        <button type="button" class="layui-btn layui-btn-warm"  id="import">导入</button>
+                        <button type="button" class="layui-btn layui-btn-warm" >导出</button>
                     </div>
                 </form>
             </div>
         </fieldset>
-
-
+        <#--数据表格-->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
-            <a class="layui-btn  layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>
 </div>

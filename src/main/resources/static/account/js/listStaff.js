@@ -19,7 +19,7 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
                 title: '角色'
             },
             {field: 'lockDemo1', title: '是否激活账号', templet: '#checkboxTpl1', unresize: true},
-            {fixed: 'right', title: '操作', toolbar: '#barDemo1',width:185}
+            {fixed: 'right', title: '操作', toolbar: '#barDemo1',width:174}
         ]]
         , data: [{
             name: "王老师",
