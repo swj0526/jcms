@@ -6,12 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
-    <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/privilege.js"></script>
 </head>
 <body style="position:relative;">
-<div id="tree2" class="demo-tree demo-tree-box"></div>
-<div style="text-align: left; position: fixed;bottom: 0px;">
+<div id="tree2" class="demo-tree demo-tree-box" style="padding-bottom: 50px;"></div>
+<div style="text-align: left; position: fixed;bottom: 0px;background-color: #ffffff;width: 100%;">
     <button type="button" class="layui-btn layui-btn-normal  " data-method="confirmTrans"  >
         确定
     </button>

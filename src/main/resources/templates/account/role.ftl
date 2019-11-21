@@ -7,12 +7,11 @@
     <script type="text/javascript" src="/layui/layui.js">
     </script>
     <script type="text/javascript" src="/all.js"></script>
-    <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/role.js"></script>
 
 </head>
 <body>
-<!--弹出框新增-->
+
 <div style="display: none" id="add">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">

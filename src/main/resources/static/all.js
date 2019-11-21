@@ -8,7 +8,7 @@ var all_tab =function(id,title,src){
 
             if($("[lay-id=" + id + "]").length==0){//选判断是否存在该选项卡
                 element.tabAdd('demo', {
-                    title: title, //提醒-缴费提醒
+                    title: title,
                     content: '<iframe src='+src+' frameborder="0"  height="100%" width="100%"></iframe>',
                     id:id//实际使用一般是规定好的id，这里以时间戳模拟下
                 });
