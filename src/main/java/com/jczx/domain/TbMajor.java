@@ -17,7 +17,7 @@ public class TbMajor extends Domain {
     public static final int TYPE_SCHOOL_YEAR=1;
     private Integer id;
     private String name; //专业名称
-    private String pid; //学年换pid父类在同一表//专业,班级//加type//备注
+    private Integer pid; //班级关联
     private Integer type;//类型，区分班级和专业
     private String remark;//备注
 
@@ -29,11 +29,11 @@ public class TbMajor extends Domain {
         this.remark = remark;
     }
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 

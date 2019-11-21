@@ -13,9 +13,9 @@ import java.util.Date;
 @Component
 public class TbAttachment extends Domain {
     private Integer id;
-    private Integer type;
-    private Integer linkId;
-    private String URL;
+    private Integer type;//类型
+    private Integer linkId;//链接
+    private String URL;//附件地址
     private Integer operatorId;//操作人id
     private Date createTime;//创建时间
 

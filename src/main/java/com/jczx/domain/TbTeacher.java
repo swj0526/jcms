@@ -8,21 +8,18 @@ import java.util.Date;
 
 /**
  * 老师表
+ *
  * @author 池炯武
  * @create 2019-11-20 14:41
  */
 @Component
 public class TbTeacher extends Domain {
-//    @NotCreate
-//    public static final int STATE_OFFICE=0;
-//    @NotCreate
-//    public static final int STATE_NOT_OFFICE=1;
 
     private Integer id;
     private String name;
-   // private  Integer majorId;//班级
+
     private String phone;//手机号
-    private Integer state;
+    private Integer state;//老师状态
 
     public Integer getId() {
         return id;

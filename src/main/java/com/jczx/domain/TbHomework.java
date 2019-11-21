@@ -15,13 +15,13 @@ import java.util.Date;
 public class TbHomework extends Domain {
     private Integer id;
     private String name;//作业名称
-    private String majorId;//发布人
-    private Integer classId;//年级
+    private Integer teacherId;//发布人
+    private Integer majorId;//年级
     private Date endTime;//截止日期
     private String content;//内容//长度问题
     private Boolean hasAttachment;//是否有附件
     private Integer submitCount;//提交人数
-    private String submitIds;//提交人
+    private String submitIds;//已提交人
     private String notSubmitIds;//未提交人
     private Integer totalCount;//总人数
     private Integer operatorId;//操作人id
@@ -43,20 +43,20 @@ public class TbHomework extends Domain {
         this.name = name;
     }
 
-    public String getMajorId() {
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Integer getMajorId() {
         return majorId;
     }
 
-    public void setMajorId(String majorId) {
+    public void setMajorId(Integer majorId) {
         this.majorId = majorId;
-    }
-
-    public Integer getClassId() {
-        return classId;
-    }
-
-    public void setClassId(Integer classId) {
-        this.classId = classId;
     }
 
     public Date getEndTime() {

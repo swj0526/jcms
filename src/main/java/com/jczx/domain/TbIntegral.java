@@ -19,9 +19,26 @@ public class TbIntegral extends Domain {
     private Date createTime;//操作时间
     private Integer studentId;// 学生id
     private Integer totalScore;//总分
-    //private Integer score;//记录加分减分
+    private Integer score;//记录加分减分
+    private Integer itemId;//关联规则表
 
-//缺加分减分字段,规范表IntegralItem  加分规则字段
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
+    }
+
     public Integer getId() {
         return id;
     }

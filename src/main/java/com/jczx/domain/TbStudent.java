@@ -42,9 +42,9 @@ public class TbStudent extends Domain {
     private Integer channelId;//渠道表id
     private String intention;//招生意向
     private Date birthDate;//出生年月
-    private String card;//身份证//IDCard
+    private String IDCard;//身份证//
     private String school;//学校
-    private String stuPhone;//学生电话//student
+    private String studentPhone;//学生电话//student
     private String qq;//qq号
     private String weChat;//微信
     private Integer integralId;//积分
@@ -225,13 +225,7 @@ public class TbStudent extends Domain {
         this.birthDate = birthDate;
     }
 
-    public String getCard() {
-        return card;
-    }
 
-    public void setCard(String card) {
-        this.card = card;
-    }
 
     public String getSchool() {
         return school;
@@ -241,12 +235,20 @@ public class TbStudent extends Domain {
         this.school = school;
     }
 
-    public String getStuPhone() {
-        return stuPhone;
+    public String getIDCard() {
+        return IDCard;
     }
 
-    public void setStuPhone(String stuPhone) {
-        this.stuPhone = stuPhone;
+    public void setIDCard(String IDCard) {
+        this.IDCard = IDCard;
+    }
+
+    public String getStudentPhone() {
+        return studentPhone;
+    }
+
+    public void setStudentPhone(String studentPhone) {
+        this.studentPhone = studentPhone;
     }
 
     public String getQq() {

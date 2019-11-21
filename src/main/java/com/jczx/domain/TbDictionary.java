@@ -13,26 +13,41 @@ import java.util.Date;
  */
 @Component
 public class TbDictionary extends Domain {
-    //意向标签
+    /**
+     *  意向标签
+     */
     @NotCreate
-    private static final Integer TYPE_LABEL = 1;
-    //渠道
+    public static final int TYPE_LABEL = 1;
+    /**
+     * 渠道
+     */
     @NotCreate
-    private static final Integer TYPE_CHANNEL = 2;
-    //缴费类型
+     public static final int TYPE_CHANNEL = 2;
+    /**
+     * 缴费类型
+     */
     @NotCreate
-    private static final Integer TYPE_PAYBILL = 3;
-    //支付类型
+    public static final int TYPE_PAY_BILL = 3;
+    /**
+     * 支付类型
+     */
     @NotCreate
-    private static final Integer TYPE_PAY = 4;
-    //学年,学期
+    public static final int TYPE_PAY = 4;
+    /**
+     * 学年,学期
+     */
     @NotCreate
-    private static final Integer TYPE_TERM = 5;
+    public static final int TYPE_TERM = 5;
+    /**
+     * 发文类型
+     */
+    @NotCreate
+    public static final int TYPE_DISPATCH = 6;
 
-    private Integer id;//字典表 就 id  和name和备注,类型type
+    private Integer id;
     private String name;
     private String remark;//备注
-    private String type;
+    private String type;//字典表类型
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
 
