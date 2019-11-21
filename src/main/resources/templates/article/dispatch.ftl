@@ -16,7 +16,6 @@
 		      <input name="title" class="layui-input" type="text" placeholder="请输入标题" autocomplete="off" lay-verify="title">
 		    </div>
 		  </div>
-		  
 		  <div class="layui-form-item" >
 		    <label class="layui-form-label">接收角色</label>
 		    <div class="layui-input-inline" style="width: 300px">
@@ -25,7 +24,6 @@
 		      <input name="like[game]" title="管理员" type="checkbox">
 		    </div>
 		  </div>
-		  
 		  <div class="layui-form-item layui-form-text">
 		    <label class="layui-form-label">内容</label>
 		    <div class="layui-input-block">

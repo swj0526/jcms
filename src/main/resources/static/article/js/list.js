@@ -3,11 +3,6 @@ layui.use('table', function () {
 
     table.render({
         elem: '#test',
-        defaultToolbar: [ { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-            title: '提示',
-            layEvent: 'LAYTABLE_TIPS',
-            icon: 'layui-icon-tips'
-        }],
         title: '用户数据表',
         cols: [[{type: 'checkbox',fixed: 'left'}
             , {field: 'id', title: '序号',align: 'center'}
@@ -78,6 +73,7 @@ layui.use('table', function () {
             "joinTime": "2016-10-14",
             "see": '<div><a id="info" >10/50</a></div>'
         }],
+         page: true
     });
     var form = layui.form;
     var layer = layui.layer;
@@ -98,7 +94,6 @@ layui.use('table', function () {
                 }
             });
             form.render(); // 动态渲染
-
     });
     $("#info").on('click', function () {
         layer.open({
@@ -126,14 +121,10 @@ layui.use('laydate', function () {
     laydate.render({
         elem: '#test1'
     });
-});
-layui.use('laydate', function () {
-    var laydate = layui.laydate;
-
     //日期范围
     laydate.render({
         elem: '#test6',
         range: true
     });
-
 });
+
