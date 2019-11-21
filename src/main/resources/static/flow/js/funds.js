@@ -102,7 +102,6 @@ layui.use('table', function () {
     });
     var form = layui.form;
     var layer = layui.layer;
-
     $ = layui.jquery;
 
     $("#add").on('click', function () {
@@ -154,7 +153,7 @@ layui.use('table', function () {
                 title: "请假申请",
                 btn:['提交'],
                 skin: "myclass", // 自定样式
-                area: ["400px", "650px"],
+                area: ["1330px", "500px"],
                 content: $("#aaa"),
                 success: function (layero, index) {
                 },
