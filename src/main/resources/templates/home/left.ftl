@@ -1,6 +1,6 @@
 <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
-        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;"  lay-shrink="all">
             <li class="layui-nav-item">
                 <a href="javascript:;">账号管理</a>
                 <dl class="layui-nav-child">

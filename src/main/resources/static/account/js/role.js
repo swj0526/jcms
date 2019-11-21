@@ -82,15 +82,19 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form','tree'], funct
                 }
             });
         } else if(obj.event === 'fun'){
-           layer.tab({
+          /* layer.tab({
                 type: 1,
                area: ['100%','100%'],
                tab: [{
                    skin: 'layui-layer-rim',
                    title: '设置角色权限',
-                   content:"<iframe src=\"/account/toPrivilege\" frameborder=\"0\" height=\"550px\" width=\"100%\"></iframe>",
+                   content:"<iframe src=\"/\" frameborder=\"0\" height=\"550px\" width=\"100%\"></iframe>",
                }]
-            });
+            });*/
+          var id="account_privilege";
+          var title="设置角色权限";
+          var src="/account/toPrivilege";
+          all_tab(id,title,src);
         }
     });
 

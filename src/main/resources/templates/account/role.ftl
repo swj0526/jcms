@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
+    <script type="text/javascript" src="/all.js"></script>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/role.js"></script>
 
@@ -92,23 +93,7 @@
                     </script>
                 </div>
             </div>
-
         </div>
-        <#--<div class="layui-tab-item">
-           <div id="role1">
-               <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;" style="display: inline-block;">
-                   <legend>老师角色管理</legend>
-               </fieldset>
-               <div style="display: inline-block;margin-right: 10% ;height: 400px;float:left;">
-                   <div id="test2" class="demo-transfer" ></div>
-               </div>
-               <div style="display: inline-block;height: 400px;"> <div id="tree2"  class="demo-tree demo-tree-box" ></div></div>
-               <div>
-                   <button type="button" class="layui-btn" id="affirm">确认修改角色权限</button>
-                   <button type="button" class="layui-btn layui-btn-danger" id="cancel">取消</button>
-               </div>
-           </div>
-        </div>-->
     </div>
 </div>
 </body>
