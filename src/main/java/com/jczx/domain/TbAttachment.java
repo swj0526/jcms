@@ -11,9 +11,10 @@ import java.util.Date;
  * @create 2019-11-20 14:00
  */
 @Component
-public class TbAccessory extends Domain {
+public class TbAttachment extends Domain {
     private Integer id;
-    private Integer type;// linkId;
+    private Integer type;
+    private Integer linkId;
     private String URL;
     private Integer operatorId;//操作人id
     private Date createTime;//创建时间
@@ -26,12 +27,28 @@ public class TbAccessory extends Domain {
         this.id = id;
     }
 
-    public String getURl() {
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getLinkId() {
+        return linkId;
+    }
+
+    public void setLinkId(Integer linkId) {
+        this.linkId = linkId;
+    }
+
+    public String getURL() {
         return URL;
     }
 
-    public void setURl(String URl) {
-        this.URL = URl;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     public Integer getOperatorId() {

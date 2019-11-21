@@ -50,7 +50,6 @@
             </div>
         </form>
         <div class="layui-upload" id="up" style="text-align: center">
-            <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
             <div class="layui-upload-list">
                 <table class="layui-table">
                     <thead>
@@ -67,6 +66,8 @@
             </div>
             <textarea name="" required lay-verify="required" placeholder="备注" class="layui-textarea"
                       style="height: 100px"></textarea>
+            <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+
             <button class="layui-btn" id="testListAction" type="button">开始上传</button>
             <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="yes"
                  style="margin-top: 20px">

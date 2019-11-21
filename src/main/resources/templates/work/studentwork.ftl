@@ -29,12 +29,13 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">内容</label>
                     <div class="layui-input-block">
-                        <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+                        <textarea class="layui-textarea layui-hide" name="content" lay-verify="content"
+                                  id="LAY_demo_editor"></textarea>
                     </div>
                 </div>
             </form>
             <div class="layui-upload" id="up" style="text-align: center">
-                <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+
                 <div class="layui-upload-list">
                     <table class="layui-table">
                         <thead>
@@ -48,6 +49,7 @@
                         <tbody id="demoList"></tbody>
                     </table>
                 </div>
+                <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
                 <button class="layui-btn" id="testListAction" type="button">开始上传</button>
                 <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="yes"
                      style="margin-top: 20px">

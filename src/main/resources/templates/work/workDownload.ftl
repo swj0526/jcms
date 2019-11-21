@@ -34,14 +34,15 @@
                         <div class="layui-inline">
                             <label class="layui-form-label" style="padding-left: 0px">学生班级</label>
                             <div class="layui-input-inline">
-                                <input style="border: 0" class="layui-input" name="date" id="test1" type="text" disabled value="艺术一班">
+                                <input style="border: 0" class="layui-input" name="date" id="test1" type="text" disabled
+                                       value="艺术一班">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label" style="padding-left: 0px">操作</label>
                             <div class="layui-input-inline">
                                 <button type="button" class="layui-btn" id="ss">评分</button>
-                                <button type="button" class="layui-btn" id="ss" style="margin-left: 55px">下载</button>
+                                <button type="button" class="layui-btn" id="ss" style="margin-left: 55px">评价</button>
                             </div>
                         </div>
 
@@ -64,11 +65,28 @@
             <div class="layui-card">
                 <div class="layui-card-header">作业文件</div>
                 <div class="layui-card-body">
-                    <img src="/work/img/1.png" style="width: 100px;height: 100px">
-                    <img src="/work/img/1.png" style="width: 100px;height: 100px">
-                    <img src="/work/img/1.png" style="width: 100px;height: 100px">
-                    <img src="/work/img/1.png" style="width: 100px;height: 100px">
-                    <img src="/work/img/1.png" style="width: 100px;height: 100px">
+                    <div class="layui-form-item">
+                        <div class="layui-inline" style="width: 100px;height: 120px;text-align: center">
+                            <img src="/work/img/1.png" style="width: 100px;height: 100px">
+                            <button style="margin-top: 5px" type="button" class="layui-btn" id="ss">下载</button>
+                        </div>
+                        <div class="layui-inline" style="width: 100px;height: 120px;text-align: center">
+                            <img src="/work/img/1.png" style="width: 100px;height: 100px">
+                            <button style="margin-top: 5px" type="button" class="layui-btn" id="ss">下载</button>
+                        </div>
+                        <div class="layui-inline" style="width: 100px;height: 120px;text-align: center">
+                            <img src="/work/img/1.png" style="width: 100px;height: 100px">
+                            <button style="margin-top: 5px" type="button" class="layui-btn" id="ss">下载</button>
+                        </div>
+                        <div class="layui-inline" style="width: 100px;height: 120px;text-align: center">
+                            <img src="/work/img/1.png" style="width: 100px;height: 100px">
+                            <button style="margin-top: 5px" type="button" class="layui-btn" id="ss">下载</button>
+                        </div>
+                        <div class="layui-inline" style="width: 100px;height: 120px;text-align: center">
+                            <img src="/work/img/1.png" style="width: 100px;height: 100px">
+                            <button style="margin-top: 5px" type="button" class="layui-btn" id="ss">下载</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
