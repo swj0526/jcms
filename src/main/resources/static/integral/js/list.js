@@ -1,7 +1,8 @@
-layui.use(['jquery','layer','table'],function () {
+layui.use(['jquery','layer','table','laydate'],function () {
     var $=layui.jquery,
-        table = layui.table;
-        layer=layui.layer;
+        table = layui.table,
+        layer=layui.layer,
+        laydate=layui.laydate;
     table.render({
         elem: '#currentTableId',
         data: [{
@@ -54,7 +55,8 @@ layui.use(['jquery','layer','table'],function () {
             {field:'time', align: 'center', width:200,title: '时间'}
             ,{field:'reason',align: 'center',width:200 ,title: '事由'}
             ,{field:'totalScore', align: 'center',width:200,title: '分数'}
-        ]]
+        ]],
+        page: true
     });
     $("#edit").click(function () {
         layer.open({
@@ -63,5 +65,10 @@ layui.use(['jquery','layer','table'],function () {
             content:$("#table")
         });
     })
+    laydate.render({
+        elem: '#time'
+        ,type: 'datetime'
+        ,range: true
+    });
 
 })

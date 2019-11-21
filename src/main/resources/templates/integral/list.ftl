@@ -59,12 +59,26 @@
                 </div>
             </fieldset>
 <div id="table" style="display: none">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" autocomplete="off" class="layui-input"
+                           placeholder="-" id="time">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+            </div>
+        </div>
+    </form>
     <table class="layui-hide" id="test"></table>
 </div>
 
             <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
             <script type="text/html" id="currentTableBar">
-                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit" id="edit">详情</a>
+                <a class="layui-btn layui-btn-primary layui-btn-xs data-count-edit" lay-event="edit" id="edit">详情</a>
             </script>
         </div>
     </div>

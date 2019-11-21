@@ -3,12 +3,11 @@ package com.jczx.domain;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
 /**
  * 学生表
- * @author cjw
+ * @author 池炯武
  * @create 2019-11-17 12:52
  *
  */
@@ -24,7 +23,7 @@ public class TbStudent extends Domain {
     private Integer id;
     private Integer majorId;//班级id
     private String name;//姓名
-    private Integer sex;//性别//string
+    private String sex;//性别
     private Integer age;//年龄
     private String address;//家庭住址
     private String nativePlace;//籍贯
@@ -33,7 +32,9 @@ public class TbStudent extends Domain {
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
     private Integer operatorId;//操作人
-    //name
+    private Integer motherName;//母亲名字
+    private Integer fatherName;//父亲名字
+    private Integer otherRelativesName;//其他亲属名字
     private String motherPhone;//母亲联系方式
     private String fatherPhone;//父亲联系方式
     private String emergencyPhone;//应急联系方式
@@ -46,9 +47,7 @@ public class TbStudent extends Domain {
     private String stuPhone;//学生电话//student
     private String qq;//qq号
     private String weChat;//微信
-  //  private String parPhone;//家长电话;//
-
-
+    private Integer integralId;//积分
 
     public Integer getId() {
         return id;
@@ -56,6 +55,14 @@ public class TbStudent extends Domain {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getMajorId() {
+        return majorId;
+    }
+
+    public void setMajorId(Integer majorId) {
+        this.majorId = majorId;
     }
 
     public String getName() {
@@ -66,11 +73,11 @@ public class TbStudent extends Domain {
         this.name = name;
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -130,13 +137,36 @@ public class TbStudent extends Domain {
         this.state = state;
     }
 
-
     public Integer getOperatorId() {
         return operatorId;
     }
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
+    }
+
+    public Integer getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(Integer motherName) {
+        this.motherName = motherName;
+    }
+
+    public Integer getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(Integer fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public Integer getOtherRelativesName() {
+        return otherRelativesName;
+    }
+
+    public void setOtherRelativesName(Integer otherRelativesName) {
+        this.otherRelativesName = otherRelativesName;
     }
 
     public String getMotherPhone() {
@@ -161,6 +191,14 @@ public class TbStudent extends Domain {
 
     public void setEmergencyPhone(String emergencyPhone) {
         this.emergencyPhone = emergencyPhone;
+    }
+
+    public String getLabelIds() {
+        return labelIds;
+    }
+
+    public void setLabelIds(String labelIds) {
+        this.labelIds = labelIds;
     }
 
     public Integer getChannelId() {
@@ -227,27 +265,11 @@ public class TbStudent extends Domain {
         this.weChat = weChat;
     }
 
-    public static int getStateEntrance() {
-        return STATE_ENTRANCE;
+    public Integer getIntegralId() {
+        return integralId;
     }
 
-    public static int getStateGraduate() {
-        return STATE_GRADUATE;
-    }
-
-    public String getLabelIds() {
-        return labelIds;
-    }
-
-    public void setLabelIds(String labelIds) {
-        this.labelIds = labelIds;
-    }
-
-    public Integer getMajorId() {
-        return majorId;
-    }
-
-    public void setMajorId(Integer majorId) {
-        this.majorId = majorId;
+    public void setIntegralId(Integer integralId) {
+        this.integralId = integralId;
     }
 }
