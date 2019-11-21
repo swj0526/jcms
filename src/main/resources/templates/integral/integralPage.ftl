@@ -43,11 +43,9 @@
             <div class="layui-inline">
                 <div class="layuimini-main">
                     <button class="layui-btn">查询</button>
-                    <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%"
-                            id="add">加分
+                    <button type="button" class="layui-btn layui-btn-normal" id="add">加分
                     </button>
-                    <button type="button" class="layui-btn layui-btn-normal" style="position: relative;left:80%"
-                            id="points">减分
+                    <button type="button" class="layui-btn layui-btn-normal" id="points">减分
                     </button>
                 </div>
             </div>
