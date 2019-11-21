@@ -27,12 +27,28 @@ public class TbAttachment extends Domain {
         this.id = id;
     }
 
-    public String getURl() {
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getLinkId() {
+        return linkId;
+    }
+
+    public void setLinkId(Integer linkId) {
+        this.linkId = linkId;
+    }
+
+    public String getURL() {
         return URL;
     }
 
-    public void setURl(String URl) {
-        this.URL = URl;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     public Integer getOperatorId() {
