@@ -16,7 +16,25 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     laydate.render({
         elem: '#test3'
     });
-    $("#ss").click(function () {
+    $("#type3").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            , type: 2
+            , area: ['500px', '650px']
+            , btn: ['确定']
+            , content: 'kkk'
+        });
+    });
+    $("#type2").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            , type: 2
+            , area: ['500px', '650px']
+            , btn: ['确定']
+            , content: 'kkk'
+        });
+    });
+    $("#type1").click(function () {
         layer.open({
             btnAlign: 'c'
             , type: 2

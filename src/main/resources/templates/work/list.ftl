@@ -22,11 +22,14 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <select name="city" lay-verify="">
-                                <option value="01">一年级</option>
-                                <option value="02">二年级</option>
-                                <option value="03">三年级</option>
-                            </select>
+                            <label class="layui-form-label">关键字</label>
+                            <div class="layui-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="01">一年级</option>
+                                    <option value="02">二年级</option>
+                                    <option value="03">三年级</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">日期范围</label>
@@ -36,8 +39,12 @@
                         </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-                            <button class="layui-btn" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">发布作业</button>
-                            <button class="layui-btn" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">导出</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">
+                                发布作业
+                            </button>
+                            <button class="layui-btn" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">
+                                导出
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -69,8 +76,8 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">发布年级</label>
-                        <div class="layui-inline"  style="width: 190px">
-                            <select  lay-verify="" name="grade" id="grade">
+                        <div class="layui-inline" style="width: 190px">
+                            <select lay-verify="" name="grade" id="grade">
                                 <option value="一年级">一年级</option>
                                 <option value="二年级">二年级</option>
                                 <option value="三年级">三年级</option>

@@ -17,6 +17,8 @@ public class TbPayBill extends Domain {
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
     private Integer typeId;//缴费类型//改
+    private Integer paymentMethodId;//缴费方式
+    private Integer semesterId;//学期
     private Integer totalAmount;//应付金额
     private Integer payAmount;//金额//
     private Date payDate;//缴费日期//
@@ -25,9 +27,11 @@ public class TbPayBill extends Domain {
     private Integer factAmount;//实付金额//加fact
     private Date startTime;//开始时间
     private Date endTime;//结束时间//end
+    private Boolean hasAttachment;//是否有附件
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
     private String remark;//备注
+
     public Integer getId() {
         return id;
     }
@@ -58,6 +62,22 @@ public class TbPayBill extends Domain {
 
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
+    }
+
+    public Integer getPaymentMethodId() {
+        return paymentMethodId;
+    }
+
+    public void setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
+    }
+
+    public Integer getSemesterId() {
+        return semesterId;
+    }
+
+    public void setSemesterId(Integer semesterId) {
+        this.semesterId = semesterId;
     }
 
     public Integer getTotalAmount() {
@@ -122,6 +142,14 @@ public class TbPayBill extends Domain {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public Boolean getHasAttachment() {
+        return hasAttachment;
+    }
+
+    public void setHasAttachment(Boolean hasAttachment) {
+        this.hasAttachment = hasAttachment;
     }
 
     public Integer getOperatorId() {

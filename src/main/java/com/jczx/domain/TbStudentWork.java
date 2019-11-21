@@ -1,5 +1,7 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.FieldType;
+import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +19,9 @@ public class TbStudentWork extends Domain {
     private Integer studentId;//学生表id
     private Integer homeworkId;//作业id//homeworkId
     private Boolean hasAttachment;//是否有附件//
-
+    @FieldType(type= Type.VARCHAR,length = 255)
     private String content;//内容
+    @FieldType(type= Type.VARCHAR,length = 100)
     private String estimateContent;//评价
     private Integer score;//分数
     private  Integer teacherId;//评价老师
