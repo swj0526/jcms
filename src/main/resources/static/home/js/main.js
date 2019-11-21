@@ -7,14 +7,14 @@ layui.use(['element', 'jquery', 'layer'], function () {
         var title = $(this).text();
         if (id == "remind_pay") { //提醒-缴费提醒
             var src = "/remind/toPay";
-            all_tab(id, title, src);
+            all_tab(id, "缴费提醒", src);
         } else if (id == "remind_article") { //提醒-文章提醒
             var src = "/remind/toArticle";
-            all_tab(id, title, src);
-        } else if (id = "account_list") { //账号-账号列表
+            all_tab(id, "公告提醒", src);
+        } else if (id == "account_list") { //账号-账号列表
             var src = "/account/toList";
             all_tab(id, title, src);
-        } else if (id == "account_role") {
+        } else if (id == "account_role") { //账号-权限管理
             var src = "/account/toRole";
             all_tab(id, title, src);
         } else if (id == "account_modPassword") {
@@ -68,6 +68,12 @@ layui.use(['element', 'jquery', 'layer'], function () {
         } else if (id == "integral_add") {
             var src = "/integral/add";
             all_tab(id, title, src);
+        }else if (id == "major_list") {
+            var src = "/major/toList";
+            all_tab(id, title, src);
+        }else if (id == "teacher_list") {
+            var src = "/teacher/tolist";
+            all_tab(id, title, src);
         }
     });
 
@@ -82,23 +88,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
         //配置一个透明的询问框
         layer.msg('缴费提醒3条<br/>文章提醒6条', {
             time: false, //20s后自动关闭
-            btn: ['忽略', '公告提醒', '缴费提醒'],
-            btn2: function () {
-                var id = "remind_article";
-                var title = "公告提醒";
-                if (id == "remind_article") { //提醒-缴费提醒
-                    var src = "/remind/toArticle";
-                    all_tab(id, title, src);
-                }
-            },
-            btn3: function () {
-                var id = "remind_pay";
-                var title = "缴费提醒";
-                if (id == "remind_pay") { //提醒-缴费提醒
-                    var src = "/remind/toPay";
-                    all_tab(id, title, src);
-                }
-            }
+            btn: ['忽略', '公告提醒', '缴费提醒']
         });
     });
     $('.layui-layer-btn1').click(function () {

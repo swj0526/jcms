@@ -17,10 +17,9 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {
                 field: 'role',
                 title: '角色'
-               /* templet: '#roleDemo'*/
             },
             {field: 'lockDemo1', title: '是否激活账号', templet: '#checkboxTpl1', unresize: true},
-            {fixed: 'right', title: '操作', toolbar: '#barDemo1'}
+            {fixed: 'right', title: '操作', toolbar: '#barDemo1',width:185}
         ]]
         , data: [{
             name: "王老师",
@@ -131,32 +130,32 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     table.on('tool(test1)', function (obj) {
         var data = obj.data;
         if (obj.event === 'reset1') {
-            layer.open( {
-                type:1,
-                title:"重置密码",
-                content:"<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为abcd?</div>",
-                area: ['300px','150px'], //设置宽高
+            layer.open({
+                type: 1,
+                title: "重置密码",
+                content: "<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为abcd?</div>",
+                area: ['300px', '150px'], //设置宽高
                 btn: ['确定重置密码', '取消'],
-                btnAlign:"c"
+                btnAlign: "c"
             });
-        }else if(obj.event === 'reset2'){
-           layer.open({
-             type: 1,
-             title: "设置角色",
-             area: ['720px','350px'], //设置宽高
-             content: $("#roleDemo"),
+        } else if (obj.event === 'reset2') {
+            layer.open({
+                type: 1,
+                title: "设置角色",
+                area: ['720px', '350px'], //设置宽高
+                content: $("#roleDemo"),
                 btn: ['确定', '取消'],
-             success: function (index) {
+                success: function (index) {
 
-             },
-                yes:function (index) {
+                },
+                yes: function (index) {
 
                     layer.close(index);
                 },
-                btn2:function () {
+                btn2: function () {
                     alert('取消');
                 }
-         });
+            });
         }
     });
     var demo1 = xmSelect.render({
