@@ -12,29 +12,79 @@
     <script src="/teacher/js/list.js"></script>
 </head>
 <body>
-
-
-<div id="aaa" style="display: none">
-    <fieldset class="layui-elem-field layuimini-search">
+<#--添加-->
+<div id="add" style="display: none">
+        <div style="margin: 10px 10px 10px 10px">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm"  id="dataFrm">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" autocomplete="off" class="layui-input" id="name">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone">
+                        </div>
+                    </div>
+                    <#--<div class="layui-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <select name="modules" lay-search="" lay-verify="required">
+                                <option value="">所有状态</option>
+                                <option value="1">在职</option>
+                                <option value="2">离职</option>
+                            </select>
+                        </div>
+                    </div>-->
+                    <div class="layui-inline">
+                        <label class="layui-form-label">性别</label>
+                        <div class="layui-input-inline">
+                            <select name="gender" lay-verify="" id="gender">
+                                <option value="">选择性别</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="layui-btn" id="addTeacher">提交</button>
+            </form>
+        </div>
+</div>
+<#--修改-->
+<div id="modify1" style="display: none">
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFrm">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="id" autocomplete="off" class="layui-input">
+                            <input type="text" name="name" autocomplete="off" class="layui-input" id="name">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">性别</label>
+                        <label class="layui-form-label">手机号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <select name="modules" lay-search="" lay-verify="required">
+                                <option value="">所有状态</option>
+                                <option value="1">在职</option>
+                                <option value="2">离职</option>
+                            </select>
                         </div>
                     </div>
                 </div>
+                <button type="button" class="layui-btn" id="modifyTeacher">提交</button>
             </form>
         </div>
-    </fieldset>
 </div>
 
 <div style="display: none" id="importForm" >
@@ -53,12 +103,11 @@
                 <tbody id="demoList"></tbody>
             </table>
         </div>
-
     </div>
 </div>
+<#--添加弹窗-->
 <div class="layuimini-container">
     <div class="layuimini-main">
-
         <fieldset class="layui-elem-field layuimini-search">
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
@@ -71,7 +120,6 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-
                             <select name="state" lay-verify="">
                                 <option value="">选择状态</option>
                                 <option value="010">在任</option>
@@ -82,7 +130,7 @@
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
                         </div>
                         <div class="layui-btn-group">
-                            <button type="button" class="layui-btn" id="add">添加</button>
+                            <button type="button" class="layui-btn" id="add1">添加</button>
                             <button type="button"class="layui-btn layui-btn-warm"  id="import">导入</button>
                             <button type="button"class="layui-btn layui-btn-warm" >导出</button>
                         </div>
@@ -90,12 +138,10 @@
                 </form>
             </div>
         </fieldset>
-
-
+        <#--数据表格-->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
-            <a class="layui-btn  layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>
 </div>
