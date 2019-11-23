@@ -4,7 +4,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         form = layui.form,
         table = layui.table,
         laydate = layui.laydate;
-    sel();
+
 
     //修改弹窗
     var mainIndex;
