@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author 孙文举
  * @description
@@ -27,9 +29,9 @@ public class DictionaryController extends BaseController {
         ServiceResult result = dictionaryService.addDictionary(dictionary);
        return result;
     }
-    @RequestMapping("/list")
-    public ServiceResult list(TbDictionary dictionary) {
-        ServiceResult result = dictionaryService.listDictionary(dictionary);
-        return result;
+    @RequestMapping("/list/channel")
+    public List<TbDictionary> channel(int type) {
+        List<TbDictionary> list = dictionaryService.listDictionary(type);
+        return list;
     }
 }

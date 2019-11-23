@@ -30,22 +30,19 @@ public class DictionaryService extends Service {
         Date date = new Date();
         dictionary.setCreateTime(date);//少字段
         add(dictionary);
-        return SUCCSS;
+        return SUCCESS;
     }
 
     /**
      * 查找字典表,利用type来返回这一类所有的type的名称
      *
-     * @param dictionary
+     * @param
      * @return
      */
-    public ServiceResult listDictionary(TbDictionary dictionary) {
+    public List<TbDictionary> listDictionary(int  type) {
         Conditions conditions = new Conditions(TbDictionary.class);
-      conditions.putASC();
-
-
-        conditions.putEW("type", dictionary.getType());
+        conditions.putEW("type",type);
         List<TbDictionary> list = getList(conditions);
-        return success(list);
+        return list;
     }
 }
