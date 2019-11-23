@@ -23,7 +23,7 @@ public class TeacherService  extends Service {
      */
     public ServiceResult addTeacher(TbTeacher teacher) {
         add(teacher);
-        return SUCCSS;
+        return SUCCESS;
     }
 
     /**
@@ -33,7 +33,7 @@ public class TeacherService  extends Service {
      */
     public ServiceResult modifyTeacher(TbTeacher teacher){
         modify(teacher);
-        return SUCCSS;
+        return SUCCESS;
     }
 
     /**

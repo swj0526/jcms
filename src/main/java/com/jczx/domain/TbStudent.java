@@ -2,6 +2,7 @@ package com.jczx.domain;
 
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import java.util.Date;
 
@@ -41,6 +42,7 @@ public class TbStudent extends Domain {
     private String labelIds;//意向标签表
     private Integer channelId;//渠道表id
     private String intention;//招生意向
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthDate;//出生年月
     private String IDCard;//身份证//
     private String school;//学校

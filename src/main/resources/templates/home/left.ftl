@@ -17,6 +17,7 @@
                     <dd><a  class="add" id="major_list">专业-班级管理</a></dd>
                     <dd><a  class="add" id="teacher_list">教职工档案管理</a></dd>
                     <dd><a class="add" id="recruit_recruit">招生信息管理</a></dd>
+                    <dd><a class="add" id="recruit_try">试课学生管理</a></dd>
                     <dd><a class="add" id="recruit_follow">来源渠道管理</a></dd>
                     <dd><a class="add" id="recruit_data">渠道统计</a></dd>
                 </dl>

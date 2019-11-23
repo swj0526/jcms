@@ -21,10 +21,10 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/account/tomodpassword";
             all_tab(id, title, src);
         } else if (id == "recruit_recruit") {
-            var src = "/recruit//torecruit";
+            var src = "/recruit/torecruit";
             all_tab(id, title, src);
         } else if (id == "recruit_follow") {
-            var src = "/recruit//tofollow";
+            var src = "/follow/to";
             all_tab(id, title, src);
         } else if (id == "student_list") {
             var src = "/student/tolist";

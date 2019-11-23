@@ -14,129 +14,35 @@
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
     <#--上传-->
-
-
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
+    <style type="text/css">
+        /*去除input number的 自动增加数按钮*/
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
 
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
 </head>
 <body>
-
-<#--新增信息弹出框-->
-<div style="display: none" id="recruit">
-    <form class="layui-form"  lay-filter="dataForm" id="dataFor">
-        <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-inline">
-                <input type="text" name="name"  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-
-            <label class="layui-form-label">性别</label>
-            <div class="layui-inline">
-                <div class="layui-inline" style="width: 190px">
-                    <select name="sex" lay-verify="">
-                        <option value=""></option>
-                        <option value="男">男</option>
-                        <option value="女">女</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">出生年月</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="birthDate" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-
-            <label class="layui-form-label">学校</label>
-            <div class="layui-input-inline">
-                <input type="text" name="school" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">手机号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="studentPhone" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">QQ号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="qq" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">微信号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="weChat" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">母亲电话</label>
-            <div class="layui-input-inline">
-                <input type="text" name="motherPhone" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">父亲电话</label>
-            <div class="layui-input-inline">
-                <input type="text" name="fatherPhone" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">来源渠道</label>
-            <div class="layui-input-inline">
-                <div class="layui-inline">
-                    <select name="channelId" lay-verify="">
-                        <option value="">来源渠道</option>
-                        <option value="010">学校网站</option>
-                        <option value="011">自己找上门</option>
-                        <option value="012">qq</option>
-                        <option value="013">微信</option>
-                        <option value="014">介绍</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">意向</label>
-                <div class="layui-inline" style="width: 190px">
-                    <div id="demo1" class="xm-select-demo" style=" width:190px";></div>
-                </div>
-            </div>
-            <div class="layui-inline">
-                <div class="layui-inline" style="width:50px">
-                    <button class="layui-btn layui-btn-normal" id="">添加标签</button>
-                </div>
-            </div>
-            <label class="layui-form-label">录入时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="createTime" id="dat" lay-verify="date" placeholder="" autocomplete="off" class="layui-input">            </div>
-
-        </div>
-        <div class="layui-form-item"style="margin-left: 20%">
-            <div class="layui-input-inline">
-                <button class="layui-btn" type="button" lay-submit id="addSubmit">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-
 <div class="layuimini-container">
     <div class="layuimini-main">
        <fieldset class="layui-elem-field layuimini-search">
             <legend>搜索招生信息</legend>
             <div style="margin: 10px 10px 10px 10px">
+                <div class="demoTable">
+                    搜索ID：
+                    <div class="layui-inline">
                 <form class="layui-form layui-form-pane" action="">
-
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width:100px">关键词</label>
                         <div class="layui-input-inline" style="width:100px ">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
+                            <input type="text" id="demoReload" autocomplete="off"  placeholder="姓名"class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -147,9 +53,9 @@
                     </div>
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width: 100px">性别</label>
-
                         <div class="layui-inline" style="width: 100px">
                             <select name="sex" lay-verify="">
+                                <option value="">请选择</option>
                                 <option value="">男</option>
                                 <option value="">女</option>
                             </select>
@@ -166,7 +72,7 @@
                         </select>
                     </div>
                     <div class="layui-inline">
-                        <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
+                        <a class="layui-btn  layui-btn-primary" data-type="reload">查询</a>
                     </div>
                     <div class="layui-btn-group" >
                         <button class="layui-btn data-add-btn"type="button">添加</button>
@@ -174,7 +80,8 @@
                         <button class="layui-btn layui-btn-warm "type="button" id="upload">导入</button>
                     </div>
                 </form>
-
+                    </div>
+                </div>
             </div>
         </fieldset>
         <#--自定义标签-->
@@ -187,21 +94,24 @@
                 </div>
             </div>
         </div >
-
-
         <!-- 表格 -->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
+            {{# if(d.state=="1"){ }}
+
+            {{# } }}
+            {{# if(d.state=="2"){ }}
+
+            {{# } }}
+            {{# if(d.state=="3"){ }}
+
+            {{# } }}
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="follow">跟进详情</a>
             <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>
 </div>
-
-
-
-
 <div id="download1"style="display: none;width:60%;margin: 0 auto">
     <div style="margin-top: 10%">
         <p><span style="font-size: 15px;color: red">注意:请按照指定的格式上传文件,点击下载模板</span></p>
@@ -228,16 +138,12 @@
     </div>
 
 </div>
-
 <#--上传文件-->
+<script src="/layui/layui.js" charset="utf-8"></script>
+<script src="/recruit/js/recruit.js"></script>
 
-
-
-<script src="../../layui/layui.js" charset="utf-8"></script>
-<script src="../../recruit/js/recruit.js"></script>
-<script src="/recruit/js/xm.js" type="text/javascript"></script>
 <script>
-    var demo1 = xmSelect.render({
+  /*  var demo1 = xmSelect.render({
         el: '#demo1',
         language: 'zn',
         data: [
@@ -247,7 +153,7 @@
             {name: '不太明确', value: 4},
             {name: '完全没有', value: 5},
         ]
-    })
+    })*/
      /*document.getElementById('demo1-getValue').onclick = function(){
         //获取当前多选选中的值
         var selectArr = demo1.getValue();

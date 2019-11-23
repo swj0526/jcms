@@ -1,8 +1,13 @@
 layui.use(['form', 'table', 'laydate'], function () {
+    var popForm;
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table,
         laydate = layui.laydate;
+
+
+    //修改弹窗
+    var mainIndex;
 
     laydate.render({
         elem: '#a' //指定元素
@@ -20,63 +25,17 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     var tableIns = table.render({
         elem: '#currentTableId'
-        , data: [{
-            "name": "杜甫甫甫"
-            , "sex": "女"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }, {
-
-            "name": "李白"
-            , "sex": "女"
-            , "email": "xianxin@layui.com"
-            , "age": "1994/11/20"
-            , "city": "威海"
-
-            , "LAY_CHECKED": true
-        }, {
-
-            "name": "王勃"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "age": "1994/11/20"
-            , "city": "威海"
-        }],
+        , url: '/recruit/list'
+        ,id: 'testReload'
+        //解析table 组件规定的数据结构
+       , parseData:function(res){ //res 即为原始返回的数据
+            console.log(res);
+            return{
+                "code":"0",
+                "count":"20",
+                data:res
+            }
+        },
         cols: [
             [{
                 field: 'name',
@@ -93,9 +52,8 @@ layui.use(['form', 'table', 'laydate'], function () {
 
                 },
                 {
-                    field: '',
+                    field: 'labelIds',
                     title: '意向',
-
                     align: 'center',
                     width: 80
 
@@ -103,36 +61,45 @@ layui.use(['form', 'table', 'laydate'], function () {
 
 
                 {
-                    field: 'age',
+                    field: 'birthDate',
                     title: '出生年月',
                     align: 'center'
+                    , width: 150
+                },
+                {
+                    field: 'school',
+                    title: '学校'
+                    , width: 150
+
+                },
+
+
+                {
+                    field: 'studentPhone',
+                    title: '手机号'
+                    , width: 150
+
 
                 },
                 {
-                    field: 'city',
-                    title: '学校',
-
-
-                },
-
-
-                {
-                    field: 'score',
-                    title: '手机号',
-
-
+                    field: 'qq',
+                    title: 'QQ号'
+                    , width: 150
                 },
                 {
-                    field: 'classify',
-                    title: 'QQ号',
-                },
-                {
-                    field: 'wealth',
+                    field: 'weChat',
                     title: '微信'
+                    , width: 150
                 },
                 {
-                    field: 'wealth',
-                    title: '家长联系方式'
+                    field: 'motherPhone',
+                    title: '母亲联系方式'
+                    , width: 150
+                },
+                {
+                    field: 'fatherPhone',
+                    title: '父亲联系方式'
+                    , width: 150
                 },
                 {
                     title: '操作',
@@ -145,30 +112,36 @@ layui.use(['form', 'table', 'laydate'], function () {
 
             ]
         ],
-        limits: [10, 15, 20, 25, 50, 100],
-        limit: 10,
+
         page: true
     });
 
-    // 监听搜索操作
-    form.on('submit(data-search-btn)', function (data) {
-        var result = JSON.stringify(data.field);
-        layer.alert(result, {
-            title: '最终的搜索信息'
-        });
+    // 搜索操作
+    var $ = layui.$, active = {
+        reload: function(){
+            var demoReload = $('#demoReload');
 
-        //执行搜索重载
-        table.reload('currentTableId', {
-            page: {
-                curr: 1
-            },
-            where: {
-                searchParams: result
-            }
-        }, 'data');
+            //执行重载
+            table.reload('testReload', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                ,where: {
+                    key: {
+                        id: demoReload.val()
+                    }
+                }
+            }, 'data');
+        }
+    };
 
-        return false;
+    $('.demoTable .layui-btn').on('click', function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
     });
+
+
+
     //监听导出事件
     $("#download").click(function () {
         alert("导出")
@@ -189,7 +162,21 @@ layui.use(['form', 'table', 'laydate'], function () {
     $(".data-add-btn").on("click", function () {
         addStudents();
     });
-    //添加招生信息
+
+    //添加招生信息的弹窗
+    function addStudents() {
+        mainIndex = layer.open({
+            type: 2,
+            title: "添加招生信息",
+            skin: 'layui-layer-rim', //加上边框
+            area: ['100%', '100%'], //设置宽高
+            content: '/recruit/toadd',
+           /* success: function (index) {
+            }*/
+        });
+    }
+
+    //添加招生信息//和修改学生信息
     $("#addSubmit").click(function () {
         var seList = new Array();
         var selectArr = demo1.getValue().valueOf();
@@ -202,74 +189,68 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
         let label = seList.join(",");
         var labelIds = ("," + label + ",");
-        alert(labelIds);
         var recruit = $("#dataFor").serialize();
         //发送ajax请求
-        $.post(url, {
-            recruit: recruit,
-            labelIds: labelIds
-        }, function (result) {
-
+        $.post('/recruit/add', recruit + "&labelIds=" + labelIds, function (result) {
+            //下面就是提交成功后关闭自己
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            if (result.success == true) {
+                setTimeout(function () {
+                    parent.layer.close(index);//关闭弹出层
+                    parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
+                }, 500);
+            } else {
+                alert("hello");
+                layer.open({
+                    type: 1,
+                    title: "提示",
+                    content: "<div style='text-align: center; line-height: 20px; padding-top: 10px;'><span>姓名,意向,电话必须填写</span></div>",
+                    area: ['300px', '150px'], //设置宽高
+                    btn: ['确定'],
+                    btnAlign: "c"
+                });
+            }
         })
     });
 
-    /* // 监听删除操作
-     $(".data-delete-btn").on("click", function () {
-         var checkStatus = table.checkStatus('currentTableId'),
-             data = checkStatus.data;
-         alert("hello");
-         layer.alert(JSON.stringify(data));
-     });*/
-
-    //修改弹窗
-    var mainIndex;
-    var url;
-
-    function modifyStudents(data) {
-        mainIndex = layer.open({
-            type: 1,
-            title: "修改招生信息",
-            area: ['800px', '600px'], //设置宽高
-            content: $("#recruit"),
-            success: function (index) {
-                //获取
-                form.val("dataForm", data);
-                tableIns.reload();//渲染数据表格
-                url = "/recruit/modify";
+    //修改招生信息
+    $("#modifySubmit").click(function () {
+        var seList = new Array();
+        var selectArr = demo1.getValue().valueOf();
+        $.each(selectArr, function (k, v) {
+            $.each(v, function (k1, v1) {
+                if (k1 == "value") {
+                    seList.push(v1);
+                }
+            });
+        });
+        let label = seList.join(",");
+        var labelIds = ("," + label + ",");
+        var recruit = $("#modifyFor").serialize();
+        var id = $("#modifySubmit").val();
+        //发送ajax请求
+        $.post('/recruit/modify' + '?id=' + id, recruit + "&labelIds=" + labelIds, function (result) {
+            //下面就是提交成功后关闭自己
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            if (result.success == true) {
+                setTimeout(function () {
+                    parent.layer.close(index);//关闭弹出层
+                    /* parent.location.reload();*///更新父级页面（提示：如果需要跳转到其它页面见下文）
+                }, 500);
 
             }
-        });
-    }
-
-    //添加弹窗
-    function addStudents() {
-        mainIndex = layer.open({
-            type: 1,
-            title: "添加招生信息",
-            skin: 'layui-layer-rim', //加上边框
-            area: ['100%', '100%'], //设置宽高
-            content: $("#recruit"),
-            success: function (index) {
-                $("#dataFor")[0].reset();
-                layer.close(mainIndex);
-                url = '/recruit/add';
-
-
-            }
-        });
-    }
-
+        })
+    });
 
     //tab弹窗修改详情
     function text() {
         layer.tab({
             type: 1,
-
             area: ['100%', '100%'],
             tab: [{
                 skin: 'layui-layer-rim',
                 title: '杜甫跟进详情',
-                content: '<iframe src="/recruit/modifyfollow" frameborder="0" height="550px" width="100%"></iframe>',
+                content: '<iframe src="/recruit/detailfollow" frameborder="0" height="550px" width="100%"></iframe>',
             }]
         });
     }
@@ -308,22 +289,35 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
     }
 
+//监听行
     table.on('tool(currentTableFilter)', function (obj) {
         var data = obj.data;
         if (obj.event === 'edit') {
-            modifyStudents(data);
+            var id = data.id;
+            mainIndex = layer.open({
+                type: 2,
+                title: "修改招生信息",
+                area: ['100%', '100%'], //设置宽高
+                content: '/recruit/tomodify?id=' + id,
+                end: function () {
+                    $(".layui-laypage-btn").click();
+
+                }
+            });
         } else if (obj.event === 'delete') {
-            layer.confirm('真的删除行么', function (index) {
+            layer.confirm('是否删除:' + data.name, function (index) {
                 obj.del();
                 layer.close(index);
                 $.post('/recruit/delete', {id: data.id}, function (data) {
-
+                    tableIns.reload()
                 })
+
             });
         } else if (obj.event === 'follow') {
             text();
 
         }
+
     });
 
 

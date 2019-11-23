@@ -83,17 +83,6 @@
                     </div>
                 </div>
             </div>
-            <script>
-                layui.use(['element', 'layer'], function () {
-                    var element = layui.element;
-                    var layer = layui.layer;
-
-                    //监听折叠
-                    element.on('collapse(test)', function (data) {
-
-                    });
-                });
-            </script>
 
 
         </div>
@@ -113,11 +102,9 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">跟进状态</label>
-                    <div class="layui-input-inline">
-                        <input type="password" name="password" required lay-verify="required" placeholder="请输入"
-                               autocomplete="off"
-                               class="layui-input">
+                    <label class="layui-form-label">意向</label>
+                    <div class="layui-inline" style="width: 190px">
+                        <div id="demo1" class="xm-select-demo" style=" width:190px";></div>
                     </div>
 
                 </div>
@@ -150,19 +137,35 @@
                 </div>
             </form>
         </div>
-
+        <script src="/recruit/js/xm.js" type="text/javascript"></script>
         <script>
-            //Demo
-            layui.use('form', function () {
+            layui.use(['element', 'layer','form'], function () {
+                var element = layui.element;
+                var layer = layui.layer;
                 var form = layui.form;
-
                 //监听提交
                 form.on('submit(formDemo)', function (data) {
                     layer.msg(JSON.stringify(data.field));
                     return false;
                 });
+                //监听折叠
+                element.on('collapse(test)', function (data) {
 
+                });
             });
+
+            var demo1 = xmSelect.render({
+                el: '#demo1',
+                language: 'zn',
+                data: [
+                    {name: '有意向', value: 1},
+                    {name: '还在考虑', value: 2},
+                    {name: '完全不考虑', value: 3},
+                    {name: '不太明确', value: 4},
+                    {name: '完全没有', value: 5},
+                ]
+            })
+
         </script>
     </div>
 </div>
