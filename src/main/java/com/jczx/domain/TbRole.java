@@ -1,7 +1,5 @@
 package com.jczx.domain;
 
-import net.atomarrow.db.annotation.FieldType;
-import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +15,6 @@ public class TbRole extends Domain {
     private Integer id;
     private String name;//角色名称
     private String remark;//角色备注
-    @FieldType(type = Type.VARCHAR,length = 200)
     private String functionIds;//权限列表
     private Integer operatorId;//操作人
     private Date createTime;//操作时间

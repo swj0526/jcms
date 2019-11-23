@@ -16,11 +16,11 @@ public class TbFund extends Domain {
     private Integer studentId;//学生id
     private String content;//申请事由
     private String activityAmount;//申请金额
-    private Date startDate;//开始日期
+    private Date startDate;//使用日期//******use
     private Integer firstTeacherId;//一审老师
     private Boolean firstReason;//一审是否通过
     private String firstContent;//一审意见
-    private Date firstOperatorTime;//一审操作时间
+    private Date firstOperatorTime;//一审操作时间//or e
     private Integer secondTeacherId;//二审老师
     private Boolean secondReason;//二审是否通过
     private String secondContent;//二审意见

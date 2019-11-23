@@ -13,8 +13,14 @@ import java.util.Date;
  */
 @Component
 public class TbMajor extends Domain {
+    /**
+     *
+     */
     @NotCreate
     public static final int TYPE_MAJOR=0;
+    /**
+     *
+     */
     @NotCreate
     public static final int TYPE_GRADE=1;
     private Integer id;
@@ -24,6 +30,7 @@ public class TbMajor extends Domain {
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
     private String remark;//备注
+    //操作人,时间
 
     public String getRemark() {
         return remark;

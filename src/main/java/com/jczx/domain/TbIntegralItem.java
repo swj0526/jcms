@@ -16,11 +16,11 @@ public class TbIntegralItem extends Domain {
     /**
      * 加分
      */
-    private static final int TYPE_ADD=0;
+    public static final int TYPE_ADD=0;
     /**
      * 减分
      */
-    private static final int TYPE_SUBTRACT=0;
+    public static final int TYPE_SUBTRACT=1;
     private Integer id;
     private Integer score;//记录加分减分
     private String reason;//事由

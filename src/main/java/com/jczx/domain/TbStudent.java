@@ -28,8 +28,10 @@ public class TbStudent extends Domain {
     private String address;//家庭住址
     private String nativePlace;//籍贯
     private String bloodType;//血型
+    private Date createTime;//操作时间
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
+    private Integer operatorId;//操作人
     private Integer motherName;//母亲名字
     private Integer fatherName;//父亲名字
     private Integer otherRelativesName;//其他亲属名字
@@ -46,8 +48,6 @@ public class TbStudent extends Domain {
     private String qq;//qq号
     private String weChat;//微信
     private Integer integralId;//积分
-    private Integer operatorId;//操作人
-    private Date createTime;//操作时间
 
     public Integer getId() {
         return id;
