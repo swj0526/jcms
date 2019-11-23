@@ -14,9 +14,13 @@
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
     <#--上传-->
+
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/all.js"></script>
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
     <script src="/recruit/js/xm.js"></script>
+
     <style type="text/css">
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -96,13 +100,13 @@
             <label class="layui-form-label">来源渠道</label>
             <div class="layui-input-inline" >
                 <div class="layui-inline"style="width: 190px">
-                    <select name="channelId" lay-verify="">
+                    <select name="channelId" lay-verify=""id="decSelect" type="2" url="/dictionary/list/channel">
                         <option value="">来源渠道</option>
-                        <option value="010">学校网站</option>
+                        <#--<option value="010">学校网站</option>
                         <option value="011">自己找上门</option>
                         <option value="012">qq</option>
                         <option value="013">微信</option>
-                        <option value="014">介绍</option>
+                        <option value="014">介绍</option>-->
                     </select>
                 </div>
             </div>
@@ -130,7 +134,7 @@
         </div>
     </div>
 </div>
-<script src="/layui/layui.js" charset="utf-8"></script>
+
 <script src="/recruit/js/recruit.js"></script>
 
 <script>

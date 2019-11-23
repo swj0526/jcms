@@ -4,7 +4,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         form = layui.form,
         table = layui.table,
         laydate = layui.laydate;
-
+    sel();
 
     //修改弹窗
     var mainIndex;
@@ -26,14 +26,14 @@ layui.use(['form', 'table', 'laydate'], function () {
     var tableIns = table.render({
         elem: '#currentTableId'
         , url: '/recruit/list'
-        ,id: 'testReload'
+        , id: 'testReload'
         //解析table 组件规定的数据结构
-       , parseData:function(res){ //res 即为原始返回的数据
+        , parseData: function (res) { //res 即为原始返回的数据
             console.log(res);
-            return{
-                "code":"0",
-                "count":"20",
-                data:res
+            return {
+                "code": "0",
+                "count": "20",
+                data: res
             }
         },
         cols: [
@@ -118,7 +118,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     // 搜索操作
     var $ = layui.$, active = {
-        reload: function(){
+        reload: function () {
             var demoReload = $('#demoReload');
 
             //执行重载
@@ -126,7 +126,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 page: {
                     curr: 1 //重新从第 1 页开始
                 }
-                ,where: {
+                , where: {
                     key: {
                         id: demoReload.val()
                     }
@@ -135,11 +135,10 @@ layui.use(['form', 'table', 'laydate'], function () {
         }
     };
 
-    $('.demoTable .layui-btn').on('click', function(){
+    $('.demoTable .layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
-
 
 
     //监听导出事件
@@ -171,8 +170,8 @@ layui.use(['form', 'table', 'laydate'], function () {
             skin: 'layui-layer-rim', //加上边框
             area: ['100%', '100%'], //设置宽高
             content: '/recruit/toadd',
-           /* success: function (index) {
-            }*/
+            /* success: function (index) {
+             }*/
         });
     }
 
