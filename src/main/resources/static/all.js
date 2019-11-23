@@ -1,3 +1,4 @@
+//tab选项卡
 var all_tab =function(id,title,src){
     layui.use(['element','jquery'], function () {
         var  element = layui.element;
@@ -23,3 +24,5 @@ var all_tab =function(id,title,src){
         });
     });
 }
+//select下拉选
+
