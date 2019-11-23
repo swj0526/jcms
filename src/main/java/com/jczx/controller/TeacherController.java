@@ -39,9 +39,9 @@ public class TeacherController extends BaseController{
     }
 
     @RequestMapping("list")
-    public ResultBean teacherList(){
+    public List<TbTeacher> teacherList(){
         List<TbTeacher> list= teacherService.TeacherList();
-        return success(list);
+        return list;
     }
 
 }

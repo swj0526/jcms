@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.OptionInterface;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ import java.util.Date;
  * @create 2019-11-18 23:32
  */
 @Component
-public class TbDictionary extends Domain {
+public class TbDictionary extends Domain implements OptionInterface {
     /**
      *  意向标签
      */
@@ -46,8 +47,8 @@ public class TbDictionary extends Domain {
 
     private Integer id;
     private String name;
-    private String remark;//备注
     private String type;//字典表类型
+    private String remark;//备注
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
 
@@ -97,5 +98,15 @@ public class TbDictionary extends Domain {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
+    }
+
+    @Override
+    public String getOptionText() {
+        return name;
+    }
+
+    @Override
+    public String getOptionValue() {
+        return id+"";
     }
 }

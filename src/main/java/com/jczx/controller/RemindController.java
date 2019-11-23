@@ -24,7 +24,7 @@ public class RemindController {
      * 提醒管理/缴费提醒
      * @return
      */
-    @RequestMapping("/toPay")
+    @RequestMapping("/topay")
     public String toPay() {
 
         return "/remind/pay";
@@ -33,18 +33,9 @@ public class RemindController {
      * 提醒管理/发布的未看的文章提醒
      * @return
      */
-    @RequestMapping("/toArticle")
+    @RequestMapping("/toarticle")
     public String toAticle() {
 
         return "/remind/article";
-    }
-    /**
-     * 提醒管理/发布的未看的文章提醒
-     * @return
-     */
-    @RequestMapping("/toAnnunciate")
-    public String toBroadcast() {
-
-        return "/remind/annunciate";
     }
 }

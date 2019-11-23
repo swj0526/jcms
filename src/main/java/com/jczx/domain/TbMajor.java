@@ -16,7 +16,7 @@ public class TbMajor extends Domain {
     @NotCreate
     public static final int TYPE_MAJOR=0;
     @NotCreate
-    public static final int TYPE_SCHOOL_YEAR=1;
+    public static final int TYPE_GRADE=1;
     private Integer id;
     private String name; //专业名称
     private Integer pid; //班级关联

@@ -6,19 +6,19 @@ layui.use(['element', 'jquery', 'layer'], function () {
         var id = $(this).attr('id');
         var title = $(this).text();
         if (id == "remind_pay") { //提醒-缴费提醒
-            var src = "/remind/toPay";
+            var src = "/remind/topay";
             all_tab(id, "缴费提醒", src);
         } else if (id == "remind_article") { //提醒-文章提醒
-            var src = "/remind/toArticle";
+            var src = "/remind/toarticle";
             all_tab(id, "公告提醒", src);
         } else if (id == "account_list") { //账号-账号列表
-            var src = "/account/toList";
+            var src = "/account/tolist";
             all_tab(id, title, src);
         } else if (id == "account_role") { //账号-权限管理
-            var src = "/account/toRole";
+            var src = "/account/torole";
             all_tab(id, title, src);
         } else if (id == "account_modPassword") {
-            var src = "/account/toModPassword";
+            var src = "/account/tomodpassword";
             all_tab(id, title, src);
         } else if (id == "recruit_recruit") {
             var src = "/recruit//torecruit";

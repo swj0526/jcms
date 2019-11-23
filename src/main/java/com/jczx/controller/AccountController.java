@@ -15,7 +15,7 @@ public class AccountController {
      * 账号列表页面
      * @return
      */
-    @RequestMapping("/toList")
+    @RequestMapping("/tolist")
     public String toList(){
         return "account/list";
     }
@@ -23,7 +23,7 @@ public class AccountController {
      * 角色列表页面
      * @return
      */
-    @RequestMapping("/toRole")
+    @RequestMapping("/torole")
     public String toRole(){
         return "account/role";
     }
@@ -31,14 +31,14 @@ public class AccountController {
      * 权限树状图
      * @return
      */
-    @RequestMapping("/toPrivilege")
+    @RequestMapping("/toprivilege")
     public String toPrivilege(){
         return "account/privilege";
     }
     /**
      * 修改密码
      */
-    @RequestMapping("/toModPassword")
+    @RequestMapping("/tomodpassword")
     private String toModPassword(){
         return "account/modPassword";
     }

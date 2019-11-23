@@ -1,62 +1,24 @@
 package com.jczx.controller;
 
 import com.jczx.bean.ResultBean;
+import net.atomarrow.bean.Pager;
 
-public class BaseController extends ResultBean {
-    public static ResultBean success() {//成功，没有数据
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(true);
-        resultBean.setCode("0");
-        resultBean.setData(null);
-        return resultBean;
-    }
 
-    public static ResultBean success(Object data) {//成功，有数据
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(true);
-        resultBean.setCode("0");
-        resultBean.setData(data);
-        return resultBean;
-    }
-
-    public static ResultBean success(Object data,int count) {
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(true);
-        resultBean.setCode("0");
-        resultBean.setData(data);
-        resultBean.setCount(count);
-        return resultBean;
-    }
-
-    public static  ResultBean failure() {//失败
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(false);
-        resultBean.setCode("-1");
-        resultBean.setMsg("msg", "");
-        return resultBean;
-    }
-
-    public static ResultBean failure(String msg) {//失败有数据
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(false);
-        resultBean.setCode("-1");
-        resultBean.setMsg("msg", msg);
-        return resultBean;
-    }
-
-    public static ResultBean failure(int code) {//失败，带错误编码
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(false);
-        resultBean.setCode("-1");
-        resultBean.setMsg("msg", "");
-        return resultBean;
-    }
-
-    public static ResultBean failure(int code, String msg) {//失败，给错误编码和信息
-        ResultBean resultBean = new ResultBean();
-        resultBean.setSuccess(false);
-        resultBean.setCode("-1");
-        resultBean.setMsg("msg", msg);
-        return resultBean;
+/**
+ * 孙文举
+ * 基础的controller,所有的controller都继承,去调用里面的基础方法
+ */
+public class BaseController{
+    /**
+     *
+     * @param limit 当前页面显示的条数
+     * @param page 显示的当前页
+     * @return
+     */
+    public Pager checkPager(int limit,int page){
+        Pager pager = new Pager();
+        pager.setCurrentPage(page);
+        pager.setPageSize(limit);
+            return pager;
     }
 }
