@@ -32,6 +32,7 @@ public class DictionaryController extends BaseController {
     @RequestMapping("/list/channel")
     public List<TbDictionary> channel(int type) {
         List<TbDictionary> list = dictionaryService.listDictionary(type);
+        System.out.println(list);
         return list;
     }
 }

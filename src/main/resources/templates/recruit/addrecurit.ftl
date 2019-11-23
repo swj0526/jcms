@@ -138,6 +138,7 @@
 <script src="/recruit/js/recruit.js"></script>
 
 <script>
+    sel();
     var demo1 = xmSelect.render({
         el: '#demo1',
         language: 'zn',

@@ -34,7 +34,8 @@ var sel = function () {
         var form = layui.form;
         //传入的字典的类型
         var type = $('#decSelect').attr('type');
-        var url=$('#decSelect').attr('url');
+        var url = $('#decSelect').attr('url');
+
         //重新渲染表单
         function renderForm() {
             layui.use('form', function () {
@@ -43,8 +44,8 @@ var sel = function () {
             });
         }
 
-        $.ajax('url', {type: type}, function (result) {
-            $.each(result, function(key, value) {
+        $.ajax(url, {type: type}, function (result) {
+            $.each(result, function (key, value) {
                 $("#decSelect").append("<option value=" + value.id + ">" + value.name + "</option>");
             });
             renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
