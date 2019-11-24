@@ -36,8 +36,8 @@
             <legend>搜索招生信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <div class="demoTable">
-                    搜索ID：
-                    <div class="layui-inline">
+
+
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width:100px">关键词</label>
@@ -54,10 +54,10 @@
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width: 100px">性别</label>
                         <div class="layui-inline" style="width: 100px">
-                            <select name="sex" lay-verify="">
+                            <select name="sex" lay-verify="" id="sex">
                                 <option value="">请选择</option>
-                                <option value="">男</option>
-                                <option value="">女</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
                             </select>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <button class="layui-btn layui-btn-warm "type="button" id="upload">导入</button>
                     </div>
                 </form>
-                    </div>
+
                 </div>
             </div>
         </fieldset>

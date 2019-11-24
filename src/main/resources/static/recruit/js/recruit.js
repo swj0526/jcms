@@ -1,12 +1,10 @@
 layui.use(['form', 'table', 'laydate'], function () {
-    var popForm;
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table,
         laydate = layui.laydate;
     //修改弹窗
     var mainIndex;
-
     laydate.render({
         elem: '#a' //指定元素
         , range: true
@@ -17,9 +15,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
     laydate.render({
         elem: '#dat' //指定元素
-
     });
-
 
     var tableIns = table.render({
         elem: '#currentTableId'
@@ -30,7 +26,7 @@ layui.use(['form', 'table', 'laydate'], function () {
          /*   console.log(res);*/
             return {
                 "code": "0",
-                "count": "20",
+                "count": "30",
                 data: res
             }
         },
@@ -47,7 +43,6 @@ layui.use(['form', 'table', 'laydate'], function () {
 
                     align: 'center',
                     width: 80
-
                 },
                 {
                     field: 'labelIds',
@@ -56,8 +51,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                     width: 80
 
                 },
-
-
                 {
                     field: 'birthDate',
                     title: '出生年月',
@@ -104,13 +97,9 @@ layui.use(['form', 'table', 'laydate'], function () {
                     Width: 300,
                     templet: '#currentTableBar',
                     fixed: "right",
-
                 }
-
-
             ]
         ],
-
         page: true
     });
 
@@ -118,6 +107,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.$, active = {
         reload: function () {
             var demoReload = $('#demoReload');
+            var sex = $("#sex");
 
             //执行重载
             table.reload('testReload', {
@@ -125,24 +115,22 @@ layui.use(['form', 'table', 'laydate'], function () {
                     curr: 1 //重新从第 1 页开始
                 }
                 , where: {
-                    key: {
-                        id: demoReload.val()
-                    }
+                    'name': demoReload.val(),
+                    'studentPhone': demoReload.val(),
+                    'school': demoReload.val(),
+                    'labelIds': demoReload.val(),
+                    'sex': sex.val()
                 }
             }, 'data');
         }
     };
-
     $('.demoTable .layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
-
-
     //监听导出事件
     $("#download").click(function () {
         alert("导出")
-
     });
     //监听导入事件
     $("#upload").click(function () {
@@ -152,14 +140,12 @@ layui.use(['form', 'table', 'laydate'], function () {
             // skin: 'layui-layer-rim', //加上边框
             area: ['730px', '500px'], //设置宽高
             content: $("#download1"),
-
         });
     });
     // 监听添加操作
     $(".data-add-btn").on("click", function () {
         addStudents();
     });
-
     //添加招生信息的弹窗
     function addStudents() {
         mainIndex = layer.open({
@@ -168,11 +154,8 @@ layui.use(['form', 'table', 'laydate'], function () {
             skin: 'layui-layer-rim', //加上边框
             area: ['100%', '100%'], //设置宽高
             content: '/recruit/toadd',
-            /* success: function (index) {
-             }*/
         });
     }
-
     //添加招生信息//和修改学生信息
     $("#addSubmit").click(function () {
         var seList = new Array();
@@ -197,11 +180,10 @@ layui.use(['form', 'table', 'laydate'], function () {
                     parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
                 }, 500);
             } else {
-                alert("hello");
                 layer.open({
                     type: 1,
                     title: "提示",
-                    content: "<div style='text-align: center; line-height: 20px; padding-top: 10px;'><span>姓名,意向,电话必须填写</span></div>",
+                    content: $("#error").html(result.msg),
                     area: ['300px', '150px'], //设置宽高
                     btn: ['确定'],
                     btnAlign: "c"
@@ -209,7 +191,6 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         })
     });
-
     //修改招生信息
     $("#modifySubmit").click(function () {
         var seList = new Array();
@@ -234,7 +215,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                     parent.layer.close(index);//关闭弹出层
                     /* parent.location.reload();*///更新父级页面（提示：如果需要跳转到其它页面见下文）
                 }, 500);
-
             }
         })
     });
@@ -260,12 +240,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             skin: 'layui-layer-rim', //加上边框
             area: ['720px', '350px'], //设置宽高
             content: $(""),
-            /* 	success: function(index) {
-                    //清空
-                    $("#dataFor")[0].reset();
-                    url = "";
 
-                } */
         });
     });
 
@@ -277,12 +252,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             // skin: 'layui-layer-rim', //加上边框
             area: ['800px'], //设置宽高
             content: $("#updateOrDelete"),
-            /* 	success: function(index) {
-                    //清空
-                    $("#dataFor")[0].reset();
-                    url = "";
 
-                } */
         });
     }
 
@@ -295,10 +265,10 @@ layui.use(['form', 'table', 'laydate'], function () {
                 type: 2,
                 title: "修改招生信息",
                 area: ['100%', '100%'], //设置宽高
+                // //查询数据库当前行内容
                 content: '/recruit/tomodify?id=' + id,
-                end: function () {
+                end: function () {//修改后刷新当前页
                     $(".layui-laypage-btn").click();
-
                 }
             });
         } else if (obj.event === 'delete') {
@@ -308,13 +278,10 @@ layui.use(['form', 'table', 'laydate'], function () {
                 $.post('/recruit/delete', {id: data.id}, function (data) {
                     tableIns.reload()
                 })
-
             });
         } else if (obj.event === 'follow') {
             text();
-
         }
-
     });
 
 
