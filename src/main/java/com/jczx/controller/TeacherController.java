@@ -1,6 +1,5 @@
 package com.jczx.controller;
 
-import com.jczx.bean.ResultBean;
 import com.jczx.domain.TbTeacher;
 import com.jczx.service.TeacherService;
 import net.atomarrow.bean.ServiceResult;
