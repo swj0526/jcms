@@ -21,7 +21,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     var tableIns = table.render({
         elem: '#followTableId'
-        ,url: '/dictionary/list/channel' ,
+        , url: '/dictionary/list/channel',
         cols: [
             [
                 {
@@ -65,7 +65,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 curr: 1
             },
             where: {
-                keywords:keywords.valueOf()
+                keywords: keywords.valueOf()
             }
         }, 'data');
 
@@ -85,6 +85,8 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     //修改弹窗
+    var url;
+    var mainIndex;
 
     function modifyStudents(data) {
         mainIndex = layer.open({
@@ -95,7 +97,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
-                url:"/dictionary/modify"
+                url="/dictionary/modify";
                 //刷新
                 tableIns.reload();
 
@@ -114,24 +116,26 @@ layui.use(['form', 'table', 'laydate'], function () {
             content: $("#recruit"),
             success: function (index) {
                 //清空
-                url:"/dictionary/add",
                 $("#dataFor")[0].reset();
+                url="/dictionary/add";
+                //刷新
+                tableIns.reload();
 
             }
         });
     }
 
     $('#add').click(function () {
-        var name =$("[name='name']").val();
-        var remark =$("[name='remark']").val();
-        $.post(url,{
-            name:name,
-            remark:remark,
-            type:2,
-            id:data.id
-        },function (result) {
-            if(result.success){
-                $('#recruit').css("display","none");
+        var name = $("[name='name']").val();
+        var remark = $("[name='remark']").val();
+        $.post(url, {
+            name: name,
+            remark: remark,
+            type: 2,
+            id: data.id
+        }, function (result) {
+            if (result.success) {
+                $('#recruit').css("display", "none");
             }
         });
     });
@@ -164,9 +168,13 @@ layui.use(['form', 'table', 'laydate'], function () {
                 obj.del();
                 layer.close(index);
             });
-        } else if (obj.event === 'follow') {
-            recruit()
-
+            $.post('/dictionary/delete',function (result) {
+                if(result.success){
+                    layer.msg("删除成功!");
+                }else{
+                    layer.msg(result.msg);
+                }
+            });
         }
     });
 

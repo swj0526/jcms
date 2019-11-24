@@ -25,6 +25,7 @@ public class DictionaryController extends BaseController {
 
     @RequestMapping("/add")
     public ServiceResult add(String name, String  remark,int type) {
+        System.out.println("添加方法");
         ServiceResult result = dictionaryService.addDictionary(name,remark,type);
        return result;
     }

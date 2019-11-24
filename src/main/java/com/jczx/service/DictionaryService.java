@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbDictionary;
+import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.regexp.internal.RE;
@@ -60,8 +61,19 @@ public class DictionaryService extends Service {
         int modify = modify(dictionary);
         return SUCCESS;
     }
-    public ServiceResult deleteDictionary(int id) {
 
+    /**
+     *删除渠道
+     * @param id
+     * @return
+     */
+    public ServiceResult deleteDictionary(int id) {
+        Conditions conditions = new Conditions(TbStudent.class);
+        conditions.putEW("channelId",id);
+        List<TbStudent> list = getList(conditions);
+        if(list.size()==0){
+            return error("不可删除,该标签已被使用!");
+        }
         int del = delById(TbDictionary.class, id);
         return SUCCESS;
     }
