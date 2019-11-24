@@ -46,7 +46,7 @@ public class TbStudent extends Domain {
     private Date birthDate;//出生年月
     private String IDCard;//身份证//
     private String school;//学校
-    private String studentPhone;//学生电话//student
+    private String studentPhone;//学生电话
     private String qq;//qq号
     private String weChat;//微信
     private Integer integralId;//积分

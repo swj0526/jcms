@@ -32,6 +32,7 @@
     </style>
 </head>
 <body>
+<div style="text-align: center; line-height: 20px; padding-top: 10px; display: none" id="error"><span >姓名,意向,电话必须填写</span></div>
 <#--新增信息弹出框-->
 <div style="margin-left: 20%;margin-top: 5%;" id="recruit">
     <form class="layui-form"  lay-filter="addDataForm" id="dataFor" method="post">
@@ -138,7 +139,7 @@
 <script src="/recruit/js/recruit.js"></script>
 
 <script>
-    sel();
+   /* sel();*/
     var demo1 = xmSelect.render({
         el: '#demo1',
         language: 'zn',

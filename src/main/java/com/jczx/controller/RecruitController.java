@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,18 +66,16 @@ public class RecruitController extends BaseController {
 
     /**
      * 修改学生页面信息
+     * freemarker
      */
     @RequestMapping("/tomodify")
     public String toModify(Integer id,Map<String,Object> map ) {
-        System.out.println(id);
-        System.out.println("进入页面");
         TbStudent student = recruitService.getStudent(id);
         map.put("student",student);
-        map.put("birth",student.getBirthDate().toString());
-        map.put("createTime",student.getCreateTime().toString());
+        map.put("birth",student.getBirthDate().toString());//日期到页面转成String类型
+        map.put("createTime",student.getCreateTime().toString());//日期到页面转成String类型
         return "/recruit/modifyrecurit";
     }
-
     /**
      * 添加招生信息
      */
@@ -97,8 +96,6 @@ public class RecruitController extends BaseController {
         return modifyRecruit;
     }
 
-
-
     /**
      * 删除
      * @param student
@@ -113,15 +110,15 @@ public class RecruitController extends BaseController {
 
     /**
      * 查询
-     * @param student
+     * @param
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public List<TbStudent> listRecruit(TbStudent student, int page, int limit) {
+    public List<TbStudent> listRecruit(String name, String labelIds, String sex, int page, int limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(pager);
-        return list;
+        List<TbStudent> listRecruit = recruitService.listRecruit(name, labelIds, sex,pager);
+        return listRecruit;
 
     }
 

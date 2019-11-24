@@ -1,6 +1,7 @@
 package com.jczx.domain;
 
 import net.atomarrow.domains.Domain;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.Date;
 public class TbRecruitDetail extends Domain {
     private Integer id;
     private Integer studentId;//学生(招生)表id;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date followTime;//跟进时间
     private Integer followCount;//第几次跟进
     private String labelIds;//跟进意向(标签)tbDictionary
