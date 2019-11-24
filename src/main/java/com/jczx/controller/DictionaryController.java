@@ -28,6 +28,12 @@ public class DictionaryController extends BaseController {
         ServiceResult result = dictionaryService.addDictionary(name,remark,type);
        return result;
     }
+    @RequestMapping("/modify")
+    public ServiceResult modify(String name, String  remark,int id) {
+        System.out.println("修改方法"+id);
+        ServiceResult result = dictionaryService.modifyDictionary(name,remark,id);
+        return result;
+    }
     @RequestMapping("/list/channel")
     public ListByPage channel( String keywords, int limit, int page) {
         Pager pager = checkPager(limit, page);

@@ -17,6 +17,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     });
 
+    var data;
 
     var tableIns = table.render({
         elem: '#followTableId'
@@ -49,27 +50,26 @@ layui.use(['form', 'table', 'laydate'], function () {
                 "count": res.count,
                 data: res.data
             }
-        }
+        },
+        id: 'followRender'
     });
 
     // 监听搜索操作
     form.on('submit(data-search-btn)', function (data) {
-        var result = JSON.stringify(data.field);
-        layer.alert(result, {
-            title: '最终的搜索信息'
-        });
+        var keywords = $('[name="keywords"]').val();
+
 
         //执行搜索重载
-        table.reload('currentTableId', {
+        table.reload('followRender', {
             page: {
                 curr: 1
             },
             where: {
-                searchParams: result
+                keywords:keywords.valueOf()
             }
         }, 'data');
 
-        return false;
+
     });
 
     // 监听添加操作
@@ -90,15 +90,15 @@ var url;
         mainIndex = layer.open({
             type: 1,
             title: "修改渠道信息",
-            skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['400px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
-                url = "";
+                url:"/dictionary/modify"
                 //刷新
                 tableIns.reload();
+
 
             }
         });
@@ -110,11 +110,13 @@ var url;
             type: 1,
             title: "添加渠道信息",
             // skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['400px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
                 //清空
+                url:"/dictionary/add",
                 $("#dataFor")[0].reset();
+
             }
         });
     }
@@ -122,12 +124,13 @@ var url;
     $('#add').click(function () {
         var name =$("[name='name']").val();
         var remark =$("[name='remark']").val();
-        $.post('/dictionary/add',{
+        $.post(url,{
             name:name,
             remark:remark,
-            type:2
+            type:2,
+            id:data.id
         },function (result) {
-            if(result.success()){
+            if(result.success){
                 $('#recruit').css("display","none");
             }
         });
@@ -151,9 +154,11 @@ var url;
     }
 
     table.on('tool(currentTableFilter)', function (obj) {
-        var data = obj.data;
+        data = obj.data;
         if (obj.event === 'edit') {
             modifyStudents(data);
+
+
         } else if (obj.event === 'delete') {
             layer.confirm('真的删除行么', function (index) {
                 obj.del();

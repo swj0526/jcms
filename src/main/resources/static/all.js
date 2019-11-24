@@ -44,7 +44,7 @@ var sel = function () {
             });
         }
 
-        $.post(url, function (result) {
+        $.post(url,function (result) {
             $.each(result, function (key, value) {
                 $("#decSelect").append("<option value=" + value.id + ">" + value.name + "</option>");
             });

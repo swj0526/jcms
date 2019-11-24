@@ -48,7 +48,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="渠道名称/备注">
+                                <input type="text" name="keywords" autocomplete="off" class="layui-input" placeholder="渠道名称/备注">
                             </div>
                         </div>
 
@@ -67,7 +67,7 @@
         <table class="layui-hide" id="followTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
 
-            <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit" >修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>

@@ -21,7 +21,7 @@ public class BaseController<T> {
         Pager pager = new Pager();
         pager.setCurrentPage(page);
         pager.setPageSize(limit);
-            return pager;
+        return pager;
     }
 
     public ListByPage list(List<T> list , int count){
