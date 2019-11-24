@@ -3,7 +3,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         form = layui.form,
         table = layui.table,
         laydate = layui.laydate;
-
+    var currPage = 1;
     laydate.render({
         elem: '#a' //指定元素
         , range: true
@@ -18,10 +18,9 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     var data;
-
     var tableIns = table.render({
         elem: '#followTableId'
-        ,url: '/dictionary/list/channel' ,
+        , url: '/dictionary/list/channel',
         cols: [
             [
                 {
@@ -43,6 +42,16 @@ layui.use(['form', 'table', 'laydate'], function () {
             ]
         ],
         page: true,
+        done: function (rest, curr, count) {
+            currPage = curr;
+            if (rest.data.length == 0) {
+                currPage = curr - 1;
+            }
+
+            console.log(currPage);
+            console.log(rest);
+
+        },
         parseData: function (res) { //res 即为原始返回的数据
             /*   console.log(res);*/
             return {
@@ -62,10 +71,10 @@ layui.use(['form', 'table', 'laydate'], function () {
         //执行搜索重载
         table.reload('followRender', {
             page: {
-                curr: 1
+                curr: currPage
             },
             where: {
-                keywords:keywords.valueOf()
+                keywords: keywords
             }
         }, 'data');
 
@@ -85,20 +94,20 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     //修改弹窗
-var mainIndex;
-var url;
+    var mainIndex;
+
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
             title: "修改渠道信息",
             area: ['400px'], //设置宽高
-            content: $("#recruit"),
+            content: $("#modify"),
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
-                //刷新
-                tableIns.reload();
-                url="dictionary/modify"
+
+                /*//刷新
+                tableIns.reload();*/
 
 
             }
@@ -116,23 +125,39 @@ var url;
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
-                url="/dictionary/add"
+                //刷新
+                tableIns.reload();
 
             }
         });
     }
 
-    $("#add1").click(function () {
-        var name =$("[name='name']").val();
-        var remark =$("[name='remark']").val();
-        $.post(url,{
-            name:name,
-            remark:remark,
-            type:2,
-            id:data.id
-        },function (result) {
-            if(result.success){
-                $('#recruit').css("display","none");
+    $('#add1').click(function () {
+        var name = $("[name='nameA']").val();
+        var remark = $("[name='remarkA']").val();
+        $.post("/dictionary/add", {
+            name: name,
+            remark: remark,
+            type: 2
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+            }
+        });
+    });
+    $('#addM').click(function () {
+        var name = $("[name='name']").val();
+        var remark = $("[name='remark']").val();
+        $.post("/dictionary/modify", {
+            name: name,
+            remark: remark,
+            type: 2,
+            id: data.id
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+                //刷新
+                tableIns.reload();
             }
         });
     });
@@ -161,14 +186,27 @@ var url;
 
 
         } else if (obj.event === 'delete') {
-            layer.confirm('真的删除行么', function (index) {
-                obj.del();
-                layer.close(index);
-            });
-        } else if (obj.event === 'follow') {
-            recruit()
+            layer.confirm('真的删除行么', {
+                    btn: ['确定', '取消'],
+                    yes: function (index, layero) {
+                        $.post('/dictionary/delete', {id: data.id}, function (result) {
+                            if (result.success) {
+                                layer.msg("删除成功!");
+
+                            } else {
+                                layer.msg(result.msg);
+                            }
+                        });
+                        layer.close(index);
+                        tableIns.reload();
+                    }, no: function (index) {
+                        layer.close(index);
+                    }
+                }
+            );
 
         }
+
     });
 
 

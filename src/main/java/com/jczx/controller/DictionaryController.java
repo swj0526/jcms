@@ -25,8 +25,15 @@ public class DictionaryController extends BaseController {
 
     @RequestMapping("/add")
     public ServiceResult add(String name, String  remark,int type) {
+        System.out.println("添加方法");
         ServiceResult result = dictionaryService.addDictionary(name,remark,type);
-       return result;
+        return result;
+    }
+    @RequestMapping("/delete")
+    public ServiceResult delete(int id) {
+        System.out.println("删除方法");
+        ServiceResult result = dictionaryService.deleteDictionary(id);
+        return result;
     }
     @RequestMapping("/modify")
     public ServiceResult modify(String name, String  remark,int id) {
