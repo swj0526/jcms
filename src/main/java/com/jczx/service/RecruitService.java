@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbStudent;
+import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -27,6 +28,8 @@ public class RecruitService extends Service {
      * @return
      */
     public ServiceResult addRecruit(TbStudent student) {
+        student.setCreateTime( SC.getNowDate());//操作时间
+
         Conditions conditions = new Conditions(TbStudent.class);
         conditions.putEW("studentPhone", student.getStudentPhone());
         conditions.or();
