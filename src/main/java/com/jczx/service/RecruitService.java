@@ -107,6 +107,13 @@ public class RecruitService extends Service {
         return listStudent;
 
     }
+    /**
+     * 分页总数
+     */
+    public int getCount(String name, String labelIds,String sex, Pager pager){
+        List<TbStudent> list = listRecruit(name, labelIds, sex, pager);
+        return list.size();
+    }
 
 
 

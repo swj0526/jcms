@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
 import net.atomarrow.bean.Pager;
@@ -110,15 +111,16 @@ public class RecruitController extends BaseController {
 
     /**
      * 查询
-     * @param student
+     * @param
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public List<TbStudent> listRecruit(TbStudent student, int page, int limit) {
+    public ListByPage listRecruit(String name, String labelIds, String sex, int page, int limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(pager);
-        return list;
+        List<TbStudent> list = recruitService.listRecruit(name,labelIds,sex,pager);
+        int count = recruitService.getCount(name, labelIds, sex, pager);
+        return list(list,count);
 
     }
 
