@@ -20,76 +20,16 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     var tableIns = table.render({
         elem: '#followTableId'
-        , data: [{
-            "name": "杜甫"
-            , "sex": "女"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-        }, {
-
-            "name": "李白"
-            , "sex": "女"
-            , "email": "xianxin@layui.com"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-
-            , "LAY_CHECKED": true
-        }, {
-
-            "name": "王勃"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "intention": "有"
-            , "time": "1994/11/20"
-            , "content": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            , "intention": "有"
-        }],
+        ,url: '/dictionary/list/channel' ,
         cols: [
             [
                 {
-                    field: 'content',
-                    title: '来源渠道',
+                    field: 'name',
+                    title: '渠道名称',
+                },
+                {
+                    field: 'remark',
+                    title: '渠道备注',
                 },
 
                 {
@@ -101,9 +41,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                 }
             ]
         ],
-        limits: [10, 15, 20, 25, 50, 100],
-        limit: 10,
-        page: true
+        page: true,
+        /*count:*/
     });
 
     // 监听搜索操作

@@ -1,8 +1,10 @@
 package com.jczx.controller;
 
 
+import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
+import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,9 @@ public class DictionaryController extends BaseController {
        return result;
     }
     @RequestMapping("/list/channel")
-    public List<TbDictionary> channel(int type) {
-        List<TbDictionary> list = dictionaryService.listChannel(type);
-        return list;
+    public ListByPage channel(int type, String keywords, int limit, int page) {
+        Pager pager = checkPager(limit, page);
+        List<TbDictionary> list = dictionaryService.listChannel(type,keywords,pager);
+        return list(list,list.size());
     }
 }
