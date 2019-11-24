@@ -2,12 +2,14 @@ package com.jczx.service;
 
 import com.jczx.domain.TbDictionary;
 import com.jczx.system.SC;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.services.Service;
+import net.atomarrow.util.StringUtil;
 import org.springframework.boot.logging.java.SimpleFormatter;
 import org.springframework.stereotype.Component;
 
@@ -44,6 +46,26 @@ public class DictionaryService extends Service {
     }
 
     /**
+     * 修改字典信息
+     *
+     * @param name
+     * @param remark
+     * @param id
+     * @return
+     */
+    public ServiceResult modifyDictionary(String name, String remark, int id) {
+        TbDictionary dictionary = getById(TbDictionary.class, id);
+        dictionary.setName(name);
+        dictionary.setRemark(remark);
+        int modify = modify(dictionary);
+        return SUCCESS;
+    }
+    public ServiceResult deleteDictionary(int id) {
+
+        int del = delById(TbDictionary.class, id);
+        return SUCCESS;
+    }
+    /**
      * 招生渠道从字典表中取数据
      *
      * @param
@@ -52,26 +74,40 @@ public class DictionaryService extends Service {
     public List<TbDictionary> listChannel(int type, String keywords, Pager pager) {
         Conditions conditions = new Conditions(TbDictionary.class);
         conditions.putEW("type", type);
-        conditions.putLIKEIfOK("name", keywords);
-        conditions.putLIKEIfOK("remark", keywords);
+        if (StringUtil.isNotBlank(keywords)) {
+            conditions.parenthesesStart();
+            conditions.putLIKEIfOK("name", keywords);
+            conditions.or();
+            conditions.putLIKEIfOK("remark", keywords);
+            conditions.parenthesesEnd();
+        }
+
+
         List<TbDictionary> list = getListByPage(conditions, pager);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
 
     /**
-     *  获取总数
+     * 获取总数
+     *
      * @return
      */
     public int count(int type, String keywords) {
         Conditions conditions = new Conditions(TbDictionary.class);
         conditions.putEW("type", type);
-        conditions.putLIKEIfOK("name", keywords);
-        conditions.putLIKEIfOK("remark", keywords);
+        if (StringUtil.isNotBlank(keywords)) {
+            conditions.parenthesesStart();
+            conditions.putLIKEIfOK("name", keywords);
+            conditions.or();
+            conditions.putLIKEIfOK("remark", keywords);
+            conditions.parenthesesEnd();
+        }
+
         int count = getCount(conditions);
         return count;
 
     }
-
 
 
 }
