@@ -164,13 +164,11 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "添加渠道信息",
             // skin: 'layui-layer-rim', //加上边框
-            area: ['500px'], //设置宽高
+            area: ['400px'], //设置宽高
             content: $("#recruit"),
             success: function (index) {
-                //清空
+            //清空
                 $("#dataFor")[0].reset();
-                url = "/";
-
             }
         });
     }

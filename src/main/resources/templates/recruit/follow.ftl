@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <script src="/layui/layui.js" charset="utf-8"></script>
     <script src="/recruit/js/follow.js"></script>
 </head>
@@ -16,24 +15,22 @@
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">时间</label>
+            <label class="layui-form-label">渠道名称</label>
             <div class="layui-input-inline">
-                <input type="text" name="time" autocomplete="off" class="layui-input" id="date">
+                <input type="text" name="name" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
-        </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">渠道</label>
+            <label class="layui-form-label">渠道备注</label>
             <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <input type="text" name="remark" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="add">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>

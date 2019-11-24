@@ -1,13 +1,10 @@
 package com.jczx.controller;
 
 
-import com.jczx.bean.ResultBean;
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
-import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,12 +28,7 @@ public class DictionaryController extends BaseController {
     }
     @RequestMapping("/list/channel")
     public List<TbDictionary> channel(int type) {
-        System.out.println("进入方法");
-        List<TbDictionary> list = dictionaryService.listDictionary(type);
-        for (TbDictionary a:list
-             ) {
-            System.out.println(a.getName());
-        }
+        List<TbDictionary> list = dictionaryService.listChannel(type);
         return list;
     }
 }

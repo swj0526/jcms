@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbDictionary;
+import com.jczx.system.SC;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
@@ -28,18 +29,18 @@ public class DictionaryService extends Service {
      */
     public ServiceResult addDictionary(TbDictionary dictionary) {
         Date date = new Date();
-        dictionary.setCreateTime(date);//少字段
+        dictionary.setCreateTime(SC.getNowDate());
+        dictionary.setOperatorId(SC.getOperatorId());
         add(dictionary);
         return SUCCESS;
     }
 
     /**
-     * 查找字典表,利用type来返回这一类所有的type的名称
-     *
+     * 招生渠道从字典表中取数据
      * @param
      * @return
      */
-    public List<TbDictionary> listDictionary(int  type) {
+    public List<TbDictionary> listChannel(int  type) {
         Conditions conditions = new Conditions(TbDictionary.class);
         conditions.putEW("type",type);
         List<TbDictionary> list = getList(conditions);
