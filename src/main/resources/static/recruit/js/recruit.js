@@ -27,7 +27,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             return {
                 "code": "0",
                 "count": res.count,
-                data: res.list
+                data: res.data
             }
         },
         cols: [
