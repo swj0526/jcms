@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbDictionary;
 import com.jczx.system.SC;
+import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
@@ -9,9 +10,11 @@ import net.atomarrow.services.Service;
 import org.springframework.boot.logging.java.SimpleFormatter;
 import org.springframework.stereotype.Component;
 
+import javax.naming.Name;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Dictionary;
 import java.util.List;
 
 /**
@@ -24,10 +27,14 @@ public class DictionaryService extends Service {
     /**
      * 增加字典表
      *
-     * @param dictionary
+     * @param
      * @return
      */
-    public ServiceResult addDictionary(TbDictionary dictionary) {
+    public ServiceResult addDictionary(String name, String  remark,int type) {
+        TbDictionary dictionary = new  TbDictionary();
+        dictionary.setName(name);
+        dictionary.setRemark(remark);
+        dictionary.setType(type);
         Date date = new Date();
         dictionary.setCreateTime(SC.getNowDate());
         dictionary.setOperatorId(SC.getOperatorId());
@@ -40,10 +47,12 @@ public class DictionaryService extends Service {
      * @param
      * @return
      */
-    public List<TbDictionary> listChannel(int  type) {
+    public List<TbDictionary> listChannel(int  type, String keywords, Pager pager) {
         Conditions conditions = new Conditions(TbDictionary.class);
-        conditions.putEW("type",type);
-        List<TbDictionary> list = getList(conditions);
+        conditions.putEWIfOk("type",type);
+        conditions.putLIKEIfOK("name",keywords);
+        conditions.putLIKEIfOK("remark",keywords);
+        List<TbDictionary> list = getListByPage(conditions,pager);
         return list;
     }
 }

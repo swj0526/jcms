@@ -2,11 +2,11 @@ layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table,
-    laydate = layui.laydate;
+        laydate = layui.laydate;
 
     laydate.render({
         elem: '#a' //指定元素
-        ,range: true
+        , range: true
     });
     laydate.render({
         elem: '#date' //指定元素
@@ -20,76 +20,16 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     var tableIns = table.render({
         elem: '#followTableId'
-        , data: [{
-            "name": "杜甫"
-            , "sex": "女"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-        }, {
-
-            "name": "李白"
-            , "sex": "女"
-            , "email": "xianxin@layui.com"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-
-            , "LAY_CHECKED": true
-        }, {
-
-            "name": "王勃"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            ,"intention":"有"
-            , "time": "1994/11/20"
-            , "content": "威海"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-        }, {
-
-            "name": "贤心"
-            , "email": "xianxin@layui.com"
-            , "sex": "男"
-            , "time": "1994/11/20"
-            , "content": "威海"
-            ,"intention":"有"
-        }],
+        ,url: '/dictionary/list/channel' ,
         cols: [
             [
                 {
-                    field: 'content',
-                    title: '来源渠道',
+                    field: 'name',
+                    title: '渠道名称',
+                },
+                {
+                    field: 'remark',
+                    title: '渠道备注',
                 },
 
                 {
@@ -101,9 +41,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                 }
             ]
         ],
-        limits: [10, 15, 20, 25, 50, 100],
-        limit: 10,
-        page: true
+        page: true,
+        /*count:*/
     });
 
     // 监听搜索操作
@@ -175,6 +114,20 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
     }
 
+    $('#add').click(function () {
+        var name =$("[name='name']").val();
+        var remark =$("[name='remark']").val();
+        $.post('/dictionary/add',{
+            name:name,
+            remark:remark,
+            type:2
+        },function (result) {
+            if(result.success()){
+                $('#recruit').css("display","none");
+            }
+        });
+    });
+
     //查看跟踪信息
     function recruit() {
         layer.open({
@@ -183,12 +136,12 @@ layui.use(['form', 'table', 'laydate'], function () {
             // skin: 'layui-layer-rim', //加上边框
             area: ['800px'], //设置宽高
             content: $("#updateOrDelete"),
-             	success: function(index) {
-                    //清空
-                    $("#dataFor")[0].reset();
-                    url = "";
+            success: function (index) {
+                //清空
+                $("#dataFor")[0].reset();
+                url = "";
 
-                }
+            }
         });
     }
 

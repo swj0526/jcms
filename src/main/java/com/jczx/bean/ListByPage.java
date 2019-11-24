@@ -7,9 +7,9 @@ import java.util.List;
  * @description 该bean值用于数据分页
  * @create 2019-11-24 20:10
  */
-public class ListByPage<T> {
+public class ListByPage  {
     private int count;
-    private List<T> list;
+    private Object data;
 
     public int getCount() {
         return count;
@@ -19,11 +19,11 @@ public class ListByPage<T> {
         this.count = count;
     }
 
-    public List<T> getList() {
-        return list;
+    public Object getData() {
+        return data;
     }
 
-    public void setList(List<T> list) {
-        this.list = list;
+    public void setData(Object data) {
+        this.data = data;
     }
 }
