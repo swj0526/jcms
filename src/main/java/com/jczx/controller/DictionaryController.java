@@ -22,8 +22,8 @@ public class DictionaryController extends BaseController {
     private DictionaryService dictionaryService;
 
     @RequestMapping("/add")
-    public ServiceResult add(TbDictionary dictionary) {
-        ServiceResult result = dictionaryService.addDictionary(dictionary);
+    public ServiceResult add(String name, String  remark,int type) {
+        ServiceResult result = dictionaryService.addDictionary(name,remark,type);
        return result;
     }
     @RequestMapping("/list/channel")

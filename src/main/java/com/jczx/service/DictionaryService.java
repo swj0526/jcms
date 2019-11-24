@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Dictionary;
 import java.util.List;
 
 /**
@@ -24,10 +25,14 @@ public class DictionaryService extends Service {
     /**
      * 增加字典表
      *
-     * @param dictionary
+     * @param
      * @return
      */
-    public ServiceResult addDictionary(TbDictionary dictionary) {
+    public ServiceResult addDictionary(String name, String  remark,int type) {
+        TbDictionary dictionary = new  TbDictionary();
+        dictionary.setName(name);
+        dictionary.setRemark(remark);
+        dictionary.setType(type);
         Date date = new Date();
         dictionary.setCreateTime(SC.getNowDate());
         dictionary.setOperatorId(SC.getOperatorId());

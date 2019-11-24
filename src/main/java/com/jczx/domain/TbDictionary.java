@@ -47,7 +47,7 @@ public class TbDictionary extends Domain implements OptionInterface {
 
     private Integer id;
     private String name;
-    private String type;//字典表类型
+    private Integer type;//字典表类型
     private String remark;//备注
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
@@ -76,11 +76,11 @@ public class TbDictionary extends Domain implements OptionInterface {
         this.remark = remark;
     }
 
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 

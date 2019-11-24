@@ -2,11 +2,11 @@ layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table,
-    laydate = layui.laydate;
+        laydate = layui.laydate;
 
     laydate.render({
         elem: '#a' //指定元素
-        ,range: true
+        , range: true
     });
     laydate.render({
         elem: '#date' //指定元素
@@ -25,7 +25,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "sex": "女"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
         }, {
 
             "name": "李白"
@@ -33,7 +33,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "email": "xianxin@layui.com"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
 
             , "LAY_CHECKED": true
         }, {
@@ -41,7 +41,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             "name": "王勃"
             , "email": "xianxin@layui.com"
             , "sex": "男"
-            ,"intention":"有"
+            , "intention": "有"
             , "time": "1994/11/20"
             , "content": "威海"
         }, {
@@ -51,7 +51,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "sex": "男"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
         }, {
 
             "name": "贤心"
@@ -59,7 +59,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "sex": "男"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
         }, {
 
             "name": "贤心"
@@ -67,7 +67,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "sex": "男"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
         }, {
 
             "name": "贤心"
@@ -75,7 +75,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "sex": "男"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
         }, {
 
             "name": "贤心"
@@ -83,7 +83,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             , "sex": "男"
             , "time": "1994/11/20"
             , "content": "威海"
-            ,"intention":"有"
+            , "intention": "有"
         }],
         cols: [
             [
@@ -175,6 +175,20 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
     }
 
+    $('#add').click(function () {
+        var name =$("[name='name']").val();
+        var remark =$("[name='remark']").val();
+        $.post('/dictionary/add',{
+            name:name,
+            remark:remark,
+            type:2
+        },function (result) {
+            if(result.success()){
+                $('#recruit').css("display","none");
+            }
+        });
+    });
+
     //查看跟踪信息
     function recruit() {
         layer.open({
@@ -183,12 +197,12 @@ layui.use(['form', 'table', 'laydate'], function () {
             // skin: 'layui-layer-rim', //加上边框
             area: ['800px'], //设置宽高
             content: $("#updateOrDelete"),
-             	success: function(index) {
-                    //清空
-                    $("#dataFor")[0].reset();
-                    url = "";
+            success: function (index) {
+                //清空
+                $("#dataFor")[0].reset();
+                url = "";
 
-                }
+            }
         });
     }
 
