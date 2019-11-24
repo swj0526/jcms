@@ -92,17 +92,20 @@ public class RecruitService extends Service {
         }
         System.out.println("条件");
         Conditions conditions = new Conditions(TbStudent.class);
-        conditions.putEW("sex", sex);
         conditions.parenthesesStart();
         conditions.putLIKE("name", name);
         //conditions.putLIKEIfOK("name", name);
         conditions.or();
         conditions.putLIKE("labelIds", labelIds);
         conditions.parenthesesEnd();
+        if (StringUtil.isNotBlank(sex)){
+
+            conditions.putEW("sex", sex);
+        }
       /*  conditions.or();//跟踪时间在详情表
         conditions.putLIKE("followTime",followTime);*/
         List<TbStudent> listStudent = getListByPage(conditions, pager);
-        int count = getCount(conditions);
+
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return listStudent;
 
@@ -111,8 +114,27 @@ public class RecruitService extends Service {
      * 分页总数
      */
     public int getCount(String name, String labelIds,String sex, Pager pager){
-        List<TbStudent> list = listRecruit(name, labelIds, sex, pager);
-        return list.size();
+        if (StringUtil.isBlank(name)&&StringUtil.isBlank(labelIds)&&StringUtil.isBlank(sex)){
+            System.out.println("查询全部");
+            Conditions conditions = new Conditions(TbStudent.class);
+            int count = getCount(conditions);
+            return count;
+        }
+        Conditions conditions = new Conditions(TbStudent.class);
+        conditions.parenthesesStart();
+        conditions.putLIKE("name", name);
+        conditions.or();
+        conditions.putLIKE("labelIds", labelIds);
+        conditions.parenthesesEnd();
+        if (StringUtil.isNotBlank(sex)){
+
+            conditions.putEW("sex", sex);
+        }
+
+        List<TbStudent> listStudent = getListByPage(conditions, pager);
+        int count = getCount(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        return count;
     }
 
 
