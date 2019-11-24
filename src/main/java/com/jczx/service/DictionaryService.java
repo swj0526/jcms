@@ -71,7 +71,7 @@ public class DictionaryService extends Service {
         Conditions conditions = new Conditions(TbStudent.class);
         conditions.putEW("channelId",id);
         List<TbStudent> list = getList(conditions);
-        if(list.size()==0){
+        if(list.size()!=0){
             return error("不可删除,该标签已被使用!");
         }
         int del = delById(TbDictionary.class, id);

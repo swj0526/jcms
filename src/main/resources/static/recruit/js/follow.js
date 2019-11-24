@@ -3,7 +3,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         form = layui.form,
         table = layui.table,
         laydate = layui.laydate;
-
+    var currPage = 1;
     laydate.render({
         elem: '#a' //指定元素
         , range: true
@@ -18,7 +18,6 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     var data;
-
     var tableIns = table.render({
         elem: '#followTableId'
         , url: '/dictionary/list/channel',
@@ -43,6 +42,11 @@ layui.use(['form', 'table', 'laydate'], function () {
             ]
         ],
         page: true,
+        done: function (rest, curr, count) {
+            currPage = curr;
+            console.log(currPage);
+
+        },
         parseData: function (res) { //res 即为原始返回的数据
             /*   console.log(res);*/
             return {
@@ -62,7 +66,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         //执行搜索重载
         table.reload('followRender', {
             page: {
-                curr: 1
+                curr: currPage
             },
             where: {
                 keywords: keywords.valueOf()
@@ -85,7 +89,6 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     //修改弹窗
-    var url;
     var mainIndex;
 
     function modifyStudents(data) {
@@ -93,13 +96,13 @@ layui.use(['form', 'table', 'laydate'], function () {
             type: 1,
             title: "修改渠道信息",
             area: ['400px'], //设置宽高
-            content: $("#recruit"),
+            content: $("#modify"),
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
-                url="/dictionary/modify";
-                //刷新
-                tableIns.reload();
+
+                /*//刷新
+                tableIns.reload();*/
 
 
             }
@@ -117,7 +120,6 @@ layui.use(['form', 'table', 'laydate'], function () {
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
-                url="/dictionary/add";
                 //刷新
                 tableIns.reload();
 
@@ -125,17 +127,32 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
     }
 
-    $('#add').click(function () {
+    $('#add1').click(function () {
+        var name = $("[name='nameA']").val();
+        var remark = $("[name='remarkA']").val();
+        $.post("/dictionary/add", {
+            name: name,
+            remark: remark,
+            type: 2
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+            }
+        });
+    });
+    $('#addM').click(function () {
         var name = $("[name='name']").val();
         var remark = $("[name='remark']").val();
-        $.post(url, {
+        $.post("/dictionary/modify", {
             name: name,
             remark: remark,
             type: 2,
             id: data.id
         }, function (result) {
             if (result.success) {
-                $('#recruit').css("display", "none");
+                layer.close(mainIndex);
+                //刷新
+                tableIns.reload();
             }
         });
     });
@@ -164,18 +181,27 @@ layui.use(['form', 'table', 'laydate'], function () {
 
 
         } else if (obj.event === 'delete') {
-            layer.confirm('真的删除行么', function (index) {
-                obj.del();
-                layer.close(index);
-            });
-            $.post('/dictionary/delete',function (result) {
-                if(result.success){
-                    layer.msg("删除成功!");
-                }else{
-                    layer.msg(result.msg);
+            layer.confirm('真的删除行么', {
+                    btn: ['确定', '取消'],
+                    yes: function (index, layero) {
+                        $.post('/dictionary/delete', {id: data.id}, function (result) {
+                            if (result.success) {
+                                layer.msg("删除成功!");
+                                tableIns.reload();
+                            } else {
+                                layer.msg(result.msg);
+                            }
+                        });
+                        layer.close(index);
+
+                    }, no: function (index) {
+                        layer.close(index);
+                    }
                 }
-            });
+            );
+
         }
+
     });
 
 
