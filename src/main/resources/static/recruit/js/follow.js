@@ -16,8 +16,6 @@ layui.use(['form', 'table', 'laydate'], function () {
         elem: '#dat' //指定元素
 
     });
-
-
     var tableIns = table.render({
         elem: '#followTableId'
         , data: [{
@@ -105,14 +103,12 @@ layui.use(['form', 'table', 'laydate'], function () {
         limit: 10,
         page: true
     });
-
     // 监听搜索操作
     form.on('submit(data-search-btn)', function (data) {
         var result = JSON.stringify(data.field);
         layer.alert(result, {
             title: '最终的搜索信息'
         });
-
         //执行搜索重载
         table.reload('currentTableId', {
             page: {
@@ -122,24 +118,19 @@ layui.use(['form', 'table', 'laydate'], function () {
                 searchParams: result
             }
         }, 'data');
-
         return false;
     });
-
     // 监听添加操作
     $(".data-add-btn").on("click", function () {
         addStudents();
     });
-
     // 监听删除操作
     $(".data-delete-btn").on("click", function () {
         var checkStatus = table.checkStatus('currentTableId'),
             data = checkStatus.data;
         layer.alert(JSON.stringify(data));
     });
-
     //修改弹窗
-
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
@@ -153,11 +144,9 @@ layui.use(['form', 'table', 'laydate'], function () {
                 url = "";
                 //刷新
                 tableIns.reload();
-
             }
         });
     }
-
     //添加弹窗
     function addStudents() {
         mainIndex = layer.open({
@@ -170,7 +159,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                 //清空
                 $("#dataFor")[0].reset();
                 url = "/";
-
             }
         });
     }

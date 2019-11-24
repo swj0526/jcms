@@ -139,7 +139,7 @@
 <script src="/recruit/js/recruit.js"></script>
 
 <script>
-   /* sel();*/
+   sel();//组件下拉框动态
     var demo1 = xmSelect.render({
         el: '#demo1',
         language: 'zn',

@@ -28,8 +28,8 @@ public class RecruitService extends Service {
      * @return
      */
     public ServiceResult addRecruit(TbStudent student) {
-        student.setCreateTime( SC.getNowDate());//操作时间
-
+        student.setCreateTime(SC.getNowDate());//操作时间
+        student.setOperatorId(SC.getOperatorId());//操作人
         Conditions conditions = new Conditions(TbStudent.class);
         conditions.putEW("studentPhone", student.getStudentPhone());
         conditions.or();
@@ -62,6 +62,8 @@ public class RecruitService extends Service {
      * @return
      */
     public ServiceResult modifyRecruit(TbStudent student) {
+        student.setCreateTime(SC.getNowDate());//操作时间
+        student.setOperatorId(SC.getOperatorId());//操作人
         modify(student);
         return SUCCESS;
     }
