@@ -32,8 +32,8 @@ var sel = function () {
         var layer = layui.layer;
         var $ = layui.jquery;
         var form = layui.form;
-        //传入的字典的类型
-        var type = $('#decSelect').attr('type');
+        //传入的字典的地址
+
         var url = $('#decSelect').attr('url');
 
         //重新渲染表单
@@ -44,7 +44,7 @@ var sel = function () {
             });
         }
 
-        $.post(url,{type:type}, function (result) {
+        $.post(url, function (result) {
             $.each(result, function (key, value) {
                 $("#decSelect").append("<option value=" + value.id + ">" + value.name + "</option>");
             });
@@ -52,12 +52,12 @@ var sel = function () {
         });
     });
 }
-/*  上面的代码要需要下面指定的格式,传入type,跟url,id指定decSelect
+/*  上面的代码要需要下面指定的格式,url,id指定decSelect
     <form class="layui-form" action="">
     <div class="layui-form-item proSelect">
     <label class="layui-form-label">产品类别</label>
     <div class="layui-input-block editWidth">
-    <select name="list" lay-verify="required" id="decSelect" type= url="">
+    <select name="list" lay-verify="required" id="decSelect" url="">
     <option value="">请选择</option>
 
     </select>

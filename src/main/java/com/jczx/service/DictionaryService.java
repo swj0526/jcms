@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbDictionary;
 import com.jczx.system.SC;
+import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -30,8 +31,8 @@ public class DictionaryService extends Service {
      * @param
      * @return
      */
-    public ServiceResult addDictionary(String name, String  remark,int type) {
-        TbDictionary dictionary = new  TbDictionary();
+    public ServiceResult addDictionary(String name, String remark, int type) {
+        TbDictionary dictionary = new TbDictionary();
         dictionary.setName(name);
         dictionary.setRemark(remark);
         dictionary.setType(type);
@@ -44,15 +45,33 @@ public class DictionaryService extends Service {
 
     /**
      * 招生渠道从字典表中取数据
+     *
      * @param
      * @return
      */
-    public List<TbDictionary> listChannel(int  type, String keywords, Pager pager) {
+    public List<TbDictionary> listChannel(int type, String keywords, Pager pager) {
         Conditions conditions = new Conditions(TbDictionary.class);
-        conditions.putEWIfOk("type",type);
-        conditions.putLIKEIfOK("name",keywords);
-        conditions.putLIKEIfOK("remark",keywords);
-        List<TbDictionary> list = getListByPage(conditions,pager);
+        conditions.putEW("type", type);
+        conditions.putLIKEIfOK("name", keywords);
+        conditions.putLIKEIfOK("remark", keywords);
+        List<TbDictionary> list = getListByPage(conditions, pager);
         return list;
     }
+
+    /**
+     *  获取总数
+     * @return
+     */
+    public int count(int type, String keywords) {
+        Conditions conditions = new Conditions(TbDictionary.class);
+        conditions.putEW("type", type);
+        conditions.putLIKEIfOK("name", keywords);
+        conditions.putLIKEIfOK("remark", keywords);
+        int count = getCount(conditions);
+        return count;
+
+    }
+
+
+
 }

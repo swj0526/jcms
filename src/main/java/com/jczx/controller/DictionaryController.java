@@ -29,9 +29,10 @@ public class DictionaryController extends BaseController {
        return result;
     }
     @RequestMapping("/list/channel")
-    public ListByPage channel(int type, String keywords, int limit, int page) {
+    public ListByPage channel( String keywords, int limit, int page) {
         Pager pager = checkPager(limit, page);
-        List<TbDictionary> list = dictionaryService.listChannel(type,keywords,pager);
-        return list(list,list.size());
+        List<TbDictionary> list = dictionaryService.listChannel(2,keywords,pager);
+        int count = dictionaryService.count(2, keywords);
+        return list(list,count);
     }
 }

@@ -27,7 +27,7 @@ public class BaseController<T> {
     public ListByPage list(List<T> list , int count){
         ListByPage listByPage = new ListByPage();
         listByPage.setCount(count);
-        listByPage.setList(list);
+        listByPage.setData(list);
         return listByPage;
     }
 }

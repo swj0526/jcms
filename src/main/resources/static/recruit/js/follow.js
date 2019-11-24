@@ -42,7 +42,14 @@ layui.use(['form', 'table', 'laydate'], function () {
             ]
         ],
         page: true,
-        /*count:*/
+        parseData: function (res) { //res 即为原始返回的数据
+            /*   console.log(res);*/
+            return {
+                "code": "0",
+                "count": res.count,
+                data: res.data
+            }
+        }
     });
 
     // 监听搜索操作
@@ -108,8 +115,6 @@ layui.use(['form', 'table', 'laydate'], function () {
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
-                url = "/";
-
             }
         });
     }
