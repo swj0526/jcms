@@ -44,7 +44,12 @@ layui.use(['form', 'table', 'laydate'], function () {
         page: true,
         done: function (rest, curr, count) {
             currPage = curr;
+            if (rest.data.length == 0) {
+                currPage = curr - 1;
+            }
+
             console.log(currPage);
+            console.log(rest);
 
         },
         parseData: function (res) { //res 即为原始返回的数据
@@ -69,7 +74,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 curr: currPage
             },
             where: {
-                keywords: keywords.valueOf()
+                keywords: keywords
             }
         }, 'data');
 
@@ -187,13 +192,13 @@ layui.use(['form', 'table', 'laydate'], function () {
                         $.post('/dictionary/delete', {id: data.id}, function (result) {
                             if (result.success) {
                                 layer.msg("删除成功!");
-                                tableIns.reload();
+
                             } else {
                                 layer.msg(result.msg);
                             }
                         });
                         layer.close(index);
-
+                        tableIns.reload();
                     }, no: function (index) {
                         layer.close(index);
                     }
