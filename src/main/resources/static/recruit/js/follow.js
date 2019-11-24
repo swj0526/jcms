@@ -45,7 +45,9 @@ layui.use(['form', 'table', 'laydate'], function () {
         done: function (rest, curr, count) {
             currPage = curr;
             if (rest.data.length == 0) {
+
                 currPage = curr - 1;
+                alert(currPage);
             }
 
             console.log(currPage);
@@ -192,18 +194,20 @@ layui.use(['form', 'table', 'laydate'], function () {
                         $.post('/dictionary/delete', {id: data.id}, function (result) {
                             if (result.success) {
                                 layer.msg("删除成功!");
-
+                                layer.close(index);
+                                tableIns.reload();
+                                window.location.reload();//默认刷新第一页
                             } else {
                                 layer.msg(result.msg);
                             }
                         });
-                        layer.close(index);
-                        tableIns.reload();
+
                     }, no: function (index) {
                         layer.close(index);
                     }
                 }
             );
+
 
         }
 
