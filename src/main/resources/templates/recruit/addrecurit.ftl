@@ -101,7 +101,7 @@
             <label class="layui-form-label">来源渠道</label>
             <div class="layui-input-inline" >
                 <div class="layui-inline"style="width: 190px">
-                    <select name="channelId" lay-verify=""id="decSelect" type="2" url="/dictionary/list/channel">
+                    <select name="channelId" lay-verify=""id="decSelect" type=2 url="/dictionary/list/channel">
                         <option value="">来源渠道</option>
                         <#--<option value="010">学校网站</option>
                         <option value="011">自己找上门</option>

@@ -31,8 +31,12 @@ public class DictionaryController extends BaseController {
     }
     @RequestMapping("/list/channel")
     public List<TbDictionary> channel(int type) {
+        System.out.println("进入方法");
         List<TbDictionary> list = dictionaryService.listDictionary(type);
-        System.out.println(list);
+        for (TbDictionary a:list
+             ) {
+            System.out.println(a.getName());
+        }
         return list;
     }
 }

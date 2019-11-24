@@ -44,7 +44,7 @@ var sel = function () {
             });
         }
 
-        $.ajax(url, {type: type}, function (result) {
+        $.post(url,{type:type}, function (result) {
             $.each(result, function (key, value) {
                 $("#decSelect").append("<option value=" + value.id + ">" + value.name + "</option>");
             });
@@ -57,7 +57,7 @@ var sel = function () {
     <div class="layui-form-item proSelect">
     <label class="layui-form-label">产品类别</label>
     <div class="layui-input-block editWidth">
-    <select name="list" lay-verify="required" id="decSelect" type="" url="">
+    <select name="list" lay-verify="required" id="decSelect" type= url="">
     <option value="">请选择</option>
 
     </select>

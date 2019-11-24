@@ -23,7 +23,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         , id: 'testReload'
         //解析table 组件规定的数据结构
         , parseData: function (res) { //res 即为原始返回的数据
-            console.log(res);
+         /*   console.log(res);*/
             return {
                 "code": "0",
                 "count": "30",
