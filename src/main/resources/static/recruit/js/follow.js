@@ -85,6 +85,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     //修改弹窗
+var mainIndex;
 var url;
     function modifyStudents(data) {
         mainIndex = layer.open({
@@ -95,9 +96,9 @@ var url;
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
-                url:"/dictionary/modify"
                 //刷新
                 tableIns.reload();
+                url="dictionary/modify"
 
 
             }
@@ -114,14 +115,14 @@ var url;
             content: $("#recruit"),
             success: function (index) {
                 //清空
-                url:"/dictionary/add",
                 $("#dataFor")[0].reset();
+                url="/dictionary/add"
 
             }
         });
     }
 
-    $('#add').click(function () {
+    $("#add1").click(function () {
         var name =$("[name='name']").val();
         var remark =$("[name='remark']").val();
         $.post(url,{

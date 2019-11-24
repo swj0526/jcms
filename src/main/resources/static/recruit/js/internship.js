@@ -4,55 +4,110 @@ layui.use('table', function(){
 
     table.render({
         elem: '#test'
-        ,url:'/test/table/demo1.json'
-        ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-        ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-            title: '提示'
-            ,layEvent: 'LAYTABLE_TIPS'
-            ,icon: 'layui-icon-tips'
-        }]
         ,title: '用户数据表'
-        ,cols: [[
-            {type: 'checkbox', fixed: 'left'}
-            ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-            ,{field:'username', title:'用户名', width:120, edit: 'text'}
-            ,{field:'email', title:'邮箱', width:150, edit: 'text', templet: function(res){
-                    return '<em>'+ res.email +'</em>'
-                }}
-            ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
-            ,{field:'city', title:'城市', width:100}
-            ,{field:'sign', title:'签名'}
-            ,{field:'experience', title:'积分', width:80, sort: true}
-            ,{field:'ip', title:'IP', width:120}
-            ,{field:'logins', title:'登入次数', width:100, sort: true}
-            ,{field:'joinTime', title:'加入时间', width:120}
-            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
-        ]]
+        ,cols: [[ //标题栏
+
+            {field: 'username', title: '姓名'}
+            ,{field: 'email', title: '状态'}
+            ,{field: 'sex', title: '性别'}
+            ,{field: 'sign', title: '试课开始时间'}
+            ,{field: 'city', title: '试课结束时间'}
+            ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+        ]] ,data: [{
+            "id": "10001"
+            ,"username": "杜甫"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "116"
+            ,"ip": "192.168.0.8"
+            ,"logins": "108"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10002"
+            ,"username": "李白"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "12"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+            ,"LAY_CHECKED": true
+        }, {
+            "id": "10003"
+            ,"username": "王勃"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "65"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10004"
+            ,"username": "贤心"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "666"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10005"
+            ,"username": "贤心"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "86"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10006"
+            ,"username": "贤心"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "12"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10007"
+            ,"username": "贤心"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "16"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            ,"username": "贤心"
+            ,"email": "xianxin@layui.com"
+            ,"sex": "男"
+            ,"city": "浙江杭州"
+            ,"sign": "人生恰似一场修行"
+            ,"experience": "106"
+            ,"ip": "192.168.0.8"
+            ,"logins": "106"
+            ,"joinTime": "2016-10-14"
+        }]
+
         ,page: true
     });
 
-    //头工具栏事件
-    table.on('toolbar(test)', function(obj){
-        var checkStatus = table.checkStatus(obj.config.id);
-        switch(obj.event){
-            case 'getCheckData':
-                var data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
-                break;
-            case 'getCheckLength':
-                var data = checkStatus.data;
-                layer.msg('选中了：'+ data.length + ' 个');
-                break;
-            case 'isAll':
-                layer.msg(checkStatus.isAll ? '全选': '未全选');
-                break;
 
-            //自定义头工具栏右侧图标 - 提示
-            case 'LAYTABLE_TIPS':
-                layer.alert('这是工具栏右侧自定义的一个图标按钮');
-                break;
-        };
-    });
 
     //监听行工具事件
     table.on('tool(test)', function(obj){

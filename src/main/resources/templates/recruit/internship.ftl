@@ -8,55 +8,63 @@
     <script src="/recruit/js/internship.js"></script>
 </head>
 <body>
-<div class="layuimini-main">
-    <fieldset class="layui-elem-field layuimini-search">
-        <legend>搜索招生信息</legend>
-        <div style="margin: 10px 10px 10px 10px"></div>
-        <div class="demoTable">
-            <form class="layui-form layui-form-pane" action="">
-                <div class="layui-inline" style="width: 210px">
-                    <label class="layui-form-label" style="width:100px">关键词</label>
-                    <div class="layui-input-inline" style="width:100px ">
-                        <input type="text" id="demoReload" autocomplete="off"  placeholder="姓名"class="layui-input">
-                    </div>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>试学学生信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <div class="demoTable">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-inline" style="width: 210px">
+                            <label class="layui-form-label" style="width:100px">关键词</label>
+                            <div class="layui-input-inline" style="width:100px ">
+                                <input type="text" id="demoReload" autocomplete="off"  placeholder="姓名"class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">跟进时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
+                            </div>
+                        </div>
+                        <div class="layui-inline" style="width: 210px">
+                            <label class="layui-form-label" style="width: 100px">性别</label>
+                            <div class="layui-inline" style="width: 100px">
+                                <select name="sex" lay-verify="" id="sex">
+                                    <option value="">请选择</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline"style="width: 150px">
+                            <select name="channelId" lay-verify="">
+                                <option value="">来源渠道</option>
+                                <option value="1">学校网站</option>
+                                <option value="2">自己找上门</option>
+                                <option value="3">qq</option>
+                                <option value="4">微信</option>
+                                <option value="5">介绍</option>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
+                            <a class="layui-btn  layui-btn-primary" data-type="reload">查询</a>
+                        </div>
+                        <div class="layui-btn-group" >
+                            <button class="layui-btn data-add-btn"type="button">添加</button>
+                        </div>
+                    </form>
+
                 </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">跟进时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
-                    </div>
-                </div>
-                <div class="layui-inline" style="width: 210px">
-                    <label class="layui-form-label" style="width: 100px">性别</label>
-                    <div class="layui-inline" style="width: 100px">
-                        <select name="sex" lay-verify="" id="sex">
-                            <option value="">请选择</option>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-inline"style="width: 150px">
-                    <select name="channelId" lay-verify="">
-                        <option value="">来源渠道</option>
-                        <option value="1">学校网站</option>
-                        <option value="2">自己找上门</option>
-                        <option value="3">qq</option>
-                        <option value="4">微信</option>
-                        <option value="5">介绍</option>
-                    </select>
-                </div>
-                <div class="layui-inline">
-                    <a class="layui-btn  layui-btn-primary" data-type="reload">查询</a>
-                </div>
-                <div class="layui-btn-group" >
-                    <button class="layui-btn data-add-btn"type="button">添加</button>
-                    <button class="layui-btn layui-btn-warm "type="button" id="download">导出</button>
-                    <button class="layui-btn layui-btn-warm "type="button" id="upload">导入</button>
-                </div>
-            </form>
-        </div>
-    </fieldset>
+            </div>
+
+        </fieldset>
+
+
+
+    </div>
+
+
 
 </div>
 <table class="layui-hide" id="test" lay-filter="test"></table>

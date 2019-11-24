@@ -30,7 +30,7 @@
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="add">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="add1">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>

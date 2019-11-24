@@ -30,6 +30,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                 data: res.data
             }
         },
+
         cols: [
             [{
                 field: 'name',
