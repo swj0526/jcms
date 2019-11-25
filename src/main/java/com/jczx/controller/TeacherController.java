@@ -1,7 +1,7 @@
 package com.jczx.controller;
 
+import com.jczx.bean.ListByPage;
 import com.jczx.bean.PageBean;
-import com.jczx.bean.ResultBean;
 import com.jczx.domain.TbTeacher;
 import com.jczx.service.TeacherService;
 import net.atomarrow.bean.ServiceResult;
@@ -42,10 +42,10 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/list")
     @ResponseBody
-    public ResultBean teacherList(TbTeacher teacher,PageBean pageBean){
+    public ListByPage teacherList(TbTeacher teacher, PageBean pageBean){
         List<TbTeacher> list= teacherService.teacherList(teacher,pageBean);
         int count=teacherService.count();
-        return success(list,count);
+        return list(list,count);
     }
 
     /*@RequestMapping("/doExcel")
