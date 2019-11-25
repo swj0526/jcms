@@ -6,6 +6,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         table.render({
             elem: '#test'
             , url: '/money/list'
+            , id: 'userTableReload'
             , cols: [[
                 {field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'name', title: '姓名', width: 90}
@@ -44,6 +45,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c',
             type: 2,
+            skin:'layer-ext-myskin',
             area: ['100%', '100%'],
             btn: [],
             content: '/money/addBillPage', /*'<iframe src="" frameborder="0" height="800px" width="100%"></iframe>',*/
@@ -64,26 +66,10 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , area: ['100%', '100%']
                 , title: '修改'
                 , btn: []
-                , content: 'money/tomodify'
-                , success: function (index) {
-                    form.val("dataForm1", data);
-                    $("#update").click(function () {
-                        var t = $('#dataFor').serialize();
-                        $.post('/money/modify',
-                                t
-                            , function (result) {
-                                layer.open({
-                                    btnAlign: 'c'
-                                    , area: ['100px', '150px']
-                                    , content: '<p style="text-align: center">修改成功</p>'
-                                    , btn: ['确定']
-                                    , yes: function (index) {
-                                        parent.layer.close(index);
-                                    }
-                                })
+                , content: '/money/tomodify?id='+data.id+''
+                ,end: function () {//修改后刷新当前页
+                    //$(".layui-laypage-btn").click();
 
-                            });
-                    })
                 }
             });
         } else if (obj.event === 'invoice') {
@@ -114,5 +100,18 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     laydate.render({
         elem: '#test2'
     });
-
+    $("#query").click(function () {
+        alert(1)
+        table.reload('userTableReload', {
+            where: { //设定异步数据接口的额外参数，任意设
+                keyword: $("#keyword").val()
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+    })
+    $('#export').click(function () {
+        window.location.href="/money/toExcel";
+    });
 });

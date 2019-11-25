@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/money/js/modify.js"></script>
 </head>
 <body>
 <div id="addpage">
@@ -10,19 +13,21 @@
         <legend>缴费信息填写</legend>
         <div style="margin: 10px 10px 10px 10px;margin-left:25%">
             <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
-                <input style="display: none" type="text" id="id" name="id" autocomplete="off" class="layui-input">
+                <input style="display: none" type="text" id="id" name="id" value=${bill.id} autocomplete="off"
+                       class="layui-input">
                 <div class="layui-form-item">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">用户姓名</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="name" name="name" autocomplete="off" class="layui-input">
+                                <input required type="text" id="name" required lay-verify="required" name="name"
+                                       value=${bill.name} autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">用户学年</label>
                             <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                                <select lay-verify="" name="semester" id="grade">
+                                <select required lay-verify="" value=${bill.semester} name="semester" id="grade">
                                     <option value="19年">19年</option>
                                     <option value="20年">20年</option>
                                     <option value="21年">21年</option>
@@ -37,7 +42,7 @@
                         <div class="layui-inline" style="margin-bottom: 0px">
                             <label class="layui-form-label">缴费类型</label>
                             <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                                <select lay-verify="" name="Type" id="type">
+                                <select required lay-verify="" value=${bill.type} name="Type" id="type">
                                     <option value="学费">学费</option>
                                     <option value="住宿费">住宿费</option>
                                     <option value="学杂费">学杂费</option>
@@ -50,7 +55,8 @@
                         <div class="layui-inline" style="margin-left: 10px;margin-right: 0px;margin-bottom: 0px;">
                             <label class="layui-form-label">缴费方式</label>
                             <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                                <select lay-verify="" name="paymentMethod" id="paymentMethod">
+                                <select required lay-verify="" name="paymentMethod"
+                                        value=${bill.paymentMethod}  id="paymentMethod">
                                     <option value="支付宝">支付宝</option>
                                     <option value="银行转账">银行转账</option>
                                     <option value="现金">现金</option>
@@ -65,15 +71,18 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">总金额</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="totalAmount" autocomplete="off" class="layui-input">
+                                <input type="text" name="totalAmount" value=${bill.totalAmount?c} autocomplete="off"
+                                       required lay-verify="required" class="layui-input">
                             </div>
                         </div>
 
-                        <div class="layui-inline">
+                        <div class="layui-inline" style="margin-right: 0px;margin-bottom: 0px;">
                             <label class="layui-form-label">是否分期</label>
-                            <div class="layui-input-inline">
-                                <input name="hasInstalment" type="radio" value="true" title="是">
-                                <input name="hasInstalment" type="radio" value="false" title="否" checked>
+                            <div class="layui-inline" style="width: 190px;margin-right: 0px;margin-bottom: 0px;">
+                                <select lay-verify="" name="hasInstalment" id="hasInstalment">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -81,13 +90,15 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">缴费日期</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="payDate" id="test1" type="text" placeholder="yyyy-MM-dd">
+                                <input class="layui-input" name="payDate" value=${bill.payDate} id="test1" required
+                                       lay-verify="required" type="text">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">优惠金额</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="discountAmount" autocomplete="off" class="layui-input">
+                                <input type="text" name="discountAmount"
+                                       value=${bill.discountAmount?c} autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -95,13 +106,15 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">金额</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="payAmount" autocomplete="off" class="layui-input">
+                                <input type="text" name="payAmount" value=#{bill.payAmount} autocomplete="off" required
+                                       lay-verify="required" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">总计</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="factAmount" autocomplete="off" class="layui-input">
+                                <input type="text" name="factAmount" value=${bill.factAmount?c} autocomplete="off"
+                                       required lay-verify="required" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -109,15 +122,17 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">开始时间</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="startTime" id="test2" type="text"
-                                       placeholder="yyyy-MM-dd">
+                                <input class="layui-input" required lay-verify="required" name="startTime"
+                                       value=${bill.startTime} id="test2" type="text"
+                                >
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">结束时间</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="endTime" id="test3" type="text"
-                                       placeholder="yyyy-MM-dd">
+                                <input class="layui-input" required lay-verify="required" name="endTime"
+                                       value=${bill.endTime}  id="test3" type="text"
+                                >
                             </div>
                         </div>
                     </div>
@@ -125,15 +140,17 @@
                         <div class="layui-form-item layui-form-text">
                             <label class="layui-form-label">备注</label>
                             <div class="layui-input-block">
-                                <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="remark" placeholder="请输入内容"
+                                          class="layui-textarea">${bill.remark}</textarea>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button type="submit" class="layui-btn" id="update"
+                        style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
+                </button>
             </form>
-            <button type="button" class="layui-btn" id="update"
-                    style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
-            </button>
+
         </div>
     </fieldset>
 </div>

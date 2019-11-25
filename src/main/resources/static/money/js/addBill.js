@@ -20,7 +20,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
-            , area: ['500px', '650px']
+            , area: ['720px', '350px']
             , btn: ['确定']
             , content: 'kkk'
         });
@@ -29,7 +29,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
-            , area: ['500px', '650px']
+            , area: ['720px', '350px']
             , btn: ['确定']
             , content: 'kkk'
         });
@@ -38,7 +38,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
-            , area: ['500px', '650px']
+            , area: ['720px', '350px']
             , btn: ['确定']
             , content: 'kkk'
         });
@@ -50,18 +50,22 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         $.post('/money/add',
             t
             , function (result) {
-                layer.open({
-                    btnAlign: 'c'
-                    , area: ['100px', '150px']
-                    ,content:'<p style="text-align: center">添加成功</p>'
-                    ,btn:['继续添加','取消']
-                    ,yes:function (index) {
-                        layer.close(index)
-                    }
-                    ,btn2:function () {
-                        parent.layer.close(index);
-                    }
-                })
+                if (result.success) {
+                    layer.open({
+                        btnAlign: 'c'
+                        , area: ['100px', '150px']
+                        , content: '<p style="text-align: center">添加成功</p>'
+                        , btn: ['继续添加', '取消']
+                        , yes: function (index) {
+                            layer.close(index)
+                        }
+                        , btn2: function () {
+                            parent.layer.close(index);
+                        }
+                    })
+                } else {
+                }
+
 
             });
     });
