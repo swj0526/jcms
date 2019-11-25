@@ -36,6 +36,9 @@ public class DictionaryService extends Service {
      */
     public ServiceResult addDictionary(String name, String remark, int type) {
         TbDictionary dictionary = new TbDictionary();
+        if(StringUtil.isBlank(name)){
+            return error("");
+        }
         dictionary.setName(name);
         dictionary.setRemark(remark);
         dictionary.setType(type);
@@ -55,6 +58,9 @@ public class DictionaryService extends Service {
      * @return
      */
     public ServiceResult modifyDictionary(String name, String remark, int id) {
+        if(StringUtil.isBlank(name)){
+            return error("");
+        }
         TbDictionary dictionary = getById(TbDictionary.class, id);
         dictionary.setName(name);
         dictionary.setRemark(remark);

@@ -146,6 +146,8 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
+            }else{
+
             }
         });
     });
@@ -162,6 +164,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                 layer.close(mainIndex);
                 //刷新
                 tableIns.reload();
+            }else{
+
             }
         });
     });

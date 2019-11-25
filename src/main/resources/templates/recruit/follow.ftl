@@ -15,7 +15,7 @@
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" id="dataFor">
         <div class="layui-form-item">
-            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;" >*</span>
+            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
             <label class="layui-form-label">渠道名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="nameA" required lay-verify="required" placeholder="" autocomplete="off"
@@ -27,7 +27,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">渠道备注</label>
             <div class="layui-input-inline">
-                <input type="text" name="remarkA" required  placeholder="" autocomplete="off"
+                <input type="text" name="remarkA" placeholder="" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
@@ -45,6 +45,7 @@
 <div style="display: none" id="modify">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
+            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
             <label class="layui-form-label">渠道名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
@@ -55,24 +56,18 @@
         <div class="layui-form-item">
             <label class="layui-form-label">渠道备注</label>
             <div class="layui-input-inline">
-                <input type="text" name="remark" required lay-verify="required" placeholder="" autocomplete="off"
+                <input type="text" name="remark" placeholder="" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
-
-        <#--<div class="layui-form-item" style="margin-left: 30%">
-             <div class="layui-input-inline">
-                 <button class="layui-btn" lay-submit lay-filter="formDemo" id="addM" >立即提交</button>
-                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-             </div>
-         </div>-->
-    </form>
-    <div class="layui-form-item" style="margin-left: 30%">
-        <div class="layui-input-inline">
-            <button class="layui-btn" lay-submit lay-filter="formDemo" id="addM">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        <div class="layui-form-item" style="margin-left: 30%">
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="addM">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
         </div>
-    </div>
+    </form>
+
 
 </div>
 
