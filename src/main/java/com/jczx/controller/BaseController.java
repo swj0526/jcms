@@ -2,6 +2,7 @@ package com.jczx.controller;
 
 import com.jczx.bean.ListByPage;
 import net.atomarrow.bean.Pager;
+import net.atomarrow.bean.ServiceResult;
 
 import java.util.List;
 
@@ -24,10 +25,8 @@ public class BaseController<T> {
         return pager;
     }
 
-    public ListByPage list(List<T> list , int count){
-        ListByPage listByPage = new ListByPage();
-        listByPage.setCount(count);
-        listByPage.setData(list);
-        return listByPage;
+    public ServiceResult layuiList(List<T> list ,Pager pager){
+        ServiceResult serviceResult = new ServiceResult(true,list,"",pager);
+        return serviceResult;
     }
 }

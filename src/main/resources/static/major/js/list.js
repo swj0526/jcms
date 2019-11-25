@@ -10,22 +10,16 @@ layui.config({
 }).use(['jquery', 'treeGrid', 'layer'], function () {
     var $ = layui.jquery;
     treeGrid = layui.treeGrid; //很重要
-
     layer = layui.layer;
     ptable = treeGrid.render({
         id: tableId,
         elem: '#' + tableId,
         idField: 'id',
         data: [{
-            "id": "1",
+            "id":"1",
             "pId": "0",
-            "name": "影视专业"
-        }, {
-            "id": "2",
-            "pId": "0",
-            "name": "美术专业"
+            "name": "水果"
         }
-
         ],
         cellMinWidth: 100,
         treeId: 'id' //树形id字段名称
@@ -39,6 +33,9 @@ layui.config({
                 field: 'name',
                 title: '专业-班级'
             }, {
+                field: 'remark',
+                title: '备注'
+            }, {
                 title: '操作',
                 align: 'center' /*toolbar: '#barDemo'*/,
                 templet: function (d) {
@@ -47,10 +44,7 @@ layui.config({
                     var delBtn = '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>';
                     return addBtn + delBtn;
                 }
-            }
-
-
-            ]
+            }]
         ],
         page: false
     });
@@ -85,11 +79,18 @@ var i = 1000;
 //添加
 function add(pObj) {
     var param = {};
-    param.name = '新增班级';
+    param.name = '水果' + Math.random();
     param.id = ++i;
     param.pId = pObj ? pObj.id : 0;
     treeGrid.addRow(tableId, pObj ? pObj.LAY_TABLE_INDEX + 1 : 0, param);
 }
 
-
-
+function print() {
+    console.log(treeGrid.cache[tableId]);
+    var loadIndex = layer.msg("对象已打印，按F12，在控制台查看！", {
+        time: 3000,
+        offset: 'auto' //顶部
+        ,
+        shade: 0
+    });
+}

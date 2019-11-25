@@ -93,33 +93,12 @@ public class DictionaryService extends Service {
             conditions.putLIKEIfOK("remark", keywords);
             conditions.parenthesesEnd();
         }
-
-
+         if(pager==null){
+             return  getList(conditions);
+         }
+         pager.setDataTotal(getCount(conditions));
         List<TbDictionary> list = getListByPage(conditions, pager);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
-
-    /**
-     * 获取总数
-     *
-     * @return
-     */
-    public int count(int type, String keywords) {
-        Conditions conditions = new Conditions(TbDictionary.class);
-        conditions.putEW("type", type);
-        if (StringUtil.isNotBlank(keywords)) {
-            conditions.parenthesesStart();
-            conditions.putLIKEIfOK("name", keywords);
-            conditions.or();
-            conditions.putLIKEIfOK("remark", keywords);
-            conditions.parenthesesEnd();
-        }
-
-        int count = getCount(conditions);
-        return count;
-
-    }
-
-
 }

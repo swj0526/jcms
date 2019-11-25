@@ -15,17 +15,19 @@
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" id="dataFor">
         <div class="layui-form-item">
+            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;" >*</span>
             <label class="layui-form-label">渠道名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="nameA" required lay-verify="required" placeholder="" autocomplete="off"
                        class="layui-input">
+
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">渠道备注</label>
             <div class="layui-input-inline">
-                <input type="text" name="remarkA" required lay-verify="required" placeholder="" autocomplete="off"
+                <input type="text" name="remarkA" required  placeholder="" autocomplete="off"
                        class="layui-input">
             </div>
         </div>

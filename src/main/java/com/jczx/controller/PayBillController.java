@@ -93,7 +93,7 @@ public class PayBillController extends BaseController {
         pager.setCurrentPage(page);
         List<PayBillBean> PayBillBean = moneyService.listBill(pager);
         int count = moneyService.getCount();
-        return list(PayBillBean, count);
+        return null;
     }
 
     @RequestMapping("/modify")
