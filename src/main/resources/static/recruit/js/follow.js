@@ -18,6 +18,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
 
     var data;
+    var res;
     var tableIns = table.render({
         elem: '#followTableId'
         , url: '/dictionary/list/channel',
@@ -44,8 +45,11 @@ layui.use(['form', 'table', 'laydate'], function () {
         page: true,
         done: function (rest, curr, count) {
             currPage = curr;
+            res =rest;
             if (rest.data.length == 0) {
+
                 currPage = curr - 1;
+                /*alert(currPage);*/
             }
 
             console.log(currPage);
@@ -192,18 +196,22 @@ layui.use(['form', 'table', 'laydate'], function () {
                         $.post('/dictionary/delete', {id: data.id}, function (result) {
                             if (result.success) {
                                 layer.msg("删除成功!");
-
+                                layer.close(index);
+                                tableIns.reload();
+                                if (res.data.length-1 == 0) {
+                                    window.location.reload();//默认刷新第一页
+                                }
                             } else {
                                 layer.msg(result.msg);
                             }
                         });
-                        layer.close(index);
-                        tableIns.reload();
+
                     }, no: function (index) {
                         layer.close(index);
                     }
                 }
             );
+
 
         }
 
