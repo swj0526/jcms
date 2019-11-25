@@ -46,11 +46,11 @@ layui.use(['form', 'table', 'laydate'], function () {
         done: function (rest, curr, count) {
             currPage = curr;
             res =rest;
-            if (rest.data.length == 0) {
+           /* if (rest.data.length == 0) {
 
                 currPage = curr - 1;
-                /*alert(currPage);*/
-            }
+                /!*alert(currPage);*!/
+            }*/
 
             console.log(currPage);
             console.log(rest);
@@ -60,8 +60,8 @@ layui.use(['form', 'table', 'laydate'], function () {
             /*   console.log(res);*/
             return {
                 "code": "0",
-                "count": res.count,
-                data: res.data
+                "count": res.pager.dataTotal,
+                 data: res.result
             }
         },
         id: 'followRender'
@@ -146,6 +146,8 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
+            }else{
+
             }
         });
     });
@@ -162,6 +164,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                 layer.close(mainIndex);
                 //刷新
                 tableIns.reload();
+            }else{
+
             }
         });
     });

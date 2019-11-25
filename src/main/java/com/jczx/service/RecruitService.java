@@ -83,17 +83,12 @@ public class RecruitService extends Service {
     /**
      * 查询
      */
-    public List<TbStudent> listRecruit(String name, String labelIds,String sex, Pager pager) {
-        if (StringUtil.isBlank(name)&&StringUtil.isBlank(labelIds)&&StringUtil.isBlank(sex)){
-            System.out.println("查询全部");
-            Conditions conditions = new Conditions(TbStudent.class);
-            List<TbStudent> listStudent = getListByPage(conditions, pager);
-            return listStudent;
-        }
+    public List<TbStudent> listRecruit(String name, String labelIds,String sex, Pager pager) { //模糊关键字keywords查询用or
+
         System.out.println("条件");
         Conditions conditions = new Conditions(TbStudent.class);
         conditions.parenthesesStart();
-        conditions.putLIKE("name", name);
+        conditions.putLIKE("name", name);//判断是否为空
         //conditions.putLIKEIfOK("name", name);
         conditions.or();
         conditions.putLIKE("labelIds", labelIds);
@@ -104,6 +99,7 @@ public class RecruitService extends Service {
         }
       /*  conditions.or();//跟踪时间在详情表
         conditions.putLIKE("followTime",followTime);*/
+        pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbStudent> listStudent = getListByPage(conditions, pager);
 
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));

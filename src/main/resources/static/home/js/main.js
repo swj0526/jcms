@@ -54,7 +54,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/work/list";
             all_tab(id, title, src);
         } else if (id == "money_list") {
-            var src = "/money/list";
+            var src = "/money/tolist";
             all_tab(id, title, src);
         } else if (id == "remind_annunciate") {
             var src = "/remind/toAnnunciate";

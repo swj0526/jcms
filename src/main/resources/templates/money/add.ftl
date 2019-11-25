@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
-    <script type="text/javascript" src="../layui/layui.js"></script>
-    <script type="text/javascript" src="../money/js/addBill.js"></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/money/js/addBill.js"></script>
+    <script type="text/javascript" src="/money/js/money.js"></script>
     <style>
         body .layer-ext-myskin .layui-layer-content {
             overflow: visible;
@@ -15,14 +16,14 @@
 <body>
 <fieldset id="add2" class="layui-elem-field layuimini-search">
     <legend>缴费信息填写</legend>
-    <div style="margin: 10px 10px 10px 10px;margin-left:25%">
+    <div style="margin: 10px 10px 10px 10px;margin-left:28%">
         <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
             <div class="layui-form-item">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">用户姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="name" autocomplete="off" class="layui-input">
+                            <input type="text" id="name1" name="name" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -78,8 +79,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">是否分期</label>
                         <div class="layui-input-inline">
-                            <input name="hasInstalment" type="radio" value="是" title="是">
-                            <input name="hasInstalment" type="radio" value="否" title="否" checked>
+                            <input name="hasInstalment" type="radio" value="true" title="是">
+                            <input name="hasInstalment" type="radio" value="false" title="否" checked>
                         </div>
                     </div>
                 </div>
@@ -137,7 +138,7 @@
                 </div>
             </div>
         </form>
-        <button type="button" class="layui-btn" id="ss"
+        <button type="button" class="layui-btn" id="submit"
                 style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
         </button>
     </div>

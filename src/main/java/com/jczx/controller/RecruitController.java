@@ -116,11 +116,11 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ListByPage listRecruit(String name, String labelIds, String sex, int page, int limit) {
+    public ServiceResult listRecruit(String name, String labelIds, String sex, int page, int limit) {
         Pager pager = checkPager(limit, page);
         List<TbStudent> list = recruitService.listRecruit(name,labelIds,sex,pager);
-        int count = recruitService.getCount(name, labelIds, sex, pager);
-        return list(list,count);
+       return  layuiList(list,pager);
+
 
     }
 

@@ -3,10 +3,10 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     var $ = layui.jquery;
     laydate = layui.laydate;
     form = layui.form,
-    laydate.render({
-        elem: '#test6'
-        , range: true
-    });
+        laydate.render({
+            elem: '#test6'
+            , range: true
+        });
     laydate.render({
         elem: '#test1'
     });
@@ -42,5 +42,27 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , btn: ['确定']
             , content: 'kkk'
         });
+    });
+    var index = parent.layer.getFrameIndex(window.name);
+    //var recruit = $("#dataFor").serialize();
+    $("#submit").click(function () {
+        var t = $('#dataFor').serialize();
+        $.post('/money/add',
+            t
+            , function (result) {
+                layer.open({
+                    btnAlign: 'c'
+                    , area: ['100px', '150px']
+                    ,content:'<p style="text-align: center">添加成功</p>'
+                    ,btn:['继续添加','取消']
+                    ,yes:function (index) {
+                        layer.close(index)
+                    }
+                    ,btn2:function () {
+                        parent.layer.close(index);
+                    }
+                })
+
+            });
     });
 });

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @RequestMapping("/work")
 @Controller
-public class WorkController {
+public class HomeworkController {
     /**
      * 上传页面
      *

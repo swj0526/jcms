@@ -1,6 +1,8 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,6 +15,8 @@ import java.util.Date;
  */
 @Component
 public class TbPayBill extends Domain {
+    @NotCreate
+    private Integer name;//学生姓名
     private Integer id;
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
@@ -21,37 +25,44 @@ public class TbPayBill extends Domain {
     private Integer semesterId;//学期
     private Integer totalAmount;//应付金额
     private Integer payAmount;//金额//
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date payDate;//缴费日期//
     private Boolean hasInstalment;//是否分期
     private Integer discountAmount;//优惠金额
     private Integer factAmount;//实付金额//加fact
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date startTime;//开始时间
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date endTime;//结束时间//end
     private Boolean hasAttachment;//是否有附件
     private Integer operatorId;//操作人id
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date createTime;//操作时间
     private String remark;//备注
+
+    public Integer getName() {
+        return name;
+    }
+
+    public void setName(Integer name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
     public Integer getPid() {
         return pid;
     }
-
     public void setPid(Integer pid) {
         this.pid = pid;
     }
-
     public Integer getStudentId() {
         return studentId;
     }
-
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
