@@ -45,8 +45,8 @@ var sel = function () {
         }
 
         $.post(url,function (result) {
-            $.each(result, function (key, value) {
-                $("#decSelect").append("<option value=" + value.optionValue+ ">" + value.optionText + "</option>");
+            $.each(result, function (k, v) {
+                $("#decSelect").append("<option value=" + v.optionValue+ ">" + v.optionText + "</option>");
             });
             renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
         });

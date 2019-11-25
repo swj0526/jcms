@@ -189,14 +189,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                     parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
                 }, 500);
             } else {
-                layer.open({
-                    type: 1,
-                    title: "提示",
-                    content: $("#error").html(result.msg),
-                    area: ['300px', '150px'], //设置宽高
-                    btn: ['确定'],
-                    btnAlign: "c"
-                });
+
             }
         })
     });

@@ -37,7 +37,7 @@ public class TbStudent extends Domain {
     private Integer otherRelativesName;//其他亲属名字
     private String motherPhone;//母亲联系方式
     private String fatherPhone;//父亲联系方式
-    private String emergencyPhone;//应急联系方式
+    private String emergencyPhone;//其他亲属联系方式
     private String labelIds;//意向标签表
     private Integer channelId;//渠道表id
     private String intention;//招生意向

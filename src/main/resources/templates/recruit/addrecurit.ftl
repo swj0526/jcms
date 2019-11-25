@@ -35,117 +35,188 @@
 <body>
 <div style="text-align: center; line-height: 20px; padding-top: 10px; display: none" id="error">
     <span>姓名,意向,电话必须填写</span></div>
-<#--新增信息弹出框-->
-<div style="margin-left: 20%;margin-top: 5%;" id="recruit">
+
+<div id="recruit">
     <form class="layui-form" lay-filter="addDataForm" id="dataFor" method="post">
-        <div class="layui-input-inline" style="display: none">
-            <input type="text" name="id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-inline">
-                <input type="text" name="name" lay-verify="required" placeholder="" autocomplete="off"
-                       class="layui-input">
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
             </div>
 
-            <label class="layui-form-label">性别</label>
-            <div class="layui-inline">
-                <div class="layui-inline" style="width: 190px">
+            <div style="display: inline-block">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-inline" style="width: 190px;">
                     <select name="sex" lay-verify="">
                         <option value=""></option>
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
                 </div>
+                <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
             </div>
-        </div>
 
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">出生年月</label>
+        </div>
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 出生年月</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="birthDate" id="date" lay-verify="date" autocomplete="off"
+                    <input type="text" name="birthDate" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
 
-            <label class="layui-form-label">学校</label>
-            <div class="layui-input-inline">
-                <input type="text" name="school" required lay-verify="required" placeholder="" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">手机号</label>
-            <div class="layui-input-inline">
-                <input type="number" name="studentPhone" required lay-verify="required" placeholder=""
-                       autocomplete="off" class="layui-input">
-            </div>
-            <label class="layui-form-label">QQ号</label>
-            <div class="layui-input-inline">
-                <input type="number" name="qq" required lay-verify="required" placeholder="" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">微信号</label>
-            <div class="layui-input-inline">
-                <input type="number" name="weChat" required lay-verify="required" placeholder="" autocomplete="off"
-                       class="layui-input">
-            </div>
-            <label class="layui-form-label">母亲电话</label>
-            <div class="layui-input-inline">
-                <input type="number" name="motherPhone" required lay-verify="required" placeholder="" autocomplete="off"
-                       class="layui-input">
-            </div>
-
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">父亲电话</label>
-            <div class="layui-input-inline">
-                <input type="number" name="fatherPhone" required lay-verify="required" placeholder="" autocomplete="off"
-                       class="layui-input">
-            </div>
-            <label class="layui-form-label">来源渠道</label>
-            <div class="layui-input-inline">
-                <div class="layui-inline" style="width: 190px">
-                    <select name="channelId" lay-verify="" id="decSelect"  url="/dictionary/list/channel/options">
-                        <option value="">来源渠道</option>
-                        <#--<option value="010">学校网站</option>
-                        <option value="011">自己找上门</option>
-                        <option value="012">qq</option>
-                        <option value="013">微信</option>
-                        <option value="014">介绍</option>-->
-                    </select>
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 毕业院校</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="school" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
                 </div>
             </div>
+
+        </div>
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 手机号码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="studentPhone" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label">QQ</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="qq" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 微信</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="weChat" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div style="display: inline-block">
+                <span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label">来源渠道</label>
+
+                <div class="layui-input-inline">
+                    <div class="layui-inline" style="width: 190px">
+                        <select name="channelId" lay-verify="" id="decSelect" required lay-verify="required"
+                                url="/dictionary/list/channel/options">
+                            <option value="">来源渠道</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 母亲姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="motherName" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 联系方式</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="motherPhone" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 父亲姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="fatherName" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 联系方式</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="fatherPhone" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="width: 1000px;">
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 其他联系人</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="otherRelativesName" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div style="display: inline-block"><span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+                <label class="layui-form-label"> 联系方式</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="emergencyPhone" lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
         </div>
 
-        <div class="layui-form-item">
-            <div class="layui-inline">
+        <div class="layui-form-item" style="width: 1000px;position: relative;left: -3px">
+            <div style="display: inline-block;float: left" style="height: 99px">
+
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline">
-                    <div id="demo1" class="xm-select-demo" style=" width:190px" ;></div>
+                    <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:190px"
+                         ;></div>
+                </div>
+                <span
+                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+            </div>
+            <div style="display: inline-block">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block" style="width: 190px">
+                    <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
                 </div>
             </div>
-            <div class="layui-inline">
-                <div class="layui-inline" style="width:50px">
-                    <button class="layui-btn layui-btn-xs layui-btn-normal" id="">添加意向</button>
-                </div>
+
+
+        </div>
+        <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
+            <div class="layui-input-inline">
+                <button class="layui-btn" type="button" lay-submit id="addSubmit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
-
     </form>
-    <div class="layui-form-item" style="margin-left: 20%">
-        <div class="layui-input-inline">
-            <button class="layui-btn" type="button" lay-submit id="addSubmit">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
-    </div>
-</div>
 
+</div>
 <script src="/recruit/js/recruit.js"></script>
 
 <script>
@@ -155,7 +226,9 @@
         language: 'zn',
         filterable: true,
         searchTips: '搜索标签',
-        tips: '选择意向',
+        tips: '请选择意向',
+        height: '500px',
+        autoRow: true,
 
         data: [
             {name: '有意向', value: 1},
