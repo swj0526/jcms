@@ -146,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="layui-btn" id="update"
+                <button type="button" class="layui-btn" lay-submit id="update"
                         style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
                 </button>
             </form>

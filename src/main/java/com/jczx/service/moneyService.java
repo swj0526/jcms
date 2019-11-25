@@ -83,7 +83,7 @@ public class moneyService extends Service {
         if (date!=null){
             //conditions.putLIKE("payDate",date);
         }
-        pager.setPageTotal(getCount(conditions));
+        pager.setDataTotal(getCount(conditions));
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbPayBill> list = getListByPage(conditions, pager);
         return list;

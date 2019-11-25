@@ -97,7 +97,10 @@ public class PayBillController extends BaseController {
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
         List<TbPayBill> PayBillBean = moneyService.listBill(keyword,type,date,pager);
-        return list(PayBillBean,pager.getPageTotal());
+        ListByPage list=new ListByPage();
+        list.setData(PayBillBean);
+        list.setCount(pager.getDataTotal());
+        return list;
     }
 
     @RequestMapping("/modify")
@@ -110,7 +113,7 @@ public class PayBillController extends BaseController {
     @ResponseBody
     public Render ex(String keyword, Integer type, Date date)  {
         Pager pager = new Pager();
-        pager.setPageSize(10);
+        pager.setPageSize(100000);
         pager.setCurrentPage(1);
         InputStream inputStream = moneyService.xlsx(keyword,type,date,pager);
         return Render.renderFile("学生信息表.xls", inputStream);

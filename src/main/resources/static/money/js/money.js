@@ -68,7 +68,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , btn: []
                 , content: '/money/tomodify?id='+data.id+''
                 ,end: function () {//修改后刷新当前页
-                    //$(".layui-laypage-btn").click();
+                    $(".layui-laypage-btn").click();
 
                 }
             });
@@ -101,7 +101,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         elem: '#test2'
     });
     $("#query").click(function () {
-        alert(1)
         table.reload('userTableReload', {
             where: { //设定异步数据接口的额外参数，任意设
                 keyword: $("#keyword").val()
