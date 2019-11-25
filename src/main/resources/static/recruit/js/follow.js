@@ -10,11 +10,9 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
     laydate.render({
         elem: '#date' //指定元素
-
     });
     laydate.render({
         elem: '#dat' //指定元素
-
     });
 
     var data;
@@ -215,8 +213,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                     }
                 }
             );
-
-
         }
 
     });

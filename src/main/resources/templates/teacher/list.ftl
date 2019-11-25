@@ -112,9 +112,8 @@
         </div>
     </div>
 </div>
-<#--添加弹窗-->
-<div class="layuimini-container">
-    <div class="layuimini-main">
+<#--模糊查询-->
+<div class="demoTable">
         <fieldset class="layui-elem-field layuimini-search">
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
@@ -122,15 +121,15 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input"
-                                       placeholder="例：1990/张三">
+                                <input type="text" name="name" autocomplete="off" class="layui-input"
+                                       placeholder="例：1990/张三" id="name">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <select name="state" lay-verify="">
+                            <select name="hasQuit" lay-verify="" id="hasQuit">
                                 <option value="">选择状态</option>
-                                <option value="010">在任</option>
-                                <option value="021">离职</option>
+                                <option value="true">在职</option>
+                                <option value="false">离职</option>
                             </select>
                         </div>
                         <#--<div class="layui-inline">
@@ -149,10 +148,8 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
-    </div>
 </div>
-
-
 </body>
 </html>

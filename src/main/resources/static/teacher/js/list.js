@@ -13,6 +13,10 @@ a = [{
     "hasQuit": "在职"
 }];*/
 layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
+    var mainIndex;
+    var currPage = 1;
+    var data;
+    var res;
     var $ = layui.jquery,
         form = layui.form,
         element = layui.element,
@@ -37,32 +41,43 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
                     if (d.hasQuit == false){
                         return '离职';
                     }
-
                 }}
             , {title: '操作', minWidth: 50, toolbar: '#currentTableBar', fixed: "right", align: "center",}
         ]],
-        limits: [10, 15, 20, 25, 50, 100],
-        limit: 10,
-        page: true
+        page: true,
+        done: function (rest, curr, count) {
+            currPage = curr;
+            res =rest;
+
+            console.log(currPage);
+            console.log(rest);
+
+        },
+        parseData:function (res) {
+            console.log(res);
+            return{
+                "code":"0",
+                "count":res.pager.dataTotal,
+                data:res.result,
+            }
+        },
+        id: 'followRender'
     });
     // 监听搜索操作
     form.on('submit(data-search-btn)', function (data) {
-        var result = JSON.stringify(data.field);
-        layer.alert(result, {
-            title: '最终的搜索信息'
-        });
+        var name = $('[name="name"]').val();
+        var hasQuit = $('[name="hasQuit"]').val();
 
         //执行搜索重载
-        table.reload('currentTableId', {
+        table.reload('followRender', {
             page: {
-                curr: 1
+                curr: currPage
             },
             where: {
-                searchParams: result
+                name: name,
+                hasQuit:hasQuit
             }
         }, 'data');
-
-        return false;
     });
 
     // 监听添加操作
@@ -70,54 +85,77 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
         layer.msg('添加数据');
     });
 
-
     //监听表格复选框选择
     table.on('checkbox(currentTableFilter)', function (obj) {
         console.log(obj)
     });
-    $('#excel').click(function () {
+    $('#excel').click(function (index) {
         window.location.href="/teacher/doExcel";
+        layer.close(index);
     });
 
     function modify(data) {
-        layer.open({
+        mainIndex=layer.open({
             type: 1,
             title: "修改老师信息",
             content: $("#modify1"),
             area: ['350px', '400px'],
-            success: function (index) {
+            success: function () {
                 form.val("dataForm1", data);
             }
         });
         $('#modifyTeacher').click(function() {
             var id=$('#id1').val();
-            alert(id);
             var name=$('#name1').val();
             var gender=$('#gender1').val();
             var hasQuit=$('#hasQuit1').val();
-            $.post('/teacher/modifyTeacher', {
+            $.post('/teacher/modify', {
                 id:id,
                 name : name,
                 gender:gender,
                 hasQuit:hasQuit
-            }, function(a,b) {
-                alert(b.id);
+            }, function(result) {
+                if (result.success==true){
+                    alert("成功");
+                    layer.close(mainIndex);
+                }else {
+                    alert("失败")
+                }
             });
         });
         form.render(); // 动态渲染
     }
     table.on('tool(currentTableFilter)', function (obj) {
         data = obj.data;
+        if (obj.event === 'edit') {
             modify(data);
+        } else if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                obj.del();
+                $.post('/teacher/delete', {id: data.id}, function (result) {
+                    if (result.success) {
+                        layer.msg("删除成功!");
+                        layer.close(index);
+                        tableIns.reload();
+                        if (res.data.length-1 == 0) {
+                            window.location.reload();//默认刷新第一页
+                        }
+                    } else {
+                        layer.msg(result.msg);
+                    }
+                });
+                layer.close(index);
+            });
+        }
     });
 
     $("#add1").click(function () {
-        layer.open({
+        mainIndex=layer.open({
             type: 1,
             title: "添加老师信息",
             content: $("#add"),
             area: ['350px', '400px'],
-            success: function (index) {
+            success: function () {
                 //清空表单数据
                 $("#dataFrm")[0].reset();
             }
@@ -126,25 +164,22 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
             var name=$('#name').val();
             var gender=$('#gender').val();
             var phone=$('#phone').val();
-            $.post('/teacher/addTeacher', {
+            $.post('/teacher/add', {
                 name : name,
                 gender:gender,
                 phone:phone,
                 hasQuit:true
-            }, function(a,b) {
-                alert(b.id);
+            }, function(result) {
+                if (result.success==true){
+                    alert("成功");
+                    layer.close(mainIndex);
+                }else {
+                    alert("失败")
+                }
             });
         });
         form.render(); // 动态渲染
-    });
-    $("#import").click(function () {
-        layer.open({
-            type: 1,
-            title: "添加学生信息",
-            content: $("#importForm"),
-            btn: "提交",
-            area: ['750px', '320px'],
-        })
+
     });
 });
 

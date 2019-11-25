@@ -1,6 +1,5 @@
 package com.jczx.service;
 
-import com.jczx.bean.PageBean;
 import com.jczx.domain.TbTeacher;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -41,25 +40,23 @@ public class TeacherService  extends Service {
      * 查找老师表所有信息
      * @return
      */
-    public List<TbTeacher> teacherList(TbTeacher tbTeacher,PageBean pageBean){
+    public List<TbTeacher> teacherList(String name,boolean hasQuit,Pager pager){
         Conditions conditions = new Conditions(TbTeacher.class);
-        Pager pager = new Pager();
-        System.out.println(pageBean.getPage() + "当前页");
-        System.out.println(pageBean.getLimit() + "当前数据");
-        pager.setCurrentPage(pageBean.getPage());
-        pager.setPageSize(pageBean.getLimit());
-        List<TbTeacher> teacher = getList(conditions);
+        conditions.putEWIfOk("name",name);
+        conditions.putEWIfOk("hasQuit",hasQuit);
+        pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
+        List<TbTeacher> teacher = getListByPage(conditions,pager);
         return teacher;
     }
 
     /**
-     * 查询总数据条数
+     * 删除
+     * @param teacher
      * @return
      */
-    public int count (){
-        Conditions conditions = new Conditions(TbTeacher.class);
-        int count = getCount(conditions);
-        return count;
+    public ServiceResult deleteTeacher(TbTeacher teacher){
+        del(teacher);
+        return SUCCESS;
     }
 
     /**
