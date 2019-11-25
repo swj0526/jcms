@@ -1,7 +1,8 @@
 package com.jczx.service;
 
-import com.jczx.domain.TbStudent;
+import com.jczx.bean.PageBean;
 import com.jczx.domain.TbTeacher;
+import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.services.Service;
@@ -40,23 +41,41 @@ public class TeacherService  extends Service {
      * 查找老师表所有信息
      * @return
      */
-    public List<TbTeacher> TeacherList(){
+    public List<TbTeacher> teacherList(TbTeacher tbTeacher,PageBean pageBean){
         Conditions conditions = new Conditions(TbTeacher.class);
+        Pager pager = new Pager();
+        System.out.println(pageBean.getPage() + "当前页");
+        System.out.println(pageBean.getLimit() + "当前数据");
+        pager.setCurrentPage(pageBean.getPage());
+        pager.setPageSize(pageBean.getLimit());
         List<TbTeacher> teacher = getList(conditions);
         return teacher;
     }
 
     /**
-     * 根据老师姓名查找Id
-     * @param name
+     * 查询总数据条数
      * @return
      */
-    public int getTeacherId(String name){
+    public int count (){
         Conditions conditions = new Conditions(TbTeacher.class);
-        conditions.putEW("name",name);
-        TbStudent get=getOne(conditions);
-        int id=get.getId();
-        return id;
+        int count = getCount(conditions);
+        return count;
     }
+
+    /**
+     * 导出excel
+     * @param bean
+     * @param pageBean
+     * @return
+     */
+    /*public InputStream teacherExcel(TbTeacher bean, PageBean pageBean) {
+        ExcelDatas excelDatas = new ExcelDatas();
+        List<TbTeacher> list = teacherList(bean,pageBean);
+        excelDatas.addStringArray(0, 0, new String[]{"id","姓名","性别", "手机号", "是否在职"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"id","name", "gender", "phone", "hasQuit"});//行,列,集合
+        InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
+
+    }*/
 
 }

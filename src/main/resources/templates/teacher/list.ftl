@@ -59,25 +59,32 @@
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFrm">
                 <div class="layui-form-item">
+                    <div class="layui-form-item" style="display: none">
+                        <label class="layui-form-label">n</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="id" required lay-verify="required" placeholder="id" autocomplete="off"
+                                   class="layui-input" id="id1">
+                        </div>
+                    </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="name" autocomplete="off" class="layui-input" id="name">
+                            <input type="text" name="name" autocomplete="off" class="layui-input" id="name1">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">手机号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone">
+                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone1">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">状态</label>
                         <div class="layui-input-inline">
-                            <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit">
+                            <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit1">
                                 <option value="">所有状态</option>
-                                <option value="在职">在职</option>
-                                <option value="离职">离职</option>
+                                <option value="true">在职</option>
+                                <option value="false">离职</option>
                             </select>
                         </div>
                     </div>
@@ -133,7 +140,7 @@
 
                         <button type="button" class="layui-btn " id="add1">添加</button>
                         <button type="button" class="layui-btn layui-btn-warm"  id="import">导入</button>
-                        <button type="button" class="layui-btn layui-btn-warm" >导出</button>
+                        <button type="button" class="layui-btn layui-btn-warm" id="excel">导出</button>
                     </div>
                 </form>
             </div>

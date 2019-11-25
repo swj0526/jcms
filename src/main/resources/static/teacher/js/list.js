@@ -1,4 +1,4 @@
-var a = new Array();
+/*var a = new Array();
 a = [{
     "id": 1,
     "name": "杜海涛",
@@ -11,7 +11,7 @@ a = [{
     "gender": "男",
     "phone": "15333333333",
     "hasQuit": "在职"
-}];
+}];*/
 layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
     var $ = layui.jquery,
         form = layui.form,
@@ -19,20 +19,26 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
         table = layui.table,
         layer = layui.layer,
         laydate = layui.laydate;
-
     laydate.render({
         elem: '#time',
         range: true
     });
     table.render({
         elem: '#currentTableId',
-        //url:'/teacher/list',
-        data: a,
-        cols: [[{field: 'id', title: '学号', city: "", sort: true, align: 'center'}
+        url:'/teacher/list',
+        cols: [[{field: 'id', title: '编号', city: "", sort: true, align: 'center'}
             , {field: 'name', title: '姓名', align: 'center'}
             , {field: 'gender', title: '性别', align: 'center',}
             , {field: 'phone', title: '电话', align: 'center'}
-            , {field: 'hasQuit', title: '是否在职', align: 'center'}
+            , {field: 'hasQuit', title: '是否在职', align: 'center',templet: function(d) {
+                    if (d.hasQuit == true){
+                        return '在职';
+                    }
+                    if (d.hasQuit == false){
+                        return '离职';
+                    }
+
+                }}
             , {title: '操作', minWidth: 50, toolbar: '#currentTableBar', fixed: "right", align: "center",}
         ]],
         limits: [10, 15, 20, 25, 50, 100],
@@ -69,22 +75,28 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
     table.on('checkbox(currentTableFilter)', function (obj) {
         console.log(obj)
     });
+    $('#excel').click(function () {
+        window.location.href="/teacher/doExcel";
+    });
 
     function modify(data) {
         layer.open({
             type: 1,
             title: "修改老师信息",
             content: $("#modify1"),
-            area: ['1000px', '300px'],
+            area: ['350px', '400px'],
             success: function (index) {
                 form.val("dataForm1", data);
             }
         });
-        /*$('#modifyTeacher').click(function() {
-            var name=$('#name').val();
-            var gender=$('#gender').val();
-            var hasQuit=$('#hasQuit').val();
+        $('#modifyTeacher').click(function() {
+            var id=$('#id1').val();
+            alert(id);
+            var name=$('#name1').val();
+            var gender=$('#gender1').val();
+            var hasQuit=$('#hasQuit1').val();
             $.post('/teacher/modifyTeacher', {
+                id:id,
                 name : name,
                 gender:gender,
                 hasQuit:hasQuit
@@ -92,7 +104,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
                 alert(b.id);
             });
         });
-        form.render(); // 动态渲染*/
+        form.render(); // 动态渲染
     }
     table.on('tool(currentTableFilter)', function (obj) {
         data = obj.data;
@@ -104,7 +116,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
             type: 1,
             title: "添加老师信息",
             content: $("#add"),
-            area: ['1000px', '300px'],
+            area: ['350px', '400px'],
             success: function (index) {
                 //清空表单数据
                 $("#dataFrm")[0].reset();
@@ -117,7 +129,8 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
             $.post('/teacher/addTeacher', {
                 name : name,
                 gender:gender,
-                phone:phone
+                phone:phone,
+                hasQuit:true
             }, function(a,b) {
                 alert(b.id);
             });
