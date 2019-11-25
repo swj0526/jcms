@@ -95,8 +95,6 @@ public class RecruitController extends BaseController {
         return modifyRecruit;
     }
 
-
-
     /**
      * 删除
      * @param student

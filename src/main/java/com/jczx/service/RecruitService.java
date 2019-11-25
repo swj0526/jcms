@@ -83,55 +83,28 @@ public class RecruitService extends Service {
     /**
      * 查询
      */
-    public List<TbStudent> listRecruit(String name, String labelIds,String sex, Pager pager) { //模糊关键字keywords查询用or
-
-        System.out.println("条件");
+    public List<TbStudent> listRecruit(String keywords, String labelIds,String sex, Pager pager) { //模糊关键字keywords查询用or
         Conditions conditions = new Conditions(TbStudent.class);
-        conditions.parenthesesStart();
-        conditions.putLIKE("name", name);//判断是否为空
-        //conditions.putLIKEIfOK("name", name);
-        conditions.or();
-        conditions.putLIKE("labelIds", labelIds);
-        conditions.parenthesesEnd();
-        if (StringUtil.isNotBlank(sex)){
-
-            conditions.putEW("sex", sex);
+        if (StringUtil.isNotBlank(keywords)){
+            System.out.println("条件");
+            conditions.parenthesesStart();
+            conditions.putLIKE("name", keywords);//判断是否为空
+            conditions.or();
+            conditions.putLIKE("labelIds", ","+labelIds+",");
+            conditions.parenthesesEnd();
         }
+        conditions.putEWIfOk("sex", sex);
+
       /*  conditions.or();//跟踪时间在详情表
         conditions.putLIKE("followTime",followTime);*/
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbStudent> listStudent = getListByPage(conditions, pager);
-
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return listStudent;
 
     }
-    /**
-     * 分页总数
-     */
-    public int getCount(String name, String labelIds,String sex, Pager pager){
-        if (StringUtil.isBlank(name)&&StringUtil.isBlank(labelIds)&&StringUtil.isBlank(sex)){
-            System.out.println("查询全部");
-            Conditions conditions = new Conditions(TbStudent.class);
-            int count = getCount(conditions);
-            return count;
-        }
-        Conditions conditions = new Conditions(TbStudent.class);
-        conditions.parenthesesStart();
-        conditions.putLIKE("name", name);
-        conditions.or();
-        conditions.putLIKE("labelIds", labelIds);
-        conditions.parenthesesEnd();
-        if (StringUtil.isNotBlank(sex)){
 
-            conditions.putEW("sex", sex);
-        }
 
-        List<TbStudent> listStudent = getListByPage(conditions, pager);
-        int count = getCount(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
-        return count;
-    }
 
 
 
