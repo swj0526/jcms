@@ -4,6 +4,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         table = layui.table,
         laydate = layui.laydate;
     //修改弹窗
+    var res;
     var mainIndex;
     laydate.render({
         elem: '#a' //指定元素
@@ -27,8 +28,17 @@ layui.use(['form', 'table', 'laydate'], function () {
             return {
                 "code": "0",
                 "count": res.count,
-                data: res
+                data: res.data
             }
+        },
+        done: function (rest, curr, count) {
+            currPage = curr;
+            res =rest;
+            if (rest.data.length == 0) {
+                currPage = curr - 1;
+            }
+            console.log(currPage);
+            console.log(rest);
         },
         cols: [
             [{
@@ -276,7 +286,10 @@ layui.use(['form', 'table', 'laydate'], function () {
                 obj.del();
                 layer.close(index);
                 $.post('/recruit/delete', {id: data.id}, function (data) {
-                    tableIns.reload()
+                    tableIns.reload();
+                    if (res.data.length-1 ==0){
+                        window.location.reload();
+                    }
                 })
             });
         } else if (obj.event === 'follow') {
