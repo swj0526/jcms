@@ -1,5 +1,11 @@
 $(function () {
-    var labelList = [{"labelId": "1", "labelNanme": "有意向"}, {"labelId": "2", "labelNanme": "没有意向"},{"labelId": "3", "labelNanme": "还在考虑"}, {"labelId": "5", "labelNanme": "犹豫不决"}, {"labelId": "6", "labelNanme": "其他"},{"labelId": "7", "labelNanme": "不明确"}, {"labelId": "8", "labelNanme": "完全没戏"}];
+    var labelList = [{"labelId": "1", "labelNanme": "有意向"}, {"labelId": "2", "labelNanme": "没有意向"}, {
+        "labelId": "3",
+        "labelNanme": "还在考虑"
+    }, {"labelId": "5", "labelNanme": "犹豫不决"}, {"labelId": "6", "labelNanme": "其他"}, {
+        "labelId": "7",
+        "labelNanme": "不明确"
+    }, {"labelId": "8", "labelNanme": "完全没戏"}];
     var color = ['#6495ED', '#9edD48', '#cca4e3', '#ffc773', '#70f3ff'];
     var appendStr = "<div style='float: inherit;'>";
     var appendStr2 = "";
@@ -32,6 +38,7 @@ $(function () {
 function hex(x) {
     return ("0" + parseInt(x).toString(16)).slice(-2);
 }
+
 var labelId = 0;
 
 function submitDiyLabel() {

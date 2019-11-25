@@ -102,10 +102,11 @@ layui.use('table', function () {
     });
     var form = layui.form;
     var layer = layui.layer;
+    var mainIndex;
     $ = layui.jquery;
 
     $("#add").on('click', function () {
-        layer.open({
+        mainIndex=layer.open({
             type: 1,
             title: "学生录入",
             btn:['提交'],
@@ -130,7 +131,7 @@ layui.use('table', function () {
                 layer.close(index);
             });
         }else if(obj.event === 'edit'){
-            layer.open({
+            mainIndex=layer.open({
                 type: 1,
                 title: "经费申请",
                 skin: "myclass", // 自定样式
@@ -148,7 +149,7 @@ layui.use('table', function () {
                 layer.close(index);
             });
         }else if(obj.event === 'again'){
-            layer.open({
+            mainIndex=layer.open({
                 type: 1,
                 title: "请假申请",
                 btn:['提交'],

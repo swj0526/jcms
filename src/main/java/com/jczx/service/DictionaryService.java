@@ -36,6 +36,9 @@ public class DictionaryService extends Service {
      */
     public ServiceResult addDictionary(String name, String remark, int type) {
         TbDictionary dictionary = new TbDictionary();
+        if(StringUtil.isBlank(name)){
+            return error("");
+        }
         dictionary.setName(name);
         dictionary.setRemark(remark);
         dictionary.setType(type);
@@ -55,6 +58,9 @@ public class DictionaryService extends Service {
      * @return
      */
     public ServiceResult modifyDictionary(String name, String remark, int id) {
+        if(StringUtil.isBlank(name)){
+            return error("");
+        }
         TbDictionary dictionary = getById(TbDictionary.class, id);
         dictionary.setName(name);
         dictionary.setRemark(remark);
@@ -93,33 +99,12 @@ public class DictionaryService extends Service {
             conditions.putLIKEIfOK("remark", keywords);
             conditions.parenthesesEnd();
         }
-
-
+         if(pager==null){
+             return  getList(conditions);
+         }
+         pager.setDataTotal(getCount(conditions));
         List<TbDictionary> list = getListByPage(conditions, pager);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
-
-    /**
-     * 获取总数
-     *
-     * @return
-     */
-    public int count(int type, String keywords) {
-        Conditions conditions = new Conditions(TbDictionary.class);
-        conditions.putEW("type", type);
-        if (StringUtil.isNotBlank(keywords)) {
-            conditions.parenthesesStart();
-            conditions.putLIKEIfOK("name", keywords);
-            conditions.or();
-            conditions.putLIKEIfOK("remark", keywords);
-            conditions.parenthesesEnd();
-        }
-
-        int count = getCount(conditions);
-        return count;
-
-    }
-
-
 }

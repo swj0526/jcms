@@ -4,6 +4,7 @@ package com.jczx.controller;
 import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
+import com.jczx.system.OptionInterface;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +43,14 @@ public class DictionaryController extends BaseController {
         return result;
     }
     @RequestMapping("/list/channel")
-    public ListByPage channel( String keywords, int limit, int page) {
+    public ServiceResult channel( String keywords, int limit, int page) {
         Pager pager = checkPager(limit, page);
-        List<TbDictionary> list = dictionaryService.listChannel(2,keywords,pager);
-        int count = dictionaryService.count(2, keywords);
-        return list(list,count);
+        List<TbDictionary> list = dictionaryService.listChannel(TbDictionary.TYPE_CHANNEL,keywords,pager);
+        return layuiList(list,pager);
+    }
+    @RequestMapping("/list/channel/options")
+    public List< ? extends OptionInterface> channelOptions( ) { //用静态常量
+        List<TbDictionary> list = dictionaryService.listChannel(TbDictionary.TYPE_CHANNEL,null,null);
+        return list;
     }
 }
