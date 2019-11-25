@@ -5,16 +5,14 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            /*,url:'/test/table/demo1.json'*/
-            , defaultToolbar: []
-            , title: '用户数据表'
+            , url: '/money/list'
             , cols: [[
                 {field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'name', title: '姓名'}
-                , {field: 'semester', title: '学年'}
-                , {field: 'Type', title: '缴费类型'}
-                , {field: 'paymentMethod', title: '缴费方式'}
-                , {field: 'totalAmount', title: '总金额'}
+                , {field: 'name', title: '姓名', width: 90}
+                , {field: 'semester', title: '学年', width: 60}
+                , {field: 'Type', title: '缴费类型', width: 90}
+                , {field: 'paymentMethod', title: '缴费方式', width: 90}
+                , {field: 'totalAmount', title: '总金额', width: 90}
                 , {field: 'hasInstalment', title: '是否分期'}
                 , {field: 'payDate', title: '缴费日期'}
                 , {field: 'discountAmount', title: '优惠金额'}
@@ -25,77 +23,84 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , {
                     field: 'invoice',
                     title: '收据',
-                    event:'invoice',
+                    event: 'invoice',
                     templet: '<div><img src="{{d.invoice}}" style="height: 50px;width: 50px" ></div>'
                 }
-                , {field: 'remark', title: '备注',event:'remark'}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo',width: 150}
+                , {field: 'remark', title: '备注', event: 'remark'}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
             ]]
+            , data: [{}]
             , page: true
-            , data: [{
-                id: "10001"
-                , name: '张三'
-                , semester: '20年'
-                , Type: '住宿费'
-                ,totalAmount:'3000'
-                , payAmount: "3000"
-                , payDate: "2019-11-13"
-                , paymentMethod: "现金"
-                , hasInstalment: "是"
-                , discountAmount: "0"
-                ,factAmount:'3000'
-                , startTime: "2019-11-14"
-                ,endTime:'2020-11-14'
-                , invoice: '../work/img/1.png'
-                , remark: '备注少时诵诗书所所所撒所所所所所所所所所所所所所所所所'
-            }]
+            ,parseData:function(res){ //res 即为原始返回的数据
+                console.log(res);
+                return{
+                    code:'0'
+                    ,data:res.data
+                    ,count:res.count
+                }
+            },
         });
     $("#add").click(function () {
-        layer.tab({
-            type: 1,
+        layer.open({
+            btnAlign: 'c',
+            type: 2,
             area: ['100%', '100%'],
-            tab: [{
-                title: '添加缴费',
-                content: '<iframe src="/money/add" frameborder="0" height="800px" width="100%"></iframe>',
-            }]
+            btn: [],
+            content: '/money/addBillPage', /*'<iframe src="" frameborder="0" height="800px" width="100%"></iframe>',*/
+
         });
     });
     $("#export").click(function () {
     })
+
     //监听行工具事件
     table.on('tool(test)', function (obj) {
         var data = obj.data;
         //console.log(obj)
         if (obj.event === 'edit') {
-            layer.tab({
+            layer.open({
                 btnAlign: 'c'
-                , type: 1
+                , type: 2
                 , area: ['100%', '100%']
-                , btn: ['提交']
+                , title: '修改'
+                , btn: []
+                , content: 'money/tomodify'
                 , success: function (index) {
                     form.val("dataForm1", data);
-                }
-                , tab: [{
-                    title: '修改信息'
-                    , content: $("#addpage").html()
+                    $("#update").click(function () {
+                        var t = $('#dataFor').serialize();
+                        $.post('/money/modify',
+                                t
+                            , function (result) {
+                                layer.open({
+                                    btnAlign: 'c'
+                                    , area: ['100px', '150px']
+                                    , content: '<p style="text-align: center">修改成功</p>'
+                                    , btn: ['确定']
+                                    , yes: function (index) {
+                                        parent.layer.close(index);
+                                    }
+                                })
 
-                }]
+                            });
+                    })
+                }
             });
-        }else if(obj.event==='invoice'){
+        } else if (obj.event === 'invoice') {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
                 , area: ['700px', '700px']
                 , btn: ['确定']
-                ,content:'<img src="'+data.invoice+'" style="width: 100%;height: 100%">'
+                , content: '<img src="' + data.invoice + '" style="width: 100%;height: 100%">'
             })
-        }else if(obj.event==='remark'){
+        } else if (obj.event === 'remark') {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
                 , area: ['700px', '700px']
                 , btn: ['确定']
-                ,content:'<div>'+data.remark+'</div>'
+                , content: '<div>' + data.remark + '</div>'
             })
         }
     });
@@ -109,4 +114,5 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     laydate.render({
         elem: '#test2'
     });
+
 });
