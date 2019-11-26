@@ -30,7 +30,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                     field: 'remark',
                     title: '渠道备注',
                 },
-
                 {
                     title: '操作',
                     minWidth: 50,
@@ -44,12 +43,6 @@ layui.use(['form', 'table', 'laydate'], function () {
         done: function (rest, curr, count) {
             currPage = curr;
             res =rest;
-           /* if (rest.data.length == 0) {
-
-                currPage = curr - 1;
-                /!*alert(currPage);*!/
-            }*/
-
             console.log(currPage);
             console.log(rest);
 
@@ -137,10 +130,9 @@ layui.use(['form', 'table', 'laydate'], function () {
     $('#add1').click(function () {
         var name = $("[name='nameA']").val();
         var remark = $("[name='remarkA']").val();
-        $.post("/dictionary/add", {
+        $.post("/dictionary/add/channel", {
             name: name,
-            remark: remark,
-            type: 2
+            remark: remark
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
@@ -155,7 +147,6 @@ layui.use(['form', 'table', 'laydate'], function () {
         $.post("/dictionary/modify", {
             name: name,
             remark: remark,
-            type: 2,
             id: data.id
         }, function (result) {
             if (result.success) {

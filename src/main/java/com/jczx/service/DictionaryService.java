@@ -27,7 +27,12 @@ import java.util.List;
  * @create 2019-11-22 8:41
  */
 @Component
-public class DictionaryService extends Service {
+public class DictionaryService extends BaseService {
+    @Override
+    public String getTableName() {
+        return TbDictionary.class.getSimpleName();
+    }
+
     /**
      * 增加字典表
      *
@@ -36,7 +41,7 @@ public class DictionaryService extends Service {
      */
     public ServiceResult addDictionary(String name, String remark, int type) {
         TbDictionary dictionary = new TbDictionary();
-        if(StringUtil.isBlank(name)){
+        if (StringUtil.isBlank(name)) {
             return error("");
         }
         dictionary.setName(name);
@@ -58,10 +63,10 @@ public class DictionaryService extends Service {
      * @return
      */
     public ServiceResult modifyDictionary(String name, String remark, int id) {
-        if(StringUtil.isBlank(name)){
+        if (StringUtil.isBlank(name)) {
             return error("");
         }
-        TbDictionary dictionary = getById(TbDictionary.class, id);
+        TbDictionary dictionary = getById(getTableName(), id);
         dictionary.setName(name);
         dictionary.setRemark(remark);
         int modify = modify(dictionary);
@@ -69,28 +74,31 @@ public class DictionaryService extends Service {
     }
 
     /**
-     *删除渠道
+     * 删除渠道
+     *
      * @param id
      * @return
      */
     public ServiceResult deleteDictionary(int id) {
+
         Conditions conditions = new Conditions(TbStudent.class);
-        conditions.putEW("channelId",id);
+        conditions.putEW("channelId", id);
         List<TbStudent> list = getList(conditions);
-        if(list.size()!=0){
+        if (list.size() != 0) {
             return error("不可删除,该标签已被使用!");
         }
         int del = delById(TbDictionary.class, id);
         return SUCCESS;
     }
+
     /**
-     * 招生渠道从字典表中取数据
+     * 根据类型从字典表中取数据
      *
      * @param
      * @return
      */
-    public List<TbDictionary> listChannel(int type, String keywords, Pager pager) {
-        Conditions conditions = new Conditions(TbDictionary.class);
+    public List<TbDictionary> list(int type, String keywords, Pager pager) {
+        Conditions conditions = new Conditions(getTableName());
         conditions.putEW("type", type);
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -99,12 +107,28 @@ public class DictionaryService extends Service {
             conditions.putLIKEIfOK("remark", keywords);
             conditions.parenthesesEnd();
         }
-         if(pager==null){
-             return  getList(conditions);
-         }
-         pager.setDataTotal(getCount(conditions));
+        if (pager == null) {
+            return getList(conditions);
+        }
+        pager.setDataTotal(getCount(conditions));
         List<TbDictionary> list = getListByPage(conditions, pager);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
+
+    /**
+     * 缴费方式从字典表中取数据
+     *
+     * @param
+     * @return
+     */
+    public List<TbDictionary> listPayWay(int type) {
+        Conditions conditions = new Conditions(getTableName());
+        conditions.putEW("type", type);
+        List<TbDictionary> list = getList(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        return list;
+    }
+
+
 }

@@ -1,10 +1,13 @@
 package com.jczx.domain;
 
+import com.jczx.system.CACHE;
 import com.jczx.system.OptionInterface;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
+import net.atomarrow.util.SpringContextUtil;
 import org.springframework.stereotype.Component;
 
+import javax.swing.text.TabableView;
 import java.util.Date;
 
 /**
@@ -30,7 +33,7 @@ public class TbDictionary extends Domain implements OptionInterface {
     @NotCreate
     public static final int TYPE_PAY_BILL = 3;
     /**
-     * 支付类型
+     * 缴费方式
      */
     @NotCreate
     public static final int TYPE_PAY = 4;
@@ -109,4 +112,6 @@ public class TbDictionary extends Domain implements OptionInterface {
     public String getOptionValue() {
         return id+"";
     }
+
+
 }
