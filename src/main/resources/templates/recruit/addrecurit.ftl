@@ -35,7 +35,35 @@
 <body>
 <div style="text-align: center; line-height: 20px; padding-top: 10px; display: none" id="error">
     <span>姓名,意向,电话必须填写</span></div>
+<#--添加标签-->
+<div style="display: none" id="addlabel">
+    <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
+        <div class="layui-form-item">
+            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+            <label class="layui-form-label">标签名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签备注</label>
+            <div class="layui-input-inline">
+                <input type="text" name="remark" placeholder="" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-left: 30%">
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="addM">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
 <div id="recruit">
     <form class="layui-form" lay-filter="addDataForm" id="dataFor" method="post">
         <div class="layui-form-item" style="width: 1000px;">
@@ -67,12 +95,12 @@
                 <label class="layui-form-label"> 出生年月</label>
                 <div class="layui-input-inline">
                     <input type="text" name="birthDate" lay-verify="required" placeholder="" autocomplete="off"
-                           class="layui-input">
+                           class="layui-input" id="dat">
                 </div>
             </div>
 
-            <div style="display: inline-block"><span
-                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+            <div style="display: inline-block">
+              <#--  <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>-->
                 <label class="layui-form-label"> 毕业院校</label>
                 <div class="layui-input-inline">
                     <input type="text" name="school" lay-verify="required" placeholder="" autocomplete="off"
@@ -91,8 +119,8 @@
                 </div>
             </div>
 
-            <div style="display: inline-block"><span
-                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+            <div style="display: inline-block">
+               <#-- <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>-->
                 <label class="layui-form-label">QQ</label>
                 <div class="layui-input-inline">
                     <input type="text" name="qq" lay-verify="required" placeholder="" autocomplete="off"
@@ -139,7 +167,7 @@
 
             <div style="display: inline-block"><span
                         style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                <label class="layui-form-label"> 联系方式</label>
+                <label class="layui-form-label"> 母亲电话</label>
                 <div class="layui-input-inline">
                     <input type="text" name="motherPhone" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input">
@@ -159,7 +187,7 @@
 
             <div style="display: inline-block"><span
                         style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                <label class="layui-form-label"> 联系方式</label>
+                <label class="layui-form-label"> 父亲电话</label>
                 <div class="layui-input-inline">
                     <input type="text" name="fatherPhone" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input">
@@ -170,7 +198,7 @@
         <div class="layui-form-item" style="width: 1000px;">
             <div style="display: inline-block"><span
                         style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                <label class="layui-form-label"> 其他联系人</label>
+                <label class="layui-form-label"> 应急联系人</label>
                 <div class="layui-input-inline">
                     <input type="text" name="otherRelativesName" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input">
@@ -179,7 +207,7 @@
 
             <div style="display: inline-block"><span
                         style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                <label class="layui-form-label"> 联系方式</label>
+                <label class="layui-form-label"> 应急电话</label>
                 <div class="layui-input-inline">
                     <input type="text" name="emergencyPhone" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input">
@@ -190,7 +218,6 @@
 
         <div class="layui-form-item" style="width: 1000px;position: relative;left: -3px">
             <div style="display: inline-block;float: left" style="height: 99px">
-
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline">
                     <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:190px"
@@ -198,15 +225,21 @@
                 </div>
                 <span
                         style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-            </div>
-            <div style="display: inline-block">
-                <label class="layui-form-label">备注</label>
-                <div class="layui-input-block" style="width: 190px">
-                    <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                <div class="layui-inline">
+                    <div class="layui-inline" >
+                        <button class="layui-btn layui-btn-xs  layui-btn-normal" type="button" id="label">添加意向</button>
+                    </div>
                 </div>
             </div>
 
 
+
+        </div>
+        <div style="display: inline-block">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block" style="width: 190px">
+                <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
         </div>
         <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
             <div class="layui-input-inline">

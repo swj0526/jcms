@@ -28,8 +28,6 @@ public class RecruitService extends Service {
      * @return
      */
     public ServiceResult addRecruit(TbStudent student) {
-        student.setCreateTime(SC.getNowDate());//操作时间
-        student.setOperatorId(SC.getOperatorId());//操作人
         Conditions conditions = new Conditions(TbStudent.class);
         conditions.putEW("studentPhone", student.getStudentPhone());
         conditions.or();
@@ -38,15 +36,23 @@ public class RecruitService extends Service {
         if (listRecruit.size() != 0) {
             return error("学生电话,母亲电话有重复");
         }
-        if (StringUtil.isNotBlank(student.getName()) && StringUtil.isNotBlank(student.getLabelIds())
-                && StringUtil.isNotBlank(student.getStudentPhone())) {
+        if (StringUtil.isNotBlank(student.getName())//学生姓名
+                && StringUtil.isNotBlank(student.getLabelIds())//意向标签
+                && StringUtil.isNotBlank(student.getStudentPhone())//学生电话
+                && StringUtil.isNotBlank(student.getMotherPhone())//母亲电话
+                && StringUtil.isNotBlank(student.getMotherName())//母亲名字
+        ) {
+            student.setCreateTime(SC.getNowDate());//操作时间
+            student.setOperatorId(SC.getOperatorId());//操作人
             add(student);
             return SUCCESS;
         }
         return error("姓名,意向,学生电话必须填写");
     }
+
     /**
      * 查询当前行数据将数,据赋值到页面上,该方法配合修改
+     *
      * @param
      * @return
      */
@@ -56,8 +62,10 @@ public class RecruitService extends Service {
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return getStudent;
     }
+
     /**
      * 修改
+     *
      * @param student
      * @return
      */
@@ -70,6 +78,7 @@ public class RecruitService extends Service {
 
     /**
      * 删除
+     *
      * @param student
      * @return
      */
@@ -79,19 +88,21 @@ public class RecruitService extends Service {
     }
 
 
-
     /**
      * 查询
      */
-    public List<TbStudent> listRecruit(String keywords, String labelIds,String sex, Pager pager) { //模糊关键字keywords查询用or
+    public List<TbStudent> listRecruit(String keywords, String labelIds, String sex, Pager pager) { //模糊关键字keywords查询用or
         Conditions conditions = new Conditions(TbStudent.class);
-        if (StringUtil.isNotBlank(keywords)){
+        if (StringUtil.isNotBlank(keywords)) {
             System.out.println("条件");
             conditions.parenthesesStart();
             conditions.putLIKE("name", keywords);//判断是否为空
-            conditions.or();
-            conditions.putLIKE("labelIds", ","+labelIds+",");
+           /* conditions.or();
+            conditions.putLIKE("labelIds", ","+labelIds+",");*/
             conditions.parenthesesEnd();
+        }
+        if (StringUtil.isNotBlank(labelIds)) {
+            conditions.putLIKE("labelIds", "," + labelIds + ",");
         }
         conditions.putEWIfOk("sex", sex);
 
@@ -103,9 +114,6 @@ public class RecruitService extends Service {
         return listStudent;
 
     }
-
-
-
 
 
 }

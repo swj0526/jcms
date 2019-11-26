@@ -32,9 +32,9 @@ public class TbStudent extends Domain {
 
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
-    private Integer motherName;//母亲名字
-    private Integer fatherName;//父亲名字
-    private Integer otherRelativesName;//其他亲属名字
+    private String motherName;//母亲名字
+    private String fatherName;//父亲名字
+    private String otherRelativesName;//其他亲属名字
     private String motherPhone;//母亲联系方式
     private String fatherPhone;//父亲联系方式
     private String emergencyPhone;//其他亲属联系方式
@@ -149,27 +149,27 @@ public class TbStudent extends Domain {
         this.operatorId = operatorId;
     }
 
-    public Integer getMotherName() {
+    public String getMotherName() {
         return motherName;
     }
 
-    public void setMotherName(Integer motherName) {
+    public void setMotherName(String motherName) {
         this.motherName = motherName;
     }
 
-    public Integer getFatherName() {
+    public String getFatherName() {
         return fatherName;
     }
 
-    public void setFatherName(Integer fatherName) {
+    public void setFatherName(String fatherName) {
         this.fatherName = fatherName;
     }
 
-    public Integer getOtherRelativesName() {
+    public String getOtherRelativesName() {
         return otherRelativesName;
     }
 
-    public void setOtherRelativesName(Integer otherRelativesName) {
+    public void setOtherRelativesName(String otherRelativesName) {
         this.otherRelativesName = otherRelativesName;
     }
 

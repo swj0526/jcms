@@ -10,12 +10,9 @@
 <div class="layui-row layui-col-space10" style="margin: 0">
     <div class="layui-col-md6">
         <div>
-            <div class="layui-btn-group">
-                <button class="layui-btn data-add-btn" type="button" >添加渠道信息</button>
-            </div>
             <div class="layui-collapse" lay-filter="test">
                 <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">第一次跟进</h2>
+                    <h2 class="layui-colla-title">跟进--${birth}</h2>
                     <div class="layui-colla-content">
                         <div style="padding: 20px; background-color: #F2F2F2;">
                             <div class="layui-row layui-col-space15">
@@ -25,24 +22,18 @@
 
                                             <div class="layui-form-item">
                                                 <div class="layui-inline">
-                                                    <label class="layui-form-label"
-                                                           style="padding-left: 0px">跟进时间</label>
-                                                    <div class="layui-input-inline" style="width: 90px">
-                                                        <input style="border: 0;" class="layui-input" name="date"
-                                                               id="test1" type="text" disabled
-                                                               value="2019-11-19">
-                                                    </div>
+
                                                     <label class="layui-form-label" style="padding-left: 0px">意向</label>
                                                     <div class="layui-input-inline" style="width: 90px">
                                                         <input style="border: 0;%" class="layui-input" name="date"
                                                                id="test1" type="text" disabled
-                                                               value="摇摆不定">
+                                                               value=${student.labelIds}>
                                                     </div>
                                                     <label class="layui-form-label" style="padding-left: 0px">渠道</label>
                                                     <div class="layui-input-inline" style="width: 150px">
                                                         <input style="border: 0;" class="layui-input" name="date"
                                                                id="test1" type="text" disabled
-                                                               value="网络xxxx">
+                                                               value=${student.channelId}>
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,26 +56,7 @@
 
                     </div>
                 </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">第二次跟进</h2>
-                    <div class="layui-colla-content">
-                    </div>
-                </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">第三次跟进</h2>
-                    <div class="layui-colla-content">
-                        <p>在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui
-                            认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。
-                            <br><br>
-                            因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。</p>
-                    </div>
-                </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">第四次跟进</h2>
-                    <div class="layui-colla-content">
-                        <p>man！ 所以这个问题不要再出现了。。。</p>
-                    </div>
-                </div>
+
             </div>
 
 
@@ -101,9 +73,10 @@
                     <label class="layui-form-label">跟进时间</label>
                     <div class="layui-input-inline">
                         <input type="text" name="title" required lay-verify="required" placeholder="请输入"
-                               autocomplete="off" class="layui-input">
+                               autocomplete="off" class="layui-input" id="date">
                     </div>
                 </div>
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">意向</label>
                     <div class="layui-inline" style="width: 190px">
@@ -111,23 +84,11 @@
                     </div>
 
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">来源渠道</label>
-                    <div class="layui-input-inline">
-                        <select name="city" lay-verify="required">
-                            <option value=""></option>
-                            <option value="0">北京</option>
-                            <option value="1">上海</option>
-                            <option value="2">广州</option>
-                            <option value="3">深圳</option>
-                            <option value="4">杭州</option>
-                        </select>
-                    </div>
-                </div>
+
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">普通文本域</label>
+                    <label class="layui-form-label">备注:</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea name="remark" placeholder="请输入内容" class="layui-textarea">1</textarea>
                     </div>
                 </div>
 
@@ -142,11 +103,17 @@
         </div>
         <script src="/recruit/js/xm.js" type="text/javascript"></script>
         <script>
-            layui.use(['element', 'layer','form','jquery'], function () {
+            layui.use(['element', 'layer','form','jquery','laydate'], function () {
                 var element = layui.element;
                 var layer = layui.layer;
                 var form = layui.form;
                 var $ = layui.jquery;
+                var laydate = layui.laydate;
+                laydate.render({
+                    elem: '#date' //指定元素
+
+                });
+
                 //监听提交
                 form.on('submit(formDemo)', function (data) {
                     layer.msg(JSON.stringify(data.field));

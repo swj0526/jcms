@@ -118,11 +118,7 @@
                     <div id="demo1" class="xm-select-demo"style=" width:190px"; ></div>
                 </div>
             </div>
-            <div class="layui-inline">
-                <div class="layui-inline" style="width:50px">
-                    <button class="layui-btn layui-btn-xs  layui-btn-normal" id="">添加意向</button>
-                </div>
-            </div>
+
 
         </div>
 

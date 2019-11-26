@@ -33,15 +33,6 @@ public class RecruitController extends BaseController {
         return "recruit/recruit";
     }
 
-    /**
-     * 详情
-     *
-     * @return
-     */
-    @RequestMapping("/detailfollow")
-    public String upFollow() {
-        return "recruit/detailfollow";
-    }
 
     /**
      * 数据统计页面
@@ -66,8 +57,6 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/tomodify")
     public String toModify(Integer id,Map<String,Object> map ) {
-        System.out.println(id);
-        System.out.println("进入页面");
         TbStudent student = recruitService.getStudent(id);
         map.put("student",student);
         map.put("birth",student.getBirthDate().toString());
@@ -115,11 +104,26 @@ public class RecruitController extends BaseController {
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult listRecruit(String name, String labelIds, String sex, int page, int limit) {
+        System.out.println(labelIds);
         Pager pager = checkPager(limit, page);
         List<TbStudent> list = recruitService.listRecruit(name,labelIds,sex,pager);
        return  layuiList(list,pager);
 
 
+    }
+    /**
+     * 招生信息详情
+     *
+     * @return
+     */
+    @RequestMapping("/detailfollow")
+    public String upFollow(Integer id,Map<String,Object> map) {
+        System.out.println(id);
+        TbStudent student = recruitService.getStudent(id);
+        map.put("student",student);
+        map.put("birth",student.getBirthDate().toString());
+        map.put("createTime",student.getCreateTime().toString());
+        return "recruit/detailfollow";
     }
 
 
