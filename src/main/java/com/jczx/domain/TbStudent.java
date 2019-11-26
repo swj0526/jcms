@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.CACHE;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -277,5 +278,9 @@ public class TbStudent extends Domain {
 
     public void setIntegralId(Integer integralId) {
         this.integralId = integralId;
+    }
+
+    public  String getChannelName(){
+        return CACHE.getChannelName(channelId);
     }
 }
