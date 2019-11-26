@@ -69,6 +69,17 @@ public class DictionaryController extends BaseController {
         return result;
     }
     /**
+     * 添加招缴费类型信息
+     * @param name
+     * @param remark
+     * @return
+     */
+    @RequestMapping("/add/dispatch")
+    public ServiceResult addDispatch(String name, String remark) {
+        ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_DISPATCH );
+        return result;
+    }
+    /**
      * //todo 只要渠道可以删除,少其他的字典的删除方法
      * @param id
      * @return
@@ -133,6 +144,15 @@ public class DictionaryController extends BaseController {
     @RequestMapping("/list/payTerm/options")
     public List<? extends OptionInterface> payTermOptions() {
         List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_TERM, null, null);
+        return list;
+    }
+    /**
+     * 不带分页的的发文类型列表
+     * @return
+     */
+    @RequestMapping("/list/dispatch/options")
+    public List<? extends OptionInterface> dispatchOptions() {
+        List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_DISPATCH, null, null);
         return list;
     }
 }

@@ -38,22 +38,26 @@ public class CACHE {
 
     private static TbDictionary getDictionary(Integer dictionaryId) {
         ValueOperations<String, Object> stringStringValueOperations = redisTemplate.opsForValue();
-        TbDictionary dictionary = (TbDictionary) stringStringValueOperations.get(dictionaryId);
+        TbDictionary dictionary = (TbDictionary) stringStringValueOperations.get(getKey(TbDictionary.class.getSimpleName(), dictionaryId));
         if (dictionary != null) {
-            /* stringStringValueOperations.set(2, new Integer[]{1});*/
             return dictionary;
         }
         TbDictionary dictionaryDB = service.getById(TbDictionary.class, dictionaryId);
         if (dictionaryDB == null) {
             return null;
         }
-        stringStringValueOperations.set(getKey(TbDictionary.class.getSimpleName(),dictionaryId), dictionaryDB);
+        stringStringValueOperations.set(getKey(TbDictionary.class.getSimpleName(), dictionaryId), dictionaryDB);
         return dictionaryDB;
 
     }
 
+    /**
+     * 返回渠道的名称
+     * @param channelId
+     * @return
+     */
     public static String getChannelName(Integer channelId) {
-        TbDictionary dictionary = getDictionary(channelId); //getksy
+        TbDictionary dictionary = getDictionary(channelId);
         if (dictionary == null) {
             return "";
         }
