@@ -57,7 +57,25 @@ public class CACHE {
      * @return
      */
     public static String getChannelName(Integer channelId) {
+        if(channelId==null){
+            return "";
+        }
         TbDictionary dictionary = getDictionary(channelId);
+        if (dictionary == null) {
+            return "";
+        }
+        return dictionary.getName();
+    }
+    /**
+     * 返回缴费方式的名称
+     * @param paymentMethodId
+     * @return
+     */
+    public static String getPayWayName(Integer paymentMethodId) {
+        if(paymentMethodId==null){
+            return "";
+        }
+        TbDictionary dictionary = getDictionary(paymentMethodId);
         if (dictionary == null) {
             return "";
         }

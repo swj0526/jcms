@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.CACHE;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,8 +20,6 @@ public class TbPayBill extends Domain {
     private String name;//学生姓名
     @NotCreate
     private String semester;//学期
-    @NotCreate
-    private String paymentMethod;//方式
     @NotCreate
     private String type;//类型
     @NotCreate
@@ -64,13 +63,7 @@ public class TbPayBill extends Domain {
         this.semester = semester;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 
     public String getType() {
         return type;
@@ -230,5 +223,9 @@ public class TbPayBill extends Domain {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getPaymentMethod(Integer paymentMethodId){
+        return CACHE.getPayWayName(paymentMethodId);
     }
 }
