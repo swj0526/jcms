@@ -27,17 +27,16 @@ layui.use(['form', 'table', 'laydate'], function () {
          /*   console.log(res);*/
             return {
                 "code": "0",
-                "count": res.count,
-                data: res.data
+                "count": res.pager.dataTotal,
+                data: res.result
             }
         },
         done: function (rest, curr, count) {
-            currPage = curr;
+            //如果是异步请求数据方式，res即为你接口返回的信息。
+            //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
             res =rest;
-            if (rest.data.length == 0) {
-                currPage = curr - 1;
-            }
-            console.log(currPage);
+
+
             console.log(rest);
         },
         cols: [

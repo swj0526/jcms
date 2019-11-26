@@ -10,12 +10,12 @@
 <body>
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script id="barDemo" type="text/html">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
 </script>
 <script id="toolbarDemo" type="text/html">
     <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon layui-icon-add-1"></i></button>
     </div>
 </script>
 <div id="ll" style="display: none">

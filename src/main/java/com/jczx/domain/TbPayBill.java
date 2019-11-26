@@ -16,20 +16,28 @@ import java.util.Date;
 @Component
 public class TbPayBill extends Domain {
     @NotCreate
-    private Integer name;//学生姓名
+    private String name;//学生姓名
+    @NotCreate
+    private String semester;//学期
+    @NotCreate
+    private String paymentMethod;//方式
+    @NotCreate
+    private String type;//类型
+    @NotCreate
+    private String URL;//附件地址
     private Integer id;
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
-    private Integer typeId;//缴费类型//改
+    private Integer typeId;//缴费类型
     private Integer paymentMethodId;//缴费方式
     private Integer semesterId;//学期
     private Integer totalAmount;//应付金额
-    private Integer payAmount;//金额//
+    private Integer payAmount;//金额
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date payDate;//缴费日期//
     private Boolean hasInstalment;//是否分期
     private Integer discountAmount;//优惠金额
-    private Integer factAmount;//实付金额//加fact
+    private Integer factAmount;//实付金额//
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date startTime;//开始时间
     @DateTimeFormat(pattern ="yyyy-MM-dd")
@@ -40,29 +48,66 @@ public class TbPayBill extends Domain {
     private Date createTime;//操作时间
     private String remark;//备注
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Integer name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public Integer getPid() {
         return pid;
     }
+
     public void setPid(Integer pid) {
         this.pid = pid;
     }
+
     public Integer getStudentId() {
         return studentId;
     }
+
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }

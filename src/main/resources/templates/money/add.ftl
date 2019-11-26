@@ -23,7 +23,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">用户姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name1" name="name" autocomplete="off" class="layui-input">
+                            <input type="text" id="name1" required lay-verify="required" name="name" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -72,15 +72,17 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">总金额</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="totalAmount" autocomplete="off" class="layui-input">
+                            <input type="text" name="totalAmount" required lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
-                    <div class="layui-inline">
+                    <div class="layui-inline" style="margin-right: 0px;margin-bottom: 0px;">
                         <label class="layui-form-label">是否分期</label>
-                        <div class="layui-input-inline">
-                            <input name="hasInstalment" type="radio" value="true" title="是">
-                            <input name="hasInstalment" type="radio" value="false" title="否" checked>
+                        <div class="layui-inline" style="width: 190px;margin-right: 0px;margin-bottom: 0px;">
+                            <select lay-verify="" name="hasInstalment" id="hasInstalment">
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -88,7 +90,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">缴费日期</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" name="payDate" id="test1" type="text" placeholder="yyyy-MM-dd">
+                            <input class="layui-input" required lay-verify="required" name="payDate" id="test1" type="text">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -102,13 +104,13 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">金额</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="payAmount" autocomplete="off" class="layui-input">
+                            <input type="text" name="payAmount" required lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">总计</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="factAmount" autocomplete="off" class="layui-input">
+                            <input type="text" name="factAmount" required lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
@@ -116,15 +118,15 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">开始时间</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" name="startTime" id="test2" type="text"
-                                   placeholder="yyyy-MM-dd">
+                            <input class="layui-input" name="startTime" required lay-verify="required" id="test2" type="text"
+                                   >
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">结束时间</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" name="endTime" id="test3" type="text"
-                                   placeholder="yyyy-MM-dd">
+                            <input class="layui-input" name="endTime" required lay-verify="required" id="test3" type="text"
+                                   >
                         </div>
                     </div>
                 </div>
@@ -137,10 +139,11 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="layui-btn" lay-submit id="submit"
+                    style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
+            </button>
         </form>
-        <button type="button" class="layui-btn" id="submit"
-                style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
-        </button>
+
     </div>
 </fieldset>
 </body>

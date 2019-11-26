@@ -10,6 +10,9 @@
 <div class="layui-row layui-col-space10" style="margin: 0">
     <div class="layui-col-md6">
         <div>
+            <div class="layui-btn-group">
+                <button class="layui-btn data-add-btn" type="button" >添加渠道信息</button>
+            </div>
             <div class="layui-collapse" lay-filter="test">
                 <div class="layui-colla-item">
                     <h2 class="layui-colla-title">第一次跟进</h2>
@@ -139,10 +142,11 @@
         </div>
         <script src="/recruit/js/xm.js" type="text/javascript"></script>
         <script>
-            layui.use(['element', 'layer','form'], function () {
+            layui.use(['element', 'layer','form','jquery'], function () {
                 var element = layui.element;
                 var layer = layui.layer;
                 var form = layui.form;
+                var $ = layui.jquery;
                 //监听提交
                 form.on('submit(formDemo)', function (data) {
                     layer.msg(JSON.stringify(data.field));

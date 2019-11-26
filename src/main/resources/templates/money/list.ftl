@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/money/js/money.js"></script>
     <style>
-        body .layer-ext-myskin .layui-layer-content {
+        body .layer-ext-myskin . layui-layer-content {
             overflow: visible;
         }
     </style>
@@ -23,7 +23,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="例：1990/张三/学号">
+                                <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input" placeholder="例：1990/张三/学号">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <a class="layui-btn" lay-filter="data-search-btn">查询</a>
+                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询</button>
                             <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">添加</button>
                             <button class="layui-btn" type="button" lay-filter="data-search-btn" id="export">导出</button>
                         </div>

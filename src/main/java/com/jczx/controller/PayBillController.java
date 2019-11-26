@@ -1,20 +1,23 @@
 package com.jczx.controller;
 
 import com.jczx.bean.ListByPage;
-import com.jczx.bean.PayBillBean;
 import com.jczx.domain.TbPayBill;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
+import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.jczx.service.moneyService;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 丛枭钰
@@ -41,16 +44,18 @@ public class PayBillController extends BaseController {
     public String kkk() {
         return "money/kkk";
     }
-
     @RequestMapping("/tomodify")
-    public String toModify() {
-        //moneyService.getBill(id);
+    public String toModify(int id,Map<String,Object> map) {
+        TbPayBill bill = moneyService.getBill(id);
+        bill.setName("张三");
+        bill.setSemester("20年");
+        bill.setPaymentMethod("学费");
+        bill.setType("微信");
+        map.put("bill",bill);
         return "money/modify";
     }
-
     /**
      * 添加页面
-     *
      * @return
      */
     @RequestMapping("/addBillPage")
@@ -87,13 +92,15 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ListByPage getList(int page, int limit) {
+    public ListByPage getList(String keyword, Integer type, Date date,int page, int limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
-        List<PayBillBean> PayBillBean = moneyService.listBill(pager);
-        int count = moneyService.getCount();
-        return null;
+        List<TbPayBill> PayBillBean = moneyService.listBill(keyword,type,date,pager);
+        ListByPage list=new ListByPage();
+        list.setData(PayBillBean);
+        list.setCount(pager.getDataTotal());
+        return list;
     }
 
     @RequestMapping("/modify")
@@ -101,6 +108,15 @@ public class PayBillController extends BaseController {
     public ServiceResult modify(TbPayBill payBill) {
         ServiceResult serviceResult = moneyService.modifyBill(payBill);
         return serviceResult;
+    }
+    @RequestMapping("/toExcel")
+    @ResponseBody
+    public Render ex(String keyword, Integer type, Date date)  {
+        Pager pager = new Pager();
+        pager.setPageSize(100000);
+        pager.setCurrentPage(1);
+        InputStream inputStream = moneyService.xlsx(keyword,type,date,pager);
+        return Render.renderFile("学生信息表.xls", inputStream);
     }
 
 

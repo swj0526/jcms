@@ -10,8 +10,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , defaultToolbar: []
             , title: '用户数据表'
             , cols: [[
-                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'type', title: '类型'}
+                {field: 'type', title: '类型'}
+                ,{field: 'remark', title: '备注'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 130}
             ]]
             , page: true
