@@ -3,13 +3,17 @@ package com.jczx.controller;
 import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
+import com.jczx.service.moneyService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
+import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -56,11 +60,11 @@ public class RecruitController extends BaseController {
      * 修改学生页面信息
      */
     @RequestMapping("/tomodify")
-    public String toModify(Integer id,Map<String,Object> map ) {
+    public String toModify(Integer id, Map<String, Object> map) {
         TbStudent student = recruitService.getStudent(id);
-        map.put("student",student);
-        map.put("birth",student.getBirthDate().toString());
-        map.put("createTime",student.getCreateTime().toString());
+        map.put("student", student);
+        map.put("birth", student.getBirthDate().toString());
+        map.put("createTime", student.getCreateTime().toString());
         return "/recruit/modifyrecurit";
     }
 
@@ -86,6 +90,7 @@ public class RecruitController extends BaseController {
 
     /**
      * 删除
+     *
      * @param student
      * @return
      */
@@ -98,33 +103,50 @@ public class RecruitController extends BaseController {
 
     /**
      * 查询
+     *
      * @param
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listRecruit(String name, String labelIds, String sex, int page, int limit) {
-        System.out.println(labelIds);
+    public ServiceResult listRecruit(String keywords, String labelIds, String sex, int page, int limit) {
+        System.out.println(keywords);
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(name,labelIds,sex,pager);
-       return  layuiList(list,pager);
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, sex, pager);
+        return layuiList(list, pager);
 
 
     }
+
     /**
      * 招生信息详情
      *
      * @return
      */
     @RequestMapping("/detailfollow")
-    public String upFollow(Integer id,Map<String,Object> map) {
+    public String upFollow(Integer id, Map<String, Object> map) {
         System.out.println(id);
         TbStudent student = recruitService.getStudent(id);
-        map.put("student",student);
-        map.put("birth",student.getBirthDate().toString());
-        map.put("createTime",student.getCreateTime().toString());
+        map.put("student", student);
+        map.put("birth", student.getBirthDate().toString());
+        map.put("createTime", student.getCreateTime().toString());
         return "recruit/detailfollow";
     }
 
-
+    /**
+     * 导出
+     * @param
+     * @param labelIds
+     * @param sex
+     * @param page
+     * @param limit
+     * @return
+     */
+    @RequestMapping("/toExcel")
+    @ResponseBody
+    public Render ex(String keywords, String labelIds, String sex, int page, int limit) {
+        Pager pager = checkPager(limit, page);
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds, sex, pager);
+        return Render.renderFile("招生信息表.xls", inputStream);
+    }
 }

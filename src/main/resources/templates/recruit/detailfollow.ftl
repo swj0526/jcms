@@ -31,7 +31,7 @@
                                                     </div>
                                                     <label class="layui-form-label" style="padding-left: 0px">渠道</label>
                                                     <div class="layui-input-inline" style="width: 150px">
-                                                        <input style="border: 0;" class="layui-input" name="date"
+                                                        <input style="border: 0;" class="layui-input" name="channelId"
                                                                id="test1" type="text" disabled
                                                                value=${student.channelId}>
                                                     </div>

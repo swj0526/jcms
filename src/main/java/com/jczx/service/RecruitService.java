@@ -1,5 +1,6 @@
 package com.jczx.service;
 
+import com.jczx.domain.TbPayBill;
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -8,9 +9,13 @@ import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
+import net.atomarrow.util.excel.ExcelDatas;
+import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
 
 
+import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,18 +41,19 @@ public class RecruitService extends Service {
         if (listRecruit.size() != 0) {
             return error("学生电话,母亲电话有重复");
         }
-        if (StringUtil.isNotBlank(student.getName())//学生姓名
-                && StringUtil.isNotBlank(student.getLabelIds())//意向标签
-                && StringUtil.isNotBlank(student.getStudentPhone())//学生电话
-                && StringUtil.isNotBlank(student.getMotherPhone())//母亲电话
-                && StringUtil.isNotBlank(student.getMotherName())//母亲名字
+        if (StringUtil.isBlank(student.getName())//学生姓名
+                        || StringUtil.isBlank(student.getLabelIds())//意向标签
+                        || StringUtil.isBlank(student.getStudentPhone())//学生电话
+                        || StringUtil.isBlank(student.getMotherPhone())//母亲电话
+                        || StringUtil.isBlank(student.getMotherName())//母亲名字
         ) {
-            student.setCreateTime(SC.getNowDate());//操作时间
-            student.setOperatorId(SC.getOperatorId());//操作人
-            add(student);
-            return SUCCESS;
+            return error("姓名,意向,学生电话必须填写");
         }
-        return error("姓名,意向,学生电话必须填写");
+        student.setCreateTime(SC.getNowDate());//操作时间
+        student.setOperatorId(SC.getOperatorId());//操作人
+        add(student);
+        return SUCCESS;
+
     }
 
     /**
@@ -97,10 +103,11 @@ public class RecruitService extends Service {
             System.out.println("条件");
             conditions.parenthesesStart();
             conditions.putLIKE("name", keywords);//判断是否为空
-           /* conditions.or();
-            conditions.putLIKE("labelIds", ","+labelIds+",");*/
+            conditions.or();
+            conditions.putLIKE("school", keywords);
             conditions.parenthesesEnd();
         }
+
         if (StringUtil.isNotBlank(labelIds)) {
             conditions.putLIKE("labelIds", "," + labelIds + ",");
         }
@@ -113,6 +120,24 @@ public class RecruitService extends Service {
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return listStudent;
 
+    }
+
+    /**
+     * 导出
+     *
+     * @param keywords
+     * @param labelIds
+     * @param sex
+     * @param pager
+     * @return
+     */
+    public InputStream studentExcel(String keywords, String labelIds, String sex, Pager pager) {
+        ExcelDatas excelDatas = new ExcelDatas();
+        List<TbStudent> list = listRecruit(keywords, labelIds, sex, pager);//调用查询信息
+        excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "意向", "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelIds", "birthDate", "school", "studentPhone", "qq", "weChat", "channelId"});
+        InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
     }
 
 

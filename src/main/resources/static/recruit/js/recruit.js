@@ -125,9 +125,9 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     curr: 1 //重新从第 1 页开始
                 }
                 , where: {
-                    'name': demoReload.val(),
-                    'studentPhone': demoReload.val(),
-                    'school': demoReload.val(),
+                    'keywords': demoReload.val(),
+                    'keywords': demoReload.val(),
+                    'keywords': demoReload.val(),
                     'labelIds': labelIds.val(),
                     'sex': sex.val()
                 }
@@ -141,7 +141,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     });
     //监听导出事件
     $("#download").click(function () {
-        alert("导出")
+        window.location.href="/recruit/toExcel?page="+1+"&limit="+99999;
     });
     //监听导入事件
     $("#upload").click(function () {
@@ -172,7 +172,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     //添加招生信息
     $("#addSubmit").click(function () {
         var seList = new Array();
-        var selectArr = demo1.getValue().valueOf();
+        var selectArr = demo1.getValue().valueOf();//获取复选框的值
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
                 if (k1 == "value") {
@@ -224,12 +224,6 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             }
         })
     });
-
-    //tab弹窗修改详情
-    function text() {
-
-    }
-
     //添加标签弹窗
     $("#label").click(function () {
         layer.open({
@@ -241,18 +235,6 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
         });
     });
-
-    //查看跟踪信息
-    /*  function recruit() {
-          layer.open({
-              type: 1,
-              title: "跟进情况",
-              // skin: 'layui-layer-rim', //加上边框
-              area: ['800px'], //设置宽高
-              content: $("#updateOrDelete"),
-
-          });
-      }*/
 
 //监听行
     table.on('tool(currentTableFilter)', function (obj) {
