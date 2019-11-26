@@ -95,7 +95,19 @@ layui.use('table', function () {
     var layer = layui.layer;
 
     $ = layui.jquery;
-
+    form.on("submit(formDemo)", function (obj) {
+        //序列化表单提交数据
+        var serialize = $("#dataFor").serialize();
+        //发送ajasx请求
+        var id = obj.id;
+        $.post(url, serialize, function (result) {
+            layer.msg("成功");
+            //关闭弹出层
+            layer.close(mainIndex);
+            //刷新数据表格
+            tableIns.reload();
+        });
+    });
     $("#add").on('click', function () {
         layer.open({
             type: 1,

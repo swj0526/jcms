@@ -188,11 +188,11 @@
     var step1 = new SetStep({
         content: '.stepCont1',
         showBtn: false,
-    })
+    });
     var step2 = new SetStep({
         content: '.stepCont2',
         clickAble: false
-    })
+    });
     var step3 = new SetStep({
         content: '.stepCont3'
     })
