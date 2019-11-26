@@ -49,8 +49,8 @@ public class PayBillController extends BaseController {
         TbPayBill bill = moneyService.getBill(id);
         bill.setName("张三");
         bill.setSemester("20年");
-        bill.setPaymentMethod("学费");
-        bill.setType("微信");
+        bill.setPaymentMethod("现金");
+        bill.setType("1");
         map.put("bill",bill);
         return "money/modify";
     }
@@ -97,6 +97,9 @@ public class PayBillController extends BaseController {
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
         List<TbPayBill> PayBillBean = moneyService.listBill(keyword,type,date,pager);
+        /*for (TbPayBill pay:PayBillBean){
+            System.out.println("aaaaaaaaaa"+pay.getPaymentMethod(pay.getPaymentMethodId()));
+        }*/
         ListByPage list=new ListByPage();
         list.setData(PayBillBean);
         list.setCount(pager.getDataTotal());

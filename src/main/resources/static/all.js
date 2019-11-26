@@ -34,23 +34,29 @@ var sel = function () {
         var form = layui.form;
         //传入的字典的地址
 
-        var url = $('#decSelect').attr('url');
+        $(".decSelect").each(function () {
+           var url = $(this).attr('url');
+           var dom = $(this);
+            //重新渲染表单
+            function renderForm() {
+                layui.use('form', function () {
+                    var form = layui.form; //高版本建议把括号去掉，有的低版本，需要加()
+                    form.render();
+                });
+            }
 
-        //重新渲染表单
-        function renderForm() {
-            layui.use('form', function () {
-                var form = layui.form; //高版本建议把括号去掉，有的低版本，需要加()
-                form.render();
+            $.post(url, function (result) {
+                $.each(result, function (key, value) {
+                    dom.append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
+                });
+                renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
             });
-        }
+        })
 
-        $.post(url,function (result) {
-            $.each(result, function (key, value) {
-                $("#decSelect").append("<option value=" + value.optionValue+ ">" + value.optionText + "</option>");
-            });
-            renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
-        });
-    });
+
+
+
+    })
 }
 /*  上面的代码要需要下面指定的格式,url,id指定decSelect
     <form class="layui-form" action="">

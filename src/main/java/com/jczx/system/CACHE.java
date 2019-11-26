@@ -76,6 +76,7 @@ public class CACHE {
             return "";
         }
         TbDictionary dictionary = getDictionary(paymentMethodId);
+        System.out.println(paymentMethodId);
         if (dictionary == null) {
             return "";
         }

@@ -17,6 +17,8 @@ import java.util.Date;
 @Component
 public class TbPayBill extends Domain {
     @NotCreate
+    private  String paymentMethod;
+    @NotCreate
     private String name;//学生姓名
     @NotCreate
     private String semester;//学期
@@ -47,6 +49,14 @@ public class TbPayBill extends Domain {
     private Date createTime;//操作时间
     private String remark;//备注
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     public String getName() {
         return name;
     }
@@ -62,8 +72,6 @@ public class TbPayBill extends Domain {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-
-
 
     public String getType() {
         return type;
@@ -225,7 +233,8 @@ public class TbPayBill extends Domain {
         this.remark = remark;
     }
 
-    public String getPaymentMethod(Integer paymentMethodId){
+    /*public String getPaymentMethod(){
+        System.out.println(paymentMethodId);
         return CACHE.getPayWayName(paymentMethodId);
-    }
+    }*/
 }

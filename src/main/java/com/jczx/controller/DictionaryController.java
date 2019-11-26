@@ -125,6 +125,7 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/list/payWay/options")
     public List<? extends OptionInterface> payWayOptions() {
+        System.out.println(1);
         List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_PAY, null, null);
         return list;
     }

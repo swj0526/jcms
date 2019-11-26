@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/money/js/money.js"></script>
+    <script type="text/javascript" src="/all.js"></script>
     <style>
         body .layer-ext-myskin . layui-layer-content {
             overflow: visible;
@@ -23,7 +24,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input" placeholder="例：1990/张三/学号">
+                                <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input"
+                                       placeholder="例：1990/张三/学号">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -45,27 +47,27 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">缴费类型</label>
                             <div class="layui-inline">
-                                <select name="city" lay-verify="">
-                                    <option value="">全部</option>
-                                    <option value="01">学费</option>
-                                    <option value="02">住宿费</option>
-                                    <option value="03">学杂费</option>
+                                <select name="list" lay-verify="required" id="decSelect"
+                                        url="/dictionary/list/payType/options">
+                                    <option value="">请选择</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">日期范围</label>
-                            <div class="layui-input-inline">
-                                <input class="layui-input" name="date" id="test6" type="text" placeholder=" - ">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">日期范围</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="date" id="test6" type="text" placeholder=" - ">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询
+                                </button>
+                                <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">添加
+                                </button>
+                                <button class="layui-btn" type="button" lay-filter="data-search-btn" id="export">导出
+                                </button>
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询</button>
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">添加</button>
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="export">导出</button>
-                        </div>
                     </div>
-
                 </form>
 
             </div>
@@ -84,4 +86,7 @@
     </script>
 </div>
 </body>
+<script>
+    sel();
+</script>
 </html>
