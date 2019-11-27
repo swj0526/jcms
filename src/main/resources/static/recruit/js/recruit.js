@@ -102,11 +102,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     title: '母亲联系方式'
                     , width: 150
                 },
-                {
-                    field: 'fatherPhone',
-                    title: '父亲联系方式'
-                    , width: 150
-                },
+
                 {
                     title: '操作',
                     Width: 300,

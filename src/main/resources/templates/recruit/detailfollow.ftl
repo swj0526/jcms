@@ -31,22 +31,74 @@
 <body>
 <div class="layui-row layui-col-space10" style="margin: 0">
     <div class="layui-col-md12">
-        <div>
-            <div class="layui-btn-group">
+        <div >
+            <div class="layui-btn-group" style="position: relative;left: 90% ">
                 <button class="layui-btn data-add-btn" type="button" id="butfollow">添加跟进信息${id}</button>
+            </div>
+            <div style="padding: 20px; background-color: #F2F2F2;">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><span>父亲姓名:${student.fatherName!"无数据"}</span></div>
+                            <div class="layui-card-header"><span>父亲电话:${student.fatherPhone!"无数据"}</div>
+                            <div class="layui-card-header">卡片面板</div>
+                            <div class="layui-card-header">卡片面板</div>
+                            <div class="layui-card-body">
+                                卡片式面板面板通常用于非白色背景色的主体内<br>
+                                从而映衬出边框投影
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header">卡片面板</div>
+                            <div class="layui-card-body">
+                                结合 layui 的栅格系统<br>
+                                轻松实现响应式布局
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header">跟进</div>
+                            <div class="layui-card-body">
+                                <ul id="u">
+                                    <li>
+                                        <div class="sd"></div>
+                                    </li>
+                                    <li><div class="sd"><span>父亲电话:${student.fatherPhone!"无数据"}</span></div></li>
+                                    <#list detail as st>
+                                        <li>
+                                            <div class="sd"><span>跟进时间:${st.followTime?string("yyyy-MM-dd")!""}</span></div>
+                                        </li>
+                                        <li><div class="sd"><span>意向:${st.labelIds!"无数据"}</span></div></li>
+                                        <li><div class="sd"><span>备注:${st.remark}</span></div></li>
+                                    </#list>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div>
-                <ul id="u">
-                    <#list detail as st>
-                        <li>
-                            <div class="sd"><span>父亲姓名:${st.labelIds!"无数据"}</span></div>
-                        </li>
-                        <li><div class="sd"><span>父亲电话:${st.remark!"无数据"}</span></div></li>
-                    </#list>
 
 
-                </ul>
+               <#-- <table border="1px" bordercolor="red" cellspacing="0">
+
+                    <th>跟进时间</th>
+                    <th>意向</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                    <tr>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button>编辑</button> <button>删除</button></td>
+                    </tr>
+
+                </table>-->
             </div>
 
         </div>
@@ -142,6 +194,8 @@
                             $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime +'</span></div></li>');
                             $("#u").append('<li><div class="sd"><span>跟进意向:' + value.labelIds +'</span></div></li>');
                             $("#u").append('<li><div class="sd"><span>备注:' + value.remark +'</span></div></li>');
+                          //  $("#u").append($(".layui-card"));
+
 
 
                         })

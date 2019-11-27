@@ -3,6 +3,7 @@ package com.jczx.controller;
 import com.jczx.domain.TbRecruitDetail;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.DetailService;
+import com.jczx.service.RecruitService;
 import net.atomarrow.bean.ServiceResult;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ import java.util.Map;
 public class DetailController {
     @Autowired
     private DetailService detailService;
+    @Autowired
+    private RecruitService recruitService;
 
     /**
      * 添加跟踪详情信息
@@ -60,7 +63,10 @@ public class DetailController {
     public String upFollow(Integer id, Map<String, Object> map) {
         map.put("id",id);
         System.out.println(id);
-       List<TbRecruitDetail> detail = detailService.listDetail(id);
+        TbStudent student = recruitService.getStudent(id);
+        map.put("student",student);
+
+        List<TbRecruitDetail> detail = detailService.listDetail(id);
         map.put("detail",detail);
         return "recruit/detailfollow";
     }
