@@ -1,96 +1,39 @@
-var editObj = null,
-    ptable = null,
-    treeGrid = null,
-    tableId = 'treeTable',
-    layer = null;
-layui.config({
-    base: '/major/design/extend/'
-}).extend({
-    treeGrid: 'treeGrid'
-}).use(['jquery', 'treeGrid', 'layer'], function () {
-    var $ = layui.jquery;
-    treeGrid = layui.treeGrid; //很重要
-    layer = layui.layer;
-    ptable = treeGrid.render({
-        id: tableId,
-        elem: '#' + tableId,
-        idField: 'id',
-        data: [{
-            "id":"1",
-            "pId": "0",
-            "name": "水果"
-        }
-        ],
-        cellMinWidth: 100,
-        treeId: 'id' //树形id字段名称
-        ,
-        treeUpId: 'pId' //树形父id字段名称
-        ,
-        treeShowName: 'name' //以树形式显示的字段
-        ,
-        cols: [
-            [{
-                field: 'name',
-                title: '专业-班级'
-            }, {
-                field: 'remark',
-                title: '备注'
-            }, {
-                title: '操作',
-                align: 'center' /*toolbar: '#barDemo'*/,
-                templet: function (d) {
-                    var html = '';
-                    var addBtn = '<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="add">添加</a>';
-                    var delBtn = '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>';
-                    return addBtn + delBtn;
-                }
-            }]
-        ],
-        page: false
+layui.use(['form', 'table', 'laydate'], function () {
+    var $ = layui.jquery,
+        form = layui.form,
+        table = layui.table;
+
+
+    $('#add').click(function () {
+        mainIndex = layer.open({
+            type: 1,
+            title: "添加渠道信息",
+            // skin: 'layui-layer-rim', //加上边框
+            area: ['400px'], //设置宽高
+            content: $("#recruit"),
+            success: function (index) {
+                //清空
+                $("#dataFor")[0].reset();
+                //刷新
+                tableIns.reload();
+
+            }
+        });
+    });
+    $('#add1').click(function () {
+        var name = $("[name='nameA']").val();
+        var remark = $("[name='remarkA']").val();
+        $.post("/dictionary/add/channel", {
+            name: name,
+            remark: remark
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+            } else {
+
+            }
+        });
     });
 
-    treeGrid.on('tool(' + tableId + ')', function (obj) {
-        if (obj.event === 'del') { //删除行
-            del(obj);
-        } else if (obj.event === "add") { //添加行
-            add(obj.data);
-        }
-    });
+
 });
-
-function del(obj) {
-    layer.confirm("你确定删除数据吗？如果存在下级节点则一并删除，此操作不能撤销！", {
-            icon: 3,
-            title: '提示'
-        },
-        function (index) { //确定回调
-            obj.del();
-            layer.close(index);
-        },
-        function (index) { //取消回调
-            layer.close(index);
-        }
-    );
-}
-
-
-var i = 1000;
-
-//添加
-function add(pObj) {
-    var param = {};
-    param.name = '水果' + Math.random();
-    param.id = ++i;
-    param.pId = pObj ? pObj.id : 0;
-    treeGrid.addRow(tableId, pObj ? pObj.LAY_TABLE_INDEX + 1 : 0, param);
-}
-
-function print() {
-    console.log(treeGrid.cache[tableId]);
-    var loadIndex = layer.msg("对象已打印，按F12，在控制台查看！", {
-        time: 3000,
-        offset: 'auto' //顶部
-        ,
-        shade: 0
-    });
-}

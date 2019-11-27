@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.CACHE;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,13 +17,13 @@ import java.util.Date;
 @Component
 public class TbPayBill extends Domain {
     @NotCreate
+    private  String paymentMethod;
+    @NotCreate
     private String name;//学生姓名
     @NotCreate
     private String semester;//学期
     @NotCreate
-    private String paymentMethod;//方式
-    @NotCreate
-    private String type;//类型
+    private String name1;//类型
     @NotCreate
     private String URL;//附件地址
     private Integer id;
@@ -47,6 +48,13 @@ public class TbPayBill extends Domain {
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date createTime;//操作时间
     private String remark;//备注
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
     public String getName() {
         return name;
@@ -64,20 +72,12 @@ public class TbPayBill extends Domain {
         this.semester = semester;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
     public String getType() {
-        return type;
+        return name1;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.name1 = type;
     }
 
     public String getURL() {
@@ -231,4 +231,9 @@ public class TbPayBill extends Domain {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+    /*public String getPaymentMethod(){
+        System.out.println(paymentMethodId);
+        return CACHE.getPayWayName(paymentMethodId);
+    }*/
 }

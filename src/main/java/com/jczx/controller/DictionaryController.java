@@ -46,7 +46,7 @@ public class DictionaryController extends BaseController {
         return result;
     }
     /**
-     * 添加招缴费类型信息
+     * 添加学年信息
      * @param name
      * @param remark
      * @return
@@ -124,6 +124,7 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/list/payWay/options")
     public List<? extends OptionInterface> payWayOptions() {
+        System.out.println(1);
         List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_PAY, null, null);
         return list;
     }

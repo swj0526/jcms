@@ -38,4 +38,32 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     laydate.render({
         elem: '#test2'
     });
+    $("#type3").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            , type: 2
+            , area: ['720px', '350px']
+            , btn: ['确定']
+            , content: 'tosemester'
+        });
+    });
+    $("#type2").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            ,title:'方式'
+            , type: 2
+            , area: ['720px', '350px']
+            , btn: ['确定']
+            , content: 'topaymentMethod'
+        });
+    });
+    $("#type1").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            , type: 2
+            , area: ['720px', '350px']
+            , btn: ['确定']
+            , content: 'totype'
+        });
+    });
 });

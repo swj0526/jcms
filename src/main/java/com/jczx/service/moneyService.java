@@ -36,7 +36,6 @@ public class moneyService extends Service {
                 || payBill.getFactAmount() == null
                 || payBill.getStartTime() == null
                 || payBill.getEndTime() == null) {
-            System.out.println(1);
             return error("");
         }
         add(payBill);
@@ -56,7 +55,6 @@ public class moneyService extends Service {
                 || payBill.getFactAmount() == null
                 || payBill.getStartTime() == null
                 || payBill.getEndTime() == null) {
-            System.out.println(1);
             return error("");
         }
         int modify = modify(payBill);
@@ -70,15 +68,17 @@ public class moneyService extends Service {
      */
     public List<TbPayBill> listBill(String keyword,Integer type, Date date, Pager pager) {
         Conditions conditions = new Conditions(TbPayBill.class);
-        //conditions.setSelectValue("id,name,semester,type,paymentMethod,URL,totalAmount,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,remark");
+        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
+        conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id"); //Left join tbdictionary on typeId=tbdictionary.id");
         if (StringUtil.isNotBlank(keyword)){
-            //conditions.putLIKE("name",keyword);
-            //conditions.putLIKE("paymentMethod",keyword);
-            //conditions.putLIKE("semester",keyword);
+            conditions.parenthesesStart();
+            conditions.putLIKE("name",keyword);
+            conditions.or();
             conditions.putLIKE("remark",keyword);
+            conditions.parenthesesEnd();
         }
         if (type!=null){
-            //conditions.putLIKE("type",type);
+            //conditions.putEW("typeId",type);
         }
         if (date!=null){
             //conditions.putLIKE("payDate",date);
