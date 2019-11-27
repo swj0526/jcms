@@ -7,6 +7,8 @@
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/money/js/addBill.js"></script>
     <script type="text/javascript" src="/money/js/money.js"></script>
+    <script type="text/javascript" src="/all.js"></script>
+
     <style>
         body .layer-ext-myskin .layui-layer-content {
             overflow: visible;
@@ -29,10 +31,9 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">用户学年</label>
                         <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                            <select lay-verify="" name="semester" id="grade">
-                                <option value="19年">19年</option>
-                                <option value="20年">20年</option>
-                                <option value="21年">21年</option>
+                            <select name="list3" lay-verify="required" class="decSelect"
+                                    url="/dictionary/list/payTerm/options">
+                                <option value="">请选择</option>
                             </select>
                         </div>
                         <button type="button" class="layui-btn" id="type3"
@@ -44,10 +45,9 @@
                     <div class="layui-inline" style="margin-bottom: 0px">
                         <label class="layui-form-label">缴费类型</label>
                         <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                            <select lay-verify="" name="Type" id="type">
-                                <option value="学费">学费</option>
-                                <option value="住宿费">住宿费</option>
-                                <option value="学杂费">学杂费</option>
+                            <select name="list1" lay-verify="required" class="decSelect"
+                                    url="/dictionary/list/payType/options" >
+                                <option value="">请选择</option>
                             </select>
                         </div>
                         <button type="button" class="layui-btn" id="type1"
@@ -57,10 +57,9 @@
                     <div class="layui-inline" style="margin-left: 10px;margin-right: 0px;margin-bottom: 0px;">
                         <label class="layui-form-label">缴费方式</label>
                         <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                            <select lay-verify="" name="paymentMethod" id="paymentMethod">
-                                <option value="支付宝">支付宝</option>
-                                <option value="银行转账">银行转账</option>
-                                <option value="现金">现金</option>
+                            <select name="list2" lay-verify="required" class="decSelect"
+                                    url="/dictionary/list/payWay/options" >
+                                <option value="">请选择</option>
                             </select>
                         </div>
                         <button type="button" class="layui-btn" id="type2"
@@ -147,4 +146,7 @@
     </div>
 </fieldset>
 </body>
+<script>
+    sel();
+</script>
 </html>

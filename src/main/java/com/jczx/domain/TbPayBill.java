@@ -23,7 +23,7 @@ public class TbPayBill extends Domain {
     @NotCreate
     private String semester;//学期
     @NotCreate
-    private String type;//类型
+    private String name1;//类型
     @NotCreate
     private String URL;//附件地址
     private Integer id;
@@ -48,7 +48,6 @@ public class TbPayBill extends Domain {
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date createTime;//操作时间
     private String remark;//备注
-
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -74,11 +73,11 @@ public class TbPayBill extends Domain {
     }
 
     public String getType() {
-        return type;
+        return name1;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.name1 = type;
     }
 
     public String getURL() {

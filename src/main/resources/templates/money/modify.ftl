@@ -34,7 +34,7 @@
                                     <option value="">请选择</option>
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="ss"
+                            <button type="button" class="layui-btn" id="type3"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>
@@ -48,7 +48,7 @@
                                     <option value="">请选择</option>
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="ss"
+                            <button type="button" class="layui-btn" id="type1"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>
@@ -60,7 +60,7 @@
                                     <option value="">请选择</option>
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="aaaaaawww"
+                            <button type="button" class="layui-btn" id="type2"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>

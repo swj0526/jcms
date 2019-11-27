@@ -5,52 +5,23 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            /*,url:'/test/table/demo1.json'*/
+            ,url:'/dictionary/list/payType/options'
             , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: []
             , title: '用户数据表'
             , cols: [[
-                {field: 'type', title: '类型'}
+                {field: 'name', title: '名称'}
                 ,{field: 'remark', title: '备注'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 130}
             ]]
-            , page: true
-            , data: [{
-                id: 1
-                , type: '学费'
-            }, {
-                id: 2
-                , type: '学费'
-            }, {
-                id: 3
-                , type: '学费'
-            }, {
-                id: 4
-                , type: '学费'
-            }, {
-                id: 5
-                , type: '学费'
-            }, {
-                id: 6
-                , type: '学费'
-            }, {
-                id: 7
-                , type: '学费'
-            }, {
-                id: 8
-                , type: '学费'
-            }, {
-                id: 9
-                , type: '学费'
-            }, {
-                id: 10
-                , type: '学费'
-            }, {
-                id: 11
-                , type: '学费'
-            }]
+            ,parseData:function(res){ //res 即为原始返回的数据
+                console.log(res);
+                return{
+                    code:'0'
+                    ,data:res
+                }
+            },
         });
-
     //头工具栏事件
     table.on('toolbar(test)', function (obj) {
         var checkStatus = table.checkStatus(obj.config.id);
@@ -63,10 +34,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , btn: ['提交']
                     , content: $("#ll")
                     , yes: function (index, layero) {
-                        layer.close(index);
-                    }
-                    , success: function (index) {
-                        $("#dataFor")[0].reset();
+                        $.post('/dictionary/add/payTerm',{
+                            name:$("#addname").val()
+
+                        },function (res) {
+                            layer.close(index);
+                        })
                     }
                 });
         }
@@ -84,7 +57,13 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , btn: ['提交']
                 , content: $("#up")
                 , yes: function (index, layero) {
-                    layer.close(index);
+                    $.post('/dictionary/modify',{
+                        id:data.id,
+                        name:$("#upname").val()
+
+                    },function (res) {
+                        layer.close(index);
+                    })
                 }
                 , success: function (index) {
                     form.val("dataForm1", data);
@@ -92,8 +71,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             });
         } else if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
-                obj.del();
-                layer.close(index);
+                $.post('/dictionary/delete',{
+                    id:data.id,
+                },function (res) {
+                    obj.del();
+                    layer.close(index);
+                })
             });
         }
     });

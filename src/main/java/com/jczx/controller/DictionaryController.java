@@ -47,7 +47,7 @@ public class DictionaryController extends BaseController {
         return result;
     }
     /**
-     * 添加招缴费类型信息
+     * 添加学年信息
      * @param name
      * @param remark
      * @return

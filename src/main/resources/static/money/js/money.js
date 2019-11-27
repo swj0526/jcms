@@ -11,7 +11,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 {field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'name', title: '姓名', width: 90}
                 , {field: 'semester', title: '学年', width: 60}
-                , {field: 'Type', title: '缴费类型', width: 90}
+                , {field: 'name1', title: '缴费类型', width: 90}
                 , {field: 'paymentMethod', title: '缴费方式', width: 90}
                 , {field: 'totalAmount', title: '总金额', width: 90}
                 , {field: 'hasInstalment', title: '是否分期'}

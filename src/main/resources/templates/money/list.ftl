@@ -28,7 +28,7 @@
                                        placeholder="例：1990/张三/学号">
                             </div>
                         </div>
-                        <div class="layui-inline">
+                        <#--<div class="layui-inline">
                             <label class="layui-form-label">专业-班级</label>
                             <div class="layui-input-inline" lay-verify="required" lay-search="">
                                 <select name="major">
@@ -43,11 +43,11 @@
                                     </optgroup>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="layui-inline">
                             <label class="layui-form-label">缴费类型</label>
                             <div class="layui-inline">
-                                <select name="list" lay-verify="required" id="decSelect"
+                                <select name="list" lay-verify="required" class="decSelect"
                                         url="/dictionary/list/payType/options">
                                     <option value="">请选择</option>
                                 </select>

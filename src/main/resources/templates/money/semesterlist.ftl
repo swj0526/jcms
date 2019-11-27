@@ -5,7 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
     <script type="text/javascript" src="../layui/layui.js"></script>
-    <script type="text/javascript" src="../money/js/kkk.js"></script>
+    <script type="text/javascript" src="../money/js/semesterlist.js"></script>
 </head>
 <body>
 <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -22,12 +22,12 @@
     <fieldset class="layui-elem-field layuimini-search">
         <legend>添加</legend>
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm" id="dataFor">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm" >
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">类型</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                            <input type="text" name="name" id="addname" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     </div>
@@ -39,12 +39,12 @@
     <fieldset class="layui-elem-field layuimini-search">
         <legend>修改</legend>
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
+            <form class="layui-form layui-form-pane" lay-filter="dataForm1" >
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">类型</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="type" autocomplete="off" class="layui-input">
+                            <input type="text" name="name" id="upname" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>

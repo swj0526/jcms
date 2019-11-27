@@ -22,16 +22,17 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , type: 2
             , area: ['720px', '350px']
             , btn: ['确定']
-            , content: 'kkk'
+            , content: 'tosemester'
         });
     });
     $("#type2").click(function () {
         layer.open({
             btnAlign: 'c'
+            ,title:'方式'
             , type: 2
             , area: ['720px', '350px']
             , btn: ['确定']
-            , content: 'kkk'
+            , content: 'topaymentMethod'
         });
     });
     $("#type1").click(function () {
@@ -40,7 +41,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , type: 2
             , area: ['720px', '350px']
             , btn: ['确定']
-            , content: 'kkk'
+            , content: 'totype'
         });
     });
     var index = parent.layer.getFrameIndex(window.name);
@@ -61,6 +62,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         }
                         , btn2: function () {
                             parent.layer.close(index);
+
                         }
                     })
                 } else {
