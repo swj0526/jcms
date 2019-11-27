@@ -1,18 +1,4 @@
-/*var a = new Array();
-a = [{
-    "id": 1,
-    "name": "杜海涛",
-    "gender": "男",
-    "phone": "18555464445",
-    "hasQuit": "离职"
-}, {
-    "id": 2,
-    "name": "李世杰",
-    "gender": "男",
-    "phone": "15333333333",
-    "hasQuit": "在职"
-}];*/
-layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
+layui.use(['form', 'table', 'laydate','layer', 'element'], function () {
     var mainIndex;
     var currPage = 1;
     var data;
@@ -23,10 +9,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
         table = layui.table,
         layer = layui.layer,
         laydate = layui.laydate;
-    laydate.render({
-        elem: '#time',
-        range: true
-    });
+
     table.render({
         elem: '#currentTableId',
         url:'/teacher/list',
@@ -49,8 +32,8 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
             currPage = curr;
             res =rest;
 
-            console.log(currPage);
-            console.log(rest);
+            /*console.log(currPage);
+            console.log(rest);*/
 
         },
         parseData:function (res) {
@@ -61,37 +44,23 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
                 data:res.result,
             }
         },
-        id: 'followRender'
+        id: 'testReload'
     });
-    // 监听搜索操作
-    form.on('submit(data-search-btn)', function (data) {
-        var name = $('[name="name"]').val();
-        var hasQuit = $('[name="hasQuit"]').val();
-
-        //执行搜索重载
-        table.reload('followRender', {
+    $("#query").click(function () {
+        table.reload('testReload', {
             page: {
-                curr: currPage
-            },
-            where: {
-                name: name,
-                hasQuit:hasQuit
+                curr: 1 //重新从第 1 页开始
+            }
+            ,where: {
+                name: $("#name2").val(),
+                hasQuit:$("#hasQuit2").val()
             }
         }, 'data');
-    });
-
-    // 监听添加操作
-    $(".data-add-btn").on("click", function () {
-        layer.msg('添加数据');
     });
 
     //监听表格复选框选择
     table.on('checkbox(currentTableFilter)', function (obj) {
         console.log(obj)
-    });
-    $('#excel').click(function (index) {
-        window.location.href="/teacher/doExcel";
-        layer.close(index);
     });
 
     function modify(data) {
@@ -107,21 +76,24 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
         $('#modifyTeacher').click(function() {
             var id=$('#id1').val();
             var name=$('#name1').val();
-            var gender=$('#gender1').val();
+            var phone=$('#phone1').val();
             var hasQuit=$('#hasQuit1').val();
-            $.post('/teacher/modify', {
-                id:id,
-                name : name,
-                gender:gender,
-                hasQuit:hasQuit
-            }, function(result) {
-                if (result.success==true){
-                    alert("成功");
-                    layer.close(mainIndex);
-                }else {
-                    alert("失败")
-                }
-            });
+            if (phone.length<=11&&phone.length>=11){
+                $.post('/teacher/modify', {
+                    id:id,
+                    name : name,
+                    phone:phone,
+                    hasQuit:hasQuit
+                }, function(result) {
+                    if (result.success==true){
+                        alert("成功");
+                        layer.close(mainIndex);
+                    }else {
+                    }
+                });
+            }else {
+            }
+
         });
         form.render(); // 动态渲染
     }
@@ -164,22 +136,28 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element'], function () {
             var name=$('#name').val();
             var gender=$('#gender').val();
             var phone=$('#phone').val();
-            $.post('/teacher/add', {
-                name : name,
-                gender:gender,
-                phone:phone,
-                hasQuit:true
-            }, function(result) {
-                if (result.success==true){
-                    alert("成功");
-                    layer.close(mainIndex);
-                }else {
-                    alert("失败")
-                }
-            });
-        });
-        form.render(); // 动态渲染
+            if (phone.length<=11&&phone.length>=11){
+                $.post('/teacher/add', {
+                    name : name,
+                    gender:gender,
+                    phone:phone,
+                    hasQuit:true
+                }, function(result) {
+                    if (result.success==true){
+                        alert("成功");
+                        layer.close(mainIndex);
+                    }else {
+                        alert(result.msg);
+                    }
+                });
+            }
 
+        });
+
+    });
+    //导出点击事件
+    $('#excel').click(function () {
+        window.location.href="/teacher/doExcel";
     });
 });
 
