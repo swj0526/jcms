@@ -65,19 +65,17 @@
 
 </div>
 <div id="recruit">
-    <form class="layui-form" lay-filter="addDataForm" id="dataFor" method="post">
+    <form class="layui-form layui-form-pane" lay-filter="addDataForm" id="dataFor" method="post">
         <div class="layui-form-item" style="width: 1000px;">
-            <div style="display: inline-block"><span
-                        style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                <label class="layui-form-label"> 姓名</label>
+            <div style="display: inline-block">
+                  <label class="layui-form-label"> 姓名<span  class="star">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" name="name" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
-
             <div style="display: inline-block">
-                <label class="layui-form-label">性别</label>
+                <label class="layui-form-label">性别<span  class="star">*</span></label>
                 <div class="layui-inline" style="width: 190px;">
                     <select name="sex" lay-verify="">
                         <option value=""></option>
@@ -85,7 +83,7 @@
                         <option value="女">女</option>
                     </select>
                 </div>
-                <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+
             </div>
 
         </div>

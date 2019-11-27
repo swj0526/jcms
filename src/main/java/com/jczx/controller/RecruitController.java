@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbRecruitDetail;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
 import net.atomarrow.bean.Pager;
@@ -108,37 +109,14 @@ public class RecruitController extends BaseController {
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult listRecruit(String keywords, String labelIds, String sex, int page, int limit) {
-        System.out.println(keywords);
         Pager pager = checkPager(limit, page);
         List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, sex, pager);
-         for(TbStudent student:list){
-             System.out.println("渠道id:"+student.getChannelId());
-             //System.out.println("渠道名称:"+student.getChannelName());
-         }
         return layuiList(list, pager);
 
 
     }
 
-    /**
-     * 招生信息详情
-     *
-     * @return
-     */
-    @RequestMapping("/detailfollow")
-    public String upFollow(Integer id, Map<String, Object> map) {
-        System.out.println(id);
-        TbStudent student = recruitService.getStudent(id);
 
-        map.put("birth", student.getBirthDate().toString());
-        map.put("createTime", student.getCreateTime().toString());
-        map.put("id",student.getId());
-        List<TbStudent> list =new ArrayList<>();
-        list.add(student);
-        map.put("student",list);
-
-        return "recruit/detailfollow";
-    }
 
     /**
      * 导出
