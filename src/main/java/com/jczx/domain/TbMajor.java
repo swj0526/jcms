@@ -26,7 +26,6 @@ public class TbMajor extends Domain {
     private Integer id;
     private String name; //专业名称
     private Integer pid; //班级关联
-    private Integer type;//类型，区分班级和专业
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
     private String remark;//备注
@@ -46,14 +45,6 @@ public class TbMajor extends Domain {
 
     public void setPid(Integer pid) {
         this.pid = pid;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     public Integer getId() {
