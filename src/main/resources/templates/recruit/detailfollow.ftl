@@ -33,16 +33,16 @@
     <div class="layui-col-md12">
         <div>
             <div class="layui-btn-group">
-                <button class="layui-btn data-add-btn" type="button" id="butfollow">添加跟进信息</button>
+                <button class="layui-btn data-add-btn" type="button" id="butfollow">添加跟进信息${id}</button>
             </div>
 
             <div>
                 <ul id="u">
-                    <#list student as st>
+                    <#list detail as st>
                         <li>
-                            <div class="sd"><span>父亲姓名:${st.fatherName}</span></div>
+                            <div class="sd"><span>父亲姓名:${st.labelIds!"无数据"}</span></div>
                         </li>
-                        <li><div class="sd"><span>父亲电话:${st.fatherPhone}</span></div></li>
+                        <li><div class="sd"><span>父亲电话:${st.remark!"无数据"}</span></div></li>
                     </#list>
 
 

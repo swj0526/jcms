@@ -66,5 +66,6 @@ public class ProjectConfig extends Config {
        /* ormContext.addBean(PageBean.class);
         ormContext.addBean(ResultBean.class);
         ormContext.addBean(StudentScoreBean.class);*/
+
     }
 }

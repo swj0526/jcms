@@ -2,6 +2,7 @@ package com.jczx.system;
 
 
 import com.jczx.domain.TbDictionary;
+import com.jczx.service.DictionaryService;
 import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.SpringContextUtil;
@@ -9,6 +10,7 @@ import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
@@ -23,13 +25,15 @@ import java.util.Random;
 public class CACHE {
 
 
-    public static RedisTemplate getRedisTemplate() {
-        return SpringContextUtil.getBean(RedisTemplate.class);
+    public static StringRedisTemplate getRedisTemplate() {
+        return SpringContextUtil.getBean(StringRedisTemplate.class);
     }
 
-    private static Service getService(){
-        return SpringContextUtil.getBean(Service.class);
-    };
+    private static Service getService() {
+        return SpringContextUtil.getBean(DictionaryService.class);
+    }
+
+    ;
 
     private static String PREFEX = Math.random() * 10000 + "";
 
@@ -43,20 +47,25 @@ public class CACHE {
         return PREFEX + tableName + id;
     }
 
-    private static TbDictionary getDictionary(Integer dictionaryId) {
-        ValueOperations<String, Object> stringStringValueOperations = getRedisTemplate().opsForValue();
+  /*  private static TbDictionary getDictionary(Integer dictionaryId) {
+        getRedisTemplate();
+        System.out.println("进入方法");
+        ValueOperations<String, > stringStringValueOperations = getRedisTemplate().opsForValue();
+        System.out.println(224);
         TbDictionary dictionary = (TbDictionary) stringStringValueOperations.get(getKey(TbDictionary.class.getSimpleName(), dictionaryId));
+
         if (dictionary != null) {
             return dictionary;
         }
         TbDictionary dictionaryDB = getService().getById(TbDictionary.class, dictionaryId);
+        System.out.println(dictionaryDB + "++++++++++++++++");
         if (dictionaryDB == null) {
             return null;
         }
         stringStringValueOperations.set(getKey(TbDictionary.class.getSimpleName(), dictionaryId), dictionaryDB);
         return dictionaryDB;
 
-    }
+    }*/
 
     /**
      * 返回渠道的名称
@@ -65,14 +74,21 @@ public class CACHE {
      * @return
      */
     public static String getChannelName(Integer channelId) {
-        if (channelId == null) {
+        if (channelId == null||channelId==0) {
             return "";
         }
-        TbDictionary dictionary = getDictionary(channelId);
-        if (dictionary == null) {
+        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        String channelName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), channelId));
+        if (StringUtil.isNotBlank(channelName)) {
+            return channelName;
+        }
+        TbDictionary dictionary = getService().getById(TbDictionary.class, channelId);
+        if(dictionary==null){
             return "";
         }
-        return dictionary.getName();
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), channelId),dictionary.getName());
+        System.out.println(dictionary.getName());
+        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), channelId));
     }
 
     /**
@@ -82,14 +98,14 @@ public class CACHE {
      * @return
      */
     public static String getPayWayName(Integer paymentMethodId) {
-        if (paymentMethodId == null) {
+       /* if (paymentMethodId == null) {
             return "";
         }
         TbDictionary dictionary = getDictionary(paymentMethodId);
         System.out.println(paymentMethodId);
         if (dictionary == null) {
             return "";
-        }
-        return dictionary.getName();
+        }*/
+        return "dictionary.getName()";
     }
 }

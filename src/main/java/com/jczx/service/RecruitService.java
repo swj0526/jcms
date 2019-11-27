@@ -58,7 +58,7 @@ public class RecruitService extends BaseService {
      */
     public TbStudent getStudent(Integer studentId) {
         Conditions conditions = new Conditions(getTableName());
-        TbStudent getStudent = getById(TbStudent.class, studentId);
+        TbStudent getStudent = getById(getTableName(), studentId);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return getStudent;
     }

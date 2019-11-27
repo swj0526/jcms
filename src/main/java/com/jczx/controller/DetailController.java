@@ -50,4 +50,18 @@ public class DetailController {
         List<TbRecruitDetail> tbRecruitDetails = detailService.listDetail(studentId);
         return tbRecruitDetails;
     }
+
+    /**
+     * 招生信息详情
+     *
+     * @return
+     */
+    @RequestMapping("/todetail")
+    public String upFollow(Integer id, Map<String, Object> map) {
+        map.put("id",id);
+        System.out.println(id);
+       List<TbRecruitDetail> detail = detailService.listDetail(id);
+        map.put("detail",detail);
+        return "recruit/detailfollow";
+    }
 }
