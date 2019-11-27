@@ -232,27 +232,23 @@ public class TbPayBill extends Domain {
         this.remark = remark;
     }
 
-    /*public String getPaymentMethod(){
-        System.out.println(paymentMethodId);
-        return CACHE.getPayWayName(paymentMethodId);
-    }*/
+
 
     /**
-     * 类型
+     * 缴费类型
      * @return
      */
     public String getTypeName(){
-
-        return null;
+        return CACHE.getTypeName(typeId);
     }
 
     /**
-     * 方法
+     * 缴费方式
      * @return
      */
     public String getPaymentMethodName(){
 
-        return null;
+        return CACHE.getPaymentMethodName(paymentMethodId);
     }
 
     /**
@@ -261,6 +257,6 @@ public class TbPayBill extends Domain {
      */
     public String getSemesterName(){
 
-        return null;
+        return CACHE.getSemesterName(semesterId);
     }
 }

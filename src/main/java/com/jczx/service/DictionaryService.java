@@ -73,14 +73,16 @@ public class DictionaryService extends BaseService {
      */
     public ServiceResult deleteDictionary(int id) {
 
-        Conditions conditions = new Conditions(TbStudent.class);
+       /* Conditions conditions = new Conditions(TbStudent.class);
         conditions.putEW("channelId", id);
         List<TbStudent> list = getList(conditions);
         if (list.size() != 0) {
             return error("不可删除,该标签已被使用!");
         }
         int del = delById(TbDictionary.class, id);
-        return SUCCESS;
+        return SUCCESS; */
+       return null;
+       //todo 需要在学生表的service里去判断一个
     }
 
     /**
