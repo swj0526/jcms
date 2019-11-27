@@ -6,6 +6,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
 
     var index = parent.layer.getFrameIndex(window.name);
 
+
+
     $("#update").click(function () {
         var t = $('#dataFor').serialize();
         $.post('/money/modify',
@@ -66,4 +68,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , content: 'totype'
         });
     });
+
+
 });

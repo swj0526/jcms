@@ -145,7 +145,4 @@
     </div>
 </fieldset>
 </body>
-<script>
-    sel();
-</script>
 </html>

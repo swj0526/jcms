@@ -35,8 +35,10 @@ var sel = function () {
         //传入的字典的地址
 
         $(".decSelect").each(function () {
-           var url = $(this).attr('url');
-           var dom = $(this);
+            var url = $(this).attr('url');
+            var dom = $(this);
+            var selectedId = $(this).attr('selectedId');
+
             //重新渲染表单
             function renderForm() {
                 layui.use('form', function () {
@@ -47,13 +49,16 @@ var sel = function () {
 
             $.post(url, function (result) {
                 $.each(result, function (key, value) {
-                    dom.append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
+                    if (value.optionValue == selectedId) {
+                        dom.append("<option value=" + value.optionValue + " selected>" + value.optionText + "</option>");
+                    } else {
+                        dom.append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
+                    }
+
                 });
                 renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
             });
         })
-
-
 
 
     })
@@ -72,3 +77,9 @@ var sel = function () {
 
     </form>
 */
+layui.use([ 'jquery'], function () {
+    var $ = layui.jquery;
+    if($('.decSelect').length>0){
+        sel();
+    }
+});

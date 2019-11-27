@@ -57,10 +57,6 @@ public class PayBillController extends BaseController {
     @RequestMapping("/tomodify")
     public String toModify(int id, Map<String, Object> map) {
         TbPayBill bill = moneyService.getBill(id);
-        bill.setName("张三");
-        bill.setSemester("20年");
-        bill.setPaymentMethod("现金");
-        bill.setType("1");
         map.put("bill", bill);
         return "money/modify";
     }

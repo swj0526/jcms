@@ -20,14 +20,21 @@
 </script>
 <div id="ll" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>添加</legend>
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm">
+            <form class="layui-form" lay-filter="dataForm">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">类型</label>
                         <div class="layui-input-inline">
                             <input type="text" name="name" id="addname" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="addremark" id="addremark" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
@@ -37,15 +44,18 @@
 </div>
 <div id="up" style="display: none">
     <fieldset class="layui-elem-field layuimini-search">
-        <legend>修改</legend>
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm1">
+            <form class="layui-form " lay-filter="dataForm1">
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">类型</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="name" id="upname" autocomplete="off" class="layui-input">
-                        </div>
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" id="upname" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="remark" id="upremark" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </form>

@@ -86,7 +86,4 @@
     </script>
 </div>
 </body>
-<script>
-    sel();
-</script>
 </html>

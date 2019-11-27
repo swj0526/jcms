@@ -90,4 +90,67 @@ public class CACHE {
         }*/
         return "dictionary.getName()";
     }
+
+    /**
+     *缴费类型
+     * @param typeId
+     * @return
+     */
+    public static String getTypeName(Integer typeId){
+        if (typeId == null||typeId==0) {
+            return "";
+        }
+        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        String typeName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), typeId));
+        if (StringUtil.isNotBlank(typeName)) {
+            return typeName;
+        }
+        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, typeId);
+        if(dictionary==null){
+            return "";
+        }
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), typeId),dictionary.getName());
+        System.out.println(dictionary.getName());
+        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), typeId));
+    }
+
+    /**
+     * 缴费方式
+     * @param paymentMethodId
+     * @return
+     */
+    public static String getPaymentMethodName(Integer paymentMethodId){
+        if (paymentMethodId == null||paymentMethodId==0) {
+            return "";
+        }
+        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        String methodeName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), paymentMethodId));
+        if (StringUtil.isNotBlank(methodeName)) {
+            return methodeName;
+        }
+        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, paymentMethodId);
+        if(dictionary==null){
+            return "";
+        }
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), paymentMethodId),dictionary.getName());
+        System.out.println(dictionary.getName());
+        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), paymentMethodId));
+    }
+    public static  String getSemesterName(Integer semesterId){
+        if (semesterId == null||semesterId==0) {
+            return "";
+        }
+        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        String semestereName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), semesterId));
+        if (StringUtil.isNotBlank(semestereName)) {
+            return semestereName;
+        }
+        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, semesterId);
+        if(dictionary==null){
+            return "";
+        }
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), semesterId),dictionary.getName());
+        System.out.println(dictionary.getName());
+        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), semesterId));
+    }
 }

@@ -1,5 +1,6 @@
 package com.jczx.service;
 
+import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.services.Service;
 import org.springframework.stereotype.Component;
 
@@ -15,4 +16,7 @@ public abstract class BaseService extends Service {
      * @return
      */
     public abstract String getTableName();
+    protected Conditions getConditins(){
+        return new Conditions(getTableName());
+    }
 }
