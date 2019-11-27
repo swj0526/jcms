@@ -281,8 +281,7 @@ public class TbStudent extends Domain {
     }
 
     public  String getChannelName(){
-        System.out.println(channelId+"+++++++++++++++++++++++++");
-        System.out.println(CACHE.getChannelName(channelId)+"+++++++++++++++++++++++dsdddd");
+
         return CACHE.getChannelName(channelId);
     }
 }

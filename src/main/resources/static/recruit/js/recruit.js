@@ -157,6 +157,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     });
     // 监听添加操作
     $(".data-add-btn").on("click", function () {
+
         addStudents();
     });
 
@@ -173,6 +174,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
     //添加招生信息
     $("#addSubmit").click(function () {
+
         var seList = new Array();
         var selectArr = demo1.getValue().valueOf();//获取复选框的值
         $.each(selectArr, function (k, v) {
@@ -185,6 +187,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         let label = seList.join(",");
         var labelIds = ("," + label + ",");
         var recruit = $("#dataFor").serialize();
+
         //发送ajax请求
         $.post('/recruit/add', recruit + "&labelIds=" + labelIds, function (result) {
             //下面就是提交成功后关闭自己

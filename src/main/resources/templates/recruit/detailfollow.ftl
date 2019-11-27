@@ -38,7 +38,9 @@
             <div style="padding: 20px; background-color: #F2F2F2;">
                 <div class="layui-row layui-col-space15">
                     <div class="layui-col-md6">
+                        <form>
                         <div class="layui-card">
+
                             <div class="layui-card-header"><span>父亲姓名:${student.fatherName!"无数据"}</span></div>
                             <div class="layui-card-header"><span>父亲电话:${student.fatherPhone!"无数据"}</div>
                             <div class="layui-card-header">卡片面板</div>
@@ -47,7 +49,7 @@
                                 卡片式面板面板通常用于非白色背景色的主体内<br>
                                 从而映衬出边框投影
                             </div>
-                        </div>
+                        </div></form>
                     </div>
                     <div class="layui-col-md6">
                         <div class="layui-card">
@@ -62,43 +64,27 @@
                         <div class="layui-card">
                             <div class="layui-card-header">跟进</div>
                             <div class="layui-card-body">
-                                <ul id="u">
-                                    <li>
-                                        <div class="sd"></div>
-                                    </li>
-                                    <li><div class="sd"><span>父亲电话:${student.fatherPhone!"无数据"}</span></div></li>
-                                    <#list detail as st>
-                                        <li>
-                                            <div class="sd"><span>跟进时间:${st.followTime?string("yyyy-MM-dd")!""}</span></div>
-                                        </li>
-                                        <li><div class="sd"><span>意向:${st.labelIds!"无数据"}</span></div></li>
-                                        <li><div class="sd"><span>备注:${st.remark}</span></div></li>
+                                <table border="1px" bordercolor="black" width="100%"  cellspacing="0">
+                                    <th>跟进时间</th>
+                                    <th>意向</th>
+                                    <th>备注</th>
+                                    <th>操作</th>
+                                    <tr id="tab"><#list detail as st>
+                                        <td>${st.followTime?string("yyyy-MM-dd")!""}</td>
+                                        <td>${st.labelIds!"无数据"}</td>
+                                        <td>${st.remark}</td>
+                                        <td><button>修改</button><button>删除</button></td>
+
+                                    </tr>
                                     </#list>
-                                </ul>
+                                </table>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div>
-
-
-               <#-- <table border="1px" bordercolor="red" cellspacing="0">
-
-                    <th>跟进时间</th>
-                    <th>意向</th>
-                    <th>备注</th>
-                    <th>操作</th>
-                    <tr>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button>编辑</button> <button>删除</button></td>
-                    </tr>
-
-                </table>-->
             </div>
 
         </div>
@@ -191,9 +177,11 @@
                     if (result) {
                         layer.close(index);
                         $.each(result, function (index, value) {
-                            $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime +'</span></div></li>');
-                            $("#u").append('<li><div class="sd"><span>跟进意向:' + value.labelIds +'</span></div></li>');
-                            $("#u").append('<li><div class="sd"><span>备注:' + value.remark +'</span></div></li>');
+                            $("#tab").append('<td>'+value.followTime+' </td>');
+                            $("#tab").append('<td>' +value.labelIds+' </td>');
+                            $("#tab").append('<td> '+value.remark+ '</td>');
+                            $("#tab").append('<td> '+'<button>修改</button><button>删除</button>'+ '</td>');
+
                           //  $("#u").append($(".layui-card"));
 
 

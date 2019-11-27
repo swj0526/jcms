@@ -20,7 +20,7 @@
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
     <script src="/recruit/js/xm.js"></script>
-    <script src="/all.js"></script>
+    <#--<script src="/all.js"></script>-->
 
     <style type="text/css">
         input::-webkit-outer-spin-button,
@@ -38,7 +38,7 @@
     <span>姓名,意向,电话必须填写</span></div>
 <#--添加标签-->
 <div style="display: none" id="addlabel">
-    <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
+    <form class="layui-form" action="" lay-filter="dataForm" id="data">
         <div class="layui-form-item">
             <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
             <label class="layui-form-label">标签名称</label>
@@ -216,7 +216,7 @@
             </div>
             <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
                 <div class="layui-input-inline">
-                    <button class="layui-btn" type="button" lay-submit id="addSubmit">立即提交</button>
+                    <button class="layui-btn" type="button" lay-submit  id="addSubmit">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
