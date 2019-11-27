@@ -104,11 +104,11 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ListByPage getList(String keyword, Integer type, Date date, int page, int limit) {
+    public ListByPage list(String keyword, Integer typeId, Date date, int page, int limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
-        List<TbPayBill> PayBillBean = moneyService.listBill(keyword, type, date, pager);
+        List<TbPayBill> PayBillBean = moneyService.listBill(keyword, typeId, date, pager);
         /*for (TbPayBill pay:PayBillBean){
             System.out.println("aaaaaaaaaa"+pay.getPaymentMethod(pay.getPaymentMethodId()));
         }*/

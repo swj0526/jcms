@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="/all.css"/>
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/money/js/addBill.js"></script>
     <script type="text/javascript" src="/money/js/money.js"></script>
@@ -17,7 +18,6 @@
 </head>
 <body>
 <fieldset id="add2" class="layui-elem-field layuimini-search">
-    <legend>缴费信息填写</legend>
     <div style="margin: 10px 10px 10px 10px;margin-left:28%">
         <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
             <div class="layui-form-item">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">缴费日期</label>
+                        <label class="layui-form-label ">缴费日期<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input class="layui-input" required lay-verify="required" name="payDate" id="test1" type="text">
                         </div>

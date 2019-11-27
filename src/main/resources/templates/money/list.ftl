@@ -48,7 +48,7 @@
                             <label class="layui-form-label">缴费类型</label>
                             <div class="layui-inline">
                                 <select name="list" lay-verify="required" class="decSelect"
-                                        url="/dictionary/list/payType/options">
+                                        url="/dictionary/list/payType/options" id="typeId">
                                     <option value="">请选择</option>
                                 </select>
                             </div>

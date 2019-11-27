@@ -66,7 +66,7 @@ public class moneyService extends Service {
      *
      * @return
      */
-    public List<TbPayBill> listBill(String keyword,Integer type, Date date, Pager pager) {
+    public List<TbPayBill> listBill(String keyword,Integer typeId, Date date, Pager pager) {
         Conditions conditions = new Conditions(TbPayBill.class);
         conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
         conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id"); //Left join tbdictionary on typeId=tbdictionary.id");
@@ -77,9 +77,7 @@ public class moneyService extends Service {
             conditions.putLIKE("remark",keyword);
             conditions.parenthesesEnd();
         }
-        if (type!=null){
-            //conditions.putEW("typeId",type);
-        }
+        conditions.putEWIfOk("typeId",typeId);
         if (date!=null){
             //conditions.putLIKE("payDate",date);
         }

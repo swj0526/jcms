@@ -1,0 +1,10 @@
+.star {
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 26px;
+    font-size: 30px;
+    color: #f00;
+}
