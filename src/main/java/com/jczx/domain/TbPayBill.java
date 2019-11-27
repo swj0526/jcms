@@ -236,4 +236,31 @@ public class TbPayBill extends Domain {
         System.out.println(paymentMethodId);
         return CACHE.getPayWayName(paymentMethodId);
     }*/
+
+    /**
+     * 类型
+     * @return
+     */
+    public String getTypeName(){
+
+        return null;
+    }
+
+    /**
+     * 方法
+     * @return
+     */
+    public String getPaymentMethodName(){
+
+        return null;
+    }
+
+    /**
+     * 学年
+     * @return
+     */
+    public String getSemesterName(){
+
+        return null;
+    }
 }
