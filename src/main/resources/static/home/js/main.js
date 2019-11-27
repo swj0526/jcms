@@ -69,7 +69,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/integral/add";
             all_tab(id, title, src);
         }else if (id == "major_list") {
-            var src = "/major/toList";
+            var src = "/major/tolist";
             all_tab(id, title, src);
         }else if (id == "teacher_list") {
             var src = "/teacher/tolist";

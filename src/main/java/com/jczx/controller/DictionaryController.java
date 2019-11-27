@@ -1,7 +1,6 @@
 package com.jczx.controller;
 
 
-import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
 import com.jczx.system.OptionInterface;

@@ -1,5 +1,8 @@
 package com.jczx.system;
 
+import com.sun.org.apache.regexp.internal.RE;
+import net.atomarrow.util.DateUtil;
+
 import java.util.Date;
 
 /**
@@ -10,8 +13,8 @@ import java.util.Date;
 public class SC {
 
     public static Date getNowDate(){
-     Date date = new Date();
-     return date;
+       return DateUtil.getNowDate();
+
     }
 
     public static int getOperatorId(){

@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <label class="layui-form-label">学校</label>
+            <label class="layui-form-label">毕业院校</label>
             <div class="layui-input-inline">
                 <input type="text" name="school" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.school}>
             </div>
@@ -118,11 +118,7 @@
                     <div id="demo1" class="xm-select-demo"style=" width:190px"; ></div>
                 </div>
             </div>
-            <div class="layui-inline">
-                <div class="layui-inline" style="width:50px">
-                    <button class="layui-btn layui-btn-xs  layui-btn-normal" id="">添加意向</button>
-                </div>
-            </div>
+
 
         </div>
 
@@ -144,6 +140,8 @@
         filterable: true,
         searchTips: '搜索标签',
         tips: '选择意向',
+        height: '500px',
+        autoRow: true,
         data: [
             {name: '有意向', value: 1},
             {name: '还在考虑', value: 2},
@@ -155,11 +153,7 @@
     function mayfun(){
         demo1.setValue([${student.labelIds}])
     };
-    /*document.getElementById('demo1-getValue').onclick = function(){
-       //获取当前多选选中的值
-       var selectArr = demo1.getValue();
-       document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
-   }*/
+
 </script>
 <script src="/recruit/js/updata.js"></script>
 </body>

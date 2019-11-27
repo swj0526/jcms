@@ -33,12 +33,12 @@ public class TbStudent extends Domain {
 
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
-    private Integer motherName;//母亲名字
-    private Integer fatherName;//父亲名字
-    private Integer otherRelativesName;//其他亲属名字
+    private String motherName;//母亲名字
+    private String fatherName;//父亲名字
+    private String otherRelativesName;//其他亲属名字
     private String motherPhone;//母亲联系方式
     private String fatherPhone;//父亲联系方式
-    private String emergencyPhone;//应急联系方式
+    private String emergencyPhone;//其他亲属联系方式
     private String labelIds;//意向标签表
     private Integer channelId;//渠道表id
     private String intention;//招生意向
@@ -46,7 +46,7 @@ public class TbStudent extends Domain {
     private Date birthDate;//出生年月
     private String IDCard;//身份证//
     private String school;//学校
-    private String studentPhone;//学生电话
+    private String studentPhone;//学生电话//
     private String qq;//qq号
     private String weChat;//微信
     private Integer integralId;//积分
@@ -150,27 +150,27 @@ public class TbStudent extends Domain {
         this.operatorId = operatorId;
     }
 
-    public Integer getMotherName() {
+    public String getMotherName() {
         return motherName;
     }
 
-    public void setMotherName(Integer motherName) {
+    public void setMotherName(String motherName) {
         this.motherName = motherName;
     }
 
-    public Integer getFatherName() {
+    public String getFatherName() {
         return fatherName;
     }
 
-    public void setFatherName(Integer fatherName) {
+    public void setFatherName(String fatherName) {
         this.fatherName = fatherName;
     }
 
-    public Integer getOtherRelativesName() {
+    public String getOtherRelativesName() {
         return otherRelativesName;
     }
 
-    public void setOtherRelativesName(Integer otherRelativesName) {
+    public void setOtherRelativesName(String otherRelativesName) {
         this.otherRelativesName = otherRelativesName;
     }
 
@@ -280,7 +280,7 @@ public class TbStudent extends Domain {
         this.integralId = integralId;
     }
 
-    public  String getChannelName(){
+    /*public  String getChannelName(){
         return CACHE.getChannelName(channelId);
-    }
+    }*/
 }

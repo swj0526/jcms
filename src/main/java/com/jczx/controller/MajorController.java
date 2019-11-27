@@ -1,21 +1,80 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbMajor;
+import com.jczx.service.MajorService;
+import net.atomarrow.bean.ServiceResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
 
 /**
- * @author cjw
+ * 孙文举
+ * 专业表的管理
+ *
  * @create 2019-11-20 22:22
  */
 @RequestMapping("major")
 @Controller
 public class MajorController {
-    @RequestMapping("toList")
-    public String toList(){
+    @Autowired
+    private MajorService majorService;
+
+    /**
+     * 到专业-班级管理页面
+     *
+     * @return
+     */
+    @RequestMapping("tolist")
+    public String tolist(Map<String,List<TbMajor>> map) {
+        List<TbMajor> list = majorService.listMajor();
+        map.put("list",list);
         return "/major/list";
     }
+
     @RequestMapping("information")
-    public String information(){
+    public String information() {
         return "/major/information";
     }
+
+    /**
+     * 新增专业
+     *
+     * @param major
+     * @return
+     */
+    @RequestMapping("add/major")
+    @ResponseBody
+    public ServiceResult major(TbMajor major) {
+        return majorService.addMajor(major);
+    }
+
+    /**
+     * 新增班级
+     *
+     * @param major
+     * @return
+     */
+    @RequestMapping("add/class")
+    @ResponseBody
+    public ServiceResult classGrade(TbMajor major) {
+        return majorService.addClass(major);
+    }
+
+    /**
+     * 修改专业-班级
+     *
+     * @param major
+     * @return
+     */
+    @RequestMapping("/modify")
+    @ResponseBody
+    public ServiceResult modify(TbMajor major) {
+        return majorService.modifyMajor(major);
+    }
+
+
 }

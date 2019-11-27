@@ -1,4 +1,4 @@
-layui.use(['form', 'table', 'laydate'], function () {
+layui.use(['form', 'table', 'laydate', "jquery"], function () {
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table,
@@ -24,7 +24,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         , id: 'testReload'
         //解析table 组件规定的数据结构
         , parseData: function (res) { //res 即为原始返回的数据
-         /*   console.log(res);*/
+            /*   console.log(res);*/
             return {
                 "code": "0",
                 "count": res.pager.dataTotal,
@@ -34,7 +34,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         done: function (rest, curr, count) {
             //如果是异步请求数据方式，res即为你接口返回的信息。
             //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-            res =rest;
+            res = rest;
 
 
             console.log(rest);
@@ -117,6 +117,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         reload: function () {
             var demoReload = $('#demoReload');
             var sex = $("#sex");
+            var labelIds = $("#labelIds");
 
             //执行重载
             table.reload('testReload', {
@@ -124,10 +125,10 @@ layui.use(['form', 'table', 'laydate'], function () {
                     curr: 1 //重新从第 1 页开始
                 }
                 , where: {
-                    'name': demoReload.val(),
-                    'studentPhone': demoReload.val(),
-                    'school': demoReload.val(),
-                    'labelIds': demoReload.val(),
+                    'keywords': demoReload.val(),
+                    'keywords': demoReload.val(),
+                    'keywords': demoReload.val(),
+                    'labelIds': labelIds.val(),
                     'sex': sex.val()
                 }
             }, 'data');
@@ -136,10 +137,11 @@ layui.use(['form', 'table', 'laydate'], function () {
     $('.demoTable .layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
+
     });
     //监听导出事件
     $("#download").click(function () {
-        alert("导出")
+        window.location.href="/recruit/toExcel?page="+1+"&limit="+99999;
     });
     //监听导入事件
     $("#upload").click(function () {
@@ -155,6 +157,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     $(".data-add-btn").on("click", function () {
         addStudents();
     });
+
     //添加招生信息的弹窗
     function addStudents() {
         mainIndex = layer.open({
@@ -165,10 +168,11 @@ layui.use(['form', 'table', 'laydate'], function () {
             content: '/recruit/toadd',
         });
     }
-    //添加招生信息//和修改学生信息
+
+    //添加招生信息
     $("#addSubmit").click(function () {
         var seList = new Array();
-        var selectArr = demo1.getValue().valueOf();
+        var selectArr = demo1.getValue().valueOf();//获取复选框的值
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
                 if (k1 == "value") {
@@ -187,16 +191,9 @@ layui.use(['form', 'table', 'laydate'], function () {
                 setTimeout(function () {
                     parent.layer.close(index);//关闭弹出层
                     parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
-                }, 500);
-            } else {
-                layer.open({
-                    type: 1,
-                    title: "提示",
-                    content: $("#error").html(result.msg),
-                    area: ['300px', '150px'], //设置宽高
-                    btn: ['确定'],
-                    btnAlign: "c"
                 });
+            } else {
+
             }
         })
     });
@@ -227,49 +224,23 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         })
     });
-
-    //tab弹窗修改详情
-    function text() {
-        layer.tab({
-            type: 1,
-            area: ['100%', '100%'],
-            tab: [{
-                skin: 'layui-layer-rim',
-                title: '杜甫跟进详情',
-                content: '<iframe src="/recruit/detailfollow" frameborder="0" height="550px" width="100%"></iframe>',
-            }]
-        });
-    }
-
     //添加标签弹窗
-    $("#addtab01").click(function () {
+    $("#label").click(function () {
         layer.open({
             type: 1,
-            title: "跟进情况",
+            title: "添加标签",
             skin: 'layui-layer-rim', //加上边框
-            area: ['720px', '350px'], //设置宽高
-            content: $(""),
+            area: ['400px'], //设置宽高
+            content: $("#addlabel"),
 
         });
     });
 
-    //查看跟踪信息
-    function recruit() {
-        layer.open({
-            type: 1,
-            title: "跟进情况",
-            // skin: 'layui-layer-rim', //加上边框
-            area: ['800px'], //设置宽高
-            content: $("#updateOrDelete"),
-
-        });
-    }
-
 //监听行
     table.on('tool(currentTableFilter)', function (obj) {
         var data = obj.data;
+        var id = data.id;
         if (obj.event === 'edit') {
-            var id = data.id;
             mainIndex = layer.open({
                 type: 2,
                 title: "修改招生信息",
@@ -286,13 +257,22 @@ layui.use(['form', 'table', 'laydate'], function () {
                 layer.close(index);
                 $.post('/recruit/delete', {id: data.id}, function (data) {
                     tableIns.reload();
-                    if (res.data.length-1 ==0){
+                    if (res.data.length - 1 == 0) {
                         window.location.reload();
                     }
                 })
             });
         } else if (obj.event === 'follow') {
-            text();
+            layer.open({
+                type: 2,
+                area: ['100%', '100%'],
+                title: data.name+"详情",
+                content: '/recruit/detailfollow?id='+id,
+                success:function () {
+                }
+
+
+            });
         }
     });
 

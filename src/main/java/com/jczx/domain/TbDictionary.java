@@ -1,13 +1,10 @@
 package com.jczx.domain;
 
-import com.jczx.system.CACHE;
 import com.jczx.system.OptionInterface;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
-import net.atomarrow.util.SpringContextUtil;
 import org.springframework.stereotype.Component;
 
-import javax.swing.text.TabableView;
 import java.util.Date;
 
 /**

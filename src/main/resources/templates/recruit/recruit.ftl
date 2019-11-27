@@ -37,7 +37,6 @@
             <div style="margin: 10px 10px 10px 10px">
                 <div class="demoTable">
 
-
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width:100px">关键词</label>
@@ -70,6 +69,17 @@
                             <option value="4">微信</option>
                             <option value="5">介绍</option>
                         </select>
+                    </div>
+                    <div class="layui-inline" style="width: 210px">
+                        <label class="layui-form-label" style="width: 100px">意向</label>
+                        <div class="layui-inline" style="width: 100px">
+                            <select name="labelIds" lay-verify="" id="labelIds">
+                                <option value="">请选择</option>
+                                <option value="1">有意向</option>
+                                <option value="2">没有意向</option>
+                                <option value="5">犹豫不决</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="layui-inline">
                         <a class="layui-btn  layui-btn-primary" data-type="reload">查询</a>
