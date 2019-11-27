@@ -2,7 +2,9 @@ package com.jczx.system;
 
 
 import com.jczx.domain.TbDictionary;
+import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.services.Service;
+import net.atomarrow.util.SpringContextUtil;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,13 +19,18 @@ import java.util.Random;
  * @author 孙文举
  * @create 2019-11-11 15:08
  */
-@Component
+
 public class CACHE {
-    @Autowired
-    private static RedisTemplate redisTemplate;
-    @Autowired
-    private static Service service;
-    @Autowired
+
+
+    public static RedisTemplate getRedisTemplate() {
+        return SpringContextUtil.getBean(RedisTemplate.class);
+    }
+
+    private static Service getService(){
+        return SpringContextUtil.getBean(Service.class);
+    };
+
     private static String PREFEX = Math.random() * 10000 + "";
 
     /**
@@ -37,12 +44,12 @@ public class CACHE {
     }
 
     private static TbDictionary getDictionary(Integer dictionaryId) {
-        ValueOperations<String, Object> stringStringValueOperations = redisTemplate.opsForValue();
+        ValueOperations<String, Object> stringStringValueOperations = getRedisTemplate().opsForValue();
         TbDictionary dictionary = (TbDictionary) stringStringValueOperations.get(getKey(TbDictionary.class.getSimpleName(), dictionaryId));
         if (dictionary != null) {
             return dictionary;
         }
-        TbDictionary dictionaryDB = service.getById(TbDictionary.class, dictionaryId);
+        TbDictionary dictionaryDB = getService().getById(TbDictionary.class, dictionaryId);
         if (dictionaryDB == null) {
             return null;
         }
@@ -53,11 +60,12 @@ public class CACHE {
 
     /**
      * 返回渠道的名称
+     *
      * @param channelId
      * @return
      */
     public static String getChannelName(Integer channelId) {
-        if(channelId==null){
+        if (channelId == null) {
             return "";
         }
         TbDictionary dictionary = getDictionary(channelId);
@@ -66,13 +74,15 @@ public class CACHE {
         }
         return dictionary.getName();
     }
+
     /**
      * 返回缴费方式的名称
+     *
      * @param paymentMethodId
      * @return
      */
     public static String getPayWayName(Integer paymentMethodId) {
-        if(paymentMethodId==null){
+        if (paymentMethodId == null) {
             return "";
         }
         TbDictionary dictionary = getDictionary(paymentMethodId);
