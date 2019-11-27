@@ -9,7 +9,6 @@
     <script type="text/javascript" src="/money/js/addBill.js"></script>
     <script type="text/javascript" src="/money/js/money.js"></script>
     <script type="text/javascript" src="/all.js"></script>
-
     <style>
         body .layer-ext-myskin .layui-layer-content {
             overflow: visible;
@@ -23,13 +22,13 @@
             <div class="layui-form-item">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">用户姓名</label>
+                        <label class="layui-form-label">用户姓名<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input type="text" id="name1" required lay-verify="required" name="name" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">用户学年</label>
+                        <label class="layui-form-label">用户学年<span  class="star">*</span></label>
                         <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                             <select name="list3" lay-verify="required" class="decSelect"
                                     url="/dictionary/list/payTerm/options">
@@ -43,7 +42,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline" style="margin-bottom: 0px">
-                        <label class="layui-form-label">缴费类型</label>
+                        <label class="layui-form-label">缴费类型<span  class="star">*</span></label>
                         <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                             <select name="list1" lay-verify="required" class="decSelect"
                                     url="/dictionary/list/payType/options" >
@@ -55,7 +54,7 @@
                         </button>
                     </div>
                     <div class="layui-inline" style="margin-left: 10px;margin-right: 0px;margin-bottom: 0px;">
-                        <label class="layui-form-label">缴费方式</label>
+                        <label class="layui-form-label">缴费方式<span  class="star">*</span></label>
                         <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                             <select name="list2" lay-verify="required" class="decSelect"
                                     url="/dictionary/list/payWay/options" >
@@ -69,18 +68,18 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">总金额</label>
+                        <label class="layui-form-label">总金额<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input type="text" name="totalAmount" required lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
                     <div class="layui-inline" style="margin-right: 0px;margin-bottom: 0px;">
-                        <label class="layui-form-label">是否分期</label>
+                        <label class="layui-form-label">是否分期<span  class="star">*</span></label>
                         <div class="layui-inline" style="width: 190px;margin-right: 0px;margin-bottom: 0px;">
                             <select lay-verify="" name="hasInstalment" id="hasInstalment">
-                                <option value="true">是</option>
                                 <option value="false">否</option>
+                                <option value="true">是</option>
                             </select>
                         </div>
                     </div>
@@ -101,13 +100,13 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">金额</label>
+                        <label class="layui-form-label">金额<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input type="text" name="payAmount" required lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">总计</label>
+                        <label class="layui-form-label">总计<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input type="text" name="factAmount" required lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
@@ -115,14 +114,14 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">开始时间</label>
+                        <label class="layui-form-label">开始时间<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input class="layui-input" name="startTime" required lay-verify="required" id="test2" type="text"
                                    >
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">结束时间</label>
+                        <label class="layui-form-label">结束时间<span  class="star">*</span></label>
                         <div class="layui-input-inline">
                             <input class="layui-input" name="endTime" required lay-verify="required" id="test3" type="text"
                                    >
