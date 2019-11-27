@@ -29,7 +29,7 @@ public class CACHE {
         return SpringContextUtil.getBean(StringRedisTemplate.class);
     }
 
-    private static Service getService() {
+    private static Service getDictionaryService() {
         return SpringContextUtil.getBean(DictionaryService.class);
     }
 
@@ -47,25 +47,7 @@ public class CACHE {
         return PREFEX + tableName + id;
     }
 
-  /*  private static TbDictionary getDictionary(Integer dictionaryId) {
-        getRedisTemplate();
-        System.out.println("进入方法");
-        ValueOperations<String, > stringStringValueOperations = getRedisTemplate().opsForValue();
-        System.out.println(224);
-        TbDictionary dictionary = (TbDictionary) stringStringValueOperations.get(getKey(TbDictionary.class.getSimpleName(), dictionaryId));
 
-        if (dictionary != null) {
-            return dictionary;
-        }
-        TbDictionary dictionaryDB = getService().getById(TbDictionary.class, dictionaryId);
-        System.out.println(dictionaryDB + "++++++++++++++++");
-        if (dictionaryDB == null) {
-            return null;
-        }
-        stringStringValueOperations.set(getKey(TbDictionary.class.getSimpleName(), dictionaryId), dictionaryDB);
-        return dictionaryDB;
-
-    }*/
 
     /**
      * 返回渠道的名称
@@ -82,7 +64,7 @@ public class CACHE {
         if (StringUtil.isNotBlank(channelName)) {
             return channelName;
         }
-        TbDictionary dictionary = getService().getById(TbDictionary.class, channelId);
+        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, channelId);
         if(dictionary==null){
             return "";
         }
