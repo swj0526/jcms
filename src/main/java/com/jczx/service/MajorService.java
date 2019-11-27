@@ -80,7 +80,7 @@ public class MajorService extends BaseService {
      * @return
      */
     public List<TbMajor> listMajor(){
-        Conditions conditions = new Conditions(getTableName());
+        Conditions conditions =getConditins();
         List<TbMajor> list = getList(conditions);
         return list;
     }
