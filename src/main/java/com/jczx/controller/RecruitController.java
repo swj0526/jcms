@@ -1,9 +1,7 @@
 package com.jczx.controller;
 
-import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
-import com.jczx.service.moneyService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.InputStream;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -113,6 +111,10 @@ public class RecruitController extends BaseController {
         System.out.println(keywords);
         Pager pager = checkPager(limit, page);
         List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, sex, pager);
+         for(TbStudent student:list){
+             System.out.println("渠道id:"+student.getChannelId());
+             //System.out.println("渠道名称:"+student.getChannelName());
+         }
         return layuiList(list, pager);
 
 
@@ -127,9 +129,14 @@ public class RecruitController extends BaseController {
     public String upFollow(Integer id, Map<String, Object> map) {
         System.out.println(id);
         TbStudent student = recruitService.getStudent(id);
-        map.put("student", student);
+
         map.put("birth", student.getBirthDate().toString());
         map.put("createTime", student.getCreateTime().toString());
+        map.put("id",student.getId());
+        List<TbStudent> list =new ArrayList<>();
+        list.add(student);
+        map.put("student",list);
+
         return "recruit/detailfollow";
     }
 

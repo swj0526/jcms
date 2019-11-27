@@ -267,7 +267,9 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 type: 2,
                 area: ['100%', '100%'],
                 title: data.name+"详情",
-                content: '/recruit/detailfollow?id='+id
+                content: '/recruit/detailfollow?id='+id,
+                success:function () {
+                }
 
 
             });

@@ -3,22 +3,14 @@ package com.jczx.service;
 import com.jczx.domain.TbDictionary;
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
-import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
-import org.springframework.boot.logging.java.SimpleFormatter;
 import org.springframework.stereotype.Component;
 
-import javax.naming.Name;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.List;
 
 /**

@@ -280,7 +280,7 @@ public class TbStudent extends Domain {
         this.integralId = integralId;
     }
 
-    public  String getChannelName(){
+    /*public  String getChannelName(){
         return CACHE.getChannelName(channelId);
-    }
+    }*/
 }

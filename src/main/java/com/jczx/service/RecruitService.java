@@ -1,21 +1,15 @@
 package com.jczx.service;
-
-import com.jczx.domain.TbPayBill;
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
-import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
-
-
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +19,7 @@ import java.util.List;
  * @create 2019-11-21 19:38
  */
 @Component
-public class RecruitService extends Service {
+public class RecruitService extends BaseService {
     /**
      * 添加
      *
@@ -62,9 +56,9 @@ public class RecruitService extends Service {
      * @param
      * @return
      */
-    public TbStudent getStudent(Integer id) {
-        Conditions conditions = new Conditions(TbStudent.class);
-        TbStudent getStudent = getById(TbStudent.class, id);
+    public TbStudent getStudent(Integer studentId) {
+        Conditions conditions = new Conditions(getTableName());
+        TbStudent getStudent = getById(TbStudent.class, studentId);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return getStudent;
     }
@@ -98,7 +92,8 @@ public class RecruitService extends Service {
      * 查询
      */
     public List<TbStudent> listRecruit(String keywords, String labelIds, String sex, Pager pager) { //模糊关键字keywords查询用or
-        Conditions conditions = new Conditions(TbStudent.class);
+        Conditions conditions = new Conditions(getTableName());
+
         if (StringUtil.isNotBlank(keywords)) {
             System.out.println("条件");
             conditions.parenthesesStart();
@@ -141,4 +136,8 @@ public class RecruitService extends Service {
     }
 
 
+    @Override
+    public String getTableName() {
+        return TbStudent.class.getSimpleName();
+    }
 }
