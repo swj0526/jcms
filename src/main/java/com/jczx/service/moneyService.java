@@ -94,8 +94,12 @@ public class moneyService extends Service {
      * @return
      */
     public TbPayBill getBill(int id) {
-        TbPayBill byId = getById(TbPayBill.class, id);
-        return byId;
+        Conditions conditions =new Conditions(TbPayBill.class);
+        conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id");
+        conditions.putEW("tbpaybill.id",id);
+        TbPayBill one = getOne(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        return one;
     }
     public InputStream xlsx(String keyword, Integer type, Date date, Pager pager){
         ExcelDatas excelDatas = new ExcelDatas();

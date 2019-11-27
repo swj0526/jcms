@@ -21,7 +21,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             btnAlign: 'c'
             , type: 2
             , area: ['720px', '350px']
-            , btn: ['确定','取消']
+            , btn: ['确定']
             , content: 'tosemester'
         });
     });
