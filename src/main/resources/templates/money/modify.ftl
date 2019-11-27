@@ -82,8 +82,8 @@
                             <label class="layui-form-label">是否分期<span  class="star">*</span></label>
                             <div class="layui-inline" style="width: 190px;margin-right: 0px;margin-bottom: 0px;">
                                 <select lay-verify="" name="hasInstalment" id="hasInstalment">
-                                    <option value="true">是</option>
                                     <option value="false">否</option>
+                                    <option value="true">是</option>
                                 </select>
                             </div>
                         </div>

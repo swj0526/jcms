@@ -35,7 +35,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , content: $("#ll")
                     , yes: function (index, layero) {
                         $.post('/dictionary/add/payTerm',{
-                            name:$("#addname").val()
+                            name:$("#addname").val(),
+                            remark:$("#addremark").val()
 
                         },function (res) {
                             layer.close(index);
@@ -59,7 +60,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , yes: function (index, layero) {
                     $.post('/dictionary/modify',{
                         id:data.id,
-                        name:$("#upname").val()
+                        name:$("#upname").val(),
+                        remark:$("#upremark").val()
 
                     },function (res) {
                         layer.close(index);
