@@ -73,6 +73,7 @@ public class RecruitController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addRecruit(TbStudent student) {
+        System.out.println(student.getStudentPhone()+"++++++++");
         ServiceResult addRecruit = recruitService.addRecruit(student);
         return addRecruit;
     }

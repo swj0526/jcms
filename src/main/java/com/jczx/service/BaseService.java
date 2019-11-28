@@ -16,6 +16,11 @@ public abstract class BaseService extends Service {
      * @return
      */
     public abstract String getTableName();
+
+    /**
+     * 返回conditons条件对象
+     * @return
+     */
     protected Conditions getConditins(){
         return new Conditions(getTableName());
     }

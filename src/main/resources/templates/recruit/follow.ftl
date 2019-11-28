@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="all.css">
     <script src="/layui/layui.js" charset="utf-8"></script>
     <script src="/recruit/js/follow.js"></script>
 </head>
@@ -15,7 +16,7 @@
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" id="dataFor">
         <div class="layui-form-item">
-            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+            <span class="star">*</span>
             <label class="layui-form-label">渠道名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="nameA" required lay-verify="required" placeholder="" autocomplete="off"
@@ -45,7 +46,7 @@
 <div style="display: none" id="modify">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
-            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
+            <span class="star">*</span>
             <label class="layui-form-label">渠道名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
