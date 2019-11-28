@@ -20,13 +20,14 @@ import java.util.List;
  */
 @Component
 public class TeacherService  extends Service {
-    Conditions conditions = new Conditions(TbTeacher.class);
+
     /**
      * 添加老师
      * @param tbTeacher
      * @return
      */
     public ServiceResult addTeacher(TbTeacher tbTeacher) {
+        Conditions conditions = new Conditions(TbTeacher.class);
         conditions.putEW("phone",tbTeacher.getPhone());
         List<TbTeacher> list = getList(conditions);
         if (list.size()!=0){
@@ -35,7 +36,6 @@ public class TeacherService  extends Service {
         if(StringUtil.isBlank(tbTeacher.getName())||StringUtil.isBlank(tbTeacher.getPhone())){
             return error("请输入姓名和手机号");
         }
-
         add(tbTeacher);
         return SUCCESS;
     }
@@ -46,9 +46,16 @@ public class TeacherService  extends Service {
      * @return
      */
     public ServiceResult modifyTeacher(TbTeacher tbTeacher){
+        Conditions conditions = new Conditions(TbTeacher.class);
         conditions.putEW("phone",tbTeacher.getPhone());
-        List<TbTeacher> list = getList(conditions);
-        if (list.size()!=0){
+        List<TbTeacher> list=getList(conditions);
+        int id=0;
+        for (int i=0;i<list.size();i++){
+            id=list.get(i).getId();
+        }
+        System.out.println("前台传的id="+tbTeacher.getId());
+        System.out.println("查询的id="+id);
+        if (id!=tbTeacher.getId()&&list.size()!=0){
             return error("手机号重复");
         }
         if(StringUtil.isBlank(tbTeacher.getName())||StringUtil.isBlank(tbTeacher.getPhone())){
@@ -62,8 +69,15 @@ public class TeacherService  extends Service {
      * 查找老师表所有信息
      * @return
      */
-    public List<TbTeacher> teacherList(String name,boolean hasQuit,Pager pager){
-        conditions.putEWIfOk("name",name);
+    public List<TbTeacher> teacherList(String keyword,boolean hasQuit,Pager pager){
+        Conditions conditions = new Conditions(TbTeacher.class);
+        if (StringUtil.isNotBlank(keyword)){
+            conditions.parenthesesStart();
+            conditions.putLIKE("name",keyword);
+            conditions.or();
+            conditions.putLIKE("phone",keyword);
+            conditions.parenthesesEnd();
+        }
         conditions.putEWIfOk("hasQuit",hasQuit);
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbTeacher> teacher = getListByPage(conditions,pager);
@@ -94,7 +108,17 @@ public class TeacherService  extends Service {
         excelDatas.addObjectList(1, 0, list, new String[]{"id","name", "gender", "phone", "hasQuit"});//行,列,集合
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
+    }
 
+    /**
+     * 下载模板
+     * @return
+     */
+    public InputStream excel(){
+        ExcelDatas excelDatas=new ExcelDatas();
+        excelDatas.addStringArray(0, 0, new String[]{"id","姓名","性别", "手机号", "是否在职"});
+        InputStream inputStream =ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
     }
 
 }

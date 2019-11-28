@@ -22,7 +22,6 @@ public class TbTeacher extends Domain {
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
-
     public Integer getId() {
         return id;
     }

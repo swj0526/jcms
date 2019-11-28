@@ -26,7 +26,6 @@ public class TeacherController extends BaseController{
     @Autowired
     private TeacherService teacherService;
 
-
     @RequestMapping("/tolist")
     public String toList() {
         return "/teacher/list";
@@ -52,20 +51,16 @@ public class TeacherController extends BaseController{
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modifyTeacher(TbTeacher teacher){
-        System.out.println(teacher.getName());
-        System.out.println(teacher.getPhone());
-        System.out.println(teacher.getHasQuit());
-
         ServiceResult modify=teacherService.modifyTeacher(teacher);
         return modify;
     }
 
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult teacherList(String name,boolean hasQuit, int page, int limit){
+    public ServiceResult teacherList(String keyword,boolean hasQuit, int page, int limit){
         Pager pager = checkPager(limit, page);
-        List<TbTeacher> list= teacherService.teacherList(name,hasQuit,pager);
-        System.out.println(name);
+        List<TbTeacher> list= teacherService.teacherList(keyword,hasQuit,pager);
+        System.out.println(keyword);
         System.out.println(hasQuit);
         return layuiList(list,pager);
     }
@@ -85,6 +80,13 @@ public class TeacherController extends BaseController{
         pager.setCurrentPage(1);
         InputStream inputStream = teacherService.teacherExcel(name,hasQuit,pager);
         return Render.renderFile("老师信息.xls", inputStream);
+    }
+
+    @RequestMapping("/excel")
+    @ResponseBody
+    public Render excel(){
+        InputStream inputStream = teacherService.excel();
+        return Render.renderFile("老师模板.xls", inputStream);
     }
 
 }
