@@ -16,4 +16,9 @@ public class ArticleController {
         return "article/list";
     }
 
+    @RequestMapping("/teacherList")
+    public String teacherList(){
+        return "article/teacherList";
+    }
+
 }

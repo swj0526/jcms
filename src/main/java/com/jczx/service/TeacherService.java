@@ -4,7 +4,6 @@ import com.jczx.domain.TbTeacher;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
@@ -28,7 +27,7 @@ public class TeacherService  extends Service {
      * @return
      */
     public ServiceResult addTeacher(TbTeacher tbTeacher) {
-        Conditions conditions = new Conditions(TbTeacher.class);
+        Conditions conditions = new Conditions(getTableName());
         conditions.putEW("phone",tbTeacher.getPhone());
         List<TbTeacher> list = getList(conditions);
         if (list.size()!=0){
@@ -47,7 +46,7 @@ public class TeacherService  extends Service {
      * @return
      */
     public ServiceResult modifyTeacher(TbTeacher tbTeacher){
-        Conditions conditions = new Conditions(TbTeacher.class);
+        Conditions conditions = new Conditions(getTableName());
         conditions.putEW("phone",tbTeacher.getPhone());
         List<TbTeacher> list=getList(conditions);
         int id=0;
@@ -71,7 +70,7 @@ public class TeacherService  extends Service {
      * @return
      */
     public List<TbTeacher> teacherList(String keyword,Boolean hasQuit,Pager pager){
-        Conditions conditions = new Conditions(TbTeacher.class);
+        Conditions conditions = new Conditions(getTableName());
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();
             conditions.putLIKE("name",keyword);
@@ -79,12 +78,11 @@ public class TeacherService  extends Service {
             conditions.putLIKE("phone",keyword);
             conditions.parenthesesEnd();
         }
-       if(hasQuit!=null){
-           conditions.putEW("hasQuit",hasQuit);
-       }
+        if(hasQuit!=null){
+            conditions.putEW("hasQuit",hasQuit);
+        }
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbTeacher> teacher = getListByPage(conditions,pager);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return teacher;
     }
 
@@ -109,7 +107,7 @@ public class TeacherService  extends Service {
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbTeacher> list = teacherList(name,hasQuit,pager);
         excelDatas.addStringArray(0, 0, new String[]{"姓名","性别", "手机号", "是否在职"});
-        excelDatas.addObjectList(1, 0, list, new String[]{"name", "gender", "phone", "hasQuit"});//行,列,集合
+        excelDatas.addObjectList(1, 0, list, new String[]{"name", "gender", "phone", "quit"});//行,列,集合
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }
@@ -123,6 +121,10 @@ public class TeacherService  extends Service {
         excelDatas.addStringArray(0, 0, new String[]{"id","姓名","性别", "手机号", "是否在职"});
         InputStream inputStream =ExcelUtil.exportExcel(excelDatas);
         return inputStream;
+    }
+
+    public String getTableName() {
+        return TbTeacher.class.getSimpleName();
     }
 
 }

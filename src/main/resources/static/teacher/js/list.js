@@ -53,8 +53,8 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
                 curr: 1 //重新从第 1 页开始
             }
             ,where: {
-                keyword: $("#name2").val(),
-                hasQuit:$("#hasQuit2").val()
+                keyword: $("#queryName").val(),
+                hasQuit:$("#queryHasQuit").val()
             }
         }, 'data');
     });
@@ -123,9 +123,10 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
         }
     });
 //添加老师
+
     $("#add1").click(function () {
-        var mainIndex;
-        mainIndex=layer.open({
+        var index;
+        index=layer.open({
             type: 1,
             title: "添加老师信息",
             content: $("#add"),
@@ -148,14 +149,17 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
                 }, function(result) {
                     if (result.success==true){
                         alert("成功");
-                        layer.close(mainIndex);
+                        layer.close(index);
                     }else {
                         alert(result.msg);
                     }
                 });
             }
-
         });
+        $('#cancelAdd').click(function() {
+            layer.close(index);		//关闭窗口
+        });
+
 
     });
     //导出点击事件
