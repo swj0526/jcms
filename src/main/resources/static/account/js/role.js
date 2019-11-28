@@ -8,6 +8,7 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form', 'tree', 'elem
     var util = layui.util;
     var tree = layui.tree;
     var element = layui.element;
+
     //渲染数据表格
     var tableIns = table.render({
         elem: '#test'//渲染目标
@@ -83,15 +84,10 @@ layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form', 'tree', 'elem
                 }
             });
         } else if (obj.event === 'fun') {
-            /*var dom = $('#account_privilege', parent.document);
-            dom.trigger("click");*/
-          /*  window.parent.parent.*/
-
-            /*  window.parent.layui.element.tabAdd('demo', {
-                  title: '新选项卡', //用于演示
-                  content: "123"
-                  , id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
-              });*/
+             var id="account_privilege";
+             var title="角色权限设置";
+             var src="/account/toprivilege"
+             parent_tab(id,title,src);
         }
     });
 

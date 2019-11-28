@@ -7,7 +7,6 @@
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;" class="add" id="account_list">账号管理</a></dd>
                     <dd><a href="javascript:;" class="add" id="account_role">角色权限管理</a></dd>
-                    <dd><a href="javascript:;" class="add" id="account_privilege">设置角色权限</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
