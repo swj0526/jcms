@@ -84,7 +84,7 @@
                             修改
                         </button>
                         <button type="button" class="layui-btn  layui-btn-xs" lay-event="fun" data-method="confirmTrans">
-                            设置权限
+                             设置权限
                         </button>
                         <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete" data-method="confirmTrans">
                             删除
