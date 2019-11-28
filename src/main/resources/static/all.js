@@ -49,6 +49,30 @@ var parent_tab = function (id, title, src) {
         });
     });
 }
+//关闭选项卡并刷新指定的选项卡
+var close_Table = function (oldId,newId,title,src) { //old需要关闭的页面,newId需要去定位新的页面
+
+    layui.use(['element', 'jquery'], function () {
+        var element = layui.element;
+        var $ = layui.jquery;
+        element.tabDelete('demo', oldId);//关闭旧的tab页
+        if (parent.$("[lay-id=" + newId + "]").length == 0) {//选判是否有新的tab页存在
+            parent.layui.element.tabAdd('demo', {
+                title: title,
+                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%"></iframe>',
+                id: newId//实际使用一般是规定好的id，这里以时间戳模拟下
+            });
+        }
+        parent.layui.element.tabChange('demo', newId); //切换到tab选项卡
+        $('iframe').attr('src', $('iframe').attr('src'));
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#test=/, '');
+        element.tabChange('test', layid);
+        element.on('tab(test)', function (elem) {
+            location.hash = 'test=' + $(this).attr('lay-id');
+        });
+    });
+}
 //select下拉选
 var sel = function () {
     //JavaScript代码区域
@@ -83,9 +107,7 @@ var sel = function () {
                 });
                 renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
             });
-        })
-
-
+        });
     })
 }
 layui.use(['jquery'], function () {
