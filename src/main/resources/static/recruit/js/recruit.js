@@ -54,7 +54,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     width: 80
                 },
                 {
-                    field: 'labelIds',
+                    field: 'labelNames',
                     title: '意向',
                     align: 'center',
                     width: 80

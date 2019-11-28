@@ -284,4 +284,8 @@ public class TbStudent extends Domain {
 
         return CACHE.getChannelName(channelId);
     }
+
+    public String getLabelNames(){
+        return CACHE.getLabelNames(",7,8,9,");
+    }
 }

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/all.css" media="all">
     <script src="/layui/layui.js"></script>
     <script src="/teacher/js/list.js"></script>
 </head>
@@ -17,24 +18,21 @@
         <form class="layui-form " lay-filter="dataForm" id="dataFrm" action="">
             <div class="layui-form-item">
                 <div class="layui-form-item">
-                    <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                    <label class="layui-form-label">姓名</label>
+                    <label class="layui-form-label">姓名<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input" id="name">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                    <label class="layui-form-label">手机号</label>
+                    <label class="layui-form-label">手机号<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input name="phone" class="layui-input" type="tel" autocomplete="off"
                                lay-verify="required|phone" id="phone">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                    <label class="layui-form-label">性别</label>
+                    <label class="layui-form-label">性别<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <select name="gender" lay-verify="" id="gender">
                             <option value="">选择性别</option>
@@ -45,6 +43,7 @@
                 </div>
             </div>
             <button class="layui-btn" lay-submit lay-filter="formDemo" id="addTeacher">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="cancelAdd">取消</button>
         </form>
     </div>
 </div>
@@ -61,24 +60,21 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                    <label class="layui-form-label">姓名</label>
+                    <label class="layui-form-label">姓名<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input" id="name1">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-                    <label class="layui-form-label">手机号</label>
+                    <label class="layui-form-label">手机号<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input name="phone" class="layui-input" type="tel" autocomplete="off"
                                lay-verify="required|phone" id="phone1">
-
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">状态</label>
+                    <label class="layui-form-label">状态<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit1">
                             <option value=true>在职</option>
@@ -123,13 +119,14 @@
                 <label class="layui-form-label">关键词</label>
                 <div class="layui-input-inline">
                     <input type="text" name="name" autocomplete="off" class="layui-input"
-                           placeholder="张三/手机号" id="name2">
+                           placeholder="张三/手机号" id="queryName">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">状态</label>
                 <div class="layui-inline">
-                    <select name="hasQuit" lay-verify="" id="hasQuit2">
+                    <select name="hasQuit" lay-verify="" id="queryHasQuit">
+                        <option value="">所有状态</option>
                         <option value="true">在职</option>
                         <option value="false">离职</option>
                     </select>

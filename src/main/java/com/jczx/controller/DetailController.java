@@ -54,13 +54,6 @@ public class DetailController {
      * @return
      */
 
-   /* @RequestMapping("/list")
-    @ResponseBody
-    public List<TbRecruitDetail>list(Integer studentId) {
-        List<TbRecruitDetail> tbRecruitDetails = detailService.listDetail(studentId);
-        return tbRecruitDetails;
-    }*/
-
     /**
      * 招生信息详情
      *
@@ -76,5 +69,11 @@ public class DetailController {
         List<TbRecruitDetail> detail = detailService.listDetail(id);
         map.put("detail",detail);
         return "recruit/detailfollow";
+    }
+    @RequestMapping("/deleteFollow")
+    @ResponseBody
+    public ServiceResult deleteFollow(TbRecruitDetail tbRecruitDetail){
+        ServiceResult serviceResult = detailService.delDetail(tbRecruitDetail);
+        return serviceResult;
     }
 }

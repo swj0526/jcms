@@ -4,6 +4,7 @@ package com.jczx.system;
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
 import com.sun.org.apache.regexp.internal.RE;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.SpringContextUtil;
 import net.atomarrow.util.StringUtil;
@@ -139,11 +140,49 @@ public class CACHE {
     /**
      * 文章类型
      */
-    public static String getArticleType(){
+    public static String getArticleTypeName(){
         return "";
     }
 
+    /**
+     * 意向标签name数组
+     */
+   public static  String getLabelNames(String labelIds){
+       if(StringUtil.isBlank(labelIds)){
+           return "";
+       }
+       String[] split = labelIds.split(",");
+       String names = "";
+       for(int  i=1;i<split.length;i++){
+           TbDictionary dictionary = getDictionary(Integer.valueOf(split[i]));
+          if(dictionary!=null){
+              if(i==split.length-1){
+                  names=names+dictionary.getName();
+              }else {
+                  names=names+dictionary.getName()+",";
+              }
+              System.out.println(names);
+          }
+       }
+       return names;
+   }
 
+
+
+    /**
+     * 修改删除的时候调用该方法,清空该缓存对象
+     * @param id
+     */
+    public static void remove(Integer id){
+        getUtil().remove(getKey(TbDictionary.class.getSimpleName(), id));
+    }
+
+    /**
+     * 移除所有的数据
+     */
+   private static void removeAll(){
+       getUtil().removeAll();
+   }
 
 
 
