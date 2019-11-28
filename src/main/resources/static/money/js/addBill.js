@@ -20,18 +20,19 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
+            ,title:'学年'
             , area: ['720px', '350px']
-            , btn: ['确定']
+            ,btn:['确定','取消']
             , content: 'tosemester'
         });
     });
     $("#type2").click(function () {
         layer.open({
             btnAlign: 'c'
-            ,title:'方式'
+            ,title:'缴费方式'
             , type: 2
             , area: ['720px', '350px']
-            , btn: ['确定']
+            ,btn:['确定','取消']
             , content: 'topaymentMethod'
         });
     });
@@ -39,8 +40,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
+            ,title:'缴费类型'
             , area: ['720px', '350px']
-            , btn: ['确定']
+            ,btn:['确定','取消']
             , content: 'totype'
         });
     });
@@ -56,7 +58,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         btnAlign: 'c'
                         , area: ['100px', '150px']
                         , content: '<p style="text-align: center">添加成功</p>'
-                        , btn: ['继续添加', '取消']
+                        , btn: ['继续添加', '返回数据表格']
                         , yes: function (index) {
                             location.reload();
                         }
@@ -66,9 +68,13 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         }
                     })
                 } else {
+                    layer.msg(result.msg)
                 }
 
 
             });
     });
+    $("#revocation").click(function () {
+        parent.layer.close(index);
+    })
 });

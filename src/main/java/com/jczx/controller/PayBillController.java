@@ -100,7 +100,7 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult list(String keyword, Integer typeId, Date date, int page, int limit) {
+    public ServiceResult list(String keyword, Integer typeId, Date date, Integer page, Integer limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);

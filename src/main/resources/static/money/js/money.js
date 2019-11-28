@@ -45,6 +45,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c',
             type: 2,
+             title: '添加缴费信息',
             skin:'layer-ext-myskin',
             area: ['100%', '100%'],
             btn: [],
@@ -63,8 +64,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             layer.open({
                 btnAlign: 'c'
                 , type: 2
+                ,btn:['确定','取消']
                 , area: ['100%', '100%']
-                , title: '修改'
+                , title: '修改缴费信息'
                 , btn: []
                 , content: '/money/tomodify?id='+data.id+''
                 ,end: function () {//修改后刷新当前页

@@ -17,7 +17,7 @@ import java.util.Date;
 @Component
 public class TbPayBill extends Domain {
     @NotCreate
-    private String Instalment;//学生姓名
+    private String Instalment;
     @NotCreate
     private String name;//学生姓名
     @NotCreate
@@ -222,25 +222,25 @@ public class TbPayBill extends Domain {
      * 缴费类型
      * @return
      */
-    /*public String getTypeName(){
+    public String getTypeName(){
         return CACHE.getTypeName(typeId);
-    }*/
+    }
 
     /**
      * 缴费方式
      * @return
      */
-    /*public String getPaymentMethodName(){
+    public String getPaymentMethodName(){
 
         return CACHE.getPaymentMethodName(paymentMethodId);
-    }*/
+    }
 
     /**
      * 学年
      * @return
      */
-   /* public String getSemesterName(){
+    public String getSemesterName(){
 
         return CACHE.getSemesterName(semesterId);
-    }*/
+    }
 }

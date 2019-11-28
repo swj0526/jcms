@@ -31,7 +31,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 layer.open({
                     btnAlign: 'c'
                     , type: 1
-                    , btn: ['提交']
+                    ,title:'添加学年'
+                    , btn: ['提交','取消']
                     , content: $("#ll")
                     , yes: function (index, layero) {
                         $.post('/dictionary/add/payTerm',{
@@ -56,7 +57,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
-                , btn: ['提交']
+                ,title:'修改学年'
+                , btn: ['提交','取消']
                 , content: $("#up")
                 , yes: function (index, layero) {
                     $.post('/dictionary/modify',{

@@ -3,6 +3,7 @@ package com.jczx.controller;
 import com.jczx.domain.TbMajor;
 import com.jczx.service.MajorService;
 import net.atomarrow.bean.ServiceResult;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +30,9 @@ public class MajorController {
      * @return
      */
     @RequestMapping("tolist")
-    public String tolist(Map<String,List<TbMajor>> map) {
-        List<TbMajor> list = majorService.listMajor();
-        map.put("list",list);
+    public String tolist(Map<String, List<TbMajor>> map,String keywords) {
+        List<TbMajor> list = majorService.listMajor(keywords);
+        map.put("list", list);
         return "/major/list";
     }
 
@@ -76,5 +77,9 @@ public class MajorController {
         return majorService.modifyMajor(major);
     }
 
-
+    @RequestMapping("/get")
+    @ResponseBody
+    public TbMajor get(Integer id) {
+        return majorService.getMajor(id);
+    }
 }

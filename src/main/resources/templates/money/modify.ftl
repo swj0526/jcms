@@ -5,15 +5,14 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="/all.css"/>
-    <script ></script>
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/all.js"></script>
     <script type="text/javascript" src="/money/js/modify.js"></script>
 
 </head>
 <body>
-<div id="addpage">
-    <fieldset id="add2" class="layui-elem-field layuimini-search">
+<div id="addpage" >
+    <fieldset id="add2" style="border: 0">
         <div style="margin: 10px 10px 10px 10px;margin-left:25%">
             <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
                 <input style="display: none" type="text" id="id" name="id" value=${bill.id} autocomplete="off"
@@ -31,7 +30,7 @@
 
                             <label class="layui-form-label">用户学年<span  class="star">*</span></label>
                             <div  class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                                <select name="list3" lay-verify="required" class="decSelect"
+                                <select name="semesterId" lay-verify="required" class="decSelect"
                                         url="/dictionary/list/payTerm/options" selectedId="${bill.semesterId}"  >
                                     <option value="">请选择</option>
 
@@ -46,7 +45,7 @@
                         <div class="layui-inline" style="margin-bottom: 0px">
                             <label class="layui-form-label">缴费类型<span  class="star">*</span></label>
                             <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                                <select name="list1" lay-verify="required" class="decSelect"
+                                <select name="typeId" lay-verify="required" class="decSelect"
                                         url="/dictionary/list/payType/options"   selectedId="${bill.typeId}">
                                     <option value="">请选择</option>
                                 </select>
@@ -58,7 +57,7 @@
                         <div class="layui-inline" style="margin-left: 10px;margin-right: 0px;margin-bottom: 0px;">
                             <label class="layui-form-label">缴费方式<span  class="star">*</span></label>
                             <div class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                                <select name="list2" lay-verify="required" class="decSelect"
+                                <select name="paymentMethodId" lay-verify="required" class="decSelect"
                                         url="/dictionary/list/payWay/options"  selectedId="${bill.paymentMethodId}"  >
                                     <option value="">请选择</option>
                                 </select>
@@ -147,9 +146,14 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="layui-btn" lay-submit id="update"
-                        style="padding-left: 10px;padding-right: 10px;width: 70px;margin-left: 275px">提交
-                </button>
+                <div style="text-align: center;width: 650px">
+                    <button type="button" class="layui-btn" lay-submit id="submit"
+                            style="padding-left: 10px;padding-right: 10px;width: 70px;">提交
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-primary"id="revocation"
+                            style="padding-left: 10px;padding-right: 10px;width: 70px;">取消
+                    </button>
+                </div>
             </form>
 
         </div>
