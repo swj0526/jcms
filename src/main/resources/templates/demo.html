@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>在子页面开父页面的选项卡的使用步骤</div>
+    <div>1.子页面先引入all.js</div>
+    <div>2.子页面的js中使用 parent_tab(id,title,src);函数</div>
+    <div>3.传入的三个参数分别为tab的id,标题,controller访问页面的地址</div>
+</div>
+<div>
+    <div>使用动态的下拉选择框</div>
+    <div>1.页面需要引入all.js</div>
+    <div>2.并使用一下的标签,cass不可变,url为controller返回的数据列表的地址,selectedId为默认被选中的值,该属性用于修改</div>
+    <div><select name="list3" lay-verify="required" class="decSelect"
+                 url="/dictionary/list/payTerm/options" selectedId="${bill.semesterId}"  >
+        <option value="">请选择</option>
+
+    </select></div>
+</div>
+</body>
+</html>
