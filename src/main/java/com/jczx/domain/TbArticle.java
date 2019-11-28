@@ -12,16 +12,18 @@ import java.util.Date;
  */
 @Component
 public class TbArticle  extends Domain {
+
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
+    private Integer type;//文章类型
     private String content;//内容
     private Date createTime;//发布时间
     private Integer readCount;//已读数//count
     private Integer totalCount;//应读数//count
     private String readIds;//已读
     private String totalIds;//应读
-    private Boolean hasAttachment;//是否有上传文件//单词
+    private Boolean hasAttachment;//是否有上传文件
     private Integer operatorId;//操作人
 
     public Integer getId() {
@@ -46,6 +48,14 @@ public class TbArticle  extends Domain {
 
     public void setReceiverRoleIds(String receiverRoleIds) {
         this.receiverRoleIds = receiverRoleIds;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public String getContent() {
@@ -111,4 +121,8 @@ public class TbArticle  extends Domain {
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
     }
+
+    /*public String getTypeName(){
+        return CACHE.get;
+    }*/
 }

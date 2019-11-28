@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,8 @@ import java.util.Date;
  */
 @Component
 public class TbTeacher extends Domain {
+    @NotCreate
+    private String quit;
 
     private Integer id;
     private String name;//姓名
@@ -21,6 +24,15 @@ public class TbTeacher extends Domain {
     private Boolean hasQuit;//老师状态
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
+
+    public String getQuit() {
+        if (hasQuit){
+            return "在职";
+        }else {
+            return "离职";
+        }
+    }
+
 
     public Integer getId() {
         return id;
