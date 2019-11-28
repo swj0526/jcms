@@ -114,6 +114,12 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         page: true
     });
 
+//下拉选赋值;
+    var a=$("#Instalment").val();
+    var select = 'dd[lay-value=' + a + ']';
+    $('#select1').siblings("div.layui-form-select").find('dl').find(select).click();
+
+
     // 搜索操作
     var $ = layui.$, active = {
         reload: function () {
