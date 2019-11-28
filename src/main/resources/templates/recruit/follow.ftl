@@ -7,17 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="/all.css">
     <script src="/layui/layui.js" charset="utf-8"></script>
     <script src="/recruit/js/follow.js"></script>
+    <style>
+        .layui-form-label{
+            margin-left: 25px;
+        }
+    </style>
 </head>
 <body>
 <#--新增信息弹出框-->
 <div style="display: none" id="recruit">
     <form class="layui-form" action="" id="dataFor">
         <div class="layui-form-item">
-            <span class="star">*</span>
-            <label class="layui-form-label">渠道名称</label>
+
+            <label class="layui-form-label">渠道名称 <span class="star">*</span></label>
+
             <div class="layui-input-inline">
                 <input type="text" name="nameA" required lay-verify="required" placeholder="" autocomplete="off"
                        class="layui-input">
@@ -26,7 +32,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">渠道备注</label>
+            <label class="layui-form-label">渠道备注 <span class="star"></span></label>
             <div class="layui-input-inline">
                 <input type="text" name="remarkA" placeholder="" autocomplete="off"
                        class="layui-input">
@@ -46,8 +52,8 @@
 <div style="display: none" id="modify">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
-            <span class="star">*</span>
-            <label class="layui-form-label">渠道名称</label>
+
+            <label class="layui-form-label">渠道名称<span class="star">*</span></label>
             <div class="layui-input-inline">
                 <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
                        class="layui-input">
@@ -55,7 +61,7 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">渠道备注</label>
+            <label class="layui-form-label">渠道备注    <span class="star"></span></label>
             <div class="layui-input-inline">
                 <input type="text" name="remark" placeholder="" autocomplete="off"
                        class="layui-input">

@@ -94,7 +94,54 @@ public class CACHE {
         }
         return dictionary.getName();
     }
+    /**
+     * 缴费类型
+     */
+    public static String getTypeName(Integer typeId){
+        if (typeId == null || typeId == 0) {
+            return "";
+        }
+        TbDictionary dictionary = getDictionary(typeId);
+        if(dictionary==null){
+            return "";
+        }
+        return dictionary.getName();
+    }
+    /**
+     * 缴费方式
+     */
+    public static String getPaymentMethodName(Integer paymentMethodId){
+        if (paymentMethodId == null || paymentMethodId == 0) {
+            return "";
+        }
+        TbDictionary dictionary = getDictionary(paymentMethodId);
+        if(dictionary==null){
+            return "";
+        }
+        return dictionary.getName();
+    }
 
+    /**
+     * 学年
+     * @param semesterId
+     * @return
+     */
+    public static String getSemesterName(Integer semesterId){
+        if (semesterId == null || semesterId == 0) {
+            return "";
+        }
+        TbDictionary dictionary = getDictionary(semesterId);
+        if(dictionary==null){
+            return "";
+        }
+        return dictionary.getName();
+    }
+    /**
+     * 文章类型
+     */
+    public static String getArticleType(){
+        return "";
+    }
 
 
 
