@@ -39,10 +39,10 @@ public class RecruitService extends BaseService {
         if (StringUtil.isBlank(student.getName())//学生姓名
                         || StringUtil.isBlank(student.getLabelIds())//意向标签
                         || StringUtil.isBlank(student.getStudentPhone())//学生电话
-                        || StringUtil.isBlank(student.getMotherPhone())//母亲电话
-                        || StringUtil.isBlank(student.getMotherName())//母亲名字
+                        || StringUtil.isBlank(student.getSex())//学生性别
+
         ) {
-            return error("姓名,意向,学生电话必须填写");
+            return error("姓名,意向,学生电话,性别必须填写");
         }
         student.setCreateTime(SC.getNowDate());//操作时间
         student.setOperatorId(SC.getOperatorId());//操作人

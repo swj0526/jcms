@@ -116,7 +116,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline">
-                    <div id="demo1" class="xm-select-demo"style=" width:190px"; ></div>
+                    <div id="demo1" class="xm-select-demo"; ></div>
                 </div>
             </div>
 

@@ -4,6 +4,7 @@ package com.jczx.system;
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
 import com.sun.org.apache.regexp.internal.RE;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.SpringContextUtil;
 import net.atomarrow.util.StringUtil;
@@ -153,13 +154,14 @@ public class CACHE {
        String[] split = labelIds.split(",");
        String names = "";
        for(int  i=1;i<split.length;i++){
-           TbDictionary dictionary = getDictionary(Integer.valueOf(i));
+           TbDictionary dictionary = getDictionary(Integer.valueOf(split[i]));
           if(dictionary!=null){
               if(i==split.length-1){
                   names=names+dictionary.getName();
               }else {
                   names=names+dictionary.getName()+",";
               }
+              System.out.println(names);
           }
        }
        return names;

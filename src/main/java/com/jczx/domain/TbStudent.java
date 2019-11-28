@@ -286,6 +286,6 @@ public class TbStudent extends Domain {
     }
 
     public String getLabelNames(){
-        return CACHE.getLabelNames(labelIds);
+        return CACHE.getLabelNames(",7,8,9,");
     }
 }

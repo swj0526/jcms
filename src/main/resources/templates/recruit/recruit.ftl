@@ -12,9 +12,11 @@
 
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
+    <link rel="stylesheet" href="/all.css">
     <#--上传-->
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
+
     <style type="text/css">
         /*去除input number的 自动增加数按钮*/
         input::-webkit-outer-spin-button,

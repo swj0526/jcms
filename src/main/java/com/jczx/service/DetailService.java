@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbRecruitDetail;
 import com.jczx.system.SC;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
@@ -45,6 +46,13 @@ public class DetailService extends BaseService {
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
 
+    }
+    /**
+     * 删除
+     */
+    public ServiceResult delDetail (TbRecruitDetail recruitDetail){
+        del(recruitDetail);
+        return SUCCESS;
     }
 
 

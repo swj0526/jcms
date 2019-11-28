@@ -69,13 +69,14 @@
 
                                             <li>
                                                 <div class="sd">
-                                                    <span>跟进时间:${st.followTime?string("yyyy-MM-dd")!""}</span></div>
+                                                    <span>跟进时间:${ (st.followTime?string("yyyy-MM-dd"))!'无数据'}</span></div>
+
                                             </li>
                                             <li>
-                                                <div class="sd"><span>意向:${st.labelIds!"无数据"}</span></div>
+                                                <div class="sd"><span>意向:${st.labelIds!'0'}</span></div>
                                             </li>
                                             <li>
-                                                <div class="sd"><span>备注:${st.remark}</span></div>
+                                                <div class="sd"><span>备注:${st.remark!'0'}</span></div>
                                             </li>
                                             <li>
                                                 <div>
@@ -128,7 +129,7 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注:</label>
                 <div class="layui-input-block">
-                    <textarea name="remark" placeholder="请输入内容" class="layui-textarea">1</textarea>
+                    <textarea name="remark" placeholder="请输入内容"required lay-verify="required" class="layui-textarea"></textarea>
                 </div>
             </div>
 
@@ -151,8 +152,9 @@
             var form = layui.form;
             var $ = layui.jquery;
             var laydate = layui.laydate;
-            laydate.render({
-                elem: '#date' //指定元素
+            laydate.render({//时间
+                elem: '#date', //指定元素
+                value: new Date()
 
             });
 
@@ -165,14 +167,14 @@
                     area: ['720px', '350'], //设置宽高
                     content: $("#tabfollow"),
                     success: function () {
-
+                       /* $("#formdata")[0].reset();*/
                     }
                 });
             });
 
             $(".del").click(function () {
-                alert("shhs");
-                $(this).parent().parent().remove();
+                var id = $(this).val();
+
 
             });
 
@@ -197,15 +199,13 @@
                     if (result) {
                         layer.close(index);
                         $.each(result, function (index, value) {
-
-                            $("#u").append('<div><li><div class="sd"><span>跟进时间:' + value.followTime + '</span></div></li><li><div class="sd"><span>跟进意向:' + value.labelIds + '</span></div></li><li><div class="sd"><span>备注:' + value.remark + '</span></div></li></div>');
                             $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime + '</span></div></li>');
-                          /*  $("#u").append('');
-                            $("#u").append('');*/
+                            $("#u").append('<li><div class="sd"><span>跟进意向:' + value.labelIds + '</span></div></li>');
+                            $("#u").append('<li><div class="sd"><span>备注:' + value.remark + '</span></div></li>');
                             /* $("#u").append('<li><div class="upd"><button class="layui-btn data-add-btn" type="button">修改</button></div></li>');
                              $("#u").append('<li><div class="del"><button class="layui-btn data-add-btn" type="button">删除</button></div></li>');*/
                         })
-                       /* location.reload();*/
+                        location.reload();
 
 
                     }
