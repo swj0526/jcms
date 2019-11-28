@@ -49,65 +49,40 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 {
                     field: 'sex',
                     title: '性别',
-
                     align: 'center',
-                    width: 80
+                    width: 90
                 },
                 {
                     field: 'labelNames',
                     title: '意向',
                     align: 'center',
-                    width: 80
 
                 },
-                {
-                    field: 'birthDate',
-                    title: '出生年月',
-                    align: 'center'
-                    , width: 150
-                },
+
                 {
                     field: 'school',
                     title: '学校'
-                    , width: 150
 
                 },
                 {
                     field: 'channelName',
                     title: '渠道名称'
-                    , width: 100
+
 
                 },
-
 
                 {
                     field: 'studentPhone',
                     title: '手机号'
-                    , width: 150
 
 
-                },
-                {
-                    field: 'qq',
-                    title: 'QQ号'
-                    , width: 150
-                },
-                {
-                    field: 'weChat',
-                    title: '微信'
-                    , width: 150
-                },
-                {
-                    field: 'motherPhone',
-                    title: '母亲联系方式'
-                    , width: 150
                 },
 
                 {
                     title: '操作',
-                    Width: 300,
                     templet: '#currentTableBar',
                     fixed: "right",
+                    width: 250
                 }
             ]
         ],

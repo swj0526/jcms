@@ -73,6 +73,8 @@ public class DetailController {
     @RequestMapping("/deleteFollow")
     @ResponseBody
     public ServiceResult deleteFollow(TbRecruitDetail tbRecruitDetail){
+
+        System.out.println(tbRecruitDetail.getId()+"++++++++++++");
         ServiceResult serviceResult = detailService.delDetail(tbRecruitDetail);
         return serviceResult;
     }
