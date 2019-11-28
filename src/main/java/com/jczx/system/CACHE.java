@@ -152,13 +152,15 @@ public class CACHE {
        }
        String[] split = labelIds.split(",");
        String names = "";
-       for(int  i=0;i<split.length;i++){
+       for(int  i=1;i<split.length;i++){
            TbDictionary dictionary = getDictionary(Integer.valueOf(i));
-           if(i==split.length-1){
-               names=names+dictionary.getName();
-           }else {
-               names=names+dictionary.getName()+",";
-           }
+          if(dictionary!=null){
+              if(i==split.length-1){
+                  names=names+dictionary.getName();
+              }else {
+                  names=names+dictionary.getName()+",";
+              }
+          }
        }
        return names;
    }
