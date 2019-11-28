@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
+    <link rel="stylesheet" href="/all.css">
     <#--上传-->
 
     <script src="/layui/layui.js" charset="utf-8"></script>
@@ -65,7 +66,8 @@
 
 
 </div>
-<div id="recruit">
+<div id="recruit" style="margin-left: 25%">
+    <div >
     <form class="layui-form layui-form-pane" lay-filter="addDataForm" id="dataFor" method="post">
         <div class="layui-form-item">
             <div class="layui-form-item">
@@ -89,7 +91,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline" style="margin-bottom: 0px">
-                    <label class="layui-form-label"> 出生年月<span  class="star">*</span></label>
+                    <label class="layui-form-label"> 出生年月</label>
                     <div class="layui-input-inline">
                         <input type="text" name="birthDate" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input" id="dat">
@@ -123,7 +125,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">微信<span  class="star">*</span></label>
+                    <label class="layui-form-label">微信</label>
                     <div class="layui-input-inline">
                         <input type="text" name="weChat" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input">
@@ -144,14 +146,14 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label"> 母亲姓名<span  class="star">*</span></label>
+                    <label class="layui-form-label"> 母亲姓名</label>
                     <div class="layui-input-inline">
                         <input type="text" name="motherName" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label"> 母亲电话<span  class="star">*</span></label>
+                    <label class="layui-form-label"> 母亲电话</label>
                     <div class="layui-input-inline">
                         <input type="text" name="motherPhone" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input">
@@ -178,7 +180,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label"> 应急联系人<span  class="star">*</span></label>
+                    <label class="layui-form-label"> 应急联系人</label>
                     <div class="layui-input-inline">
                         <input type="text" name="otherRelativesName" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input">
@@ -186,7 +188,7 @@
                 </div>
                 <div class="layui-inline">
                     <div class="layui-inline">
-                        <label class="layui-form-label"> 应急电话<span  class="star">*</span></label>
+                        <label class="layui-form-label"> 应急电话</label>
                         <div class="layui-input-inline">
                             <input type="text" name="emergencyPhone" lay-verify="required" placeholder="" autocomplete="off"
                                    class="layui-input">
@@ -198,7 +200,7 @@
                 <div style="display: inline-block;float: left" style="height: 99px">
                     <label class="layui-form-label">意向<span  class="star">*</span></label>
                     <div class="layui-inline">
-                        <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:190px"
+                        <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:510px"
                              ;></div>
                     </div>
                     <div class="layui-inline">
@@ -210,7 +212,7 @@
             </div>
             <div style="display: inline-block">
                 <label class="layui-form-label">备注</label>
-                <div class="layui-input-block" style="width: 190px">
+                <div class="layui-input-block" style=" width:510px">
                     <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
                 </div>
             </div>
@@ -224,6 +226,7 @@
         </div>
 
     </form>
+    </div>
 
 </div>
 <script src="/recruit/js/recruit.js"></script>
@@ -237,6 +240,7 @@
         searchTips: '搜索标签',
         tips: '请选择意向',
         height: '500px',
+
         autoRow: true,
 
         data: [
