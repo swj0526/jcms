@@ -32,7 +32,9 @@ public class DetailController {
     private RecruitService recruitService;
 
     /**
-     * 添加跟踪详情信息
+     * 添加
+     * 查询后并返回
+     * 跟踪详情信息
      *
      * @param recruitDetail
      * @return
@@ -40,19 +42,24 @@ public class DetailController {
     @RequestMapping("/add")
     @ResponseBody
     public List<TbRecruitDetail> addDetail(TbRecruitDetail recruitDetail,Integer studentId) {
-        System.out.println(recruitDetail.getLabelIds());
-        ServiceResult result = detailService.addDetail(recruitDetail);
+        detailService.addDetail(recruitDetail);
         List<TbRecruitDetail> tbRecruitDetails = detailService.listDetail(studentId);
         return tbRecruitDetails;
 
     }
 
-    @RequestMapping("/list")
+    /**
+     *
+     * @param studentId
+     * @return
+     */
+
+   /* @RequestMapping("/list")
     @ResponseBody
     public List<TbRecruitDetail>list(Integer studentId) {
         List<TbRecruitDetail> tbRecruitDetails = detailService.listDetail(studentId);
         return tbRecruitDetails;
-    }
+    }*/
 
     /**
      * 招生信息详情
@@ -62,7 +69,7 @@ public class DetailController {
     @RequestMapping("/todetail")
     public String upFollow(Integer id, Map<String, Object> map) {
         map.put("id",id);
-        System.out.println(id);
+     ;
         TbStudent student = recruitService.getStudent(id);
         map.put("student",student);
 

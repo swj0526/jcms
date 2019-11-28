@@ -43,11 +43,12 @@
                 <input type="text" name="name"  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.name}>
             </div>
 
+            <input type="text" style="display: none" id="Instalment" value=${student.sex}>
             <label class="layui-form-label">性别</label>
             <div class="layui-inline">
                 <div class="layui-inline" style="width: 190px">
-                    <select name="sex" lay-verify="" >
-                        <option value="">${student.sex}</option>
+                    <select name="sex" lay-verify="" id="select1">
+
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
