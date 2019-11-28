@@ -21,7 +21,7 @@ import java.util.List;
  * @create 2019-11-21 21:37
  */
 @Component
-public class moneyService extends Service {
+public class moneyService extends BaseService {
     /**
      * 添加
      *
@@ -67,8 +67,8 @@ public class moneyService extends Service {
      * @return
      */
     public List<TbPayBill> listBill(String keyword,Integer typeId, Date date, Pager pager) {
-        Conditions conditions = new Conditions(TbPayBill.class);
-        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
+        Conditions conditions = new Conditions(getTableName());
+        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
         conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id"); //Left join tbdictionary on typeId=tbdictionary.id");
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();
@@ -94,7 +94,7 @@ public class moneyService extends Service {
      * @return
      */
     public TbPayBill getBill(int id) {
-        Conditions conditions =new Conditions(TbPayBill.class);
+        Conditions conditions =new Conditions(getTableName());
         conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id");
         conditions.putEW("tbpaybill.id",id);
         TbPayBill one = getOne(conditions);
@@ -105,8 +105,13 @@ public class moneyService extends Service {
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbPayBill> tbPayBill = listBill(keyword, type, date, pager);
         excelDatas.addStringArray(0,0,new String[]{"序号","总金额","是否分期","缴费日期","优惠金额","金额","总计","开始时间","结束时间","备注"});
-        excelDatas.addObjectList(1,0,tbPayBill,new String[]{"id","totalAmount","hasInstalment","payDate","discountAmount","payAmount","factAmount","startTime","endTime","remark"});
+        excelDatas.addObjectList(1,0,tbPayBill,new String[]{"id","totalAmount","instalment","payDate","discountAmount","payAmount","factAmount","startTime","endTime","remark"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
+    }
+
+    @Override
+    public String getTableName() {
+        return TbPayBill.class.getSimpleName();
     }
 }

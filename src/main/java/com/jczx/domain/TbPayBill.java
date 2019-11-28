@@ -17,13 +17,9 @@ import java.util.Date;
 @Component
 public class TbPayBill extends Domain {
     @NotCreate
-    private  String paymentMethod;
+    private String Instalment;//学生姓名
     @NotCreate
     private String name;//学生姓名
-    @NotCreate
-    private String semester;//学期
-    @NotCreate
-    private String name1;//类型
     @NotCreate
     private String URL;//附件地址
     private Integer id;
@@ -48,12 +44,16 @@ public class TbPayBill extends Domain {
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date createTime;//操作时间
     private String remark;//备注
-    public String getPaymentMethod() {
-        return paymentMethod;
+
+    public String getInstalment() {
+        if (hasInstalment){
+            return Instalment="是";
+        }
+        return Instalment="否";
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setInstalment(String instalment) {
+        Instalment = instalment;
     }
 
     public String getName() {
@@ -62,22 +62,6 @@ public class TbPayBill extends Domain {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSemester() {
-        return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    public String getType() {
-        return name1;
-    }
-
-    public void setType(String type) {
-        this.name1 = type;
     }
 
     public String getURL() {
@@ -238,25 +222,25 @@ public class TbPayBill extends Domain {
      * 缴费类型
      * @return
      */
-    public String getTypeName(){
+    /*public String getTypeName(){
         return CACHE.getTypeName(typeId);
-    }
+    }*/
 
     /**
      * 缴费方式
      * @return
      */
-    public String getPaymentMethodName(){
+    /*public String getPaymentMethodName(){
 
         return CACHE.getPaymentMethodName(paymentMethodId);
-    }
+    }*/
 
     /**
      * 学年
      * @return
      */
-    public String getSemesterName(){
+   /* public String getSemesterName(){
 
         return CACHE.getSemesterName(semesterId);
-    }
+    }*/
 }

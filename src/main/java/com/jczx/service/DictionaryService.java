@@ -102,11 +102,12 @@ public class DictionaryService extends BaseService {
             conditions.parenthesesEnd();
         }
         if (pager == null) {
+            System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
             return getList(conditions);
         }
         pager.setDataTotal(getCount(conditions));
         List<TbDictionary> list = getListByPage(conditions, pager);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+
         return list;
     }
 

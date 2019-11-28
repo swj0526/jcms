@@ -40,6 +40,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                             remark:$("#addremark").val()
 
                         },function (res) {
+                            location.reload();
                             layer.close(index);
                         })
 
@@ -65,6 +66,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         name:$("#upname").val(),
                         remark:$("#upremark").val()
                     },function (res) {
+                        location.reload();
                         layer.close(index);
                     })
                 }

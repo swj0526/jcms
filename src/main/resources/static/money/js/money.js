@@ -10,11 +10,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , cols: [[
                 {field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'name', title: '姓名', width: 90}
-                , {field: 'semester', title: '学年', width: 60}
-                , {field: 'name1', title: '缴费类型', width: 90}
-                , {field: 'paymentMethod', title: '缴费方式', width: 90}
+                , {field: 'semesterName', title: '学年', width: 60}
+                , {field: 'typeName', title: '缴费类型', width: 90}
+                , {field: 'paymentMethodName', title: '缴费方式', width: 90}
                 , {field: 'totalAmount', title: '总金额', width: 90}
-                , {field: 'hasInstalment', title: '是否分期'}
+                , {field: 'instalment', title: '是否分期'}
                 , {field: 'payDate', title: '缴费日期'}
                 , {field: 'discountAmount', title: '优惠金额'}
                 , {field: 'payAmount', title: '金额'}
@@ -36,8 +36,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 console.log(res);
                 return{
                     code:'0'
-                    ,data:res.data
-                    ,count:res.count
+                    ,data:res.result
+                    ,count:res.pager.dataTotal
                 }
             },
         });

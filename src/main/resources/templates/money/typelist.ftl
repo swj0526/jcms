@@ -10,7 +10,7 @@
 <body>
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script id="barDemo" type="text/html">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
 </script>
 <script id="toolbarDemo" type="text/html">

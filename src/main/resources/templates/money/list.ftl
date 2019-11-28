@@ -25,7 +25,7 @@
                             <label class="layui-form-label">关键字</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input"
-                                       placeholder="例：1990/张三/学号">
+                                       placeholder="姓名/学号/备注">
                             </div>
                         </div>
                         <#--<div class="layui-inline">
@@ -63,7 +63,7 @@
                                 </button>
                                 <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">添加
                                 </button>
-                                <button class="layui-btn" type="button" lay-filter="data-search-btn" id="export">导出
+                                <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn" id="export">导出
                                 </button>
                             </div>
                         </div>
@@ -76,8 +76,8 @@
     </div>
     <table class="layui-hide" id="test" lay-filter="test"></table>
     <script id="barDemo" type="text/html">
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">修改</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="up">上传发票</a>
+        <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="edit">修改</a>
+        <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="up">上传发票</a>
     </script>
     <script id="toolbarDemo" type="text/html">
         <div class="layui-btn-container">

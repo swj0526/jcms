@@ -34,11 +34,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , btn: ['提交']
                     , content: $("#ll")
                     , yes: function (index, layero) {
-                        $.post('/dictionary/add/payTerm',{
+                        $.post('/dictionary/add/payType',{
                             name:$("#addname").val(),
                             remark:$("#addremark").val()
 
                         },function (res) {
+                            location.reload();
                             layer.close(index);
                         })
                     }
@@ -63,6 +64,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         name:$("#upname").val(),
                         remark:$("#upremark").val()
                     },function (res) {
+                        location.reload();
                         layer.close(index);
                     })
                 }

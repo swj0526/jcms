@@ -14,7 +14,6 @@
 <body>
 <div id="addpage">
     <fieldset id="add2" class="layui-elem-field layuimini-search">
-        <legend>缴费信息填写</legend>
         <div style="margin: 10px 10px 10px 10px;margin-left:25%">
             <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
                 <input style="display: none" type="text" id="id" name="id" value=${bill.id} autocomplete="off"
@@ -77,8 +76,8 @@
                                        required lay-verify="required" class="layui-input">
                             </div>
                         </div>
-
                         <div class="layui-inline" style="margin-right: 0px;margin-bottom: 0px;">
+                            <input style="display:  none" value="${bill.hasInstalment?c}" id="Instalment">
                             <label class="layui-form-label">是否分期<span  class="star">*</span></label>
                             <div class="layui-inline" style="width: 190px;margin-right: 0px;margin-bottom: 0px;">
                                 <select lay-verify="" name="hasInstalment" id="hasInstalment">

@@ -6,7 +6,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
 
     var index = parent.layer.getFrameIndex(window.name);
 
-
+    var a=$("#Instalment").val();
+    var select = 'dd[lay-value=' + a + ']';
+    $('#hasInstalment').siblings("div.layui-form-select").find('dl').find(select).click();
 
     $("#update").click(function () {
         var t = $('#dataFor').serialize();

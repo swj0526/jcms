@@ -100,18 +100,12 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ListByPage list(String keyword, Integer typeId, Date date, int page, int limit) {
+    public ServiceResult list(String keyword, Integer typeId, Date date, int page, int limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
         List<TbPayBill> PayBillBean = moneyService.listBill(keyword, typeId, date, pager);
-        /*for (TbPayBill pay:PayBillBean){
-            System.out.println("aaaaaaaaaa"+pay.getPaymentMethod(pay.getPaymentMethodId()));
-        }*/
-        ListByPage list = new ListByPage();
-        list.setData(PayBillBean);
-        list.setCount(pager.getDataTotal());
-        return list;
+        return layuiList(PayBillBean,pager);
     }
 
     @RequestMapping("/modify")

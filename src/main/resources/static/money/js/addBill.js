@@ -58,7 +58,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         , content: '<p style="text-align: center">添加成功</p>'
                         , btn: ['继续添加', '取消']
                         , yes: function (index) {
-                            layer.close(index)
+                            location.reload();
                         }
                         , btn2: function () {
                             parent.layer.close(index);
