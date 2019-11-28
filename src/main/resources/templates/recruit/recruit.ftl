@@ -11,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
     <#--上传-->
     <script src="/jquery/jquery-3.3.1.min.js"></script>

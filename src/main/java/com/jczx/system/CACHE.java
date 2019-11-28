@@ -14,6 +14,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -23,134 +25,168 @@ import java.util.Random;
  */
 
 public class CACHE {
-
-
-    public static StringRedisTemplate getRedisTemplate() {
-        return SpringContextUtil.getBean(StringRedisTemplate.class);
+    /**
+     * 现在使用的是集map实现类
+     *
+     * @return
+     */
+    private static CacheInterface getUtil() {
+        return SpringContextUtil.getBean(MapUtil.class);
     }
 
+    /**
+     * 字典表的service,此处需要具体的service
+     *
+     * @return
+     */
     private static Service getDictionaryService() {
         return SpringContextUtil.getBean(DictionaryService.class);
     }
 
-    ;
-
     private static String PREFEX = Math.random() * 10000 + "";
 
     /**
-     * 普通缓存获取
+     * 获取key的名称
      *
-     * @param
-     * @return 值
+     * @param tableName
+     * @param id
+     * @return
      */
     private static String getKey(String tableName, Integer id) {
         return PREFEX + tableName + id;
     }
 
 
+    /**
+     * 字典表对象
+     *
+     * @param id
+     * @return
+     */
+    private static TbDictionary getDictionary(Integer id) {
+        if (id == 0 || id == null) {
+            return null;
+        }
+        TbDictionary dictionary = (TbDictionary) getUtil().get(getKey(TbDictionary.class.getSimpleName(), id));
+        if (dictionary != null) {
+            return dictionary;
+        }
+        TbDictionary dictionaryDB = getDictionaryService().getById(TbDictionary.class.getSimpleName(), id);
+        if (dictionaryDB == null) {
+            return null;
+        }
+        getUtil().set(getKey(TbDictionary.class.getSimpleName(), id), dictionaryDB);
+        return dictionaryDB;
+    }
 
     /**
-     * 返回渠道的名称
-     *
+     * 渠道的名称
      * @param channelId
      * @return
      */
     public static String getChannelName(Integer channelId) {
-        if (channelId == null||channelId==0) {
+        if (channelId == null || channelId == 0) {
             return "";
         }
-        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
-        String channelName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), channelId));
-        if (StringUtil.isNotBlank(channelName)) {
-            return channelName;
-        }
-        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, channelId);
+        TbDictionary dictionary = getDictionary(channelId);
         if(dictionary==null){
             return "";
         }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), channelId),dictionary.getName());
-        System.out.println(dictionary.getName());
-        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), channelId));
+        return dictionary.getName();
     }
 
-    /**
-     * 返回缴费方式的名称
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* *//**
+     * 返回渠道的名称
      *
-     * @param paymentMethodId
+     * @param channelId
      * @return
+     *//*
      */
-    public static String getPayWayName(Integer paymentMethodId) {
-       /* if (paymentMethodId == null) {
-            return "";
-        }
-        TbDictionary dictionary = getDictionary(paymentMethodId);
-        System.out.println(paymentMethodId);
-        if (dictionary == null) {
-            return "";
-        }*/
-        return "dictionary.getName()";
-    }
 
-    /**
-     *缴费类型
+    /*
+     *//**
+     * 缴费类型
+     *
      * @param typeId
      * @return
-     */
-    public static String getTypeName(Integer typeId){
-        if (typeId == null||typeId==0) {
+     *//*
+    public static String getTypeName(Integer typeId) {
+        if (typeId == null || typeId == 0) {
             return "";
         }
-        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        ValueOperations<String, String> valueOperations = getRedisTemplate().opsForValue();
         String typeName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), typeId));
         if (StringUtil.isNotBlank(typeName)) {
             return typeName;
         }
         TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, typeId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), typeId),dictionary.getName());
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), typeId), dictionary.getName());
         System.out.println(dictionary.getName());
         return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), typeId));
     }
 
-    /**
+    *//**
      * 缴费方式
+     *
      * @param paymentMethodId
      * @return
-     */
-    public static String getPaymentMethodName(Integer paymentMethodId){
-        if (paymentMethodId == null||paymentMethodId==0) {
+     *//*
+    public static String getPaymentMethodName(Integer paymentMethodId) {
+        if (paymentMethodId == null || paymentMethodId == 0) {
             return "";
         }
-        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        ValueOperations<String, String> valueOperations = getRedisTemplate().opsForValue();
         String methodeName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), paymentMethodId));
         if (StringUtil.isNotBlank(methodeName)) {
             return methodeName;
         }
         TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, paymentMethodId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), paymentMethodId),dictionary.getName());
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), paymentMethodId), dictionary.getName());
         System.out.println(dictionary.getName());
         return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), paymentMethodId));
     }
-    public static  String getSemesterName(Integer semesterId){
-        if (semesterId == null||semesterId==0) {
+
+    public static String getSemesterName(Integer semesterId) {
+        if (semesterId == null || semesterId == 0) {
             return "";
         }
-        ValueOperations<String,String> valueOperations = getRedisTemplate().opsForValue();
+        ValueOperations<String, String> valueOperations = getRedisTemplate().opsForValue();
         String semestereName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), semesterId));
         if (StringUtil.isNotBlank(semestereName)) {
             return semestereName;
         }
         TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, semesterId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), semesterId),dictionary.getName());
+        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), semesterId), dictionary.getName());
         System.out.println(dictionary.getName());
         return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), semesterId));
-    }
+    }*/
 }

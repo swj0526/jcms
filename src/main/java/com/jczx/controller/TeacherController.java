@@ -57,7 +57,7 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult teacherList(String keyword,boolean hasQuit, int page, int limit){
+    public ServiceResult teacherList(String keyword,Boolean hasQuit, Integer page, Integer limit){
         Pager pager = checkPager(limit, page);
         List<TbTeacher> list= teacherService.teacherList(keyword,hasQuit,pager);
         System.out.println(keyword);
@@ -74,7 +74,7 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/doExcel")
     @ResponseBody
-    public Render doExcel(String name,boolean hasQuit){
+    public Render doExcel(String name,Boolean hasQuit){
         Pager pager = new Pager();
         pager.setPageSize(100000);
         pager.setCurrentPage(1);

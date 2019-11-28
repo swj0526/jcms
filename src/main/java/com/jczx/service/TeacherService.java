@@ -4,6 +4,7 @@ import com.jczx.domain.TbTeacher;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
@@ -69,7 +70,7 @@ public class TeacherService  extends Service {
      * 查找老师表所有信息
      * @return
      */
-    public List<TbTeacher> teacherList(String keyword,boolean hasQuit,Pager pager){
+    public List<TbTeacher> teacherList(String keyword,Boolean hasQuit,Pager pager){
         Conditions conditions = new Conditions(TbTeacher.class);
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();
@@ -78,9 +79,12 @@ public class TeacherService  extends Service {
             conditions.putLIKE("phone",keyword);
             conditions.parenthesesEnd();
         }
-        conditions.putEWIfOk("hasQuit",hasQuit);
+       if(hasQuit!=null){
+           conditions.putEW("hasQuit",hasQuit);
+       }
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbTeacher> teacher = getListByPage(conditions,pager);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return teacher;
     }
 
@@ -101,11 +105,11 @@ public class TeacherService  extends Service {
      * @param pager
      * @return
      */
-    public InputStream teacherExcel(String name,boolean hasQuit, Pager pager) {
+    public InputStream teacherExcel(String name,Boolean hasQuit, Pager pager) {
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbTeacher> list = teacherList(name,hasQuit,pager);
-        excelDatas.addStringArray(0, 0, new String[]{"id","姓名","性别", "手机号", "是否在职"});
-        excelDatas.addObjectList(1, 0, list, new String[]{"id","name", "gender", "phone", "hasQuit"});//行,列,集合
+        excelDatas.addStringArray(0, 0, new String[]{"姓名","性别", "手机号", "是否在职"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"name", "gender", "phone", "hasQuit"});//行,列,集合
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }

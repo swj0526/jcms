@@ -130,8 +130,8 @@
                 <label class="layui-form-label">状态</label>
                 <div class="layui-inline">
                     <select name="hasQuit" lay-verify="" id="hasQuit2">
-                        <option value=true>在职</option>
-                        <option value=false>离职</option>
+                        <option value="true">在职</option>
+                        <option value="false">离职</option>
                     </select>
                 </div>
             </div>

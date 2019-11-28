@@ -111,7 +111,7 @@
         </tr>
         <#list list as major>
         <tr>
-            <td><a class="icon"><i class="layui-icon layui-icon-right"></i></a>&nbsp;&nbsp;${major.name}</td>
+            <td>&nbsp;&nbsp;${major.name}</td>
             <td>${major.remark}</td>
             <td><a class="layui-btn layui-btn-xs btnC" >编辑</a> <a class="layui-btn layui-btn-normal layui-btn-xs btnB">添加班级</a><a
                         class="layui-btn layui-btn-danger layui-btn-xs del">删除</a></td>
