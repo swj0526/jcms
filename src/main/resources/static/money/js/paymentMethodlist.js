@@ -32,7 +32,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 layer.open({
                     btnAlign: 'c'
                     , type: 1
-                    , btn: ['提交']
+                    ,title:'添加缴费方式'
+                    , btn: ['提交','取消']
                     , content: $("#ll")
                     , yes: function (index, layero) {
                         $.post('/dictionary/add/payWay',{
@@ -58,7 +59,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
-                , btn: ['提交']
+                ,title:'修改缴费方式'
+                , btn: ['提交','取消']
                 , content: $("#up")
                 , yes: function (index, layero) {
                     $.post('/dictionary/modify',{

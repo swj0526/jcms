@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbPayBill;
+import com.jczx.domain.TbStudent;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -9,6 +10,7 @@ import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.io.InputStream;
 import java.util.Date;
@@ -22,6 +24,8 @@ import java.util.List;
  */
 @Component
 public class moneyService extends BaseService {
+    @Autowired
+   private StudentService studentService;
     /**
      * 添加
      *
@@ -38,6 +42,11 @@ public class moneyService extends BaseService {
                 || payBill.getEndTime() == null) {
             return error("");
         }
+        TbStudent tbStudent = studentService.get(payBill.getName());
+        if (tbStudent==null){
+            return error("姓名未找到");
+        }
+        payBill.setStudentId(tbStudent.getId());
         add(payBill);
         return success(true);
     }
@@ -57,6 +66,11 @@ public class moneyService extends BaseService {
                 || payBill.getEndTime() == null) {
             return error("");
         }
+        TbStudent tbStudent = studentService.get(payBill.getName());
+        if (tbStudent==null){
+            return error("姓名未找到");
+        }
+        payBill.setStudentId(tbStudent.getId());
         int modify = modify(payBill);
         return success(true);
     }
@@ -68,7 +82,7 @@ public class moneyService extends BaseService {
      */
     public List<TbPayBill> listBill(String keyword,Integer typeId, Date date, Pager pager) {
         Conditions conditions = new Conditions(getTableName());
-        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
+        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
         conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id"); //Left join tbdictionary on typeId=tbdictionary.id");
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();
@@ -96,6 +110,7 @@ public class moneyService extends BaseService {
     public TbPayBill getBill(int id) {
         Conditions conditions =new Conditions(getTableName());
         conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id");
+        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
         conditions.putEW("tbpaybill.id",id);
         TbPayBill one = getOne(conditions);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));

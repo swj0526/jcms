@@ -10,7 +10,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     var select = 'dd[lay-value=' + a + ']';
     $('#hasInstalment').siblings("div.layui-form-select").find('dl').find(select).click();
 
-    $("#update").click(function () {
+    $("#submit").click(function () {
         var t = $('#dataFor').serialize();
         $.post('/money/modify',
             t
@@ -18,7 +18,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             if (result.success){
                 parent.layer.close(index);
             }else {
-
+                layer.msg(result.msg)
             }
 
                 /*layer.open({
@@ -46,30 +46,34 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
+            ,title:'学年'
             , area: ['720px', '350px']
-            , btn: ['确定']
+            , btn: ['确定','取消']
             , content: 'tosemester'
         });
     });
     $("#type2").click(function () {
         layer.open({
             btnAlign: 'c'
-            ,title:'方式'
+            ,title:'缴费方式'
             , type: 2
             , area: ['720px', '350px']
-            , btn: ['确定']
+            , btn: ['确定','取消']
             , content: 'topaymentMethod'
         });
     });
     $("#type1").click(function () {
         layer.open({
             btnAlign: 'c'
+            ,title:'缴费类型'
             , type: 2
             , area: ['720px', '350px']
-            , btn: ['确定']
+            , btn: ['确定','取消']
             , content: 'totype'
         });
     });
-
+    $("#revocation").click(function () {
+        parent.layer.close(index);
+    })
 
 });

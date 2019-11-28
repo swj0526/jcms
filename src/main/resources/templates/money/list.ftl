@@ -22,7 +22,7 @@
                 <form class="layui-form layui-form-pane">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">关键字</label>
+                            <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input"
                                        placeholder="姓名/学号/备注">
@@ -77,7 +77,7 @@
     <table class="layui-hide" id="test" lay-filter="test"></table>
     <script id="barDemo" type="text/html">
         <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="edit">修改</a>
-        <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="up">上传发票</a>
+        <a class="layui-btn  layui-btn-xs" lay-event="up">上传发票</a>
     </script>
     <script id="toolbarDemo" type="text/html">
         <div class="layui-btn-container">
