@@ -20,12 +20,20 @@
 <div>
     <div>使用动态的下拉选择框</div>
     <div>1.页面需要引入all.js</div>
-    <div>2.并使用一下的标签,cass不可变,url为controller返回的数据列表的地址,selectedId为默认被选中的值,该属性用于修改</div>
+    <div>2.并使用以下的标签,css不可变,url为controller返回的数据列表的地址,selectedId为默认被选中的值,该属性用于修改</div>
     <div><select name="list3" lay-verify="required" class="decSelect"
                  url="/dictionary/list/payTerm/options" selectedId="${bill.semesterId}"  >
         <option value="">请选择</option>
 
     </select></div>
+</div>
+<div>
+    <div>使用输入框,匹配模糊</div>
+    <div>1.页面需要引入all.js,plumen.js</div>
+    <div>2.并使用以下的标签,class不可变,并且调用input_sel(src)传入controller地址</div>
+    <div><div class="input-box input-Selector">
+        <input type="text" class="wx-input layui-input">
+    </div></div>
 </div>
 </body>
 </html>

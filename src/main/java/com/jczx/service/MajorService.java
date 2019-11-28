@@ -5,10 +5,12 @@ import com.jczx.domain.TbMajor;
 import com.jczx.system.SC;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,49 +28,54 @@ public class MajorService extends BaseService {
 
     /**
      * 增加专业信息
+     *
      * @param major
      * @return
      */
-    public ServiceResult addMajor(TbMajor major){
-        if(StringUtil.isBlank(major.getName())){
+    public ServiceResult addMajor(TbMajor major) {
+        if (StringUtil.isBlank(major.getName())) {
             return error("");
         }
         major.setPid(0);
-       major.setCreateTime(SC.getNowDate());
-       major.setOperatorId(SC.getOperatorId());
-       add(major);
-       return SUCCESS;
+        major.setCreateTime(SC.getNowDate());
+        major.setOperatorId(SC.getOperatorId());
+        add(major);
+        return SUCCESS;
     }
+
     /**
      * 增加班级信息
+     *
      * @param major
      * @return
      */
-    public ServiceResult addClass(TbMajor major){
-        if(major.getPid()==null||major.getPid()==0){
+    public ServiceResult addClass(TbMajor major) {
+        if (major.getPid() == null || major.getPid() == 0) {
             return error("");
         }
-        if(StringUtil.isBlank(major.getName())){
+        if (StringUtil.isBlank(major.getName())) {
             return error("");
         }
-        major.setName("∟"+major.getName());
+        major.setName(major.getName());
         major.setPid(major.getPid());
         major.setCreateTime(SC.getNowDate());
         major.setOperatorId(SC.getOperatorId());
         add(major);
         return SUCCESS;
     }
+
     /**
      * 修改班级专业信息
+     *
      * @param major
      * @return
      */
-    public ServiceResult modifyMajor(TbMajor major){
+    public ServiceResult modifyMajor(TbMajor major) {
         TbMajor majorDB = getById(getTableName(), major.getId());
-        if(majorDB==null){
+        if (majorDB == null) {
             return error("");
         }
-        if(StringUtil.isBlank(major.getName())){
+        if (StringUtil.isBlank(major.getName())) {
             return error("");
         }
         modify(major);
@@ -77,11 +84,60 @@ public class MajorService extends BaseService {
 
     /**
      * 返回班级-专业列表
+     *
      * @return
      */
-    public List<TbMajor> listMajor(){
-        Conditions conditions =getConditins();
+    public List<TbMajor> listMajor(String keywords) {
+        Conditions conditions = getConditins();
+        if (StringUtil.isNotBlank(keywords)) {
+            conditions.putEW("pid", 0);
+            conditions.parenthesesStart();
+            conditions.putLIKE("name", keywords);
+            conditions.or();
+            conditions.putLIKE("remark", keywords);
+            conditions.parenthesesEnd();
+        }
         List<TbMajor> list = getList(conditions);
-        return list;
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        List<TbMajor> majorList = new ArrayList<>();
+        for (TbMajor major : list) {
+            if (major.getPid() == 0) {
+                majorList.add(major);
+                for (TbMajor grade : list) {
+                    if (major.getId() == grade.getPid()) {
+                        majorList.add(grade);
+                    }
+                }
+            }
+        }
+        return majorList;
     }
+
+    /**
+     * 修改的时候使用,根据id去获取值,在弹窗上赋值显示
+     *
+     * @param id
+     * @return
+     */
+    public TbMajor getMajor(Integer id) {
+        TbMajor major = getById(getTableName(), id);
+        return major;
+    }
+
+   /* public ServiceResult deleteMajor(Integer id) {
+        TbMajor major = getById(getTableName(), id);
+        if (major.getPid() == 0) { //删除专业
+            Conditions conditins = getConditins();
+            conditins.putEW("pid",major.getId());
+            List<TbMajor> list = getList(conditins);
+            if(list.size()!=0){
+                return error("该专业下面有班级,所有不能删除!");
+            }else{
+                 delById(getTableName(), id);
+                return SUCCESS;
+            }
+        }else{ //删除班级
+
+        }
+    }*/
 }

@@ -50,7 +50,7 @@ var parent_tab = function (id, title, src) {
     });
 }
 //关闭选项卡并刷新指定的选项卡
-var close_Table = function (oldId,newId,title,src) { //old需要关闭的页面,newId需要去定位新的页面
+var close_Table = function (oldId, newId, title, src) { //old需要关闭的页面,newId需要去定位新的页面
 
     layui.use(['element', 'jquery'], function () {
         var element = layui.element;
@@ -116,3 +116,20 @@ layui.use(['jquery'], function () {
         sel();
     }
 });
+//输入框模糊查询
+var input_sel = function (src) {
+    layui.use(['jquery'], function () {
+        var $ = layui.jquery;
+        var data;
+        $.post(src,function ( result) {
+           result=data;
+        });
+        $(".input-box").wxSelect({
+            data:data
+        });
+
+
+    });
+
+}
+

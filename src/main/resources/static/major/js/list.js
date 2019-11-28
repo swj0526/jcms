@@ -2,11 +2,11 @@ layui.use(['form', 'table', 'laydate'], function () {
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table;
-    layer= layui.layer;
+    layer = layui.layer;
 
 
     $('#add').click(function () {
-     var    mainIndex = layer.open({
+        var mainIndex = layer.open({
             type: 1,
             title: "添加专业信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -19,6 +19,7 @@ layui.use(['form', 'table', 'laydate'], function () {
 
             }
         });
+
     });
     $('#add1').click(function () {
         var name = $("[name='nameA']").val();
@@ -29,14 +30,17 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
+                self.location.reload();
             } else {
 
             }
         });
-    });
-    $('.btnB').click(function () {
 
-       var  mainIndex = layer.open({
+    });
+    var id;//专业的id,班级的pid
+    $('.btnB').click(function () {
+        id = $(this).attr("id");
+        var mainIndex = layer.open({
             type: 1,
             title: "添加班级信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -51,8 +55,8 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
     });
     $('.btnC').click(function () {
-
-        var  mainIndex = layer.open({
+        id = $(this).attr("id");
+        var mainIndex = layer.open({
             type: 1,
             title: "修改专业信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -61,44 +65,86 @@ layui.use(['form', 'table', 'laydate'], function () {
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
-
+                $.post("/major/get", {id: id}, function (result) {
+                    $('[name="nameC"]').val(result.name);
+                    $('[name="remarkC"]').val(result.remark);
+                });
 
             }
         });
     });
     $('#addC').click(function () {
-        alert("修改专业");
         var name = $("[name='nameC']").val();
         var remark = $("[name='remarkC']").val();
         $.post("/major/modify", {
             name: name,
             remark: remark,
-            id:1
+            id: id
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
+                self.location.reload();
             } else {
 
             }
         });
+
+    });
+    $('.btnD').click(function () {
+        id = $(this).attr("id");
+        var mainIndex = layer.open({
+            type: 1,
+            title: "修改班级信息",
+            // skin: 'layui-layer-rim', //加上边框
+            area: ['400px'], //设置宽高
+            content: $("#recruitD"),
+            success: function (index) {
+                //清空
+                $("#dataFor")[0].reset();
+                $.post("/major/get", {id: id}, function (result) {
+                    $('[name="nameD"]').val(result.name);
+                    $('[name="remarkD"]').val(result.remark);
+                });
+
+            }
+        });
+    });
+    $('#addD').click(function () {
+        var name = $("[name='nameD']").val();
+        var remark = $("[name='remarkD']").val();
+        $.post("/major/modify", {
+            name: name,
+            remark: remark,
+            id: id
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+                self.location.reload();
+            } else {
+
+            }
+        });
+
     });
     $('#addB').click(function () {
         var name = $("[name='nameB']").val();
         var remark = $("[name='remarkB']").val();
-        var pid = 1;
+        var pid = id;
         $.post("/major/add/class", {
             name: name,
             remark: remark,
-            pid:pid
+            pid: pid
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
+                self.location.reload();
             } else {
-
             }
         });
+
     });
     $('.del').click(function () {
+        id = $(this).attr("id");
         layer.confirm('真的删除行么', {
                 btn: ['确定', '取消'],
                 yes: function (index, layero) {
@@ -117,6 +163,32 @@ layui.use(['form', 'table', 'laydate'], function () {
                 }
             }
         );
+        self.location.reload();
     });
-
+    $("#search").click(function () {
+        var keywords =$('[name="keywords"]').val();
+      $.post("/major/tolist",{keywords:keywords},function (result) {
+          $("table tbody").html("");
+          $("table").append("<#list list as major>\n" +
+              "            <#if major.pid != 0>\n" +
+              "                <tr>\n" +
+              "                    <td>&nbsp;&nbsp;&nbsp;&nbsp;∟${major.name}</td>\n" +
+              "                    <td>${major.remark!\"\"}</td>\n" +
+              "                    <td><a class=\"layui-btn layui-btn-xs btnD\" id=\"${major.id}\">编辑</a><a\n" +
+              "                                class=\"layui-btn layui-btn-danger layui-btn-xs del\" id=\"${major.id}\">删除</a></td>\n" +
+              "                </tr>\n" +
+              "            <#else >\n" +
+              "                <tr>\n" +
+              "                    <td>${major.name}</td>\n" +
+              "                    <td>${major.remark!\"\"}</td>\n" +
+              "                    <td><a class=\"layui-btn layui-btn-xs btnC\" id=\"${major.id}\">编辑</a> <a\n" +
+              "                                class=\"layui-btn layui-btn-normal layui-btn-xs btnB\" id=\"${major.id}\">添加班级</a><a\n" +
+              "                                class=\"layui-btn layui-btn-danger layui-btn-xs del\" id=\"${major.id}\">删除</a></td>\n" +
+              "                </tr>\n" +
+              "            </#if>\n" +
+              "\n" +
+              "        </#list>");
+          self.location.reload();
+      });
+    });
 });
