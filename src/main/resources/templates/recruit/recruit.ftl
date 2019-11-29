@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/all.css">
     <#--上传-->
     <script src="/jquery/jquery-3.3.1.min.js"></script>
+
     <script src="/recruit/js/label.js"></script>
 
     <style type="text/css">
@@ -34,7 +35,6 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
        <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索招生信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <div class="demoTable">
 
@@ -48,7 +48,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">跟进时间</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="city" autocomplete="off" class="layui-input" id="a">
+                            <input type="text" name="createTime" autocomplete="off" class="layui-input" id="a">
                         </div>
                     </div>
                     <div class="layui-inline" style="width: 210px">
@@ -62,13 +62,10 @@
                         </div>
                     </div>
                     <div class="layui-inline"style="width: 150px">
-                        <select name="channelId" lay-verify="">
+
+                        <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
+                                url="/dictionary/list/channel/options">
                             <option value="">来源渠道</option>
-                            <option value="1">学校网站</option>
-                            <option value="2">自己找上门</option>
-                            <option value="3">qq</option>
-                            <option value="4">微信</option>
-                            <option value="5">介绍</option>
                         </select>
                     </div>
                     <div class="layui-inline" style="width: 210px">
@@ -152,25 +149,10 @@
 <#--上传文件-->
 <script src="/layui/layui.js" charset="utf-8"></script>
 <script src="/recruit/js/recruit.js"></script>
-
-<script>
-  /*  var demo1 = xmSelect.render({
-        el: '#demo1',
-        language: 'zn',
-        data: [
-            {name: '有意向', value: 1},
-            {name: '还在考虑', value: 2},
-            {name: '完全不考虑', value: 3},
-            {name: '不太明确', value: 4},
-            {name: '完全没有', value: 5},
-        ]
-    })*/
-     /*document.getElementById('demo1-getValue').onclick = function(){
-        //获取当前多选选中的值
-        var selectArr = demo1.getValue();
-        document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
-    }*/
-</script>
+<script src="/all.js"></script>
 <script src="/recruit/js/updata.js"></script>
 </body>
+<script>
+    sel();
+</script>
 </html>

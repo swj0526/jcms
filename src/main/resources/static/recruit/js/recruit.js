@@ -8,7 +8,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     var mainIndex;
     laydate.render({
         elem: '#a' //指定元素
-        , range: true
+
     });
     laydate.render({
         elem: '#date' //指定元素
@@ -49,65 +49,40 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 {
                     field: 'sex',
                     title: '性别',
-
                     align: 'center',
-                    width: 80
+                    width: 90
                 },
                 {
                     field: 'labelNames',
                     title: '意向',
                     align: 'center',
-                    width: 80
 
                 },
-                {
-                    field: 'birthDate',
-                    title: '出生年月',
-                    align: 'center'
-                    , width: 150
-                },
+
                 {
                     field: 'school',
                     title: '学校'
-                    , width: 150
 
                 },
                 {
                     field: 'channelName',
                     title: '渠道名称'
-                    , width: 100
+
 
                 },
-
 
                 {
                     field: 'studentPhone',
                     title: '手机号'
-                    , width: 150
 
 
-                },
-                {
-                    field: 'qq',
-                    title: 'QQ号'
-                    , width: 150
-                },
-                {
-                    field: 'weChat',
-                    title: '微信'
-                    , width: 150
-                },
-                {
-                    field: 'motherPhone',
-                    title: '母亲联系方式'
-                    , width: 150
                 },
 
                 {
                     title: '操作',
-                    Width: 300,
                     templet: '#currentTableBar',
                     fixed: "right",
+                    width: 250
                 }
             ]
         ],
@@ -126,6 +101,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             var demoReload = $('#demoReload');
             var sex = $("#sex");
             var labelIds = $("#labelIds");
+            var createTime = $("#a");
 
             //执行重载
             table.reload('testReload', {
@@ -134,10 +110,9 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 }
                 , where: {
                     'keywords': demoReload.val(),
-                    'keywords': demoReload.val(),
-                    'keywords': demoReload.val(),
                     'labelIds': labelIds.val(),
-                    'sex': sex.val()
+                    'sex': sex.val(),
+                    'createTime':createTime.val()
                 }
             }, 'data');
         }
@@ -204,6 +179,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
                 });
             } else {
+                layer.msg("学生电话,母亲电话有重复");
 
             }
         })
@@ -235,9 +211,10 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             }
         })
     });
-    //添加标签弹窗
+    //标签弹窗
+    var index;
     $("#label").click(function () {
-        layer.open({
+       index= layer.open({
             type: 1,
             title: "添加标签",
             skin: 'layui-layer-rim', //加上边框
@@ -246,6 +223,15 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
         });
     });
+    //添加标签
+    $("#addM").click(function () {
+        var label = $("#data").serialize();
+        alert(label);
+        $.post('/dictionary/add/label',label,function () {
+            layer.close(index);
+        })
+    });
+
 
 //监听行
     table.on('tool(currentTableFilter)', function (obj) {
@@ -281,8 +267,6 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 content: '/details/todetail?id='+id,
                 success:function () {
                 }
-
-
             });
         }
     });

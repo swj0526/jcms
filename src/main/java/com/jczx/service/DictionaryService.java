@@ -31,7 +31,7 @@ public class DictionaryService extends BaseService {
      * @param
      * @return
      */
-    public ServiceResult addDictionary(String name, String remark, int type) {
+    public ServiceResult addDictionary(String name, String remark, Integer type) {
         TbDictionary dictionary = new TbDictionary();
         if (StringUtil.isBlank(name)) {
             return error("");
@@ -91,7 +91,7 @@ public class DictionaryService extends BaseService {
      * @param
      * @return
      */
-    public List<TbDictionary> list(int type, String keywords, Pager pager) {
+    public List<TbDictionary> list(Integer type, String keywords, Pager pager) {
         Conditions conditions =getConditins();
         conditions.putEW("type", type);
         if (StringUtil.isNotBlank(keywords)) {
@@ -124,6 +124,8 @@ public class DictionaryService extends BaseService {
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
+
+
 
 
 }

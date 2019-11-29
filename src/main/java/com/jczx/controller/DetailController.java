@@ -42,6 +42,8 @@ public class DetailController {
     @RequestMapping("/add")
     @ResponseBody
     public List<TbRecruitDetail> addDetail(TbRecruitDetail recruitDetail,Integer studentId) {
+        System.out.println("++++++++++////////////");
+        System.out.println(recruitDetail.getLabelIds()+"++++++++++");
         detailService.addDetail(recruitDetail);
         List<TbRecruitDetail> tbRecruitDetails = detailService.listDetail(studentId);
         return tbRecruitDetails;
@@ -73,6 +75,7 @@ public class DetailController {
     @RequestMapping("/deleteFollow")
     @ResponseBody
     public ServiceResult deleteFollow(TbRecruitDetail tbRecruitDetail){
+        System.out.println(tbRecruitDetail.getId()+"++++++++++++");
         ServiceResult serviceResult = detailService.delDetail(tbRecruitDetail);
         return serviceResult;
     }

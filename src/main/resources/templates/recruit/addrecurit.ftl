@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+   <#-- <link rel="stylesheet" href="/layui/css/public.css" media="all">-->
     <link rel="stylesheet" href="/recruit/css/label.css">
     <link rel="stylesheet" href="/all.css">
     <#--上传-->
@@ -19,8 +19,11 @@
     <script src="/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/all.js"></script>
     <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script src="/recruit/js/label.js"></script>
     <script src="/recruit/js/xm.js"></script>
+
     <#--<script src="/all.js"></script>-->
 
     <style type="text/css">
@@ -58,7 +61,7 @@
         </div>
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="addM">立即提交</button>
+                <button class="layui-btn" type="button"  lay-submit lay-filter="formDemo" id="addM">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -218,7 +221,7 @@
             </div>
             <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
                 <div class="layui-input-inline">
-                    <button class="layui-btn" type="button" lay-submit  id="addSubmit">立即提交</button>
+                    <button class="layui-btn" type="button"  id="addSubmit">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -240,23 +243,24 @@
         searchTips: '搜索标签',
         tips: '请选择意向',
         height: '500px',
-
         autoRow: true,
-
-        data: [
-            {name: '有意向', value: 1},
-            {name: '还在考虑', value: 2},
-            {name: '完全不考虑', value: 3},
-            {name: '不太明确', value: 4},
-            {name: '完全没有', value: 5},
-        ]
+        code:0,
+        data: []
     })
-    /*document.getElementById('demo1-getValue').onclick = function(){
-       //获取当前多选选中的值
-       var selectArr = demo1.getValue();
-       document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
-   }*/
+    axios({
+        method: 'get',
+        url: '/dictionary/list/label',
+    }).then(response => {
+        var res = response.data;
+        console.log(res);
+        alert(res)
+        demo1.update({
+            data: res,
+            autoRow: true,
+        })
+    });
 </script>
+
 <script src="/recruit/js/updata.js"></script>
 </body>
 </html>
