@@ -5,12 +5,13 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            ,url:'/dictionary/list/payType/options'
+            ,url:'integral/item/list'
             , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: []
             , title: '用户数据表'
             , cols: [[
-                {field: 'name', title: '名称'}
+                {field: 'reason', title: '事由'}
+                ,{field: 'score', title: '分数'}
                 ,{field: 'remark', title: '备注'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 130}
             ]]
@@ -35,10 +36,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , btn: ['提交','取消']
                     , content: $("#ll")
                     , yes: function (index, layero) {
-                        $.post('/dictionary/add/payType',{
-                            name:$("#addname").val(),
-                            remark:$("#addremark").val()
-
+                        $.post('add',{
+                            reason:$("#addreason").val(),
+                            score:$("#addscore").val(),
+                            remark:$("#addremark").val(),
+                            type:$("#type").val()
                         },function (res) {
                             location.reload();
                             layer.close(index);

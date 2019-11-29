@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -16,17 +17,29 @@ public class TbIntegralItem extends Domain {
     /**
      * 加分
      */
-    public static final int TYPE_ADD=0;
+    @NotCreate
+    public static final int TYPE_ADD = 0;
     /**
      * 减分
      */
-    public static final int TYPE_SUBTRACT=1;
+    @NotCreate
+    public static final int TYPE_SUBTRACT = 1;
     private Integer id;
     private Integer score;//记录加分减分
     private String reason;//事由
     private Integer type;//判断加分减分
+    private String remark;//备注
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
+
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public Integer getType() {
         return type;
