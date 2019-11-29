@@ -26,62 +26,7 @@ layui.use('table', function () {
                 }}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
         ]],
-        data: [{
-            "id": "10001",
-            "title": "Hi",
-            "role": "学生",
-            "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "type": "文章",
-            "see": '0/0',
-            "state": '1'
-        }, {
-            "id": "10002",
-            "title": "Hi",
-            "role": "学生",
-            "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "type": "通知",
-            "see": '0/0',
-            "state": '1'
-        }, {
-            "id": "10003",
-            "title": "Hi",
-            "role": "学生",
-            "publisher": "杜甫",
-            "articleype": "通知",
-            "joinTime": "2016-10-14",
-            "type": "文章",
-            "see": '0/0',
-            "state": '2'
-        }, {
-            "id": "10004",
-            "title": "Hi",
-            "role": "学生",
-            "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "type": "公告",
-            "see": '0/0',
-            "state": '2'
-        }, {
-            "id": "10005",
-            "title": "Hi",
-            "role": "学生",
-            "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "type": "提醒",
-            "see": '<div><a id="info">10/50</a></div>',
-            "state": '3'
-        }, {
-            "id": "10006",
-            "title": "Hi",
-            "role": "学生",
-            "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "type": "活动",
-            "see": '<div><a id="info">10/50</a></div>',
-            "state": '3'
-        }],
+
         page: true
     });
     var form = layui.form;
