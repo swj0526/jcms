@@ -8,6 +8,7 @@ layui.use('table', function () {
              {field: 'id', title: '序号',align: 'center'}
             , {field: 'title', title: '标题',align: 'center'}
             , {field: 'role', title: '角色',align: 'center'}
+            , {field: 'typeName', title: '公告类型',align: 'center'}
             , {field: 'publisher', title: '发布人',align: 'center'}
             , {field: 'joinTime', title: '发布时间',align: 'center'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}

@@ -2,12 +2,14 @@ package com.jczx.service;
 
 import com.jczx.domain.TbDictionary;
 import com.jczx.domain.TbMajor;
+import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import java.util.List;
 @Component
 public class MajorService extends BaseService {
 
+    @Autowired
+    private  StudentService studentService;
     @Override
     public String getTableName() {
         return TbMajor.class.getSimpleName();
@@ -124,20 +128,27 @@ public class MajorService extends BaseService {
         return major;
     }
 
-   /* public ServiceResult deleteMajor(Integer id) {
+    public ServiceResult deleteMajor(Integer id) {
         TbMajor major = getById(getTableName(), id);
         if (major.getPid() == 0) { //删除专业
             Conditions conditins = getConditins();
-            conditins.putEW("pid",major.getId());
+            conditins.putEW("pid", major.getId());
             List<TbMajor> list = getList(conditins);
-            if(list.size()!=0){
-                return error("该专业下面有班级,所有不能删除!");
-            }else{
-                 delById(getTableName(), id);
+            if (list.size() != 0) {
+                return error("该专业有班级,不可删除!");
+            } else {
+                delById(getTableName(), id);
                 return SUCCESS;
             }
-        }else{ //删除班级
+        } else { //删除班级
+            List<TbStudent> list = studentService.checkMajor(id);
+            if(list.size()!=0){
+                return  error("该班级有学生,不可删除!");
+            }else {
+                delById(getTableName(),id);
+                return SUCCESS;
+            }
 
         }
-    }*/
+    }
 }

@@ -4,7 +4,6 @@ import com.jczx.domain.TbTeacher;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
@@ -19,7 +18,7 @@ import java.util.List;
  * @create 2019-11-21 13:30
  */
 @Component
-public class TeacherService  extends Service {
+public class TeacherService  extends BaseService {
 
     /**
      * 添加老师
@@ -123,6 +122,7 @@ public class TeacherService  extends Service {
         return inputStream;
     }
 
+    @Override
     public String getTableName() {
         return TbTeacher.class.getSimpleName();
     }

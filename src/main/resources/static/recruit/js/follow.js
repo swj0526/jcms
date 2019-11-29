@@ -186,7 +186,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             layer.confirm('真的删除行么', {
                     btn: ['确定', '取消'],
                     yes: function (index, layero) {
-                        $.post('/dictionary/delete', {id: data.id}, function (result) {
+                        $.post('/dictionary/delete/channel', {id: data.id}, function (result) {
                             if (result.success) {
                                 layer.msg("删除成功!");
                                 layer.close(index);

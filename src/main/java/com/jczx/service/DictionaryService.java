@@ -1,6 +1,8 @@
 package com.jczx.service;
 
+import com.jczx.domain.TbArticle;
 import com.jczx.domain.TbDictionary;
+import com.jczx.domain.TbPayBill;
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -8,6 +10,7 @@ import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -20,6 +23,14 @@ import java.util.List;
  */
 @Component
 public class DictionaryService extends BaseService {
+
+    @Autowired
+    public StudentService studentService;
+    @Autowired
+    public moneyService moneyService;
+    @Autowired
+    public ArticleService articleService;
+
     @Override
     public String getTableName() {
         return TbDictionary.class.getSimpleName();
@@ -54,14 +65,14 @@ public class DictionaryService extends BaseService {
      * @param id
      * @return
      */
-    public ServiceResult modifyDictionary(String name, String remark, int id) {
+    public ServiceResult modifyDictionary(String name, String remark, Integer id) {
         if (StringUtil.isBlank(name)) {
             return error("");
         }
         TbDictionary dictionary = getById(getTableName(), id);
         dictionary.setName(name);
         dictionary.setRemark(remark);
-        int modify = modify(dictionary);
+        modify(dictionary);
         return SUCCESS;
     }
 
@@ -71,18 +82,73 @@ public class DictionaryService extends BaseService {
      * @param id
      * @return
      */
-    public ServiceResult deleteDictionary(int id) {
-
-       /* Conditions conditions = new Conditions(TbStudent.class);
-        conditions.putEW("channelId", id);
-        List<TbStudent> list = getList(conditions);
+    public ServiceResult deleteChannel(Integer id) {
+        List<TbStudent> list = studentService.checkChannel(id);
         if (list.size() != 0) {
-            return error("不可删除,该标签已被使用!");
+            return error("该渠道有学生,不可删除!");
         }
-        int del = delById(TbDictionary.class, id);
-        return SUCCESS; */
-       return null;
-       //todo 需要在学生表的service里去判断一个
+        delById(getTableName(), id);
+        return SUCCESS;
+    }
+
+    /**
+     * 删除学年
+     *
+     * @param id
+     * @return
+     */
+    public ServiceResult deleteTerm(Integer id) {
+        List<TbPayBill> list = moneyService.checkTerm(id);
+        if (list.size() != 0) {
+            return error("有学生是该学年进行缴费的,不可删除!");
+        }
+        delById(getTableName(), id);
+        return SUCCESS;
+    }
+
+    /**
+     * 删除缴费类型
+     *
+     * @param id
+     * @return
+     */
+    public ServiceResult deleteType(Integer id) {
+        List<TbPayBill> list = moneyService.checkType(id);
+        if (list.size() != 0) {
+            return error("有学生是使用该缴费类型进行缴费的,不可删除!");
+        }
+        delById(getTableName(), id);
+        return SUCCESS;
+    }
+
+    /**
+     * 删除缴费方式
+     *
+     * @param id
+     * @return
+     */
+    public ServiceResult deleteMthod(Integer id) {
+        List<TbPayBill> list = moneyService.checkMethod(id);
+        if (list.size() != 0) {
+            return error("有学生是使用该缴费方式进行缴费的,不可删除!");
+        }
+        delById(getTableName(), id);
+        return SUCCESS;
+    }
+
+    /**
+     * 删除缴费方式
+     *
+     * @param id
+     * @return
+     */
+    public ServiceResult deleteArticleType(Integer id) {
+        List<TbArticle> list = articleService.checkType(id);
+        if (list.size() != 0) {
+            return error("现有公告是此类型,不可删除!");
+        }
+        delById(getTableName(), id);
+        return SUCCESS;
     }
 
     /**
@@ -92,7 +158,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public List<TbDictionary> list(Integer type, String keywords, Pager pager) {
-        Conditions conditions =getConditions();
+        Conditions conditions = getConditins();
         conditions.putEW("type", type);
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -117,15 +183,13 @@ public class DictionaryService extends BaseService {
      * @param
      * @return
      */
-    public List<TbDictionary> listPayWay(int type) {
-        Conditions conditions =getConditions();
+    public List<TbDictionary> listPayWay(Integer type) {
+        Conditions conditions = getConditins();
         conditions.putEW("type", type);
         List<TbDictionary> list = getList(conditions);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
-
-
 
 
 }

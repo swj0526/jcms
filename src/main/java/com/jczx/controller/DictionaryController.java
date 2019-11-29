@@ -43,7 +43,6 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/add/label")
     public ServiceResult addLabel(String name, String remark) {
-
         ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
         return result;
     }
@@ -93,29 +92,88 @@ public class DictionaryController extends BaseController {
         return result;
     }
     /**
-     * 添加招缴费类型信息
+     * 添加公告类型
      * @param name
      * @param remark
      * @return
      */
     @RequestMapping("/add/dispatch")
     public ServiceResult addDispatch(String name, String remark) {
-        ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
+        ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_DISPATCH );
         return result;
     }
     /**
-     * //todo 只要渠道可以删除,少其他的字典的删除方法
+     * 删除渠道
      * @param id
      * @return
      */
-    @RequestMapping("/delete")
-    public ServiceResult delete(int id) {
-        ServiceResult result = dictionaryService.deleteDictionary(id);
+    @RequestMapping("/delete/channel")
+    public ServiceResult deleteChannel(Integer id) {
+        ServiceResult result = dictionaryService.deleteChannel(id);
+        return result;
+    }
+    /**
+     * 删除学年
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete/term")
+    public ServiceResult deleteTerm(Integer id) {
+        ServiceResult result = dictionaryService.deleteTerm(id);
+        return result;
+    }
+    /**
+     * 删除缴费方式
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete/method")
+    public ServiceResult deleteMethod(Integer id) {
+        ServiceResult result = dictionaryService.deleteMthod(id);
+        return result;
+    }
+    /**
+     * 删除缴费类型
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete/type")
+    public ServiceResult deleteType(Integer id) {
+        ServiceResult result = dictionaryService.deleteType(id);
+        return result;
+    }
+    /**
+     * 删除公告类型
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete/articleType")
+    public ServiceResult deleteArticleType(Integer id) {
+        ServiceResult result = dictionaryService.deleteArticleType(id);
         return result;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @RequestMapping("/modify")
-    public ServiceResult modify(String name, String remark, int id) {
+    public ServiceResult modify(String name, String remark, Integer id) {
         ServiceResult result = dictionaryService.modifyDictionary(name, remark, id);
         return result;
     }
