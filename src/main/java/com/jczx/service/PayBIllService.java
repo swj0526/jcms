@@ -6,12 +6,12 @@ import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
-import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
@@ -130,7 +130,7 @@ public class PayBIllService extends BaseService {
         return inputStream;
     }
     public List<TbPayBill> checkTerm(Integer id){
-        Conditions conditions = getConditions();
+        Conditions conditions =getConditions();
         conditions.putEW("semesterId",id);
         return getList(conditions);
     }
