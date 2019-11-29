@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/all.js"></script>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/listStudent.js">
     </script>
@@ -32,7 +34,7 @@
             <div class="layuimini-container">
                 <div class="layuimini-main">
                     <fieldset class="layui-elem-field layuimini-search">
-                      <#--  <legend>搜索信息</legend>-->
+                        <#--  <legend>搜索信息</legend>-->
                         <div style="margin: 10px 10px 10px 10px">
                             <form class="layui-form layui-form-pane" action="">
                                 <div class="layui-form-item">
@@ -45,20 +47,18 @@
                                     </div>
                                     <div class="layui-inline">
                                         <label class="layui-form-label">专业-班级</label>
-                                        <div class="layui-input-inline" lay-verify="required" lay-search="">
-                                            <select name="major">
-                                                <option value="">请选择专业-班级</option>
-                                                <optgroup label="影视专业">
-                                                    <option value="">所有影视专业</option>
-                                                    <option value="">影视一班</option>
-                                                </optgroup>
-                                                <optgroup label="美术专业">
-                                                    <option value="">所有美术专业</option>
-                                                    <option value="">美术一班</option>
-                                                </optgroup>
-                                            </select>
+
+                                        <div class="layui-input-inline">
+                                            <div class="layui-inline">
+                                                <select name="major" lay-verify="" id="gradeSelect" required
+                                                        lay-verify="required"
+                                                        url="/major/list/select">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
+
                                     <div class="layui-inline">
                                         <label class="layui-form-label">是否被激活</label>
                                         <div class="layui-input-inline">
@@ -104,7 +104,7 @@
             <div class="layuimini-container">
                 <div class="layuimini-main">
                     <fieldset class="layui-elem-field layuimini-search">
-                       <#-- <legend>搜索信息</legend>-->
+                        <#-- <legend>搜索信息</legend>-->
                         <div style="margin: 10px 10px 10px 10px">
                             <form class="layui-form layui-form-pane" action="">
                                 <div class="layui-form-item">
@@ -157,7 +157,8 @@
                         </div>
                     </fieldset>
 
-                    <table class="layui-hide" id="test1" lay-filter="test1" style="overflow:Scroll;overflow-x:hidden;"></table>
+                    <table class="layui-hide" id="test1" lay-filter="test1"
+                           style="overflow:Scroll;overflow-x:hidden;"></table>
                     <script type="text/html" id="checkboxTpl1">
                         <!-- 这里的 checked 的状态只是演示 -->
                         <input type="checkbox" name="lock1" value="{{d.id}}" title="激活" lay-filter="lockDemo1">
@@ -182,5 +183,8 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    sel_garade();
+</script>
 </body>
 </html>

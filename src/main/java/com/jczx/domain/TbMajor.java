@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.OptionInterface;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
@@ -8,11 +9,11 @@ import java.util.Date;
 
 /**
  * 专业表
- * @author 池炯武
+ * @author 孙文举
  * @create 2019-11-20 14:51
  */
 @Component
-public class TbMajor extends Domain {
+public class TbMajor extends Domain implements OptionInterface {
     /**
      *
      */
@@ -77,5 +78,15 @@ public class TbMajor extends Domain {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String getOptionText() {
+        return name;
+    }
+
+    @Override
+    public String getOptionValue() {
+        return id+"";
     }
 }

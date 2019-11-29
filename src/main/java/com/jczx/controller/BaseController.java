@@ -29,4 +29,5 @@ public class BaseController<T> {
         ServiceResult serviceResult = new ServiceResult(true,list,"",pager);
         return serviceResult;
     }
+
 }
