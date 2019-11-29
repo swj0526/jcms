@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">跟进时间</label>
+                        <label class="layui-form-label">时间</label>
                         <div class="layui-input-inline">
                             <input type="text" name="createTime" autocomplete="off" class="layui-input" id="a">
                         </div>
@@ -61,13 +61,16 @@
                             </select>
                         </div>
                     </div>
-                    <div class="layui-inline"style="width: 150px">
-
-                        <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
-                                url="/dictionary/list/channel/options">
-                            <option value="">来源渠道</option>
-                        </select>
+                    <div class="layui-inline" style="width: 210px">
+                        <label class="layui-form-label" style="width: 110px">渠道</label>
+                        <div class="layui-inline" style="width: 100px">
+                            <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
+                                    url="/dictionary/list/channel/options">
+                                <option value="">来源渠道</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width: 100px">意向</label>
                         <div class="layui-inline" style="width: 100px">

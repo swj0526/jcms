@@ -42,10 +42,10 @@
     <span>姓名,意向,电话必须填写</span></div>
 <#--添加标签-->
 <div style="display: none" id="addlabel">
-    <form class="layui-form" action="" lay-filter="dataForm" id="data">
+    <form class="layui-form layui-form-pane" action="" lay-filter="dataForm" id="data">
         <div class="layui-form-item">
-            <span style="color: red;display: inline-block;height: 38px;line-height: 38px;">*</span>
-            <label class="layui-form-label">标签名称</label>
+
+            <label class="layui-form-label">标签名称<span  class="star">*</span> </label>
             <div class="layui-input-inline">
                 <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
                        class="layui-input">
@@ -252,8 +252,7 @@
         url: '/dictionary/list/label',
     }).then(response => {
         var res = response.data;
-        console.log(res);
-        alert(res)
+
         demo1.update({
             data: res,
             autoRow: true,

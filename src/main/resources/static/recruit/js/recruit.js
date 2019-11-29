@@ -43,7 +43,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             [{
                 field: 'name',
                 title: '姓名',
-                templet: '<div><a href="/home/main" class="layui-table-link">{{d.name}}</a></div>',
+                templet: '<div><a href="" class="layui-table-link">{{d.name}}</a></div>',
                 width: 90
             },
                 {
@@ -147,7 +147,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         mainIndex = layer.open({
             type: 2,
             title: "添加招生信息",
-            skin: 'layui-layer-rim', //加上边框
+
             area: ['100%', '100%'], //设置宽高
             content: '/recruit/toadd',
         });
@@ -217,7 +217,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
        index= layer.open({
             type: 1,
             title: "添加标签",
-            skin: 'layui-layer-rim', //加上边框
+
             area: ['400px'], //设置宽高
             content: $("#addlabel"),
 

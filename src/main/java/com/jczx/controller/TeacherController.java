@@ -57,7 +57,7 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult teacherList(String keyword,Boolean hasQuit, Integer page, Integer limit){
+    public ServiceResult teacherList(String keyword,Boolean hasQuit,Integer page,Integer limit){
         Pager pager = checkPager(limit, page);
         List<TbTeacher> list= teacherService.teacherList(keyword,hasQuit,pager);
         System.out.println(keyword);

@@ -1,10 +1,15 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbStudent;
+import net.atomarrow.bean.Pager;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
+import net.atomarrow.util.excel.ExcelDatas;
+import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -13,6 +18,8 @@ import java.util.List;
  */
 @Component
 public class StudentService extends BaseService{
+    @Autowired
+  private   RecruitService recruitService;
     /**
      * @author 丛枭钰
      * @create 2019-11-28 13:06
@@ -26,7 +33,8 @@ public class StudentService extends BaseService{
 
     /**
      * 于振华
-     *查询所在班级
+     * 查询所在班级
+     *
      * @param majorId
      * @return
      */
@@ -38,16 +46,46 @@ public class StudentService extends BaseService{
 
     /**
      * 于振华
+     * 查询渠道
+     *
      * @param channelId
      * @return
      */
-    public List<TbStudent> checkChannel(Integer channelId){
+    public List<TbStudent> checkChannel(Integer channelId) {
         Conditions conditions = getConditions();
-        conditions.putEW("channelId",channelId);
+        conditions.putEW("channelId", channelId);
         return getList(conditions);
     }
 
 
+
+    public List<TbStudent> listStudent(TbStudent student) {
+        Conditions conditions = getConditions();
+        if (student.getState() == TbStudent.STATE_ENTRANCE) {
+            List<TbStudent> list = getList(conditions);
+            return list;
+        }
+        return null;
+    }
+
+    /**
+     * 查询当前学生信息
+     *
+     * @param id
+     * @return
+     */
+    public TbStudent getStudent(Integer id) {
+        return getById(getTableName(), id);
+    }
+
+    public InputStream studentExcel(String keywords, String createTime, String labelIds, String sex, Pager pager) {
+        ExcelDatas excelDatas = new ExcelDatas();
+        List<TbStudent> list = recruitService.listRecruit(keywords, createTime, labelIds, sex, pager);//调用查询信息
+        excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "意向", "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelIds", "birthDate", "school", "studentPhone", "qq", "weChat", "channelId"});
+        InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
+    }
 
 
     @Override
