@@ -21,7 +21,7 @@ public class ArticleService extends BaseService {
     }
 
     public List<TbArticle> checkType(Integer typeId) {
-        Conditions conditins = getConditins();
+        Conditions conditins = getConditions();
         conditins.putEW("typeId", typeId);
         return getList(conditins);
 

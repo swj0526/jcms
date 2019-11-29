@@ -92,7 +92,7 @@ public class MajorService extends BaseService {
      * @return
      */
     public List<TbMajor> listMajor(String keywords) {
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
             conditions.putEW("pid", 0);
             conditions.parenthesesStart();
@@ -131,9 +131,9 @@ public class MajorService extends BaseService {
     public ServiceResult deleteMajor(Integer id) {
         TbMajor major = getById(getTableName(), id);
         if (major.getPid() == 0) { //删除专业
-            Conditions conditins = getConditins();
-            conditins.putEW("pid", major.getId());
-            List<TbMajor> list = getList(conditins);
+            Conditions conditions = getConditions();
+            conditions.putEW("pid", major.getId());
+            List<TbMajor> list = getList(conditions);
             if (list.size() != 0) {
                 return error("该专业有班级,不可删除!");
             } else {

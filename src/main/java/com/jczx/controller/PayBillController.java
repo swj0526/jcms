@@ -1,6 +1,5 @@
 package com.jczx.controller;
 
-import com.jczx.bean.ListByPage;
 import com.jczx.domain.TbPayBill;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -8,7 +7,7 @@ import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.jczx.service.moneyService;
+import com.jczx.service.PayBIllService;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.InputStream;
@@ -27,7 +26,7 @@ import java.util.Map;
 @Controller
 public class PayBillController extends BaseController {
     @Autowired
-    private moneyService moneyService;
+    private PayBIllService moneyService;
 
     /**
      * 缴费列表

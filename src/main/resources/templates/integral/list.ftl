@@ -14,7 +14,6 @@
 <div style="padding: 15px;">
     <div class="demoTable">
         <fieldset class="layui-elem-field layuimini-search">
-            <legend>缴费查询信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane">
                     <div class="layui-form-item">
@@ -28,11 +27,11 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">成绩范围</label>
                             <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" name="price_min" autocomplete="off" class="layui-input">
+                                <input type="text" name="price_min" id="ScoreA" autocomplete="off" class="layui-input">
                             </div>
                             <div class="layui-form-mid">-</div>
                             <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" name="price_max" autocomplete="off" class="layui-input">
+                                <input type="text" name="price_max" id="ScoreB" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">

@@ -28,7 +28,7 @@ public class RecruitService extends BaseService {
      * @return
      */
     public ServiceResult addRecruit(TbStudent student) {
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         conditions.putEW("studentPhone", student.getStudentPhone());
         conditions.or();
         conditions.putEW("motherPhone", student.getMotherPhone());
@@ -58,7 +58,7 @@ public class RecruitService extends BaseService {
      * @return
      */
     public TbStudent getStudent(Integer studentId) {
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         TbStudent getStudent = getById(getTableName(), studentId);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return getStudent;
@@ -93,7 +93,7 @@ public class RecruitService extends BaseService {
      * 查询
      */
     public List<TbStudent> listRecruit(String keywords, String labelIds, String createTime, String sex, Pager pager) { //模糊关键字keywords查询用or
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
 
         if (StringUtil.isNotBlank(keywords)) {
             System.out.println("条件");
