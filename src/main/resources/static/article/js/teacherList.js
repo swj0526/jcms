@@ -4,6 +4,7 @@ layui.use('table', function () {
     table.render({
         elem: '#test',
         title: '用户数据表',
+        url:'/article/list',
         cols: [[
             {field: 'id', title: '序号',align: 'center'}
             , {field: 'title', title: '标题',align: 'center'}
