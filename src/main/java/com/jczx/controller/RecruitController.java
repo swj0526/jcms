@@ -1,6 +1,5 @@
 package com.jczx.controller;
 
-import com.jczx.domain.TbRecruitDetail;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
 import net.atomarrow.bean.Pager;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -60,7 +58,8 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/tomodify")
     public String toModify(Integer id, Map<String, Object> map) {
-        TbStudent student = recruitService.getStudent(id);
+
+        TbStudent student = (TbStudent) recruitService.getStudent(id);
         map.put("student", student);
         map.put("birth", student.getBirthDate().toString());
         map.put("createTime", student.getCreateTime().toString());
