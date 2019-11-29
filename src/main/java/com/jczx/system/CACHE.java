@@ -173,7 +173,7 @@ public class CACHE {
                 } else {
                     names = names + dictionary.getName() + ",";
                 }
-                System.out.println(names);
+
             }
         }
         return names;

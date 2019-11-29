@@ -33,15 +33,21 @@ layui.use(['form', 'layedit', 'laydate','upload'], function () {
                     content:content,
                     state:3
                 }, function(result) {
-                    alert("成功");
                     layer.closeAll();
 
                 });
                 parent_tab("article_teacherList","公告列表","/article/teacherList");
             },
             btn2:function (index,layero) {
-                alert("存草稿");
-                layer.closeAll();
+                $.post('/article/add', {
+                    title : title,
+                    type:type,
+                    content:content,
+                    state:1
+                }, function(result) {
+                    layer.closeAll();
+                });
+                parent_tab("article_teacherList","公告列表","/article/teacherList");
             }
         });
         return false;

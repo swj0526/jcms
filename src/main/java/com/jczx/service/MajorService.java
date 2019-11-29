@@ -1,13 +1,11 @@
 package com.jczx.service;
 
-import com.jczx.domain.TbDictionary;
 import com.jczx.domain.TbMajor;
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
-import net.atomarrow.services.Service;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
