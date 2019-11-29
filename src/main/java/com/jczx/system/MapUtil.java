@@ -1,8 +1,8 @@
 package com.jczx.system;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,12 +11,13 @@ import java.util.Map;
  * @create 2019-11-28 10:55
  */
 @Component
-public class MapUtil implements CacheInterface{
-    @Autowired
-    private Map<String, Object> map;
+public class MapUtil implements CacheInterface {
+
+    private Map<String, Object> map = new HashMap<>();
 
     /**
      * 根据可以获取value
+     *
      * @param key
      * @return
      */
@@ -27,16 +28,18 @@ public class MapUtil implements CacheInterface{
 
     /**
      * 设置值
+     *
      * @param key
      * @param value
      */
     @Override
     public void set(String key, Object value) {
-       map.put(key,value);
+        map.put(key, value);
     }
 
     /**
      * 移除某个指定的key
+     *
      * @param key
      */
     @Override
@@ -49,6 +52,6 @@ public class MapUtil implements CacheInterface{
      */
     @Override
     public void removeAll() {
-     map.clear();
+        map.clear();
     }
 }
