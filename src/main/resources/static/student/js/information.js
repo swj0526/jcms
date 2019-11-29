@@ -4,16 +4,7 @@ layui.use(['element','jquery','table'], function(){
     var $ = layui.jquery;
     table.render({
         elem: '#test',
-        data: [{
-            "username": "定金",
-            "sex": "微信",
-            "city": "100",
-            "sign": "2019-10-1",
-            "experience": "否",
-            "logins": 0,
-            "classify": "2019-10-1",
-            "score": 57
-        }]
+        url:"/money/list"
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
             {field:'username', title: '缴费类型'}

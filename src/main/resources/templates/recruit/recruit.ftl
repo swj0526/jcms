@@ -35,7 +35,6 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
        <fieldset class="layui-elem-field layuimini-search">
-            <legend>搜索招生信息</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <div class="demoTable">
 

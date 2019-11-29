@@ -232,6 +232,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         })
     });
 
+
 //监听行
     table.on('tool(currentTableFilter)', function (obj) {
         var data = obj.data;

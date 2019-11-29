@@ -28,7 +28,7 @@ public class RecruitService extends BaseService {
      * @return
      */
     public ServiceResult addRecruit(TbStudent student) {
-        Conditions conditions = new Conditions(TbStudent.class);
+        Conditions conditions = getConditins();
         conditions.putEW("studentPhone", student.getStudentPhone());
         conditions.or();
         conditions.putEW("motherPhone", student.getMotherPhone());
@@ -58,7 +58,7 @@ public class RecruitService extends BaseService {
      * @return
      */
     public TbStudent getStudent(Integer studentId) {
-        Conditions conditions = new Conditions(getTableName());
+        Conditions conditions = getConditins();
         TbStudent getStudent = getById(getTableName(), studentId);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return getStudent;

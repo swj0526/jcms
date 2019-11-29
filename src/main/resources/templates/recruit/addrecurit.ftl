@@ -236,8 +236,6 @@
 
 <script>
     sel();
-
-
     var demo1 = xmSelect.render({
         el: '#demo1',
         language: 'zn',
@@ -251,19 +249,18 @@
     })
     axios({
         method: 'get',
-        url: 'https://www.fastmock.site/mock/98228b1f16b7e5112d6c0c87921eabc1/xmSelect/search',
+        url: '/dictionary/list/label',
     }).then(response => {
         var res = response.data;
-        console.log(res)
+        console.log(res);
+        alert(res)
         demo1.update({
-            data: res.data,
+            data: res,
             autoRow: true,
         })
     });
-
-
-
 </script>
+
 <script src="/recruit/js/updata.js"></script>
 </body>
 </html>

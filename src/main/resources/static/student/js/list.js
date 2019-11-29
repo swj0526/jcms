@@ -1,32 +1,4 @@
-var a=new Array();
-a=[{
-    "id": 1901001,
-    "name": "张三",
-    "gender": "男",
-    "birthday": "1997-8-10",
-    "age":18,
-    "address":"花果山水帘洞",
-    "nativePlace":"山东威海**市**县**镇",
-    "contact":"186693989898",
-    "bloodType":"O",
-    "admissionTime":"1999-9-9",
-    "graduationTime":"2999-9-9",
-    "state":"在校",
-},{
-    "id": 1901002,
-    "name": "李四",
-    "gender": "男",
-    "birthday": "1997-8-10",
-    "age":18,
-    "address":"花果山水帘洞",
-    "nativePlace":"山东威海**市**县**镇",
-    "contact":"186693989898",
-    "bloodType":"O",
-    "admissionTime":"1999-9-9",
-    "graduationTime":"2999-9-9",
-    "state":"在校"
 
-}]
 layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () {
     var $ = layui.jquery,
         form = layui.form,
@@ -42,7 +14,14 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
     });
     table.render({
         elem: '#currentTableId',
-        data: a,
+        url:'/recruit/list',
+        parseData: function (res) { //res 即为原始返回的数据
+            return {
+                "code": "0",
+                "count": res.pager.dataTotal,
+                data: res.result
+            }
+        },
         cols: [
             [{
                 field: 'id',
