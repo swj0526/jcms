@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="../layui/layui.js"></script>
 		<script type="text/javascript" src="../article/js/dispatch.js"></script>
+		<script type="text/javascript" src="/all.js"></script>
 	</head>
 	<body>
 		<form class="layui-form layui-form-pane" action="" lay-filter="dataForm">
@@ -21,7 +22,7 @@
 		    <label class="layui-form-label">接收角色<span class="star">*</span></label>
 		    <div class="layui-input-inline" style="width: 300px">
 		      <input name="like[老师]" title="老师" type="checkbox">
-		      <input name="like[学生]" title="学生" type="checkbox" >
+		      <input name="like[学生]" title="学生" type="checkbox">
 		      <input name="like[管理员]" title="管理员" type="checkbox">
 		    </div>
 				  <div class="layui-inline" style="margin-bottom: 0px">
