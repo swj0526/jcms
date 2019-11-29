@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.CACHE;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
@@ -8,18 +9,19 @@ import java.util.Date;
 
 /**
  * 发布文章
+ *
  * @author 宋家新
  * @create 2019-11-18 21:11
  */
 @Component
-public class TbArticle  extends Domain {
+public class TbArticle extends Domain {
     @NotCreate
     private String quit;
 
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
-    private Integer type;//文章类型
+    private Integer typeId;//文章类型
 
     private String content;//内容
     private Integer state;//状态
@@ -32,13 +34,13 @@ public class TbArticle  extends Domain {
     private Integer operatorId;//操作人
 
     public String getQuit() {
-        if (state==1){
+        if (state == 1) {
             return "草稿";
         }
-        if (state==2){
+        if (state == 2) {
             return "已撤销";
         }
-        if (state==3){
+        if (state == 3) {
             return "已提交";
         }
         return null;
@@ -68,12 +70,12 @@ public class TbArticle  extends Domain {
         this.receiverRoleIds = receiverRoleIds;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public String getContent() {
@@ -148,7 +150,7 @@ public class TbArticle  extends Domain {
         this.operatorId = operatorId;
     }
 
-    /*public String getTypeName(){
-        return CACHE.get;
-    }*/
+    public String getTypeName() {
+        return CACHE.getArticleTypeName(typeId);
+    }
 }

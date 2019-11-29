@@ -3,10 +3,10 @@ layui.use(['form', 'table', 'laydate'], function () {
         form = layui.form,
         table = layui.table;
     layer = layui.layer;
-
+    var mainIndex;
 
     $('#add').click(function () {
-        var mainIndex = layer.open({
+        mainIndex = layer.open({
             type: 1,
             title: "添加专业信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -15,8 +15,8 @@ layui.use(['form', 'table', 'laydate'], function () {
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
-
-
+            }, end: function () {
+                location.reload();
             }
         });
 
@@ -30,7 +30,6 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
-                self.location.reload();
             } else {
 
             }
@@ -40,7 +39,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     var id;//专业的id,班级的pid
     $('.btnB').click(function () {
         id = $(this).attr("id");
-        var mainIndex = layer.open({
+        mainIndex = layer.open({
             type: 1,
             title: "添加班级信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -51,12 +50,14 @@ layui.use(['form', 'table', 'laydate'], function () {
                 $("#dataFor")[0].reset();
 
 
+            }, end: function () {
+                location.reload();
             }
         });
     });
     $('.btnC').click(function () {
         id = $(this).attr("id");
-        var mainIndex = layer.open({
+        mainIndex = layer.open({
             type: 1,
             title: "修改专业信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -70,6 +71,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                     $('[name="remarkC"]').val(result.remark);
                 });
 
+            }, end: function () {
+                location.reload();
             }
         });
     });
@@ -83,7 +86,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
-                self.location.reload();
+
             } else {
 
             }
@@ -92,7 +95,7 @@ layui.use(['form', 'table', 'laydate'], function () {
     });
     $('.btnD').click(function () {
         id = $(this).attr("id");
-        var mainIndex = layer.open({
+        mainIndex = layer.open({
             type: 1,
             title: "修改班级信息",
             // skin: 'layui-layer-rim', //加上边框
@@ -106,6 +109,8 @@ layui.use(['form', 'table', 'laydate'], function () {
                     $('[name="remarkD"]').val(result.remark);
                 });
 
+            }, end: function () {
+                location.reload();
             }
         });
     });
@@ -119,7 +124,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
-                self.location.reload();
+
             } else {
 
             }
@@ -137,7 +142,7 @@ layui.use(['form', 'table', 'laydate'], function () {
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
-                self.location.reload();
+
             } else {
             }
         });
@@ -148,47 +153,29 @@ layui.use(['form', 'table', 'laydate'], function () {
         layer.confirm('真的删除行么', {
                 btn: ['确定', '取消'],
                 yes: function (index, layero) {
-                    $.post('/dictionary/delete', {id: data.id}, function (result) {
+                    $.post('/major/delete', {id: id}, function (result) {
                         if (result.success) {
                             layer.msg("删除成功!");
                             layer.close(index);
-
+                            location.reload();
                         } else {
                             layer.msg(result.msg);
                         }
                     });
+
+
 
                 }, no: function (index) {
                     layer.close(index);
                 }
             }
         );
-        self.location.reload();
+
     });
-    $("#search").click(function () {
-        var keywords =$('[name="keywords"]').val();
-      $.post("/major/tolist",{keywords:keywords},function (result) {
-          $("table tbody").html("");
-          $("table").append("<#list list as major>\n" +
-              "            <#if major.pid != 0>\n" +
-              "                <tr>\n" +
-              "                    <td>&nbsp;&nbsp;&nbsp;&nbsp;∟${major.name}</td>\n" +
-              "                    <td>${major.remark!\"\"}</td>\n" +
-              "                    <td><a class=\"layui-btn layui-btn-xs btnD\" id=\"${major.id}\">编辑</a><a\n" +
-              "                                class=\"layui-btn layui-btn-danger layui-btn-xs del\" id=\"${major.id}\">删除</a></td>\n" +
-              "                </tr>\n" +
-              "            <#else >\n" +
-              "                <tr>\n" +
-              "                    <td>${major.name}</td>\n" +
-              "                    <td>${major.remark!\"\"}</td>\n" +
-              "                    <td><a class=\"layui-btn layui-btn-xs btnC\" id=\"${major.id}\">编辑</a> <a\n" +
-              "                                class=\"layui-btn layui-btn-normal layui-btn-xs btnB\" id=\"${major.id}\">添加班级</a><a\n" +
-              "                                class=\"layui-btn layui-btn-danger layui-btn-xs del\" id=\"${major.id}\">删除</a></td>\n" +
-              "                </tr>\n" +
-              "            </#if>\n" +
-              "\n" +
-              "        </#list>");
-          self.location.reload();
-      });
-    });
+    /* $("#search").click(function () {
+         var keywords = $('[name="keywords"]').val();
+         $.post("/major/tolist", {keywords: keywords}, function (result) {
+
+         });
+     })*/
 });

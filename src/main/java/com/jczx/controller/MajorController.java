@@ -77,9 +77,25 @@ public class MajorController {
         return majorService.modifyMajor(major);
     }
 
+    /**
+     * 根据id查找某个班级专业
+     * @param id
+     * @return
+     */
     @RequestMapping("/get")
     @ResponseBody
     public TbMajor get(Integer id) {
         return majorService.getMajor(id);
+    }
+
+    /**
+     * 根据id删除专业班级
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public  ServiceResult delete(Integer id){
+       return  majorService.deleteMajor(id);
     }
 }

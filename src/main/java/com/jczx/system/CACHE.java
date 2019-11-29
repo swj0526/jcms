@@ -82,6 +82,7 @@ public class CACHE {
 
     /**
      * 渠道的名称
+     *
      * @param channelId
      * @return
      */
@@ -90,33 +91,35 @@ public class CACHE {
             return "";
         }
         TbDictionary dictionary = getDictionary(channelId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
         return dictionary.getName();
     }
+
     /**
      * 缴费类型
      */
-    public static String getTypeName(Integer typeId){
+    public static String getTypeName(Integer typeId) {
         if (typeId == null || typeId == 0) {
             return "";
         }
         TbDictionary dictionary = getDictionary(typeId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
         return dictionary.getName();
     }
+
     /**
      * 缴费方式
      */
-    public static String getPaymentMethodName(Integer paymentMethodId){
+    public static String getPaymentMethodName(Integer paymentMethodId) {
         if (paymentMethodId == null || paymentMethodId == 0) {
             return "";
         }
         TbDictionary dictionary = getDictionary(paymentMethodId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
         return dictionary.getName();
@@ -124,65 +127,74 @@ public class CACHE {
 
     /**
      * 学年
+     *
      * @param semesterId
      * @return
      */
-    public static String getSemesterName(Integer semesterId){
+    public static String getSemesterName(Integer semesterId) {
         if (semesterId == null || semesterId == 0) {
             return "";
         }
         TbDictionary dictionary = getDictionary(semesterId);
-        if(dictionary==null){
+        if (dictionary == null) {
             return "";
         }
         return dictionary.getName();
     }
+
     /**
      * 文章类型
      */
-    public static String getArticleTypeName(){
-        return "";
+    public static String getArticleTypeName(Integer typeId) {
+        if (typeId == null || typeId == 0) {
+            return "";
+        }
+        TbDictionary dictionary = getDictionary(typeId);
+        if (dictionary == null) {
+            return "";
+        }
+        return dictionary.getName();
     }
 
     /**
      * 意向标签name数组
      */
-   public static  String getLabelNames(String labelIds){
-       if(StringUtil.isBlank(labelIds)){
-           return "";
-       }
-       String[] split = labelIds.split(",");
-       String names = "";
-       for(int  i=1;i<split.length;i++){
-           TbDictionary dictionary = getDictionary(Integer.valueOf(split[i]));
-          if(dictionary!=null){
-              if(i==split.length-1){
-                  names=names+dictionary.getName();
-              }else {
-                  names=names+dictionary.getName()+",";
-              }
-              System.out.println(names);
-          }
-       }
-       return names;
-   }
-
+    public static String getLabelNames(String labelIds) {
+        if (StringUtil.isBlank(labelIds)) {
+            return "";
+        }
+        String[] split = labelIds.split(",");
+        String names = "";
+        for (int i = 1; i < split.length; i++) {
+            TbDictionary dictionary = getDictionary(Integer.valueOf(split[i]));
+            if (dictionary != null) {
+                if (i == split.length - 1) {
+                    names = names + dictionary.getName();
+                } else {
+                    names = names + dictionary.getName() + ",";
+                }
+                System.out.println(names);
+            }
+        }
+        return names;
+    }
 
 
     /**
      * 修改删除的时候调用该方法,清空该缓存对象
+     *
      * @param id
      */
-    public static void remove(Integer id){
+    public static void remove(Integer id) {
         getUtil().remove(getKey(TbDictionary.class.getSimpleName(), id));
     }
 
     /**
      * 移除所有的数据
      */
-   private static void removeAll(){
-       getUtil().removeAll();
-   }
+    private static void removeAll() {
+        getUtil().removeAll();
+    }
 
 
 

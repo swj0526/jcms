@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <script src="/layui/layui.js"></script>
     <script src="/student/js/list.js"></script>
 </head>
@@ -99,8 +98,8 @@
 
     </div>
 </div>
-<div class="layuimini-container">
-    <div class="layuimini-main">
+<#--<div class="layuimini-container">
+    <div class="layuimini-main">-->
 
         <fieldset class="layui-elem-field layuimini-search">
             <div style="margin: 10px 10px 10px 10px">
@@ -149,8 +148,8 @@
             <a class="layui-btn  layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             <a class="layui-btn layui-btn-primary layui-btn-xs data-count-delete" lay-event="list">详情</a>
         </script>
-    </div>
-</div>
+<#--    </div>
+</div>-->
 
 
 </body>
