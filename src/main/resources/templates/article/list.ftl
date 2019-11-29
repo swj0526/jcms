@@ -24,9 +24,26 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label" style="width:80px">发布人</label>
-                        <div class="layui-input-inline">
-                            <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
+                        <label class="layui-form-label" style="width:60px">类型</label>
+                        <div class="layui-inline">
+                            <select name="hasQuit" lay-verify="" id="queryHasQuit">
+                                <option value="">所有类型</option>
+                                <option value="文章">文章</option>
+                                <option value="通知">通知</option>
+                                <option value="公告">公告</option>
+                                <option value="活动">活动</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width:60px">状态</label>
+                        <div class="layui-inline">
+                            <select name="hasQuit" lay-verify="" id="queryHasQuit">
+                                <option value="">所有类型</option>
+                                <option value="文章">草稿</option>
+                                <option value="已撤销">已撤销</option>
+                                <option value="已提交">已提交</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -57,25 +74,6 @@
         <p>当我以为我无法继续走下去时，我强迫自己要继续前进。我的成功是基于我的坚持，并非运气。</p>
         <p>若是自己没有尽力，就没有资格批评别人不用心。开口抱怨很容易，但是闭嘴努力的人更加值得尊敬。</p>
         <br />
-    </div>
-</div>
-<div id="aaa" style="display: none">
-    <div class="layui-inline">
-        <fieldset class="layui-elem-field layuimini-search" style="width: 450px; height: 430px;">
-            <legend>已读</legend>
-            <div style="margin: 10px 10px 10px 10px">
-<p>张三，王五，李四</p>
-            </div>
-        </fieldset>
-    </div>
-    <div class="layui-inline" style="float:right">
-        <fieldset class="layui-elem-field layuimini-search" style="width: 450px; height: 430px;">
-            <legend>未读</legend>
-            <div style="margin: 10px 10px 10px 10px">
-                <p>张三，王五，李四</p>
-
-            </div>
-        </fieldset>
     </div>
 </div>
 <script id="barDemo" type="text/html">

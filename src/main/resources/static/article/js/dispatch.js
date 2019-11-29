@@ -1,26 +1,57 @@
 layui.use(['form', 'layedit', 'laydate','upload'], function () {
     var form = layui.form
-        , layer = layui.layer
+        ,layer = layui.layer
         ,upload = layui.upload
-        , layedit = layui.layedit;
+        ,layedit = layui.layedit
+        ,$ = layui.jquery;
 
     //创建一个编辑器
     var editIndex = layedit.build('LAY_demo_editor');
 
-    //监听指定开关
-    form.on('switch(switchTest)', function (data) {
-        layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
-            offset: '6px'
-        });
-        layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+    //表单取值
+    layui.$('#LAY-component-form-getval').on('click', function(){
+        var data = form.val('dataForm');
+        alert(JSON.stringify(data));
     });
-
     //监听提交
-    form.on('submit(demo1)', function (data) {
-        layer.alert(JSON.stringify(data.field), {
-            title: '最终的提交信息'
+    form.on('submit(demo1)', function () {
+        var data = form.val('dataForm');
+        var title=data.title;
+        var type=data.type;
+        var content=layedit.getContent(editIndex);
+        layer.open({
+            btnAlign: 'c',
+            type: 1,
+            title: "发布文章",
+            content: '<h1><span>标题:</span>'+title+'</h1><p><span>类型:</span>'+type+'</p><p>内容:</p><p>'+content+'</p>',
+            area: ['350px', '400px'],
+            btn:['发布','存草稿'],
+            yes: function () {
+                $.post('/article/add', {
+                    title : title,
+                    type:type,
+                    content:content,
+                    state:3
+                }, function(result) {
+                    alert("成功");
+                });
+            },
+            btn2:function (index,layero) {
+                alert("存草稿");
+                layer.closeAll();
+            }
         });
         return false;
+    });
+    $("#type1").click(function () {
+        layer.open({
+            btnAlign: 'c'
+            ,type: 2
+            ,title:'文章类型'
+            ,area: ['720px', '350px']
+            ,btn:['确定','取消']
+            ,content: 'totype'
+        });
     });
     //多文件列表示例
     var demoListView = $('#demoList')

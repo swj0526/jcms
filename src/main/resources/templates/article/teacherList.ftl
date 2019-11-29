@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
     <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../layui/layui.js"></script>
-    <script type="text/javascript" src="../article/js/list.js"></script>
+    <script type="text/javascript" src="../article/js/teacherList.js"></script>
 </head>
 <body>
 <#--查询-->
@@ -24,9 +24,26 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label" style="width:80px">发布人</label>
-                        <div class="layui-input-inline">
-                            <input name="email" class="layui-input" type="text" autocomplete="off" lay-verify="email">
+                        <label class="layui-form-label" style="width:60px">类型</label>
+                        <div class="layui-inline">
+                            <select name="hasQuit" lay-verify="" id="queryHasQuit">
+                                <option value="">所有类型</option>
+                                <option value="文章">文章</option>
+                                <option value="通知">通知</option>
+                                <option value="公告">公告</option>
+                                <option value="活动">活动</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width:60px">状态</label>
+                        <div class="layui-inline">
+                            <select name="hasQuit" lay-verify="" id="queryHasQuit">
+                                <option value="">所有类型</option>
+                                <option value="文章">草稿</option>
+                                <option value="已撤销">已撤销</option>
+                                <option value="已提交">已提交</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -79,7 +96,18 @@
     </div>
 </div>
 <script id="barDemo" type="text/html">
-    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit">查看详细</a>
+    {{# if(d.state=="1"){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">重新提交</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    {{# } }}
+    {{# if(d.state=="2"){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">重新提交</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    {{# } }}
+    {{# if(d.state=="3"){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="again">查看详细</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="revoke">撤销</a>
+    {{# } }}
 </script>
 
 </body>
