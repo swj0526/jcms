@@ -160,7 +160,6 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
             layer.close(index);		//关闭窗口
         });
 
-
     });
     //导出点击事件
     $('#excel').click(function () {

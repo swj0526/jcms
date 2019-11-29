@@ -78,6 +78,9 @@ layui.use(['element', 'jquery', 'layer'], function () {
         } else if (id == "recruit_try") {
             var src = "/internship/to";
             all_tab(id, title, src);
+        }else if (id == "article_teacherList") {
+            var src = "/article/teacherList";
+            all_tab(id, title, src);
         }
     });
 

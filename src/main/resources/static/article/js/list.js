@@ -10,7 +10,6 @@ layui.use('table', function () {
             , {field: 'role', title: '角色',align: 'center'}
             , {field: 'publisher', title: '发布人',align: 'center'}
             , {field: 'joinTime', title: '发布时间',align: 'center'}
-            , {field: 'see', title: '查看人数',align: 'center'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
             ]],
         data: [{
@@ -19,7 +18,6 @@ layui.use('table', function () {
             "role": "学生",
             "publisher": "杜甫",
             "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
 
         }, {
             "id": "10002",
@@ -27,7 +25,6 @@ layui.use('table', function () {
             "role": "学生",
             "publisher": "杜甫",
             "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
 
         }, {
             "id": "10003",
@@ -35,65 +32,56 @@ layui.use('table', function () {
             "role": "学生",
             "publisher": "杜甫",
             "articleype": "通知",
-            "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
+            "joinTime": "2016-10-14"
         }, {
             "id": "10004",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
+            "joinTime": "2016-10-14"
         }, {
             "id": "10005",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
+            "joinTime": "2016-10-14"
         }, {
             "id": "10006",
             "title": "Hi",
             "role": "学生",
             "publisher": "杜甫",
-            "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
+            "joinTime": "2016-10-14"
         }, {
             "id": "10007",
             "title": "Hi",
             "role": "学生",
             "publisher": "贤心",
-            "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
+            "joinTime": "2016-10-14"
         }, {
             "id": "10008",
             "title": "Hi",
             "role": "学生",
             "publisher": "贤心",
-            "joinTime": "2016-10-14",
-            "see": '<div><a id="info" >10/50</a></div>'
+            "joinTime": "2016-10-14"
         }],
          page: true
     });
     var form = layui.form;
     var layer = layui.layer;
     $ = layui.jquery;
-
+    //详情页
     table.on('tool(test)', function(obj){
         var data = obj.data;
         //console.log(obj)
-            layer.open({
-                type: 1,
-                title: "文章详情",
-                skin: "myclass", // 自定样式
-                area: ["100%", "100%"],
-                content: $("#updateOrDelete"),
-                success: function (layero, index) {
-                },
-                yes: function () {
-                }
-            });
-            form.render(); // 动态渲染
+        layer.open({
+            btnAlign: 'c'
+            ,type: 2
+            ,title:'文章详情'
+            ,area: ["100%", "100%"]
+            ,btn:['已阅读']
+            ,content: 'details'
+        });
+        form.render(); // 动态渲染
     });
     $("#info").on('click', function () {
         layer.open({

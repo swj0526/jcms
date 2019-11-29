@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -12,19 +13,36 @@ import java.util.Date;
  */
 @Component
 public class TbArticle  extends Domain {
+    @NotCreate
+    private String quit;
 
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用
     private Integer type;//文章类型
+
     private String content;//内容
-    private Date createTime;//发布时间
+    private Integer state;//状态
     private Integer readCount;//已读数//count
     private Integer totalCount;//应读数//count
     private String readIds;//已读
     private String totalIds;//应读
     private Boolean hasAttachment;//是否有上传文件
+    private Date createTime;//发布时间
     private Integer operatorId;//操作人
+
+    public String getQuit() {
+        if (state==1){
+            return "草稿";
+        }
+        if (state==2){
+            return "已撤销";
+        }
+        if (state==3){
+            return "已提交";
+        }
+        return null;
+    }
 
     public Integer getId() {
         return id;
@@ -64,6 +82,14 @@ public class TbArticle  extends Domain {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public Date getCreateTime() {
