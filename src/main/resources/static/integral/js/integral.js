@@ -9,12 +9,13 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         url:'/History/historylist',
         id:'userTableReload',
         cols: [[
-            {field: 'id', title: 'ID', align: 'center'}
-            , {field: 'name', title: '姓名', align: 'center'}
-            , {field: 'major', title: '班级', align: 'center'}
-            , {field: 'recordTime', title: '时间', align: 'center'}
-            , {field: 'score', title: '加减分', align: 'center'}
-            , {field: 'reason', title: '事由', align: 'center'}
+            {field: 'id', title: 'ID' }
+            , {field: 'name', title: '姓名' }
+            , {field: 'major', title: '班级' }
+            , {field: 'recordTime', title: '时间' }
+            , {field: 'score', title: '加减分' }
+            , {field: 'reason', title: '事由' }
+            , {field: 'remark', title: '备注'}
         ]],
         page: true
         , parseData: function (res) { //res 即为原始返回的数据
@@ -31,9 +32,9 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         layer.open({
             type: 2,
             btnAlign:'c',
-            area: ['750px', '250px'],
+            area: ['60%', '550px'],
             content: '/History/toaddPage',
-            btn: '提交',
+            btn: [],
             shade: 0
         });
     })
@@ -41,9 +42,9 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
     $("#points").click(function () {
         layer.open({
             type: 2,
-            area: ['750px', '250px'],
+            area: ['60%', '650px'],
             content: '/History/tosubtractpage',
-            btn: '提交',
+            btn: [],
             shade: 0
         });
     })
