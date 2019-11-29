@@ -9,10 +9,10 @@
     <script src="/integral/js/addPage.js"></script>
 </head>
 <body>
-<div id="aa">
+<div id="aa" >
     <fieldset class="layui-elem-field layuimini-search">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" lay-filter="dataForm">
+            <form class="layui-form layui-form-pane" style="margin-left: 15%;margin-top: 8%" lay-filter="dataForm">
                 <div class="layui-form-item">
                     <div class="layui-inline" style="width: 359px">
                         <label class="layui-form-label">事由<span class="star">*</span></label>
@@ -47,6 +47,22 @@
                             <input type="text" name="username" autocomplete="off" class="layui-input">
                         </div>
                     </div>
+                </div>
+                <div class="layui-form-item" style="width: 670px">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;width: 650px">
+                    <button type="button" class="layui-btn" lay-submit id="submit"
+                            style="padding-left: 10px;padding-right: 10px;width: 70px;">提交
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-primary"id="revocation"
+                            style="padding-left: 10px;padding-right: 10px;width: 70px;">取消
+                    </button>
                 </div>
             </form>
         </div>
