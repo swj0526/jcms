@@ -21,23 +21,18 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , {field: 'factAmount', title: '总计'}
                 , {field: 'startTime', title: '开始时间'}
                 , {field: 'endTime', title: '结束时间'}
-                , {
-                    field: 'invoice',
-                    title: '收据',
-                    event: 'invoice',
-                    templet: '<div><img src="{{d.invoice}}" style="height: 50px;width: 50px" ></div>'
-                }
+                , {field: 'invoice', title: '收据',toolbar: '#invoice'}
                 , {field: 'remark', title: '备注', event: 'remark'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
             ]]
             , data: [{}]
             , page: true
-            ,parseData:function(res){ //res 即为原始返回的数据
+            , parseData: function (res) { //res 即为原始返回的数据
                 console.log(res);
-                return{
-                    code:'0'
-                    ,data:res.result
-                    ,count:res.pager.dataTotal
+                return {
+                    code: '0'
+                    , data: res.result
+                    , count: res.pager.dataTotal
                 }
             },
         });
@@ -45,12 +40,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         layer.open({
             btnAlign: 'c',
             type: 2,
-             title: '添加缴费信息',
-            skin:'layer-ext-myskin',
+            title: '添加缴费信息',
+            skin: 'layer-ext-myskin',
             area: ['100%', '100%'],
             btn: [],
             content: '/money/addBillPage', /*'<iframe src="" frameborder="0" height="800px" width="100%"></iframe>',*/
-
         });
     });
     $("#export").click(function () {
@@ -64,12 +58,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             layer.open({
                 btnAlign: 'c'
                 , type: 2
-                ,btn:['确定','取消']
+                , btn: ['确定', '返回']
                 , area: ['100%', '100%']
                 , title: '修改缴费信息'
                 , btn: []
-                , content: '/money/tomodify?id='+data.id+''
-                ,end: function () {//修改后刷新当前页
+                , content: '/money/tomodify?id=' + data.id + ''
+                , end: function () {//修改后刷新当前页
                     $(".layui-laypage-btn").click();
 
                 }
@@ -80,7 +74,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , type: 1
                 , area: ['700px', '700px']
                 , btn: ['确定']
-                , content: '<img src="' + data.invoice + '" style="width: 100%;height: 100%">'
+                , content: '<img src="/money/img/1.png" style="width: 100%;height: 100%">'
             })
         } else if (obj.event === 'remark') {
             layer.open({
@@ -106,14 +100,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         table.reload('userTableReload', {//table.render里面的id的值
             where: { //设定异步数据接口的额外参数，任意设
                 keyword: $("#keyword").val(),
-                typeId:$("#typeId").val()
+                typeId: $("#typeId").val(),
+                time: $("#test6").val()
             }
-            ,page: {
+            , page: {
                 curr: 1 //重新从第 1 页开始
             }
         });
     })
     $('#export').click(function () {
-        window.location.href="/money/toExcel";
+        window.location.href = "/money/toExcel";
     });
 });

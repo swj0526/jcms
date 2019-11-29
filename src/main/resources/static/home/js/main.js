@@ -64,7 +64,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/recruit/data";
             all_tab(id, title, src);
         } else if (id == "integral_list") {
-            var src = "/integral/list";
+            var src = "/integral/tolist";
             all_tab(id, title, src);
         } else if (id == "integral_add") {
             var src = "/integral/add";

@@ -13,6 +13,8 @@ import java.util.Date;
  */
 @Component
 public class TbIntegral extends Domain {
+    private String name;//姓名
+    private String major;//班级
     private Integer id;
     private Date recordTime;//事情发生时间
     private Integer studentId;// 学生id
@@ -22,6 +24,21 @@ public class TbIntegral extends Domain {
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
     public Integer getScore() {
         return score;
@@ -86,4 +103,5 @@ public class TbIntegral extends Domain {
     public void setTotalScore(Integer totalScore) {
         this.totalScore = totalScore;
     }
+
 }

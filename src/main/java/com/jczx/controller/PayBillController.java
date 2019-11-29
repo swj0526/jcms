@@ -100,11 +100,11 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult list(String keyword, Integer typeId, Date date, Integer page, Integer limit) {
+    public ServiceResult list(String time,String keyword, Integer typeId, Date date, Integer page, Integer limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
-        List<TbPayBill> PayBillBean = moneyService.listBill(keyword, typeId, date, pager);
+        List<TbPayBill> PayBillBean = moneyService.listBill(time,keyword, typeId, date, pager);
         return layuiList(PayBillBean,pager);
     }
 
@@ -117,11 +117,11 @@ public class PayBillController extends BaseController {
 
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render ex(String keyword, Integer type, Date date) {
+    public Render ex(String time,String keyword, Integer type, Date date) {
         Pager pager = new Pager();
         pager.setPageSize(100000);
         pager.setCurrentPage(1);
-        InputStream inputStream = moneyService.xlsx(keyword, type, date, pager);
+        InputStream inputStream = moneyService.xlsx(time,keyword, type, date, pager);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
 

@@ -50,6 +50,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , area: ['720px', '350px']
             , btn: ['确定','取消']
             , content: 'tosemester'
+            ,end:function () {
+                location.reload();
+            }
         });
     });
     $("#type2").click(function () {
@@ -60,6 +63,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , area: ['720px', '350px']
             , btn: ['确定','取消']
             , content: 'topaymentMethod'
+            ,end:function () {
+                location.reload();
+            }
         });
     });
     $("#type1").click(function () {
@@ -70,6 +76,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , area: ['720px', '350px']
             , btn: ['确定','取消']
             , content: 'totype'
+            ,end:function () {
+                location.reload();
+            }
         });
     });
     $("#revocation").click(function () {

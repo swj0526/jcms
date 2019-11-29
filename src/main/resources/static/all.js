@@ -95,7 +95,8 @@ var sel = function () {
                     form.render();
                 });
             }
-
+            dom.empty();
+            dom.append("<option value=''>请选择</option>");
             $.post(url, function (result) {
                 $.each(result, function (key, value) {
                     if (value.optionValue == selectedId) {

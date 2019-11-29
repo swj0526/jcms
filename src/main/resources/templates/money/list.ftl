@@ -5,8 +5,11 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/money/js/money.js"></script>
     <script type="text/javascript" src="/all.js"></script>
+    <script type="text/javascript" src="/money/js/money.js"></script>
+    <script type="text/javascript" src="/money/js/addBill.js.js"></script>
+    <script type="text/javascript" src="/money/js/modify.js"></script>
+
     <style>
         body .layer-ext-myskin . layui-layer-content {
             overflow: visible;
@@ -78,6 +81,10 @@
     <script id="barDemo" type="text/html">
         <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="edit">修改</a>
         <a class="layui-btn  layui-btn-xs" lay-event="up">上传发票</a>
+    </script>
+    <script id="invoice" type="text/html">
+        <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="invoice">查看收据</a>
+
     </script>
     <script id="toolbarDemo" type="text/html">
         <div class="layui-btn-container">

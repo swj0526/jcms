@@ -243,4 +243,17 @@ public class TbPayBill extends Domain {
 
         return CACHE.getSemesterName(semesterId);
     }
+    public String getSex(){
+
+        return "男";
+    }
+    public String getBirthDate(){
+
+        return "1992-12-10";
+    }
+    public String getStudentPhone(){
+
+
+        return "15065110660";
+    }
 }

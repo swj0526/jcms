@@ -11,78 +11,48 @@
     <script src="/integral/js/list.js"></script>
 </head>
 <body>
-<div class="layuimini-container">
-    <div class="layuimini-container">
-        <div class="layuimini-main">
-
-            <fieldset class="layui-elem-field layuimini-search">
-                <div style="margin: 10px 10px 10px 10px">
-                    <form class="layui-form layui-form-pane" action="">
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">关键词</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="username" autocomplete="off" class="layui-input"
-                                           placeholder="例：1990/张三">
-                                </div>
+<div style="padding: 15px;">
+    <div class="demoTable">
+        <fieldset class="layui-elem-field layuimini-search">
+            <legend>缴费查询信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键词</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input"
+                                       placeholder="姓名">
                             </div>
-
-                                <div class="layui-inline">
-                                    <label class="layui-form-label">成绩范围</label>
-                                    <div class="layui-input-inline" style="width: 100px;">
-                                        <input type="text" name="price_min"  autocomplete="off" class="layui-input">
-                                    </div>
-                                    <div class="layui-form-mid">-</div>
-                                    <div class="layui-input-inline" style="width: 100px;">
-                                        <input type="text" name="price_max"  autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
-
-                            <div class="layui-inline">
-                                <select name="city" lay-verify="">
-                                    <option value="">事由</option>
-                                    <option value="010">打架斗殴</option>
-                                    <option value="021">好人好事</option>
-                                    <option value="0571">品学兼优</option>
-                                </select>
-                            </div>
-
-                            <div class="layui-inline">
-                                <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-                            </div>
-<#--                            <div class="layui-btn-group">-->
-<#--                                <button class="layui-btn data-add-btn">添加</button>-->
-<#--                                <button class="layui-btn layui-btn-danger data-delete-btn">导出</button>-->
-<#--                            </div>-->
                         </div>
-                    </form>
-                </div>
-            </fieldset>
-<div id="table" style="display: none">
-    <form class="layui-form layui-form-pane" action="">
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">时间</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="username" autocomplete="off" class="layui-input"
-                           placeholder="-" id="time">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-            </div>
-        </div>
-    </form>
-    <table class="layui-hide" id="test"></table>
-</div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">成绩范围</label>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="price_min" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="price_max" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询
+                            </button>
+                            <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn"
+                                    id="export">导出
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
-            <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
-            <script type="text/html" id="currentTableBar">
-                <a class="layui-btn layui-btn-primary layui-btn-xs data-count-edit" lay-event="edit" id="edit">详情</a>
-            </script>
-        </div>
+            </div>
+        </fieldset>
+
     </div>
+    <table class="layui-hide" id="currentTableId" lay-filter="test"></table>
+    <script id="barDemo" type="text/html">
+        <a class="layui-btn  layui-btn-normal layui-btn-xs" lay-event="edit">查看详情</a>
+    </script>
 </div>
-
 </body>
 </html>

@@ -44,6 +44,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                             layer.close(index);
                         })
                     }
+                    ,success:function () {
+                        $('#addfrom')[0].reset();
+                    }
                 });
         }
         ;

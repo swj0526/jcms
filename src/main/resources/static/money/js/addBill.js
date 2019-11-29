@@ -34,6 +34,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , area: ['720px', '350px']
             ,btn:['确定','取消']
             , content: 'topaymentMethod'
+            ,end:function () {
+                sel();
+            }
         });
     });
     $("#type1").click(function () {
@@ -44,9 +47,16 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , area: ['720px', '350px']
             ,btn:['确定','取消']
             , content: 'totype'
+            ,end:function () {
+                sel();
+            }
         });
     });
+
+
     var index = parent.layer.getFrameIndex(window.name);
+
+
     //var recruit = $("#dataFor").serialize();
     $("#submit").click(function () {
         var t = $('#dataFor').serialize();

@@ -21,7 +21,7 @@
 <div id="ll" style="display: none;">
     <fieldset class="layui-elem-field layuimini-search" style="border: 0">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form" lay-filter="dataForm">
+            <form class="layui-form" lay-filter="dataForm" id="addfrom">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 60px">缴费方式</label>

@@ -6,9 +6,8 @@
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="/all.css"/>
     <script type="text/javascript" src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/money/js/addBill.js"></script>
-    <script type="text/javascript" src="/money/js/money.js"></script>
     <script type="text/javascript" src="/all.js"></script>
+    <script type="text/javascript" src="/money/js/addBill.js"></script>
     <style>
         body .layer-ext-myskin .layui-layer-content {
             overflow: visible;
@@ -16,7 +15,7 @@
     </style>
 </head>
 <body>
-<fieldset id="add2" style="border: 0" ">
+<fieldset id="add2" style="border: 0">
     <div style="margin: 10px 10px 10px 10px;margin-left:28%">
         <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
             <div class="layui-form-item">
