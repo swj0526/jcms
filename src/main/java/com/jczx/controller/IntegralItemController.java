@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +38,16 @@ public class IntegralItemController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult add(TbIntegralItem integralItem) {
+        Date date = new Date();
+        SimpleDateFormat dateformat = new SimpleDateFormat("YYYY-MM-dd");
+        String time = dateformat.format(date);
+        Date createTime = null;
+        try {
+            createTime = dateformat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        integralItem.setCreateTime(createTime);
         System.out.println("reason:"+integralItem.getReason());
         System.out.println("remark:"+integralItem.getRemark());
         System.out.println("score:"+integralItem.getScore());

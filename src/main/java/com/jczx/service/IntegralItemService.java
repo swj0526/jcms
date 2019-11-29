@@ -22,9 +22,7 @@ public class IntegralItemService extends BaseService {
     }
 
     public ServiceResult add(TbIntegralItem integralItem) {
-        if (StringUtil.isBlank(integralItem.getReason())
-                || integralItem.getScore() == null
-                || StringUtil.isBlank(integralItem.getRemark())) {
+        if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null || StringUtil.isBlank(integralItem.getRemark())) {
             return error("");
         }
         add(integralItem);
