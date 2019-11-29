@@ -98,4 +98,15 @@ public class MajorController {
     public  ServiceResult delete(Integer id){
        return  majorService.deleteMajor(id);
     }
+
+    /**
+     * 给下拉选用的
+     * @return
+     */
+    @RequestMapping("/list/select")
+    @ResponseBody
+    public List<TbMajor> listSelect(){
+        List<TbMajor> list = majorService.listMajor(null);
+        return list;
+    }
 }

@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
-    <script type="text/javascript" src="../layui/layui.js"></script>
-    <script type="text/javascript" src="../work/js/uploading.js"></script>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/work/js/upload.js"></script>
 </head>
 <body>
 <fieldset class="layui-elem-field layuimini-search">
-    <legend>查询作业</legend>
     <div style="margin: 10px 10px 10px 10px">
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">关键字</label>
+                    <label class="layui-form-label">关键词</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="username" autocomplete="off" class="layui-input">
+                        <input type="text" name="keywords" autocomplete="off" class="layui-input" placeholder="作业名称/发布人/内容">
                     </div>
                 </div>
                 <div class="layui-inline">

@@ -95,6 +95,7 @@ var sel = function () {
                     form.render();
                 });
             }
+
             dom.empty();
             dom.append("<option value=''>请选择</option>");
             $.post(url, function (result) {
@@ -122,11 +123,11 @@ var input_sel = function (src) {
     layui.use(['jquery'], function () {
         var $ = layui.jquery;
         var data;
-        $.post(src,function ( result) {
-           result=data;
+        $.post(src, function (result) {
+            result = data;
         });
         $(".input-box").wxSelect({
-            data:data
+            data: data
         });
 
 
@@ -134,3 +135,34 @@ var input_sel = function (src) {
 
 }
 
+//专供专业班级的下拉选
+var sel_garade = function () {
+    layui.use(['table', 'layer', 'jquery', 'form'], function () {
+        var table = layui.table;
+        var layer = layui.layer;
+        var $ = layui.jquery;
+        var form = layui.form;
+
+//重新渲染表单
+        function renderForm() {
+            layui.use('form', function () {
+                var form = layui.form; //高版本建议把括号去掉，有的低版本，需要加()
+                form.render();
+            });
+        }
+
+        var url = $("#gradeSelect").attr('url');
+        $("#gradeSelect").append("<option value=" + 111 + ">" + 222 + "</option>");
+        $.post(url, function (result) {
+            $.each(result, function (key, value) {
+                if (value.pid != 0) {
+                    alert(value.optionText);
+                    $("#gradeSelect").append("<option value=" + 111 + ">" + 222 + "</option>");
+                    $("#gradeSelect").append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
+                }
+            });
+        });
+        renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
+
+    });
+}

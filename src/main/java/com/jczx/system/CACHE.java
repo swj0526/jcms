@@ -3,21 +3,10 @@ package com.jczx.system;
 
 import com.jczx.domain.TbDictionary;
 import com.jczx.service.DictionaryService;
-import com.sun.org.apache.regexp.internal.RE;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import net.atomarrow.services.Service;
+import net.atomarrow.util.RandomSn;
 import net.atomarrow.util.SpringContextUtil;
 import net.atomarrow.util.StringUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 
 /**
@@ -44,7 +33,7 @@ public class CACHE {
         return SpringContextUtil.getBean(DictionaryService.class);
     }
 
-    private static String PREFEX = Math.random() * 10000 + "";
+    private static String PREFEX = RandomSn.getLowSn(3);
 
     /**
      * 获取key的名称
