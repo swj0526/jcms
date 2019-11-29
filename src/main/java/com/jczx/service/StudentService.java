@@ -5,6 +5,8 @@ import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author 丛枭钰
  * @create 2019-11-28 13:06
@@ -12,14 +14,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentService extends BaseService{
 
-    public TbStudent get(String name){
+    public TbStudent get(TbStudent student){
         Conditions conditions=new Conditions(getTableName());
-        conditions.putEW("name",name);
+
+
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         TbStudent one = getOne(conditions);
         return one;
     }
 
+  public List<TbStudent> checkMajor(Integer majorId){
+      Conditions conditions = getConditins();
+      conditions.putEW("majorId",majorId);
+     return getList(conditions);
+  }
 
     @Override
     public String getTableName() {

@@ -13,10 +13,7 @@ public class StudentController {
     public String tolist(){
         return "student/list";
     }
-   /* @RequestMapping("/recruit")
-    public String recruit(){
-        return "recruit/recruit";
-    }*/
+
 @RequestMapping("information")
     public String information(){
     return "student/information";

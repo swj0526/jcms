@@ -68,14 +68,12 @@
                                 <div class="layui-card-body">
                                     <ul id="u">
                                         <#list detail as st>
-
                                             <li>
                                                 <div class="sd">
                                                     <span>跟进时间:${(st.followTime?string("yyyy-MM-dd"))!'无数据'}</span></div>
-
                                             </li>
                                             <li>
-                                                <div class="sd"><span>意向:${st.labelIds!'0'}</span></div>
+                                                <div class="sd"><span>意向:${st.labelNames!'0'}</span></div>
                                             </li>
                                             <li>
                                                 <div class="sd"><span>备注:${st.remark!'0'}</span></div>
@@ -108,9 +106,6 @@
     </div>
 
     <div style="display: none" id="tabfollow">
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>添加跟进记录</legend>
-        </fieldset>
 
         <form class="layui-form" action="" id="formdata"lay-filter="dataForm">
             <div class="layui-form-item">
@@ -120,23 +115,18 @@
                            autocomplete="off" class="layui-input" id="date">
                 </div>
             </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline" style="width: 190px">
-                    <div id="demo1" class="xm-select-demo" style=" width:190px" ;></div>
+                    <div id="demo2" class="xm-select-demo" style=" width:190px";></div>
                 </div>
-
             </div>
-
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注:</label>
                 <div class="layui-input-block">
                     <textarea name="remark" placeholder="请输入内容"required lay-verify="required" class="layui-textarea"></textarea>
                 </div>
             </div>
-
-
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" type="button" lay-submit lay-filter="formDemo" id="butA"
@@ -146,40 +136,32 @@
                 </div>
             </div>
         </form>
+
     </div>
 
-
-
-    <div style="display: none" id="tabfollow">
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>添加跟进记录</legend>
-        </fieldset>
+    <#--修改-->
+    <div style="display: none" id="upfollow">
 
         <form class="layui-form" action="" id="formdata"lay-filter="dataForm">
             <div class="layui-form-item">
                 <label class="layui-form-label">跟进时间</label>
                 <div class="layui-input-inline">
                     <input type="text" name="followTime" required lay-verify="required" placeholder="请输入"
-                           autocomplete="off" class="layui-input" id="date">
+                           autocomplete="off" class="layui-input" id="date" value="${(st.followTime?string("yyyy-MM-dd"))!'无数据'}">
                 </div>
             </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline" style="width: 190px">
                     <div id="demo1" class="xm-select-demo" style=" width:190px";></div>
                 </div>
-
             </div>
-
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注:</label>
                 <div class="layui-input-block">
                     <textarea name="remark" placeholder="请输入内容"required lay-verify="required" class="layui-textarea"></textarea>
                 </div>
             </div>
-
-
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" type="button" lay-submit lay-filter="formDemo" id="butA"
@@ -190,6 +172,11 @@
             </div>
         </form>
     </div>
+
+
+
+
+
 
     <script>
         layui.use(['element', 'layer', 'form', 'jquery', 'laydate'], function () {
@@ -214,6 +201,7 @@
                     area: ['720px', '350'], //设置宽高
                     content: $("#tabfollow"),
                     success: function () {
+
                        url = '/details/add'
                     }
                 });
@@ -230,13 +218,15 @@
             });
             //修改
             $(".upd").click(function () {
+                addselect();
+
                 var id = $(this).val();
                 index = layer.open({
                     type: 1,
                     title: "修改跟进信息",
                     skin: 'layui-layer-rim', //加上边框
                     area: ['720px', '350'], //设置宽高
-                    content: $("#tabfollow"),
+                    content: $("#upfollow"),
                     success: function () {
 
                     }
@@ -247,8 +237,9 @@
 
             //监听提交
             $("#butA").click(function () {
+
                 var seList = new Array();
-                var selectArr = demo1.getValue().valueOf();//获取复选框的值
+                var selectArr = demo2.getValue().valueOf();//获取复选框的值
                 $.each(selectArr, function (k, v) {
                     $.each(v, function (k1, v1) {
                         if (k1 == "value") {
@@ -267,8 +258,7 @@
                             $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime + '</span></div></li>');
                             $("#u").append('<li><div class="sd"><span>跟进意向:' + value.labelIds + '</span></div></li>');
                             $("#u").append('<li><div class="sd"><span>备注:' + value.remark + '</span></div></li>');
-                            /* $("#u").append('<li><div class="upd"><button class="layui-btn data-add-btn" type="button">修改</button></div></li>');
-                             $("#u").append('<li><div class="del"><button class="layui-btn data-add-btn" type="button">删除</button></div></li>');*/
+
                         })
                         location.reload();
 
@@ -280,17 +270,30 @@
 
         });
 
+        var demo2 = xmSelect.render({
+            el: '#demo2',
+            language: 'zn',
+            data: [
+                {name: '有意向', value: 7},
+                {name: '还在考虑', value: 8},
+                {name: '完全不考虑', value: 9},
+
+            ]
+        })
+
         var demo1 = xmSelect.render({
             el: '#demo1',
             language: 'zn',
             data: [
-                {name: '有意向', value: 1},
-                {name: '还在考虑', value: 2},
-                {name: '完全不考虑', value: 3},
-                {name: '不太明确', value: 4},
-                {name: '完全没有', value: 5},
+                {name: '有意向', value: 7},
+                {name: '还在考虑', value: 8},
+                {name: '完全不考虑', value: 9},
+
             ]
         })
+        function addselect(){
+            demo1.setValue([${student.labelIds}])
+        };
 
     </script>
 

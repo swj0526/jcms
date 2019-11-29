@@ -34,6 +34,31 @@ public class DictionaryController extends BaseController {
         ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_CHANNEL );
         return result;
     }
+
+    /**
+     * 添加意向标签
+     * @param name
+     * @param remark
+     * @return
+     */
+    @RequestMapping("/add/label")
+    public ServiceResult addLabel(String name, String remark) {
+
+        ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
+        return result;
+    }
+
+    /**
+     * 查询标签
+     * @return
+     */
+    @RequestMapping("/list/label")
+    public List<? extends OptionInterface> labelOptions() {
+        System.out.println("查询标签");
+        List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_LABEL, null, null);
+        return list;
+    }
+
     /**
      * 添加招缴费方式信息
      * @param name
@@ -75,7 +100,7 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/add/dispatch")
     public ServiceResult addDispatch(String name, String remark) {
-        ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_DISPATCH );
+        ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
         return result;
     }
     /**
@@ -103,7 +128,7 @@ public class DictionaryController extends BaseController {
      * @return
      */
     @RequestMapping("/list/channel")
-    public ServiceResult channel(String keywords, int limit, int page) {
+    public ServiceResult channel(String keywords, Integer limit, Integer page) {
         Pager pager = checkPager(limit, page);
         List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_CHANNEL, keywords, pager);
         return layuiList(list, pager);

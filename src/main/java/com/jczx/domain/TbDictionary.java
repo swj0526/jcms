@@ -18,7 +18,7 @@ public class TbDictionary extends Domain implements OptionInterface {
      *  意向标签
      */
     @NotCreate
-    public static final int TYPE_LABEL = 1;
+    public static final Integer TYPE_LABEL = 1;
     /**
      * 渠道
      */

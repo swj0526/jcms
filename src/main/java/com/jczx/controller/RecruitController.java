@@ -109,9 +109,10 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listRecruit(String keywords, String labelIds, String sex, int page, int limit) {
+    public ServiceResult listRecruit(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, sex, pager);
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,sex, pager);
+        System.out.println(labelIds);
         return layuiList(list, pager);
 
 
@@ -130,9 +131,9 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render ex(String keywords, String labelIds, String sex, int page, int limit) {
+    public Render ex(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        InputStream inputStream = recruitService.studentExcel(keywords, labelIds, sex, pager);
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex, pager);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
 }
