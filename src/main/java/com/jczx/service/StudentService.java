@@ -1,10 +1,15 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbStudent;
+import net.atomarrow.bean.Pager;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
+import net.atomarrow.util.excel.ExcelDatas;
+import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -13,6 +18,8 @@ import java.util.List;
  */
 @Component
 public class StudentService extends BaseService{
+    @Autowired
+  private   RecruitService recruitService;
     /**
      * @author 丛枭钰
      * @create 2019-11-28 13:06
@@ -32,7 +39,7 @@ public class StudentService extends BaseService{
      * @return
      */
   public List<TbStudent> checkMajor(Integer majorId){
-      Conditions conditions = getConditins();
+      Conditions conditions = getConditions();
       conditions.putEW("majorId",majorId);
      return getList(conditions);
   }
@@ -45,13 +52,15 @@ public class StudentService extends BaseService{
      * @return
      */
     public List<TbStudent> checkChannel(Integer channelId) {
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         conditions.putEW("channelId", channelId);
         return getList(conditions);
     }
 
+
+
     public List<TbStudent> listStudent(TbStudent student) {
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         if (student.getState() == TbStudent.STATE_ENTRANCE) {
             List<TbStudent> list = getList(conditions);
             return list;
