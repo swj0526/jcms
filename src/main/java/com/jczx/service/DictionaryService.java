@@ -92,7 +92,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public List<TbDictionary> list(Integer type, String keywords, Pager pager) {
-        Conditions conditions =getConditins();
+        Conditions conditions =getConditions();
         conditions.putEW("type", type);
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -118,7 +118,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public List<TbDictionary> listPayWay(int type) {
-        Conditions conditions =getConditins();
+        Conditions conditions =getConditions();
         conditions.putEW("type", type);
         List<TbDictionary> list = getList(conditions);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));

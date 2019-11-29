@@ -88,7 +88,7 @@ public class MajorService extends BaseService {
      * @return
      */
     public List<TbMajor> listMajor(String keywords) {
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
             conditions.putEW("pid", 0);
             conditions.parenthesesStart();

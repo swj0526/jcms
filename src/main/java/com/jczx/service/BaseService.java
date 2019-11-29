@@ -21,7 +21,7 @@ public abstract class BaseService extends Service {
      * 返回conditons条件对象
      * @return
      */
-    protected Conditions getConditins(){
+    protected Conditions getConditions(){
         return new Conditions(getTableName());
     }
 }

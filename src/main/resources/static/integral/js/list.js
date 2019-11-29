@@ -13,7 +13,8 @@ layui.use(['jquery', 'layer', 'table', 'laydate'], function () {
             , {field: 'name', title: '姓名', align: 'center'}
             , {field: 'major', title: '班级', align: 'center'}
             , {field: 'totalScore', title: '剩余积分', align: 'center'}
-            , {title: '操作', minWidth: 50, fixed: "right", align: "center", toolbar: '#barDemo'
+            , {
+                title: '操作', minWidth: 50, fixed: "right", align: "center", toolbar: '#barDemo'
             }]],
         page: true
         , parseData: function (res) { //res 即为原始返回的数据
@@ -36,10 +37,22 @@ layui.use(['jquery', 'layer', 'table', 'laydate'], function () {
                 , area: ['720px', '350px']
                 , title: '查看详情'
                 , btn: []
-                , content: '/integral/toparticular'
+                , content: '/integral/toparticular?id='+data.id+'&&name='+data.name+''
             });
 
         }
     });
+    $("#query").click(function () {//查询按钮点击事件
+        table.reload('userTableReload', {//table.render里面的id的值
+            where: { //设定异步数据接口的额外参数，任意设
+                keyword: $("#keyword").val(),
+                ScoreA: $("#ScoreA").val(),
+                ScoreB: $("#ScoreB").val()
+            }
+            , page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+    })
 
 })

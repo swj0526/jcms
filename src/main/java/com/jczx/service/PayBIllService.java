@@ -23,7 +23,7 @@ import java.util.List;
  * @create 2019-11-21 21:37
  */
 @Component
-public class moneyService extends BaseService {
+public class PayBIllService extends BaseService {
     @Autowired
    private StudentService studentService;
     /**
@@ -130,17 +130,17 @@ public class moneyService extends BaseService {
         return inputStream;
     }
     public List<TbPayBill> checkTerm(Integer id){
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         conditions.putEW("semesterId",id);
         return getList(conditions);
     }
     public List<TbPayBill> checkType(Integer id){
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         conditions.putEW("typeId",id);
         return getList(conditions);
     }
     public List<TbPayBill> checkMethod(Integer id){
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         conditions.putEW("paymentMethodId",id);
         return getList(conditions);
     }

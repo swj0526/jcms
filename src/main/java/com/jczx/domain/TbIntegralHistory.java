@@ -2,25 +2,26 @@ package com.jczx.domain;
 
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 /**
- * 学生积分列表
- * @author 池炯武
- * @create 2019-11-17 12:57
- *
+ * @author 丛枭钰
+ * @create 2019-11-29 11:30
  */
 @Component
-public class TbIntegral extends Domain {
-    @NotCreate
-    private String name;//姓名
+public class TbIntegralHistory extends Domain {
     @NotCreate
     private String major;//班级
-    private Integer id;
-    private Integer studentId;// 学生id
-    private Integer totalScore;//总分
+    private  String name;//姓名
+    private Integer id;//id
+    private Integer studentId;//学生id
+    @DateTimeFormat(pattern ="yyyy-MM-dd-hh-mm-ss")
+    private Date recordTime;//事发时间
+    private String reason;//事由
+    private Integer score;//分数
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
@@ -40,6 +41,14 @@ public class TbIntegral extends Domain {
         this.major = major;
     }
 
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -56,12 +65,20 @@ public class TbIntegral extends Domain {
         this.studentId = studentId;
     }
 
-    public Integer getTotalScore() {
-        return totalScore;
+    public Date getRecordTime() {
+        return recordTime;
     }
 
-    public void setTotalScore(Integer totalScore) {
-        this.totalScore = totalScore;
+    public void setRecordTime(Date recordTime) {
+        this.recordTime = recordTime;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public Integer getOperatorId() {

@@ -27,7 +27,6 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-
                             <label class="layui-form-label">用户学年<span  class="star">*</span></label>
                             <div  class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                                 <select name="semesterId" lay-verify="required" class="decSelect"

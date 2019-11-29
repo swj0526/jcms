@@ -31,7 +31,7 @@ public class StudentService extends BaseService{
      * @return
      */
   public List<TbStudent> checkMajor(Integer majorId){
-      Conditions conditions = getConditins();
+      Conditions conditions = getConditions();
       conditions.putEW("majorId",majorId);
      return getList(conditions);
   }
@@ -42,7 +42,7 @@ public class StudentService extends BaseService{
      * @return
      */
     public List<TbStudent> checkChannel(Integer channelId){
-        Conditions conditions = getConditins();
+        Conditions conditions = getConditions();
         conditions.putEW("channelId",channelId);
         return getList(conditions);
     }
