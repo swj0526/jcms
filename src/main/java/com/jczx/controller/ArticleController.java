@@ -66,7 +66,7 @@ public class ArticleController extends BaseController {
         return add;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/articleList")
     @ResponseBody
     public ServiceResult articleList(String keyword, Integer state,Integer page,Integer limit){
         Pager pager = checkPager(limit, page);
