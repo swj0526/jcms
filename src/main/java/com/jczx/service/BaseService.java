@@ -24,7 +24,7 @@ public abstract class BaseService extends Service {
      *
      * @return
      */
-    protected Conditions getConditins() {
+    protected Conditions Conditions() {
         return new Conditions(getTableName());
     }
 
