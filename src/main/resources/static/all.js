@@ -156,8 +156,8 @@ var sel_garade = function () {
         $.post(url, function (result) {
             $.each(result, function (key, value) {
                 if (value.pid != 0) {
-                    alert(value.optionText);
-                    $("#gradeSelect").append("<option value=" + 111 + ">" + 222 + "</option>");
+                    alert(value.optionText);//先输出对象控制台输出
+                    // $("#gradeSelect").append("<option value=" + 111 + ">" + 222 + "</option>");
                     $("#gradeSelect").append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
                 }
             });

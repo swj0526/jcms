@@ -3,7 +3,6 @@ package com.jczx.controller;
 import com.jczx.domain.TbMajor;
 import com.jczx.service.MajorService;
 import net.atomarrow.bean.ServiceResult;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,15 +23,17 @@ public class MajorController {
     @Autowired
     private MajorService majorService;
 
+
     /**
      * 到专业-班级管理页面
      *
      * @return
      */
     @RequestMapping("tolist")
-    public String tolist(Map<String, List<TbMajor>> map,String keywords) {
+    public String tolist(Map<String, List<TbMajor>> map, String keywords) {
         List<TbMajor> list = majorService.listMajor(keywords);
         map.put("list", list);
+
         return "/major/list";
     }
 
@@ -79,6 +80,7 @@ public class MajorController {
 
     /**
      * 根据id查找某个班级专业
+     *
      * @param id
      * @return
      */
@@ -90,22 +92,24 @@ public class MajorController {
 
     /**
      * 根据id删除专业班级
+     *
      * @param id
      * @return
      */
     @RequestMapping("/delete")
     @ResponseBody
-    public  ServiceResult delete(Integer id){
-       return  majorService.deleteMajor(id);
+    public ServiceResult delete(Integer id) {
+        return majorService.deleteMajor(id);
     }
 
     /**
      * 给下拉选用的
+     *
      * @return
      */
     @RequestMapping("/list/select")
     @ResponseBody
-    public List<TbMajor> listSelect(){
+    public List<TbMajor> listSelect() {
         List<TbMajor> list = majorService.listMajor(null);
         return list;
     }
