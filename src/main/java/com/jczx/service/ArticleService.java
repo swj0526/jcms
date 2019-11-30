@@ -19,6 +19,7 @@ import java.util.List;
 public class ArticleService extends BaseService {
     /**
      * 发布文章
+     *
      * @param tbArticle
      * @return
      */
@@ -29,25 +30,37 @@ public class ArticleService extends BaseService {
 
     /**
      * 查询文章列表
+     *
      * @param keyword
      * @param state
      * @param pager
      * @return
      */
-    public List<TbArticle> articleList(String keyword, Integer state, Pager pager){
+    public List<TbArticle> articleList(String keyword, Integer state, Pager pager) {
         Conditions conditions = new Conditions(getTableName());
-        if (StringUtil.isNotBlank(keyword)){
+        if (StringUtil.isNotBlank(keyword)) {
             conditions.parenthesesStart();
-            conditions.putLIKE("name",keyword);
+            conditions.putLIKE("name", keyword);
             conditions.or();
-            conditions.putLIKE("phone",keyword);
+            conditions.putLIKE("phone", keyword);
             conditions.parenthesesEnd();
         }
-        conditions.putEWIfOk("",state);
+        conditions.putEWIfOk("", state);
         pager.setDataTotal(getCount(conditions));
-        List<TbArticle> article= getListByPage(conditions,pager);
+        List<TbArticle> article = getListByPage(conditions, pager);
         return article;
     }
+
+    /**
+     * 修改状态
+     * @param tbArticle
+     * @return
+     */
+    public ServiceResult articleModify(TbArticle tbArticle) {
+        modify(tbArticle);
+        return SUCCESS;
+    }
+
 
     public List<TbArticle> checkType(Integer typeId) {
         Conditions conditins = getConditions();
@@ -58,6 +71,6 @@ public class ArticleService extends BaseService {
 
     @Override
     public String getTableName() {
-        return null;
+        return TbArticle.class.getSimpleName();
     }
 }

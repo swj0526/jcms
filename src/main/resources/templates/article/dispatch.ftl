@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="/all.js"></script>
 	</head>
 	<body>
+    <#--添加文章-->
 		<form class="layui-form layui-form-pane" action="" lay-filter="dataForm">
 		  <div class="layui-form-item">
 		    <label class="layui-form-label">标题<span class="star">*</span></label>
@@ -69,25 +70,5 @@
 		  </div>
 		</form>
 
-		<div id="modify1" style="display: none">
-			<div style="margin: 10px 10px 10px 10px">
-					<div class="layui-form-item">
-						<div class="layui-form-item">
-							<label class="layui-form-label">姓名<span class="star">*</span></label>
-							<div class="layui-input-inline">
-								<input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off"
-									   class="layui-input" id="title">
-							</div>
-						</div>
-						<div class="layui-form-item">
-							<label class="layui-form-label">手机号<span class="star">*</span></label>
-							<div class="layui-input-inline">
-								<input name="phone" class="layui-input" type="tel" autocomplete="off"
-									   lay-verify="required|phone" id="phone1">
-							</div>
-						</div>
-					</div>
-			</div>
-		</div>
 	</body>
 </html>

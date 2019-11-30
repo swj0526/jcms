@@ -70,8 +70,8 @@ public class ArticleController extends BaseController {
     @ResponseBody
     public ServiceResult articleList(String keyword, Integer state,Integer page,Integer limit){
         Pager pager = checkPager(limit, page);
-        List<TbArticle> article = articleService.articleList(keyword,state,pager);
-        return layuiList(article,pager);
+        List<TbArticle> list = articleService.articleList(keyword,state,pager);
+        return layuiList(list,pager);
     }
 
 }

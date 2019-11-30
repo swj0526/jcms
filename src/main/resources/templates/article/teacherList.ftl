@@ -109,6 +109,8 @@
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="revoke">撤销</a>
     {{# } }}
 </script>
-
+<script type="text/html" id="sexTpl">
+    <span style="color: #F581B1;">{{ d.readCount }}</span>
+</script>
 </body>
 </html>
