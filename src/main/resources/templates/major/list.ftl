@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="${basePath}">
     <meta charset="UTF-8">
     <title>班级-专业管理</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
@@ -137,7 +139,7 @@
     </div>
     <fieldset class="layui-elem-field layuimini-search">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" action="">
+            <form class="layui-form layui-form-pane" action="/major/tolist" method="post">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">关键词</label>
@@ -147,7 +149,7 @@
                         </div>
                     </div>
 
-                    <button class="layui-btn layui-btn-normal" type="button" id="search">查询</button>
+                    <button class="layui-btn layui-btn-normal" type="submit" id="search">查询</button>
                     <button class="layui-btn data-add-btn" type="button" id="add">添加专业信息</button>
 
                 </div>

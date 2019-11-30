@@ -5,7 +5,6 @@ import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -90,17 +89,7 @@ public class MajorService extends BaseService {
      * @return
      */
     public List<TbMajor> listMajor(String keywords) {
-        Conditions conditions = getConditions();
-        if (StringUtil.isNotBlank(keywords)) {
-            conditions.putEW("pid", 0);
-            conditions.parenthesesStart();
-            conditions.putLIKE("name", keywords);
-            conditions.or();
-            conditions.putLIKE("remark", keywords);
-            conditions.parenthesesEnd();
-        }
-        List<TbMajor> list = getList(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        List<TbMajor> list = listByKeywords(keywords);
         List<TbMajor> majorList = new ArrayList<>();
         for (TbMajor major : list) {
             if (major.getPid() == 0) {
@@ -113,6 +102,18 @@ public class MajorService extends BaseService {
             }
         }
         return majorList;
+    }
+
+    private List<TbMajor> listByKeywords(String keywords) {
+        Conditions conditions = getConditions();
+        if (StringUtil.isNotBlank(keywords)) {
+            conditions.parenthesesStart();
+            conditions.putLIKE("name", keywords);
+            conditions.or();
+            conditions.putLIKE("remark", keywords);
+            conditions.parenthesesEnd();
+         }
+        return getList(conditions);
     }
 
     /**
