@@ -42,7 +42,7 @@
                         </div>
                         <div class="layui-inline">
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-                            <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="1">
+                            <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="data-search-btn" lay-event="add" id="add">
                                 发布作业
                             </button>
                         </div>
@@ -54,12 +54,9 @@
     </div>
     <table class="layui-hide" id="test" lay-filter="test"></table>
     <script id="barDemo" type="text/html">
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">下载作业</a>
-    </script>
-    <script id="toolbarDemo" type="text/html">
-        <div class="layui-btn-container">
-
-        </div>
+        <a class="layui-btn  layui-btn-xs" lay-event="modify">修改</a>
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="details">详情</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="downloadWork">下载学生作业</a>
     </script>
 </div>
 <div id="aa" style="display: none">

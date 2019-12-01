@@ -1,7 +1,12 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbHomework;
+import com.jczx.service.HomeworkService;
+import net.atomarrow.bean.ServiceResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author 丛枭钰
@@ -11,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/work")
 @Controller
 public class HomeworkController {
+    @Autowired
+    private HomeworkService homeworkService;
+
     /**
      * 上传页面
      *
@@ -28,19 +36,29 @@ public class HomeworkController {
      * @return
      */
     @RequestMapping("/list")
-    public String workQuery() {
+    public String list() {
         return "work/list";
     }
+
     @RequestMapping("/uploading")
-    public String  uploading() {
+    public String uploading() {
         return "work/studentwork";
     }
+
     @RequestMapping("/download")
-    public String  download() {
+    public String download() {
         return "work/workDownload";
     }
+
     @RequestMapping("/add")
-    public String  add() {
+    public String add() {
         return "work/addwork";
+    }
+
+    @RequestMapping("/add/homework")
+    @ResponseBody
+    public ServiceResult addHomework(TbHomework homework) {
+        homeworkService.addHomework(homework);
+        return null;
     }
 }
