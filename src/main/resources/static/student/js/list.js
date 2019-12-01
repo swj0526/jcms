@@ -1,32 +1,4 @@
-var a=new Array();
-a=[{
-    "id": 1901001,
-    "name": "张三",
-    "gender": "男",
-    "birthday": "1997-8-10",
-    "age":18,
-    "address":"花果山水帘洞",
-    "nativePlace":"山东威海**市**县**镇",
-    "contact":"186693989898",
-    "bloodType":"O",
-    "admissionTime":"1999-9-9",
-    "graduationTime":"2999-9-9",
-    "state":"在校",
-},{
-    "id": 1901002,
-    "name": "李四",
-    "gender": "男",
-    "birthday": "1997-8-10",
-    "age":18,
-    "address":"花果山水帘洞",
-    "nativePlace":"山东威海**市**县**镇",
-    "contact":"186693989898",
-    "bloodType":"O",
-    "admissionTime":"1999-9-9",
-    "graduationTime":"2999-9-9",
-    "state":"在校"
 
-}]
 layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () {
     var $ = layui.jquery,
         form = layui.form,
@@ -38,11 +10,12 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
 
     laydate.render({
         elem: '#time',
-        range: true
+
     });
     table.render({
         elem: '#currentTableId',
-       url:"/recruit/list"
+       url:"/student/list"
+         ,id: 'testReload'
         , parseData: function (res) { //res 即为原始返回的数据
         /*   console.log(res);*/
         return {
@@ -90,7 +63,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
                 },
 
                 {
-                    field: 'admissionTime',
+                    field: 'admissionData',
                     title: '入学时间',
                     sort: true,
                     align: 'center'
@@ -102,9 +75,12 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
                     align: 'center'
                 },
                 {
-                    field: 'state',
+                    field: 'stateName',
                     title: '在校状态',
-                    align: 'center'
+                    align: 'center',
+                   /* templet: function(d) {
+                        return d.stateName == '1' ? '入学' : '未入学';
+                    }*/
                 },
                 {
                     title: '操作',
@@ -122,28 +98,32 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
     });
 
     // 监听搜索操作
-    form.on('submit(data-search-btn)', function (data) {
-        var result = JSON.stringify(data.field);
-        layer.alert(result, {
-            title: '最终的搜索信息'
-        });
+    var $ = layui.$, active = {
+        reload: function(){
+            var demoReload = $('#demoReload');
 
-        //执行搜索重载
-        table.reload('currentTableId', {
-            page: {
-                curr: 1
-            },
-            where: {
-                searchParams: result
-            }
-        }, 'data');
+            //执行重载
+            table.reload('testReload', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                ,where: {
+                        id: demoReload.val()
 
-        return false;
+                }
+            }, 'data');
+        }
+    };
+
+    $('.demoTable .layui-btn').on('click', function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
     });
 
     // 监听添加操作
     $(".data-add-btn").on("click", function () {
-        layer.msg('添加数据');
+
+
     });
 
     // 监听删除操作
@@ -174,46 +154,34 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
     table.on('tool(currentTableFilter)', function (obj) {
          data = obj.data;
         var id = data.id;
-        if (obj.event === 'edit') {
-            modify(data);
+        if (obj.event === 'edit') {//修改
+            alert(id);
+            parent_tab("add"+id,"修改学生信息","/student/tostudent?id="+id);
+
         } else if (obj.event === 'delete') {
             layer.confirm('真的删除行么', function (index) {
                 obj.del();
                 layer.close(index);
             });
         }else if (obj.event === 'list'){
-            var name=data.name;
-            layer.open({
-                type:2,
-               content:'/student/information?id='+id,
-                area:["100%","100%"],
-                title:name
-            })
-        }else if (obj.event === 'setSign'){
-            var name=data.name;
 
-            alert(id);
-            layer.open({
+            parent_tab("list"+id,"学生详情","/student/information?id="+id);
+        }else if (obj.event === 'setSign'){
+
+            parent_tab("list"+id,"学生详情","/student/information?id="+id);
+          
+           /* layer.open({
                 type:2,
                 content:'/student/information?id='+id,
                 area:["100%","100%"],
                 title:name
-            })
+            })*/
         }
     });
 
     $("#add").click(function () {
-        layer.open({
-            type: 1,
-            title:"添加学生信息",
-            content: $("#aaa"),
-            btn:"提交",
-            area:['750px','320px'],
-            success:function (index) {
-                //清空表单数据
-                $("#dataFrm")[0].reset();
-            }
-        })
+       var id = $("#add").val();
+        parent_tab("add","学生详情","/student/tostudent");
     });
     $("#import").click(function () {
         layer.open({

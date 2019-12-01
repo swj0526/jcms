@@ -2,46 +2,102 @@ package com.jczx.controller;
 
 import com.jczx.domain.TbStudent;
 import com.jczx.service.StudentService;
+import net.atomarrow.bean.Pager;
+import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
-@RequestMapping("student")
 @Controller
-public class StudentController {
+@RequestMapping("/student")
+public class StudentController extends BaseController {
     @Autowired
     private StudentService studentService;
 
     /**
-     * cjw
-     *
+     * 于振华
+     * 学生档案页面
      * @return
      */
-    @RequestMapping("tolist")
+    @RequestMapping("/tolist")
     public String tolist() {
         return "student/list";
     }
 
     /**
+     * 查询入学学生的全部信息
+     * @param student
+     * @param page
+     * @param limit
+     * @return
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public ServiceResult studentList(TbStudent student, Integer page, Integer limit){
+    Pager pager = checkPager(limit,page);
+    List<TbStudent> studentList = studentService.listStudent(student,pager);
+    return layuiList(studentList,pager);
+}
+
+    /**
      * 查询当前学生信息
-     *
      * @param id
      * @param map
      * @return
      */
     @RequestMapping("information")
-    public String information(Integer id, Map<String, Object> map) {
+    public String informationGet(Integer id, Map<String, Object> map) {
         TbStudent student = studentService.getStudent(id);
         map.put("student", student);
+        if (student.getAdmissionData()!=null){
+            map.put("admissionData",student.getAdmissionData().toString());
+        }
         return "student/information";
     }
 
+    /**
+     * 修改学生的基本信息页面
+     * @return
+     */
+    @RequestMapping("/tostudent")
+    public String toModify(Integer id,Map<String,Object> map){
+        TbStudent student = studentService.getStudent(id);
+        map.put("student",student);
+        if (student.getAdmissionData()!=null){
+            map.put("admissionData",student.getAdmissionData().toString());
+        }
+
+        return "student/addstudent";
+    }
+
+    /**
+     * 修改学生基本信息
+     * @param student
+     * @return
+     */
+    @RequestMapping("/modify")
+    @ResponseBody
+    public ServiceResult modifyStudent(TbStudent student){
+        ServiceResult studentResult = studentService.modifyStudent(student);
+        return studentResult;
+
+
+    }
+
+    /**
+     *
+     * @return
+     */
     @RequestMapping("cost")
     public String cost() {
         return "student/cost";
     }
+
+
 }
 
 

@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbStudent;
 import net.atomarrow.bean.Pager;
+import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.excel.ExcelDatas;
@@ -17,15 +18,16 @@ import java.util.List;
  * @create 2019-11-28 13:06
  */
 @Component
-public class StudentService extends BaseService{
+public class StudentService extends BaseService {
     @Autowired
-  private   RecruitService recruitService;
+    private RecruitService recruitService;
+
     /**
      * @author 丛枭钰
      * @create 2019-11-28 13:06
      */
-    public TbStudent get(String student){
-        Conditions conditions=new Conditions(getTableName());
+    public TbStudent get(String student) {
+        Conditions conditions = new Conditions(getTableName());
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         TbStudent one = getOne(conditions);
         return one;
@@ -38,11 +40,11 @@ public class StudentService extends BaseService{
      * @param majorId
      * @return
      */
-  public List<TbStudent> checkMajor(Integer majorId){
-      Conditions conditions = getConditions();
-      conditions.putEW("majorId",majorId);
-     return getList(conditions);
-  }
+    public List<TbStudent> checkMajor(Integer majorId) {
+        Conditions conditions = getConditions();
+        conditions.putEW("majorId", majorId);
+        return getList(conditions);
+    }
 
     /**
      * 于振华
@@ -57,15 +59,19 @@ public class StudentService extends BaseService{
         return getList(conditions);
     }
 
-
-
-    public List<TbStudent> listStudent(TbStudent student) {
+    /**
+     * 查询入学学生信息
+     *
+     * @param student
+     * @return
+     */
+    public List<TbStudent> listStudent(TbStudent student, Pager pager) {
         Conditions conditions = getConditions();
-        if (student.getState() == TbStudent.STATE_ENTRANCE) {
-            List<TbStudent> list = getList(conditions);
-            return list;
-        }
-        return null;
+        conditions.putEWIfOk("state", TbStudent.STATE_ENTRANCE);
+        pager.setDataTotal(getCount(conditions));
+        List<TbStudent> list = getListByPage(conditions,pager);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        return list;
     }
 
     /**
@@ -78,6 +84,28 @@ public class StudentService extends BaseService{
         return getById(getTableName(), id);
     }
 
+    /**
+     * 修改学生的基本信息
+     * @param student
+     * @return
+     */
+    public ServiceResult modifyStudent(TbStudent student){
+        modify(student);
+        return SUCCESS;
+    }
+
+
+
+
+    /**
+     * excel 导出
+     * @param keywords
+     * @param createTime
+     * @param labelIds
+     * @param sex
+     * @param pager
+     * @return
+     */
     public InputStream studentExcel(String keywords, String createTime, String labelIds, String sex, Pager pager) {
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbStudent> list = recruitService.listRecruit(keywords, createTime, labelIds, sex, pager);//调用查询信息

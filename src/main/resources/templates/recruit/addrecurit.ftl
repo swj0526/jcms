@@ -221,7 +221,7 @@
             </div>
             <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
                 <div class="layui-input-inline">
-                    <button class="layui-btn" type="button"  id="addSubmit">立即提交</button>
+                    <button class="layui-btn" type="button"  lay-submit="" id="addSubmit">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -243,19 +243,21 @@
         searchTips: '搜索标签',
         tips: '请选择意向',
         height: '500px',
-        autoRow: true,
         code:0,
-        data: []
+        prop: {
+            name: 'name',
+            value: 'id',
+        },
+
     })
     axios({
         method: 'get',
         url: '/dictionary/list/label',
     }).then(response => {
         var res = response.data;
-
         demo1.update({
             data: res,
-            autoRow: true,
+
         })
     });
 </script>
