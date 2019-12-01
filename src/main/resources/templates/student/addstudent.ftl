@@ -38,8 +38,9 @@
                 <div class="layui-inline">
                     <label class="layui-form-label"> 年龄<span  class="star">*</span></label>
                     <div class="layui-input-inline">
-                        <input type="text" name="age" lay-verify="required" placeholder="" autocomplete="off"
+                        <input type="number" name="age" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input" value="${student.age!''}">
+
                     </div>
                 </div>
             </div>
@@ -82,7 +83,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label"> 身份证号<span  class="star">*</span></label>
                     <div class="layui-input-inline">
-                        <input type="text" name="IDCard" lay-verify="required" placeholder="" autocomplete="off"
+                        <input type="number" name="IDCard" lay-verify="required" placeholder="" autocomplete="off"
                                class="layui-input" value="${student.IDCard!''}">
                     </div>
                 </div>
