@@ -11,22 +11,19 @@ layui.use(['table', 'jquery', 'laydate','form', 'element'], function () {
         , defaultToolbar: []
         , title: '用户数据表'
         ,cols: [[
-            {field:'id', title:'作业序号'  }
-            ,{field:'Name', title:'作业名称'  }
+            {field:'name', title:'作业名称'  }
             ,{field:'issuer', title:'发布人'  }
-            ,{field:'grade', title:'年级'  }
+            ,{field:'major', title:'专业班级'  }
             ,{field:'releaseTime', title:'发布日期'}
-            ,{field:'endTime', title:'截止日期时间'}
-            ,{field:'content', title:'内容'}
-            ,{field:'submitTheNumber', title:'提交人数'}
-            ,{field:'submitTheNumber', title:'总人数'}
+            ,{field:'endTime', title:'截止时间'}
+            ,{field:'content', title:'内容摘要'}
+            ,{field:'submitTheNumber', title:'提交比例'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
         ]]
         , data: [{
-            Name: "英语作业"
-            ,id: "1"
+            name: "英语作业"
             ,issuer:"王丽"
-            , grade: "三年级"
+            , major: "影视一班"
             , releaseTime: "2019-11-14"
             , endTime: "2019-11-14"
             , content: "11111111"

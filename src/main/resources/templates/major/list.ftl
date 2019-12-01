@@ -145,7 +145,7 @@
                         <label class="layui-form-label">关键词</label>
                         <div class="layui-input-inline">
                             <input type="text" name="keywords" autocomplete="off" class="layui-input"
-                                   placeholder="例：专业/备注">
+                                   placeholder="专业/备注" value="${keywords!""}">
                         </div>
                     </div>
 

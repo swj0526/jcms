@@ -101,6 +101,9 @@ public class MajorService extends BaseService {
                 }
             }
         }
+        for(TbMajor major:majorList){
+            System.out.println(major.getName());
+        }
         return majorList;
     }
 

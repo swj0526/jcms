@@ -30,10 +30,10 @@ public class MajorController {
      * @return
      */
     @RequestMapping("tolist")
-    public String tolist(Map<String, List<TbMajor>> map, String keywords) {
+    public String tolist(Map<String,Object> map, String keywords) {
         List<TbMajor> list = majorService.listMajor(keywords);
         map.put("list", list);
-
+        map.put("keywords", keywords);
         return "/major/list";
     }
 

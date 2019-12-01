@@ -25,8 +25,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
 
         $.post('/student/modify'+'?id='+id,serialize,function (result) {
             layer.msg('成功');
-            close_Table("add"+id,"student_list","学生档案管理","/student/tolist");
-            alert(id);
+            close_tab("add"+id,"student_list","学生档案管理","/student/tolist");
 
         })
 
