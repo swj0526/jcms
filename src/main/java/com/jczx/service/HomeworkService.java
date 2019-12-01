@@ -20,7 +20,7 @@ public class HomeworkService extends BaseService{
     public ServiceResult addHomework(TbHomework homework){
         homework.setCreateTime(SC.getNowDate());
         homework.setOperatorId(SC.getOperatorId());
-       add(homework);
+        add(homework);
         return null;
     }
 }
