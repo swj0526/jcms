@@ -78,5 +78,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         var endTime =$('[name="endTime"]').val();
         var context =$('[name="context"]').val();
         var remark =$('[name="remark"]').val();
+       $('/work',{},function () {
+
+       })
     });
 });
