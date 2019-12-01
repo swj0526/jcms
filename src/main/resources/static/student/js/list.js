@@ -156,7 +156,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
         var id = data.id;
         if (obj.event === 'edit') {//修改
             alert(id);
-            parent_tab("add"+id,"学生档案管理","/student/tostudent?id="+id);
+            parent_tab("add"+id,"修改学生信息","/student/tostudent?id="+id);
 
         } else if (obj.event === 'delete') {
             layer.confirm('真的删除行么', function (index) {
