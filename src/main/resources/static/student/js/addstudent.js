@@ -22,10 +22,17 @@ layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
     $("#addSubmit").click(function () {
         let serialize = $("#dataFor").serialize();
         let id = $("#addSubmit").val();
-
         $.post('/student/modify'+'?id='+id,serialize,function (result) {
-            layer.msg('成功');
-            close_tab("add"+id,"student_list","学生档案管理","/student/tolist");
+            if (result.success==true){
+                layer.msg('成功');
+                close_tab("add"+id,"student_list","学生档案管理","/student/tolist");
+                location.reload()//刷新当前页
+            }else{
+             layer.msg("填写必填项")
+
+            }
+
+
 
         })
 

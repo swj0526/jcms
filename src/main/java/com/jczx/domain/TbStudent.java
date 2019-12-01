@@ -20,11 +20,12 @@ public class TbStudent extends Domain {
     @NotCreate
     public static final int STATE_NOT_ENTRANCE = 0;//未入学
     @NotCreate
-    public static final int STATE_ENTRANCE = 1;//入学
+    public static final int STATE_ENTRANCE = 1;//在学
     @NotCreate
     public static final int STATE_GRADUATE = 3;//毕业
     private Integer id;
     private Integer majorId;//班级id
+    private Integer studentNumber;//学号
     private String name;//姓名
     private String sex;//性别
     private Integer age;//年龄
@@ -54,6 +55,9 @@ public class TbStudent extends Domain {
     private String qq;//qq号
     private String weChat;//微信
     private Integer integralId;//积分
+    private String hobby;//业余爱好
+    private String speciality;//特长
+    private String comment;//老师评论
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;//操作时间
     private Integer operatorId;//操作人
@@ -64,6 +68,14 @@ public class TbStudent extends Domain {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(Integer studentNumber) {
+        this.studentNumber = studentNumber;
     }
 
     public Integer getMajorId() {
@@ -303,6 +315,30 @@ public class TbStudent extends Domain {
         return CACHE.getChannelName(channelId);
     }
 
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     /**
      * 意向标签
      *
@@ -311,13 +347,14 @@ public class TbStudent extends Domain {
     public String getLabelNames() {
         return CACHE.getLabelNames(labelIds);
     }
+
     /**
      * 状态
      */
-    public String getStateName(){
-        if (this.state==STATE_ENTRANCE){
+    public String getStateName() {
+        if (this.state == STATE_ENTRANCE) {
             return "在校";
         }
-        return"未入学";
+        return "毕业";
     }
 }

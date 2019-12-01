@@ -12,7 +12,8 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
         elem: '#time',
 
     });
-    table.render({
+    var res;
+   var tableIns=table.render({
         elem: '#currentTableId',
        url:"/student/list"
          ,id: 'testReload'
@@ -24,9 +25,14 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
             data: res.result
         }
     },
+        done: function (rest, curr, count) {
+            //如果是异步请求数据方式，res即为你接口返回的信息。
+            //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+            res = rest;
+        },
         cols: [
             [{
-                field: 'id',
+                field: 'studentNumber',
                 title: '学号',
                 city: "",
                 sort: true,
@@ -45,7 +51,7 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
                     align: 'center'
                 },
                 {
-                    field: 'birthday',
+                    field: 'birthDate',
                     title: '出生年月',
                     align: 'center'
                 },
@@ -108,7 +114,9 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
                     curr: 1 //重新从第 1 页开始
                 }
                 ,where: {
-                        id: demoReload.val()
+                        id: demoReload.val(),
+                        keywords:$("#time").val(),
+
 
                 }
             }, 'data');
@@ -155,16 +163,19 @@ layui.use(['form', 'table', 'laydate', 'layer','element','upload'], function () 
          data = obj.data;
         var id = data.id;
         if (obj.event === 'edit') {//修改
-            alert(id);
             parent_tab("add"+id,"修改学生信息","/student/tostudent?id="+id);
-
         } else if (obj.event === 'delete') {
-            layer.confirm('真的删除行么', function (index) {
+           /* layer.confirm('真的删除行么', function (index) {
                 obj.del();
                 layer.close(index);
-            });
+                $.post('/', {id: data.id}, function (data) {
+                    tableIns.reload();
+                    if (res.data.length - 1 == 0) {
+                        window.location.reload();
+                    }
+                })
+            });*/
         }else if (obj.event === 'list'){
-
             parent_tab("list"+id,"学生详情","/student/information?id="+id);
         }else if (obj.event === 'setSign'){
 

@@ -67,15 +67,15 @@
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">爱好</td>
-                            <td colspan="7">打游戏，吃饭，睡觉</td>
+                            <td colspan="7">${student.hobby!''}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">特长</td>
-                            <td colspan="7">无</td>
+                            <td colspan="7">${student.speciality}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">老师评价</td>
-                            <td colspan="7">这孩子不错</td>
+                            <td colspan="7">${student.comment}</td>
                         </tr>
                     </table>
 

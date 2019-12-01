@@ -1,10 +1,12 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbStudent;
+import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
+import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,7 @@ public class StudentService extends BaseService {
      */
     public List<TbStudent> listStudent(TbStudent student, Pager pager) {
         Conditions conditions = getConditions();
+
         conditions.putEWIfOk("state", TbStudent.STATE_ENTRANCE);
         pager.setDataTotal(getCount(conditions));
         List<TbStudent> list = getListByPage(conditions,pager);
@@ -90,6 +93,18 @@ public class StudentService extends BaseService {
      * @return
      */
     public ServiceResult modifyStudent(TbStudent student){
+        if (StringUtil.isBlank(student.getName())
+                ||StringUtil.isBlank(String.valueOf(student.getAge()))
+                ||StringUtil.isBlank(student.getNation())
+                ||StringUtil.isBlank(student.getIDCard().toString())
+                ||StringUtil.isBlank(student.getState().toString())
+                ||StringUtil.isBlank(student.getAddress())
+                ||StringUtil.isBlank(student.getNativePlace())
+                ||student.getAdmissionData()==null){
+            return error("");
+        }
+        student.setCreateTime(SC.getNowDate());//操作时间
+        student.setOperatorId(SC.getOperatorId());//操作人
         modify(student);
         return SUCCESS;
     }

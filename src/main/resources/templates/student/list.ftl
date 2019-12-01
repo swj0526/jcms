@@ -47,7 +47,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">关键词</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="username" autocomplete="off" class="layui-input"
+                        <input type="text" name="keywords" autocomplete="off" class="layui-input"
                                placeholder="例：1990/张三">
                     </div>
                 </div>
@@ -55,15 +55,15 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">入学时间</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="city" autocomplete="off" class="layui-input" id="time">
+                        <input type="text" name="admissionData" autocomplete="off" class="layui-input" id="time">
                     </div>
                 </div>
                 <div class="layui-inline">
 
                     <select name="state" lay-verify="">
                         <option value="">选择状态</option>
-                        <option value="010">在校</option>
-                        <option value="021">毕业</option>
+                        <option value="1">在校</option>
+                        <option value="2">毕业</option>
                     </select>
                 </div>
                 <div class="layui-inline">
