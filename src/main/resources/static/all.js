@@ -1,3 +1,13 @@
+var tabChange = function (id) {
+    var othis = $('.layui-tab-title').find('>li[lay-id="' + id + '"]'),
+        index = othis.parent().children('li').index(othis),
+        parents = othis.parents('.layui-tab').eq(0),
+        item = parents.children('.layui-tab-content').children('.layui-tab-item'),
+        src = item.eq(index).find('iframe').attr("src");
+    item.eq(index).find('iframe').attr("src", src);
+}
+
+
 //在自己的页面开tab选项卡
 var all_tab = function (id, title, src) {
     layui.use(['element', 'jquery'], function () {
@@ -15,7 +25,7 @@ var all_tab = function (id, title, src) {
             });
         }
         element.tabChange('demo', id); //切换到tab选项卡
-
+        tabChange(id);
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);
@@ -63,6 +73,7 @@ var close_tab = function (oldId, newId, title, src) { //old需要关闭的页面
         }
         parent.layui.element.tabChange('demo', newId); //切换到tab选项卡
         parent.layui.element.tabDelete('demo', oldId);//关闭旧的tab页
+        tabChange(id);
         $('iframe').attr('src', $('iframe').attr('src'));
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');

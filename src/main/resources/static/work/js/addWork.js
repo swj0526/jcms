@@ -68,6 +68,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         elem: '#test1'
     });
     laydate.render({
-        elem: '#test2'
+        elem: '#test2',
+        type:'datetime'
+    });
+
+    $('#submit').click(function () {
+       var name =$('[name="name"]').val();
+        var major =$('[name="major"]').val();
+        var endTime =$('[name="endTime"]').val();
+        var context =$('[name="context"]').val();
+        var remark =$('[name="remark"]').val();
     });
 });

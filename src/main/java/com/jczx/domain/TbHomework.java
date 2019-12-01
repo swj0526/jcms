@@ -9,24 +9,24 @@ import java.util.Date;
 
 /**
  * 发布作业表
+ *
  * @author 丛枭钰
  * @create 2019-11-19 13:25
- *
  */
 @Component
 public class TbHomework extends Domain {
     private Integer id;
     private String name;//作业名称
     private Integer teacherId;//发布人
-    private Integer majorId;//年级
+    private Integer majorId;//班级专业
     private Date endTime;//截止日期
-    @FieldType(type=Type.VARCHAR,length = 255)
+    @FieldType(type = Type.VARCHAR, length = 255)
     private String content;//内容//长度问题
     private Boolean hasAttachment;//是否有附件
     private Integer submitCount;//提交人数
-    @FieldType(type= Type.VARCHAR,length = 255)
+    @FieldType(type = Type.VARCHAR, length = 255)
     private String submitIds;//已提交人
-    @FieldType(type= Type.VARCHAR,length = 255)
+    @FieldType(type = Type.VARCHAR, length = 255)
     private String notSubmitIds;//未提交人
     private Integer totalCount;//总人数
     private Integer operatorId;//操作人id
@@ -134,5 +134,9 @@ public class TbHomework extends Domain {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getMajorName() {
+        return "";
     }
 }
