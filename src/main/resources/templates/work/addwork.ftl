@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<form class="layui-form layui-form-pane">
+<form class="layui-form layui-form-pane" id="dataFor">
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">作业名称<span class="star">*</span></label>
@@ -24,7 +24,7 @@
 
             <div class="layui-input-inline">
                 <div class="layui-inline">
-                    <select name="major" lay-verify="required" id="gradeSelect"
+                    <select name="majorId" lay-verify="required" id="gradeSelect"
                             url="/major/list/select">
                         <option value="">请选择</option>
                     </select>
@@ -34,7 +34,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">截止时间<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input class="layui-input"   lay-verify="required"  name="endTime" id="test2" type="text" placeholder="请选择截止时间">
+                <input class="layui-input"   lay-verify="required" <#-- name="endTime"--> id="test2" type="text" placeholder="请选择截止时间">
             </div>
         </div>
     </div>

@@ -58,7 +58,8 @@ public class HomeworkController {
     @RequestMapping("/add/homework")
     @ResponseBody
     public ServiceResult addHomework(TbHomework homework) {
-        homeworkService.addHomework(homework);
-        return null;
+        System.out.println(homework.getEndTime());
+        ServiceResult result = homeworkService.addHomework(homework);
+        return result;
     }
 }
