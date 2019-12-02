@@ -64,13 +64,27 @@ public class StudentService extends BaseService {
     /**
      * 查询入学学生信息
      *
-     * @param student
+     * @param
      * @return
      */
-    public List<TbStudent> listStudent(TbStudent student, Pager pager) {
+    public List<TbStudent> listStudent(String keywords,String  admissionData, Pager pager) {
         Conditions conditions = getConditions();
-
+        if (StringUtil.isNotBlank(keywords)){
+            conditions.parenthesesStart();
+            conditions.putLIKE("name",keywords);
+            conditions.or();
+            conditions.putLIKE("studentNumber",keywords);
+            conditions.or();
+            conditions.putLIKE("studentPhone",keywords);
+            conditions.parenthesesEnd();
+        }
+            conditions.putEWIfOk("admissionData",admissionData);
         conditions.putEWIfOk("state", TbStudent.STATE_ENTRANCE);
+        if (pager==null){
+            List<TbStudent> list = getList(conditions);
+            System.out.println("++++++++++++");
+            return list;
+        }
         pager.setDataTotal(getCount(conditions));
         List<TbStudent> list = getListByPage(conditions,pager);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
@@ -115,21 +129,20 @@ public class StudentService extends BaseService {
     /**
      * excel 导出
      * @param keywords
-     * @param createTime
-     * @param labelIds
-     * @param sex
-     * @param pager
+     * @param
+     * @param
+     * @param
+     * @param
      * @return
      */
-    public InputStream studentExcel(String keywords, String createTime, String labelIds, String sex, Pager pager) {
+    public InputStream studentExcel(String keywords,String  admissionData ,Pager pager) {
         ExcelDatas excelDatas = new ExcelDatas();
-        List<TbStudent> list = recruitService.listRecruit(keywords, createTime, labelIds, sex, pager);//调用查询信息
-        excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "意向", "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
-        excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelIds", "birthDate", "school", "studentPhone", "qq", "weChat", "channelId"});
+        List<TbStudent> list = listStudent(keywords, admissionData, null);
+        excelDatas.addStringArray(0, 0, new String[]{"学号","姓名", "民族", "性别", "出生年月", "年龄","身份证号", "联系方式", "入学时间", "毕业时间", "籍贯", "qq", "微信"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"studentNumber","name", "nation", "sex", "birthDate","age", "IDCard", "studentPhone","admissionData", "graduationDate", "nativePlace","qq", "weChat"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }
-
 
     @Override
     public String getTableName() {

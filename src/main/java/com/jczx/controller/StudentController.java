@@ -4,11 +4,13 @@ import com.jczx.domain.TbStudent;
 import com.jczx.service.StudentService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
+import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -30,16 +32,15 @@ public class StudentController extends BaseController {
 
     /**
      * 查询入学学生的全部信息
-     * @param student
-     * @param page
+     * @param      * @param page
      * @param limit
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult studentList(TbStudent student, Integer page, Integer limit){
+    public ServiceResult studentList(String keywords,String  admissionData, Integer page, Integer limit){
     Pager pager = checkPager(limit,page);
-    List<TbStudent> studentList = studentService.listStudent(student,pager);
+    List<TbStudent> studentList = studentService.listStudent(keywords,admissionData,pager);
     return layuiList(studentList,pager);
 }
 
@@ -86,6 +87,23 @@ public class StudentController extends BaseController {
         return studentResult;
 
 
+    }
+
+    /**
+     * 导出学生信息
+     * @param keywords
+     * @param
+     * @param
+     * @param
+     * @param
+     * @return
+     */
+    @RequestMapping("/toexcel")
+    @ResponseBody
+    public Render excel(String keywords,String  admissionData) {
+        System.out.println(keywords);
+        InputStream inputStream = studentService.studentExcel(keywords, admissionData, null);
+        return Render.renderFile("学生信息表.xls", inputStream);
     }
 
     /**

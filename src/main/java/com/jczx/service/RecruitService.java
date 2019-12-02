@@ -94,7 +94,6 @@ public class RecruitService extends BaseService {
     public List<TbStudent> listRecruit(String keywords, String labelIds, String createTime, String sex, Pager pager) { //模糊关键字keywords查询用or
         Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
-
             conditions.parenthesesStart();
             conditions.putLIKE("name", keywords);//判断是否为空
             conditions.or();

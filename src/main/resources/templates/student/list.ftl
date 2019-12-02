@@ -42,13 +42,13 @@
 <fieldset class="layui-elem-field layuimini-search">
     <div style="margin: 10px 10px 10px 10px">
         <div class="demoTable">
-        <form class="layui-form layui-form-pane" action="">
+        <form class="layui-form layui-form-pane" action="" id="formexcel">
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">关键词</label>
                     <div class="layui-input-inline">
                         <input type="text" name="keywords" autocomplete="off" class="layui-input"
-                               placeholder="例：1990/张三">
+                               placeholder="例：1990/张三" id="keywords">
                     </div>
                 </div>
 
@@ -58,18 +58,19 @@
                         <input type="text" name="admissionData" autocomplete="off" class="layui-input" id="time">
                     </div>
                 </div>
-                <div class="layui-inline">
+               <#-- <div class="layui-inline">
 
                     <select name="state" lay-verify="">
                         <option value="">选择状态</option>
                         <option value="1">在校</option>
                         <option value="2">毕业</option>
                     </select>
-                </div>
+                </div>-->
                 <div class="layui-inline">
-                    <button class="layui-btn" data-type="reload">搜索</button>
+                    <button class="layui-btn"  type="button" data-type="reload">查询</button>
+
                     <button type="button" class="layui-btn layui-btn-warm"  id="import">导入</button>
-                    <button type="button" class="layui-btn layui-btn-warm">导出</button>
+                    <button type="button" class="layui-btn layui-btn-warm" id="output">导出</button>
                 </div>
 
             </div>

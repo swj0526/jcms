@@ -4,7 +4,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         table = layui.table,
         laydate = layui.laydate;
     //修改弹窗
-    var res;//删除用
+    var res;
     var mainIndex;
     laydate.render({
         elem: '#a' //指定元素
@@ -35,6 +35,8 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             //如果是异步请求数据方式，res即为你接口返回的信息。
             //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
             res = rest;
+
+
             console.log(rest);
         },
         cols: [

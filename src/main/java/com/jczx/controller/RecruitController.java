@@ -128,7 +128,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render ex(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
+    public Render excel(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
         InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex, pager);
         return Render.renderFile("招生信息表.xls", inputStream);
