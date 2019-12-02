@@ -3,41 +3,56 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     var $ = layui.jquery;
     var element = layui.element;
     laydate = layui.laydate;
-    form = layui.form,
-        table.render({
-            elem: '#test'
-            /*, url: '/query'
-            , id: 'userTableReload'*/
-            , defaultToolbar: []
-            , title: '用户数据表'
-            , cols: [[
-                {field: 'name', title: '作业名称'}
-                , {field: 'issuer', title: '发布人'}
-                , {field: 'major', title: '专业班级'}
-                , {field: 'releaseTime', title: '发布日期'}
-                , {field: 'endTime', title: '截止时间'}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo',width:230}
-            ]]
-            , data: [{
-                name: "英语作业"
-                , issuer: "王丽"
-                , major: "影视一班"
-                , releaseTime: "2019-11-14"
-                , endTime: "2019-11-14"
-            }]
-            , page: true
-        });
+    form = layui.form;
+    var currPage = 1;
+    var data;
+    var tableIns = table.render({
+        elem: '#test'
+        , url: '/work/list/homework'
+        , id: 'reloadList'
+        , cols: [[
+            {field: 'name', title: '作业名称'}
+            , {field: 'teacherName', title: '发布人'}
+            , {field: 'majorName', title: '专业班级'}
+            , {field: 'createTime', title: '发布日期'}
+            , {field: 'endTime', title: '截止时间'}
+            , {field: 'content', title: '内容', width: 100}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 230}
+        ]]
+        , page: true,
+        done: function (rest, curr, count) {
+            currPage = curr;
+            res = rest;
+            data = rest;
+            /* console.log(currPage);
+             console.log(rest);*/
+
+        },
+        parseData: function (res) { //res 即为原始返回的数据
+            /*   console.log(res);*/
+            return {
+                "code": "0",
+                "count": res.pager.dataTotal,
+                data: res.result
+            }
+        }
+    });
+
     $("#add").click(function () {
         parent_tab("work_add", '发布作业', "/work/add");
     });
     //监听行工具事件
     table.on('tool(test)', function (obj) {
-        var data = obj.data;
+        data = obj.data;
         //console.log(obj)
-        if (obj.event === 'updata') {
+        if (obj.event === 'modify') {
 
+            alert(data.id);
 
-        } else if (obj.event === 'edit') {
+            $.post('/work/get/homework', {id: data.id}, function () {
+                parent_tab("work_modify", '修改作业', "/work/get/homework");
+            });
+        } else if (obj.event === 'downloadWork') {
             layer.tab({
                 type: 1,
                 area: ['100%', '100%'],
@@ -50,13 +65,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     });
     var $ = layui.$, active = {
         reload: function () {
-            var name = $("#name");
-            var gradeId = $("#gradeId");
-            //执行重载
-            table.reload('userTableReload', {
+            //执行搜索重载
+            table.reload('reloadList', {
+                page: {
+                    curr: currPage
+                },
                 where: {
-                    'name': name.val(),
-                    'grade': gradeId.val()
+                    keywords: $('[name="keywords"]').val(),
+                    majorId: $('[name="majorId"]').val(),
+                    scopeTime: $('[name="scopeTime"]').val()
                 }
             }, 'data');
         }
