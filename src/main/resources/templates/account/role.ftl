@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="${basePath}">
     <meta charset="UTF-8">
     <title>权限管理</title>
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>

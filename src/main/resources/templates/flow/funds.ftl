@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="${basePath}">
     <meta charset="utf-8">
     <title>经费申请</title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">

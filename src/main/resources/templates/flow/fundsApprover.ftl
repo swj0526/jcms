@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="${basePath}">
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">

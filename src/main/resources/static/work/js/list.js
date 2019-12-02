@@ -38,9 +38,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         }
     });
 
-    $("#add").click(function () {
-        parent_tab("work_add", '发布作业', "/work/add");
-    });
+
     //监听行工具事件
     table.on('tool(test)', function (obj) {
         data = obj.data;
@@ -74,13 +72,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             }, 'data');
         }
     }
+    $("#add").click(function () {
+        parent_tab("work_add", '发布作业', "/work/add");
+
+
+    });
     $('.demoTable .layui-btn').on('click', function () {
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
         return false;
-    });
-    $('#excel').click(function () {
-        window.location.href = "/toExcel";
     });
     laydate.render({
         elem: '#test6'

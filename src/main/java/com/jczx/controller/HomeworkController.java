@@ -56,7 +56,7 @@ public class HomeworkController extends BaseController{
 
     @RequestMapping("/add")
     public String add() {
-        return "addWork";
+        return "work/addWork";
     }
 
     @RequestMapping("/add/homework")

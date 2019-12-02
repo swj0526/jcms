@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="${basePath}">
     <meta charset="utf-8">
     <title>layui</title>
     <meta name="renderer" content="webkit">

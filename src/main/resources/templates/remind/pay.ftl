@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="${basePath}">
     <meta charset="UTF-8">
     <title>缴费提醒</title>
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>

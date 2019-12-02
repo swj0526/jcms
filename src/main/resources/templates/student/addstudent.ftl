@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="${basePath}">
     <meta charset="UTF-8">
     <title>添加学生信息</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">

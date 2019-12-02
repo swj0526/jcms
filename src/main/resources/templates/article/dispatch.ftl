@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<base href="${basePath}">
 		<meta charset="utf-8">
 		<title>发布文章</title>
 		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css">

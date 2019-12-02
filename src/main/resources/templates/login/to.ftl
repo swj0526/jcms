@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="${basePath}">
     <meta charset="UTF-8">
     <title>锦程后台管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

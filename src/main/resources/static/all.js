@@ -1,5 +1,3 @@
-
-
 //在自己的页面开tab选项卡
 var all_tab = function (id, title, src) {
     layui.use(['element', 'jquery'], function () {
@@ -63,8 +61,7 @@ var close_tab = function (oldId, newId, title, src) { //old需要关闭的页面
             });
         }
         parent.layui.element.tabChange('demo', newId); //切换到tab选项卡
-        parent.layui.element.tabDelete('demo', oldId);//关闭旧的tab页
-        location.reload();
+        parent.layui.element.tabDelete('demo', oldId);//关闭旧的tab
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);

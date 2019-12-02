@@ -6,6 +6,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
     var upload = layui.upload;
     form = layui.form;
     //选完文件后不自动上传
+    var currPage = 1;
     var demoListView = $('#demoList')
         , uploadListIns = upload.render({
         elem: '#testList'
@@ -76,11 +77,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         let serialize = $("#dataFor").serialize();
         $.post('/work/add/homework', serialize, function (result) {
            if(result.success==true){
-             layer.msg("作业发布成功!");
              close_tab("work_add","work_list","作业列表","/work/list");
            }else{
 
                }
-        })
+        });
+
     });
 });
