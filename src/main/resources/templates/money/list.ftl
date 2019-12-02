@@ -7,7 +7,6 @@
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/all.js"></script>
     <script type="text/javascript" src="/money/js/money.js"></script>
-    <script type="text/javascript" src="/money/js/addBill.js.js"></script>
     <script type="text/javascript" src="/money/js/modify.js"></script>
 
     <style>

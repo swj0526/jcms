@@ -17,7 +17,7 @@ import java.util.List;
  * @author 丛枭钰
  * @create 2019-11-29 13:38
  */
-@RequestMapping("integral/item")
+@RequestMapping("/integral/item")
 @Controller
 public class IntegralItemController extends BaseController {
     @Autowired
@@ -48,11 +48,20 @@ public class IntegralItemController extends BaseController {
             e.printStackTrace();
         }
         integralItem.setCreateTime(createTime);
-        System.out.println("reason:"+integralItem.getReason());
-        System.out.println("remark:"+integralItem.getRemark());
-        System.out.println("score:"+integralItem.getScore());
-        System.out.println("type:"+integralItem.getType());
-        ServiceResult result = integralItemService.add(integralItem);
+        ServiceResult result = integralItemService.addItem(integralItem);
         return result;
+    }
+
+    @RequestMapping("/modify")
+    @ResponseBody
+    public ServiceResult modify(TbIntegralItem integralItem) {
+        ServiceResult result = integralItemService.modifyItem(integralItem);
+        return result;
+    }
+    @RequestMapping("/get")
+    @ResponseBody
+    public TbIntegralItem get(Integer id){
+        TbIntegralItem tbIntegralItem = integralItemService.get(id);
+        return tbIntegralItem;
     }
 }

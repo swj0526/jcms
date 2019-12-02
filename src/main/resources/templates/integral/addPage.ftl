@@ -6,19 +6,20 @@
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/all.css" media="all">
     <script src="/layui/layui.js"></script>
+    <script src="/all.js"></script>
     <script src="/integral/js/addPage.js"></script>
 </head>
 <body>
 <div id="aa" >
     <fieldset class="layui-elem-field layuimini-search">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" style="margin-left: 15%;margin-top: 8%" lay-filter="dataForm">
+            <form class="layui-form layui-form-pane" style="margin-left: 15%;margin-top: 8%" id="adddataForm" lay-filter="dataForm">
                 <div class="layui-form-item">
                     <div class="layui-inline" style="width: 359px">
                         <label class="layui-form-label">事由<span class="star">*</span></label>
                         <div class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                            <select name="semesterId" lay-verify="required" class="decSelect"
-                                    url="/dictionary/list/payTerm/options" selectedId="">
+                            <select name="reason" lay-verify="required" class="decSelect"
+                                    url="/integral/item/list" selectedId="" id="select2">
                                 <option value="">请选择</option>
 
                             </select>
@@ -30,7 +31,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">学生姓名<span class="star">*</span></label>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
+                            <input type="text" name="name" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>
@@ -38,13 +39,13 @@
                     <div class="layui-inline" style="width: 359px">
                         <label class="layui-form-label">分数<span class="star">*</span></label>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
+                            <input type="text" name="score" id="score" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">学号<span class="star">*</span></label>
+                        <label class="layui-form-label">事发时间<span class="star">*</span></label>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" autocomplete="off" class="layui-input">
+                            <input type="text" name="recordTime" id="time" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </div>

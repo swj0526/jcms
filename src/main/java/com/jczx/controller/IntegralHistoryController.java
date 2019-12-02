@@ -47,4 +47,14 @@ public class IntegralHistoryController extends BaseController {
     public String toSubtractPage() {
         return "/integral/subtractpage";
     }
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public ServiceResult add(TbIntegralHistory integralHistory){
+
+
+        ServiceResult add = integralHistoryService.add1(integralHistory);
+        return add;
+
+    }
 }

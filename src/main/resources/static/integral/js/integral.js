@@ -42,7 +42,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
     $("#points").click(function () {
         layer.open({
             type: 2,
-            area: ['60%', '650px'],
+            area: ['60%', '550px'],
             content: '/History/tosubtractpage',
             btn: [],
             shade: 0

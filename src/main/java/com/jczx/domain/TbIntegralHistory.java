@@ -1,7 +1,9 @@
 package com.jczx.domain;
 
+import com.jczx.service.IntegralItemService;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +20,11 @@ public class TbIntegralHistory extends Domain {
     private  String name;//姓名
     private Integer id;//id
     private Integer studentId;//学生id
-    @DateTimeFormat(pattern ="yyyy-MM-dd-hh-mm-ss")
+    @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm:ss")
     private Date recordTime;//事发时间
     private String reason;//事由
     private Integer score;//分数
+    private String remark;//备注
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
@@ -74,6 +77,7 @@ public class TbIntegralHistory extends Domain {
     }
 
     public String getReason() {
+
         return reason;
     }
 
@@ -96,4 +100,6 @@ public class TbIntegralHistory extends Domain {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
 }
+

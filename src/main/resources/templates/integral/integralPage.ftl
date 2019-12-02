@@ -42,10 +42,10 @@
                             <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询
                             </button>
 
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">加分
+                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">加减分
                             </button>
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="points">减分
-                            </button>
+                            <#--<button class="layui-btn" type="button" lay-filter="data-search-btn" id="points">减分
+                            </button>-->
                             <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn"
                                     id="export">导出
                             </button>
