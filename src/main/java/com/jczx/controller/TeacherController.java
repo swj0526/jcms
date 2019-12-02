@@ -72,7 +72,7 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/doExcel")
     @ResponseBody
-    public Render doExcel(String name,Boolean hasQuit){
+    public Render doExcel(String name, Boolean hasQuit){
         Pager pager = new Pager();
         pager.setPageSize(100000);
         pager.setCurrentPage(1);

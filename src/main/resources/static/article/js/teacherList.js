@@ -1,4 +1,4 @@
-layui.use('table', function () {
+layui.use(['table','laydate'], function () {
     var currPage = 1;
     var data;
     var res;
@@ -9,6 +9,7 @@ layui.use('table', function () {
         layer = layui.layer,
         laydate = layui.laydate,
         upload = layui.upload;
+
 
     table.render({
         elem: '#test',
@@ -55,7 +56,25 @@ layui.use('table', function () {
         },
         id: 'testReload'
     });
-
+    //日期范围
+    laydate.render({
+        elem: '#time',
+        range: '~'
+    });
+    //表格重载
+    $("#query").click(function () {
+        table.reload('testReload', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            ,where: {
+                keyword: $("#keyword").val(),
+                typeId:$("#typeId").val(),
+                state:$("#state").val(),
+                time:$("#time").val()
+            }
+        }, 'data');
+    });
 
     table.on('tool(test)', function (obj) {
         var data = obj.data;
@@ -63,7 +82,7 @@ layui.use('table', function () {
         if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
                 obj.del();
-                $.post('/teacher/delete', {id: data.id}, function (result) {
+                $.post('/article/delete', {id: data.id}, function (result) {
                     if (result.success) {
                         layer.msg("删除成功!");
                         layer.close(index);
@@ -92,9 +111,9 @@ layui.use('table', function () {
         } else if (obj.event === 'revoke') {
             layer.confirm('真的撤销吗', function (index) {
                 obj.del();
-                $.post('/teacher/delete', {id: data.id,state:2}, function (result) {
+                $.post('/article/articleModify', {id: data.id,state:2}, function (result) {
                     if (result.success) {
-                        layer.msg("删除成功!");
+                        layer.msg("撤销成功");
                         layer.close(index);
                         tableIns.reload();
                         if (res.data.length-1 == 0) {
@@ -143,6 +162,7 @@ layui.use('table', function () {
 
 
 });
+/*
 //日期方法
 layui.use('laydate', function () {
     var laydate = layui.laydate;
@@ -156,4 +176,5 @@ layui.use('laydate', function () {
         range: true
     });
 });
+*/
 
