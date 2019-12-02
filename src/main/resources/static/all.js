@@ -17,7 +17,6 @@ var all_tab = function (id, title, src) {
             });
         }
         element.tabChange('demo', id); //切换到tab选项卡
-        tabChange(id);
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);

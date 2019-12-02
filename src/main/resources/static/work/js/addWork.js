@@ -76,7 +76,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         let serialize = $("#dataFor").serialize();
         $.post('/work/add/homework', serialize, function (result) {
            if(result.success==true){
-               alert.msg("作业发布成功");
+             layer.msg("作业发布成功!");
+             close_tab("work_add","work_list","作业列表","/work/list");
            }else{
 
                }
