@@ -14,7 +14,7 @@
     <div class="demoTable">
         <fieldset class="layui-elem-field layuimini-search">
             <div style="margin: 10px 10px 10px 10px">
-                <form class="layui-form layui-form-pane" action="">
+                <form class="layui-form layui-form-pane">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">关键词</label>

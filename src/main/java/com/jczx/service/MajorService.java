@@ -21,7 +21,8 @@ import java.util.List;
 public class MajorService extends BaseService {
 
     @Autowired
-    private  StudentService studentService;
+    private StudentService studentService;
+
     @Override
     public String getTableName() {
         return TbMajor.class.getSimpleName();
@@ -89,26 +90,36 @@ public class MajorService extends BaseService {
      * @return
      */
     public List<TbMajor> listMajor(String keywords) {
-        List<TbMajor> list = listByKeywords(keywords);
+        System.out.println(keywords + "=========");
+        Conditions conditions = getConditions();
+        List<TbMajor> list = getList(conditions);
         List<TbMajor> majorList = new ArrayList<>();
+
+        if (StringUtil.isBlank(keywords)) {
+            keywords = "";
+        }
+
+        System.out.println(keywords);
         for (TbMajor major : list) {
+            System.out.println(major.getName().toString() + "=876554==");
             if (major.getPid() == 0) {
+                System.out.println(keywords + "==进入");
                 majorList.add(major);
                 for (TbMajor grade : list) {
-                    if (major.getId() == grade.getPid()) {
+                    if (major.getId() == grade.getPid() && grade.getName().contains(keywords)) {
                         majorList.add(grade);
                     }
                 }
             }
         }
-        for(TbMajor major:majorList){
+       /* for(TbMajor major:majorList){
             System.out.println(major.getName());
-        }
+        }*/
         return majorList;
     }
 
-    private List<TbMajor> listByKeywords(String keywords) {
-        Conditions conditions = getConditions();
+  /*  private List<TbMajor> listByKeywords(String keywords) {
+
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
             conditions.putLIKE("name", keywords);
@@ -117,7 +128,7 @@ public class MajorService extends BaseService {
             conditions.parenthesesEnd();
          }
         return getList(conditions);
-    }
+    }*/
 
     /**
      * 修改的时候使用,根据id去获取值,在弹窗上赋值显示
@@ -144,10 +155,10 @@ public class MajorService extends BaseService {
             }
         } else { //删除班级
             List<TbStudent> list = studentService.checkMajor(id);
-            if(list.size()!=0){
-                return  error("该班级有学生,不可删除!");
-            }else {
-                delById(getTableName(),id);
+            if (list.size() != 0) {
+                return error("该班级有学生,不可删除!");
+            } else {
+                delById(getTableName(), id);
                 return SUCCESS;
             }
 

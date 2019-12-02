@@ -46,12 +46,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         data = obj.data;
         //console.log(obj)
         if (obj.event === 'modify') {
-
-            alert(data.id);
-
-            $.post('/work/get/homework', {id: data.id}, function () {
-                parent_tab("work_modify", '修改作业', "/work/get/homework");
-            });
+         var id= data.id;
+                parent_tab("work_modify", '修改作业', "/work/get/homework?id="+id);
         } else if (obj.event === 'downloadWork') {
             layer.tab({
                 type: 1,
