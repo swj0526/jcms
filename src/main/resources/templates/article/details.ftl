@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
     <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../layui/layui.js"></script>
-    <script type="text/javascript" src="../article/js/details.js"></script>
+    <script type="text/javascript" src="/article/js/details.js"></script>
 </head>
 <body>
     <h1 align="center">标题</h1>
