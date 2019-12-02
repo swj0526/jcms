@@ -116,6 +116,7 @@ var sel = function () {
 layui.use(['jquery'], function () {
     var $ = layui.jquery;
     if ($('.decSelect').length > 0) {
+        alert(1);
         sel();
     }
 });
