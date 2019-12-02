@@ -5,12 +5,14 @@
 		<title>发布文章</title>
 		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
 		<link rel="stylesheet" href="/all.css" media="all">
-		<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="../layui/layui.js"></script>
-		<script type="text/javascript" src="../article/js/dispatch.js"></script>
+		<script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/layui/layui.js"></script>
 		<script type="text/javascript" src="/all.js"></script>
+		<script type="text/javascript" src="/article/js/dispatch.js"></script>
+		<script type="text/javascript" src="/article/js/xm.js"></script>
 	</head>
 	<body>
+    <#--添加文章-->
 		<form class="layui-form layui-form-pane" action="" lay-filter="dataForm">
 		  <div class="layui-form-item">
 		    <label class="layui-form-label">标题<span class="star">*</span></label>
@@ -19,19 +21,16 @@
 		    </div>
 		  </div>
 		  <div class="layui-form-item" >
-		    <label class="layui-form-label">接收角色<span class="star">*</span></label>
-		    <div class="layui-input-inline" style="width: 300px">
-		      <input name="like[老师]" title="老师" type="checkbox">
-		      <input name="like[学生]" title="学生" type="checkbox">
-		      <input name="like[管理员]" title="管理员" type="checkbox">
-		    </div>
+			  <label class="layui-form-label">接收人<span class="star">*</span></label>
+			  <#--<div class="layui-inline">
+				  <div id="demo2" class="xm-select-demo" required lay-verify="required" style=" width:200px";></div>
+			  </div>-->
 				  <div class="layui-inline" style="margin-bottom: 0px">
 					  <label class="layui-form-label">文章类型<span class="star">*</span></label>
 					  <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-						  <select name="type" lay-verify="required" class="decSelect"
-								  url="/dictionary/list/payType/options" id="type">
+						  <select name="typeId" lay-verify="required" class="decSelect"
+								  url="/dictionary/list/dispatch/options"  >
 							  <option value="">请选择</option>
-							  <option value="111">1111</option>
 						  </select>
 					  </div>
 					  <button type="button" class="layui-btn" id="type1"
@@ -68,26 +67,34 @@
 		      <button class="layui-btn layui-btn-primary" type="reset">重置</button>
 		  </div>
 		</form>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
 
-		<div id="modify1" style="display: none">
-			<div style="margin: 10px 10px 10px 10px">
-					<div class="layui-form-item">
-						<div class="layui-form-item">
-							<label class="layui-form-label">姓名<span class="star">*</span></label>
-							<div class="layui-input-inline">
-								<input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off"
-									   class="layui-input" id="title">
-							</div>
-						</div>
-						<div class="layui-form-item">
-							<label class="layui-form-label">手机号<span class="star">*</span></label>
-							<div class="layui-input-inline">
-								<input name="phone" class="layui-input" type="tel" autocomplete="off"
-									   lay-verify="required|phone" id="phone1">
-							</div>
-						</div>
-					</div>
-			</div>
-		</div>
+		var demo2 = xmSelect.render({
+			el: '#demo2',
+			language: 'zn',
+			filterable: true,
+			searchTips: '搜索标签',
+			tips: '请选择接收人',
+			height: '500px',
+			code:0,
+			prop: {
+				name: 'name',
+				value: 'id',
+			},
+
+		});
+		axios({
+			method: 'get',
+			url: '/dictionary/list/label',
+		}).then(response => {
+			var res = response.data;
+			demo2.update({
+				data: res,
+
+			})
+		});
+	</script>
+
 	</body>
 </html>

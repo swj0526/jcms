@@ -44,7 +44,6 @@ public class TbDictionary extends Domain implements OptionInterface {
      */
     @NotCreate
     public static final int TYPE_DISPATCH = 6;
-
     private Integer id;
     private String name;
     private Integer type;//字典表类型

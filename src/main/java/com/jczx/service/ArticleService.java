@@ -19,6 +19,7 @@ import java.util.List;
 public class ArticleService extends BaseService {
     /**
      * 发布文章
+     *
      * @param tbArticle
      * @return
      */
@@ -29,25 +30,48 @@ public class ArticleService extends BaseService {
 
     /**
      * 查询文章列表
+     *
      * @param keyword
      * @param state
      * @param pager
      * @return
      */
-    public List<TbArticle> articleList(String keyword, Integer state, Pager pager){
+    public List<TbArticle> articleList(String keyword,Integer typeId,Integer state,String time,Pager pager) {
         Conditions conditions = new Conditions(getTableName());
-        if (StringUtil.isNotBlank(keyword)){
+        if (StringUtil.isNotBlank(keyword)) {
             conditions.parenthesesStart();
-            conditions.putLIKE("name",keyword);
+            conditions.putLIKE("title", keyword);
             conditions.or();
-            conditions.putLIKE("phone",keyword);
+            conditions.putLIKE("receiverRoleIds", keyword);
             conditions.parenthesesEnd();
         }
-        conditions.putEWIfOk("",state);
+        conditions.putEWIfOk("typeId",typeId);
+        conditions.putEWIfOk("state", state);
+        if (StringUtil.isNotBlank(time)) {
+            String startTime=time.substring(0,10);
+            String endTime=time.substring(13);
+            System.out.println(startTime);
+            System.out.println(endTime);
+            conditions.parenthesesStart();
+            conditions.putSTIfOk("createTime", startTime);
+            conditions.putGTIfOk("createTime", endTime);
+            conditions.parenthesesEnd();
+        }
         pager.setDataTotal(getCount(conditions));
-        List<TbArticle> article= getListByPage(conditions,pager);
+        List<TbArticle> article = getListByPage(conditions, pager);
         return article;
     }
+
+    /**
+     * 修改状态
+     * @param tbArticle
+     * @return
+     */
+    public ServiceResult articleModify(TbArticle tbArticle) {
+        modify(tbArticle);
+        return SUCCESS;
+    }
+
 
     public List<TbArticle> checkType(Integer typeId) {
         Conditions conditins = getConditions();
@@ -58,6 +82,6 @@ public class ArticleService extends BaseService {
 
     @Override
     public String getTableName() {
-        return null;
+        return TbArticle.class.getSimpleName();
     }
 }

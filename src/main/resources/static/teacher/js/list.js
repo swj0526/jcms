@@ -98,6 +98,9 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
             }
 
         });
+        $('#cancelModify').click(function() {
+            layer.close(mainIndex);		//关闭窗口
+        });
     }
     //删除
     table.on('tool(currentTableFilter)', function (obj) {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author swj
  * @create 2019-11-06 20:30
  */
-public class LoginHendlerInterceptor implements HandlerInterceptor {
+public class LoginHandlerInterceptor implements HandlerInterceptor {
     /**
      * 执行controller之前
      *
@@ -22,17 +22,19 @@ public class LoginHendlerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Object admin = request.getSession().getAttribute("admin");
+        request.setAttribute("basePath", request.getRequestURL());
+        /*Object admin = request.getSession().getAttribute("admin");
         if (admin == null) {
             response.sendRedirect("/");
             return false;
         } else {
             return true;
-        }
+        }*/
+        return true;
     }
 
     /**
-     * 执行controller之后
+     * 执行controller之后,渲染之前
      *
      * @param request
      * @param response

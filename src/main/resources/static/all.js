@@ -1,3 +1,5 @@
+
+
 //在自己的页面开tab选项卡
 var all_tab = function (id, title, src) {
     layui.use(['element', 'jquery'], function () {
@@ -15,7 +17,6 @@ var all_tab = function (id, title, src) {
             });
         }
         element.tabChange('demo', id); //切换到tab选项卡
-
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);
@@ -50,12 +51,10 @@ var parent_tab = function (id, title, src) {
     });
 }
 //关闭选项卡并刷新指定的选项卡
-var close_Table = function (oldId, newId, title, src) { //old需要关闭的页面,newId需要去定位新的页面
-
+var close_tab = function (oldId, newId, title, src) { //old需要关闭的页面,newId需要去定位新的页面
     layui.use(['element', 'jquery'], function () {
         var element = layui.element;
         var $ = layui.jquery;
-        element.tabDelete('demo', oldId);//关闭旧的tab页
         if (parent.$("[lay-id=" + newId + "]").length == 0) {//选判是否有新的tab页存在
             parent.layui.element.tabAdd('demo', {
                 title: title,
@@ -64,7 +63,8 @@ var close_Table = function (oldId, newId, title, src) { //old需要关闭的页�
             });
         }
         parent.layui.element.tabChange('demo', newId); //切换到tab选项卡
-        $('iframe').attr('src', $('iframe').attr('src'));
+        parent.layui.element.tabDelete('demo', oldId);//关闭旧的tab页
+        location.reload();
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);
@@ -101,9 +101,9 @@ var sel = function () {
             $.post(url, function (result) {
                 $.each(result, function (key, value) {
                     if (value.optionValue == selectedId) {
-                        dom.append("<option value=" + value.optionValue + " selected>" + value.optionText + "</option>");
+                        dom.append("<option value='" + value.optionValue + "' selected>" + value.optionText + "</option>");
                     } else {
-                        dom.append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
+                        dom.append("<option value='" + value.optionValue + "'>" + value.optionText + "</option>");
                     }
 
                 });
@@ -115,6 +115,7 @@ var sel = function () {
 layui.use(['jquery'], function () {
     var $ = layui.jquery;
     if ($('.decSelect').length > 0) {
+        alert(1);
         sel();
     }
 });
@@ -151,18 +152,17 @@ var sel_garade = function () {
             });
         }
 
-        var url = $("#gradeSelect").attr('url');
-        $("#gradeSelect").append("<option value=" + 111 + ">" + 222 + "</option>");
+        var dom = $("#gradeSelect");
+        var url = dom.attr('url');
         $.post(url, function (result) {
             $.each(result, function (key, value) {
                 if (value.pid != 0) {
-                    alert(value.optionText);
-                    $("#gradeSelect").append("<option value=" + 111 + ">" + 222 + "</option>");
-                    $("#gradeSelect").append("<option value=" + value.optionValue + ">" + value.optionText + "</option>");
+                    dom.append("<option value='" + value.optionValue + "'>" + value.optionText + "</option>");
                 }
             });
+            renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
         });
-        renderForm(); //表单重新渲染，要不然添加完显示不出来新的option
+
 
     });
 }

@@ -5,32 +5,37 @@ import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 /**
  * 学生表
+ *
  * @author 池炯武
  * @create 2019-11-17 12:52
- *
  */
 @Component
 public class TbStudent extends Domain {
     //缺积分,状态性别
     @NotCreate
-    public static final int STATE_NOT_ENTRANCE=0;//未入学
+    public static final int STATE_NOT_ENTRANCE = 0;//未入学
     @NotCreate
-    public static final int STATE_ENTRANCE=1;//入学
+    public static final int STATE_ENTRANCE = 1;//在学
     @NotCreate
-    public static final int STATE_GRADUATE=3;//毕业
+    public static final int STATE_GRADUATE = 3;//毕业
     private Integer id;
     private Integer majorId;//班级id
+    private Integer studentNumber;//学号
     private String name;//姓名
     private String sex;//性别
     private Integer age;//年龄
+    private String nation;//民族
     private String address;//家庭住址
     private String nativePlace;//籍贯
     private String bloodType;//血型
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date admissionData;//入学时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date graduationDate;//毕业时间
     private Integer state;//状态,区分已入学和未入学
     private String motherName;//母亲名字
@@ -42,7 +47,7 @@ public class TbStudent extends Domain {
     private String labelIds;//意向标签表
     private Integer channelId;//渠道表id
     private String intention;//招生意向
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;//出生年月
     private String IDCard;//身份证//
     private String school;//学校
@@ -50,7 +55,10 @@ public class TbStudent extends Domain {
     private String qq;//qq号
     private String weChat;//微信
     private Integer integralId;//积分
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private String hobby;//业余爱好
+    private String speciality;//特长
+    private String comment;//老师评论
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;//操作时间
     private Integer operatorId;//操作人
 
@@ -60,6 +68,14 @@ public class TbStudent extends Domain {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(Integer studentNumber) {
+        this.studentNumber = studentNumber;
     }
 
     public Integer getMajorId() {
@@ -230,7 +246,21 @@ public class TbStudent extends Domain {
         this.birthDate = birthDate;
     }
 
+    public Date getAdmissionData() {
+        return admissionData;
+    }
 
+    public void setAdmissionData(Date admissionData) {
+        this.admissionData = admissionData;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
 
     public String getSchool() {
         return school;
@@ -280,12 +310,51 @@ public class TbStudent extends Domain {
         this.integralId = integralId;
     }
 
-    public  String getChannelName(){
+    public String getChannelName() {
 
         return CACHE.getChannelName(channelId);
     }
 
-    public String getLabelNames(){
-        return CACHE.getLabelNames(",7,8,9,");
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    /**
+     * 意向标签
+     *
+     * @return
+     */
+    public String getLabelNames() {
+        return CACHE.getLabelNames(labelIds);
+    }
+
+    /**
+     * 状态
+     */
+    public String getStateName() {
+        if (this.state == STATE_ENTRANCE) {
+            return "在校";
+        }
+        return "毕业";
     }
 }

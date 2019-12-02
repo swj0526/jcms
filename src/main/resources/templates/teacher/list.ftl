@@ -42,8 +42,10 @@
                     </div>
                 </div>
             </div>
-            <button class="layui-btn" lay-submit lay-filter="formDemo" id="addTeacher">提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary" id="cancelAdd">取消</button>
+            <div style="text-align: center;">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="addTeacher">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary" id="cancelAdd">取消</button>
+            </div>
         </form>
     </div>
 </div>
@@ -83,7 +85,11 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="layui-btn" id="modifyTeacher">提交</button>
+            <div style="text-align: center;">
+                <button type="button" class="layui-btn" id="modifyTeacher">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary" id="cancelModify">取消</button>
+
+            </div>
         </form>
     </div>
 </div>

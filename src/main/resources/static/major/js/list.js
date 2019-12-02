@@ -164,7 +164,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                     });
 
 
-
                 }, no: function (index) {
                     layer.close(index);
                 }
@@ -172,10 +171,9 @@ layui.use(['form', 'table', 'laydate'], function () {
         );
 
     });
-    /* $("#search").click(function () {
-         var keywords = $('[name="keywords"]').val();
-         $.post("/major/tolist", {keywords: keywords}, function (result) {
-
-         });
-     })*/
+ /* $("#search").click(function () {
+      alert(words);
+      var words = $('[name="keywords"]').val();
+      $('[name="keywords"]').val(words);
+    });*/
 });

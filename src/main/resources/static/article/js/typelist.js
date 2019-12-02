@@ -5,7 +5,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            ,url:'/dictionary/list/payType/options'
+            ,url:'/dictionary/list/dispatch/options'
             , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: []
             , title: '用户数据表'
@@ -22,6 +22,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 }
             },
         });
+
     //头工具栏事件
     table.on('toolbar(test)', function (obj) {
         var checkStatus = table.checkStatus(obj.config.id);
@@ -31,11 +32,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 layer.open({
                     btnAlign: 'c'
                     , type: 1
-                    ,title:'添加缴费类型'
+                    ,title:'添加文章类型'
                     , btn: ['提交','取消']
                     , content: $("#ll")
                     , yes: function (index, layero) {
-                        $.post('/dictionary/add/payType',{
+                        $.post('/dictionary/add/dispatch',{
                             name:$("#addname").val(),
                             remark:$("#addremark").val()
 
@@ -46,7 +47,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     }
                 });
         }
-        ;
+
     });
 
     //监听行工具事件
@@ -57,7 +58,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
-                ,title:'修改缴费类型'
+                ,title:'修改文章类型'
                 , btn: ['提交','取消']
                 , content: $("#up")
                 , yes: function (index, layero) {
@@ -76,8 +77,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             });
         } else if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
-                $.post('/dictionary/delete',{
-                    id:data.id,
+                $.post('/dictionary//delete/articleType',{
+                    id:data.id
                 },function (res) {
                     obj.del();
                     layer.close(index);

@@ -5,6 +5,14 @@ layui.use(['element','jquery','table'], function(){
     table.render({
         elem: '#test',
         url:"/money/list"
+            , parseData: function (res) { //res 即为原始返回的数据
+                /*   console.log(res);*/
+                return {
+                    "code": "0",
+                    "count": res.pager.dataTotal,
+                    data: res.result
+                }
+            }
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
             {field:'username', title: '缴费类型'}

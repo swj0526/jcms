@@ -48,7 +48,6 @@
             <div class="layui-inline">
                 <div class="layui-inline" style="width: 190px">
                     <select name="sex" lay-verify="" id="select1">
-
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>

@@ -68,10 +68,19 @@ public class ArticleController extends BaseController {
 
     @RequestMapping("/articleList")
     @ResponseBody
-    public ServiceResult articleList(String keyword, Integer state,Integer page,Integer limit){
+    public ServiceResult articleList(String keyword,Integer typeId, Integer state,String time,Integer page,Integer limit){
         Pager pager = checkPager(limit, page);
-        List<TbArticle> article = articleService.articleList(keyword,state,pager);
-        return layuiList(article,pager);
+        System.out.println(time);
+        List<TbArticle> list = articleService.articleList(keyword,typeId,state,time,pager);
+        return layuiList(list,pager);
+    }
+
+    @RequestMapping("/articleModify")
+    @ResponseBody
+    public ServiceResult modifyTeacher(TbArticle tbArticle){
+        System.out.println(tbArticle.getId());
+        ServiceResult modify=articleService.articleModify(tbArticle);
+        return modify;
     }
 
 }

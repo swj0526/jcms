@@ -147,7 +147,7 @@
                 <label class="layui-form-label">跟进时间</label>
                 <div class="layui-input-inline">
                     <input type="text" name="followTime" required lay-verify="required" placeholder="请输入"
-                           autocomplete="off" class="layui-input" id="date" value="${(st.followTime?string("yyyy-MM-dd"))!'无数据'}">
+                           autocomplete="off" class="layui-input" id="date">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -209,7 +209,6 @@
 //删除
             $(".del").click(function () {
                 var id = $(this).val();
-                alert(id);
                 $.post('/details/deleteFollow',{id:id},function (result) {
                     location.reload();
                 })
@@ -255,9 +254,9 @@
                     if (result) {
                         layer.close(index);
                         $.each(result, function (index, value) {
-                            $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime + '</span></div></li>');
+                           /* $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime + '</span></div></li>');
                             $("#u").append('<li><div class="sd"><span>跟进意向:' + value.labelIds + '</span></div></li>');
-                            $("#u").append('<li><div class="sd"><span>备注:' + value.remark + '</span></div></li>');
+                            $("#u").append('<li><div class="sd"><span>备注:' + value.remark + '</span></div></li>');*/
 
                         })
                         location.reload();

@@ -60,6 +60,9 @@ layui.use(['form', 'layedit', 'laydate','upload'], function () {
             ,area: ['720px', '350px']
             ,btn:['确定','取消']
             ,content: 'totype'
+            ,end:function () {
+                sel();
+            }
         });
     });
     //多文件列表示例
@@ -117,14 +120,16 @@ layui.use(['form', 'layedit', 'laydate','upload'], function () {
             tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
         }
     });
-
-});
-
-layui.use('laydate', function () {
-    var laydate = layui.laydate;
-
-    //常规用法
-    laydate.render({
-        elem: '#test1'
+    var seList = new Array();
+    var selectArr = demo2.getValue().valueOf();//获取复选框的值
+    $.each(selectArr, function (k, v) {
+        $.each(v, function (k1, v1) {
+            if (k1 == "value") {
+                seList.push(v1);
+            }
+        });
     });
+    let label = seList.join(",");
+    var labelIds = ("," + label + ",");
+
 });

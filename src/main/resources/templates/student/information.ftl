@@ -49,33 +49,33 @@
                             <td bgcolor="#ededed">父亲手机号</td>
                             <td>${student.fatherName!''}</td>
                             <td bgcolor="#ededed">母亲手机号</td>
-                            <td>18655555555</td>
+                            <td>${student.motherPhone!''}</td>
                             <td bgcolor="#ededed">其他亲属</td>
-                            <td>18555222234</td>
+                            <td>${student.emergencyPhone!''}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">籍贯</td>
-                            <td colspan="7">山东省威海市**县**镇**小区</td>
+                            <td colspan="7">${student.nativePlace!''}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">现住址</td>
-                            <td colspan="7">威海</td>
+                            <td colspan="7">${student.address!''}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">身份证号</td>
-                            <td colspan="7">222245565656858545</td>
+                            <td colspan="7">${student.IDCard!''}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">爱好</td>
-                            <td colspan="7">打游戏，吃饭，睡觉</td>
+                            <td colspan="7">${student.hobby!''}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">特长</td>
-                            <td colspan="7">无</td>
+                            <td colspan="7">${student.speciality}</td>
                         </tr>
                         <tr align="center">
                             <td bgcolor="#ededed">老师评价</td>
-                            <td colspan="7">这孩子不错</td>
+                            <td colspan="7">${student.comment}</td>
                         </tr>
                     </table>
 

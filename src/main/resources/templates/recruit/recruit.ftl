@@ -15,9 +15,7 @@
     <link rel="stylesheet" href="/all.css">
     <#--上传-->
     <script src="/jquery/jquery-3.3.1.min.js"></script>
-
     <script src="/recruit/js/label.js"></script>
-
     <style type="text/css">
         /*去除input number的 自动增加数按钮*/
         input::-webkit-outer-spin-button,
@@ -47,7 +45,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">时间</label>
-                        <div class="layui-input-inline">
+                        <div class="layui-input-inline" style="width: 100px">
                             <input type="text" name="createTime" autocomplete="off" class="layui-input" id="a">
                         </div>
                     </div>
@@ -78,7 +76,7 @@
                                 <option value="">请选择</option>
                                 <option value="1">有意向</option>
                                 <option value="2">没有意向</option>
-                                <option value="5">犹豫不决</option>
+                                <option value="5">weChat</option>
                             </select>
                         </div>
                     </div>

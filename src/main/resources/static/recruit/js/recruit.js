@@ -178,7 +178,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     parent.layer.close(index);//关闭弹出层
                     parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
                 });
-            } else {
+            } else  if (result.error==false) {
                 layer.msg("学生电话,母亲电话有重复");
 
             }

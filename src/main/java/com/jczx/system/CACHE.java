@@ -2,7 +2,11 @@ package com.jczx.system;
 
 
 import com.jczx.domain.TbDictionary;
+import com.jczx.domain.TbMajor;
+import com.jczx.domain.TbTeacher;
 import com.jczx.service.DictionaryService;
+import com.jczx.service.MajorService;
+import com.jczx.service.TeacherService;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.RandomSn;
 import net.atomarrow.util.SpringContextUtil;
@@ -32,7 +36,12 @@ public class CACHE {
     private static Service getDictionaryService() {
         return SpringContextUtil.getBean(DictionaryService.class);
     }
-
+    private static Service getMajorService() {
+        return SpringContextUtil.getBean(MajorService.class);
+    }
+    private static Service getTeacherService() {
+        return SpringContextUtil.getBean(TeacherService.class);
+    }
     private static String PREFEX = RandomSn.getLowSn(3);
 
     /**
@@ -167,7 +176,79 @@ public class CACHE {
         }
         return names;
     }
+    /**
+     * 专业-班级对象
+     *
+     * @param id
+     * @return
+     */
+    private static TbMajor getMajor(Integer id) {
+        if (id == 0 || id == null) {
+            return null;
+        }
+        TbMajor major = (TbMajor) getUtil().get(getKey(TbMajor.class.getSimpleName(), id));
+        if (major != null) {
+            return major;
+        }
+        TbMajor majorDB = getMajorService().getById(TbMajor.class.getSimpleName(), id);
+        if (majorDB == null) {
+            return null;
+        }
+        getUtil().set(getKey(TbMajor.class.getSimpleName(), id), majorDB);
+        return majorDB;
+    }
 
+    /**
+     * 获取班级的名称
+     * @param majorId
+     * @return
+     */
+    public static String getMajorName(Integer majorId){
+        if (majorId == null || majorId == 0) {
+            return "";
+        }
+        TbMajor major = getMajor(majorId);
+        if (major == null) {
+            return "";
+        }
+        return major.getName();
+    }
+    /**
+     * 老师对象
+     *
+     * @param id
+     * @return
+     */
+    private static TbTeacher getTeacher(Integer id) {
+        if (id == 0 || id == null) {
+            return null;
+        }
+        TbTeacher teacher = (TbTeacher) getUtil().get(getKey(TbTeacher.class.getSimpleName(), id));
+        if (teacher != null) {
+            return teacher;
+        }
+        TbTeacher teacherDB = getTeacherService().getById(TbTeacher.class.getSimpleName(), id);
+        if (teacherDB == null) {
+            return null;
+        }
+        getUtil().set(getKey(TbTeacher.class.getSimpleName(), id), teacherDB);
+        return teacherDB;
+    }
+    /**
+     * 获取老师名字
+     * @param teacherId
+     * @return
+     */
+    public static String getTeacherName(Integer teacherId) {
+        if (teacherId == null || teacherId == 0) {
+            return "";
+        }
+        TbTeacher teacher = getTeacher(teacherId);
+        if (teacher == null) {
+            return "";
+        }
+        return teacher.getName();
+    }
 
     /**
      * 修改删除的时候调用该方法,清空该缓存对象
@@ -184,6 +265,8 @@ public class CACHE {
     private static void removeAll() {
         getUtil().removeAll();
     }
+
+
 
 
 
