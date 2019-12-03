@@ -16,8 +16,8 @@ import java.util.List;
 @Component
 public class IntegralService extends BaseService {
 
-    public List<TbIntegral> list(String keyword, Integer ScoreA, Integer ScoreB, Pager pager) {
-        Conditions conditions = new Conditions(getTableName());
+    public List<TbIntegral> list(String keyword, Integer start, Integer end, Pager pager) {
+        Conditions conditions = getConditions();
         conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id");
         if (StringUtil.isNotBlank(keyword)) {
 
@@ -25,8 +25,8 @@ public class IntegralService extends BaseService {
             conditions.or();
             conditions.putLIKE("totalScore", keyword);
         }
-        if (ScoreA != null && ScoreB != null) {
-            conditions.putBW("totalScore", ScoreA, ScoreB);
+        if (start != null && end != null) {
+            conditions.putBW("totalScore", start, end);
         }
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbIntegral> list = getListByPage(conditions,pager);

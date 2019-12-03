@@ -33,7 +33,7 @@ public abstract class BaseService extends Service {
      * @param id
      * @return
      */
-    public T getById(Integer id) {
+    public <T>T getById(Integer id) {
         return getById(getTableName(), id);
     }
 }

@@ -31,6 +31,7 @@ public class StudentService extends BaseService {
     public TbStudent get(String student) {
         Conditions conditions = new Conditions(getTableName());
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        conditions.putEW("name",student);
         TbStudent one = getOne(conditions);
         return one;
     }

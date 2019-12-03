@@ -73,10 +73,6 @@ public class MajorService extends BaseService {
      * @return
      */
     public ServiceResult modifyMajor(TbMajor major) {
-        TbMajor majorDB = getById(getTableName(), major.getId());
-        if (majorDB == null) {
-            return error("");
-        }
         if (StringUtil.isBlank(major.getName())) {
             return error("");
         }

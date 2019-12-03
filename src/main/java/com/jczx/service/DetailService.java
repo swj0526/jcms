@@ -41,7 +41,7 @@ public class DetailService extends BaseService {
      */
     public List<TbRecruitDetail> listDetail(Integer studentId){
         Conditions conditions =new Conditions(getTableName());
-        conditions.putEW("studentId",studentId);
+        conditions.putEWIfOk("studentId",studentId);
         List<TbRecruitDetail> list = getList(conditions);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;

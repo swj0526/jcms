@@ -51,19 +51,6 @@ public class RecruitService extends BaseService {
     }
 
     /**
-     * 查询当前行数据将数,据赋值到页面上,该方法配合修改
-     *
-     * @param
-     * @return
-     */
-    public TbStudent getStudent(Integer studentId) {
-
-        TbStudent getStudent = getById(getTableName(), studentId);
-
-        return getStudent;
-    }
-
-    /**
      * 修改
      *
      * @param student

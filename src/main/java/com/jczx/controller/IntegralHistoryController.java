@@ -29,13 +29,23 @@ public class IntegralHistoryController extends BaseController {
         Pager pager = new Pager();
         return layuiList(list, pager);
     }
+
+    /**
+     *
+     * @param keyword
+     * @param recordTime
+     * @param major
+     * @param page
+     * @param limit
+     * @return
+     */
     @RequestMapping("historylist")
     @ResponseBody
     public ServiceResult HistoryList(String keyword,String recordTime,Integer major,Integer page,Integer limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
-        List<TbIntegralHistory> list = integralHistoryService.HistoryList(keyword,recordTime,major,pager);
+        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(keyword,recordTime,major,pager);
         return layuiList(list, pager);
     }
 
@@ -51,9 +61,7 @@ public class IntegralHistoryController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult add(TbIntegralHistory integralHistory){
-
-
-        ServiceResult add = integralHistoryService.add1(integralHistory);
+        ServiceResult add = integralHistoryService.addIntegralHistory(integralHistory);
         return add;
 
     }

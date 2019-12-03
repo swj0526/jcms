@@ -13,7 +13,7 @@ layui.use(['jquery', 'layer', 'table', 'form', 'laydate'], function () {
             , title: '事由'
             , btn: ['提交', '取消']
             , content: '/integral/item/tolist'
-            ,end:function () {
+            , end: function () {
                 sel();
                 $("#score").val('')
                 $(".layui-laypage-btn").click();
@@ -25,28 +25,28 @@ layui.use(['jquery', 'layer', 'table', 'form', 'laydate'], function () {
     $("#revocation").click(function () {
         parent.layer.close(index);
     })
-    form.on('select', function(data){
-        $.post('/integral/item/get',{
-            id:data.value
-        },function (result) {
-$("#score").val(result.score)
+    form.on('select', function (data) {
+        $.post('/integral/item/get', {
+            id: data.value
+        }, function (result) {
+            $("#score").val(result.score)
         })
     })
 
-    $("#submit").click(function () {
+    $("#submit5").click(function () {
         var t = $('#adddataForm').serialize();
         $.post('/History/add',
-           {t}
-        ),function (result) {
-            parent.layer.close(index);
-
-            
-        }
-
+            t
+            , function (result) {
+                if (result.success) {
+                    parent.layer.close(index);
+                } else {
+                }
+            })
     })
     laydate.render({
         elem: '#time'
-        ,type: 'datetime'
+        , type: 'datetime'
     });
 })
 var sel = function () {

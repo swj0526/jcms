@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div style="text-align: center;width: 650px">
-                    <button type="button" class="layui-btn" lay-submit id="submit"
+                    <button type="button" class="layui-btn" lay-submit id="submit5"
                             style="padding-left: 10px;padding-right: 10px;width: 70px;">提交
                     </button>
                     <button type="button" class="layui-btn layui-btn-primary"id="revocation"

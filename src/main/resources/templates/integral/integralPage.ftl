@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <script src="/layui/layui.js"></script>
+    <script src="/all.js"></script>
     <script src="/integral/js/integral.js"></script>
 </head>
 <body>
@@ -33,11 +34,14 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <select name="city" lay-verify="" id="major">
-                                <option value="010">选择班级</option>
-                                <option value="021" >影视一班</option>
-                                <option value="0571" >Java一班</option>
+                            <label class="layui-form-label">专业班级</label>
+                            <div class="layui-inline">
+                            <select name="major" lay-verify="" id="gradeSelect" required
+                                    lay-verify="required"
+                                    url="/major/list/select">
+                                <option value="">请选择</option>
                             </select>
+                            </div>
                         </div>
                         <div class="layui-inline">
                             <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询
@@ -64,4 +68,7 @@
     </script>
 </div>
 </body>
+<script>
+    sel_garade();
+</script>
 </html>

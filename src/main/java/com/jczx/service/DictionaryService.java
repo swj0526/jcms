@@ -50,7 +50,6 @@ public class DictionaryService extends BaseService {
         dictionary.setName(name);
         dictionary.setRemark(remark);
         dictionary.setType(type);
-        Date date = new Date();
         dictionary.setCreateTime(SC.getNowDate());
         dictionary.setOperatorId(SC.getOperatorId());
         add(dictionary);

@@ -48,12 +48,7 @@ public class IntegralItemService extends BaseService {
         TbIntegralItem one = getOne(conditions);
         return one;
     }
-    public String getReason(String id){
-        Conditions conditions = getConditions();
-        conditions.putEWIfOk("id",id);
-        TbIntegralItem one = getOne(conditions);
-        return one.getReason();
-    }
+
 
 
     @Override

@@ -61,8 +61,7 @@ public class DetailController {
     @RequestMapping("/todetail")
     public String upFollow(Integer id, Map<String, Object> map) {
         map.put("id",id);
-     ;
-        TbStudent student = recruitService.getStudent(id);
+        TbStudent student = recruitService.getById(id);
         map.put("student",student);
 
         List<TbRecruitDetail> detail = detailService.listDetail(id);

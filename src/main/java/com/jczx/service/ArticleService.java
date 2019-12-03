@@ -58,25 +58,25 @@ public class ArticleService extends BaseService {
             conditions.parenthesesEnd();
         }
         pager.setDataTotal(getCount(conditions));
-        List<TbArticle> article = getListByPage(conditions, pager);
-        return article;
+        List<TbArticle> articles = getListByPage(conditions, pager);
+        return articles;
     }
 
     /**
      * 修改状态
-     * @param tbArticle
+     * @param article
      * @return
      */
-    public ServiceResult articleModify(TbArticle tbArticle) {
-        modify(tbArticle);
+    public ServiceResult articleModify(TbArticle article) {
+        modify(article);
         return SUCCESS;
     }
 
 
     public List<TbArticle> checkType(Integer typeId) {
-        Conditions conditins = getConditions();
-        conditins.putEW("typeId", typeId);
-        return getList(conditins);
+        Conditions conditions = getConditions();
+        conditions.putEWIfOk("typeId", typeId);
+        return getList(conditions);
 
     }
 
