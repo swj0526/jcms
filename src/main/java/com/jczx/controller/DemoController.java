@@ -21,5 +21,8 @@ public class DemoController {
     public String list() {
         return "common/list";
     }
-
+    @RequestMapping("/toadd")
+    public String add() {
+        return "common/add";
+    }
 }
