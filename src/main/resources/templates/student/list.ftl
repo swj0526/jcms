@@ -50,7 +50,7 @@
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">时间范围</label>
-                    <div class="layui-input-inline" style="width: 120px">
+                    <div class="layui-input-inline" style="width: 120px;margin-right: 0px">
                         <select name="studentState" lay-verify="" id="labelIds">
                             <option value="">例:入学/毕业</option>
                             <option value="1">入学时间</option>
@@ -58,7 +58,7 @@
 
                         </select>
                     </div>
-                    <div class="layui-input-inline">
+                    <div class="layui-input-inline" style="margin: 0px">
                         <input type="text" name="admissionData" autocomplete="off" class="layui-input" id="time"placeholder="选择时间范围">
                     </div>
                 </div>

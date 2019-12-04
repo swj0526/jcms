@@ -3,9 +3,8 @@ package com.jczx.controller;
 import com.jczx.domain.TbRecruitDetail;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.DetailService;
-import com.jczx.service.RecruitService;
+import com.jczx.service.StudentService;
 import net.atomarrow.bean.ServiceResult;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,7 @@ public class DetailController {
     @Autowired
     private DetailService detailService;
     @Autowired
-    private RecruitService recruitService;
+    private StudentService studentService;
 
     /**
      * 添加
@@ -57,7 +56,7 @@ public class DetailController {
     @RequestMapping("/todetail")
     public String upFollow(Integer id, Map<String, Object> map) {
         map.put("id",id);
-        TbStudent student = recruitService.getStudent(id);
+        TbStudent student = studentService.getStudent(id);
         map.put("student",student);
         List<TbRecruitDetail> detail = detailService.listDetail(id);
         map.put("detail",detail);

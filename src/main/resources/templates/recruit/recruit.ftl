@@ -45,22 +45,22 @@
                             <input type="text" name="createTime" autocomplete="off" class="layui-input" id="a">
                         </div>
                     </div>
-                    <div class="layui-inline" style="width: 210px">
-                        <label class="layui-form-label" style="width: 100px">性别</label>
+                    <div class="layui-inline" style="width: 100px">
+
                         <div class="layui-inline" style="width: 100px">
                             <select name="sex" lay-verify="" id="sex">
-                                <option value="">请选择</option>
+                                <option value="">选性别</option>
                                 <option value="男">男</option>
                                 <option value="女">女</option>
                             </select>
                         </div>
                     </div>
-                    <div class="layui-inline" style="width: 210px">
-                        <label class="layui-form-label" style="width: 110px">渠道</label>
+                    <div class="layui-inline" style="width: 100px">
+
                         <div class="layui-inline" style="width: 100px">
                             <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
                                     url="/dictionary/list/channel/options" id="channelId">
-                                <option value="">来源渠道</option>
+                                <option value="">选渠道</option>
                             </select>
                         </div>
                     </div>

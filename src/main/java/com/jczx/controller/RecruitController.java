@@ -2,6 +2,7 @@ package com.jczx.controller;
 
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
+import com.jczx.service.StudentService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
@@ -22,6 +23,8 @@ import java.util.Map;
 public class RecruitController extends BaseController {
     @Autowired
     private RecruitService recruitService;
+    @Autowired
+    private StudentService studentService;
 
     /**
      * 到招生页面
@@ -58,8 +61,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/tomodify")
     public String toModify(Integer id, Map<String, Object> map) {
-        TbStudent student = recruitService.getStudent(id);
-
+        TbStudent student = studentService.getStudent(id);
         map.put("student", student);
         map.put("birth", student.getBirthDate().toString());
         map.put("createTime", student.getCreateTime().toString());

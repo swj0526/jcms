@@ -62,6 +62,9 @@ public class StudentService extends BaseService {
         return getList(conditions);
     }
 
+
+
+
     /**
      * 查询入学学生信息
      *
@@ -108,7 +111,7 @@ public class StudentService extends BaseService {
      * @return
      */
     public TbStudent getStudent(Integer id) {
-        return getById(getTableName(), id);
+        return getById(id);
     }
 
     /**
