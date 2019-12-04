@@ -3,16 +3,13 @@
 <head>
     <base href="${basePath}">
     <meta charset="utf-8">
-    <title>layui</title>
+    <title></title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <#--上传-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-   <#-- <link rel="stylesheet" href="/layui/css/public.css" media="all">-->
     <link rel="stylesheet" href="/recruit/css/label.css">
     <link rel="stylesheet" href="/static/common/css/all.css">
     <#--上传-->
@@ -21,7 +18,6 @@
     <script type="text/javascript" src="/static/common/js/all.js"></script>
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
     <script src="/recruit/js/label.js"></script>
     <script src="/recruit/js/xm.js"></script>
 
@@ -222,7 +218,7 @@
             </div>
             <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
                 <div class="layui-input-inline">
-                    <button class="layui-btn" type="button"  lay-submit="" id="addSubmit">立即提交</button>
+                    <button  type="button" class="layui-btn"  lay-submit="" id="addSubmit"lay-filter="demo1">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -261,6 +257,7 @@
 
         })
     });
+
 </script>
 
 <script src="/recruit/js/updata.js"></script>

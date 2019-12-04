@@ -8,7 +8,8 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
         laydate = layui.laydate;
 
     laydate.render({
-        elem: '#time',
+        elem: '#time'
+        ,range: true
 
     });
     var res;
@@ -168,7 +169,9 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
        var data = obj.data;
         var id = data.id;
         if (obj.event === 'edit') {//修改
+
             parent_tab("add" + id, "修改学生信息", "/student/tostudent?id=" + id);
+
         } else if (obj.event === 'delete') {
 
         } else if (obj.event === 'list') {
@@ -177,13 +180,8 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
 
             parent_tab("list" + id, "学生详情", "/student/information?id=" + id);
 
-            /* layer.open({
-                 type:2,
-                 content:'/student/information?id='+id,
-                 area:["100%","100%"],
-                 title:name
-             })*/
         }
+        tableIns.reload();
     });
 
     $("#add").click(function () {

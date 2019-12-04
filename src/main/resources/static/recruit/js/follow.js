@@ -91,7 +91,6 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     //修改弹窗
     var mainIndex;
-
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
@@ -102,8 +101,6 @@ layui.use(['form', 'table', 'laydate'], function () {
                 //获取
                 form.val("dataForm", data);
 
-                /*//刷新
-                tableIns.reload();*/
 
 
             }

@@ -59,6 +59,7 @@ public class RecruitController extends BaseController {
     @RequestMapping("/tomodify")
     public String toModify(Integer id, Map<String, Object> map) {
         TbStudent student = recruitService.getStudent(id);
+
         map.put("student", student);
         map.put("birth", student.getBirthDate().toString());
         map.put("createTime", student.getCreateTime().toString());
@@ -71,7 +72,6 @@ public class RecruitController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addRecruit(TbStudent student) {
-
         ServiceResult addRecruit = recruitService.addRecruit(student);
         return addRecruit;
     }
@@ -107,9 +107,9 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listRecruit(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
+    public ServiceResult listRecruit(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,sex, pager);
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, pager);
         return layuiList(list, pager);
 
 
@@ -128,9 +128,9 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render excel(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
+    public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex, pager);
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId, pager);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
 }

@@ -68,7 +68,7 @@ public class StudentService extends BaseService {
      * @param
      * @return
      */
-    public List<TbStudent> listStudent(String keywords,String  admissionData, Pager pager) {
+    public List<TbStudent> listStudent(String keywords,String  admissionData,Integer studentState, Pager pager) {
         Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)){
             conditions.parenthesesStart();
@@ -79,11 +79,20 @@ public class StudentService extends BaseService {
             conditions.putLIKE("studentPhone",keywords);
             conditions.parenthesesEnd();
         }
-            conditions.putEWIfOk("admissionData",admissionData);
+        if (studentState!=null){
+            String state=admissionData.substring(0,10);
+            String end=admissionData.substring(13);
+            if (studentState==TbStudent.STATE_ENTRANCE){//在校
+                conditions.putBW("admissionData",state,end);
+            }
+            if (studentState==TbStudent.STATE_GRADUATE){//毕业
+                conditions.putBW("graduationDate",state,end);
+            }
+        }
+
         conditions.putEWIfOk("state", TbStudent.STATE_ENTRANCE);
         if (pager==null){
             List<TbStudent> list = getList(conditions);
-            System.out.println("++++++++++++");
             return list;
         }
         pager.setDataTotal(getCount(conditions));
@@ -136,9 +145,9 @@ public class StudentService extends BaseService {
      * @param
      * @return
      */
-    public InputStream studentExcel(String keywords,String  admissionData ,Pager pager) {
+    public InputStream studentExcel(String keywords,String  admissionData ,Integer studentState,Pager pager) {
         ExcelDatas excelDatas = new ExcelDatas();
-        List<TbStudent> list = listStudent(keywords, admissionData, null);
+        List<TbStudent> list = listStudent(keywords, admissionData, studentState,null);
         excelDatas.addStringArray(0, 0, new String[]{"学号","姓名", "民族", "性别", "出生年月", "年龄","身份证号", "联系方式", "入学时间", "毕业时间", "籍贯", "qq", "微信"});
         excelDatas.addObjectList(1, 0, list, new String[]{"studentNumber","name", "nation", "sex", "birthDate","age", "IDCard", "studentPhone","admissionData", "graduationDate", "nativePlace","qq", "weChat"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);

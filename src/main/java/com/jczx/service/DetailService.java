@@ -2,11 +2,8 @@ package com.jczx.service;
 
 import com.jczx.domain.TbRecruitDetail;
 import com.jczx.system.SC;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -43,7 +40,6 @@ public class DetailService extends BaseService {
         Conditions conditions =new Conditions(getTableName());
         conditions.putEWIfOk("studentId",studentId);
         List<TbRecruitDetail> list = getList(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
 
     }

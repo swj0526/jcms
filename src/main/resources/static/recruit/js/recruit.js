@@ -100,8 +100,17 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         reload: function () {
             var demoReload = $('#demoReload');
             var sex = $("#sex");
-            var labelIds = $("#labelIds");
             var createTime = $("#a");
+            let listLabel = new Array();
+            let labels = selectcheckbox.getValue().valueOf();//获取复选框的值
+            $.each(labels, function (k, v) {
+                $.each(v, function (k1, v1) {
+                    if (k1 == "id") {
+                        listLabel.push(v1);
+                    }
+                });
+            });
+            let label = listLabel.join(",");
 
             //执行重载
             table.reload('testReload', {
@@ -110,9 +119,11 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 }
                 , where: {
                     'keywords': demoReload.val(),
-                    'labelIds': labelIds.val(),
+                    'labelIds': label,
                     'sex': sex.val(),
-                    'createTime':createTime.val()
+                    'createTime':createTime.val(),
+                    'channelId':$("#channelId").val(),
+
                 }
             }, 'data');
         }
@@ -155,7 +166,6 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
     //添加招生信息
     $("#addSubmit").click(function () {
-
         var seList = new Array();
         var selectArr = demo1.getValue().valueOf();//获取复选框的值
         $.each(selectArr, function (k, v) {
@@ -187,10 +197,10 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     //修改招生信息
     $("#modifySubmit").click(function () {
         var seList = new Array();
-        var selectArr = demo1.getValue().valueOf();
+        let selectArr = modifydiv.getValue().valueOf();
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
-                if (k1 == "value") {
+                if (k1 == "id") {
                     seList.push(v1);
                 }
             });
@@ -223,10 +233,11 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
         });
     });
+
     //添加标签
     $("#addM").click(function () {
         var label = $("#data").serialize();
-        alert(label);
+
         $.post('/dictionary/add/label',label,function () {
             layer.close(index);
         })
@@ -271,5 +282,40 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         }
     });
 
+    var selectcheckbox = xmSelect.render({
+        el: '#selectcheckbox',
+        language: 'zn',
+        filterable: true,
+        searchTips: '搜索标签',
+        tips: '请选择意向',
+        height: '500px',
+        code:0,
+        prop: {
+            name: 'name',
+            value: 'id',
+        },
+        model: {
+            label: {
+                type: 'block',
+                block: {
+                    //最大显示数量, 0:不限制
+                    showCount: 1,
+                    //是否显示删除图标
+                    showIcon: true,
+                }
+            }
+        },
 
+    })
+    axios({
+        method: 'get',
+        url: '/dictionary/list/label',
+    }).then(response => {
+        var res = response.data;
+        selectcheckbox.update({
+            data: res,
+        })
+    });
 });
+
+

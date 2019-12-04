@@ -23,7 +23,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">意向</label>
             <div class="layui-inline" style="width: 190px">
-                <div id="demo1" class="xm-select-demo" style=" width:190px";></div>
+                <div id="demo" class="xm-select-demo" style=" width:190px";></div>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -42,5 +42,18 @@
         </div>
     </form>
 </div>
+<script>
+
+    var demo = xmSelect.render({
+        el: '#demo',
+        language: 'zn',
+        data: [
+            {name: '有意向', value: 7},
+            {name: '还在考虑', value: 8},
+            {name: '完全不考虑', value: 9},
+
+        ]
+    })
+</script>
 </body>
 </html>

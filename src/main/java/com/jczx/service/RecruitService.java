@@ -78,7 +78,7 @@ public class RecruitService extends BaseService {
     /**
      * 查询
      */
-    public List<TbStudent> listRecruit(String keywords, String labelIds, String createTime, String sex, Pager pager) { //模糊关键字keywords查询用or
+    public List<TbStudent> listRecruit(String keywords, String labelIds, String createTime,Integer channelId, String sex, Pager pager) { //模糊关键字keywords查询用or
         Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -98,6 +98,9 @@ public class RecruitService extends BaseService {
 
         if (StringUtil.isNotBlank(labelIds)) {
             conditions.putLIKE("labelIds", "," + labelIds + ",");
+        }
+        if (channelId!=null) {
+            conditions.putLIKE("channelId", channelId);
         }
         conditions.putEWIfOk("createTime",createTime);
         conditions.putEWIfOk("sex", sex);
@@ -120,9 +123,9 @@ public class RecruitService extends BaseService {
      * @param pager
      * @return
      */
-    public InputStream studentExcel(String keywords,String createTime, String labelIds, String sex, Pager pager) {
+    public InputStream studentExcel(String keywords,String createTime, String labelIds, String sex, Integer channelId,Pager pager) {
         ExcelDatas excelDatas = new ExcelDatas();
-        List<TbStudent> list = listRecruit(keywords,createTime, labelIds, sex, pager);//调用查询信息
+        List<TbStudent> list = listRecruit(keywords,createTime, labelIds,channelId, sex, pager);//调用查询信息
         excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "意向", "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
         excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelIds", "birthDate", "school", "studentPhone", "qq", "weChat", "channelId"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);

@@ -10,7 +10,7 @@ var all_tab = function (id, title, src) {
         if ($("[lay-id=" + id + "]").length == 0) {//选判断是否存在该选项卡
             element.tabAdd('demo', {
                 title: title,
-                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%"></iframe>',
+                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%" id="' + id + '"></iframe>',
                 id: id//实际使用一般是规定好的id，这里以时间戳模拟下
             });
         }
@@ -34,7 +34,7 @@ var parent_tab = function (id, title, src) {
         if (parent.$("[lay-id=" + id + "]").length == 0) {//选判断是否存在该选项卡
             parent.layui.element.tabAdd('demo', {
                 title: title,
-                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%"></iframe>',
+                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%" id="' + id + '"></iframe>',
                 id: id//实际使用一般是规定好的id，这里以时间戳模拟下
             });
         }
@@ -48,7 +48,7 @@ var parent_tab = function (id, title, src) {
         });
     });
 }
-//关闭选项卡并定位到指定的选项卡
+//关闭选项卡并刷新指定的选项卡
 var close_tab = function (oldId, newId, title, src) { //old需要关闭的页面,newId需要去定位新的页面
     layui.use(['element', 'jquery'], function () {
         var element = layui.element;
@@ -56,12 +56,14 @@ var close_tab = function (oldId, newId, title, src) { //old需要关闭的页面
         if (parent.$("[lay-id=" + newId + "]").length == 0) {//选判是否有新的tab页存在
             parent.layui.element.tabAdd('demo', {
                 title: title,
-                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%"></iframe>',
+                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%" data-frameid="' + id + '"></iframe>',
                 id: newId//实际使用一般是规定好的id，这里以时间戳模拟下
             });
+
         }
         parent.layui.element.tabChange('demo', newId); //切换到tab选项卡
-        parent.layui.element.tabDelete('demo', oldId);//关闭旧的tab
+        parent.layui.element.tabDelete('demo', oldId);//关闭旧的tab页
+
         //Hash地址的定位
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);
@@ -115,8 +117,24 @@ layui.use(['jquery'], function () {
         sel();
     }
 });
+//输入框模糊查询
+var input_sel = function (src) {
+    layui.use(['jquery'], function () {
+        var $ = layui.jquery;
+        var data;
+        $.post(src, function (result) {
+            result = data;
+        });
+        $(".input-box").wxSelect({
+            data: data
+        });
 
-//专供专业班级的搜索使用
+
+    });
+
+}
+
+//专供专业班级的下拉选
 var sel_garade = function () {
     layui.use(['table', 'layer', 'jquery', 'form'], function () {
         var table = layui.table;
@@ -146,14 +164,3 @@ var sel_garade = function () {
 
     });
 }
-//autoComplete组件
-$(function () {
-    var dom =$('[name="autoComplete"]');
-    var url=dom.attr("url");
-    $.post(url, function (result) {
-        $.each(result, function (k, v) {
-            dom.append("<option value='" + v.optionValue + "'>" + v.optionText + "</option>");
-        });
-    });
-
-});

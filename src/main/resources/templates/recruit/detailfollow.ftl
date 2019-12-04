@@ -191,9 +191,9 @@
                 value: new Date()
 
             });
-
             var index;
             var url;
+            //添加弹出框
             $("#butfollow").click(function () {
                 index = layer.open({
                     type: 1,
@@ -202,7 +202,6 @@
                     area: ['720px', '350'], //设置宽高
                     content: $("#tabfollow"),
                     success: function () {
-
                        url = '/details/add'
                     }
                 });
@@ -252,19 +251,8 @@
                 var recruitDetail = $("#formdata").serialize();
                 var studentId = $("#butA").val();
                 $.post(url, recruitDetail + "&studentId=" + studentId + "&labelIds=" + labe, function (result) {
-                    if (result) {
                         layer.close(index);
-                        $.each(result, function (index, value) {
-                           /* $("#u").append('<li><div class="sd"><span>跟进时间:' + value.followTime + '</span></div></li>');
-                            $("#u").append('<li><div class="sd"><span>跟进意向:' + value.labelIds + '</span></div></li>');
-                            $("#u").append('<li><div class="sd"><span>备注:' + value.remark + '</span></div></li>');*/
-
-                        })
                         location.reload();
-
-
-                    }
-
                 })
             });
 
