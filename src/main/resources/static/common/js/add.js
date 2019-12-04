@@ -5,12 +5,11 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
         , table = layui.table;
     //日期,如果需要时分秒的话,加上(type: 'datetime')
     laydate.render({
-        elem: '#date1'
+        elem: '#date'
     });
     //日期时间范围
     laydate.render({
         elem: '#scopeDate'
-        , type: 'datetime'
         , range: true
     });
 
@@ -23,19 +22,19 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
     });
 
     //表单赋值
-    layui.$('#LAY-component-form-setval').on('click', function () {
+    layui.$('#giveBtn').on('click', function () {
         form.val('example', {
             "name": "贤心" // "name": "value"
             , "interest": 1
             , "date": '2019-12-12'
-            , "scopeDate": '2019-12-21 00:00:00 - 2020-01-16 00:00:00'
+            , "scopeDate": '2019-12-21  - 2020-01-16'
             , "remark": '我爱layui'
         });
 
     });
 
     //表单取值
-    layui.$('#LAY-component-form-getval').on('click', function () {
+    layui.$('#getBtn').on('click', function () {
         var data = form.val('example');
         alert(JSON.stringify(data));
     });

@@ -3,6 +3,9 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
         , layer = layui.layer
         , laydate = layui.laydate
         , table = layui.table;
+    var currPage = 1;//定义一个当前页面的全局变量,表格刷新的时候使用
+    var res; //当前页所有的数据
+    var data; //定义一个全局的data变量,可以获取当前点击的数据
     //日期,如果需要时分秒的话,加上(type: 'datetime')
     laydate.render({
         elem: '#date1'
@@ -15,7 +18,7 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
     });
     //表格
 
-    table.render({
+    var tableIns = table.render({
         elem: '#infoTable'
         , data: [{
             "id": "10001"
@@ -106,6 +109,127 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
             , "ip": "192.168.0.8"
             , "logins": "106"
             , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
+        }, {
+            "id": "10008"
+            , "username": "贤心"
+            , "email": "xianxin@layui.com"
+            , "sex": "男"
+            , "city": "浙江杭州"
+            , "sign": "人生恰似一场修行"
+            , "experience": "106"
+            , "ip": "192.168.0.8"
+            , "logins": "106"
+            , "joinTime": "2016-10-14"
         }]
         , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
         , defaultToolbar: [{
@@ -142,18 +266,46 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
             , {field: 'joinTime', title: '加入时间', width: 120}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]
-        , page: true
-    });
+        , page: true,
+        done: function (rest, curr, count) { //当前页表格的数据设置在这里
+            currPage = curr;  //给当前页赋值
+            res = rest;
+            console.log(currPage);
+            console.log(rest);
 
+        }, parseData: function (res) { //res 即为原始返回的数据
+            return {
+                "code": "0",
+                "count": res.pager.dataTotal,
+                data: res.result
+            }
+        },
+        id: 'followRender'
+    });
+    // 监听搜索操作
+    form.on('submit(data-search-btn)', function (data) {
+        //执行搜索重载
+        table.reload('followRender', {
+            page: {
+                curr: currPage  //刷新当前页
+            },
+            where: {
+                /*  keywords: keywords*/ //搜索条件
+
+            }
+        }, 'data');
+
+
+    });
     //头工具栏事件
     table.on('toolbar(infoTable)', function (obj) {
         var checkStatus = table.checkStatus(obj.config.id);
         switch (obj.event) {
             case 'addBtn':
-               window.location.href="/common/toadd";
+                window.location.href = "/common/toadd";
                 break;
             case 'refreshBtn':
-                layer.alert("刷新表格");
+                tableIns.reload();
                 break;
             case 'enterBtn':
                 layer.alert("导入excel表格");
@@ -168,7 +320,7 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
     });
 
     //监听行工具事件
-    table.on('tool(test)', function (obj) {
+    table.on('tool(infoTable)', function (obj) {
         var data = obj.data;
         //console.log(obj)
         if (obj.event === 'del') {

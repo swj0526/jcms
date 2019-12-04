@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>列表页</title>
     <#include "../common/common.ftl"/>
 </head>
 <body>
@@ -13,14 +10,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">姓名<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input type="text" name="name" lay-verify="keywords" autocomplete="off"
+                <input type="text" name="name" required  lay-verify="required" autocomplete="off"
                         class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">爱好<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <select name="interest" lay-filter="aihao">
+                <select name="interest" lay-filter="aihao" required  lay-verify="required">
                     <option value="">请选择爱好</option>
                     <option value="0">写作</option>
                     <option value="1" >阅读</option>
@@ -35,7 +32,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">日期选择<span class="star">*</span></label>
                 <div class="layui-input-block">
-                    <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
+                    <input type="text" name="date" id="date" autocomplete="off" class="layui-input" required  lay-verify="required">
                 </div>
             </div>
         </div>
@@ -43,7 +40,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">日期范围<span class="star">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="scopeDate">
+                    <input type="text" class="layui-input" id="scopeDate" name="scopeDate" required  lay-verify="required">
                 </div>
             </div>
 
@@ -56,8 +53,8 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-setval">赋值</button>
-                <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-getval">取值</button>
+                <button type="button" class="layui-btn layui-btn-normal" id="giveBtn">赋值</button>
+                <button type="button" class="layui-btn layui-btn-normal" id="getBtn">取值</button>
                 <button type="submit" class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
             </div>
         </div>
