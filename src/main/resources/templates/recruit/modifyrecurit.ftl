@@ -96,7 +96,7 @@
             <div class="layui-input-inline">
                 <div class="layui-inline" style="width: 190px">
                     <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
-                            url="/dictionary/list/channel/options" selectId="${student.channelId}">
+                            url="/dictionary/list/channel/options" selectedId="${student.channelId}">
 
                     </select>
 

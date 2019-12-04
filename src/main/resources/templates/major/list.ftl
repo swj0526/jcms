@@ -2,11 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>班级-专业管理</title>
     <#include "../common/common.ftl"/>
-    <script type="text/javascript" src="/major/js/list.js"></script>
     <style>
         .layui-form-label {
             margin-left: 25px;
@@ -133,10 +129,11 @@
                 </div>
             </div>
         </form>
-
     </div>
-    <fieldset class="layui-elem-field layuimini-search">
-        <div style="margin: 10px 10px 10px 10px">
+
+
+    <fieldset class="layui-elem-field" style="padding: 5px;">
+
             <form class="layui-form layui-form-pane" action="/major/tolist" method="post">
                 <div class="layui-form-item">
                     <div class="layui-inline">
@@ -148,11 +145,11 @@
                     </div>
 
                     <button class="layui-btn layui-btn-normal" type="submit" id="search">查询</button>
-                    <button class="layui-btn data-add-btn" type="button" id="add">添加专业信息</button>
+                  <#--  <button class="layui-btn data-add-btn" type="button" id="add">添加专业信息</button>-->
 
                 </div>
             </form>
-        </div>
+
     </fieldset>
 
     <table class="layui-table">
@@ -183,4 +180,5 @@
     </table>
 </div>
 </body>
+<script type="text/javascript" src="/major/js/list.js"></script>
 </html>
