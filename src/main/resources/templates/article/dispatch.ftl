@@ -5,10 +5,10 @@
 		<meta charset="utf-8">
 		<title>发布文章</title>
 		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
-		<link rel="stylesheet" href="/all.css" media="all">
+		<link rel="stylesheet" href="/static/common/css/all.css" media="all">
 		<script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="/layui/layui.js"></script>
-		<script type="text/javascript" src="/all.js"></script>
+		<script type="text/javascript" src="/static/common/js/all.js"></script>
 		<script type="text/javascript" src="/article/js/dispatch.js"></script>
 		<script type="text/javascript" src="/article/js/xm.js"></script>
 	</head>

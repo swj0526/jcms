@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>班级-专业管理</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/all.css" media="all">
+    <link rel="stylesheet" href="/static/common/css/all.css" media="all">
     <script type="text/javascript" src="/layui/layui.js"></script>
     <script type="text/javascript" src="/major/js/list.js"></script>
     <style>

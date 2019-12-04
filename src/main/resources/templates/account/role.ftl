@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
     <script type="text/javascript" src="/layui/layui.js">
     </script>
-    <script type="text/javascript" src="/all.js"></script>
+    <script type="text/javascript" src="/static/common/js/all.js"></script>
     <script type="text/javascript" src="/account/js/role.js"></script>
 
 </head>

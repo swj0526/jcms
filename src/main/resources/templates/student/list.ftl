@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <script src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/all.js"></script>
+    <script type="text/javascript" src="/static/common/js/all.js"></script>
     <script src="/student/js/list.js"></script>
 
 </head>

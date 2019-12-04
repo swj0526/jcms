@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
-    <link rel="stylesheet" type="text/css" href="/all.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/common/css/all.css"/>
     <script type="text/javascript" src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/all.js"></script>
+    <script type="text/javascript" src="/static/common/js/all.js"></script>
     <script type="text/javascript" src="/money/js/modify.js"></script>
 
 </head>

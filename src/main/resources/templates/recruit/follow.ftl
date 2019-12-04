@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/all.css">
+    <link rel="stylesheet" href="/static/common/css/all.css">
     <script src="/layui/layui.js" charset="utf-8"></script>
     <script src="/recruit/js/follow.js"></script>
     <style>

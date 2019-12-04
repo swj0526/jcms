@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/all.css" media="all">
+    <link rel="stylesheet" href="/static/common/css/all.css" media="all">
     <script src="/layui/layui.js"></script>
-    <script src="/all.js"></script>
+    <script src="/static/common/js/all.js"></script>
     <script src="/integral/js/subtractPage.js"></script>
 </head>
 <body>

@@ -4,11 +4,7 @@
     <base href="${basePath}">
     <meta charset="UTF-8">
     <title>账号管理的选项卡</title>
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
-    <script type="text/javascript" src="/layui/layui.js">
-    </script>
-    <script src="/jquery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/all.js"></script>
+    <#include "../common/common.ftl"/>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/listStudent.js">
     </script>
@@ -48,7 +44,6 @@
                                     </div>
                                     <div class="layui-inline">
                                         <label class="layui-form-label">专业-班级</label>
-
                                         <div class="layui-input-inline">
                                             <div class="layui-inline">
                                                 <select name="major" lay-verify="" id="gradeSelect" required

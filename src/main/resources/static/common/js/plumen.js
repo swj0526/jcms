@@ -33,21 +33,6 @@
 						zIndex:2
 					})
 					$(_this).css({position:"relative",width:w + "px"}),
-					$(_this).append("<span class='wxSelect_label'></span>")
-					$(_this).find(".wxSelect_label").css({
-						display: "inline-block",
-						width:"0",
-					    height:"0",
-					    borderWidth:"8px 8px 0",
-					    borderStyle:"solid",
-					    borderColor:"#6c6c6c transparent transparent",
-						cursor: "pointer",
-						position: "absolute",
-						right: "3px",
-						top: "13px",
-						borderRadius: '3px',
-						zIndex:3
-					})
 					$(_this).append('<div class="dataBox"><ul class="dataList"></ul></div>');
 					$(_this).find(".dataBox").css({
 						width: "100%",

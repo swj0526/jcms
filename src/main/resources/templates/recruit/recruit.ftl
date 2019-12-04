@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
-    <link rel="stylesheet" href="/all.css">
+    <link rel="stylesheet" href="/static/common/css/all.css">
     <#--上传-->
     <script src="/jquery/jquery-3.3.1.min.js"></script>
     <script src="/recruit/js/label.js"></script>
@@ -151,7 +151,7 @@
 <#--上传文件-->
 <script src="/layui/layui.js" charset="utf-8"></script>
 <script src="/recruit/js/recruit.js"></script>
-<script src="/all.js"></script>
+<script src="/static/common/js/all.js"></script>
 <script src="/recruit/js/updata.js"></script>
 </body>
 <script>

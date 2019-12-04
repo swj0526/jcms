@@ -48,7 +48,7 @@ var parent_tab = function (id, title, src) {
         });
     });
 }
-//关闭选项卡并刷新指定的选项卡
+//关闭选项卡并定位到指定的选项卡
 var close_tab = function (oldId, newId, title, src) { //old需要关闭的页面,newId需要去定位新的页面
     layui.use(['element', 'jquery'], function () {
         var element = layui.element;
@@ -115,24 +115,8 @@ layui.use(['jquery'], function () {
         sel();
     }
 });
-//输入框模糊查询
-var input_sel = function (src) {
-    layui.use(['jquery'], function () {
-        var $ = layui.jquery;
-        var data;
-        $.post(src, function (result) {
-            result = data;
-        });
-        $(".input-box").wxSelect({
-            data: data
-        });
 
-
-    });
-
-}
-
-//专供专业班级的下拉选
+//专供专业班级的搜索使用
 var sel_garade = function () {
     layui.use(['table', 'layer', 'jquery', 'form'], function () {
         var table = layui.table;
@@ -162,3 +146,14 @@ var sel_garade = function () {
 
     });
 }
+//autoComplete组件
+$(function () {
+    var dom =$('[name="autoComplete"]');
+    var url=dom.attr("url");
+    $.post(url, function (result) {
+        $.each(result, function (k, v) {
+            dom.append("<option value='" + v.optionValue + "'>" + v.optionText + "</option>");
+        });
+    });
+
+});
