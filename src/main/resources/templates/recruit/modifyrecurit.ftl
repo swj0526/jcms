@@ -10,15 +10,9 @@
     <#--上传-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
-    <#--上传-->
-    <script src="/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/recruit/js/label.js"></script>
-    <script src="/recruit/js/xm.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style type="text/css">
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -101,14 +95,11 @@
             <label class="layui-form-label">来源渠道</label>
             <div class="layui-input-inline">
                 <div class="layui-inline" style="width: 190px">
-                    <select name="channelName" lay-verify="">
-                        <option value="${student.channelId}">${student.channelName}</option>
-                        <option value="010">学校网站</option>
-                        <option value="011">自己找上门</option>
-                        <option value="012">qq</option>
-                        <option value="013">微信</option>
-                        <option value="014">介绍</option>
+                    <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
+                            url="/dictionary/list/channel/options" selectId="${student.channelId}">
+
                     </select>
+
                 </div>
             </div>
         </div>
@@ -132,10 +123,15 @@
         </div>
     </div>
 </div>
-<script src="/layui/layui.js" charset="utf-8"></script>
+
+
+<script src="/recruit/js/label.js"></script>
+<script src="/recruit/js/xm.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/recruit/js/recruit.js"></script>
 
 <script>
+    sel();
     var modifydiv = xmSelect.render({
         el: '#modifydiv',
         language: 'zn',
@@ -166,7 +162,5 @@
     };
 
 </script>
-
-<script src="/recruit/js/updata.js"></script>
 </body>
 </html>

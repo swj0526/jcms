@@ -12,10 +12,6 @@
     <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/recruit/css/label.css">
     <link rel="stylesheet" href="/common/css/all.css">
-
-
-    <#--<script src="/all.js"></script>-->
-
     <style type="text/css">
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -225,9 +221,8 @@
 
 <#--上传-->
 
-<script src="/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="/common/js/all.js"></script>
 
+<script type="text/javascript" src="/common/js/all.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
