@@ -43,7 +43,7 @@ public class RecruitController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/data")
+    @RequestMapping("/todata")
     private String recruitData() {
         return "recruit/recruitdata";
     }

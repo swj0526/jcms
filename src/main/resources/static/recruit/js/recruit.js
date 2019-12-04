@@ -6,8 +6,9 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     //修改弹窗
     var res;
     var mainIndex;
+    //时间
     laydate.render({
-        elem: '#a' //指定元素
+        elem: '#createTime' //指定元素
 
     });
     laydate.render({
@@ -17,7 +18,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     laydate.render({
         elem: '#dat' //指定元素
     });
-
+//渲染表格
     var tableIns = table.render({
         elem: '#currentTableId'
         , url: '/recruit/list'
@@ -281,7 +282,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             });
         }
     });
-
+//下拉复选赋值
     var selectcheckbox = xmSelect.render({
         el: '#selectcheckbox',
         language: 'zn',
