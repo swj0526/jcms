@@ -189,7 +189,7 @@
                 <div style="display: inline-block;float: left" style="height: 99px">
                     <label class="layui-form-label">意向<span  class="star">*</span></label>
                     <div class="layui-inline">
-                        <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:510px"
+                        <div id="addlabel" class="xm-select-demo" required lay-verify="required" style=" width:510px"
                              ;></div>
                     </div>
                     <div class="layui-inline">
@@ -230,8 +230,8 @@
 
 <script>
     sel();
-    var demo1 = xmSelect.render({
-        el: '#demo1',
+    var addlabel = xmSelect.render({
+        el: '#addlabel',
         language: 'zn',
         filterable: true,
         searchTips: '搜索标签',
@@ -249,7 +249,7 @@
         url: '/dictionary/list/label',
     }).then(response => {
         var res = response.data;
-        demo1.update({
+        addlabel.update({
             data: res,
 
         })

@@ -168,7 +168,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     //添加招生信息
     $("#addSubmit").click(function () {
         var seList = new Array();
-        var selectArr = demo1.getValue().valueOf();//获取复选框的值
+        var selectArr = addlabel.getValue().valueOf();//获取复选框的值
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
                 if (k1 == "value") {
