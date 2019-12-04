@@ -5,9 +5,7 @@
     <base href="${basePath}">
     <meta charset="UTF-8">
     <title>班级-专业管理</title>
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/static/common/css/all.css" media="all">
-    <script type="text/javascript" src="/layui/layui.js"></script>
+    <#include "../common/common.ftl"/>
     <script type="text/javascript" src="/major/js/list.js"></script>
     <style>
         .layui-form-label {
