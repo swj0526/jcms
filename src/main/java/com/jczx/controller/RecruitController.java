@@ -74,6 +74,7 @@ public class RecruitController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addRecruit(TbStudent student) {
+
         ServiceResult addRecruit = recruitService.addRecruit(student);
         return addRecruit;
     }
