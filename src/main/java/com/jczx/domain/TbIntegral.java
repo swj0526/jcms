@@ -1,7 +1,6 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
-import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +8,9 @@ import java.util.Date;
 
 /**
  * 学生积分列表
+ *
  * @author 池炯武
  * @create 2019-11-17 12:57
- *
  */
 @Component
 public class TbIntegral extends Domain {
@@ -22,11 +21,14 @@ public class TbIntegral extends Domain {
     private Date createTime;//操作时间
 
     public String getStudentName() {
-        return CACHE.getSemesterName(studentId);//获取学生姓名
+        return CACHE.getStudentName(studentId);//获取学生姓名
     }
+
     public String getMajorName() {
-        return CACHE.getMajorName(studentId);//学生id
+        TbStudent student = CACHE.getStudent(studentId);
+        return CACHE.getMajorName(student.getMajorId());//学生id
     }
+
     public Integer getId() {
         return id;
     }

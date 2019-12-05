@@ -1,9 +1,7 @@
 package com.jczx.domain;
 
-import com.jczx.service.IntegralItemService;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -101,12 +99,6 @@ public class TbIntegralHistory extends Domain {
         this.createTime = createTime;
     }
 
-    /*public String getRemark() {
-        return remark;
-    }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }*/
 }
 
