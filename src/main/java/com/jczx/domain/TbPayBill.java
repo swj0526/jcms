@@ -20,8 +20,6 @@ public class TbPayBill extends Domain {
     private String Instalment;
     @NotCreate
     private String name;//学生姓名
-    @NotCreate
-    private String URL;//附件地址//#todo 丛
     private Integer id;
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
@@ -62,15 +60,6 @@ public class TbPayBill extends Domain {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getURL() {
-        return URL;
-    }
-
-    public void setURL(String URL) {
-        this.URL = URL;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -241,18 +230,5 @@ public class TbPayBill extends Domain {
     public String getSemesterName(){
 
         return CACHE.getSemesterName(semesterId);
-    }
-    public String getSex(){//#todo 丛
-
-        return "男";
-    }
-    public String getBirthDate(){//#todo 丛
-
-        return "1992-12-10";
-    }
-    public String getStudentPhone(){//#todo 丛
-
-
-        return "15065110660";
     }
 }

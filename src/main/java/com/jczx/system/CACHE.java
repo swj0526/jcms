@@ -3,9 +3,11 @@ package com.jczx.system;
 
 import com.jczx.domain.TbDictionary;
 import com.jczx.domain.TbMajor;
+import com.jczx.domain.TbStudent;
 import com.jczx.domain.TbTeacher;
 import com.jczx.service.DictionaryService;
 import com.jczx.service.MajorService;
+import com.jczx.service.StudentService;
 import com.jczx.service.TeacherService;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.RandomSn;
@@ -29,19 +31,26 @@ public class CACHE {
     }
 
     /**
-     * 字典表的service,此处需要具体的service
+     * 具体的service
      *
      * @return
      */
     private static Service getDictionaryService() {
         return SpringContextUtil.getBean(DictionaryService.class);
     }
+
     private static Service getMajorService() {
         return SpringContextUtil.getBean(MajorService.class);
     }
+
     private static Service getTeacherService() {
         return SpringContextUtil.getBean(TeacherService.class);
     }
+
+    private static Service getStudentService() {
+        return SpringContextUtil.getBean(StudentService.class);
+    }
+
     private static String PREFEX = RandomSn.getLowSn(3);
 
     /**
@@ -176,6 +185,7 @@ public class CACHE {
         }
         return names;
     }
+
     /**
      * 专业-班级对象
      *
@@ -200,10 +210,11 @@ public class CACHE {
 
     /**
      * 获取班级的名称
+     *
      * @param majorId
      * @return
      */
-    public static String getMajorName(Integer majorId){
+    public static String getMajorName(Integer majorId) {
         if (majorId == null || majorId == 0) {
             return "";
         }
@@ -213,6 +224,7 @@ public class CACHE {
         }
         return major.getName();
     }
+
     /**
      * 老师对象
      *
@@ -234,8 +246,10 @@ public class CACHE {
         getUtil().set(getKey(TbTeacher.class.getSimpleName(), id), teacherDB);
         return teacherDB;
     }
+
     /**
      * 获取老师名字
+     *
      * @param teacherId
      * @return
      */
@@ -248,6 +262,44 @@ public class CACHE {
             return "";
         }
         return teacher.getName();
+    }
+
+    /**
+     * 学生对象
+     *
+     * @param id
+     * @return
+     */
+    public static TbStudent getStudent(Integer id) {
+        if (id == 0 || id == null) {
+            return null;
+        }
+        TbStudent student = (TbStudent) getUtil().get(getKey(TbStudent.class.getSimpleName(), id));
+        if (student != null) {
+            return student;
+        }
+        TbStudent studentDB = getDictionaryService().getById(TbStudent.class.getSimpleName(), id);
+        if (studentDB == null) {
+            return null;
+        }
+        getUtil().set(getKey(TbStudent.class.getSimpleName(), id), studentDB);
+        return studentDB;
+    }
+
+    /**
+     * 获取学生名字
+     * @param studentId
+     * @return
+     */
+    public static String getStudentName(Integer studentId) {
+        if (studentId == null || studentId == 0) {
+            return "";
+        }
+        TbStudent student = getStudent(studentId);
+        if (student == null) {
+            return "";
+        }
+        return student.getName();
     }
 
     /**
@@ -266,97 +318,4 @@ public class CACHE {
         getUtil().removeAll();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* *//**
-     * 返回渠道的名称
-     *
-     * @param channelId
-     * @return
-     *//*
-     */
-
-    /*
-     *//**
-     * 缴费类型
-     *
-     * @param typeId
-     * @return
-     *//*
-    public static String getTypeName(Integer typeId) {
-        if (typeId == null || typeId == 0) {
-            return "";
-        }
-        ValueOperations<String, String> valueOperations = getRedisTemplate().opsForValue();
-        String typeName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), typeId));
-        if (StringUtil.isNotBlank(typeName)) {
-            return typeName;
-        }
-        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, typeId);
-        if (dictionary == null) {
-            return "";
-        }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), typeId), dictionary.getName());
-        System.out.println(dictionary.getName());
-        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), typeId));
-    }
-
-    *//**
-     * 缴费方式
-     *
-     * @param paymentMethodId
-     * @return
-     *//*
-    public static String getPaymentMethodName(Integer paymentMethodId) {
-        if (paymentMethodId == null || paymentMethodId == 0) {
-            return "";
-        }
-        ValueOperations<String, String> valueOperations = getRedisTemplate().opsForValue();
-        String methodeName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), paymentMethodId));
-        if (StringUtil.isNotBlank(methodeName)) {
-            return methodeName;
-        }
-        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, paymentMethodId);
-        if (dictionary == null) {
-            return "";
-        }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), paymentMethodId), dictionary.getName());
-        System.out.println(dictionary.getName());
-        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), paymentMethodId));
-    }
-
-    public static String getSemesterName(Integer semesterId) {
-        if (semesterId == null || semesterId == 0) {
-            return "";
-        }
-        ValueOperations<String, String> valueOperations = getRedisTemplate().opsForValue();
-        String semestereName = valueOperations.get(getKey(TbDictionary.class.getSimpleName(), semesterId));
-        if (StringUtil.isNotBlank(semestereName)) {
-            return semestereName;
-        }
-        TbDictionary dictionary = getDictionaryService().getById(TbDictionary.class, semesterId);
-        if (dictionary == null) {
-            return "";
-        }
-        valueOperations.set(getKey(TbDictionary.class.getSimpleName(), semesterId), dictionary.getName());
-        System.out.println(dictionary.getName());
-        return valueOperations.get(getKey(TbDictionary.class.getSimpleName(), semesterId));
-    }*/
 }
