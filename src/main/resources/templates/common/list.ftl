@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>列表页</title>
     <#include "../common/common.ftl"/>
 </head>
 <body>

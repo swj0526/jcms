@@ -43,7 +43,7 @@
             <label class="layui-form-label">性别</label>
             <div class="layui-inline">
                 <div class="layui-inline" style="width: 190px">
-                    <select name="sex" lay-verify="" id="selectsex">
+                    <select name="sex" lay-verify="" id="select1">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
@@ -128,25 +128,23 @@
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+<script src="/recruit/js/recruit.js"></script>
 
 <script>
     sel();
-    //赋值
-    //下拉复选赋值
     var modifydiv = xmSelect.render({
         el: '#modifydiv',
         language: 'zn',
         filterable: true,
         searchTips: '搜索标签',
-        tips: '请选择意向',
+        tips: '选择意向',
         height: '500px',
+        autoRow: true,
         code:0,
         prop: {
             name: 'name',
             value: 'id',
         },
-
 
     })
     axios({
@@ -158,9 +156,11 @@
             data: res,
         })
     });
+    //赋值
     function mayfun(){
         modifydiv.setValue([${student.labelIds}])
     };
+
 </script>
 </body>
 </html>
