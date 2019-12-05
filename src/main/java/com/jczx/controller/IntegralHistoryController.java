@@ -31,7 +31,7 @@ public class IntegralHistoryController extends BaseController {
     @RequestMapping("/historylist")
     @ResponseBody
     public ServiceResult list(Integer id, String name) {
-        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(id, name);
+        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(id);
         Pager pager = new Pager();
         return layuiList(list, pager);
     }

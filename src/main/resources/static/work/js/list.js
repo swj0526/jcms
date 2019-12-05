@@ -15,7 +15,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , {field: 'teacherName', title: '发布人'}
                 , {field: 'majorName', title: '专业班级'}
                 , {field: 'createTime', title: '发布日期'}
-                , {field: 'endTime', title: '截止时间'}
+                , {field: 'endTime', title: '截止日期'}
                 , {field: 'content', title: '内容', width: 100}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 230}
             ]], toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
@@ -100,19 +100,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             }, 'data');
         }
     }
-  /*  $('.demoTable .layui-btn').on('click', function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-        return false;
-    });*/
     laydate.render({
         elem: '#scopeTime'
         , range: true
     });
-    /*   laydate.render({
-           elem: '#test1'
-       });
-       laydate.render({
-           elem: '#test2'
-       });*/
 });
