@@ -36,7 +36,7 @@ public class MajorService extends BaseService {
      */
     public ServiceResult addMajor(TbMajor major) {
         if (StringUtil.isBlank(major.getName())) {
-            return error("");//todo 孙
+            return error("专业名称不可为空!");
         }
         major.setPid(0);
         major.setCreateTime(SC.getNowDate());
@@ -52,11 +52,8 @@ public class MajorService extends BaseService {
      * @return
      */
     public ServiceResult addClass(TbMajor major) {
-        if (major.getPid() == null || major.getPid() == 0) {
-            return error("");//todo 孙
-        }
         if (StringUtil.isBlank(major.getName())) {
-            return error("");//todo 孙
+            return error("班级名称不可为空!");
         }
         major.setName(major.getName());
         major.setPid(major.getPid());
@@ -74,7 +71,7 @@ public class MajorService extends BaseService {
      */
     public ServiceResult modifyMajor(TbMajor major) {
         if (StringUtil.isBlank(major.getName())) {
-            return error("");//todo 孙
+            return error("名称不可为空!");
         }
         modify(major);
         return SUCCESS;
@@ -89,14 +86,11 @@ public class MajorService extends BaseService {
         Conditions conditions = getConditions();
         List<TbMajor> list = getList(conditions);
         List<TbMajor> majorList = new ArrayList<>();
-
         if (StringUtil.isBlank(keywords)) {
             keywords = "";
         }
-
-        System.out.println(keywords);
         for (TbMajor major : list) {
-            if (major.getPid() == 0 && (major.getName().contains(keywords)|| major.getRemark().contains(keywords))) {
+            if (major.getPid() == 0 && (major.getName().contains(keywords) || major.getRemark().contains(keywords))) {
                 majorList.add(major);
                 for (TbMajor grade : list) {
                     if (major.getId() == grade.getPid()) {
@@ -105,37 +99,12 @@ public class MajorService extends BaseService {
                 }
             }
         }
-       /* for(TbMajor major:majorList){
-            System.out.println(major.getName());
-        }*/
         return majorList;
     }
 
-  /*  private List<TbMajor> listByKeywords(String keywords) {
-
-        if (StringUtil.isNotBlank(keywords)) {
-            conditions.parenthesesStart();
-            conditions.putLIKE("name", keywords);
-            conditions.or();
-            conditions.putLIKE("remark", keywords);
-            conditions.parenthesesEnd();
-         }
-        return getList(conditions);
-    }*/
-
-    /**
-     * 修改的时候使用,根据id去获取值,在弹窗上赋值显示
-     *
-     * @param id
-     * @return
-     */
-    public TbMajor getMajor(Integer id) {
-        TbMajor major = getById(getTableName(), id);
-        return major;
-    }
 
     public ServiceResult deleteMajor(Integer id) {
-        TbMajor major = getById(getTableName(), id);
+        TbMajor major = getById(id);
         if (major.getPid() == 0) { //删除专业
             Conditions conditions = getConditions();
             conditions.putEW("pid", major.getId());
@@ -147,7 +116,7 @@ public class MajorService extends BaseService {
                 return SUCCESS;
             }
         } else { //删除班级
-            List<TbStudent> list = studentService.checkMajor(id);
+            List<TbStudent> list = studentService.majorCount(id);
             if (list.size() != 0) {
                 return error("该班级有学生,不可删除!");
             } else {

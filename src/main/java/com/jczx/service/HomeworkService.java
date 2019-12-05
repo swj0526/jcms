@@ -59,17 +59,14 @@ public class HomeworkService extends BaseService {
         conditions.putLIKEIfOK("majorId", majorId);
 
         if (StringUtil.isNotBlank(scopeTime)) {
-          /*  DateUtil.
-            String start = scopeTime.substring(0, 10);//#todo 孙文举
-            String end = scopeTime.substring(13);
-            conditions.putBW("createTime", start, end);*/
+            String[] split = scopeTime.split(" - ");
+
+            conditions.putBW("createTime", split[0], split[1]);
 
         }
         pager.setDataTotal(getCount(conditions));
         return getListByPage(conditions, pager);
     }
 
-    public TbHomework getHomework(Integer id) {
-        return getById(getTableName(), id);
-    }
+
 }

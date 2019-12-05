@@ -39,7 +39,7 @@ public class StudentService extends BaseService {
      * @param majorId
      * @return
      */
-    public List<TbStudent> checkMajor(Integer majorId) {
+    public List<TbStudent> majorCount(Integer majorId) {
         Conditions conditions = getConditions();
         conditions.putEW("majorId", majorId);
         return getList(conditions);

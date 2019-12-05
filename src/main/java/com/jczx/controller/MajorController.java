@@ -87,7 +87,7 @@ public class MajorController {
     @RequestMapping("/get")
     @ResponseBody
     public TbMajor get(Integer id) {
-        return majorService.getMajor(id);
+        return majorService.getById(id);
     }
 
     /**

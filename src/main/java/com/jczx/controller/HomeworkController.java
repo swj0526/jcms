@@ -99,7 +99,7 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/get/homework")
 
     public String getHomework(Integer id, Map<String, Object> map) {
-        TbHomework homework = homeworkService.getHomework(id);
+        TbHomework homework = homeworkService.getById(id);
         map.put("homework", homework);
         return "/work/modifyWork";
     }
