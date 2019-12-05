@@ -10,14 +10,9 @@
     <#--上传-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <link rel="stylesheet" href="/recruit/css/label.css">
-    <#--上传-->
-    <script src="/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/recruit/js/label.js"></script>
-    <script src="/recruit/js/xm.js"></script>
     <style type="text/css">
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -60,7 +55,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">出生年月</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="birthDate" id="date" lay-verify="date"  autocomplete="off" class="layui-input" value=${birth}>
+                    <input type="text" name="birthDate" id="date" lay-verify="date"  autocomplete="off" class="layui-input" value=${birth!''}>
                 </div>
             </div>
 
@@ -100,14 +95,11 @@
             <label class="layui-form-label">来源渠道</label>
             <div class="layui-input-inline">
                 <div class="layui-inline" style="width: 190px">
-                    <select name="channelId" lay-verify="">
-                        <option value="">${student.channelId}</option>
-                        <option value="010">学校网站</option>
-                        <option value="011">自己找上门</option>
-                        <option value="012">qq</option>
-                        <option value="013">微信</option>
-                        <option value="014">介绍</option>
+                    <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
+                            url="/dictionary/list/channel/options" selectedId="${student.channelId}">
+
                     </select>
+
                 </div>
             </div>
         </div>
@@ -116,7 +108,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">意向</label>
                 <div class="layui-inline">
-                    <div id="demo1" class="xm-select-demo"; ></div>
+                    <div id="modifydiv" class="xm-select-demo"; style=" width:510px"></div>
                 </div>
             </div>
 
@@ -131,31 +123,41 @@
         </div>
     </div>
 </div>
-<script src="/layui/layui.js" charset="utf-8"></script>
+
+
+<script src="/recruit/js/label.js"></script>
+<script src="/recruit/js/xm.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/recruit/js/recruit.js"></script>
 
 <script>
-    var demo1 = xmSelect.render({
-        el: '#demo1',
+    sel();
+    var modifydiv = xmSelect.render({
+        el: '#modifydiv',
         language: 'zn',
         filterable: true,
         searchTips: '搜索标签',
         tips: '选择意向',
         height: '500px',
         autoRow: true,
-        data: [
-            {name: '有意向', value: 1},
-            {name: '还在考虑', value: 2},
-            {name: '完全不考虑', value: 3},
-            {name: '不太明确', value: 4},
-            {name: '完全没有', value: 5},
-        ]
+        code:0,
+        prop: {
+            name: 'name',
+            value: 'id',
+        },
+
     })
-    function mayfun(){
-        demo1.setValue([${student.labelIds}])
-    };
+    axios({
+        method: 'get',
+        url: '/dictionary/list/label',
+    }).then(response => {
+        var res = response.data;
+        modifydiv.update({
+            data: res,
+        })
+    });
+  OK,9
 
 </script>
-<script src="/recruit/js/updata.js"></script>
 </body>
 </html>

@@ -69,7 +69,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         elem: '#test1'
     });
     laydate.render({
-        elem: '#test2',
+        elem: '#endTime',
         type: 'datetime'
     });
 

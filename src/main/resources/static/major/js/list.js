@@ -1,17 +1,19 @@
-layui.use(['form', 'table', 'laydate'], function () {
+layui.use(['form', 'table', 'jquery','layer'], function () {
     var $ = layui.jquery,
         form = layui.form,
-        table = layui.table;
-    layer = layui.layer;
+        table = layui.table,
+        layer = layui.layer;
     var mainIndex;
-
-    $('#add').click(function () {
+    $('#refreshBtn').click(function () {
+        location.reload();
+    });
+    $('#addBtn').click(function () {
         mainIndex = layer.open({
             type: 1,
             title: "添加专业信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['400px'], //设置宽高
-            content: $("#recruit"),
+            content: $("#addMajorPopups"),
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
@@ -21,9 +23,9 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
 
     });
-    $('#add1').click(function () {
-        var name = $("[name='nameA']").val();
-        var remark = $("[name='remarkA']").val();
+    $('#addMajorBtn').click(function () {
+        var name = $("[name='majorName']").val();
+        var remark = $("[name='majorRemark']").val();
         $.post("/major/add/major", {
             name: name,
             remark: remark
@@ -37,14 +39,14 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     });
     var id;//专业的id,班级的pid
-    $('.btnB').click(function () {
+    $('.addGrade').click(function () {
         id = $(this).attr("id");
         mainIndex = layer.open({
             type: 1,
             title: "添加班级信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['400px'], //设置宽高
-            content: $("#recruitB"),
+            content: $("#addGradePopups"),
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
@@ -55,20 +57,20 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         });
     });
-    $('.btnC').click(function () {
+    $('.exitMajor').click(function () {
         id = $(this).attr("id");
         mainIndex = layer.open({
             type: 1,
             title: "修改专业信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['400px'], //设置宽高
-            content: $("#recruitC"),
+            content: $("#modifyMajorPopups"),
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
                 $.post("/major/get", {id: id}, function (result) {
-                    $('[name="nameC"]').val(result.name);
-                    $('[name="remarkC"]').val(result.remark);
+                    $('[name="nameMajorM"]').val(result.name);
+                    $('[name="remarkMajorM"]').val(result.remark);
                 });
 
             }, end: function () {
@@ -76,9 +78,9 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         });
     });
-    $('#addC').click(function () {
-        var name = $("[name='nameC']").val();
-        var remark = $("[name='remarkC']").val();
+    $('#modifyMajorBtn').click(function () {
+        var name = $("[name='nameMajorM']").val();
+        var remark = $("[name='remarkMajorM']").val();
         $.post("/major/modify", {
             name: name,
             remark: remark,
@@ -93,20 +95,20 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
 
     });
-    $('.btnD').click(function () {
+    $('.exitGrade').click(function () {
         id = $(this).attr("id");
         mainIndex = layer.open({
             type: 1,
             title: "修改班级信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['400px'], //设置宽高
-            content: $("#recruitD"),
+            content: $("#modifyGradePopups"),
             success: function (index) {
                 //清空
                 $("#dataFor")[0].reset();
                 $.post("/major/get", {id: id}, function (result) {
-                    $('[name="nameD"]').val(result.name);
-                    $('[name="remarkD"]').val(result.remark);
+                    $('[name="nameGradeM"]').val(result.name);
+                    $('[name="remarkGradeM"]').val(result.remark);
                 });
 
             }, end: function () {
@@ -114,9 +116,9 @@ layui.use(['form', 'table', 'laydate'], function () {
             }
         });
     });
-    $('#addD').click(function () {
-        var name = $("[name='nameD']").val();
-        var remark = $("[name='remarkD']").val();
+    $('#modifyGradeBtn').click(function () {
+        var name = $("[name='nameGradeM']").val();
+        var remark = $("[name='nameGradeM']").val();
         $.post("/major/modify", {
             name: name,
             remark: remark,
@@ -131,9 +133,9 @@ layui.use(['form', 'table', 'laydate'], function () {
         });
 
     });
-    $('#addB').click(function () {
-        var name = $("[name='nameB']").val();
-        var remark = $("[name='remarkB']").val();
+    $('#addGradeBtn').click(function () {
+        var name = $("[name='nameGrade']").val();
+        var remark = $("[name='remarkGrade']").val();
         var pid = id;
         $.post("/major/add/class", {
             name: name,
@@ -171,9 +173,4 @@ layui.use(['form', 'table', 'laydate'], function () {
         );
 
     });
- /* $("#search").click(function () {
-      alert(words);
-      var words = $('[name="keywords"]').val();
-      $('[name="keywords"]').val(words);
-    });*/
 });

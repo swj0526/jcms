@@ -3005,7 +3005,7 @@ a cite {
 
 .layui-table-tool-self {
     position: absolute;
-    right: 17px;
+ /*   right: 17px;*/
     top: 10px
 }
 

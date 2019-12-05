@@ -52,7 +52,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/work/upload";
             all_tab(id, title, src);
         } else if (id == "work_list") {
-            var src = "/work/list";
+            var src = "/work/tolist";
             all_tab(id, title, src);
         } else if (id == "money_list") {
             var src = "/money/tolist";
@@ -61,7 +61,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/remind/toAnnunciate";
             all_tab(id, title, src);
         } else if (id == "recruit_data") {
-            var src = "/recruit/data";
+            var src = "/recruit/todata";
             all_tab(id, title, src);
         } else if (id == "integral_list") {
             var src = "/integral/tolist";

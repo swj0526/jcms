@@ -2,6 +2,7 @@ package com.jczx.controller;
 
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
+import com.jczx.service.StudentService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
@@ -22,6 +23,8 @@ import java.util.Map;
 public class RecruitController extends BaseController {
     @Autowired
     private RecruitService recruitService;
+    @Autowired
+    private StudentService studentService;
 
     /**
      * 到招生页面
@@ -40,7 +43,7 @@ public class RecruitController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/data")
+    @RequestMapping("/todata")
     private String recruitData() {
         return "recruit/recruitdata";
     }
@@ -56,14 +59,14 @@ public class RecruitController extends BaseController {
     /**
      * 修改学生页面信息
      */
-    /*@RequestMapping("/tomodify")
+    @RequestMapping("/tomodify")
     public String toModify(Integer id, Map<String, Object> map) {
-       TbStudent student = recruitService.getStudent(id);
+        TbStudent student = studentService.getStudent(id);
         map.put("student", student);
         map.put("birth", student.getBirthDate().toString());
         map.put("createTime", student.getCreateTime().toString());
         return "/recruit/modifyrecurit";
-    }*/
+    }
 
     /**
      * 添加招生信息
@@ -107,9 +110,9 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listRecruit(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
+    public ServiceResult listRecruit(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,sex, pager);
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, pager);
         return layuiList(list, pager);
 
 
@@ -128,9 +131,9 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render excel(String keywords, String labelIds,String createTime, String sex, Integer page, Integer limit) {
+    public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex, pager);
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId, pager);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
 }

@@ -11,11 +11,8 @@
     <script src="/layui/layui.js"></script>
     <script type="text/javascript" src="/static/common/js/all.js"></script>
     <script src="/student/js/list.js"></script>
-
 </head>
 <body>
-
-
 <div style="display: none" id="importForm">
     <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传</blockquote>
     <div class="layui-upload">
@@ -39,7 +36,6 @@
 </div>
 <#--<div class="layuimini-container">
     <div class="layuimini-main">-->
-
 <fieldset class="layui-elem-field layuimini-search">
     <div style="margin: 10px 10px 10px 10px">
         <div class="demoTable">
@@ -52,11 +48,18 @@
                                placeholder="例：1990/张三" id="keywords">
                     </div>
                 </div>
-
                 <div class="layui-inline">
-                    <label class="layui-form-label">入学时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="admissionData" autocomplete="off" class="layui-input" id="time">
+                    <label class="layui-form-label">时间范围</label>
+                    <div class="layui-input-inline" style="width: 120px;margin-right: 0px">
+                        <select name="studentState" lay-verify="" id="labelIds">
+                            <option value="">例:入学/毕业</option>
+                            <option value="1">入学时间</option>
+                            <option value="2">毕业时间</option>
+
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="margin: 0px">
+                        <input type="text" name="admissionData" autocomplete="off" class="layui-input" id="time"placeholder="选择时间范围">
                     </div>
                 </div>
                <#-- <div class="layui-inline">
@@ -69,7 +72,6 @@
                 </div>-->
                 <div class="layui-inline">
                     <button class="layui-btn"  type="button" data-type="reload">查询</button>
-
                     <button type="button" class="layui-btn layui-btn-warm"  id="import">导入</button>
                     <button type="button" class="layui-btn layui-btn-warm" id="output">导出</button>
                 </div>
@@ -79,17 +81,12 @@
     </div>
         </div>
 </fieldset>
-
-
 <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 <script type="text/html" id="currentTableBar">
     <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
    <#-- <a class="layui-btn  layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>-->
     <a class="layui-btn layui-btn-primary layui-btn-xs data-count-delete" lay-event="list">详情</a>
 </script>
-<#--    </div>
-</div>-->
-
 
 </body>
 </html>

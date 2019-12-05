@@ -39,7 +39,7 @@ public class HomeworkController extends BaseController{
      *
      * @return
      */
-    @RequestMapping("/list")
+    @RequestMapping("/tolist")
     public String list() {
         return "work/list";
     }
@@ -54,7 +54,7 @@ public class HomeworkController extends BaseController{
         return "work/workDownload";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/toadd")
     public String add() {
         return "work/addWork";
     }

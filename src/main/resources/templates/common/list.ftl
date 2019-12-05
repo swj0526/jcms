@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>列表页</title>
     <#include "../common/common.ftl"/>
 </head>
 <body>
-
+<!--查询开始-->
 <div style="padding: 5px;">
     <fieldset class="layui-elem-field " style="padding: 5px;">
         <form class="layui-form layui-form-pane" action="">
@@ -17,6 +14,7 @@
                     <input type="text" name="keywords" lay-verify="keywords" autocomplete="off"
                            placeholder="根据实际情况提示" class="layui-input">
                 </div>
+                <label class="layui-form-label">爱好</label>
                 <div class="layui-input-inline">
                     <select name="interest" lay-filter="aihao">
                         <option value="">请选择爱好</option>
@@ -36,18 +34,23 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">日期范围</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" id="scopeDate" >
+                        <input type="text" class="layui-input" id="scopeDate">
                     </div>
                 </div>
+                <button type="button" class="layui-btn" id="listBtn">查询</button>
             </div>
-            <button type="button" class="layui-btn" id="listBtn">查询</button>
-            <button type="button" class="layui-btn layui-btn-normal" id="enterBtn">导入</button>
-            <button type="button" class="layui-btn layui-btn-warm" id="outBtn">导出</button>
+
         </form>
     </fieldset>
-
-
 </div>
+<!--查询结束-->
+<!--表格开始-->
+<table class="layui-hide" id="infoTable" lay-filter="infoTable"></table>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<!--表格结束-->
 </body>
 <script type="text/javascript" src="/common/js/list.js"></script>
 </html>

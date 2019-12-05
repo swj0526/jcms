@@ -4,11 +4,11 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
+
 import java.io.InputStream;
 import java.util.List;
 
@@ -57,8 +57,6 @@ public class RecruitService extends BaseService {
      * @return
      */
     public ServiceResult modifyRecruit(TbStudent student) {
-        student.setCreateTime(SC.getNowDate());//操作时间
-        student.setOperatorId(SC.getOperatorId());//操作人
         modify(student);
         return SUCCESS;
     }
@@ -78,7 +76,7 @@ public class RecruitService extends BaseService {
     /**
      * 查询
      */
-    public List<TbStudent> listRecruit(String keywords, String labelIds, String createTime, String sex, Pager pager) { //模糊关键字keywords查询用or
+    public List<TbStudent> listRecruit(String keywords, String labelIds, String createTime,Integer channelId, String sex, Pager pager) { //模糊关键字keywords查询用or
         Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -99,6 +97,9 @@ public class RecruitService extends BaseService {
         if (StringUtil.isNotBlank(labelIds)) {
             conditions.putLIKE("labelIds", "," + labelIds + ",");
         }
+        if (channelId!=null) {
+            conditions.putLIKE("channelId", channelId);
+        }
         conditions.putEWIfOk("createTime",createTime);
         conditions.putEWIfOk("sex", sex);
 
@@ -106,7 +107,6 @@ public class RecruitService extends BaseService {
         conditions.putLIKE("followTime",followTime);*/
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbStudent> listStudent = getListByPage(conditions, pager);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return listStudent;
 
     }
@@ -120,9 +120,9 @@ public class RecruitService extends BaseService {
      * @param pager
      * @return
      */
-    public InputStream studentExcel(String keywords,String createTime, String labelIds, String sex, Pager pager) {
+    public InputStream studentExcel(String keywords,String createTime, String labelIds, String sex, Integer channelId,Pager pager) {
         ExcelDatas excelDatas = new ExcelDatas();
-        List<TbStudent> list = listRecruit(keywords,createTime, labelIds, sex, pager);//调用查询信息
+        List<TbStudent> list = listRecruit(keywords,createTime, labelIds,channelId, sex, pager);//调用查询信息
         excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "意向", "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
         excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelIds", "birthDate", "school", "studentPhone", "qq", "weChat", "channelId"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);

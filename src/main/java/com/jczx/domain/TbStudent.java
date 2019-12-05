@@ -22,7 +22,7 @@ public class TbStudent extends Domain {
     @NotCreate
     public static final int STATE_ENTRANCE = 1;//在学
     @NotCreate
-    public static final int STATE_GRADUATE = 3;//毕业
+    public static final int STATE_GRADUATE = 2;//毕业
     private Integer id;
     private Integer majorId;//班级id
     private Integer studentNumber;//学号

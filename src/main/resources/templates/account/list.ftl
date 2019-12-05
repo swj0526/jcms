@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>账号管理的选项卡</title>
     <#include "../common/common.ftl"/>
     <script type="text/javascript" src="/account/js/tab.js"></script>
     <script type="text/javascript" src="/account/js/listStudent.js">
@@ -14,13 +11,9 @@
         .layui-layer-btn {
             text-align: center;
         }
-
-
     </style>
 </head>
 <body>
-
-
 <div class="layui-tab layui-tab-card" lay-filter="demo">
     <ul class="layui-tab-title">
         <li class="layui-this" lay-id="tab_student">学生账号管理</li>
@@ -28,64 +21,58 @@
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
-            <div class="layuimini-container">
-                <div class="layuimini-main">
-                    <fieldset class="layui-elem-field layuimini-search">
-                        <#--  <legend>搜索信息</legend>-->
-                        <div style="margin: 10px 10px 10px 10px">
-                            <form class="layui-form layui-form-pane" action="">
-                                <div class="layui-form-item">
+            <fieldset class="layui-elem-field" style="padding: 5px;">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">关键词</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="keywords" autocomplete="off" class="layui-input"
+                                           placeholder="姓名/手机号码/学号">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">专业-班级</label>
+                                <div class="layui-input-inline">
                                     <div class="layui-inline">
-                                        <label class="layui-form-label">关键词</label>
-                                        <div class="layui-input-inline">
-                                            <input type="text" name="keys" autocomplete="off" class="layui-input"
-                                                   placeholder="姓名/手机号码/学号">
-                                        </div>
-                                    </div>
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label">专业-班级</label>
-                                        <div class="layui-input-inline">
-                                            <div class="layui-inline">
-                                                <select name="major" lay-verify="" id="gradeSelect" required
-                                                        lay-verify="required"
-                                                        url="/major/list/select">
-                                                    <option value="">请选择</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label">是否被激活</label>
-                                        <div class="layui-input-inline">
-                                            <select name="lock1" lay-verify="">
-                                                <option value=""></option>
-                                                <option value="">激活</option>
-                                                <option value="">锁定</option>
-                                            </select>
-                                        </div>
-                                        <div class="layui-inline">
-                                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
-                                        </div>
+                                        <select name="majorId" lay-verify="" id="gradeSelect" required
+                                                lay-verify="required"
+                                                url="/major/list/select">
+                                            <option value="">请选择</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </fieldset>
-                    <table class="layui-hide" id="test" lay-filter="test"></table>
-                    <script type="text/html" id="checkboxTpl">
-                        <!-- 这里的 checked 的状态只是演示 -->
-                        <input type="checkbox" name="lock" value="{{d.id}}" title="激活" lay-filter="lockDemo">
-                    </script>
-                    <script type="text/html" id="barDemo">
-                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="reset"
-                                data-method="confirmTrans">
-                            重置密码
-                        </button>
-                    </script>
-                </div>
-            </div>
+                            </div>
 
+                            <div class="layui-inline">
+                                <label class="layui-form-label">是否被激活</label>
+                                <div class="layui-input-inline">
+                                    <select name="type" lay-verify="" required
+                                            lay-verify="required">
+                                        <option value=""></option>
+                                        <option value="">激活</option>
+                                        <option value="">锁定</option>
+                                    </select>
+                                </div>
+                                <div class="layui-inline">
+                                    <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">查询</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+            </fieldset>
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+            <script type="text/html" id="checkboxTpl">
+                <!-- 这里的 checked 的状态只是演示 -->
+                <input type="checkbox" name="lock" value="{{d.id}}" title="激活" lay-filter="lockDemo">
+            </script>
+            <script type="text/html" id="barDemo">
+                <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="reset"
+                        data-method="confirmTrans">
+                    重置密码
+                </button>
+            </script>
         </div>
         <div id="roleDemo" style="display: none; padding: 20px;">
             <form class="layui-form" action="" style="border: 1px solid #d5d5d5;height: 200px;">

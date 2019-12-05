@@ -38,9 +38,9 @@ public class StudentController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult studentList(String keywords,String  admissionData, Integer page, Integer limit){
+    public ServiceResult studentList(String keywords,String  admissionData, Integer studentState,Integer page, Integer limit){
     Pager pager = checkPager(limit,page);
-    List<TbStudent> studentList = studentService.listStudent(keywords,admissionData,pager);
+    List<TbStudent> studentList = studentService.listStudent(keywords,admissionData,studentState,pager);
     return layuiList(studentList,pager);
 }
 
@@ -100,9 +100,9 @@ public class StudentController extends BaseController {
      */
     @RequestMapping("/toexcel")
     @ResponseBody
-    public Render excel(String keywords,String  admissionData) {
+    public Render excel(String keywords,String  admissionData,Integer studentState) {
         System.out.println(keywords);
-        InputStream inputStream = studentService.studentExcel(keywords, admissionData, null);
+        InputStream inputStream = studentService.studentExcel(keywords, admissionData, studentState,null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
 

@@ -1,7 +1,8 @@
-
+<base href="${basePath}">
 <meta charset="UTF-8">
+<title>demo页</title>
 <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
-<link rel="stylesheet" type="text/css" href="/common/css/all.css">
+<link rel="stylesheet" href="/common/css/all.css"/>
 <script type="text/javascript" src="/layui/layui.js">
 </script>
 <script type="text/javascript" src="/common/js/jquery.js"></script>

@@ -3,31 +3,24 @@
 <head>
     <base href="${basePath}">
     <meta charset="utf-8">
-    <title>layui</title>
+    <title></title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <#--上传-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/recruit/css/label.css">
-    <link rel="stylesheet" href="/static/common/css/all.css">
-    <#--上传-->
-    <script src="/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/recruit/js/label.js"></script>
     <style type="text/css">
         /*去除input number的 自动增加数按钮*/
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
         }
-
         input[type="number"] {
             -moz-appearance: textfield;
         }
-
     </style>
 </head>
 <body>
@@ -36,7 +29,6 @@
        <fieldset class="layui-elem-field layuimini-search">
             <div style="margin: 10px 10px 10px 10px">
                 <div class="demoTable">
-
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width:100px">关键词</label>
@@ -47,7 +39,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">时间</label>
                         <div class="layui-input-inline" style="width: 100px">
-                            <input type="text" name="createTime" autocomplete="off" class="layui-input" id="a">
+                            <input type="text" name="createTime" autocomplete="off" class="layui-input" id="createTime">
                         </div>
                     </div>
                     <div class="layui-inline" style="width: 210px">
@@ -70,15 +62,12 @@
                         </div>
                     </div>
 
-                    <div class="layui-inline" style="width: 210px">
+                    <div class="layui-inline" style="width: 300px">
                         <label class="layui-form-label" style="width: 100px">意向</label>
-                        <div class="layui-inline" style="width: 100px">
-                            <select name="labelIds" lay-verify="" id="labelIds">
-                                <option value="">请选择</option>
-                                <option value="1">有意向</option>
-                                <option value="2">没有意向</option>
-                                <option value="5">weChat</option>
-                            </select>
+                        <div class="layui-inline">
+                            <div class="layui-inline">
+                                <div id="selectcheckbox" class="xm-select-demo" required lay-verify="required" style=" width:200px";></div>
+                            </div>
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -108,13 +97,10 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             {{# if(d.state=="1"){ }}
-
             {{# } }}
             {{# if(d.state=="2"){ }}
-
             {{# } }}
             {{# if(d.state=="3"){ }}
-
             {{# } }}
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="follow">跟进详情</a>
             <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
@@ -144,17 +130,22 @@
         </div>
         <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
         <button type="button" class="layui-btn" id="testListAction">开始上传</button>
-
     </div>
-
 </div>
-<#--上传文件-->
-<script src="/layui/layui.js" charset="utf-8"></script>
-<script src="/recruit/js/recruit.js"></script>
-<script src="/static/common/js/all.js"></script>
+
+
+
+<#--下拉复选-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/recruit/js/label.js"></script>
+<script src="/recruit/js/xm.js"></script>
+
+<#--上传-->
 <script src="/recruit/js/updata.js"></script>
+<script src="/recruit/js/recruit.js"></script>
 </body>
 <script>
-    sel();
+    sel();//动态下拉赋值
+
 </script>
 </html>
