@@ -97,7 +97,7 @@ public class MajorService extends BaseService {
 
         System.out.println(keywords);
         for (TbMajor major : list) {
-            if (major.getPid() == 0 && major.getName().contains(keywords)) {
+            if (major.getPid() == 0 && (major.getName().contains(keywords)|| major.getRemark().contains(keywords))) {
                 majorList.add(major);
                 for (TbMajor grade : list) {
                     if (major.getId() == grade.getPid()) {

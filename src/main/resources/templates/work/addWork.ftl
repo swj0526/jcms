@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" type="text/css" href="/static/common/css/all.css"/>
-    <script type="text/javascript" src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/static/common/js/all.js"></script>
+
+    <#include "../common/common.ftl"/>
     <script type="text/javascript" src="/work/js/addWork.js"></script>
 </head>
 <body>
@@ -17,7 +12,8 @@
         <div class="layui-inline">
             <label class="layui-form-label">作业名称<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input type="text" name="name"  lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入作业名称">
+                <input type="text" name="name" lay-verify="required" autocomplete="off" class="layui-input"
+                       placeholder="请输入作业名称">
             </div>
         </div>
         <div class="layui-inline">
@@ -35,14 +31,15 @@
         <div class="layui-inline">
             <label class="layui-form-label">截止时间<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input class="layui-input"   lay-verify="required"  name="endTime"  id="test2" type="text" placeholder="请选择截止时间">
+                <input class="layui-input" lay-verify="required" name="endTime" id="endTime" type="text"
+                       placeholder="请选择截止时间">
             </div>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">作业内容<span class="star">*</span></label>
         <div class="layui-input-block">
-            <textarea name="content" placeholder="请输入内容" class="layui-textarea"  lay-verify="required"></textarea>
+            <textarea name="content" placeholder="请输入内容" class="layui-textarea" lay-verify="required"></textarea>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">

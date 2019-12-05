@@ -156,10 +156,7 @@
             data: res,
         })
     });
-    //赋值
-    function mayfun(){
-        modifydiv.setValue([${student.labelIds}])
-    };
+  OK,9
 
 </script>
 </body>

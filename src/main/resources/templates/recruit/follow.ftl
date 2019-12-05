@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="${basePath}">
-    <meta charset="utf-8">
-    <title>layui</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/static/common/css/all.css">
-    <script src="/layui/layui.js" charset="utf-8"></script>
+    <#include "../common/common.ftl"/>
     <script src="/recruit/js/follow.js"></script>
     <style>
-        .layui-form-label{
+        .layui-form-label {
             margin-left: 25px;
         }
     </style>
 </head>
 <body>
 <#--新增信息弹出框-->
-<div style="display: none" id="recruit">
+<div style="display: none" id="addPopups">
     <form class="layui-form" action="" id="dataFor">
         <div class="layui-form-item">
 
             <label class="layui-form-label">渠道名称 <span class="star">*</span></label>
 
             <div class="layui-input-inline">
-                <input type="text" name="nameA" required lay-verify="required" placeholder="" autocomplete="off"
+                <input type="text" name="addName" required lay-verify="required" placeholder="" autocomplete="off"
                        class="layui-input">
 
             </div>
@@ -35,14 +30,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">渠道备注 <span class="star"></span></label>
             <div class="layui-input-inline">
-                <input type="text" name="remarkA" placeholder="" autocomplete="off"
+                <input type="text" name="addRemark" placeholder="" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="add1">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="addFollowBtn">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -50,27 +45,27 @@
 
 </div>
 <#--新增信息弹出框-->
-<div style="display: none" id="modify">
+<div style="display: none" id="modifyPopups">
     <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
 
             <label class="layui-form-label">渠道名称<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
+                <input type="text" name="modifyName" required lay-verify="required" placeholder="" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">渠道备注    <span class="star"></span></label>
+            <label class="layui-form-label">渠道备注 <span class="star"></span></label>
             <div class="layui-input-inline">
-                <input type="text" name="remark" placeholder="" autocomplete="off"
+                <input type="text" name="modifyRemark" placeholder="" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="addM">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="modifyFollowBtn">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -97,19 +92,18 @@
                     <div class="layui-inline">
                         <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
                     </div>
-                    <div class="layui-btn-group">
+                   <#-- <div class="layui-btn-group">
                         <button class="layui-btn data-add-btn" type="button">添加渠道信息</button>
-                    </div>
+                    </div>-->
 
                 </form>
             </div>
         </fieldset>
 
         <!-- 表格 -->
-        <table class="layui-hide" id="followTableId" lay-filter="currentTableFilter"></table>
+        <table class="layui-hide" id="followTable" lay-filter="followTable"></table>
         <script type="text/html" id="currentTableBar">
-
-            <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit" name="id">修改</a>
+            <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>

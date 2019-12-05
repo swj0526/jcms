@@ -1,24 +1,12 @@
-layui.use(['form', 'table', 'laydate'], function () {
+layui.use(['form', 'table', 'jquery'], function () {
     var $ = layui.jquery,
         form = layui.form,
-        table = layui.table,
-        laydate = layui.laydate;
+        table = layui.table;
     var currPage = 1;
-    laydate.render({
-        elem: '#a' //指定元素
-        , range: true
-    });
-    laydate.render({
-        elem: '#date' //指定元素
-    });
-    laydate.render({
-        elem: '#dat' //指定元素
-    });
-
     var data;
     var res;
     var tableIns = table.render({
-        elem: '#followTableId'
+        elem: '#followTable'
         , url: '/dictionary/list/channel',
         cols: [
             [
@@ -38,11 +26,20 @@ layui.use(['form', 'table', 'laydate'], function () {
                     align: "center",
                 }
             ]
-        ],
+        ], toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+        , defaultToolbar: [{
+            title: '刷新表格'
+            , layEvent: 'refreshBtn'
+            , icon: 'layui-icon-refresh'
+        }, {
+            title: '添加'
+            , layEvent: 'addBtn'
+            , icon: 'layui-icon-add-circle'
+        }],
         page: true,
         done: function (rest, curr, count) {
             currPage = curr;
-            res =rest;
+            res = rest;
             console.log(currPage);
             console.log(rest);
 
@@ -52,7 +49,7 @@ layui.use(['form', 'table', 'laydate'], function () {
             return {
                 "code": "0",
                 "count": res.pager.dataTotal,
-                 data: res.result
+                data: res.result
             }
         },
         id: 'followRender'
@@ -76,10 +73,30 @@ layui.use(['form', 'table', 'laydate'], function () {
 
 
     });
+    //头工具栏事件
+    table.on('toolbar(followTable)', function (obj) {
+        var checkStatus = table.checkStatus(obj.config.id);
+        switch (obj.event) {
+            case 'addBtn':
+                mainIndex = layer.open({
+                    type: 1,
+                    title: "添加渠道信息",
+                    area: ['400px'], //设置宽高
+                    content: $("#addPopups"),
+                    success: function (index) {
+                        //清空
+                        $("#dataFor")[0].reset();
+                        //刷新
+                        tableIns.reload();
 
-    // 监听添加操作
-    $(".data-add-btn").on("click", function () {
-        addStudents();
+                    }
+                });
+                break;
+            case 'refreshBtn':
+                tableIns.reload();
+                break;
+        }
+        ;
     });
 
     // 监听删除操作
@@ -91,57 +108,39 @@ layui.use(['form', 'table', 'laydate'], function () {
 
     //修改弹窗
     var mainIndex;
+
     function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
             title: "修改渠道信息",
             area: ['400px'], //设置宽高
-            content: $("#modify"),
+            content: $("#modifyPopups"),
             success: function (index) {
                 //获取
                 form.val("dataForm", data);
 
 
-
             }
         });
     }
 
-    //添加弹窗
-    function addStudents() {
-        mainIndex = layer.open({
-            type: 1,
-            title: "添加渠道信息",
-            // skin: 'layui-layer-rim', //加上边框
-            area: ['400px'], //设置宽高
-            content: $("#recruit"),
-            success: function (index) {
-                //清空
-                $("#dataFor")[0].reset();
-                //刷新
-                tableIns.reload();
-
-            }
-        });
-    }
-
-    $('#add1').click(function () {
-        var name = $("[name='nameA']").val();
-        var remark = $("[name='remarkA']").val();
+    $('#addFollowBtn').click(function () {
+        var name = $("[name='addName']").val();
+        var remark = $("[name='addRemark']").val();
         $.post("/dictionary/add/channel", {
             name: name,
             remark: remark
         }, function (result) {
             if (result.success) {
                 layer.close(mainIndex);
-            }else{
+            } else {
 
             }
         });
     });
-    $('#addM').click(function () {
-        var name = $("[name='name']").val();
-        var remark = $("[name='remark']").val();
+    $('#modifyFollowBtn').click(function () {
+        var name = $("[name='modifyName']").val();
+        var remark = $("[name='modifyRemark']").val();
         $.post("/dictionary/modify", {
             name: name,
             remark: remark,
@@ -151,35 +150,16 @@ layui.use(['form', 'table', 'laydate'], function () {
                 layer.close(mainIndex);
                 //刷新
                 tableIns.reload();
-            }else{
+            } else {
 
             }
         });
     });
 
-    //查看跟踪信息
-    function recruit() {
-        layer.open({
-            type: 1,
-            title: "跟进情况",
-            // skin: 'layui-layer-rim', //加上边框
-            area: ['800px'], //设置宽高
-            content: $("#updateOrDelete"),
-            success: function (index) {
-                //清空
-                $("#dataFor")[0].reset();
-                url = "";
-
-            }
-        });
-    }
-
-    table.on('tool(currentTableFilter)', function (obj) {
+    table.on('tool(followTable)', function (obj) {
         data = obj.data;
         if (obj.event === 'edit') {
             modifyStudents(data);
-
-
         } else if (obj.event === 'delete') {
             layer.confirm('真的删除行么', {
                     btn: ['确定', '取消'],
@@ -189,7 +169,7 @@ layui.use(['form', 'table', 'laydate'], function () {
                                 layer.msg("删除成功!");
                                 layer.close(index);
                                 tableIns.reload();
-                                if (res.data.length-1 == 0) {
+                                if (res.data.length - 1 == 0) {
                                     window.location.reload();//默认刷新第一页
                                 }
                             } else {

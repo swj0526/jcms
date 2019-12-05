@@ -311,7 +311,7 @@ layui.use(['form', 'laydate', 'layer', 'table'], function () {
                 layer.alert("导入excel表格");
                 break;
 
-            //自定义头工具栏右侧图标 - 提示
+
             case 'outBtn':
                 layer.alert('导出excel表格');
                 break;
