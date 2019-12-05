@@ -36,7 +36,7 @@ public class MajorService extends BaseService {
      */
     public ServiceResult addMajor(TbMajor major) {
         if (StringUtil.isBlank(major.getName())) {
-            return error("");
+            return error("");//todo 孙
         }
         major.setPid(0);
         major.setCreateTime(SC.getNowDate());
@@ -53,10 +53,10 @@ public class MajorService extends BaseService {
      */
     public ServiceResult addClass(TbMajor major) {
         if (major.getPid() == null || major.getPid() == 0) {
-            return error("");
+            return error("");//todo 孙
         }
         if (StringUtil.isBlank(major.getName())) {
-            return error("");
+            return error("");//todo 孙
         }
         major.setName(major.getName());
         major.setPid(major.getPid());
@@ -74,7 +74,7 @@ public class MajorService extends BaseService {
      */
     public ServiceResult modifyMajor(TbMajor major) {
         if (StringUtil.isBlank(major.getName())) {
-            return error("");
+            return error("");//todo 孙
         }
         modify(major);
         return SUCCESS;
@@ -86,7 +86,6 @@ public class MajorService extends BaseService {
      * @return
      */
     public List<TbMajor> listMajor(String keywords) {
-        System.out.println(keywords + "=========");
         Conditions conditions = getConditions();
         List<TbMajor> list = getList(conditions);
         List<TbMajor> majorList = new ArrayList<>();

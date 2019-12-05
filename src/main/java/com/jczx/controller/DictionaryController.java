@@ -43,7 +43,7 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/add/label")
     public ServiceResult addLabel(String name, String remark) {
-        System.out.println("进入意向标签");
+
         ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
         return result;
     }
@@ -54,7 +54,6 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/list/label")
     public List<? extends OptionInterface> labelOptions() {
-        System.out.println("查询标签");
         List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_LABEL, null, null);
         return list;
     }
@@ -208,7 +207,6 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/list/payWay/options")
     public List<? extends OptionInterface> payWayOptions() {
-        System.out.println(1);
         List<TbDictionary> list = dictionaryService.list(TbDictionary.TYPE_PAY, null, null);
         return list;
     }

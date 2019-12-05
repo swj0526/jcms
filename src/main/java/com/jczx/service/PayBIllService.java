@@ -43,7 +43,7 @@ public class PayBIllService extends BaseService {
                 || payBill.getEndTime() == null) {
             return error("必选项为空");
         }
-        TbStudent tbStudent = studentService.get(payBill.getName());
+        TbStudent tbStudent = studentService.get(payBill.getName());//todo 丛
         if (tbStudent==null){
             return error("姓名未找到");
         }
@@ -68,7 +68,7 @@ public class PayBIllService extends BaseService {
                 || payBill.getEndTime() == null) {
             return error("必选项为空");
         }
-        TbStudent tbStudent = studentService.get(payBill.getName());
+        TbStudent tbStudent = studentService.get(payBill.getName());//todo 丛
         if (tbStudent==null){
             return error("姓名未找到");
         }
@@ -93,7 +93,7 @@ public class PayBIllService extends BaseService {
             conditions.putLIKE("paybill.remark",keyword);
             conditions.parenthesesEnd();
         }
-        if (StringUtil.isNotBlank(time)){
+        if (StringUtil.isNotBlank(time)){//todo 丛
             String state=time.substring(0,10);
             String end=time.substring(13);
             conditions.putBW("paybill.payDate",state,end);
@@ -116,7 +116,7 @@ public class PayBIllService extends BaseService {
      */
     public TbPayBill getBill(int id) {
         Conditions conditions =new Conditions(getTableName());
-        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=tbstudent.id");
+        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=tbstudent.id");//todo 丛 缓存学生对象
         conditions.setSelectValue("paybill.id,student.name,sex,birthDate,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,paybill.remark");
         conditions.putEW("paybill.id",id);
         TbPayBill PayBill = getOne(conditions);
@@ -133,7 +133,7 @@ public class PayBIllService extends BaseService {
      * @param pager
      * @return
      */
-    public InputStream xlsx(String time,String keyword, Integer type, Date date, Pager pager){
+    public InputStream xlsx(String time,String keyword, Integer type, Date date, Pager pager){//todo 丛
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbPayBill> tbPayBill = listBill(time,keyword, type, date, pager);
         excelDatas.addStringArray(0,0,new String[]{"序号","姓名","性别","出生年月","联系方式","学年","缴费类型","缴费方式","总金额","是否分期","缴费日期","优惠金额","金额","总计","开始时间","结束时间","备注"});
@@ -147,7 +147,7 @@ public class PayBIllService extends BaseService {
      * @param id
      * @return
      */
-    public List<TbPayBill> checkTerm(Integer id){
+    public List<TbPayBill> checkTerm(Integer id){//todo 丛 叫count
         Conditions conditions =getConditions();
         conditions.putEW("semesterId",id);
         return getList(conditions);

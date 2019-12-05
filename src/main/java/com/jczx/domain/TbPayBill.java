@@ -21,12 +21,12 @@ public class TbPayBill extends Domain {
     @NotCreate
     private String name;//学生姓名
     @NotCreate
-    private String URL;//附件地址
+    private String URL;//附件地址//#todo 丛
     private Integer id;
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
     private Integer typeId;//缴费类型
-    private Integer paymentMethodId;//缴费方式
+    private Integer paymentMethodId;//缴费方//#todo 丛
     private Integer semesterId;//学期
     private Integer totalAmount;//应付金额
     private Integer payAmount;//金额
@@ -41,7 +41,6 @@ public class TbPayBill extends Domain {
     private Date endTime;//结束时间//end
     private Boolean hasAttachment;//是否有附件
     private Integer operatorId;//操作人id
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date createTime;//操作时间
     private String remark;//备注
 
@@ -243,15 +242,15 @@ public class TbPayBill extends Domain {
 
         return CACHE.getSemesterName(semesterId);
     }
-    public String getSex(){
+    public String getSex(){//#todo 丛
 
         return "男";
     }
-    public String getBirthDate(){
+    public String getBirthDate(){//#todo 丛
 
         return "1992-12-10";
     }
-    public String getStudentPhone(){
+    public String getStudentPhone(){//#todo 丛
 
 
         return "15065110660";

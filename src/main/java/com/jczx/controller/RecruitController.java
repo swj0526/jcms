@@ -59,7 +59,7 @@ public class RecruitController extends BaseController {
      * 修改学生页面信息
      */
     @RequestMapping("/tomodify")
-    public String toModify(Integer id, Map<String, Object> map) {
+    public String toModify(Integer id, Map<String, Object> map) {//#todo 于
         TbStudent student = studentService.getStudent(id);
         map.put("student", student);
         map.put("birth", student.getBirthDate().toString());
@@ -123,7 +123,7 @@ public class RecruitController extends BaseController {
      * @param limit
      * @return
      */
-    @RequestMapping("/toExcel")
+    @RequestMapping("/exportExcel")//#todo 于
     @ResponseBody
     public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);

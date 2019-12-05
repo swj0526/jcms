@@ -17,7 +17,7 @@ public class TbIntegral extends Domain {
     @NotCreate
     private String name;//姓名
     @NotCreate
-    private String major;//班级
+    private String major;//班级 //#todo 丛
     private Integer id;
     private Integer studentId;// 学生id
     private Integer totalScore;//总分
@@ -34,7 +34,7 @@ public class TbIntegral extends Domain {
 
     public String getMajor() {
         return major="艺术一班";
-    }
+    }//#todo 丛
 
     public void setMajor(String major) {
         this.major = major;

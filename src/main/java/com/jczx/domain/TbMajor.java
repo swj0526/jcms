@@ -1,7 +1,6 @@
 package com.jczx.domain;
 
 import com.jczx.system.OptionInterface;
-import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -14,16 +13,6 @@ import java.util.Date;
  */
 @Component
 public class TbMajor extends Domain implements OptionInterface {
-    /**
-     *
-     */
-    @NotCreate
-    public static final int TYPE_MAJOR=0;
-    /**
-     *
-     */
-    @NotCreate
-    public static final int TYPE_GRADE=1;
     private Integer id;
     private String name; //专业名称
     private Integer pid; //班级关联

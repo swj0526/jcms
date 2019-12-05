@@ -34,7 +34,6 @@ public class HomeworkService extends BaseService {
         }
         homework.setCreateTime(SC.getNowDate());
         homework.setTeacherId(SC.getOperatorId());
-        homework.setOperatorId(SC.getOperatorId());
         add(homework);
         return SUCCESS;
     }
@@ -60,7 +59,7 @@ public class HomeworkService extends BaseService {
         conditions.putLIKEIfOK("majorId", majorId);
 
         if (StringUtil.isNotBlank(scopeTime)) {
-            String start = scopeTime.substring(0, 10);
+            String start = scopeTime.substring(0, 10);//#todo 孙文举
             String end = scopeTime.substring(13);
             conditions.putBW("createTime", start, end);
 

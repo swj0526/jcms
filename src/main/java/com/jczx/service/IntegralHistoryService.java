@@ -22,13 +22,13 @@ public class IntegralHistoryService extends BaseService {
     private  StudentService studentService;
     @Autowired IntegralItemService integralItemService;
 
-
+    //#todo 丛
     public List<TbIntegralHistory> listIntegralHistory(Integer id, String name) {
         Conditions conditions = getConditions();
         conditions.setJoin(" integralHistory  LEFT JOIN tbstudent student  ON studentId=student.id");
 
         conditions.putEWIfOk("student.id", id);
-        conditions.putEWIfOk("student.name", name);
+        conditions.putEWIfOk("student.name", name);//#todo 丛
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbIntegralHistory> list = getList(conditions);
         return list;
@@ -42,7 +42,7 @@ public class IntegralHistoryService extends BaseService {
             conditions.or();
             conditions.putLIKE("integralHistory.reason", keyword);
         }
-        if (StringUtil.isNotBlank(recordTime)) {
+        if (StringUtil.isNotBlank(recordTime)) {//#todo 丛
             String state = recordTime.substring(0, 19);
             String end = recordTime.substring(22);
             conditions.putBW("integralHistory.recordTime", state, end);

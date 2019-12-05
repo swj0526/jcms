@@ -29,12 +29,12 @@ public class TbUser  extends Domain {
      * 未激活
      */
     @NotCreate
-    public static final Boolean TYPE_NO_ENABLE=false;
+    public static final boolean TYPE_NO_ENABLE=false;
     /**
      * 已激活
      */
     @NotCreate
-    public static final Boolean TYPE_ENABLE=true;
+    public static final boolean TYPE_ENABLE=true;
     private  Integer id;
     private Integer type;//类型 1.学生 2.教职工
     private Integer accountId;//跟具体的信息表关联id

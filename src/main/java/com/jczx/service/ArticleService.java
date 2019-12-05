@@ -24,7 +24,7 @@ public class ArticleService extends BaseService {
      * @return
      */
     public ServiceResult addArticle(TbArticle tbArticle) {
-        add(tbArticle);
+        add(tbArticle);//todo #宋家新    没时间
         return SUCCESS;
     }
 
@@ -37,7 +37,7 @@ public class ArticleService extends BaseService {
      * @return
      */
     public List<TbArticle> articleList(String keyword,Integer typeId,Integer state,String time,Pager pager) {
-        Conditions conditions = new Conditions(getTableName());
+        Conditions conditions = new Conditions(getTableName());//todo #宋家新
         if (StringUtil.isNotBlank(keyword)) {
             conditions.parenthesesStart();
             conditions.putLIKE("title", keyword);
@@ -50,7 +50,7 @@ public class ArticleService extends BaseService {
         if (StringUtil.isNotBlank(time)) {
             String startTime=time.substring(0,10);
             String endTime=time.substring(13);
-            System.out.println(startTime);
+            System.out.println(startTime);//todo #宋家新
             System.out.println(endTime);
             conditions.parenthesesStart();
             conditions.putSTIfOk("createTime", startTime);

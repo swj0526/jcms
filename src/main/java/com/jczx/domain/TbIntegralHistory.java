@@ -17,7 +17,6 @@ import java.util.Date;
 public class TbIntegralHistory extends Domain {
     @NotCreate
     private String major;//班级
-    @NotCreate
     private  String name;//姓名
     private Integer id;//id
     private Integer studentId;//学生id
@@ -25,7 +24,7 @@ public class TbIntegralHistory extends Domain {
     private Date recordTime;//事发时间
     private String reason;//事由
     private Integer score;//分数
-    private String remark;//备注
+    //private String remark;//备注
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
@@ -38,7 +37,7 @@ public class TbIntegralHistory extends Domain {
     }
 
     public String getMajor() {
-        return major="艺术一班";
+        return major;
     }
 
     public void setMajor(String major) {
@@ -102,12 +101,12 @@ public class TbIntegralHistory extends Domain {
         this.createTime = createTime;
     }
 
-    public String getRemark() {
+    /*public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
+    }*/
 }
 

@@ -1,7 +1,6 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
-import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -88,5 +87,5 @@ public class TbRecruitDetail extends Domain {
     }
     public String getLabelNames(){
         return CACHE.getLabelNames(",7,8,9,");
-    }
+    }//#todo 于
 }

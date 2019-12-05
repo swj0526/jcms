@@ -50,7 +50,7 @@ public class StudentController extends BaseController {
      * @param map
      * @return
      */
-    @RequestMapping("information")
+    @RequestMapping("/information")//#todo y
     public String getInformation(Integer id, Map<String, Object> map) {
         TbStudent student = studentService.getStudent(id);
         map.put("student", student);
@@ -64,7 +64,7 @@ public class StudentController extends BaseController {
      * 修改学生的基本信息页面
      * @return
      */
-    @RequestMapping("/tostudent")
+    @RequestMapping("/tostudent")//#todo y
     public String toModify(Integer id,Map<String,Object> map){
         TbStudent student = studentService.getStudent(id);
         map.put("student",student);
@@ -98,23 +98,12 @@ public class StudentController extends BaseController {
      * @param
      * @return
      */
-    @RequestMapping("/toexcel")
+    @RequestMapping("/toexcel")//#todo y
     @ResponseBody
     public Render excel(String keywords,String  admissionData,Integer studentState) {
-        System.out.println(keywords);
         InputStream inputStream = studentService.studentExcel(keywords, admissionData, studentState,null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
-
-    /**
-     *
-     * @return
-     */
-    @RequestMapping("cost")
-    public String cost() {
-        return "student/cost";
-    }
-
 
 }
 

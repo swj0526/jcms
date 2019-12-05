@@ -13,7 +13,6 @@ import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,7 +44,7 @@ public class DictionaryService extends BaseService {
     public ServiceResult addDictionary(String name, String remark, Integer type) {
         TbDictionary dictionary = new TbDictionary();
         if (StringUtil.isBlank(name)) {
-            return error("");
+            return error("不可为空");///todo #孙文举
         }
         dictionary.setName(name);
         dictionary.setRemark(remark);
@@ -66,9 +65,9 @@ public class DictionaryService extends BaseService {
      */
     public ServiceResult modifyDictionary(String name, String remark, Integer id) {
         if (StringUtil.isBlank(name)) {
-            return error("");
+            return error("");//todo #孙文举
         }
-        TbDictionary dictionary = getById(getTableName(), id);
+        TbDictionary dictionary = getById(getTableName(), id);//todo #孙文举
         dictionary.setName(name);
         dictionary.setRemark(remark);
         modify(dictionary);
@@ -82,11 +81,11 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteChannel(Integer id) {
-        List<TbStudent> list = studentService.checkChannel(id);
+        List<TbStudent> list = studentService.checkChannel(id);//todo #孙文举  在不在返回数,不要list.浪费
         if (list.size() != 0) {
             return error("该渠道有学生,不可删除!");
         }
-        delById(getTableName(), id);
+        delById(getTableName(), id);//todo #孙文举
         return SUCCESS;
     }
 

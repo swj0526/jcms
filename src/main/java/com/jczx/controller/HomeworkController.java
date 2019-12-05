@@ -62,7 +62,6 @@ public class HomeworkController extends BaseController{
     @RequestMapping("/add/homework")
     @ResponseBody
     public ServiceResult addHomework(TbHomework homework) {
-        System.out.println(homework.getEndTime());
         ServiceResult result = homeworkService.addHomework(homework);
         return result;
     }
@@ -90,11 +89,8 @@ public class HomeworkController extends BaseController{
     @RequestMapping("/get/homework")
 
     public String getHomework(Integer id, Map<String,Object> map) {
-        System.out.println(id);
         TbHomework homework = homeworkService.getHomework(id);
         map.put("homework",homework);
-        System.out.println(homework.getEndTime());
-        map.put("endTime",homework.getEndTime().toString());
-        return "work/modifyWork";
+        return "/work/modifyWork";
     }
 }

@@ -26,7 +26,7 @@ public class RecruitService extends BaseService {
      * @param student
      * @return
      */
-    public ServiceResult addRecruit(TbStudent student) {
+    public ServiceResult addRecruit(TbStudent student) {//todo y 有方法
         Conditions conditions = getConditions();
         conditions.putEW("studentPhone", student.getStudentPhone());
         conditions.or();
@@ -100,7 +100,7 @@ public class RecruitService extends BaseService {
         if (channelId!=null) {
             conditions.putLIKE("channelId", channelId);
         }
-        conditions.putEWIfOk("createTime",createTime);
+        conditions.putEWIfOk("createTime",createTime);//todo y
         conditions.putEWIfOk("sex", sex);
 
        /* conditions.or();//跟踪时间在详情表

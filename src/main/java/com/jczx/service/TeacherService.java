@@ -26,7 +26,7 @@ public class TeacherService  extends BaseService {
      * @return
      */
     public ServiceResult addTeacher(TbTeacher tbTeacher) {
-        Conditions conditions = new Conditions(getTableName());
+        Conditions conditions = new Conditions(getTableName());//todo 宋 checkEXIST
         conditions.putEW("phone",tbTeacher.getPhone());
         List<TbTeacher> list = getList(conditions);
         if (list.size()!=0){
@@ -45,7 +45,7 @@ public class TeacherService  extends BaseService {
      * @return
      */
     public ServiceResult modifyTeacher(TbTeacher tbTeacher){
-        Conditions conditions = new Conditions(getTableName());
+        Conditions conditions = new Conditions(getTableName());//todo SONG
         conditions.putEW("phone",tbTeacher.getPhone());
         List<TbTeacher> list=getList(conditions);
         int id=0;

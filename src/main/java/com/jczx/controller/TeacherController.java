@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
- * @author
+ * @author 宋家新
  * @create 2019-11-20 21:34
  */
 @RequestMapping("/teacher")
@@ -33,17 +30,8 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/add")
     @ResponseBody
-    public ServiceResult addTeacher(TbTeacher teacher) {
-        Date date = new Date();
-        SimpleDateFormat dateformat = new SimpleDateFormat("YYYY-MM-dd");
-        String time = dateformat.format(date);
-        Date createTime = null;
-        try {
-            createTime = dateformat.parse(time);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        teacher.setCreateTime(createTime);
+    public ServiceResult addTeacher(TbTeacher teacher) {//#todo 宋
+
         ServiceResult add = teacherService.addTeacher(teacher);
         return add;
     }
@@ -73,16 +61,16 @@ public class TeacherController extends BaseController{
     @RequestMapping("/doExcel")
     @ResponseBody
     public Render doExcel(String name, Boolean hasQuit){
-        Pager pager = new Pager();
+        Pager pager = new Pager();//#todo 宋
         pager.setPageSize(100000);
         pager.setCurrentPage(1);
         InputStream inputStream = teacherService.teacherExcel(name,hasQuit,pager);
         return Render.renderFile("老师信息.xls", inputStream);
     }
 
-    @RequestMapping("/excel")
+    @RequestMapping("/exporttemplate")
     @ResponseBody
-    public Render excel(){
+    public Render exportTemplate(){//#todo 宋
         InputStream inputStream = teacherService.excel();
         return Render.renderFile("老师模板.xls", inputStream);
     }

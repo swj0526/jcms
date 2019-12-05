@@ -18,12 +18,12 @@ public class TbIntegralItem extends Domain {
      * 加分
      */
     @NotCreate
-    public static final int TYPE_ADD = 0;
+    public static final int TYPE_ADD = 1;
     /**
      * 减分
      */
     @NotCreate
-    public static final int TYPE_SUBTRACT = 1;
+    public static final int TYPE_SUBTRACT = 2;
     private Integer id;
     private Integer score;//记录加分减分
     private String reason;//事由

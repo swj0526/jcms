@@ -1,6 +1,5 @@
 package com.jczx.system;
 
-import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.util.DateUtil;
 
 import java.util.Date;
@@ -18,7 +17,7 @@ public class SC {
     }
 
     public static int getOperatorId(){
-        //ToDo 孙文举 从session中获取登录用户的id.
+        //#ToDo 孙文举 从session中获取登录用户的id.
         return 1;
     }
 

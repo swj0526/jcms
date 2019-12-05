@@ -15,7 +15,7 @@ import java.util.Date;
  * @create 2019-11-17 12:52
  */
 @Component
-public class TbStudent extends Domain {
+public class TbStudent extends Domain {//#todo y
     //缺在校状态
     @NotCreate
     public static final int STATE_NOT_ENTRANCE = 0;//未入学未交费
