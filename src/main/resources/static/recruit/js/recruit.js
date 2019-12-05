@@ -282,7 +282,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 type: 2,
                 area: ['100%', '100%'],
                 title: data.name+"详情",
-                content: '/details/todetail?id='+id,
+                content: '/detail/todetail?id='+id,
                 success:function () {
                 }
             });

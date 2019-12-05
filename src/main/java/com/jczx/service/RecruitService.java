@@ -131,8 +131,6 @@ public class RecruitService extends BaseService {
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }
-
-
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();

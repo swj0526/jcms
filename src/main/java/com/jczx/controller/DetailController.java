@@ -20,7 +20,7 @@ import java.util.Map;
  * @create 2019-11-25 23:42
  */
 @Controller
-@RequestMapping("/details")
+@RequestMapping("/detail")
 public class DetailController {
     @Autowired
     private DetailService detailService;
@@ -37,8 +37,8 @@ public class DetailController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addDetail(TbRecruitDetail recruitDetail) {
-        ServiceResult detailResult = detailService.addDetail(recruitDetail);
-        return detailResult;
+        ServiceResult result = detailService.addDetail(recruitDetail);
+        return result;
     }
     /**
      *
@@ -58,7 +58,7 @@ public class DetailController {
         map.put("student",student);
         List<TbRecruitDetail> detail = detailService.listDetail(id);
         map.put("detail",detail);
-        return "recruit/detailfollow";
+        return "/recruit/detailfollow";
     }
     /**
      * 删除跟进
@@ -68,8 +68,8 @@ public class DetailController {
     @RequestMapping("/deletefollow")
     @ResponseBody
     public ServiceResult deleteFollow(TbRecruitDetail RecruitDetail){
-        ServiceResult serviceResult = detailService.delDetail(RecruitDetail);
-        return serviceResult;
+        ServiceResult result = detailService.delDetail(RecruitDetail);
+        return result;
     }
 
     /**
@@ -82,7 +82,7 @@ public class DetailController {
     public String toModify(Integer id,Map<String,Object>map){
         TbRecruitDetail detail = detailService.getById(id);
         map.put("detail",detail);
-        return "recruit/modfollowdata";
+        return "/recruit/modfollowdata";
     }
 
     /**
@@ -93,8 +93,8 @@ public class DetailController {
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modify(TbRecruitDetail recruitDetail){
-        ServiceResult modifyDetail = detailService.modifyDetail(recruitDetail);
-        return modifyDetail;
+        ServiceResult result = detailService.modifyDetail(recruitDetail);
+        return result;
 
 
     }

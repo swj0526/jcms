@@ -33,6 +33,17 @@ public class StudentService extends BaseService {
     }
 
     /**
+     * 修改学生是否入学
+     * @param student
+     * @return
+     */
+    public ServiceResult modifyCount(TbStudent student){
+        modify(student);
+        return SUCCESS;
+}
+
+
+    /**
      * 于振华
      * 查询所在班级
      *

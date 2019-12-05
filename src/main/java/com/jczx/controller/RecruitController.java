@@ -34,7 +34,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/torecruit")
     public String recruit() {
-        return "recruit/recruit";
+        return "/recruit/recruit";
     }
 
     /**
@@ -44,7 +44,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/todata")
     private String recruitData() {
-        return "recruit/recruitdata";
+        return "/recruit/recruitdata";
     }
 
     /**
@@ -52,7 +52,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/toadd")
     public String toAdd() {
-        return "recruit/addrecurit";
+        return "/recruit/addrecurit";
     }
 
     /**
@@ -62,8 +62,8 @@ public class RecruitController extends BaseController {
     public String toModify(Integer id, Map<String, Object> map) {
         TbStudent student = studentService.getById(id);
         map.put("student", student);
-        map.put("birth", student.getBirthDate().toString());
-        map.put("createTime", student.getCreateTime().toString());
+       /* map.put("birth", student.getBirthDate().toString());*/
+        /*map.put("createTime", student.getCreateTime().toString());*/
         return "/recruit/modifyrecurit";
     }
 
