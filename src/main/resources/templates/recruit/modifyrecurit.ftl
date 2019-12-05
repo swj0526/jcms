@@ -146,17 +146,7 @@
             name: 'name',
             value: 'id',
         },
-        model: {
-            label: {
-                type: 'block',
-                block: {
-                    //最大显示数量, 0:不限制
-                    showCount: 1,
-                    //是否显示删除图标
-                    showIcon: true,
-                }
-            }
-        },
+
 
     })
     axios({
