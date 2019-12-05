@@ -1,6 +1,7 @@
 package com.jczx.controller;
 
 import com.jczx.domain.TbPayBill;
+import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
@@ -65,7 +66,7 @@ public class PayBillController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/addBillPage")
+    @RequestMapping("/toaddBillPage")
     public String addBill() {
 
         return "money/add";
@@ -80,21 +81,18 @@ public class PayBillController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult add(TbPayBill payBill) {
-        Date date = new Date();
-        SimpleDateFormat dateformat = new SimpleDateFormat("YYYY-MM-dd");
-        String time = dateformat.format(date);
-        Date createTime = null;
-        try {
-            createTime = dateformat.parse(time);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        payBill.setCreateTime(createTime);
         ServiceResult add = moneyService.addBill(payBill);
         return add;
     }
 
     /**
+     * 列表查询
+     * @param time
+     * @param keyword
+     * @param typeId
+     * @param date
+     * @param page
+     * @param limit
      * @return
      */
     @RequestMapping("/list")
@@ -107,6 +105,11 @@ public class PayBillController extends BaseController {
         return layuiList(PayBillBean,pager);
     }
 
+    /**
+     * 修改
+     * @param payBill
+     * @return
+     */
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modify(TbPayBill payBill) {
@@ -114,6 +117,14 @@ public class PayBillController extends BaseController {
         return serviceResult;
     }
 
+    /**
+     * 导出
+     * @param time
+     * @param keyword
+     * @param type
+     * @param date
+     * @return
+     */
     @RequestMapping("/toExcel")
     @ResponseBody
     public Render ex(String time,String keyword, Integer type, Date date) {

@@ -28,17 +28,17 @@ public class IntegralController extends BaseController{
     }
 
     @RequestMapping("/tolist")
-    public String tolist() {
+    public String toList() {
         return "integral/list";
     }
 
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult list(String keyword, Integer ScoreA, Integer ScoreB, Integer page, Integer limit) {
+    public ServiceResult list(String keyword, Integer start, Integer end, Integer page, Integer limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
-        List<TbIntegral> list = integralService.list(keyword, ScoreA, ScoreB, pager);
+        List<TbIntegral> list = integralService.list(keyword, start, end, pager);
         return layuiList(list,pager);
     }
 

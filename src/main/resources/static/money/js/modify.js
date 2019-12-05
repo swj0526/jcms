@@ -5,83 +5,77 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form
 
     var index = parent.layer.getFrameIndex(window.name);
-
-    var a=$("#Instalment").val();
+    //是否分期赋值
+    var a = $("#Instalment").val();
     var select = 'dd[lay-value=' + a + ']';
     $('#hasInstalment').siblings("div.layui-form-select").find('dl').find(select).click();
-
-    $("#submit").click(function () {
-        var t = $('#dataFor').serialize();
+//修改数据
+    $("#submitBtn").click(function () {
+        var data = $('#dataFor').serialize();
         $.post('/money/modify',
-            t
+            data
             , function (result) {
-            if (result.success){
-                parent.layer.close(index);
-            }else {
-                layer.msg(result.msg)
-            }
-
-                /*layer.open({
-                    btnAlign: 'c'
-                    , area: ['100px', '150px']
-                    , content: '<p style="text-align: center">修改成功</p>'
-                    , btn: ['确定']
-                    , yes: function () {
-
-                    }
-                })*/
-
+                if (result.success) {
+                    parent.layer.close(index);
+                } else {
+                    layer.msg(result.msg)
+                }
             });
     })
+    //时间选择器
     laydate.render({
-        elem: '#test3'
+        elem: '#endTime'
     });
     laydate.render({
-        elem: '#test1'
+        elem: '#payDate'
     });
     laydate.render({
-        elem: '#test2'
+        elem: '#startTime'
     });
-    $("#type3").click(function () {
+    //学年设置
+    $("#semesterIdSetting").click(function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
-            ,title:'学年'
+            , title: '学年'
             , area: ['720px', '350px']
-            , btn: ['确定','取消']
+            , btn: ['确定', '取消']
             , content: 'tosemester'
-            ,end:function () {
+            , end: function () {
                 location.reload();
             }
         });
     });
-    $("#type2").click(function () {
+    //缴费方式设置
+    $("#paymentMethodIdSetting").click(function () {
         layer.open({
             btnAlign: 'c'
-            ,title:'缴费方式'
+            , title: '缴费方式'
             , type: 2
             , area: ['720px', '350px']
-            , btn: ['确定','取消']
+            , btn: ['确定', '取消']
             , content: 'topaymentMethod'
-            ,end:function () {
+            , end: function () {
                 location.reload();
             }
         });
     });
-    $("#type1").click(function () {
+    //缴费类型设置
+    $("#typeIdSetting").click(function () {
         layer.open({
             btnAlign: 'c'
-            ,title:'缴费类型'
+            , title: '缴费类型'
             , type: 2
             , area: ['720px', '350px']
-            , btn: ['确定','取消']
+            , btn: ['确定', '取消']
             , content: 'totype'
-            ,end:function () {
+            , end: function () {
                 location.reload();
             }
         });
     });
-    $("#revocation").click(function () {
+    //关闭弹窗
+    $("#revocationBtn").click(function () {
         parent.layer.close(index);
     })
 

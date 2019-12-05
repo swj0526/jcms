@@ -4,13 +4,8 @@
     <base href="${basePath}">
     <meta charset="utf-8">
     <title>layui</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <script src="/layui/layui.js"></script>
-    <script src="/all.js"></script>
-    <script src="/integral/js/integral.js"></script>
+    <#include "../common/common.ftl"/>
+
 </head>
 <body>
 <div style="padding: 15px;">
@@ -22,21 +17,21 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input"
+                                <input type="text" name="keyword" autocomplete="off" id="keyword" class="layui-input"
                                        placeholder="姓名">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input"
+                                <input type="text" name="time" autocomplete="off" class="layui-input"
                                        placeholder="-" id="time">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">专业班级</label>
                             <div class="layui-inline">
-                            <select name="major" lay-verify="" id="gradeSelect" required
+                            <select name="major" lay-verify="" id="majorSelect" required
                                     lay-verify="required"
                                     url="/major/list/select">
                                 <option value="">请选择</option>
@@ -44,15 +39,15 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询
+                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="listBtn">查询
                             </button>
 
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="add">加减分
+                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="addBtn">加减分
                             </button>
                             <#--<button class="layui-btn" type="button" lay-filter="data-search-btn" id="points">减分
                             </button>-->
                             <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn"
-                                    id="export">导出
+                                    id="excelBtn">导出
                             </button>
                         </div>
                     </div>
@@ -68,6 +63,7 @@
     </script>
 </div>
 </body>
+<script src="/integral/js/integral.js"></script>
 <script>
     sel_garade();
 </script>

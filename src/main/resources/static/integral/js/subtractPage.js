@@ -11,7 +11,7 @@ layui.use(['jquery', 'layer', 'table','form', 'laydate'], function () {
             ,area:['720px','450px']
             ,title:'添加缴费类型'
             , btn: ['提交','取消']
-            , content: '/integral/item/tolist'
+            , content: '/integralitem/tolist'
             ,end:function () {
                 sel();
             }
@@ -22,7 +22,7 @@ layui.use(['jquery', 'layer', 'table','form', 'laydate'], function () {
         parent.layer.close(index);
     })
     form.on('select', function(data){
-        $.post('/integral/item/get',{
+        $.post('/integralitem/get',{
             id:data.value
         },function (result) {
             $("#score").val(result.score)

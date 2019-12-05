@@ -34,11 +34,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , type: 1
                     ,title:'添加缴费方式'
                     , btn: ['提交','取消']
-                    , content: $("#ll")
+                    , content: $("#add")
                     , yes: function (index, layero) {
                         $.post('/dictionary/add/payWay',{
-                            name:$("#addname").val(),
-                            remark:$("#addremark").val()
+                            name:$("#addName").val(),
+                            remark:$("#addRemark").val()
 
                         },function (res) {
                             location.reload();
@@ -47,7 +47,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
 
                     }
                     ,success:function () {
-                        $('#addfrom')[0].reset();
+                        $('#addFrom')[0].reset();
                     }
                 });
         }
@@ -57,19 +57,19 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     //监听行工具事件
     table.on('tool(test)', function (obj) {
         var data = obj.data;
-        //console.log(obj)
+        //修改
         if (obj.event === 'edit') {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
                 ,title:'修改缴费方式'
                 , btn: ['提交','取消']
-                , content: $("#up")
+                , content: $("#modify")
                 , yes: function (index, layero) {
                     $.post('/dictionary/modify',{
                         id:data.id,
-                        name:$("#upname").val(),
-                        remark:$("#upremark").val()
+                        name:$("#modifyName").val(),
+                        remark:$("#modifyRemark").val()
                     },function (res) {
                         location.reload();
                         layer.close(index);
@@ -80,6 +80,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 }
             });
         } else if (obj.event === 'del') {
+            //删除
             layer.confirm('真的删除行么', function (index) {
 
                 $.post('/dictionary/delete',{
@@ -90,15 +91,5 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 })
             });
         }
-    });
-    laydate.render({
-        elem: '#test6'
-        , range: true
-    });
-    laydate.render({
-        elem: '#test1'
-    });
-    laydate.render({
-        elem: '#test2'
     });
 });

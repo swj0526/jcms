@@ -4,12 +4,7 @@
     <base href="${basePath}">
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/common/css/all.css"/>
-    <script type="text/javascript" src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/static/common/js/all.js"></script>
-    <script type="text/javascript" src="/money/js/modify.js"></script>
-
+    <#include "../common/common.ftl"/>
 </head>
 <body>
 <div id="addpage" >
@@ -36,7 +31,7 @@
 
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="type3"
+                            <button type="button" class="layui-btn" id="semesterIdSetting"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>
@@ -50,7 +45,7 @@
                                     <option value="">请选择</option>
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="type1"
+                            <button type="button" class="layui-btn" id="typeIdSetting"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>
@@ -62,7 +57,7 @@
                                     <option value="">请选择</option>
                                 </select>
                             </div>
-                            <button type="button" class="layui-btn" id="type2"
+                            <button type="button" class="layui-btn" id="paymentMethodIdSetting"
                                     style="padding-left: 10px;padding-right: 10px;width: 70px;">设置
                             </button>
                         </div>
@@ -90,7 +85,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">缴费日期<span  class="star">*</span></label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="payDate" value=${bill.payDate} id="test1" required
+                                <input class="layui-input" name="payDate" value="${bill.payDate}" id="payDate" required
                                        lay-verify="required" type="text">
                             </div>
                         </div>
@@ -123,7 +118,7 @@
                             <label class="layui-form-label">开始时间<span  class="star">*</span></label>
                             <div class="layui-input-inline">
                                 <input class="layui-input" required lay-verify="required" name="startTime"
-                                       value=${bill.startTime} id="test2" type="text"
+                                       value="${bill.startTime}" id="startTime" type="text"
                                 >
                             </div>
                         </div>
@@ -131,7 +126,7 @@
                             <label class="layui-form-label">结束时间<span  class="star">*</span></label>
                             <div class="layui-input-inline">
                                 <input class="layui-input" required lay-verify="required" name="endTime"
-                                       value=${bill.endTime}  id="test3" type="text"
+                                       value="${bill.endTime}"  id="endTime" type="text"
                                 >
                             </div>
                         </div>
@@ -147,10 +142,10 @@
                     </div>
                 </div>
                 <div style="text-align: center;width: 650px">
-                    <button type="button" class="layui-btn" lay-submit id="submit"
+                    <button type="button" class="layui-btn" lay-submit id="submitBtn"
                             style="padding-left: 10px;padding-right: 10px;width: 70px;">提交
                     </button>
-                    <button type="button" class="layui-btn layui-btn-primary"id="revocation"
+                    <button type="button" class="layui-btn layui-btn-primary"id="revocationBtn"
                             style="padding-left: 10px;padding-right: 10px;width: 70px;">取消
                     </button>
                 </div>
@@ -160,7 +155,5 @@
     </fieldset>
 </div>
 </body>
-<#-- <script>
-    sel();
-</script>-->
+<script type="text/javascript" src="/money/js/modify.js"></script>
 </html>

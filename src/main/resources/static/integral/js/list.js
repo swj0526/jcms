@@ -42,12 +42,12 @@ layui.use(['jquery', 'layer', 'table', 'laydate'], function () {
 
         }
     });
-    $("#query").click(function () {//查询按钮点击事件
+    $("#listBtn").click(function () {//查询按钮点击事件
         table.reload('userTableReload', {//table.render里面的id的值
             where: { //设定异步数据接口的额外参数，任意设
                 keyword: $("#keyword").val(),
-                ScoreA: $("#ScoreA").val(),
-                ScoreB: $("#ScoreB").val()
+                start: $("#ScoreA").val(),
+                end: $("#ScoreB").val()
             }
             , page: {
                 curr: 1 //重新从第 1 页开始

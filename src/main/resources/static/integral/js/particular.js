@@ -5,7 +5,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            , url: '/History/list'
+            , url: '/History/historylist'
             ,where:{
                 id:$("#id").val(),
                 name:$("#name").val()

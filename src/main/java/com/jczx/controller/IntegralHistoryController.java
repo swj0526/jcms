@@ -22,16 +22,22 @@ public class IntegralHistoryController extends BaseController {
     @Autowired
     private IntegralHistoryService integralHistoryService;
 
-    @RequestMapping("list")
+    /**
+     * 个人历史记录查询
+     * @param id
+     * @param name
+     * @return
+     */
+    @RequestMapping("/historylist")
     @ResponseBody
     public ServiceResult list(Integer id, String name) {
-        List<TbIntegralHistory> list = integralHistoryService.list(id, name);
+        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(id, name);
         Pager pager = new Pager();
         return layuiList(list, pager);
     }
 
     /**
-     *
+     *列表查询
      * @param keyword
      * @param recordTime
      * @param major
@@ -39,13 +45,13 @@ public class IntegralHistoryController extends BaseController {
      * @param limit
      * @return
      */
-    @RequestMapping("historylist")
+    @RequestMapping("/list")
     @ResponseBody
     public ServiceResult HistoryList(String keyword,String recordTime,Integer major,Integer page,Integer limit) {
         Pager pager = new Pager();
         pager.setPageSize(limit);
         pager.setCurrentPage(page);
-        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(keyword,recordTime,major,pager);
+        List<TbIntegralHistory> list = integralHistoryService.list(keyword,recordTime,major,pager);
         return layuiList(list, pager);
     }
 
@@ -53,11 +59,17 @@ public class IntegralHistoryController extends BaseController {
     public String toAddPage() {
         return "/integral/addPage";
     }
+
     @RequestMapping("/tosubtractpage")
     public String toSubtractPage() {
         return "/integral/subtractpage";
     }
 
+    /**
+     * 添加
+     * @param integralHistory
+     * @return
+     */
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult add(TbIntegralHistory integralHistory){

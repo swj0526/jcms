@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbPayBill;
 import com.jczx.domain.TbStudent;
+import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -40,15 +41,16 @@ public class PayBIllService extends BaseService {
                 || payBill.getFactAmount() == null
                 || payBill.getStartTime() == null
                 || payBill.getEndTime() == null) {
-            return error("");
+            return error("必选项为空");
         }
         TbStudent tbStudent = studentService.get(payBill.getName());
         if (tbStudent==null){
             return error("姓名未找到");
         }
+        payBill.setCreateTime(SC.getNowDate());
         payBill.setStudentId(tbStudent.getId());
         add(payBill);
-        return success(true);
+        return SUCCESS;
     }
 
     /**
@@ -64,7 +66,7 @@ public class PayBIllService extends BaseService {
                 || payBill.getFactAmount() == null
                 || payBill.getStartTime() == null
                 || payBill.getEndTime() == null) {
-            return error("");
+            return error("必选项为空");
         }
         TbStudent tbStudent = studentService.get(payBill.getName());
         if (tbStudent==null){
@@ -72,7 +74,7 @@ public class PayBIllService extends BaseService {
         }
         payBill.setStudentId(tbStudent.getId());
         int modify = modify(payBill);
-        return success(true);
+        return SUCCESS;
     }
 
     /**
@@ -83,20 +85,20 @@ public class PayBIllService extends BaseService {
     public List<TbPayBill> listBill(String time,String keyword,Integer typeId, Date date, Pager pager) {
         Conditions conditions = new Conditions(getTableName());
         conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
-        conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id"); //Left join tbdictionary on typeId=tbdictionary.id");
+        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=tbstudent.id");
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();
-            conditions.putLIKE("name",keyword);
+            conditions.putLIKE("student.name",keyword);
             conditions.or();
-            conditions.putLIKE("remark",keyword);
+            conditions.putLIKE("paybill.remark",keyword);
             conditions.parenthesesEnd();
         }
         if (StringUtil.isNotBlank(time)){
             String state=time.substring(0,10);
             String end=time.substring(13);
-            conditions.putBW("payDate",state,end);
+            conditions.putBW("paybill.payDate",state,end);
         }
-        conditions.putEWIfOk("typeId",typeId);
+        conditions.putEWIfOk("paybill.typeId",typeId);
         if (date!=null){
             //conditions.putLIKE("payDate",date);
         }
@@ -114,13 +116,23 @@ public class PayBIllService extends BaseService {
      */
     public TbPayBill getBill(int id) {
         Conditions conditions =new Conditions(getTableName());
-        conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id");
-        conditions.setSelectValue("tbpaybill.id,tbstudent.name,sex,birthDate,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
-        conditions.putEW("tbpaybill.id",id);
-        TbPayBill one = getOne(conditions);
+        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=tbstudent.id");
+        conditions.setSelectValue("paybill.id,student.name,sex,birthDate,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,paybill.remark");
+        conditions.putEW("paybill.id",id);
+        TbPayBill PayBill = getOne(conditions);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
-        return one;
+        return PayBill;
     }
+
+    /**
+     * 导出
+     * @param time
+     * @param keyword
+     * @param type
+     * @param date
+     * @param pager
+     * @return
+     */
     public InputStream xlsx(String time,String keyword, Integer type, Date date, Pager pager){
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbPayBill> tbPayBill = listBill(time,keyword, type, date, pager);
@@ -129,16 +141,34 @@ public class PayBIllService extends BaseService {
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }
+
+    /**
+     * 检查学年
+     * @param id
+     * @return
+     */
     public List<TbPayBill> checkTerm(Integer id){
         Conditions conditions =getConditions();
         conditions.putEW("semesterId",id);
         return getList(conditions);
     }
+
+    /**
+     * 检查类型
+     * @param id
+     * @return
+     */
     public List<TbPayBill> checkType(Integer id){
         Conditions conditions = getConditions();
         conditions.putEW("typeId",id);
         return getList(conditions);
     }
+
+    /**
+     * 检查方法
+     * @param id
+     * @return
+     */
     public List<TbPayBill> checkMethod(Integer id){
         Conditions conditions = getConditions();
         conditions.putEW("paymentMethodId",id);

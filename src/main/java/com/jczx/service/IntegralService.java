@@ -18,15 +18,15 @@ public class IntegralService extends BaseService {
 
     public List<TbIntegral> list(String keyword, Integer start, Integer end, Pager pager) {
         Conditions conditions = getConditions();
-        conditions.setJoin(" LEFT JOIN tbstudent ON studentId=tbstudent.id");
+        conditions.setJoin(" Integral LEFT JOIN tbstudent student ON studentId=student.id");
         if (StringUtil.isNotBlank(keyword)) {
 
-            conditions.putLIKE("name", keyword);
+            conditions.putLIKE("student.name", keyword);
             conditions.or();
-            conditions.putLIKE("totalScore", keyword);
+            conditions.putLIKE("Integral.totalScore", keyword);
         }
         if (start != null && end != null) {
-            conditions.putBW("totalScore", start, end);
+            conditions.putBW("Integral.totalScore", start, end);
         }
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbIntegral> list = getListByPage(conditions,pager);

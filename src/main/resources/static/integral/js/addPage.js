@@ -5,14 +5,14 @@ layui.use(['jquery', 'layer', 'table', 'form', 'laydate'], function () {
         laydate = layui.laydate;
     form = layui.form;
     var index = parent.layer.getFrameIndex(window.name);
-    $("#type3").click(function () {
+    $("#reasonSetting").click(function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
             , area: ['720px', '450px']
             , title: '事由'
             , btn: ['提交', '取消']
-            , content: '/integral/item/tolist'
+            , content: '/integralitem/tolist'
             , end: function () {
                 sel();
                 $("#score").val('')
@@ -22,21 +22,21 @@ layui.use(['jquery', 'layer', 'table', 'form', 'laydate'], function () {
         });
     })
 
-    $("#revocation").click(function () {
+    $("#revocationBtn").click(function () {
         parent.layer.close(index);
     })
     form.on('select', function (data) {
-        $.post('/integral/item/get', {
+        $.post('/integralitem/get', {
             id: data.value
         }, function (result) {
             $("#score").val(result.score)
         })
     })
 
-    $("#submit5").click(function () {
-        var t = $('#adddataForm').serialize();
+    $("#submitBtn").click(function () {
+        var data = $('#addForm').serialize();
         $.post('/History/add',
-            t
+            data
             , function (result) {
                 if (result.success) {
                     parent.layer.close(index);

@@ -36,7 +36,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 }
             },
         });
-    $("#add").click(function () {
+    $("#addPayBillBtn").click(function () {
         layer.open({
             btnAlign: 'c',
             type: 2,
@@ -44,17 +44,14 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             skin: 'layer-ext-myskin',
             area: ['100%', '100%'],
             btn: [],
-            content: '/money/addBillPage', /*'<iframe src="" frameborder="0" height="800px" width="100%"></iframe>',*/
+            content: '/money/toaddBillPage',
         });
     });
-    $("#export").click(function () {
-    })
-
     //监听行工具事件
     table.on('tool(test)', function (obj) {
         var data = obj.data;
         //console.log(obj)
-        if (obj.event === 'edit') {
+        if (obj.event === 'modifyBtn') {
             layer.open({
                 btnAlign: 'c'
                 , type: 2
@@ -68,7 +65,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
 
                 }
             });
-        } else if (obj.event === 'invoice') {
+        } else if (obj.event === 'invoiceBtn') {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
@@ -76,7 +73,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , btn: ['确定']
                 , content: '<img src="/money/img/1.png" style="width: 100%;height: 100%">'
             })
-        } else if (obj.event === 'remark') {
+        } else if (obj.event === 'remarkBtn') {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
@@ -87,28 +84,22 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         }
     });
     laydate.render({
-        elem: '#test6'
+        elem: '#date'
         , range: true
     });
-    laydate.render({
-        elem: '#test1'
-    });
-    laydate.render({
-        elem: '#test2'
-    });
-    $("#query").click(function () {//查询按钮点击事件
+    $("#listBtn").click(function () {//查询按钮点击事件
         table.reload('userTableReload', {//table.render里面的id的值
             where: { //设定异步数据接口的额外参数，任意设
                 keyword: $("#keyword").val(),
                 typeId: $("#typeId").val(),
-                time: $("#test6").val()
+                time: $("#date").val()
             }
             , page: {
                 curr: 1 //重新从第 1 页开始
             }
         });
     })
-    $('#export').click(function () {
+    $('#excelBtn').click(function () {
         window.location.href = "/money/toExcel";
     });
 });

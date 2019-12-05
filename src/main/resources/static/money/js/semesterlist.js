@@ -33,11 +33,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , type: 1
                     ,title:'添加学年'
                     , btn: ['提交','取消']
-                    , content: $("#ll")
+                    , content: $("#add")
                     , yes: function (index, layero) {
                         $.post('/dictionary/add/payTerm',{
-                            name:$("#addname").val(),
-                            remark:$("#addremark").val()
+                            name:$("#addName").val(),
+                            remark:$("#addRemark").val()
 
                         },function (res) {
                             location.reload();
@@ -45,7 +45,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         })
                     }
                     ,success:function () {
-                        $('#addfrom')[0].reset();
+                        $('#addFrom')[0].reset();
                     }
                 });
         }
@@ -62,12 +62,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , type: 1
                 ,title:'修改学年'
                 , btn: ['提交','取消']
-                , content: $("#up")
+                , content: $("#modify")
                 , yes: function (index, layero) {
                     $.post('/dictionary/modify',{
                         id:data.id,
-                        name:$("#upname").val(),
-                        remark:$("#upremark").val()
+                        name:$("#modifyName").val(),
+                        remark:$("#modifyRemark").val()
 
                     },function (res) {
                         location.reload();
@@ -75,7 +75,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     })
                 }
                 , success: function (index) {
-                    form.val("dataForm1", data);
+                    form.val("modifyForm", data);
                 }
             });
         } else if (obj.event === 'del') {
@@ -88,15 +88,5 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 })
             });
         }
-    });
-    laydate.render({
-        elem: '#test6'
-        , range: true
-    });
-    laydate.render({
-        elem: '#test1'
-    });
-    laydate.render({
-        elem: '#test2'
     });
 });

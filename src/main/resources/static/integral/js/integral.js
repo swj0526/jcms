@@ -6,7 +6,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         laydate = layui.laydate;
     table.render({
         elem: '#currentTableId',
-        url:'/History/historylist',
+        url:'/History/list',
         id:'userTableReload',
         cols: [[
             {field: 'id', title: 'ID' }
@@ -27,8 +27,8 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
             }
         },
     });
-
-    $("#add").click(function () {
+//添加
+    $("#addBtn").click(function () {
         layer.open({
             type: 2,
             btnAlign:'c',
@@ -39,7 +39,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         });
     })
 
-    $("#points").click(function () {
+    /*$("#points").click(function () {
         layer.open({
             type: 2,
             area: ['60%', '550px'],
@@ -47,8 +47,9 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
             btn: [],
             shade: 0
         });
-    })
-    $("#query").click(function () {//查询按钮点击事件
+    })*/
+    //查询
+    $("#listBtn").click(function () {//查询按钮点击事件
         table.reload('userTableReload', {//table.render里面的id的值
             where: { //设定异步数据接口的额外参数，任意设
                 keyword: $("#keyword").val(),

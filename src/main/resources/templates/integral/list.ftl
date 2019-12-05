@@ -4,12 +4,8 @@
     <base href="${basePath}">
     <meta charset="utf-8">
     <title>layui</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <script src="/layui/layui.js"></script>
-    <script src="/integral/js/list.js"></script>
+    <#include "../common/common.ftl"/>
+
 </head>
 <body>
 <div style="padding: 15px;">
@@ -21,25 +17,25 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" id="keyword" class="layui-input"
+                                <input type="text" name="keyword" autocomplete="off" id="keyword" class="layui-input"
                                        placeholder="姓名">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">成绩范围</label>
                             <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" name="price_min" id="ScoreA" autocomplete="off" class="layui-input">
+                                <input type="text" name="start" id="start" autocomplete="off" class="layui-input">
                             </div>
                             <div class="layui-form-mid">-</div>
                             <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" name="price_max" id="ScoreB" autocomplete="off" class="layui-input">
+                                <input type="text" name="end" id="end" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="query">查询
+                            <button class="layui-btn" type="button" lay-filter="data-search-btn" id="listBtn">查询
                             </button>
                             <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn"
-                                    id="export">导出
+                                    id="excelBtn">导出
                             </button>
                         </div>
                     </div>
@@ -55,4 +51,5 @@
     </script>
 </div>
 </body>
+<script src="/integral/js/list.js"></script>
 </html>

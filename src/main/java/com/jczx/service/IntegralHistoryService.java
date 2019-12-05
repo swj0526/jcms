@@ -23,18 +23,18 @@ public class IntegralHistoryService extends BaseService {
     @Autowired IntegralItemService integralItemService;
 
 
-    public List<TbIntegralHistory> list(Integer id, String name) {
+    public List<TbIntegralHistory> listIntegralHistory(Integer id, String name) {
         Conditions conditions = getConditions();
-        conditions.setJoin(" LEFT JOIN tbstudent student ON studentId=tbstudent.id");
+        conditions.setJoin(" integralHistory  LEFT JOIN tbstudent student  ON studentId=student.id");
 
         //conditions.putEWIfOk("TbIntegralHistory.id", id);
-        conditions.putEWIfOk("tbintegralhistory.name", name);
+        conditions.putEWIfOk("integralHistory.name", name);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbIntegralHistory> list = getList(conditions);
         return list;
     }
 
-    public List<TbIntegralHistory> listIntegralHistory(String keyword, String recordTime, Integer majorId, Pager pager) {
+    public List<TbIntegralHistory> list(String keyword, String recordTime, Integer majorId, Pager pager) {
         Conditions conditions = getConditions();
         conditions.setJoin(" integralHistory LEFT JOIN tbstudent student ON studentId=tbstudent.id");
         if (StringUtil.isNotBlank(keyword)) {
@@ -53,11 +53,6 @@ public class IntegralHistoryService extends BaseService {
         List<TbIntegralHistory> list = getListByPage(conditions, pager);
         return list;
     }
-
-
-
-
-
     public ServiceResult addIntegralHistory(TbIntegralHistory integralHistory) {
         if (StringUtil.isBlank(integralHistory.getName())
                 ||StringUtil.isBlank(integralHistory.getReason())
@@ -68,9 +63,10 @@ public class IntegralHistoryService extends BaseService {
         TbStudent tbStudent = studentService.get(integralHistory.getName());
         if (tbStudent!=null){
             integralHistory.setStudentId(tbStudent.getId());
+            return error("没有该学生生");
         }
         add(integralHistory);
-        return success("");
+        return SUCCESS;
     }
 
 
@@ -78,14 +74,15 @@ public class IntegralHistoryService extends BaseService {
 
     public ServiceResult modify(TbIntegralHistory integralHistory) {
         if (StringUtil.isBlank(integralHistory.getReason()) || integralHistory.getScore() == null || integralHistory.getRecordTime() == null) {
-            return error("");
+            return error("必填项不能为空");
         }
         TbStudent tbStudent = studentService.get(integralHistory.getName());
         if (tbStudent!=null){
             integralHistory.setStudentId(tbStudent.getId());
+            return error("没有该学生生");
         }
         modify(integralHistory);
-        return success("");
+        return SUCCESS;
     }
 
     @Override

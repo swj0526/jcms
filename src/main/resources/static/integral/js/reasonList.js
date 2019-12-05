@@ -5,7 +5,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            ,url:'/integral/item/list'
+            ,url:'/integralitem/list'
             , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: []
             , title: '用户数据表'
@@ -34,20 +34,20 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , type: 1
                     ,title:'添加事由'
                     , btn: ['提交','取消']
-                    , content: $("#ll")
+                    , content: $("#add")
                     , yes: function (index, layero) {
-                        $.post('add',{
-                            reason:$("#addreason").val(),
-                            score:$("#addscore").val(),
-                            remark:$("#addremark").val(),
-                            type:$("#addtype").val()
+                        $.post('/integralitem/add',{
+                            reason:$("#addReason").val(),
+                            score:$("#addScore").val(),
+                            remark:$("#addRemark").val(),
+                            type:$("#addType").val()
                         },function (res) {
                             location.reload();
                             layer.close(index);
                         })
                     }
                     ,success:function () {
-                        $('#addform')[0].reset();
+                        $('#addForm')[0].reset();
                     }
                 });
         }
@@ -58,19 +58,20 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     table.on('tool(test)', function (obj) {
         var data = obj.data;
         //console.log(obj)
+        //修改
         if (obj.event === 'edit') {
             layer.open({
                 btnAlign: 'c'
                 , type: 1
                 ,title:'修改事由'
                 , btn: ['提交','取消']
-                , content: $("#up")
+                , content: $("#modify")
                 , yes: function (index, layero) {
-                    $.post('modify',{
-                        reason:$("#upreason").val(),
-                        score:$("#upscore").val(),
-                        remark:$("#upremark").val(),
-                        type:$("#uptype").val(),
+                    $.post('/integralitem/modify',{
+                        reason:$("#modifyReason").val(),
+                        score:$("#modifyScore").val(),
+                        remark:$("#modifyRemark").val(),
+                        type:$("#modifyType").val(),
                         id:$("#id").val()
                     },function (res) {
                         location.reload();
@@ -78,10 +79,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     })
                 }
                 , success: function (index) {
-                    form.val("dataForm1", data);
+                    form.val("modifyForm", data);
                 }
             });
         } else if (obj.event === 'del') {
+            //删除
             layer.confirm('真的删除行么', function (index) {
                 /*$.post('/dictionary/delete',{
                     id:data.id,
@@ -92,15 +94,4 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             });
         }
     });
-    laydate.render({
-        elem: '#test6'
-        , range: true
-    });
-    laydate.render({
-        elem: '#test1'
-    });
-    laydate.render({
-        elem: '#test2'
-    });
-
 });

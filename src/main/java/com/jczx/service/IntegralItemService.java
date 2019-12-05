@@ -15,13 +15,21 @@ import java.util.List;
  */
 @Component
 public class IntegralItemService extends BaseService {
-
+    /**
+     * 查询列表
+     * @return
+     */
     public List<TbIntegralItem> list() {
         Conditions conditions = getConditions();
         List<TbIntegralItem> list = getList(conditions);
         return list;
     }
 
+    /**
+     * 添加
+     * @param integralItem
+     * @return
+     */
     public ServiceResult addItem(TbIntegralItem integralItem) {
         if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null || StringUtil.isBlank(integralItem.getRemark())) {
             return error("");
@@ -32,6 +40,12 @@ public class IntegralItemService extends BaseService {
         add(integralItem);
         return success("");
     }
+
+    /**
+     * 修改
+     * @param integralItem
+     * @return
+     */
     public ServiceResult modifyItem(TbIntegralItem integralItem) {
         if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null || StringUtil.isBlank(integralItem.getRemark())) {
             return error("");
@@ -42,11 +56,17 @@ public class IntegralItemService extends BaseService {
         modify(integralItem);
         return success("");
     }
+
+    /**
+     * 查询分数
+     * @param id
+     * @return
+     */
     public TbIntegralItem get(Integer id){
         Conditions conditions = getConditions();
         conditions.putEWIfOk("id",id);
-        TbIntegralItem one = getOne(conditions);
-        return one;
+        TbIntegralItem IntegralItem = getOne(conditions);
+        return IntegralItem;
     }
 
 

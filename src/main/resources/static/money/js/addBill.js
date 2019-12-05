@@ -3,65 +3,72 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     var $ = layui.jquery;
     laydate = layui.laydate;
     form = layui.form,
+
+        //时间选择器
         laydate.render({
             elem: '#test6'
             , range: true
         });
+
     laydate.render({
-        elem: '#test1'
+        elem: '#payDate'
     });
     laydate.render({
-        elem: '#test2'
+        elem: '#startTime'
     });
     laydate.render({
-        elem: '#test3'
+        elem: '#endTime'
     });
-    $("#type3").click(function () {
+    //学年设置
+    $("#semesterIdSetting").click(function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
             ,title:'学年'
             , area: ['720px', '350px']
             ,btn:['确定','取消']
-            , content: 'tosemester'
+            , content: '/money/tosemester'
         });
     });
-    $("#type2").click(function () {
+    //缴费方式设置
+    $("#paymentMethodIdSetting").click(function () {
         layer.open({
             btnAlign: 'c'
             ,title:'缴费方式'
             , type: 2
             , area: ['720px', '350px']
             ,btn:['确定','取消']
-            , content: 'topaymentMethod'
+            , content: '/money/topaymentMethod'
             ,end:function () {
                 sel();
             }
         });
     });
-    $("#type1").click(function () {
+    //缴费类型设置
+    $("#typeIdSetting").click(function () {
         layer.open({
             btnAlign: 'c'
             , type: 2
             ,title:'缴费类型'
             , area: ['720px', '350px']
             ,btn:['确定','取消']
-            , content: 'totype'
+            , content: '/money/totype'
             ,end:function () {
                 sel();
             }
         });
     });
 
-
+//获取当前页dom
     var index = parent.layer.getFrameIndex(window.name);
 
 
     //var recruit = $("#dataFor").serialize();
-    $("#submit").click(function () {
-        var t = $('#dataFor').serialize();
+    //添加数据
+    $("#submitBtn").click(function () {
+        var data = $('#dataFor').serialize();
         $.post('/money/add',
-            t
+            data
             , function (result) {
                 if (result.success) {
                     layer.open({
@@ -74,7 +81,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                         }
                         , btn2: function () {
                             parent.layer.close(index);
-
                         }
                     })
                 } else {
@@ -84,7 +90,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
 
             });
     });
-    $("#revocation").click(function () {
+    //关闭弹窗
+    $("#revocationBtn").click(function () {
         parent.layer.close(index);
     })
 });
