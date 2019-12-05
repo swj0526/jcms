@@ -45,7 +45,7 @@ layui.use(['jquery', 'layer', 'table', 'form', 'laydate'], function () {
             })
     })
     laydate.render({
-        elem: '#time'
+        elem: '#recordTime'
         , type: 'datetime'
     });
 })

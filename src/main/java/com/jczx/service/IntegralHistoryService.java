@@ -27,8 +27,8 @@ public class IntegralHistoryService extends BaseService {
         Conditions conditions = getConditions();
         conditions.setJoin(" integralHistory  LEFT JOIN tbstudent student  ON studentId=student.id");
 
-        //conditions.putEWIfOk("TbIntegralHistory.id", id);
-        conditions.putEWIfOk("integralHistory.name", name);
+        conditions.putEWIfOk("student.id", id);
+        conditions.putEWIfOk("student.name", name);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbIntegralHistory> list = getList(conditions);
         return list;
@@ -36,7 +36,7 @@ public class IntegralHistoryService extends BaseService {
 
     public List<TbIntegralHistory> list(String keyword, String recordTime, Integer majorId, Pager pager) {
         Conditions conditions = getConditions();
-        conditions.setJoin(" integralHistory LEFT JOIN tbstudent student ON studentId=tbstudent.id");
+        conditions.setJoin(" integralHistory LEFT JOIN tbstudent student ON studentId=student.id");
         if (StringUtil.isNotBlank(keyword)) {
             conditions.putLIKE("student.name", keyword);
             conditions.or();
@@ -63,7 +63,6 @@ public class IntegralHistoryService extends BaseService {
         TbStudent tbStudent = studentService.get(integralHistory.getName());
         if (tbStudent!=null){
             integralHistory.setStudentId(tbStudent.getId());
-            return error("没有该学生生");
         }
         add(integralHistory);
         return SUCCESS;

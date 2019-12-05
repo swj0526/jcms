@@ -29,11 +29,11 @@ public class StudentService extends BaseService {
      * @create 2019-11-28 13:06
      */
     public TbStudent get(String student) {
-        Conditions conditions = new Conditions(getTableName());
+        Conditions conditions = getConditions();
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         conditions.putEW("name",student);
-        TbStudent one = getOne(conditions);
-        return one;
+        TbStudent Student = getOne(conditions);
+        return Student;
     }
 
     /**

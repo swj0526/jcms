@@ -16,7 +16,7 @@
                         <label class="layui-form-label">事由<span class="star">*</span></label>
                         <div class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                             <select name="reason" lay-verify="required" class="decSelect"
-                                    url="/integral/item/list" selectedId="" id="reasonSelect">
+                                    url="/integralitem/list" selectedId="" id="reasonSelect">
                                 <option value="">请选择</option>
 
                             </select>
