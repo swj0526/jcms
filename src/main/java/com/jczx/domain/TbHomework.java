@@ -21,8 +21,7 @@ public class TbHomework extends Domain {
     private String name;//作业名称
     private Integer teacherId;//发布人
     private Integer majorId;//班级专业
-    @FieldType(type= Type.DATETIME)
-    @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date endTime;//截止日期
     @FieldType(type = Type.VARCHAR, length = 255)
     private String content;//内容//长度问题

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <#include "../common/common.ftl"/>
-    <script src="/recruit/js/follow.js"></script>
+
     <style>
         .layui-form-label {
             margin-left: 25px;
@@ -110,4 +110,5 @@
 </div>
 
 </body>
+<script src="/recruit/js/follow.js"></script>
 </html>

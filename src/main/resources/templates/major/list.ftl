@@ -188,7 +188,7 @@
         </#list>
         <#if list?? && (list?size == 0)>
             <tr>
-                <td  colspan="3" style="text-align: center">暂无数据</td>
+                <td  colspan="3" style="text-align: center">无数据</td>
             </tr>
         </#if>
     </table>

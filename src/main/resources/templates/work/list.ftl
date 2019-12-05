@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <#include "../common/common.ftl"/>
-    <script type="text/javascript" src="/work/js/list.js"></script>
+
 </head>
 <body>
 <div>
@@ -51,6 +51,7 @@
     </script>
 </div>
 </body>
+<script type="text/javascript" src="/work/js/list.js"></script>
 <script>
     sel_garade();
 </script>
