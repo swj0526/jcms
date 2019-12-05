@@ -15,7 +15,7 @@ import java.util.List;
  * @author 丛枭钰
  * @create 2019-11-29 11:40
  */
-@RequestMapping("/History")
+@RequestMapping("/history")
 @Controller
 public class IntegralHistoryController extends BaseController {
 
@@ -25,15 +25,13 @@ public class IntegralHistoryController extends BaseController {
     /**
      * 个人历史记录查询
      * @param id
-     * @param name
      * @return
      */
     @RequestMapping("/historylist")
     @ResponseBody
-    public ServiceResult list(Integer id, String name) {
-        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(id, name);
-        Pager pager = new Pager();
-        return layuiList(list, pager);
+    public List<TbIntegralHistory> list(Integer id) {
+        List<TbIntegralHistory> list = integralHistoryService.listIntegralHistory(id);
+        return list;
     }
 
     /**
@@ -48,18 +46,24 @@ public class IntegralHistoryController extends BaseController {
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult HistoryList(String keyword,String recordTime,Integer major,Integer page,Integer limit) {
-        Pager pager = new Pager();
-        pager.setPageSize(limit);
-        pager.setCurrentPage(page);
+        Pager pager = checkPager(page, limit);
         List<TbIntegralHistory> list = integralHistoryService.list(keyword,recordTime,major,pager);
         return layuiList(list, pager);
     }
 
+    /**
+     * 添加页面
+     * @return
+     */
     @RequestMapping("/toaddPage")
     public String toAddPage() {
         return "/integral/addPage";
     }
 
+    /**
+     * 修改页面
+     * @return
+     */
     @RequestMapping("/tosubtractpage")
     public String toSubtractPage() {
         return "/integral/subtractpage";

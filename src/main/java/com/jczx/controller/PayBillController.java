@@ -90,18 +90,15 @@ public class PayBillController extends BaseController {
      * @param time
      * @param keyword
      * @param typeId
-     * @param date
      * @param page
      * @param limit
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult list(String time,String keyword, Integer typeId, Date date, Integer page, Integer limit) {
-        Pager pager = new Pager();
-        pager.setPageSize(limit);
-        pager.setCurrentPage(page);
-        List<TbPayBill> PayBillBean = moneyService.listBill(time,keyword, typeId, date, pager);
+    public ServiceResult list(String time,String keyword, Integer typeId, Integer page, Integer limit) {
+        Pager pager = checkPager(page, limit);
+        List<TbPayBill> PayBillBean = moneyService.listBill(time,keyword, typeId, pager);
         return layuiList(PayBillBean,pager);
     }
 
@@ -122,16 +119,12 @@ public class PayBillController extends BaseController {
      * @param time
      * @param keyword
      * @param type
-     * @param date
      * @return
      */
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render ex(String time,String keyword, Integer type, Date date) {
-        Pager pager = new Pager();
-        pager.setPageSize(100000);
-        pager.setCurrentPage(1);
-        InputStream inputStream = moneyService.xlsx(time,keyword, type, date, pager);
+    public Render ex(String time,String keyword, Integer type) {
+        InputStream inputStream = moneyService.exportExcel(time,keyword, type, null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
 

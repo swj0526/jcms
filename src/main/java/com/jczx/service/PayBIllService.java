@@ -1,12 +1,10 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbPayBill;
-import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,12 +40,8 @@ public class PayBIllService extends BaseService {
                 || payBill.getEndTime() == null) {
             return error("必选项为空");
         }
-        TbStudent tbStudent = studentService.get(payBill.getName());//todo 丛
-        if (tbStudent==null){
-            return error("姓名未找到");
-        }
+
         payBill.setCreateTime(SC.getNowDate());
-        payBill.setStudentId(tbStudent.getId());
         add(payBill);
         return SUCCESS;
     }
@@ -68,12 +61,7 @@ public class PayBIllService extends BaseService {
                 || payBill.getEndTime() == null) {
             return error("必选项为空");
         }
-        TbStudent tbStudent = studentService.get(payBill.getName());//todo 丛
-        if (tbStudent==null){
-            return error("姓名未找到");
-        }
-        payBill.setStudentId(tbStudent.getId());
-        int modify = modify(payBill);
+        modify(payBill);
         return SUCCESS;
     }
 
@@ -82,10 +70,10 @@ public class PayBIllService extends BaseService {
      *
      * @return
      */
-    public List<TbPayBill> listBill(String time,String keyword,Integer typeId, Date date, Pager pager) {
+    public List<TbPayBill> listBill(String time,String keyword,Integer typeId, Pager pager) {
         Conditions conditions = new Conditions(getTableName());
         conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
-        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=tbstudent.id");
+        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=student.id");
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();
             conditions.putLIKE("student.name",keyword);
@@ -93,17 +81,16 @@ public class PayBIllService extends BaseService {
             conditions.putLIKE("paybill.remark",keyword);
             conditions.parenthesesEnd();
         }
-        if (StringUtil.isNotBlank(time)){//todo 丛
-            String state=time.substring(0,10);
-            String end=time.substring(13);
-            conditions.putBW("paybill.payDate",state,end);
+        if (StringUtil.isNotBlank(time)){
+            String[] split = time.split(" - ");
+            conditions.putBW("paybill.payDate",split[0],split[1]);
         }
         conditions.putEWIfOk("paybill.typeId",typeId);
-        if (date!=null){
-            //conditions.putLIKE("payDate",date);
+        if (pager==null){
+            List<TbPayBill> list = getList(conditions);
+            return list;
         }
         pager.setDataTotal(getCount(conditions));
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbPayBill> list = getListByPage(conditions, pager);
         return list;
     }
@@ -115,12 +102,9 @@ public class PayBIllService extends BaseService {
      * @return
      */
     public TbPayBill getBill(int id) {
-        Conditions conditions =new Conditions(getTableName());
-        conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=tbstudent.id");//todo 丛 缓存学生对象
-        conditions.setSelectValue("paybill.id,student.name,sex,birthDate,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,paybill.remark");
+        Conditions conditions = getConditions();
         conditions.putEW("paybill.id",id);
         TbPayBill PayBill = getOne(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return PayBill;
     }
 
@@ -129,13 +113,12 @@ public class PayBIllService extends BaseService {
      * @param time
      * @param keyword
      * @param type
-     * @param date
      * @param pager
      * @return
      */
-    public InputStream xlsx(String time,String keyword, Integer type, Date date, Pager pager){//todo 丛
+    public InputStream exportExcel(String time, String keyword, Integer type, Pager pager){
         ExcelDatas excelDatas = new ExcelDatas();
-        List<TbPayBill> tbPayBill = listBill(time,keyword, type, date, pager);
+        List<TbPayBill> tbPayBill = listBill(time,keyword, type, pager);
         excelDatas.addStringArray(0,0,new String[]{"序号","姓名","性别","出生年月","联系方式","学年","缴费类型","缴费方式","总金额","是否分期","缴费日期","优惠金额","金额","总计","开始时间","结束时间","备注"});
         excelDatas.addObjectList(1,0,tbPayBill,new String[]{"id","name","sex","birthDate","studentPhone","semesterName","typeName","paymentMethodName","totalAmount","instalment","payDate","discountAmount","payAmount","factAmount","startTime","endTime","remark"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
@@ -147,7 +130,7 @@ public class PayBIllService extends BaseService {
      * @param id
      * @return
      */
-    public List<TbPayBill> termCount(Integer id){//todo 丛 叫count
+    public List<TbPayBill> termCount(Integer id){
         Conditions conditions =getConditions();
         conditions.putEW("semesterId",id);
         return getList(conditions);

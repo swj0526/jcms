@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbIntegralHistory;
 import com.jczx.domain.TbStudent;
+import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -42,7 +43,8 @@ public class IntegralHistoryService extends BaseService {
             conditions.or();
             conditions.putLIKE("integralHistory.reason", keyword);
         }
-        if (StringUtil.isNotBlank(recordTime)) {//#todo 丛
+       conditions.putLIKEIfOK("student.majorId",majorId);
+        if (StringUtil.isNotBlank(recordTime)) {
             String[] split = recordTime.split(" - ");
             conditions.putBW("integralHistory.recordTime", split[0], split[1]);
         }
@@ -63,6 +65,7 @@ public class IntegralHistoryService extends BaseService {
         if (tbStudent!=null){
             integralHistory.setStudentId(tbStudent.getId());
         }
+        integralHistory.setCreateTime(SC.getNowDate());
         add(integralHistory);
         return SUCCESS;
     }

@@ -28,7 +28,10 @@ public class IntegralService extends BaseService {
         if (start != null && end != null) {
             conditions.putBW("Integral.totalScore", start, end);
         }
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        if (pager==null){
+            List<TbIntegral> list = getList(conditions);
+            return list;
+        }
         List<TbIntegral> list = getListByPage(conditions,pager);
         return list;
     }
