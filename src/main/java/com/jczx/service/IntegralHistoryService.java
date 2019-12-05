@@ -9,6 +9,7 @@ import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class IntegralHistoryService extends BaseService {
         Conditions conditions = getConditions();
         conditions.putEWIfOk("id", id);
         List<TbIntegralHistory> list = getList(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
 

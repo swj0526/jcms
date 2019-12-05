@@ -6,7 +6,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         laydate = layui.laydate;
     table.render({
         elem: '#currentTableId',
-        url:'/History/list',
+        url:'/history/list',
         id:'userTableReload',
         cols: [[
             {field: 'id', title: 'ID' }

@@ -34,6 +34,16 @@ public class IntegralHistoryController extends BaseController {
         return list;
     }
 
+
+    /**
+     * 历史记录列表
+     * @return
+     */
+    @RequestMapping("/tolist")
+    public String integral() {
+        return "integral/integralPage";
+    }
+
     /**
      *列表查询
      * @param keyword
@@ -46,7 +56,7 @@ public class IntegralHistoryController extends BaseController {
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult HistoryList(String keyword,String recordTime,Integer major,Integer page,Integer limit) {
-        Pager pager = checkPager(page, limit);
+        Pager pager = checkPager(limit, page);
         List<TbIntegralHistory> list = integralHistoryService.list(keyword,recordTime,major,pager);
         return layuiList(list, pager);
     }

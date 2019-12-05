@@ -97,7 +97,7 @@ public class PayBillController extends BaseController {
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult list(String time,String keyword, Integer typeId, Integer page, Integer limit) {
-        Pager pager = checkPager(page, limit);
+        Pager pager = checkPager(limit, page);
         List<TbPayBill> PayBillBean = moneyService.listBill(time,keyword, typeId, pager);
         return layuiList(PayBillBean,pager);
     }

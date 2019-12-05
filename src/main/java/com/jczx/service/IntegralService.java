@@ -30,9 +30,11 @@ public class IntegralService extends BaseService {
         }
         if (pager==null){
             List<TbIntegral> list = getList(conditions);
+            System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
             return list;
         }
         List<TbIntegral> list = getListByPage(conditions,pager);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
 

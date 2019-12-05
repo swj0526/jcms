@@ -18,14 +18,7 @@ public class IntegralController extends BaseController{
     @Autowired
     private IntegralService integralService;
 
-    /**
-     * 添加页面
-     * @return
-     */
-    @RequestMapping("/toadd")
-    public String integral() {
-        return "integral/integralPage";
-    }
+
 
     /**
      * 查询页面
@@ -48,7 +41,7 @@ public class IntegralController extends BaseController{
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult list(String keyword, Integer start, Integer end, Integer page, Integer limit) {
-        Pager pager = checkPager(page, limit);
+        Pager pager = checkPager(limit, page);
         List<TbIntegral> list = integralService.list(keyword, start, end, pager);
         return layuiList(list,pager);
     }
