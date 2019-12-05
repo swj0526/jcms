@@ -26,13 +26,13 @@ public class RecruitService extends BaseService {
      * @param student
      * @return
      */
-    public ServiceResult addRecruit(TbStudent student) {//todo y 有方法
-        Conditions conditions = getConditions();
+    public ServiceResult addRecruit(TbStudent student) {
+       /* Conditions conditions = getConditions();
         conditions.putEW("studentPhone", student.getStudentPhone());
         int count = getCount(conditions);
         if (count!= 0) {
             return error("学生电话有重复");
-        }
+        }*/
         if (StringUtil.isBlank(student.getName())//学生姓名
                         || StringUtil.isBlank(student.getLabelIds())//意向标签
                         || StringUtil.isBlank(student.getStudentPhone())//学生电话
