@@ -30,7 +30,7 @@ public class HomeworkService extends BaseService {
      */
     public ServiceResult addHomework(TbHomework homework) {
         if (StringUtil.isBlank(homework.getName()) || StringUtil.isBlank(homework.getMajorId() + "") || homework.getEndTime() == null || StringUtil.isBlank(homework.getContent())) {
-            return error("");
+            return error("内容不可为空!");
         }
         homework.setCreateTime(SC.getNowDate());
         homework.setTeacherId(SC.getOperatorId());
@@ -59,9 +59,10 @@ public class HomeworkService extends BaseService {
         conditions.putLIKEIfOK("majorId", majorId);
 
         if (StringUtil.isNotBlank(scopeTime)) {
+          /*  DateUtil.
             String start = scopeTime.substring(0, 10);//#todo 孙文举
             String end = scopeTime.substring(13);
-            conditions.putBW("createTime", start, end);
+            conditions.putBW("createTime", start, end);*/
 
         }
         pager.setDataTotal(getCount(conditions));

@@ -43,7 +43,6 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/add/label")
     public ServiceResult addLabel(String name, String remark) {
-
         ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
         return result;
     }
@@ -129,7 +128,7 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/delete/method")
     public ServiceResult deleteMethod(Integer id) {
-        ServiceResult result = dictionaryService.deleteMthod(id);
+        ServiceResult result = dictionaryService.deleteMethod(id);
         return result;
     }
     /**
@@ -152,24 +151,6 @@ public class DictionaryController extends BaseController {
         ServiceResult result = dictionaryService.deleteArticleType(id);
         return result;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @RequestMapping("/modify")

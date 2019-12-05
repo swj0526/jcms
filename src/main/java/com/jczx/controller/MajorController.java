@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @create 2019-11-20 22:22
  */
-@RequestMapping("major")
+@RequestMapping("/major")
 @Controller
 public class MajorController {
     @Autowired
@@ -29,7 +29,7 @@ public class MajorController {
      *
      * @return
      */
-    @RequestMapping("tolist")
+    @RequestMapping("/tolist")
     public String tolist(Map<String,Object> map, String keywords) {
         List<TbMajor> list = majorService.listMajor(keywords);
         map.put("list", list);
@@ -37,7 +37,7 @@ public class MajorController {
         return "/major/list";
     }
 
-    @RequestMapping("information")
+    @RequestMapping("/information")
     public String information() {
         return "/major/information";
     }
@@ -48,7 +48,7 @@ public class MajorController {
      * @param major
      * @return
      */
-    @RequestMapping("add/major")
+    @RequestMapping("/add/major")
     @ResponseBody
     public ServiceResult major(TbMajor major) {
         return majorService.addMajor(major);
@@ -60,7 +60,7 @@ public class MajorController {
      * @param major
      * @return
      */
-    @RequestMapping("add/class")
+    @RequestMapping("/add/class")
     @ResponseBody
     public ServiceResult classGrade(TbMajor major) {
         return majorService.addClass(major);

@@ -19,10 +19,10 @@ public class DemoController {
 
     @RequestMapping("/tolist")
     public String list() {
-        return "common/list";
+        return "/common/list";
     }
     @RequestMapping("/toadd")
     public String add() {
-        return "common/add";
+        return "/common/add";
     }
 }

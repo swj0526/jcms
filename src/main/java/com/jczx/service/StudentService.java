@@ -52,7 +52,7 @@ public class StudentService extends BaseService {
      * @param channelId
      * @return
      */
-    public List<TbStudent> checkChannel(Integer channelId) {
+    public List<TbStudent> channelCount(Integer channelId) {
         Conditions conditions = getConditions();
         conditions.putEW("channelId", channelId);
         return getList(conditions);

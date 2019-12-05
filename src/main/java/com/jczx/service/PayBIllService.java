@@ -147,7 +147,7 @@ public class PayBIllService extends BaseService {
      * @param id
      * @return
      */
-    public List<TbPayBill> checkTerm(Integer id){//todo 丛 叫count
+    public List<TbPayBill> termCount(Integer id){//todo 丛 叫count
         Conditions conditions =getConditions();
         conditions.putEW("semesterId",id);
         return getList(conditions);
@@ -158,7 +158,7 @@ public class PayBIllService extends BaseService {
      * @param id
      * @return
      */
-    public List<TbPayBill> checkType(Integer id){
+    public List<TbPayBill> typeCount(Integer id){
         Conditions conditions = getConditions();
         conditions.putEW("typeId",id);
         return getList(conditions);
@@ -169,7 +169,7 @@ public class PayBIllService extends BaseService {
      * @param id
      * @return
      */
-    public List<TbPayBill> checkMethod(Integer id){
+    public List<TbPayBill> methodCount(Integer id){
         Conditions conditions = getConditions();
         conditions.putEW("paymentMethodId",id);
         return getList(conditions);

@@ -44,7 +44,7 @@ public class DictionaryService extends BaseService {
     public ServiceResult addDictionary(String name, String remark, Integer type) {
         TbDictionary dictionary = new TbDictionary();
         if (StringUtil.isBlank(name)) {
-            return error("不可为空");///todo #孙文举
+            return error("名称不可为空!");
         }
         dictionary.setName(name);
         dictionary.setRemark(remark);
@@ -65,9 +65,9 @@ public class DictionaryService extends BaseService {
      */
     public ServiceResult modifyDictionary(String name, String remark, Integer id) {
         if (StringUtil.isBlank(name)) {
-            return error("");//todo #孙文举
+            return error("名称不可为空!");
         }
-        TbDictionary dictionary = getById(getTableName(), id);//todo #孙文举
+        TbDictionary dictionary = getById(id);
         dictionary.setName(name);
         dictionary.setRemark(remark);
         modify(dictionary);
@@ -81,11 +81,11 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteChannel(Integer id) {
-        List<TbStudent> list = studentService.checkChannel(id);//todo #孙文举  在不在返回数,不要list.浪费
+        List<TbStudent> list = studentService.channelCount(id);
         if (list.size() != 0) {
             return error("该渠道有学生,不可删除!");
         }
-        delById(getTableName(), id);//todo #孙文举
+        delById(getTableName(), id);
         return SUCCESS;
     }
 
@@ -96,7 +96,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteTerm(Integer id) {
-        List<TbPayBill> list = moneyService.checkTerm(id);
+        List<TbPayBill> list = moneyService.termCount(id);
         if (list.size() != 0) {
             return error("有学生是该学年进行缴费的,不可删除!");
         }
@@ -111,7 +111,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteType(Integer id) {
-        List<TbPayBill> list = moneyService.checkType(id);
+        List<TbPayBill> list = moneyService.typeCount(id);
         if (list.size() != 0) {
             return error("有学生是使用该缴费类型进行缴费的,不可删除!");
         }
@@ -125,8 +125,8 @@ public class DictionaryService extends BaseService {
      * @param id
      * @return
      */
-    public ServiceResult deleteMthod(Integer id) {
-        List<TbPayBill> list = moneyService.checkMethod(id);
+    public ServiceResult deleteMethod(Integer id) {
+        List<TbPayBill> list = moneyService.methodCount(id);
         if (list.size() != 0) {
             return error("有学生是使用该缴费方式进行缴费的,不可删除!");
         }
@@ -166,7 +166,6 @@ public class DictionaryService extends BaseService {
             conditions.parenthesesEnd();
         }
         if (pager == null) {
-            System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
             return getList(conditions);
         }
         pager.setDataTotal(getCount(conditions));
@@ -185,7 +184,6 @@ public class DictionaryService extends BaseService {
         Conditions conditions = getConditions();
         conditions.putEW("type", type);
         List<TbDictionary> list = getList(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
 

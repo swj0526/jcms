@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @RequestMapping("/work")
 @Controller
-public class HomeworkController extends BaseController{
+public class HomeworkController extends BaseController {
     @Autowired
     private HomeworkService homeworkService;
 
@@ -31,66 +31,76 @@ public class HomeworkController extends BaseController{
 
     @RequestMapping("/upload")
     public String workUploadPage() {
-        return "work/upload";
+        return "/work/upload";
     }
 
     /**
-     * 查询页面
+     * 作业列表
      *
      * @return
      */
     @RequestMapping("/tolist")
     public String list() {
-        return "work/list";
+        return "/work/list";
     }
 
     @RequestMapping("/uploading")
     public String uploading() {
-        return "work/studentwork";
+        return "/work/studentwork";
     }
 
     @RequestMapping("/download")
     public String download() {
-        return "work/workDownload";
+        return "/work/workDownload";
     }
 
+    /**
+     * 添加修改页面公用一个页面
+     *
+     * @return
+     */
     @RequestMapping("/toadd")
     public String add() {
-        return "work/addWork";
+        return "/work/addWork";
     }
 
+    /*
+     *添加作业的方法
+     */
     @RequestMapping("/add/homework")
     @ResponseBody
     public ServiceResult addHomework(TbHomework homework) {
         ServiceResult result = homeworkService.addHomework(homework);
         return result;
     }
+
     /**
-     * 查询
+     * 作业列表
      *
      * @param
      * @return
      */
     @RequestMapping("/list/homework")
     @ResponseBody
-    public ServiceResult listHomework(String keywords ,Integer majorId,String scopeTime, Integer page, Integer limit) {
+    public ServiceResult listHomework(String keywords, Integer majorId, String scopeTime, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbHomework> list = homeworkService.list(keywords, majorId, scopeTime,pager);
+        List<TbHomework> list = homeworkService.list(keywords, majorId, scopeTime, pager);
         return layuiList(list, pager);
 
 
     }
+
     /**
-     * 用于修改
+     * 查找一个作业,用于修改给页面赋值
      *
      * @param
      * @return
      */
     @RequestMapping("/get/homework")
 
-    public String getHomework(Integer id, Map<String,Object> map) {
+    public String getHomework(Integer id, Map<String, Object> map) {
         TbHomework homework = homeworkService.getHomework(id);
-        map.put("homework",homework);
+        map.put("homework", homework);
         return "/work/modifyWork";
     }
 }
