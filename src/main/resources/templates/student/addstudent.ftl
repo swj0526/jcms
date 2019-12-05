@@ -3,13 +3,10 @@
 <head>
     <base href="${basePath}">
     <meta charset="UTF-8">
+    <#include "../common/common.ftl"/>
     <title>添加学生信息</title>
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/static/common/css/all.css" media="all">
-    <script src="/layui/layui.js"></script>
-    <script src="/student/js/list.js"></script>
-    <script src="/student/js/addstudent.js"></script>
-    <script src="/static/common/js/all.js"></script>
+
     <style type="text/css">
         /*去除input number的 自动增加数按钮*/
         input::-webkit-outer-spin-button,
@@ -151,5 +148,8 @@
 </div>
 
 </div>
+<script src="/student/js/list.js"></script>
+<script src="/student/js/addstudent.js"></script>
+
 </body>
 </html>

@@ -3,10 +3,9 @@
 <head>
     <base href="${basePath}">
     <meta charset="UTF-8">
+    <#include "../common/common.ftl"/>
     <title>试学管理信息</title>
-    <link rel="stylesheet" href="/layui/css/layui.css"media="all">
-    <script src="/layui/layui.js" charset="utf-8"></script>
-    <script src="/recruit/js/internship.js"></script>
+
 </head>
 <body>
 <div class="layuimini-container">
@@ -81,11 +80,6 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-
-
-
-
-
-
+<script src="/recruit/js/internship.js"></script>
 </body>
 </html>

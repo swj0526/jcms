@@ -28,7 +28,7 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate'], function () {
 //删除
     $(".delete").click(function () {
         var id = $(this).val();
-        $.post('/details/deleteFollow',{id:id},function (result) {
+        $.post('/details/deletefollow',{id:id},function (result) {
             location.reload();
         })
 
@@ -36,17 +36,22 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate'], function () {
     });
     //修改
     $(".update").click(function () {
-        addselect();
+       /* addselect();*/
 
         var id = $(this).val();
         index = layer.open({
-            type: 1,
+            type: 2,
             title: "修改跟进信息",
             skin: 'layui-layer-rim', //加上边框
-            area: ['720px', '350'], //设置宽高
-            content: $("#upfollow"),
+            area: ['720px', '350px'], //设置宽高
+            content:"/details/tomodify?id="+id,
         });
-        $.post();
+        $.post("/details/modify",id,function (result) {
+            if (result.success==true){
+                layer.msg("修改成功")
+            }
+
+        });
     });
 
 
@@ -85,7 +90,7 @@ var add = xmSelect.render({
     ]
 })
 
-var modify = xmSelect.render({
+/*var modify = xmSelect.render({
     el: '#modify',
     language: 'zn',
     filterable: true,
@@ -108,6 +113,6 @@ axios({
     modify.update({
         data: res,
     })
-});
+});*/
 
 

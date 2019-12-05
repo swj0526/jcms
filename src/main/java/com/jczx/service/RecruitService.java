@@ -103,7 +103,7 @@ public class RecruitService extends BaseService {
         conditions.putEWIfOk("createTime",createTime);
         conditions.putEWIfOk("sex", sex);
 
-      /*  conditions.or();//跟踪时间在详情表
+       /* conditions.or();//跟踪时间在详情表
         conditions.putLIKE("followTime",followTime);*/
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbStudent> listStudent = getListByPage(conditions, pager);

@@ -3,7 +3,7 @@
 <head>
     <base href="${basePath}">
     <meta charset="utf-8">
-    <title>layui</title>
+    <title></title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -43,7 +43,7 @@
             <label class="layui-form-label">性别</label>
             <div class="layui-inline">
                 <div class="layui-inline" style="width: 190px">
-                    <select name="sex" lay-verify="" id="select1">
+                    <select name="sex" lay-verify="" id="selectsex">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
@@ -128,22 +128,34 @@
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/recruit/js/recruit.js"></script>
+
 
 <script>
     sel();
+    //赋值
+    //下拉复选赋值
     var modifydiv = xmSelect.render({
         el: '#modifydiv',
         language: 'zn',
         filterable: true,
         searchTips: '搜索标签',
-        tips: '选择意向',
+        tips: '请选择意向',
         height: '500px',
-        autoRow: true,
         code:0,
         prop: {
             name: 'name',
             value: 'id',
+        },
+        model: {
+            label: {
+                type: 'block',
+                block: {
+                    //最大显示数量, 0:不限制
+                    showCount: 1,
+                    //是否显示删除图标
+                    showIcon: true,
+                }
+            }
         },
 
     })
@@ -156,11 +168,9 @@
             data: res,
         })
     });
-    //赋值
     function mayfun(){
         modifydiv.setValue([${student.labelIds}])
     };
-
 </script>
 </body>
 </html>

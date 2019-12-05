@@ -16,11 +16,13 @@ import java.util.Date;
  */
 @Component
 public class TbStudent extends Domain {
-    //缺积分,状态性别
+    //缺在校状态
     @NotCreate
-    public static final int STATE_NOT_ENTRANCE = 0;//未入学
+    public static final int STATE_NOT_ENTRANCE = 0;//未入学未交费
     @NotCreate
-    public static final int STATE_ENTRANCE = 1;//在学
+    public static final int STATE_ENTRANCE = 3;//入学已缴费
+    @NotCreate
+    public static final int STATE_AT_SCHOOL = 1;//在学
     @NotCreate
     public static final int STATE_GRADUATE = 2;//毕业
     private Integer id;
@@ -37,6 +39,8 @@ public class TbStudent extends Domain {
     private Date admissionData;//入学时间
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date graduationDate;//毕业时间
+   /* private Integer studentState;//学生在校状态*/
+    /*private Date lastFollowTime;//*/
     private Integer state;//状态,区分已入学和未入学
     private String motherName;//母亲名字
     private String fatherName;//父亲名字

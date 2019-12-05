@@ -165,10 +165,12 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         });
     }
 
+    //监听添加招生提交
+    form.on('submit(addRecruitBtn)', function(data){
     //添加招生信息
     $("#addSubmit").click(function () {
         var seList = new Array();
-        var selectArr = addlabel.getValue().valueOf();//获取复选框的值
+        var selectArr = demo1.getValue().valueOf();//获取复选框的值
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
                 if (k1 == "value") {
@@ -194,6 +196,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
             }
         })
+    });
     });
     //修改招生信息
     $("#modifySubmit").click(function () {
@@ -234,15 +237,18 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
         });
     });
+    //监听提交
+    form.on('submit(addlabelbtn)', function(data){
+        //添加标签
+        $("#addlabelbtn").click(function () {
+            var label = $("#data").serialize();
+            $.post('/dictionary/add/label',label,function () {
+                layer.close(index);
+            })
+        });
 
-    //添加标签
-    $("#addM").click(function () {
-        var label = $("#data").serialize();
-
-        $.post('/dictionary/add/label',label,function () {
-            layer.close(index);
-        })
     });
+
 
 
 //监听行

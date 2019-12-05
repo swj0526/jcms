@@ -168,13 +168,9 @@
     </div>
 
     <script src="/recruit/js/xm.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/recruit/js/detailfollow.js"></script>
-    <script>
-        /*下拉选复选赋值*/
-        function addselect(){
-            modify.setValue([${student.labelIds}])
-        };
-    </script>
+
 
 </div>
 </body>

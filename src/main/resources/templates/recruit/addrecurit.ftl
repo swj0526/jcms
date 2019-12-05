@@ -4,14 +4,16 @@
     <base href="${basePath}">
     <meta charset="utf-8">
     <title></title>
-    <meta name="renderer" content="webkit">
+  <#--  <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
     <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/recruit/css/label.css">
     <link rel="stylesheet" href="/common/css/all.css">
+
+
     <style type="text/css">
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -47,7 +49,7 @@
         </div>
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" type="button"  lay-submit lay-filter="formDemo" id="addM">立即提交</button>
+                <button class="layui-btn" type="button"  lay-submit lay-filter="addlabelbtn" id="addlabelbtn">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -189,7 +191,7 @@
                 <div style="display: inline-block;float: left" style="height: 99px">
                     <label class="layui-form-label">意向<span  class="star">*</span></label>
                     <div class="layui-inline">
-                        <div id="addlabel" class="xm-select-demo" required lay-verify="required" style=" width:510px"
+                        <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:510px"
                              ;></div>
                     </div>
                     <div class="layui-inline">
@@ -207,7 +209,7 @@
             </div>
             <div class="layui-form-item" style="margin-left:5%;margin-top: 3%;">
                 <div class="layui-input-inline">
-                    <button  type="button" class="layui-btn"  lay-submit="" id="addSubmit"lay-filter="demo1">立即提交</button>
+                    <button  type="button" class="layui-btn"  lay-submit="" id="addSubmit"lay-filter="addRecruitBtn">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -223,6 +225,7 @@
 
 
 <script type="text/javascript" src="/common/js/all.js"></script>
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
@@ -230,8 +233,8 @@
 
 <script>
     sel();
-    var addlabel = xmSelect.render({
-        el: '#addlabel',
+    var demo1 = xmSelect.render({
+        el: '#demo1',
         language: 'zn',
         filterable: true,
         searchTips: '搜索标签',
@@ -249,7 +252,7 @@
         url: '/dictionary/list/label',
     }).then(response => {
         var res = response.data;
-        addlabel.update({
+        demo1.update({
             data: res,
 
         })

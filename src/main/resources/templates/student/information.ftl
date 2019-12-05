@@ -7,10 +7,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <#include "../common/common.ftl"/>
+
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
-    <script src="/layui/layui.js"></script>
-    <script src="/student/js/information.js"></script>
+
+
 </head>
 <body>
 <div class="layui-tab-content" style="background-color: #ffffff">
@@ -107,5 +108,6 @@
         </div>
     </div>
 </div>
+<script src="/student/js/information.js"></script>
 </body>
 </html>

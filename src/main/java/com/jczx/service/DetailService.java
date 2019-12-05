@@ -37,11 +37,20 @@ public class DetailService extends BaseService {
      * @return
      */
     public List<TbRecruitDetail> listDetail(Integer studentId){
-        Conditions conditions =new Conditions(getTableName());
+        Conditions conditions =getConditions();
         conditions.putEWIfOk("studentId",studentId);
         List<TbRecruitDetail> list = getList(conditions);
         return list;
 
+    }
+
+    /**
+     * 查询当前学生的跟踪详情
+     * @param id
+     * @return
+     */
+    public TbRecruitDetail getDetail(Integer id){
+        return getById(id);
     }
     /**
      * 删除
@@ -49,6 +58,17 @@ public class DetailService extends BaseService {
     public ServiceResult delDetail (TbRecruitDetail recruitDetail){
         del(recruitDetail);
         return SUCCESS;
+    }
+
+    /**
+     * 修改学生跟踪详情
+     * @param recruitDetail
+     * @return
+     */
+    public ServiceResult modifyDetail(TbRecruitDetail recruitDetail){
+         modify(recruitDetail);
+         return SUCCESS;
+
     }
 
 

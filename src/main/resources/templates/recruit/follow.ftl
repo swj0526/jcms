@@ -7,10 +7,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/static/common/css/all.css">
-    <script src="/layui/layui.js" charset="utf-8"></script>
-    <script src="/recruit/js/follow.js"></script>
+
     <style>
         .layui-form-label{
             margin-left: 25px;
@@ -115,5 +114,6 @@
     </div>
 </div>
 
+<script src="/recruit/js/follow.js"></script>
 </body>
 </html>
