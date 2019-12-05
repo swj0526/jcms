@@ -7,9 +7,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="layui/css/public.css" media="all">
-    <script src="layui/layui.js"></script>
+
 </head>
 <body>
 <div class="layuimini-container">
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+
 <script>
     layui.use(['form', 'table', 'laydate'], function() {
         var $ = layui.jquery,

@@ -43,6 +43,7 @@ public class DictionaryController extends BaseController {
      */
     @RequestMapping("/add/label")
     public ServiceResult addLabel(String name, String remark) {
+        System.out.println("进入意向标签");
         ServiceResult result = dictionaryService.addDictionary(name, remark,TbDictionary.TYPE_LABEL );
         return result;
     }

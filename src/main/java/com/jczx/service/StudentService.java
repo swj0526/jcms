@@ -1,7 +1,6 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbStudent;
-import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -9,7 +8,6 @@ import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -21,8 +19,6 @@ import java.util.List;
  */
 @Component
 public class StudentService extends BaseService {
-    @Autowired
-    private RecruitService recruitService;
 
     /**
      * @author 丛枭钰
@@ -85,7 +81,7 @@ public class StudentService extends BaseService {
         if (studentState!=null){
             String state=admissionData.substring(0,10);
             String end=admissionData.substring(13);
-            if (studentState==TbStudent.STATE_ENTRANCE){//在校
+            if (studentState==TbStudent.STATE_AT_SCHOOL){//在校
                 conditions.putBW("admissionData",state,end);
             }
             if (studentState==TbStudent.STATE_GRADUATE){//毕业
@@ -93,7 +89,7 @@ public class StudentService extends BaseService {
             }
         }
 
-        conditions.putEWIfOk("state", TbStudent.STATE_ENTRANCE);
+        conditions.putEWIfOk("state", TbStudent.STATE_AT_SCHOOL);//缺少缴费字段
         if (pager==null){
             List<TbStudent> list = getList(conditions);
             return list;
@@ -128,10 +124,9 @@ public class StudentService extends BaseService {
                 ||StringUtil.isBlank(student.getAddress())
                 ||StringUtil.isBlank(student.getNativePlace())
                 ||student.getAdmissionData()==null){
-            return error("");
+            return error("姓名,年龄,民族,身份证,在校状态,家庭住址,籍贯");
         }
-        student.setCreateTime(SC.getNowDate());//操作时间
-        student.setOperatorId(SC.getOperatorId());//操作人
+
         modify(student);
         return SUCCESS;
     }

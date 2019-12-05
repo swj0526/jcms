@@ -38,7 +38,7 @@ public class StudentController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult studentList(String keywords,String  admissionData, Integer studentState,Integer page, Integer limit){
+    public ServiceResult listStudent(String keywords,String  admissionData, Integer studentState,Integer page, Integer limit){
     Pager pager = checkPager(limit,page);
     List<TbStudent> studentList = studentService.listStudent(keywords,admissionData,studentState,pager);
     return layuiList(studentList,pager);
@@ -51,7 +51,7 @@ public class StudentController extends BaseController {
      * @return
      */
     @RequestMapping("information")
-    public String informationGet(Integer id, Map<String, Object> map) {
+    public String getInformation(Integer id, Map<String, Object> map) {
         TbStudent student = studentService.getStudent(id);
         map.put("student", student);
         if (student.getAdmissionData()!=null){

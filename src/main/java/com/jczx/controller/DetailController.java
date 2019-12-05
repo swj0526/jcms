@@ -39,9 +39,7 @@ public class DetailController {
     public ServiceResult addDetail(TbRecruitDetail recruitDetail) {
         ServiceResult detailResult = detailService.addDetail(recruitDetail);
         return detailResult;
-
     }
-
     /**
      *
      * @param studentId
@@ -64,13 +62,40 @@ public class DetailController {
     }
     /**
      * 删除跟进
-     * @param tbRecruitDetail
+     * @param
      * @return
      */
-    @RequestMapping("/deleteFollow")
+    @RequestMapping("/deletefollow")
     @ResponseBody
-    public ServiceResult deleteFollow(TbRecruitDetail tbRecruitDetail){
-        ServiceResult serviceResult = detailService.delDetail(tbRecruitDetail);
+    public ServiceResult deleteFollow(TbRecruitDetail RecruitDetail){
+        ServiceResult serviceResult = detailService.delDetail(RecruitDetail);
         return serviceResult;
+    }
+
+    /**
+     * 携带数据到修改页面
+     * @param id
+     * @param map
+     * @return
+     */
+    @RequestMapping("/tomodify")
+    public String toModify(Integer id,Map<String,Object>map){
+        TbRecruitDetail detail = detailService.getDetail(id);
+        map.put("detail",detail);
+        return "recruit/modfollowdata";
+    }
+
+    /**
+     * 修改学生跟踪详情
+     * @param recruitDetail
+     * @return
+     */
+    @RequestMapping("/modify")
+    @ResponseBody
+    public ServiceResult modify(TbRecruitDetail recruitDetail){
+        ServiceResult modifyDetail = detailService.modifyDetail(recruitDetail);
+        return modifyDetail;
+
+
     }
 }

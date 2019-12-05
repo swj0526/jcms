@@ -3,7 +3,7 @@
 <head>
     <base href="${basePath}">
     <meta charset="utf-8">
-    <title>layui</title>
+    <title></title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -156,7 +156,10 @@
             data: res,
         })
     });
-  OK,9
+    //赋值
+    function mayfun(){
+        modifydiv.setValue([${student.labelIds}])
+    };
 
 </script>
 </body>

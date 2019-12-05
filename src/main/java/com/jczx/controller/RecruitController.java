@@ -37,7 +37,6 @@ public class RecruitController extends BaseController {
         return "recruit/recruit";
     }
 
-
     /**
      * 数据统计页面
      *
@@ -74,7 +73,6 @@ public class RecruitController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addRecruit(TbStudent student) {
-
         ServiceResult addRecruit = recruitService.addRecruit(student);
         return addRecruit;
     }
@@ -114,11 +112,7 @@ public class RecruitController extends BaseController {
         Pager pager = checkPager(limit, page);
         List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, pager);
         return layuiList(list, pager);
-
-
     }
-
-
 
     /**
      * 导出

@@ -4,12 +4,12 @@
     <base href="${basePath}">
     <meta charset="utf-8">
     <title></title>
-    <meta name="renderer" content="webkit">
+    <#--<meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
     <#--上传-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <#--  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
     <#include "../common/common.ftl"/>
     <link rel="stylesheet" href="/recruit/css/label.css">
     <style type="text/css">
@@ -33,7 +33,7 @@
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width:100px">关键词</label>
                         <div class="layui-input-inline" style="width:100px ">
-                            <input type="text" id="demoReload" autocomplete="off"  placeholder="姓名"class="layui-input">
+                            <input type="text" id="name" autocomplete="off"  placeholder="姓名"class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -75,8 +75,8 @@
                     </div>
                     <div class="layui-btn-group" >
                         <button class="layui-btn data-add-btn"type="button">添加</button>
-                        <button class="layui-btn layui-btn-warm "type="button" id="download">导出</button>
-                        <button class="layui-btn layui-btn-warm "type="button" id="upload">导入</button>
+                        <button class="layui-btn layui-btn-warm "type="button" id="downloadbtn">导出</button>
+                        <button class="layui-btn layui-btn-warm "type="button" id="uploadbtn">导入</button>
                     </div>
                 </form>
 
@@ -108,7 +108,7 @@
         </script>
     </div>
 </div>
-<div id="download1"style="display: none;width:60%;margin: 0 auto">
+<div id="downloadtable"style="display: none;width:60%;margin: 0 auto">
     <div style="margin-top: 10%">
         <p><span style="font-size: 15px;color: red">注意:请按照指定的格式上传文件,点击下载模板</span></p>
         <button class="layui-btn layui-btn-danger "type="button" >下载模板</button>

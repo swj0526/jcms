@@ -1,48 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
     <base href="${basePath}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <#include "../common/common.ftl"/>
     <title>饼状图比例分布数据</title>
 
-    <script src="/jquery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/jsapi.js"></script>
-    <script type="text/javascript" src="js/corechart.js"></script>
-    <script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <script type="text/javascript" src="/layui/layui.js"></script>
-
-    <script type="text/javascript">
-        gvChartInit();
-        $(document).ready(function () {
-            $('#myTable5').gvChart({
-                chartType: 'PieChart',
-                gvSettings: {
-                    vAxis: {title: 'No of players'},
-                    hAxis: {title: 'Month'},
-                    width: 700,
-                    height: 550
-                }
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        gvChartInit();
-        $(document).ready(function () {
-            $('#myTable1').gvChart({
-                chartType: 'PieChart',
-                gvSettings: {
-                    vAxis: {title: 'No of players'},
-                    hAxis: {title: 'Month'},
-                    width: 700,
-                    height: 550
-                }
-            });
-        });
-    </script>
 
 </head>
 
@@ -120,6 +83,39 @@
     </table>
 </div>
 
+<script type="text/javascript" src="js/jsapi.js"></script>
+<script type="text/javascript" src="js/corechart.js"></script>
+<script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
+<script type="text/javascript">
+    gvChartInit();
+    $(document).ready(function () {
+        $('#myTable5').gvChart({
+            chartType: 'PieChart',
+            gvSettings: {
+                vAxis: {title: 'No of players'},
+                hAxis: {title: 'Month'},
+                width: 700,
+                height: 550
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    gvChartInit();
+    $(document).ready(function () {
+        $('#myTable1').gvChart({
+            chartType: 'PieChart',
+            gvSettings: {
+                vAxis: {title: 'No of players'},
+                hAxis: {title: 'Month'},
+                width: 700,
+                height: 550
+            }
+        });
+    });
+</script>
 <script>
     layui.use(['form', 'table', 'laydate'], function () {
         var table = layui.table,
