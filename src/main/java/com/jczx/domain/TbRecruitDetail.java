@@ -86,6 +86,6 @@ public class TbRecruitDetail extends Domain {
         this.remark = remark;
     }
     public String getLabelNames(){
-        return CACHE.getLabelNames(",7,8,9,");
-    }//#todo 于
+        return CACHE.getLabelNames(labelIds);
+    }
 }

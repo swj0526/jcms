@@ -50,9 +50,9 @@ public class StudentController extends BaseController {
      * @param map
      * @return
      */
-    @RequestMapping("/information")//#todo y
+    @RequestMapping("/information")
     public String getInformation(Integer id, Map<String, Object> map) {
-        TbStudent student = studentService.getStudent(id);
+        TbStudent student = studentService.getById(id);
         map.put("student", student);
         if (student.getAdmissionData()!=null){
             map.put("admissionData",student.getAdmissionData().toString());
@@ -64,9 +64,9 @@ public class StudentController extends BaseController {
      * 修改学生的基本信息页面
      * @return
      */
-    @RequestMapping("/tostudent")//#todo y
+    @RequestMapping("/tostudent")
     public String toModify(Integer id,Map<String,Object> map){
-        TbStudent student = studentService.getStudent(id);
+        TbStudent student = studentService.getById(id);
         map.put("student",student);
         if (student.getAdmissionData()!=null){
             map.put("admissionData",student.getAdmissionData().toString());
@@ -83,8 +83,8 @@ public class StudentController extends BaseController {
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modifyStudent(TbStudent student){
-        ServiceResult studentResult = studentService.modifyStudent(student);
-        return studentResult;
+        ServiceResult result = studentService.modifyStudent(student);
+        return result;
 
 
     }
@@ -98,7 +98,7 @@ public class StudentController extends BaseController {
      * @param
      * @return
      */
-    @RequestMapping("/toexcel")//#todo y
+    @RequestMapping("/exportexcel")
     @ResponseBody
     public Render excel(String keywords,String  admissionData,Integer studentState) {
         InputStream inputStream = studentService.studentExcel(keywords, admissionData, studentState,null);

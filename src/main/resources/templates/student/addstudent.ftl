@@ -53,7 +53,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label"> 在校状态<span  class="star">*</span></label>
                     <div class="layui-input-inline">
-                        <input type="text" style="display: none" id="Instalment" value=${student.state}>
+                        <input type="text" style="display: none" id="Instalment" value=${student.entranceState}>
                         <select name="state" lay-verify="" id="select1">
                             <option value="1">在校</option>
                             <option value="3">毕业</option>

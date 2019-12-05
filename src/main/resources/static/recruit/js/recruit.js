@@ -135,8 +135,8 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
 
     });
     //监听导出事件
-    $("#download").click(function () {
-        window.location.href="/recruit/toExcel?page="+1+"&limit="+99999;
+    $("#downloadbtn").click(function () {
+        window.location.href="/recruit/exportExcel";
     });
     //监听导入事件
     $("#upload").click(function () {

@@ -54,7 +54,7 @@ public class DetailController {
     @RequestMapping("/todetail")
     public String upFollow(Integer id, Map<String, Object> map) {
         map.put("id",id);
-        TbStudent student = studentService.getStudent(id);
+        TbStudent student = studentService.getById(id);
         map.put("student",student);
         List<TbRecruitDetail> detail = detailService.listDetail(id);
         map.put("detail",detail);
@@ -80,7 +80,7 @@ public class DetailController {
      */
     @RequestMapping("/tomodify")
     public String toModify(Integer id,Map<String,Object>map){
-        TbRecruitDetail detail = detailService.getDetail(id);
+        TbRecruitDetail detail = detailService.getById(id);
         map.put("detail",detail);
         return "recruit/modfollowdata";
     }
