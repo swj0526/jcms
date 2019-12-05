@@ -1,7 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.annotation.NotCreate;
+import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,7 @@ import java.util.Date;
 public class TbIntegralHistory extends Domain {
     private Integer id;//id
     private Integer studentId;//学生id
+    @FieldType(type = Type.DATETIME)
     @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm:ss")
     private Date recordTime;//事发时间
     private String reason;//事由
