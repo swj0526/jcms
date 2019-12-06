@@ -5,6 +5,7 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.stereotype.Component;
 
@@ -65,6 +66,7 @@ public class HomeworkService extends BaseService {
 
         }
         pager.setDataTotal(getCount(conditions));
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));//todo  修改
         return getListByPage(conditions, pager);
     }
 
