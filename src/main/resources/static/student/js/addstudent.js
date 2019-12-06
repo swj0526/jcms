@@ -17,7 +17,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
 //下拉选赋值;
     var a = $("#Instalment").val();
     var select = 'dd[lay-value=' + a + ']';
-    $('#select1').siblings("div.layui-form-select").find('dl').find(select).click();
+    $('#schoolState').siblings("div.layui-form-select").find('dl').find(select).click();
     //提交
     $("#addSubmit").click(function () {
         let serialize = $("#dataFor").serialize();
@@ -32,7 +32,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
 
             }
             location.reload()//刷新当前页
-            alert("123");
+
 
         })
 

@@ -20,13 +20,11 @@ public class TbIntegral extends Domain {
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
-    public String getStudentName() {
-        return CACHE.getStudentName(studentId);//获取学生姓名
+    public String getName() {
+        return CACHE.getStudentName(studentId);
     }
-
-    public String getMajorName() {
-        TbStudent student = CACHE.getStudent(studentId);
-        return CACHE.getMajorName(student.getMajorId());//学生id
+    public String getMajor() {
+        return CACHE.getMajorName(studentId);
     }
 
     public Integer getId() {

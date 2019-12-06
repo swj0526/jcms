@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbIntegralItem;
+import com.jczx.system.SC;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
@@ -31,13 +32,14 @@ public class IntegralItemService extends BaseService {
      */
     public ServiceResult addItem(TbIntegralItem integralItem) {
         if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null || StringUtil.isBlank(integralItem.getRemark())) {
-            return error("");//#todo 丛
+            return error("必选项为空");
         }
         if (integralItem.getType()==1&&integralItem.getScore()>0){
             integralItem.setScore(0-integralItem.getScore());
         }
+        integralItem.setCreateTime(SC.getNowDate());
         add(integralItem);
-        return success("");//#todo 丛
+        return SUCCESS;
     }
 
     /**

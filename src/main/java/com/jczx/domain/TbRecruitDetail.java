@@ -85,7 +85,12 @@ public class TbRecruitDetail extends Domain {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-    public String getLabelNames(){
-        return CACHE.getLabelNames(",7,8,9,");
-    }//#todo 于
+    /**
+     * 意向标签
+     *
+     * @return
+     */
+    public String listLabelName(){
+        return CACHE.getLabelNames(labelIds);
+    }
 }

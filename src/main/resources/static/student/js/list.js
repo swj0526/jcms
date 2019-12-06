@@ -157,11 +157,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
 //导出学生档案
     $("#output").click(function () {
         let serialize = $("#formexcel").serialize();
-        alert(serialize);
-        $.post('/student/toexcel',serialize,function (result) {
-            window.location.href="/student/toexcel?"+serialize;
-
-        })
+            window.location.href="/student/exportexcel?"+serialize;
     });
 
     //监听表格事件

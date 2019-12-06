@@ -26,15 +26,13 @@ public class RecruitService extends BaseService {
      * @param student
      * @return
      */
-    public ServiceResult addRecruit(TbStudent student) {//todo y 有方法
-        Conditions conditions = getConditions();
+    public ServiceResult addRecruit(TbStudent student) {
+       /* Conditions conditions = getConditions();
         conditions.putEW("studentPhone", student.getStudentPhone());
-        conditions.or();
-        conditions.putEW("motherPhone", student.getMotherPhone());
-        List<Object> listRecruit = getList(conditions);
-        if (listRecruit.size() != 0) {
-            return error("学生电话,母亲电话有重复");
-        }
+        int count = getCount(conditions);
+        if (count!= 0) {
+            return error("学生电话有重复");
+        }*/
         if (StringUtil.isBlank(student.getName())//学生姓名
                         || StringUtil.isBlank(student.getLabelIds())//意向标签
                         || StringUtil.isBlank(student.getStudentPhone())//学生电话
@@ -102,6 +100,10 @@ public class RecruitService extends BaseService {
         }
         conditions.putEWIfOk("createTime",createTime);//todo y
         conditions.putEWIfOk("sex", sex);
+       if(pager==null){
+           List<TbStudent> listStudent = getList(conditions);
+           return listStudent;
+       }
 
        /* conditions.or();//跟踪时间在详情表
         conditions.putLIKE("followTime",followTime);*/
@@ -117,19 +119,18 @@ public class RecruitService extends BaseService {
      * @param keywords
      * @param labelIds
      * @param sex
-     * @param pager
+     * @param
      * @return
      */
-    public InputStream studentExcel(String keywords,String createTime, String labelIds, String sex, Integer channelId,Pager pager) {
+    public InputStream studentExcel(String keywords,String createTime, String labelIds, String sex, Integer channelId) {
         ExcelDatas excelDatas = new ExcelDatas();
-        List<TbStudent> list = listRecruit(keywords,createTime, labelIds,channelId, sex, pager);//调用查询信息
+        List<TbStudent> list = listRecruit(keywords,createTime, labelIds,channelId, sex,null);//调用查询信息
         excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "意向", "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
-        excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelIds", "birthDate", "school", "studentPhone", "qq", "weChat", "channelId"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"name", "sex", "labelNames", "birthDate", "school", "studentPhone", "qq", "weChat", "channelName"});
+
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }
-
-
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();

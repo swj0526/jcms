@@ -5,10 +5,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     form = layui.form,
         table.render({
             elem: '#test'
-            , url: '/History/historylist'
+            , url: '/history/historylist'
             ,where:{
                 id:$("#id").val(),
-                name:$("#name").val()
             }
             , cols: [[
                 {field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
@@ -23,8 +22,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 console.log(res);
                 return {
                     code: '0'
-                    , data: res.result
-                    , count: res.pager.dataTotal
+                    , data: res
                 }
             },
         });

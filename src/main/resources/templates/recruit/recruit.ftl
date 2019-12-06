@@ -56,7 +56,7 @@
                         <label class="layui-form-label" style="width: 110px">渠道</label>
                         <div class="layui-inline" style="width: 100px">
                             <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
-                                    url="/dictionary/list/channel/options">
+                                    url="/dictionary/list/channel/options" id="channelId">
                                 <option value="">来源渠道</option>
                             </select>
                         </div>

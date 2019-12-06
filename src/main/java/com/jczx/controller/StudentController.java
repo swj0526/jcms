@@ -23,6 +23,7 @@ public class StudentController extends BaseController {
     /**
      * 于振华
      * 学生档案页面
+     *
      * @return
      */
     @RequestMapping("/tolist")
@@ -32,65 +33,77 @@ public class StudentController extends BaseController {
 
     /**
      * 查询入学学生的全部信息
-     * @param      * @param page
+     *
+     * @param *     @param page
      * @param limit
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listStudent(String keywords,String  admissionData, Integer studentState,Integer page, Integer limit){
-    Pager pager = checkPager(limit,page);
-    List<TbStudent> studentList = studentService.listStudent(keywords,admissionData,studentState,pager);
-    return layuiList(studentList,pager);
-}
+    public ServiceResult listStudent(String keywords, String admissionData, Integer studentState, Integer page, Integer limit) {
+        Pager pager = checkPager(limit, page);
+        List<TbStudent> studentList = studentService.listStudent(keywords, admissionData, studentState, pager);
+        return layuiList(studentList, pager);
+    }
 
     /**
      * 查询当前学生信息
+     *
      * @param id
      * @param map
      * @return
      */
-    @RequestMapping("/information")//#todo y
+    @RequestMapping("/information")
     public String getInformation(Integer id, Map<String, Object> map) {
-        TbStudent student = studentService.getStudent(id);
+        TbStudent student = studentService.getById(id);
         map.put("student", student);
-        if (student.getAdmissionData()!=null){
+        /*if (student.getAdmissionData()!=null){
             map.put("admissionData",student.getAdmissionData().toString());
-        }
-        return "student/information";
+        }*/
+        return "/student/information";
     }
 
     /**
      * 修改学生的基本信息页面
+     *
      * @return
      */
-    @RequestMapping("/tostudent")//#todo y
-    public String toModify(Integer id,Map<String,Object> map){
-        TbStudent student = studentService.getStudent(id);
-        map.put("student",student);
-        if (student.getAdmissionData()!=null){
-            map.put("admissionData",student.getAdmissionData().toString());
+    @RequestMapping("/tostudent")
+    public String toModify(Integer id, Map<String, Object> map) {
+        TbStudent student = studentService.getById(id);
+        map.put("student", student);
+        if (student.getAdmissionData() != null) {
+            map.put("admissionData", student.getAdmissionData().toString());
         }
 
-        return "student/addstudent";
+        return "/student/addstudent";
     }
 
     /**
      * 修改学生基本信息
+     *
      * @param student
      * @return
      */
     @RequestMapping("/modify")
     @ResponseBody
-    public ServiceResult modifyStudent(TbStudent student){
-        ServiceResult studentResult = studentService.modifyStudent(student);
-        return studentResult;
+    public ServiceResult modifyStudent(TbStudent student) {
+        ServiceResult result = studentService.modifyStudent(student);
+        return result;
 
 
     }
 
+    @RequestMapping("/modifyOne")
+    @ResponseBody
+    public ServiceResult modifyOne(TbStudent student) {
+        ServiceResult result = studentService.modifyOne(student);
+        return result;
+    }
+
     /**
      * 导出学生信息
+     *
      * @param keywords
      * @param
      * @param
@@ -98,10 +111,10 @@ public class StudentController extends BaseController {
      * @param
      * @return
      */
-    @RequestMapping("/toexcel")//#todo y
+    @RequestMapping("/exportexcel")
     @ResponseBody
-    public Render excel(String keywords,String  admissionData,Integer studentState) {
-        InputStream inputStream = studentService.studentExcel(keywords, admissionData, studentState,null);
+    public Render excel(String keywords, String admissionData, Integer studentState) {
+        InputStream inputStream = studentService.studentExcel(keywords, admissionData, studentState, null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
 

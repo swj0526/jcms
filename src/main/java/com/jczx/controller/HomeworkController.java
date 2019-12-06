@@ -85,9 +85,6 @@ public class HomeworkController extends BaseController {
     public ServiceResult listHomework(String keywords, Integer majorId, String scopeTime, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
         List<TbHomework> list = homeworkService.list(keywords, majorId, scopeTime, pager);
-        for (TbHomework homework:list){ //todo 要删掉
-            System.out.println(homework.getEndTime());
-        }
         return layuiList(list, pager);
 
 
