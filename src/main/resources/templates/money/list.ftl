@@ -71,5 +71,8 @@
     </script>
 </div>
 </body>
+<script>
+    sel();
+</script>
 <script type="text/javascript" src="/money/js/money.js"></script>
 </html>

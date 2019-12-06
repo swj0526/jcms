@@ -11,7 +11,7 @@ layui.use(['jquery', 'layer', 'table', 'laydate'], function () {
             field: 'studentId', title: 'ID', align: 'center'
         }
             , {field: 'name', title: '姓名', align: 'center'}
-            , {field: 'major', title: '班级', align: 'center'}
+            , {field: 'majorName', title: '班级', align: 'center'}
             , {field: 'totalScore', title: '剩余积分', align: 'center'}
             , {
                 title: '操作', minWidth: 50, fixed: "right", align: "center", toolbar: '#barDemo'

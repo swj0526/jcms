@@ -6,10 +6,8 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -71,10 +69,6 @@ public class IntegralHistoryService extends BaseService {
         add(integralHistory);
         return SUCCESS;
     }
-
-
-
-
     public ServiceResult modify(TbIntegralHistory integralHistory) {
         if (StringUtil.isBlank(integralHistory.getReason()) || integralHistory.getScore() == null || integralHistory.getRecordTime() == null) {
             return error("必填项不能为空");

@@ -11,7 +11,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         cols: [[
             {field: 'studentId', title: 'ID' }
             , {field: 'name', title: '姓名' }
-            , {field: 'major', title: '班级' }
+            , {field: 'majorName', title: '班级' }
             , {field: 'recordTime', title: '时间' }
             , {field: 'score', title: '加减分' }
             , {field: 'reason', title: '事由' }

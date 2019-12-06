@@ -24,6 +24,7 @@ public class TbIntegral extends Domain {
         return CACHE.getStudentName(studentId);
     }
     public String getMajorName() {
+
         return CACHE.getMajorName(CACHE.getStudent(studentId).getMajorId());
     }
 

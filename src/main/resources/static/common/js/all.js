@@ -125,11 +125,6 @@ var input_sel = function (src) {
         $.post(src, function (result) {
             result = data;
         });
-        $(".input-box").wxSelect({
-            data: data
-        });
-
-
     });
 
 }
