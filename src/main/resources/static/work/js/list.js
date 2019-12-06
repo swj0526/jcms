@@ -93,9 +93,9 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     curr: currPage
                 },
                 where: {
-                    keywords: $('[name="keywords"]').val(),
-                    majorId: $('[name="majorId"]').val(),
-                    scopeTime: $('[name="scopeTime"]').val()
+                    "keywords": $('[name="keywords"]').val(),
+                    "majorId": $('#gradeSelect').val(),
+                    "scopeTime": $('[name="scopeTime"]').val()
                 }
             }, 'data');
         }

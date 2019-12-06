@@ -83,6 +83,7 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/list/homework")
     @ResponseBody
     public ServiceResult listHomework(String keywords, Integer majorId, String scopeTime, Integer page, Integer limit) {
+        System.out.println(keywords+"..."+majorId+"..."+scopeTime);
         Pager pager = checkPager(limit, page);
         List<TbHomework> list = homeworkService.list(keywords, majorId, scopeTime, pager);
         return layuiList(list, pager);
