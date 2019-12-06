@@ -17,7 +17,8 @@
 
                 <label class="layui-form-label">专业名称 <span class="star">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" name="nameMajorM" required lay-verify="required" placeholder="" autocomplete="off"
+                    <input type="text" name="nameMajorM" required lay-verify="required" placeholder=""
+                           autocomplete="off"
                            class="layui-input">
 
                 </div>
@@ -107,7 +108,8 @@
 
                 <label class="layui-form-label">班级名称 <span class="star">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" name="nameGradeM" required lay-verify="required" placeholder="" autocomplete="off"
+                    <input type="text" name="nameGradeM" required lay-verify="required" placeholder=""
+                           autocomplete="off"
                            class="layui-input">
 
                 </div>
@@ -144,25 +146,29 @@
 
 
                 <button class="layui-btn" type="submit" id="search">查询</button>
-                <#--  <button class="layui-btn data-add-btn" type="button" id="add">添加专业信息</button>-->
+
 
             </div>
         </form>
 
     </fieldset>
     <div style="height:50px;background-color: #F2F2F2;border: 1px solid #E6E6E6;line-height: 50px;padding-left: 20px; ">
-        <div style="display: inline-block;border: 1px solid #cccccc;height: 25px;width: 25px;margin: 5px;line-height: 25px;" id="refreshBtn" >
-           <a>
-               <i class="layui-icon layui-icon-refresh" style="display: inline-block;height: 25px;width: 25px;line-height: 25px;text-align: center"></i>
-           </a>
-        </div>
-        <div style="display: inline-block;border: 1px solid #cccccc;height: 25px;width: 25px;margin:5px;line-height: 25px;"  id="addBtn">
+        <div style="display: inline-block;border: 1px solid #cccccc;height: 25px;width: 25px;margin: 5px;line-height: 25px;"
+             id="refreshBtn">
             <a>
-                <i class="layui-icon layui-icon-add-circle" style="display: inline-block;height: 25px;width: 25px;line-height: 25px;text-align: center"></i>
+                <i class="layui-icon layui-icon-refresh"
+                   style="display: inline-block;height: 25px;width: 25px;line-height: 25px;text-align: center"></i>
+            </a>
+        </div>
+        <div style="display: inline-block;border: 1px solid #cccccc;height: 25px;width: 25px;margin:5px;line-height: 25px;"
+             id="addBtn">
+            <a>
+                <i class="layui-icon layui-icon-add-circle"
+                   style="display: inline-block;height: 25px;width: 25px;line-height: 25px;text-align: center"></i>
             </a>
         </div>
     </div>
-    <table class="layui-table"  style="margin-top: 0px;">
+    <table class="layui-table" style="margin-top: 0px;">
         <tr style="background-color: #F2F2F2;">
             <th>班级-专业</th>
             <th>备注</th>
@@ -188,7 +194,7 @@
         </#list>
         <#if list?? && (list?size == 0)>
             <tr>
-                <td  colspan="3" style="text-align: center">暂无数据</td>
+                <td colspan="3" style="text-align: center">无数据</td>
             </tr>
         </#if>
     </table>

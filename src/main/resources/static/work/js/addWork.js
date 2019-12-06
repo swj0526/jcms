@@ -5,6 +5,23 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
     laydate = layui.laydate;
     var upload = layui.upload;
     form = layui.form;
+
+    //获取系统当前时间
+    function getNow(s) {
+        return s < 10 ? '0' + s : s;
+    }
+
+    var myDate = new Date();
+    var year = myDate.getFullYear();        //获取当前年
+    var month = myDate.getMonth() + 1;   //获取当前月
+    var date = myDate.getDate();            //获取当前日
+    var h=myDate.getHours();              //获取当前小时数(0-23)
+    var m=myDate.getMinutes();          //获取当前分钟数(0-59)
+    var s=myDate.getSeconds();
+    var now=year+'-'+getNow(month)+"-"+getNow(date)+" "+getNow(h)+':'+getNow(m)+":"+getNow(s);
+
+    $('[name="name"]').val(now+"的作业");
+
     //选完文件后不自动上传
     var currPage = 1;
     var demoListView = $('#demoList')
@@ -69,18 +86,17 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         elem: '#test1'
     });
     laydate.render({
-        elem: '#endTime',
-        type: 'datetime'
+        elem: '#endTime'
     });
 
     $('#submit').click(function () {
         let serialize = $("#dataFor").serialize();
         $.post('/work/add/homework', serialize, function (result) {
-           if(result.success==true){
-             close_tab("work_add","work_list","作业列表","/work/list");
-           }else{
+            if (result.success == true) {
+                close_tab("work_add", "work_list", "作业列表", "/work/list");
+            } else {
 
-               }
+            }
         });
 
     });

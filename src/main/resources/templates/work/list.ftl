@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <#include "../common/common.ftl"/>
-    <script type="text/javascript" src="/work/js/list.js"></script>
+
 </head>
 <body>
 <div>
@@ -36,8 +36,9 @@
                             <input class="layui-input" id="scopeTime" type="text" placeholder="请选择时间范围"
                                    name="scopeTime">
                         </div>
-                        <a class="layui-btn" lay-submit="" lay-filter="data-search-btn" data-type="reload">查询</a>
+
                     </div>
+                    <button class="layui-btn" type="submit" id="search">查询</button>
                 </div>
             </form>
         </fieldset>
@@ -51,6 +52,7 @@
     </script>
 </div>
 </body>
+<script type="text/javascript" src="/work/js/list.js"></script>
 <script>
     sel_garade();
 </script>
