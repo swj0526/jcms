@@ -97,14 +97,15 @@ layui.use(['table','laydate'], function () {
             });
         } else if (obj.event === 'edit') {
             mainIndex = layer.open({
-                btnAlign: 'c',
+                btnA: 'c',
                 type: 2,
-                title: "发布公告",
+                title: "文章详情",
+                btn: ['编辑'],
                 skin: "myclass", // 自定样式
                 area: ["100%", "100%"],
-                content: 'dispatch',
-                success: function () {
-                    form.val("dataForm", data);
+                content: 'details',
+                yes: function(index, layero){
+
                 }
             });
             form.render(); // 动态渲染
@@ -120,7 +121,7 @@ layui.use(['table','laydate'], function () {
                             window.location.reload();//默认刷新第一页
                         }
                     } else {
-                        layer.msg(result.msg);
+                        layer.msg(result.msg);lign
                     }
                 });
             });

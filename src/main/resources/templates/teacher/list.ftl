@@ -22,20 +22,20 @@
                     <label class="layui-form-label">姓名<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
-                               class="layui-input" id="name">
+                               class="layui-input" id="addName">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input name="phone" class="layui-input" type="tel" autocomplete="off"
-                               lay-verify="required|phone" id="phone">
+                               lay-verify="required|phone" id="addPhone">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">性别<span class="star">*</span></label>
                     <div class="layui-input-inline">
-                        <select name="gender" lay-verify="" id="gender">
+                        <select name="gender" lay-verify="" id="addGender">
                             <option value="">选择性别</option>
                             <option value="男">男</option>
                             <option value="女">女</option>
@@ -66,20 +66,20 @@
                     <label class="layui-form-label">姓名<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
-                               class="layui-input" id="name1">
+                               class="layui-input" id="modifyName">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <input name="phone" class="layui-input" type="tel" autocomplete="off"
-                               lay-verify="required|phone" id="phone1">
+                               lay-verify="required|phone" id="modifyPhone">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">状态<span class="star">*</span></label>
                     <div class="layui-input-inline">
-                        <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit1">
+                        <select name="hasQuit" lay-search="" lay-verify="required" id="modifyHasQuit">
                             <option value=true>在职</option>
                             <option value=false>离职</option>
                         </select>

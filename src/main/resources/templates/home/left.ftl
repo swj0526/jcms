@@ -52,7 +52,7 @@
                 <dl class="layui-nav-child">
                     <dd><a class="add" id="article_dispatch">发布公告</a></dd>
                     <dd><a class="add" id="article_list">公告列表</a></dd>
-                    <dd><a class="add" id="article_teacherList">文章列表</a></dd>
+                    <dd><a class="add" id="article_teacherList">文章管理</a></dd>
 
                 </dl>
             </li>
