@@ -6,10 +6,10 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         laydate = layui.laydate;
     table.render({
         elem: '#currentTableId',
-        url:'/History/list',
+        url:'/history/list',
         id:'userTableReload',
         cols: [[
-            {field: 'id', title: 'ID' }
+            {field: 'studentId', title: 'ID' }
             , {field: 'name', title: '姓名' }
             , {field: 'major', title: '班级' }
             , {field: 'recordTime', title: '时间' }
@@ -33,7 +33,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
             type: 2,
             btnAlign:'c',
             area: ['60%', '550px'],
-            content: '/History/toaddPage',
+            content: '/history/toaddPage',
             btn: [],
             shade: 0
         });

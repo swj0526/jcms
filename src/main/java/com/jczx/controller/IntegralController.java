@@ -17,32 +17,42 @@ import java.util.Map;
 public class IntegralController extends BaseController{
     @Autowired
     private IntegralService integralService;
+
+
+
     /**
-     * cjw
-     *
+     * 查询页面
      * @return
      */
-    @RequestMapping("/add")
-    public String integral() {
-        return "integral/integralPage";
-    }
-
     @RequestMapping("/tolist")
     public String toList() {
         return "integral/list";
     }
 
+    /**
+     * 查询
+     * @param keyword
+     * @param start
+     * @param end
+     * @param page
+     * @param limit
+     * @return
+     */
     @RequestMapping("/list")
     @ResponseBody
     public ServiceResult list(String keyword, Integer start, Integer end, Integer page, Integer limit) {
-        Pager pager = new Pager();
-        pager.setPageSize(limit);
-        pager.setCurrentPage(page);
+        Pager pager = checkPager(limit, page);
         List<TbIntegral> list = integralService.list(keyword, start, end, pager);
         return layuiList(list,pager);
     }
 
-
+    /**
+     * 修改页面
+     * @param id
+     * @param name
+     * @param map
+     * @return
+     */
     @RequestMapping("/toparticular")
     public String particular(Integer id, String name, Map<String, Object> map) {
         map.put("id",id);

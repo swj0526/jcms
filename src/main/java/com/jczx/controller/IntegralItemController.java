@@ -52,7 +52,6 @@ public class IntegralItemController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult add(TbIntegralItem integralItem) {
-        integralItem.setCreateTime(SC.getNowDate());
         ServiceResult result = integralItemService.addItem(integralItem);
         return result;
     }
