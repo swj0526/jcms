@@ -34,10 +34,11 @@ public class StudentService extends BaseService {
 
     /**
      * 修改学生是否入学
+     * 给丛
      * @param student
      * @return
      */
-    public ServiceResult modifyCount(TbStudent student){
+    public ServiceResult modifyOne(TbStudent student){
         modify(student);
         return SUCCESS;
 }
