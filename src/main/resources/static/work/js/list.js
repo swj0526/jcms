@@ -104,4 +104,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         elem: '#scopeTime'
         , range: true
     });
+
+    $('.demoTable .layui-btn').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+
+    });
+
+
 });

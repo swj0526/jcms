@@ -5,7 +5,7 @@
 </head>
 <body>
 <!--查询开始-->
-<div style="padding: 5px;">
+<div style="padding: 5px;" class="demoTable">
     <fieldset class="layui-elem-field " style="padding: 5px;">
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
