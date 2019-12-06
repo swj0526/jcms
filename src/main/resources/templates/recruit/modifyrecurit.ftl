@@ -3,7 +3,7 @@
 <head>
     <base href="${basePath}">
     <meta charset="utf-8">
-    <title></title>
+    <title>layui</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -55,7 +55,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">出生年月</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="birthDate" id="date" lay-verify="date"  autocomplete="off" class="layui-input" value=${birth!''}>
+                    <input type="text" name="birthDate" id="date" lay-verify="date"  autocomplete="off" class="layui-input" value=${(student.birthDate?string("yyyy-MM-dd"))!'无数据'}>
                 </div>
             </div>
 
@@ -129,6 +129,7 @@
 <script src="/recruit/js/xm.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/recruit/js/recruit.js"></script>
+<script src="/recruit/js/detailfollow.js"></script>
 
 <script>
     sel();

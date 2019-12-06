@@ -34,7 +34,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/torecruit")
     public String recruit() {
-        return "recruit/recruit";
+        return "/recruit/recruit";
     }
 
     /**
@@ -44,7 +44,7 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/todata")
     private String recruitData() {
-        return "recruit/recruitdata";
+        return "/recruit/recruitdata";
     }
 
     /**
@@ -52,18 +52,18 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/toadd")
     public String toAdd() {
-        return "recruit/addrecurit";
+        return "/recruit/addrecurit";
     }
 
     /**
      * 修改学生页面信息
      */
     @RequestMapping("/tomodify")
-    public String toModify(Integer id, Map<String, Object> map) {//#todo 于
-        TbStudent student = studentService.getStudent(id);
+    public String toModify(Integer id, Map<String, Object> map) {
+        TbStudent student = studentService.getById(id);
         map.put("student", student);
-        map.put("birth", student.getBirthDate().toString());
-        map.put("createTime", student.getCreateTime().toString());
+       /* map.put("birth", student.getBirthDate().toString());*/
+        /*map.put("createTime", student.getCreateTime().toString());*/
         return "/recruit/modifyrecurit";
     }
 
@@ -73,8 +73,8 @@ public class RecruitController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addRecruit(TbStudent student) {
-        ServiceResult addRecruit = recruitService.addRecruit(student);
-        return addRecruit;
+        ServiceResult result = recruitService.addRecruit(student);
+        return result;
     }
 
     /**
@@ -83,8 +83,8 @@ public class RecruitController extends BaseController {
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modifyRecruit(TbStudent student) {
-        ServiceResult modifyRecruit = recruitService.modifyRecruit(student);
-        return modifyRecruit;
+        ServiceResult result = recruitService.modifyRecruit(student);
+        return result;
     }
 
     /**
@@ -96,8 +96,8 @@ public class RecruitController extends BaseController {
     @RequestMapping("/delete")
     @ResponseBody
     public ServiceResult deleteRecruit(TbStudent student) {
-        ServiceResult deleteRecruit = recruitService.deleteRecruit(student);
-        return deleteRecruit;
+        ServiceResult result = recruitService.deleteRecruit(student);
+        return result;
     }
 
     /**
@@ -119,15 +119,13 @@ public class RecruitController extends BaseController {
      * @param
      * @param labelIds
      * @param sex
-     * @param page
-     * @param limit
+     * @param
      * @return
      */
-    @RequestMapping("/exportExcel")//#todo 于
+    @RequestMapping("/exportExcel")
     @ResponseBody
-    public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex, Integer page, Integer limit) {
-        Pager pager = checkPager(limit, page);
-        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId, pager);
+    public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex) {
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
 }

@@ -33,6 +33,18 @@ public class StudentService extends BaseService {
     }
 
     /**
+     * 修改学生是否入学
+     * 给丛
+     * @param student
+     * @return
+     */
+    public ServiceResult modifyOne(TbStudent student){
+        modify(student);
+        return SUCCESS;
+}
+
+
+    /**
      * 于振华
      * 查询所在班级
      *
@@ -79,17 +91,16 @@ public class StudentService extends BaseService {
             conditions.parenthesesEnd();
         }
         if (studentState!=null){
-            String state=admissionData.substring(0,10);
-            String end=admissionData.substring(13);
+            String[] split = admissionData.split(" - ");
             if (studentState==TbStudent.STATE_AT_SCHOOL){//在校
-                conditions.putBW("admissionData",state,end);
+                conditions.putBW("admissionData",split[0],split[1]);
             }
             if (studentState==TbStudent.STATE_GRADUATE){//毕业
-                conditions.putBW("graduationDate",state,end);
+                conditions.putBW("graduationDate",split[0],split[1]);
             }
         }
 
-        conditions.putEWIfOk("state", TbStudent.STATE_AT_SCHOOL);//缺少缴费字段
+        conditions.putEWIfOk("entranceState", TbStudent.STATE_ENTRANCE);//交费后入学
         if (pager==null){
             List<TbStudent> list = getList(conditions);
             return list;
@@ -98,16 +109,6 @@ public class StudentService extends BaseService {
         List<TbStudent> list = getListByPage(conditions,pager);
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
-    }
-
-    /**
-     * 查询当前学生信息
-     *
-     * @param id
-     * @return
-     */
-    public TbStudent getStudent(Integer id) {
-        return getById(id);
     }
 
     /**
@@ -120,7 +121,7 @@ public class StudentService extends BaseService {
                 ||StringUtil.isBlank(String.valueOf(student.getAge()))
                 ||StringUtil.isBlank(student.getNation())
                 ||StringUtil.isBlank(student.getIDCard().toString())
-                ||StringUtil.isBlank(student.getState().toString())
+                ||StringUtil.isBlank(student.getEntranceState().toString())
                 ||StringUtil.isBlank(student.getAddress())
                 ||StringUtil.isBlank(student.getNativePlace())
                 ||student.getAdmissionData()==null){

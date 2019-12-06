@@ -15,16 +15,17 @@ import java.util.Date;
  * @create 2019-11-17 12:52
  */
 @Component
-public class TbStudent extends Domain {//#todo y
+public class TbStudent extends Domain {
     //缺在校状态
-    @NotCreate
-    public static final int STATE_NOT_ENTRANCE = 0;//未入学未交费
-    @NotCreate
-    public static final int STATE_ENTRANCE = 3;//入学已缴费
     @NotCreate
     public static final int STATE_AT_SCHOOL = 1;//在学
     @NotCreate
     public static final int STATE_GRADUATE = 2;//毕业
+    @NotCreate
+    public static final int STATE_ENTRANCE = 3;//入学已缴费
+    @NotCreate
+    public static final int STATE_NOT_ENTRANCE =4;//未入学未交费
+
     private Integer id;
     private Integer majorId;//班级id
     private Integer studentNumber;//学号
@@ -39,9 +40,8 @@ public class TbStudent extends Domain {//#todo y
     private Date admissionData;//入学时间
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date graduationDate;//毕业时间
-   /* private Integer studentState;//学生在校状态*/
-    /*private Date lastFollowTime;//*/
-    private Integer state;//状态,区分已入学和未入学
+    private Integer schoolState;//学生在校状态
+    private Integer entranceState;//状态,区分已入学和未入学
     private String motherName;//母亲名字
     private String fatherName;//父亲名字
     private String otherRelativesName;//其他亲属名字
@@ -65,6 +65,14 @@ public class TbStudent extends Domain {//#todo y
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;//操作时间
     private Integer operatorId;//操作人
+
+    public Integer getSchoolState() {
+        return schoolState;
+    }
+
+    public void setSchoolState(Integer schoolState) {
+        this.schoolState = schoolState;
+    }
 
     public Integer getId() {
         return id;
@@ -154,12 +162,12 @@ public class TbStudent extends Domain {//#todo y
         this.graduationDate = graduationDate;
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getEntranceState() {
+        return entranceState;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setEntranceState(Integer entranceState) {
+        this.entranceState = entranceState;
     }
 
     public Integer getOperatorId() {
@@ -356,7 +364,7 @@ public class TbStudent extends Domain {//#todo y
      * 状态
      */
     public String getStateName() {
-        if (this.state == STATE_ENTRANCE) {
+        if (this.entranceState == STATE_ENTRANCE) {
             return "在校";
         }
         return "毕业";
