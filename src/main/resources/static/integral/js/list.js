@@ -8,7 +8,7 @@ layui.use(['jquery', 'layer', 'table', 'laydate'], function () {
         url: '/integral/list',
         id: 'userTableReload',
         cols: [[{
-            field: 'id', title: 'ID', align: 'center'
+            field: 'studentId', title: 'ID', align: 'center'
         }
             , {field: 'name', title: '姓名', align: 'center'}
             , {field: 'major', title: '班级', align: 'center'}
@@ -37,7 +37,7 @@ layui.use(['jquery', 'layer', 'table', 'laydate'], function () {
                 , area: ['720px', '350px']
                 , title: '查看详情'
                 , btn: []
-                , content: '/integral/toparticular?id='+data.id+'&&name='+data.name+''
+                , content: '/integral/toparticular?id='+data.id
             });
 
         }

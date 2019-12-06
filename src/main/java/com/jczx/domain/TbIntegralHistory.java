@@ -28,7 +28,7 @@ public class TbIntegralHistory extends Domain {
     private Date createTime;//操作时间
 
     public String getName() {
-        return CACHE.getSemesterName(studentId);
+        return CACHE.getStudentName(studentId);
     }
     public String getMajor() {
         return CACHE.getMajorName(studentId);

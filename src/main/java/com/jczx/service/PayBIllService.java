@@ -72,7 +72,7 @@ public class PayBIllService extends BaseService {
      */
     public List<TbPayBill> listBill(String time,String keyword,Integer typeId, Pager pager) {
         Conditions conditions = new Conditions(getTableName());
-        conditions.setSelectValue("tbpaybill.id,tbstudent.name,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,tbpaybill.remark");
+        conditions.setSelectValue("paybill.id,student.name,paymentMethodId,semesterId,typeId,studentId ,totalAmount,payDate,hasInstalment,discountAmount,payAmount,factAmount,startTime,endTime,paybill.remark");
         conditions.setJoin(" paybill LEFT JOIN tbstudent student ON studentId=student.id");
         if (StringUtil.isNotBlank(keyword)){
             conditions.parenthesesStart();

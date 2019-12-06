@@ -31,9 +31,8 @@ public class IntegralHistoryService extends BaseService {
      */
     public List<TbIntegralHistory> listIntegralHistory(Integer id) {
         Conditions conditions = getConditions();
-        conditions.putEWIfOk("id", id);
+        conditions.putEWIfOk("studentId", id);
         List<TbIntegralHistory> list = getList(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return list;
     }
 
@@ -54,6 +53,7 @@ public class IntegralHistoryService extends BaseService {
         int count = getCount(conditions);
         pager.setDataTotal(count);
         List<TbIntegralHistory> list = getListByPage(conditions, pager);
+        System.out.println("姓名"+list.get(0).getName());
         return list;
     }
     public ServiceResult addIntegralHistory(TbIntegralHistory integralHistory) {
