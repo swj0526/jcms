@@ -31,13 +31,12 @@ var parent_tab = function (id, title, src) {
         //id:点击左边的导航栏,获取导航中的a标签的id
         //title:选项卡的名字
         //src:controller里的映射地址
-        if (parent.$("[lay-id=" + id + "]").length == 0) {//选判断是否存在该选项卡
-            parent.layui.element.tabAdd('demo', {
-                title: title,
-                content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%" id="' + id + '"></iframe>',
-                id: id//实际使用一般是规定好的id，这里以时间戳模拟下
-            });
-        }
+        parent.layui.element.tabAdd('demo', {
+            title: title,
+            content: '<iframe src=' + src + ' frameborder="0"  height="100%" width="100%" id="' + id + '"></iframe>',
+            id: id//实际使用一般是规定好的id，这里以时间戳模拟下
+        });
+
         parent.layui.element.tabChange('demo', id); //切换到tab选项卡
 
         //Hash地址的定位
@@ -152,10 +151,16 @@ var sel_garade = function () {
 
         var dom = $("#gradeSelect");
         var url = dom.attr('url');
+        var selectedId = dom.attr('selectedId');
+
         $.post(url, function (result) {
             $.each(result, function (key, value) {
                 if (value.pid != 0) {
-                    dom.append("<option value='" + value.optionValue + "'>" + value.optionText + "</option>");
+                    if (value.optionValue == selectedId) {
+                        dom.append("<option value='" + value.optionValue + "' selected>" + value.optionText + "</option>");
+                    } else {
+                        dom.append("<option value='" + value.optionValue + "'>" + value.optionText + "</option>");
+                    }
                 }
             });
             renderForm(); //表单重新渲染，要不然添加完显示不出来新的option

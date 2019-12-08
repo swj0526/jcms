@@ -11,39 +11,12 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         return s < 10 ? '0' + s : s;
     }
 
-    var myDate = new Date();
-    var year = myDate.getFullYear();        //获取当前年
-    var month = myDate.getMonth() + 1;   //获取当前月
-    var date = myDate.getDate();            //获取当前日
-    var h = myDate.getHours();              //获取当前小时数(0-23)
-    var m = myDate.getMinutes();          //获取当前分钟数(0-59)
-    var s = myDate.getSeconds();
-    var now = year + '-' + getNow(month) + "-" + getNow(date) + " " + getNow(h) + ':' + getNow(m) + ":" + getNow(s);
-
-    $('[name="name"]').val(now + "的作业");
-
     //选完文件后不自动上传
     var currPage = 1;
-    laydate.render({
-        elem: '#endTime'
-    });
-
-    $('#submit').click(function () {
-        let serialize = $("#dataFor").serialize();
-        $.post('/work/add/homework', serialize, function (result) {
-            if (result.success == true) {
-                close_tab("work_add", "work_list", "作业列表", "/work/list");
-            } else {
-
-            }
-        });
-
-    });
-    //多文件列表示例
     var demoListView = $('#demoList')
         , uploadListIns = upload.render({
         elem: '#testList'
-        , url: '/work/upload/'
+        , url: '/upload/'
         , accept: 'file'
         , multiple: true
         , auto: false
@@ -93,5 +66,24 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
             tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
         }
+        , progress: function (n) {
+            var percent = n + '%' //获取进度百分比
+            element.progress('demo', percent); //可配合 layui 进度条元素使用
+        }
+    });
+    laydate.render({
+        elem: '#endTime'
+    });
+
+    $('#submit').click(function () {
+        let serialize = $("#dataFor").serialize();
+        $.post('/work/modify/homework', serialize, function (result) {
+            if (result.success == true) {
+                close_tab("work_modify", "work_list", "作业列表", "/work/list");
+            } else {
+
+            }
+        });
+
     });
 });

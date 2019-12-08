@@ -4,11 +4,16 @@ import com.jczx.domain.TbHomework;
 import com.jczx.service.HomeworkService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -22,17 +27,14 @@ import java.util.Map;
 public class HomeworkController extends BaseController {
     @Autowired
     private HomeworkService homeworkService;
-
+    @Autowired
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomeworkController.class);
     /**
      * 上传页面
      *
      * @return
      */
 
-    @RequestMapping("/upload")
-    public String workUploadPage() {
-        return "/work/upload";
-    }
 
     /**
      * 作业列表
@@ -44,9 +46,31 @@ public class HomeworkController extends BaseController {
         return "/work/list";
     }
 
-    @RequestMapping("/uploading")
-    public String uploading() {
-        return "/work/studentwork";
+    @RequestMapping("/upload")
+    @ResponseBody
+    public String upload(MultipartFile files) {
+        System.out.println(files);
+        if (files.isEmpty()) {
+            return "上传失败，请选择文件";
+        }
+
+        String fileName = files.getOriginalFilename();//获取文件名称
+        String filePath = "E:/upload/";
+        System.out.println(fileName + "mmmmmmmmmmmmmmmmm");
+        File dest = new File(filePath + fileName);
+        try {
+            files.transferTo(dest);
+            LOGGER.info("上传成功");
+            return "上传成功";
+        } catch (IOException e) {
+            LOGGER.error(e.toString(), e);
+        }
+        return "上传失败！";
+    }
+
+    @RequestMapping("/")
+    public String index() {
+        return "/upload";
     }
 
     @RequestMapping("/download")
@@ -83,7 +107,6 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/list/homework")
     @ResponseBody
     public ServiceResult listHomework(String keywords, Integer majorId, String scopeTime, Integer page, Integer limit) {
-        System.out.println(keywords+"..."+majorId+"..."+scopeTime);
         Pager pager = checkPager(limit, page);
         List<TbHomework> list = homeworkService.list(keywords, majorId, scopeTime, pager);
         return layuiList(list, pager);
@@ -103,5 +126,11 @@ public class HomeworkController extends BaseController {
         TbHomework homework = homeworkService.getById(id);
         map.put("homework", homework);
         return "/work/modifyWork";
+    }
+
+    @RequestMapping("/modify/homework")
+    @ResponseBody
+    public ServiceResult modifyHomework(TbHomework homework) {
+        return homeworkService.modifyHomework(homework);
     }
 }
