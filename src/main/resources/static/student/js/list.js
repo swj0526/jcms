@@ -113,7 +113,8 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
                 }
                 , where: {
                     keywords: $("#keywords").val(),
-                    admissionData: $("#time").val()
+                    admissionData: $("#time").val(),
+                    studentState:$("#studentState").val()
                 }
             }, 'data');
         }

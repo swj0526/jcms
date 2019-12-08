@@ -20,11 +20,17 @@ public class TbStudent extends Domain {
     @NotCreate
     public static final int STATE_AT_SCHOOL = 1;//在学
     @NotCreate
+    public static final String STATE_AT_SCHOOL_NAME = "在校";//在学
+    @NotCreate
     public static final int STATE_GRADUATE = 2;//毕业
     @NotCreate
+    public static final String STATE_GRADUATE_NAME = "毕业";//毕业
+    @NotCreate
     public static final int STATE_ENTRANCE = 3;//入学已缴费
+
     @NotCreate
     public static final int STATE_NOT_ENTRANCE =4;//未入学未交费
+
 
     private Integer id;
     private Integer majorId;//班级id
@@ -364,9 +370,9 @@ public class TbStudent extends Domain {
      * 状态
      */
     public String getStateName() {
-        if (this.entranceState == STATE_ENTRANCE) {
-            return "在校";
+        if (schoolState == STATE_AT_SCHOOL) {
+            return STATE_AT_SCHOOL_NAME;
         }
-        return "毕业";
+        return STATE_GRADUATE_NAME;
     }
 }

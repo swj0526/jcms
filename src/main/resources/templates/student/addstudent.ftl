@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <base href="${basePath}">
-    <meta charset="UTF-8">
     <#include "../common/common.ftl"/>
     <title>添加学生信息</title>
-    <link rel="stylesheet" href="/static/common/css/all.css" media="all">
+
 
     <style type="text/css">
         /*去除input number的 自动增加数按钮*/
@@ -56,7 +55,7 @@
                         <input type="text" style="display: none" id="Instalment" value=${student.entranceState}>
                         <select name="schoolState" lay-verify="" id="schoolState">
                             <option value="1">在校</option>
-                            <option value="3">毕业</option>
+                            <option value="2">毕业</option>
                         </select>
                     </div>
                 </div>

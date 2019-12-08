@@ -139,13 +139,13 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         window.location.href="/recruit/exportExcel";
     });
     //监听导入事件
-    $("#upload").click(function () {
+    $("#uploadbtn").click(function () {
         layer.open({
             type: 1,
             title: "导入跟进学生信息",
             // skin: 'layui-layer-rim', //加上边框
             area: ['730px', '500px'], //设置宽高
-            content: $("#download1"),
+            content: $("#downloadtable"),
         });
     });
     // 监听添加操作
