@@ -6,12 +6,17 @@ import com.jczx.service.StudentService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,8 +67,6 @@ public class RecruitController extends BaseController {
     public String toModify(Integer id, Map<String, Object> map) {
         TbStudent student = studentService.getById(id);
         map.put("student", student);
-       /* map.put("birth", student.getBirthDate().toString());*/
-        /*map.put("createTime", student.getCreateTime().toString());*/
         return "/recruit/modifyrecurit";
     }
 
@@ -128,4 +131,34 @@ public class RecruitController extends BaseController {
         InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
+
+    /**
+     * 文件上床
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);
+
+    @PostMapping("/upload")
+    @ResponseBody
+    public Map<String ,Object>upload(@RequestParam("file") MultipartFile file)  {
+        System.out.println("开始");
+        Map<String,Object> map = new HashMap<>();
+         map.put("code",0);
+        if (file.isEmpty()) {
+            map.put("error","上传失败，请选择文件");
+            return map ;
+        }
+        String fileName = file.getOriginalFilename();//获取文件名称
+        String filePath = "D:/IDEA_Project/";
+        System.out.println(fileName+"mmmmmmmmmmmmmmmmm");
+        File dest = new File(filePath + fileName);
+        try {
+            file.transferTo(dest);
+            LOGGER.info("上传成功");
+            return map;
+        } catch (IOException e) {
+            LOGGER.error(e.toString(), e);
+        }
+        return map;
+    }
+
 }

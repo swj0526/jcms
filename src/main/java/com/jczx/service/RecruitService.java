@@ -89,6 +89,8 @@ public class RecruitService extends BaseService {
             conditions.putLIKE("qq", keywords);
             conditions.or();
             conditions.putLIKE("weChat", keywords);
+            conditions.or();
+            conditions.putLIKE("studentPhone", keywords);
             conditions.parenthesesEnd();
         }
 
@@ -98,15 +100,13 @@ public class RecruitService extends BaseService {
         if (channelId!=null) {
             conditions.putLIKE("channelId", channelId);
         }
-        conditions.putEWIfOk("createTime",createTime);//todo y
+       /* conditions.putEWIfOk("createTime",createTime);*/
         conditions.putEWIfOk("sex", sex);
        if(pager==null){
            List<TbStudent> listStudent = getList(conditions);
            return listStudent;
        }
 
-       /* conditions.or();//跟踪时间在详情表
-        conditions.putLIKE("followTime",followTime);*/
         pager.setDataTotal(getCount(conditions));//调用分页之前给设置总条数
         List<TbStudent> listStudent = getListByPage(conditions, pager);
         return listStudent;
@@ -131,6 +131,7 @@ public class RecruitService extends BaseService {
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }
+
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();

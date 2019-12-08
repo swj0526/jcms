@@ -19,7 +19,7 @@
     <div class="layui-tab-item layui-show">
         <div class="layui-tab">
             <ul class="layui-tab-title">
-                <li class="layui-this">基本信息</li>
+                <li class="layui-this" id="baseId" value="${student.id}">基本信息</li>
                 <li>缴费信息</li>
                 <li>积分信息</li>
                 <li>请假信息</li>

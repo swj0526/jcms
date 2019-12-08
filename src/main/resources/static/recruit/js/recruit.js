@@ -44,7 +44,8 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             [{
                 field: 'name',
                 title: '姓名',
-                templet: '<div><a href="" class="layui-table-link">{{d.name}}</a></div>',
+                event: 'setSign',
+                templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.id}} >{{d.name}}</a></div>',
                 width: 90
             },
                 {
@@ -99,7 +100,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     // 搜索操作
     var $ = layui.$, active = {
         reload: function () {
-            var demoReload = $('#demoReload');
+
             var sex = $("#sex");
             var createTime = $("#a");
             let listLabel = new Array();
@@ -119,7 +120,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     curr: 1 //重新从第 1 页开始
                 }
                 , where: {
-                    'keywords': demoReload.val(),
+                    'keywords': $("#keywords").val(),
                     'labelIds': label,
                     'sex': sex.val(),
                     'createTime':createTime.val(),
@@ -286,6 +287,10 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 success:function () {
                 }
             });
+        }else if (obj.event === 'setSign') {
+
+            parent_tab("list" + id, "学生详情", "/student/information?id=" + id);
+
         }
     });
 //下拉复选赋值
