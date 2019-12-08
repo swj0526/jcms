@@ -5,7 +5,6 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.stereotype.Component;
 
@@ -40,6 +39,18 @@ public class HomeworkService extends BaseService {
     }
 
     /**
+     * 根据id修改
+     * @param homework
+     * @return
+     */
+    public ServiceResult modifyHomework(TbHomework homework) {
+        if (StringUtil.isBlank(homework.getName()) || StringUtil.isBlank(homework.getMajorId() + "") || homework.getEndTime() == null || StringUtil.isBlank(homework.getContent())) {
+            return error("内容不可为空!");
+        }
+        modify(homework);
+        return SUCCESS;
+    }
+    /**
      * 返回数据表格
      *
      * @param keywords
@@ -57,7 +68,7 @@ public class HomeworkService extends BaseService {
             conditions.putLIKE("content", keywords);
             conditions.parenthesesEnd();
         }
-        conditions.putLIKEIfOK("majorId", majorId);
+        conditions.putEWIfOk("majorId", majorId);
 
         if (StringUtil.isNotBlank(scopeTime)) {
             String[] split = scopeTime.split(" - ");
@@ -66,7 +77,6 @@ public class HomeworkService extends BaseService {
 
         }
         pager.setDataTotal(getCount(conditions));
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));//todo  要删除
         return getListByPage(conditions, pager);
     }
 
