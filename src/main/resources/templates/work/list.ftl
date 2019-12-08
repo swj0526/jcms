@@ -22,8 +22,7 @@
                         <label class="layui-form-label">专业-班级</label>
                         <div class="layui-input-inline">
                             <div class="layui-inline">
-                                <select name="majorId" lay-verify="" id="gradeSelect" required
-                                        lay-verify="required"
+                                <select name="majorId" id="gradeSelect"
                                         url="/major/list/select">
                                     <option value="">请选择</option>
                                 </select>
@@ -36,15 +35,15 @@
                             <input class="layui-input" id="scopeTime" type="text" placeholder="请选择时间范围"
                                    name="scopeTime">
                         </div>
-
                     </div>
-                    <button class="layui-btn" type="submit" id="search">查询</button>
+                    <button class="layui-btn" type="button"data-type="reload" id="search">查询</button>
+
                 </div>
             </form>
         </fieldset>
 
     </div>
-    <table class="layui-hide" id="workTable" lay-filter="workTable"></table>
+    <table class="layui-hide" id="workTable" lay-filter="workTable"  lay-size="sm"></table>
     <script id="barDemo" type="text/html">
         <a class="layui-btn  layui-btn-xs" lay-event="modify">修改</a>
         <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="details">详情</a>

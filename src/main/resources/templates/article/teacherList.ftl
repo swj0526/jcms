@@ -84,11 +84,11 @@
 </div>
 <script id="barDemo" type="text/html">
     {{# if(d.state=="1"){ }}
-    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">重新提交</a>
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">查看详情</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     {{# } }}
     {{# if(d.state=="2"){ }}
-    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">重新提交</a>
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">查看详情</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     {{# } }}
     {{# if(d.state=="3"){ }}

@@ -1,48 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="${basePath}">
-    <meta charset="utf-8">
     <title>layui</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/static/common/css/all.css" media="all">
-    <script src="/layui/layui.js"></script>
-    <script src="/teacher/js/list.js"></script>
+    <#include "../common/common.ftl"/>
+
 </head>
 <body>
 <#--添加-->
-<div id="add" style="display: none">
+<div id="addMsgbox" style="display: none"> //代表弹窗
     <div style="margin: 10px 10px 10px 10px">
         <form class="layui-form " lay-filter="dataForm" id="dataFrm" action="">
             <div class="layui-form-item">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">姓名<span class="star">*</span></label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
-                               class="layui-input" id="name">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">手机号<span class="star">*</span></label>
-                    <div class="layui-input-inline">
-                        <input name="phone" class="layui-input" type="tel" autocomplete="off"
-                               lay-verify="required|phone" id="phone">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">性别<span class="star">*</span></label>
-                    <div class="layui-input-inline">
-                        <select name="gender" lay-verify="" id="gender">
-                            <option value="">选择性别</option>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                        </select>
-                    </div>
+                <label class="layui-form-label">姓名<span class="star">*</span></label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
+                           class="layui-input" id="name">
                 </div>
             </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号<span class="star">*</span></label>
+                <div class="layui-input-inline">
+                    <input name="phone" class="layui-input" type="tel" autocomplete="off"
+                           lay-verify="required|phone" id="phone">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别<span class="star">*</span></label>
+                <div class="layui-input-inline">
+                    <select name="gender" lay-verify="" id="gender">
+                        <option value="">选择性别</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+
             <div style="text-align: center;">
                 <button class="layui-btn" lay-submit lay-filter="formDemo" id="addTeacher">提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary" id="cancelAdd">取消</button>
@@ -154,4 +146,8 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 </body>
+<script src="/teacher/js/list.js"></script>
+<script>
+
+</script>
 </html>

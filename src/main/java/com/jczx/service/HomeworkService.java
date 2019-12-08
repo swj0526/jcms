@@ -66,7 +66,7 @@ public class HomeworkService extends BaseService {
 
         }
         pager.setDataTotal(getCount(conditions));
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));//todo  修改
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));//todo  要删除
         return getListByPage(conditions, pager);
     }
 

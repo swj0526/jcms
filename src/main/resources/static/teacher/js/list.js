@@ -77,15 +77,15 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
         });
         $('#modifyTeacher').click(function() {
             var id=$('#id1').val();
-            var name=$('#name1').val();
-            var phone=$('#phone1').val();
-            var hasQuit=$('#hasQuit1').val();
+            var modifyName=$('#modifyName').val();
+            var modifyPhone=$('#modifyPhone').val();
+            var modifyHasQuit=$('#modifyHasQuit').val();
             if (phone.length<=11&&phone.length>=11){
                 $.post('/teacher/modify', {
                     id:id,
-                    name : name,
-                    phone:phone,
-                    hasQuit:hasQuit
+                    name : modifyName,
+                    phone:modifyPhone,
+                    hasQuit:modifyHasQuit
                 }, function(result) {
                     if (result.success==true){
                         alert("成功");
@@ -140,14 +140,14 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
             }
         });
         $('#addTeacher').click(function() {
-            var name=$('#name').val();
-            var gender=$('#gender').val();
-            var phone=$('#phone').val();
+            var addName=$('#addName').val();
+            var addGender=$('#addGender').val();
+            var addPhone=$('#addPhone').val();
             if (phone.length<=11&&phone.length>=11){
                 $.post('/teacher/add', {
-                    name : name,
-                    gender:gender,
-                    phone:phone,
+                    name : addName,
+                    gender:addGender,
+                    phone:addPhone,
                     hasQuit:true
                 }, function(result) {
                     if (result.success==true){
@@ -245,8 +245,6 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
         });
 
     });
-
-
 
 });
 

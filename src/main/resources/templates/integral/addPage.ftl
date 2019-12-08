@@ -7,7 +7,7 @@
     <#include "../common/common.ftl"/>
 </head>
 <body>
-<div id="aa" >
+<div  >
     <fieldset class="layui-elem-field layuimini-search">
         <div style="margin: 10px 10px 10px 10px">
             <form class="layui-form layui-form-pane" style="margin-left: 15%;margin-top: 8%" id="addForm" lay-filter="dataForm">
