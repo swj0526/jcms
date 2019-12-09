@@ -57,9 +57,6 @@ public class StudentController extends BaseController {
     public String getInformation(Integer id, Map<String, Object> map) {
         TbStudent student = studentService.getById(id);
         map.put("student", student);
-        /*if (student.getAdmissionData()!=null){
-            map.put("admissionData",student.getAdmissionData().toString());
-        }*/
         return "/student/information";
     }
 
@@ -75,7 +72,6 @@ public class StudentController extends BaseController {
         if (student.getAdmissionData() != null) {
             map.put("admissionData", student.getAdmissionData().toString());
         }
-
         return "/student/addstudent";
     }
 
