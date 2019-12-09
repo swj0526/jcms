@@ -33,15 +33,15 @@
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width:100px">关键词</label>
                         <div class="layui-input-inline" style="width:100px ">
-                            <input type="text" id="name" autocomplete="off"  placeholder="姓名"class="layui-input">
+                            <input type="text" id="keywords" autocomplete="off"  placeholder=""class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-inline">
+                    <#--<div class="layui-inline">
                         <label class="layui-form-label">时间</label>
                         <div class="layui-input-inline" style="width: 100px">
                             <input type="text" name="createTime" autocomplete="off" class="layui-input" id="createTime">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="layui-inline" style="width: 210px">
                         <label class="layui-form-label" style="width: 100px">性别</label>
                         <div class="layui-inline" style="width: 100px">

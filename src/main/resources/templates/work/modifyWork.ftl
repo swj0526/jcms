@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css" media="all"/>
-    <link rel="stylesheet" type="text/css" href="/static/common/css/all.css"/>
-    <script type="text/javascript" src="/layui/layui.js"></script>
-    <script type="text/javascript" src="/static/common/js/all.js"></script>
-    <script type="text/javascript" src="/work/js/addWork.js"></script>
+    <title>老师修改作业页面</title>
+    <#include "../common/common.ftl"/>
+    <script type="text/javascript" src="/work/js/modifyWork.js"></script>
 </head>
 <body>
 
 <form class="layui-form layui-form-pane" id="dataFor">
+    <input style="display: none" name="id" value="${homework.id}"/>
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">作业名称<span class="star">*</span></label>
@@ -27,7 +23,7 @@
             <div class="layui-input-inline">
                 <div class="layui-inline">
                     <select name="majorId" lay-verify="required" id="gradeSelect"
-                            url="/major/list/select" selectedId=" ${homework.majorId!''}">
+                            url="/major/list/select" selectedId="${homework.majorId!''}">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -36,22 +32,22 @@
         <div class="layui-inline">
             <label class="layui-form-label">截止时间<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input class="layui-input" lay-verify="required" name="endTime" id="test2" type="text"
-                       placeholder="请选择截止时间" value="${(endTime?string)!''}">
+                <input class="layui-input" lay-verify="required" name="endTime" id="endTime" type="text"
+                       placeholder="请选择截止时间" value="${(homework.endTime?string)!''}">
             </div>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">作业内容<span class="star">*</span></label>
         <div class="layui-input-block">
-            <textarea name="content" placeholder="请输入内容" class="layui-textarea" lay-verify="required"
-                      value="${homework.content!''}"></textarea>
+            <textarea name="content" class="layui-textarea" lay-verify="required"
+            >${homework.content!''}</textarea>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">备注</label>
         <div class="layui-input-block">
-            <textarea name="remark" placeholder="请输入备注" class="layui-textarea" value="${homework.remark!''}"></textarea>
+            <textarea name="remark" class="layui-textarea">${homework.remark!''}</textarea>
         </div>
     </div>
     <div class="layui-upload" id="up" style="text-align: center">
@@ -79,7 +75,7 @@
         </div>
     </div>
     <div style="margin-top: 10px;">
-        <button lay-submit="" type="button" class="layui-btn" id="submit">提交
+        <button lay-submit="" type="button" class="layui-btn" id="submit" >提交
         </button>
     </div>
 </form>
