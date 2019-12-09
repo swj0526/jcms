@@ -3,137 +3,18 @@ layui.use('upload', function(){
     var $ = layui.jquery
         ,upload = layui.upload;
 
-    //普通图片上传
-    var uploadInst = upload.render({
-        elem: '#test1'
-        ,url: '/upload/'
-        ,before: function(obj){
-            //预读本地文件示例，不支持ie8
-            obj.preview(function(index, file, result){
-                $('#demo1').attr('src', result); //图片链接（base64）
-            });
-        }
-        ,done: function(res){
-            //如果上传失败
-            if(res.code > 0){
-                return layer.msg('上传失败');
-            }
-            //上传成功
-        }
-        ,error: function(){
-            //演示失败状态，并实现重传
-            var demoText = $('#demoText');
-            demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-            demoText.find('.demo-reload').on('click', function(){
-                uploadInst.upload();
-            });
-        }
-    });
-
-    //多图片上传
-    upload.render({
-        elem: '#test2'
-        ,url: '/upload/'
-        ,multiple: true
-        ,before: function(obj){
-            //预读本地文件示例，不支持ie8
-            obj.preview(function(index, file, result){
-                $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
-            });
-        }
-        ,done: function(res){
-            //上传完毕
-        }
-    });
-
-    //指定允许上传的文件类型
-    upload.render({
-        elem: '#test3'
-        ,url: '/upload/'
-        ,accept: 'file' //普通文件
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-    upload.render({ //允许上传的文件后缀
-        elem: '#test4'
-        ,url: '/upload/'
-        ,accept: 'file' //普通文件
-        ,exts: 'zip|rar|7z' //只允许上传压缩文件
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-    upload.render({
-        elem: '#test5'
-        ,url: '/upload/'
-        ,accept: 'video' //视频
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-    upload.render({
-        elem: '#test6'
-        ,url: '/upload/'
-        ,accept: 'audio' //音频
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-
-    //设定文件大小限制
-    upload.render({
-        elem: '#test7'
-        ,url: '/upload/'
-        ,size: 60 //限制文件大小，单位 KB
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-
-    //同时绑定多个元素，并将属性设定在元素上
-    upload.render({
-        elem: '.demoMore'
-        ,before: function(){
-            layer.tips('接口地址：'+ this.url, this.item, {tips: 1});
-        }
-        ,done: function(res, index, upload){
-            var item = this.item;
-            console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
-        }
-    })
-
-    //选完文件后不自动上传
-    upload.render({
-        elem: '#test8'
-        ,url: '/upload/'
-        ,auto: false
-        //,multiple: true
-        ,bindAction: '#test9'
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-
-    //拖拽上传
-    upload.render({
-        elem: '#test10'
-        ,url: '/upload/'
-        ,done: function(res){
-            console.log(res)
-        }
-    });
-
     //多文件列表示例
     var demoListView = $('#demoList')
         ,uploadListIns = upload.render({
         elem: '#testList'
-        ,url: '/upload/'
-        ,accept: 'file'
-        ,multiple: true
-        ,auto: false
-        ,bindAction: '#testListAction'
-        ,choose: function(obj){
+        ,url: '/recruit/upload'
+        ,field:"file"//默认是 file
+        ,accept: 'file'//允许上传的文件类型file 代表所有文件类型都可以上传
+        ,multiple: true//是否允许多文件上传。设置 true即可开启
+        ,auto: false//选择文件后不自动上传
+        ,bindAction: '#testListAction' //指向一个按钮触发上传
+
+        ,choose: function(obj){//选择文件后的回调函数。返回一个object参数
             var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
             //读取本地文件
             obj.preview(function(index, file, result){
@@ -162,7 +43,7 @@ layui.use('upload', function(){
                 demoListView.append(tr);
             });
         }
-        ,done: function(res, index, upload){
+        ,done: function(res, index, upload){//文件提交上传前的回调。返回一个object参数
             if(res.code == 0){ //上传成功
                 var tr = demoListView.find('tr#upload-'+ index)
                     ,tds = tr.children();
@@ -172,7 +53,7 @@ layui.use('upload', function(){
             }
             this.error(index, upload);
         }
-        ,error: function(index, upload){
+        ,error: function(index, upload){ //当上传失败时，你可以生成一个“重新上传”的按钮，点击该按钮时，执行 upload() 方法即可实现重新上传
             var tr = demoListView.find('tr#upload-'+ index)
                 ,tds = tr.children();
             tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
@@ -180,13 +61,5 @@ layui.use('upload', function(){
         }
     });
 
-    //绑定原始文件域
-    upload.render({
-        elem: '#test20'
-        ,url: '/upload/'
-        ,done: function(res){
-            console.log(res)
-        }
-    });
 
 });
