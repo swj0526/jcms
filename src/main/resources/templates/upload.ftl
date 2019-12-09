@@ -38,6 +38,7 @@
             , uploadListIns = upload.render({
             elem: '#testList'
             , url: '/work/upload'
+            ,field:"file"//默认是 file
             , accept: 'file'
             , multiple: true
             , auto: false

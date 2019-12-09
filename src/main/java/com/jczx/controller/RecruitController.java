@@ -133,14 +133,12 @@ public class RecruitController extends BaseController {
     }
 
     /**
-     * 文件上床
+     * 文件上传
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);//日志
     @PostMapping("/upload")
     @ResponseBody
     public Map<String ,Object>upload(@RequestParam("file") MultipartFile file)  {
-        System.out.println("开始");
         Map<String,Object> map = new HashMap<>();
          map.put("code",0);
         if (file.isEmpty()) {
@@ -149,7 +147,6 @@ public class RecruitController extends BaseController {
         }
         String fileName = file.getOriginalFilename();//获取文件名称
         String filePath = "D:/IDEA_Project/";
-        System.out.println(fileName+"mmmmmmmmmmmmmmmmm");
         File dest = new File(filePath + fileName);
         try {
             file.transferTo(dest);
@@ -160,5 +157,4 @@ public class RecruitController extends BaseController {
         }
         return map;
     }
-
 }

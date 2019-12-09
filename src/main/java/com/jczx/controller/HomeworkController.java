@@ -56,7 +56,7 @@ public class HomeworkController extends BaseController {
 
         String fileName = files.getOriginalFilename();//获取文件名称
         String filePath = "E:/upload/";
-        System.out.println(fileName + "mmmmmmmmmmmmmmmmm");
+
         File dest = new File(filePath + fileName);
         try {
             files.transferTo(dest);

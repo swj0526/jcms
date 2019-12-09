@@ -132,6 +132,10 @@ public class RecruitService extends BaseService {
         return inputStream;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();
