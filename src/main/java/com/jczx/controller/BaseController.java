@@ -2,7 +2,10 @@ package com.jczx.controller;
 
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +16,9 @@ import java.util.Map;
  * 基础的controller,所有的controller都继承,去调用里面的基础方法
  */
 public class BaseController<T> {
+    @Autowired
+    private HttpServletRequest request;
+
     /**
      * @param limit 当前页面显示的条数
      * @param page  显示的当前页
@@ -41,4 +47,18 @@ public class BaseController<T> {
         return map;
     }
 
+    /**
+     * 获取项目的根路径
+     *
+     * @return
+     */
+    public String getPath() {
+        return ClassUtils.getDefaultClassLoader().getResource("").getPath();
+    }
+    /**
+     * 获取上传文章存放的文件路径
+     */
+    public String getArticlePath() {
+       return getPath()+"upload/article";
+    }
 }

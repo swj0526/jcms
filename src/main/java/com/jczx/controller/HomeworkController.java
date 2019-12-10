@@ -41,6 +41,11 @@ public class HomeworkController extends BaseController {
         return "/work/list";
     }
 
+    /**
+     * 上传
+     * @param file
+     * @return
+     */
     @RequestMapping("/upload")
     @ResponseBody
     public Map<String, Object> upload(MultipartFile file) {
@@ -50,10 +55,6 @@ public class HomeworkController extends BaseController {
         return map;
     }
 
-    @RequestMapping("/")
-    public String index() {
-        return "/upload";
-    }
 
     @RequestMapping("/download")
     public String download() {

@@ -10,14 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @RequestMapping("/home")
 @Controller
-public class HomeController {
+public class HomeController extends BaseController {
     @RequestMapping("/main")
     private String mianHome() {
+        System.out.println(getArticlePath());
         return "/home/main";
     }
 
     @RequestMapping("/context")
     private String context() {
+
         return "/home/context";
     }
 }
