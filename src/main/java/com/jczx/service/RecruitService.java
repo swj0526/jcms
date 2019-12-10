@@ -153,8 +153,9 @@ public class RecruitService extends BaseService {
      *导入学生信息
      * @return
      */
-    public InputStream inputStudent(){
-           /*  ExcelUtil.getListFromExcel("D:/IDEA_Project/",TbStudent.class,new String[]{"姓名"},new boolean[]{false}, 2, 1,null);*/
+    public InputStream inputStudent() throws Throwable {
+        List<TbStudent> listStudent = ExcelUtil.getListFromExcel("D:/IDEA_Project/", TbStudent.class, new String[]{"姓名"}, new boolean[]{false}, 2, null);
+        addByBatch(listStudent);
         return null;
     }
 

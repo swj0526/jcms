@@ -148,7 +148,6 @@ public class RecruitController extends BaseController {
     @PostMapping("/upload")
     @ResponseBody
     public Map<String ,Object>upload(@RequestParam("file") MultipartFile file)  {
-
         Map<String,Object> map = new HashMap<>();
         if (file.isEmpty()) {
             map.put("error","上传失败，请选择文件");
@@ -163,6 +162,7 @@ public class RecruitController extends BaseController {
             return map;
         }
         try {
+            //将内存中的数据写入磁盘
             file.transferTo(dest);
             LOGGER.info("上传成功");
             map.put("code",0);
