@@ -87,17 +87,7 @@ public class StudentController extends BaseController {
         ServiceResult result = studentService.modifyStudent(student);
         return result;
     }
-    /**
-     * 修改学生入学状态
-     * @param student
-     * @return
-     */
-    @RequestMapping("/modifyOne")
-    @ResponseBody
-    public ServiceResult modifyOne(TbStudent student) {
-        ServiceResult result = studentService.modifyOne(student);
-        return result;
-    }
+
 
     /**
      * 导出学生信息

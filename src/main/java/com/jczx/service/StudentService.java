@@ -11,7 +11,6 @@ import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -33,20 +32,6 @@ public class StudentService extends BaseService {
         return Student;
     }
 
-    /**
-     * 修改学生是否入学 缴费
-     * 给丛
-     *
-     * @param student
-     * @return
-     */
-    public ServiceResult modifyOne(TbStudent student) {
-
-        Conditions conditions = getConditions();
-        conditions.putEW("studentId", student.getId());
-        modifyWithColumn(conditions, new Serializable[] {"entranceState",student.getEntranceState()});
-        return SUCCESS;
-    }
 
 
     /**
