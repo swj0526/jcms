@@ -60,8 +60,12 @@ public abstract class BaseService extends Service {
             return error("上传失败,请选择文件");
         }
         String fileName = file.getOriginalFilename();//获取文件名称
-
         File dest = new File(filePath + fileName);
+        // 检测是否存在目录
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs(); //如果文件不存在,则创建文件夹
+            return error("上传失败,请选择文件");
+        }
         try {
             file.transferTo(dest);
             LOGGER.info("上传成功");
