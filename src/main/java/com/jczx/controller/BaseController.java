@@ -3,7 +3,6 @@ package com.jczx.controller;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.ClassUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -53,12 +52,43 @@ public class BaseController<T> {
      * @return
      */
     public String getPath() {
-        return ClassUtils.getDefaultClassLoader().getResource("").getPath();
+        String path = System.getProperty("user.dir");
+        return path+"/src/main/resources";
     }
+
     /**
      * 获取上传文章存放的文件路径
      */
     public String getArticlePath() {
-       return getPath()+"upload/article";
+        return getPath() + "/upload/article/";
     }
+
+    /**
+     * 获取上传excel存放的文件路径
+     */
+    public String getExcelPath() {
+        return getPath() + "/upload/excel/";
+    }
+
+    /**
+     * 获取上传单据存放的文件路径
+     */
+    public String getImgPath() {
+        return getPath() + "/upload/img/";
+    }
+
+    /**
+     * 获取学生上传文件的路径
+     */
+    public String getStudentPath() {
+        return getPath() + "/upload/studentFile/";
+    }
+
+    /**
+     * 获取老师上传文件的路径
+     */
+    public String getTeacherPath() {
+        return getPath() + "/upload/teacherFile/";
+    }
+
 }

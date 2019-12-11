@@ -49,8 +49,7 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/upload")
     @ResponseBody
     public Map<String, Object> upload(MultipartFile file) {
-        String filePath = "E:/upload/";
-        ServiceResult result = homeworkService.upload(file, filePath);
+        ServiceResult result = homeworkService.upload(file, getTeacherPath());
         Map map = uploadeResult(result);
         return map;
     }
