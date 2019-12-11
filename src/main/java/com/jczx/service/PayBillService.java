@@ -47,7 +47,7 @@ import java.util.List;
 
         payBill.setCreateTime(SC.getNowDate());
         add(payBill);
-        ServiceResult serviceResult = recruitService.modifyOne(payBill.getStudentId());
+        recruitService.modifyOne(payBill.getStudentId());
         integralService.addList(payBill.getStudentId());
         return SUCCESS;
     }
