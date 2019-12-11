@@ -25,7 +25,7 @@ public class PayBillService extends BaseService {
     @Autowired
     private RecruitService recruitService;
     @Autowired
-    IntegralService integralService;
+    private IntegralService integralService;
 
     /**
      * 添加
