@@ -116,17 +116,6 @@ layui.use(['jquery'], function () {
         sel();
     }
 });
-//输入框模糊查询
-var input_sel = function (src) {
-    layui.use(['jquery'], function () {
-        var $ = layui.jquery;
-        var data;
-        $.post(src, function (result) {
-            result = data;
-        });
-    });
-
-}
 
 //专供专业班级的下拉选
 var sel_garade = function () {

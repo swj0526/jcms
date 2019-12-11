@@ -10,7 +10,7 @@
     <form class="layui-form" action="">
         <div class="layui-form-item">
             <div class="layui-input-inline">
-                <select name="autoComplete" lay-verify="" lay-search url="/dictionary/list/channel/options">
+                <select name="autoComplete" lay-verify="" lay-search url="/dictionary/list/channel/options" class="decSelect">
                     <option value="">请输入</option>
                 </select>
             </div>
@@ -27,14 +27,13 @@
                 <form class="layui-form" action="">
                     <div class="layui-form-item">
                         <div class="layui-input-inline">
-                            <select name="autoComplete" lay-verify="" lay-search url="/dictionary/list/channel/options">
+                            <select name="autoComplete" lay-verify="" lay-search url="/dictionary/list/channel/options" class="decSelect">
                                 <option value="">请输入</option>
                             </select>
                         </div>
                         <button id="show" class="layui-btn">show</button>
                     </div>
                 </form>
-                <button id="show1" class="layui-btn">show</button>
             </div>
         </xmp>
         <hr>
@@ -146,7 +145,6 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="/common/js/plumen.js"></script>
 <script type="text/javascript">
     $(function () { //demo1的弹窗
         $('#show1').click(function () {
