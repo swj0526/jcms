@@ -21,7 +21,8 @@ import java.util.List;
  * @create 2019-11-21 21:37
  */
 @Component
-public class PayBillService extends BaseService {
+ public class PayBillService extends BaseService {
+
     @Autowired
     private RecruitService recruitService;
     @Autowired
