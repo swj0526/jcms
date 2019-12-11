@@ -1,6 +1,7 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import com.jczx.system.OptionInterface;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,7 +16,7 @@ import java.util.Date;
  * @create 2019-11-17 12:52
  */
 @Component
-public class TbStudent extends Domain {
+public class TbStudent extends Domain implements OptionInterface {
     //缺在校状态
     @NotCreate
     public static final int STATE_AT_SCHOOL = 1;//在学
@@ -374,5 +375,15 @@ public class TbStudent extends Domain {
             return STATE_AT_SCHOOL_NAME;
         }
         return STATE_GRADUATE_NAME;
+    }
+
+    @Override
+    public String getOptionText() {
+        return name+"("+studentNumber+")";
+    }
+
+    @Override
+    public String getOptionValue() {
+        return id+"";
     }
 }

@@ -20,7 +20,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">用户姓名<span class="star">*</span></label>
                         <div class="layui-inline">
-                            <select name="autoComplete" lay-verify="" lay-search url="/dictionary/list/channel/options">
+                            <select name="studentId" lay-verify="" class="decSelect" lay-search url="/recruit/listname">
                                 <option value="">请输入</option>
                             </select>
                         </div>
@@ -156,4 +156,8 @@
 </fieldset>
 </body>
 <script type="text/javascript" src="/money/js/addBill.js"></script>
+<script>
+    sel();
+    $('.wx-input').attr('data-value');
+</script>
 </html>

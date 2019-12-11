@@ -8,7 +8,6 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,7 +25,7 @@ public class DictionaryService extends BaseService {
     @Autowired
     public StudentService studentService;
     @Autowired
-    public PayBIllService moneyService;
+    public PayBillService payBillService;
     @Autowired
     public ArticleService articleService;
 
@@ -96,7 +95,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteTerm(Integer id) {
-        List<TbPayBill> list = moneyService.termCount(id);
+        List<TbPayBill> list = payBillService.termCount(id);
         if (list.size() != 0) {
             return error("有学生是该学年进行缴费的,不可删除!");
         }
@@ -111,7 +110,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteType(Integer id) {
-        List<TbPayBill> list = moneyService.typeCount(id);
+        List<TbPayBill> list = payBillService.typeCount(id);
         if (list.size() != 0) {
             return error("有学生是使用该缴费类型进行缴费的,不可删除!");
         }
@@ -126,7 +125,7 @@ public class DictionaryService extends BaseService {
      * @return
      */
     public ServiceResult deleteMethod(Integer id) {
-        List<TbPayBill> list = moneyService.methodCount(id);
+        List<TbPayBill> list = payBillService.methodCount(id);
         if (list.size() != 0) {
             return error("有学生是使用该缴费方式进行缴费的,不可删除!");
         }

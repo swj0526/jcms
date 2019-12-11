@@ -24,7 +24,7 @@ public class TbPayBill extends Domain {
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id
     private Integer typeId;//缴费类型
-    private Integer paymentMethodId;//缴费方//#todo 丛
+    private Integer paymentMethodId;//缴费方
     private Integer semesterId;//学期
     private Integer totalAmount;//应付金额
     private Integer payAmount;//金额
@@ -54,12 +54,10 @@ public class TbPayBill extends Domain {
     }
 
     public String getName() {
-        return name;
+        TbStudent student = CACHE.getStudent(studentId);
+        return student.getName()+"("+student.getStudentNumber()+")";
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
     public Integer getId() {
         return id;
     }
