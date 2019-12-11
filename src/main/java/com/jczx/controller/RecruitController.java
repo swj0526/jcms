@@ -81,7 +81,17 @@ public class RecruitController extends BaseController {
         ServiceResult result = recruitService.addRecruit(student);
         return result;
     }
-
+    /**
+     * 修改学生入学状态
+     * @param student
+     * @return
+     */
+    @RequestMapping("/modifyOne")
+    @ResponseBody
+    public ServiceResult modifyOne(TbStudent student) {
+        ServiceResult result = recruitService.modifyOne(student);
+        return result;
+    }
     /**
      * 修改招生信息
      */
@@ -133,7 +143,6 @@ public class RecruitController extends BaseController {
         InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
-
     /**
      * 文件上传
      */
@@ -141,8 +150,8 @@ public class RecruitController extends BaseController {
     @PostMapping("/upload")
     @ResponseBody
     public Map<String ,Object>upload(@RequestParam("file") MultipartFile file)  {
+
         Map<String,Object> map = new HashMap<>();
-         map.put("code",0);
         if (file.isEmpty()) {
             map.put("error","上传失败，请选择文件");
             return map ;
@@ -150,9 +159,15 @@ public class RecruitController extends BaseController {
         String fileName = file.getOriginalFilename();//获取文件名称
         String filePath = "E:/";
         File dest = new File(filePath + fileName);
+        // 检测是否存在目录
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+            return map;
+        }
         try {
             file.transferTo(dest);
             LOGGER.info("上传成功");
+            map.put("code",0);
             return map;
         } catch (Exception e) {
             LOGGER.error(e.toString(), e);

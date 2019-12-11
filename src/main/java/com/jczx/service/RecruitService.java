@@ -1,4 +1,5 @@
 package com.jczx.service;
+
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -10,6 +11,7 @@ import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -56,6 +58,19 @@ public class RecruitService extends BaseService {
      */
     public ServiceResult modifyRecruit(TbStudent student) {
         modify(student);
+        return SUCCESS;
+    }
+    /**
+     * 修改学生是否入学 缴费
+     * 给丛
+     *
+     * @param student
+     * @return
+     */
+    public ServiceResult modifyOne(TbStudent student) {
+        Conditions conditions = getConditions();
+        conditions.putEW("studentId", student.getId());
+        modifyWithColumn(conditions, new Serializable[] {"entranceState",student.getEntranceState()});
         return SUCCESS;
     }
 
@@ -132,10 +147,17 @@ public class RecruitService extends BaseService {
         return inputStream;
     }
 
+
+
     /**
-     *
+     *导入学生信息
      * @return
      */
+    public InputStream inputStudent(){
+           /*  ExcelUtil.getListFromExcel("D:/IDEA_Project/",TbStudent.class,new String[]{"姓名"},new boolean[]{false}, 2, 1,null);*/
+        return null;
+    }
+
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();

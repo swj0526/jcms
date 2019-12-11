@@ -34,13 +34,7 @@ layui.use(['element','jquery','table'], function(){
      */
     table.render({
         elem: '#information',
-        data: [{
-            "theClass": "影视一班",
-            "reason": "打架斗殴",
-            "score": "加分",
-            "totalScore": "5",
-            "time": "2019-10-1",
-        }]
+        url:"/history/historylist"
             , parseData: function (res) { //res 即为原始返回的数据
                 /*   console.log(res);*/
                 return {
@@ -51,7 +45,7 @@ layui.use(['element','jquery','table'], function(){
             }
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
-            {field:'theClass', title: '班级'}
+            {field:'Major', title: '班级'}
             ,{field:'reason',  title: '事由'}
             ,{field:'score',  title: '加减'}
             ,{field:'score',  title: '分数'}
