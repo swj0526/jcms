@@ -1,5 +1,7 @@
 package com.jczx.service;
 
+import com.jczx.bean.FollowBean;
+import com.jczx.domain.TbDictionary;
 import com.jczx.domain.TbStudent;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -8,9 +10,11 @@ import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +23,8 @@ import java.util.List;
  */
 @Component
 public class StudentService extends BaseService {
-
+    @Autowired
+    private DictionaryService dictionaryService;
     /**
      * @author 丛枭钰
      * @create 2019-11-28 13:06
@@ -151,5 +156,24 @@ public class StudentService extends BaseService {
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();
+    }
+
+    /**
+     * 渠道统计
+     * @return
+     */
+    public  List<FollowBean> listFollowBean(){
+        List<TbDictionary> channelList = dictionaryService.list(TbDictionary.TYPE_CHANNEL, null, null);
+        List<FollowBean> list = new ArrayList<>();
+        for(TbDictionary channel:channelList){
+            FollowBean followBean = new FollowBean();
+            followBean.setChannelName(channel.getName());
+            Conditions conditions = getConditions();
+            conditions.putEW("channelId",channel.getId());
+            int count = getCount(conditions);
+            followBean.setNum(count);
+            list.add(followBean);
+        }
+        return list;
     }
 }

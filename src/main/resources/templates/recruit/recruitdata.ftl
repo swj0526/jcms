@@ -32,7 +32,24 @@
         </div>
         </div>
     </fieldset>
-    <table class="layui-hide" id="demo"></table>
+    <table class="layui-table" style="margin-top: 0px;">
+        <tr style="background-color: #F2F2F2;">
+            <th>渠道名称</th>
+            <th>人数</th>
+            <th>百分比</th>
+        </tr>
+        <#list list as follow>
+            <tr>
+                <td>${follow.channelName!""}</td>
+                <td>${follow.num!""}</td>
+            </tr>
+        </#list>
+        <#if list?? && (list?size == 0)>
+            <tr>
+                <td colspan="3" style="text-align: center">无数据</td>
+            </tr>
+        </#if>
+    </table>
 </div>
 <div style="display: inline-block">
     <table id='myTable5'>
@@ -83,10 +100,10 @@
     </table>
 </div>
 
-<script type="text/javascript" src="js/jsapi.js"></script>
-<script type="text/javascript" src="js/corechart.js"></script>
-<script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
+<script type="text/javascript" src="/js/jsapi.js"></script>
+<script type="text/javascript" src="/js/corechart.js"></script>
+<script type="text/javascript" src="/js/jquery.gvChart-1.0.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.ba-resize.min.js"></script>
 <script type="text/javascript">
     gvChartInit();
     $(document).ready(function () {
@@ -116,58 +133,7 @@
         });
     });
 </script>
-<script>
-    layui.use(['form', 'table', 'laydate'], function () {
-        var table = layui.table,
-        laydate = layui.laydate;
-        laydate.render({
-            elem: '#t1' //指定元素
-            , range: true
-        });
 
-        //展示已知数据
-        table.render({
-            elem: '#demo'
-            , cols: [[ //标题栏
-                {field: 'id', title: '渠道', width: 180, sort: true}
-                , {field: 'username', title: '人数', width: 180}
-                , {field: 'username', title: '百分比', width: 180}
-
-                , {field: 'sex', title: '男', width: 180}
-                , {field: 'sex', title: '女', width: 180}
-
-            ]]
-            , data: [{
-                "id": "学校渠道"
-                , "username": "200"
-                , "sex": "100"
-
-            },
-                {
-                    "id": "个人渠道"
-                    , "username": "200"
-                    , "sex": "100"
-
-                },
-                {
-                    "id": "网络渠道"
-                    , "username": "200"
-                    , "sex": "100"
-
-                }, {
-                    "id": "其他渠道"
-                    , "username": "200"
-                    , "sex": "100"
-
-                }]
-            //,skin: 'line' //表格风格
-            , even: true
-            //,page: true //是否显示分页
-            //,limits: [5, 7, 10]
-            //,limit: 5 //每页默认显示的数量
-        });
-    });
-</script>
 
 
 </body>
