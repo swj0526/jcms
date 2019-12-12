@@ -43,13 +43,14 @@ public class HomeworkController extends BaseController {
 
     /**
      * 上传
+     *
      * @param file
      * @return
      */
     @RequestMapping("/upload")
     @ResponseBody
     public Map<String, Object> upload(MultipartFile file) {
-        ServiceResult result = homeworkService.upload(file, getTeacherPath());
+        ServiceResult result = homeworkService.uploadFile(file,"123");
         Map map = uploadeResult(result);
         return map;
     }

@@ -7,6 +7,7 @@ import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class HomeworkService extends BaseService {
 
     /**
      * 根据id修改
+     *
      * @param homework
      * @return
      */
@@ -50,6 +52,7 @@ public class HomeworkService extends BaseService {
         modify(homework);
         return SUCCESS;
     }
+
     /**
      * 返回数据表格
      *
@@ -80,5 +83,11 @@ public class HomeworkService extends BaseService {
         return getListByPage(conditions, pager);
     }
 
+    public ServiceResult uploadFile(MultipartFile file, String s) {
+        String path = "";
+        ServiceResult result = upload(file,"123");
 
+        System.out.println(path);
+        return result;
+    }
 }

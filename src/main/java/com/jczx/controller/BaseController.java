@@ -52,8 +52,7 @@ public class BaseController<T> {
      * @return
      */
     public String getPath() {
-        String path = System.getProperty("user.dir");
-        return path+"/src/main/resources";
+        return this.getClass().getResource("").getPath();
     }
 
     /**
