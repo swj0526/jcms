@@ -11,7 +11,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
         cols: [[
             {field: 'studentId', title: 'ID' }
             , {field: 'name', title: '姓名' }
-            , {field: 'major', title: '班级' }
+            , {field: 'majorName', title: '班级' }
             , {field: 'recordTime', title: '时间' }
             , {field: 'score', title: '加减分' }
             , {field: 'reason', title: '事由' }
@@ -36,6 +36,9 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
             content: '/history/toaddPage',
             btn: [],
             shade: 0
+            ,end:function () {
+                $(".layui-laypage-btn").click();
+            }
         });
     })
 
@@ -54,7 +57,7 @@ layui.use(['form', 'table', 'jquery', 'layer', 'laydate'], function () {
             where: { //设定异步数据接口的额外参数，任意设
                 keyword: $("#keyword").val(),
                 recordTime:$("#time").val(),
-                major:$("#major").val()
+                major:$("#gradeSelect").val()
             }
             , page: {
                 curr: 1 //重新从第 1 页开始

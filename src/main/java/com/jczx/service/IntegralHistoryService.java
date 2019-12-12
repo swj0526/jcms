@@ -6,10 +6,8 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -53,7 +51,6 @@ public class IntegralHistoryService extends BaseService {
         int count = getCount(conditions);
         pager.setDataTotal(count);
         List<TbIntegralHistory> list = getListByPage(conditions, pager);
-        System.out.println("姓名"+list.get(0).getName());
         return list;
     }
     public ServiceResult addIntegralHistory(TbIntegralHistory integralHistory) {
@@ -63,26 +60,13 @@ public class IntegralHistoryService extends BaseService {
                 || integralHistory.getRecordTime() == null) {
             return error("必填项不能为空");
         }
-        TbStudent tbStudent = studentService.get(integralHistory.getName());
-        if (tbStudent!=null){
-            integralHistory.setStudentId(tbStudent.getId());
-        }
         integralHistory.setCreateTime(SC.getNowDate());
         add(integralHistory);
         return SUCCESS;
     }
-
-
-
-
     public ServiceResult modify(TbIntegralHistory integralHistory) {
         if (StringUtil.isBlank(integralHistory.getReason()) || integralHistory.getScore() == null || integralHistory.getRecordTime() == null) {
             return error("必填项不能为空");
-        }
-        TbStudent tbStudent = studentService.get(integralHistory.getName());
-        if (tbStudent!=null){
-            integralHistory.setStudentId(tbStudent.getId());
-            return error("没有该学生生");
         }
         modify(integralHistory);
         return SUCCESS;

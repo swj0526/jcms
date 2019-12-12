@@ -8,8 +8,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             , url: '/money/list'
             , id: 'userTableReload'
             , cols: [[
-                {field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'name', title: '姓名', width: 90}
+                //{field: 'id', title: '学号', width: 80, fixed: 'left', unresize: true, sort: true}
+                 {field: 'name', title: '姓名', width: 150}
                 , {field: 'semesterName', title: '学年', width: 60}
                 , {field: 'typeName', title: '缴费类型', width: 90}
                 , {field: 'paymentMethodName', title: '缴费方式', width: 90}

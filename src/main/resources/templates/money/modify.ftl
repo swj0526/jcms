@@ -11,7 +11,7 @@
     <fieldset id="add2" style="border: 0">
         <div style="margin: 10px 10px 10px 10px;margin-left:25%">
             <form class="layui-form layui-form-pane" lay-filter="dataForm1" id="dataFor">
-                <input style="display: none" type="text" id="id" name="id" value=${bill.id} autocomplete="off"
+                <input style="display: none" type="text" id="id" name="id" value=${bill.id!""} autocomplete="off"
                        class="layui-input">
                 <div class="layui-form-item">
                     <div class="layui-form-item">
@@ -19,14 +19,14 @@
                             <label class="layui-form-label">用户姓名<span  class="star">*</span></label>
                             <div class="layui-input-inline">
                                 <input required type="text" id="name" required lay-verify="required" name="name"
-                                       value=${bill.name} autocomplete="off" class="layui-input">
+                                       value=${bill.name!""} autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">用户学年<span  class="star">*</span></label>
                             <div  class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                                 <select name="semesterId" lay-verify="required" class="decSelect"
-                                        url="/dictionary/list/payTerm/options" selectedId="${bill.semesterId}"  >
+                                        url="/dictionary/list/payTerm/options" selectedId="${bill.semesterId!""}"  >
                                     <option value="">请选择</option>
 
                                 </select>
@@ -41,7 +41,7 @@
                             <label class="layui-form-label">缴费类型<span  class="star">*</span></label>
                             <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                                 <select name="typeId" lay-verify="required" class="decSelect"
-                                        url="/dictionary/list/payType/options"   selectedId="${bill.typeId}">
+                                        url="/dictionary/list/payType/options"   selectedId="${bill.typeId!""}">
                                     <option value="">请选择</option>
                                 </select>
                             </div>
@@ -53,7 +53,7 @@
                             <label class="layui-form-label">缴费方式<span  class="star">*</span></label>
                             <div class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
                                 <select name="paymentMethodId" lay-verify="required" class="decSelect"
-                                        url="/dictionary/list/payWay/options"  selectedId="${bill.paymentMethodId}"  >
+                                        url="/dictionary/list/payWay/options"  selectedId="${bill.paymentMethodId!""}"  >
                                     <option value="">请选择</option>
                                 </select>
                             </div>
@@ -85,7 +85,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">缴费日期<span  class="star">*</span></label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" name="payDate" value="${bill.payDate}" id="payDate" required
+                                <input class="layui-input" name="payDate" value="${bill.payDate!""}" id="payDate" required
                                        lay-verify="required" type="text">
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">金额<span  class="star">*</span></label>
                             <div class="layui-input-inline">
-                                <input type="text" name="payAmount" value=#{bill.payAmount} autocomplete="off" required
+                                <input type="text" name="payAmount" value=#{bill.payAmount!""} autocomplete="off" required
                                        lay-verify="required" class="layui-input">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                             <label class="layui-form-label">开始时间<span  class="star">*</span></label>
                             <div class="layui-input-inline">
                                 <input class="layui-input" required lay-verify="required" name="startTime"
-                                       value="${bill.startTime}" id="startTime" type="text"
+                                       value="${bill.startTime!""}" id="startTime" type="text"
                                 >
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                             <label class="layui-form-label">结束时间<span  class="star">*</span></label>
                             <div class="layui-input-inline">
                                 <input class="layui-input" required lay-verify="required" name="endTime"
-                                       value="${bill.endTime}"  id="endTime" type="text"
+                                       value="${bill.endTime!""}"  id="endTime" type="text"
                                 >
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                             <label class="layui-form-label">备注</label>
                             <div class="layui-input-block">
                                 <textarea name="remark" placeholder="请输入内容"
-                                          class="layui-textarea">${bill.remark}</textarea>
+                                          class="layui-textarea">${bill.remark!""}</textarea>
                             </div>
                         </div>
                     </div>
@@ -156,4 +156,7 @@
 </div>
 </body>
 <script type="text/javascript" src="/money/js/modify.js"></script>
+<script>
+    sel();
+</script>
 </html>

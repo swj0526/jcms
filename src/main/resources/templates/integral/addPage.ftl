@@ -7,10 +7,11 @@
     <#include "../common/common.ftl"/>
 </head>
 <body>
-<div  >
+<div>
     <fieldset class="layui-elem-field layuimini-search">
         <div style="margin: 10px 10px 10px 10px">
-            <form class="layui-form layui-form-pane" style="margin-left: 15%;margin-top: 8%" id="addForm" lay-filter="dataForm">
+            <form class="layui-form layui-form-pane" style="margin-left: 15%;margin-top: 8%" id="addForm"
+                  lay-filter="dataForm">
                 <div class="layui-form-item">
                     <div class="layui-inline" style="width: 359px">
                         <label class="layui-form-label">事由<span class="star">*</span></label>
@@ -27,8 +28,10 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">学生姓名<span class="star">*</span></label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                        <div class="layui-inline">
+                            <select name="studentId" lay-verify="" class="decSelect" lay-search url="/student/listname">
+                                <option value="">请输入</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -58,7 +61,7 @@
                     <button type="button" class="layui-btn" lay-submit id="submitBtn"
                             style="padding-left: 10px;padding-right: 10px;width: 70px;">提交
                     </button>
-                    <button type="button" class="layui-btn layui-btn-primary"id="revocationBtn"
+                    <button type="button" class="layui-btn layui-btn-primary" id="revocationBtn"
                             style="padding-left: 10px;padding-right: 10px;width: 70px;">取消
                     </button>
                 </div>
@@ -68,5 +71,8 @@
 </div>
 </body>
 <script src="/integral/js/addPage.js"></script>
-
+<script>
+    sel();
+    $('.wx-input').attr('data-value');
+</script>
 </html>

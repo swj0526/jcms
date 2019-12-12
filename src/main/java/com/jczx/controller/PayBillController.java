@@ -1,20 +1,16 @@
 package com.jczx.controller;
 
 import com.jczx.domain.TbPayBill;
-import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.jczx.service.PayBIllService;
+import com.jczx.service.PayBillService;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +23,7 @@ import java.util.Map;
 @Controller
 public class PayBillController extends BaseController {
     @Autowired
-    private PayBIllService moneyService;
+    private PayBillService moneyService;
 
     /**
      * 缴费列表

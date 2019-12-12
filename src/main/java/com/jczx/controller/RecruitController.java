@@ -82,17 +82,6 @@ public class RecruitController extends BaseController {
         return result;
     }
     /**
-     * 修改学生入学状态
-     * @param student
-     * @return
-     */
-    @RequestMapping("/modifyOne")
-    @ResponseBody
-    public ServiceResult modifyOne(TbStudent student) {
-        ServiceResult result = recruitService.modifyOne(student);
-        return result;
-    }
-    /**
      * 修改招生信息
      */
     @RequestMapping("/modify")
@@ -127,6 +116,12 @@ public class RecruitController extends BaseController {
         Pager pager = checkPager(limit, page);
         List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, pager);
         return layuiList(list, pager);
+    }
+    @RequestMapping("/listname")
+    @ResponseBody
+    public List<TbStudent> listRecruitName(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, null);
+        return list;
     }
 
     /**

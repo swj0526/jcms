@@ -30,8 +30,9 @@ public class TbIntegralHistory extends Domain {
     public String getName() {
         return CACHE.getStudentName(studentId);
     }
-    public String getMajor() {
-        return CACHE.getMajorName(studentId);
+    public String getMajorName() {
+
+        return CACHE.getMajorName(CACHE.getStudent(studentId).getMajorId());
     }
 
     public Integer getId() {
