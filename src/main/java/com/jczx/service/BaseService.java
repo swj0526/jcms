@@ -55,21 +55,25 @@ public abstract class BaseService extends Service {
      * @return
      */
     public ServiceResult upload(MultipartFile file, String filePath) {
-
-        if (file.isEmpty()) {
+        String allFile = "";
+        if (file == null) {
             return error("上传失败,请选择文件");
         }
         String fileName = file.getOriginalFilename();//获取文件名称
-
         File dest = new File(filePath + fileName);
+        // 检测是否存在目录
+        if (!dest.getParentFile().exists()) {
+            return error("上传失败,请选择文件");
+        }
         try {
             file.transferTo(dest);
-            LOGGER.info("上传成功");
-           return SUCCESS;
+            allFile =dest+""; //上传成功之后返回路径
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
+            return error("上传失败!");
         }
-       return SUCCESS;
+        LOGGER.info("上传成功");
+        return success(allFile);
     }
 
 

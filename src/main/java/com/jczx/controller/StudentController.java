@@ -18,7 +18,7 @@ import java.util.Map;
 @RequestMapping("/student")
 public class StudentController extends BaseController {
     @Autowired
-    private StudentService studentService;
+    private StudentService studentService;//todo 于  需要查询所有的学生姓名 id 学号
 
     /**
      * 于振华
@@ -46,6 +46,12 @@ public class StudentController extends BaseController {
         return layuiList(studentList, pager);
     }
 
+    @RequestMapping("/listname")
+    @ResponseBody
+    public List<TbStudent> listStudentName(String keywords, String admissionData, Integer studentState, Integer page, Integer limit) {
+        List<TbStudent> studentList = studentService.listStudent(keywords, admissionData, studentState, null);
+        return studentList;
+    }
     /**
      * 查询当前学生信息
      *

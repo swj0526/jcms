@@ -29,13 +29,15 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">专业班级</label>
-                            <div class="layui-inline">
-                            <select name="major" lay-verify="" id="majorSelect" required
-                                    lay-verify="required"
-                                    url="/major/list/select">
-                                <option value="">请选择</option>
-                            </select>
+                            <label class="layui-form-label">专业-班级</label>
+                            <div class="layui-input-inline">
+                                <div class="layui-inline">
+                                    <select name="major" lay-verify="" id="gradeSelect" required
+                                            lay-verify="required"
+                                            url="/major/list/select">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="layui-inline">

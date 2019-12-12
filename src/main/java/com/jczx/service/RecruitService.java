@@ -58,10 +58,10 @@ public class RecruitService extends BaseService {
      * @param student
      * @return
      */
-    public ServiceResult modifyOne(TbStudent student) {
+    public ServiceResult modifyOne(Integer student) {
         Conditions conditions = getConditions();
-        conditions.putEW("studentId", student.getId());
-        modifyWithColumn(conditions, new Serializable[] {"entranceState",student.getEntranceState()});
+        conditions.putEW("id", student);
+        modifyWithColumn(conditions, new Serializable[] {"entranceState",TbStudent.STATE_ENTRANCE});
         return SUCCESS;
     }
 

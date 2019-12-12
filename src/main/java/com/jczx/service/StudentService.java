@@ -24,10 +24,10 @@ public class StudentService extends BaseService {
      * @author 丛枭钰
      * @create 2019-11-28 13:06
      */
-    public TbStudent get(String student) {
+    public TbStudent get(Integer studentId) {
         Conditions conditions = getConditions();
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
-        conditions.putEW("name", student);
+        conditions.putEW("id", studentId);
         TbStudent Student = getOne(conditions);
         return Student;
     }

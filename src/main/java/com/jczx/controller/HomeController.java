@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @RequestMapping("/home")
 @Controller
-public class HomeController {
+public class HomeController extends BaseController {
+
     @RequestMapping("/main")
     private String mianHome() {
         return "/home/main";

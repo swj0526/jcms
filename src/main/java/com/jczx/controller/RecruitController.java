@@ -81,20 +81,6 @@ public class RecruitController extends BaseController {
         ServiceResult result = recruitService.addRecruit(student);
         return result;
     }
-
-    /**
-     * 修改学生入学状态
-     *
-     * @param student
-     * @return
-     */
-    @RequestMapping("/modifyOne")
-    @ResponseBody
-    public ServiceResult modifyOne(TbStudent student) {
-        ServiceResult result = recruitService.modifyOne(student);
-        return result;
-    }
-
     /**
      * 修改招生信息
      */
@@ -126,15 +112,20 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listRecruit(String keywords, String labelIds, String createTime, Integer channelId, String sex, Integer page, Integer limit) {
+    public ServiceResult listRecruit(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime, channelId, sex, pager);
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, pager);
         return layuiList(list, pager);
+    }
+    @RequestMapping("/listname")
+    @ResponseBody
+    public List<TbStudent> listRecruitName(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, null);
+        return list;
     }
 
     /**
      * 导出
-     *
      * @param
      * @param labelIds
      * @param sex
@@ -143,58 +134,39 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/exportExcel")
     @ResponseBody
-    public Render excel(String keywords, String labelIds, String createTime, Integer channelId, String sex) {
-        InputStream inputStream = recruitService.studentExcel(keywords, labelIds, createTime, sex, channelId);
+    public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex) {
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
-
     /**
      * 文件上传
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);//日志
-
     @PostMapping("/upload")
     @ResponseBody
-    public Map<String, Object> upload(@RequestParam("file") MultipartFile file) {
-        Map<String, Object> map = new HashMap<>();
+    public Map<String ,Object>upload(@RequestParam("file") MultipartFile file)  {
+
+        Map<String,Object> map = new HashMap<>();
         if (file.isEmpty()) {
-            map.put("error", "上传失败，请选择文件");
-            return map;
+            map.put("error","上传失败，请选择文件");
+            return map ;
         }
         String fileName = file.getOriginalFilename();//获取文件名称
-
-        String path = this.getClass().getClassLoader().getResource("/").getPath().replace("classes","upload");
-        String path1 = this.getClass().getClassLoader().getResource("").getPath();
-        String path2 = this.getClass().getResource("").getPath();
-        String path3 = this.getClass().getResource("/").getPath();
-        String filePath = path+"/upload";
+        String filePath = "E:/";
         File dest = new File(filePath + fileName);
-        System.out.println("0" +path);
-        System.out.println("01" +path1);
-        System.out.println("001" +path2);
-        System.out.println("0001" +path3);
-        System.out.println("1" + Thread.currentThread().getContextClassLoader().getResource(""));
-        System.out.println("7" + new File("").getAbsolutePath());
-
-
         // 检测是否存在目录
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();
             return map;
         }
         try {
-            //将内存中的数据写入磁盘
             file.transferTo(dest);
             LOGGER.info("上传成功");
-            recruitService.inputStudent();
-            map.put("code", 0);
+            map.put("code",0);
             return map;
         } catch (Exception e) {
             LOGGER.error(e.toString(), e);
-        } catch (Throwable e) {
-            LOGGER.error(e.toString(), e);
         }
-
         return map;
     }
 }

@@ -1,6 +1,7 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import com.jczx.system.OptionInterface;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -93,4 +94,6 @@ public class TbRecruitDetail extends Domain {
     public String listLabelName(){
         return CACHE.getLabelNames(labelIds);
     }
+
+
 }

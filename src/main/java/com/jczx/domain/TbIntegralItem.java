@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.OptionInterface;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,7 @@ import java.util.Date;
  * @create 2019-11-20 19:30
  */
 @Component
-public class TbIntegralItem extends Domain {
+public class TbIntegralItem extends Domain implements OptionInterface {
     /**
      * 加分
      */
@@ -87,5 +88,15 @@ public class TbIntegralItem extends Domain {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String getOptionText() {
+        return reason;
+    }
+
+    @Override
+    public String getOptionValue() {
+        return ""+id+"";
     }
 }
