@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController extends BaseController {
 
     @RequestMapping("/main")
-    private String mianHome() {
+    private String mianHome()
+    {
+        System.out.println(getPath());
+
+
         return "/home/main";
     }
 

@@ -3,6 +3,7 @@ package com.jczx.controller;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class BaseController<T> {
      * @return
      */
     public String getPath() {
-        return this.getClass().getResource("").getPath();
+        return ClassUtils.getDefaultClassLoader().getResource("").getPath();
     }
 
     /**
