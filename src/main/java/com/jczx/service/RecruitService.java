@@ -1,5 +1,4 @@
 package com.jczx.service;
-
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -9,11 +8,9 @@ import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
-
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
-
 /**
  * 招生
  *
@@ -29,12 +26,6 @@ public class RecruitService extends BaseService {
      * @return
      */
     public ServiceResult addRecruit(TbStudent student) {
-       /* Conditions conditions = getConditions();
-        conditions.putEW("studentPhone", student.getStudentPhone());
-        int count = getCount(conditions);
-        if (count!= 0) {
-            return error("学生电话有重复");
-        }*/
         if (StringUtil.isBlank(student.getName())//学生姓名
                         || StringUtil.isBlank(student.getLabelIds())//意向标签
                         || StringUtil.isBlank(student.getStudentPhone())//学生电话

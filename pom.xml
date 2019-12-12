@@ -6,12 +6,14 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.1.RELEASE</version>
+
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jczx</groupId>
     <artifactId>jcms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jcms</name>
+    <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -65,11 +67,17 @@
             <version>0.0.20131108.vaadin1</version>
             <scope>compile</scope>
         </dependency>
-
+        <!--禁用内置tomcat-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
     <build>
+        <finalName>jcms</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
