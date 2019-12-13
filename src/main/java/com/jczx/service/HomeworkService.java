@@ -1,11 +1,13 @@
 package com.jczx.service;
 
+import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbHomework;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +20,9 @@ import java.util.List;
  */
 @Component
 public class HomeworkService extends BaseService {
+    @Autowired
+    private AttachmentService attachmentService;
+
     @Override
     public String getTableName() {
         return TbHomework.class.getSimpleName();
@@ -35,6 +40,7 @@ public class HomeworkService extends BaseService {
         }
         homework.setCreateTime(SC.getNowDate());
         homework.setTeacherId(SC.getOperatorId());
+        homework.setOperatorId(SC.getOperatorId());
         add(homework);
         return SUCCESS;
     }
@@ -83,11 +89,21 @@ public class HomeworkService extends BaseService {
         return getListByPage(conditions, pager);
     }
 
-    public ServiceResult uploadFile(MultipartFile file, String s) {
-        String path = "";
-        ServiceResult result = upload(file,"123");
-
-        System.out.println(path);
+    public ServiceResult uploadFile(MultipartFile file, String path) {
+        ServiceResult result = upload(file, path);
+        Integer id=0;
+        if (result.isSuccess()) {
+            TbAttachment attachment = new TbAttachment();
+            attachment.setCreateTime(SC.getNowDate());
+            attachment.setOperatorId(SC.getOperatorId());
+            attachment.setType(TbAttachment.TYPE_TEACHERFILE);
+            attachment.setURL(result.getResult() + "");
+            attachment.setName(file.getOriginalFilename());
+            ServiceResult attachmentResult = attachmentService.addAttachment(attachment);
+            id= (Integer) attachmentResult.getResult();
+        }
+        result.setResult(id);
         return result;
     }
+
 }

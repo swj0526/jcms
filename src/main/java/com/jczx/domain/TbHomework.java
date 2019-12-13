@@ -23,7 +23,7 @@ public class TbHomework extends Domain {
     private Integer majorId;//班级专业
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endTime;//截止日期
-    @FieldType(type = Type.VARCHAR, length = 255)
+    @FieldType(type = Type.TEXT)
     private String content;//内容//长度问题
     private Boolean hasAttachment;//是否有附件
     private Integer submitCount;//提交人数
@@ -33,6 +33,7 @@ public class TbHomework extends Domain {
     private String notSubmitIds;//未提交人
     private Integer totalCount;//总人数
     private Integer operatorId;//操作人id
+    @FieldType(type = Type.TEXT)
     private String remark;//备注
     private Date createTime;//创建时间
 

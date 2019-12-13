@@ -4,6 +4,8 @@ import com.jczx.controller.HomeworkController;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.services.Service;
+import net.atomarrow.util.RandomSn;
+import net.atomarrow.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  * @author 孙文举
@@ -59,11 +62,11 @@ public abstract class BaseService extends Service {
         if (file == null) {
             return error("上传失败,请选择文件");
         }
-        String fileName = file.getOriginalFilename();//获取文件名称
-        File dest = new File(filePath + fileName);
+        Calendar now = Calendar.getInstance();//将文件名称改成秒数
+        File dest = new File(filePath + now.getTimeInMillis()+ RandomSn.getSn(3));
         // 检测是否存在目录
         if (!dest.getParentFile().exists()) {
-            return error("上传失败,请选择文件");
+               dest.mkdirs();
         }
         try {
             file.transferTo(dest);

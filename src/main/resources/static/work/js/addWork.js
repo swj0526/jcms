@@ -5,6 +5,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
     laydate = layui.laydate;
     var upload = layui.upload;
     form = layui.form;
+    var attachmentId = 0;//在附件表中附件id
 
     //获取系统当前时间
     function getNow(s) {
@@ -30,7 +31,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
 
     $('#submit').click(function () {
         let serialize = $("#dataFor").serialize();
-        $.post('/work/add/homework', serialize, function (result) {
+        $.post('/work/add/homework', serialize+"&attachmentId="+attachmentId, function (result) {
             if (result.success == true) {
                 close_tab("work_add", "work_list", "作业列表", "/work/list");
             } else {
@@ -45,7 +46,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         elem: '#testList'
         , url: '/work/upload/'
         , accept: 'file'
-        , multiple: true
+        , multiple: false
         , auto: false
         , bindAction: '#testListAction'
         , choose: function (obj) {
@@ -83,6 +84,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
                     , tds = tr.children();
                 tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
                 tds.eq(3).html(''); //清空操作
+                attachmentId=res.result;
                 return delete this.files[index]; //删除文件队列已经上传成功的文件
             }
             this.error(index, upload);
