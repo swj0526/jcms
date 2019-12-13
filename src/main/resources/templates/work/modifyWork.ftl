@@ -3,7 +3,7 @@
 <head>
     <title>老师修改作业页面</title>
     <#include "../common/common.ftl"/>
-    <script type="text/javascript" src="/work/js/modifyWork.js"></script>
+
 </head>
 <body>
 
@@ -60,8 +60,6 @@
                 <thead>
                 <tr>
                     <th>文件名</th>
-                    <th>大小</th>
-                    <th>状态</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
@@ -69,20 +67,22 @@
                 <tbody id="demoList"></tbody>
             </table>
         </div>
-        <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="yes"
-             style="margin-top: 20px">
-            <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
-        </div>
     </div>
     <div style="margin-top: 10px;">
-        <button lay-submit="" type="button" class="layui-btn" id="submit" >提交
+        <button lay-submit="" type="button" class="layui-btn" id="submit">提交
         </button>
     </div>
 </form>
-
-
 </body>
+<script type="text/javascript" src="/work/js/modifyWork.js"></script>
 <script>
+    $('#demoList').append("<tr id='old'><td>${attachment.name}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' id='oldDeleteBtn'>删除</button></td></tr>");
     sel_garade();
+    $('#oldDeleteBtn').click(function () {
+        $.post("",{},function (result) {
+            
+        });
+        $('#old').remove();
+    });
 </script>
 </html>

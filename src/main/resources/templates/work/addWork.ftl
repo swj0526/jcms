@@ -48,7 +48,7 @@
     </div>
     <div class="layui-upload" id="up" style="text-align: center">
         <div style="text-align: left">
-            <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+            <button class="layui-btn layui-btn-normal" id="testList" type="button">选择文件</button>
             <button class="layui-btn layui-btn-warm" id="testListAction" type="button">开始上传</button>
         </div>
         <div class="layui-upload-list">

@@ -1,6 +1,8 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbHomework;
+import com.jczx.service.AttachmentService;
 import com.jczx.service.HomeworkService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -23,7 +25,8 @@ import java.util.Map;
 public class HomeworkController extends BaseController {
     @Autowired
     private HomeworkService homeworkService;
-
+    @Autowired
+    private AttachmentService attachmentService;
     /**
      * 上传页面
      *
@@ -50,7 +53,7 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/upload")
     @ResponseBody
     public Map<String, Object> upload(MultipartFile file) {
-        ServiceResult result = homeworkService.uploadFile(file,"123");
+        ServiceResult result = homeworkService.uploadFile(file,getTeacherPath());
         Map map = uploadeResult(result);
         return map;
     }
@@ -76,9 +79,14 @@ public class HomeworkController extends BaseController {
      */
     @RequestMapping("/add/homework")
     @ResponseBody
-    public ServiceResult addHomework(TbHomework homework) {
+    public ServiceResult addHomework(TbHomework homework,Integer attachmentId) {
+        if(attachmentId!=0){
+            homework.setHasAttachment(true);
+        }
         ServiceResult result = homeworkService.addHomework(homework);
-        return result;
+        Integer homeworkId =homework.getId();
+        ServiceResult attachmentResult = attachmentService.modifyAttachment(attachmentId,homeworkId);
+        return attachmentResult;
     }
 
     /**
@@ -108,6 +116,8 @@ public class HomeworkController extends BaseController {
     public String getHomework(Integer id, Map<String, Object> map) {
         TbHomework homework = homeworkService.getById(id);
         map.put("homework", homework);
+        TbAttachment attachment = attachmentService.getAttachment(homework.getId(), TbAttachment.TYPE_TEACHERFILE);
+        map.put("attachment", attachment);
         return "/work/modifyWork";
     }
 

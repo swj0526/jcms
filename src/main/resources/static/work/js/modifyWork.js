@@ -11,6 +11,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         return s < 10 ? '0' + s : s;
     }
 
+    //加载上传的文件
+
     //选完文件后不自动上传
     var currPage = 1;
     var demoListView = $('#demoList')
@@ -27,7 +29,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
             obj.preview(function (index, file, result) {
                 var tr = $(['<tr id="upload-' + index + '">'
                     , '<td>' + file.name + '</td>'
-                    , '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>'
                     , '<td>等待上传</td>'
                     , '<td>'
                     , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
