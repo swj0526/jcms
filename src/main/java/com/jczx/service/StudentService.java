@@ -162,7 +162,7 @@ public class StudentService extends BaseService {
      * 渠道统计
      * @return
      */
-    public  List<FollowBean> listFollowBean(Integer channelId){
+    public  List<FollowBean> listFollowBean(){
 
         List<TbDictionary> channelList = dictionaryService.list(TbDictionary.TYPE_CHANNEL, null, null);
         List<FollowBean> list = new ArrayList<>();
