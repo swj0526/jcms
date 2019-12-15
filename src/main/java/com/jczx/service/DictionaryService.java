@@ -154,7 +154,7 @@ public class DictionaryService extends BaseService {
      * @param
      * @return
      */
-    public List<TbDictionary> list(Integer type, String keywords, Pager pager) {
+    public List<TbDictionary> list(Integer type, String keywords,Integer channelId, Pager pager) {
         Conditions conditions = getConditions();
         conditions.putEW("type", type);
         if (StringUtil.isNotBlank(keywords)) {
