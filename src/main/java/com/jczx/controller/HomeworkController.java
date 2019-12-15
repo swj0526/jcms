@@ -115,9 +115,10 @@ public class HomeworkController extends BaseController {
 
     public String getHomework(Integer id, Map<String, Object> map) {
         TbHomework homework = homeworkService.getById(id);
+        System.out.println(id);
         map.put("homework", homework);
         TbAttachment attachment = attachmentService.getAttachment(homework.getId(), TbAttachment.TYPE_TEACHERFILE);
-        System.out.println(attachment.getName());
+
         map.put("attachment", attachment);
         return "/work/modifyWork";
     }

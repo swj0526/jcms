@@ -25,6 +25,7 @@ import java.util.List;
 public class StudentService extends BaseService {
     @Autowired
     private DictionaryService dictionaryService;
+
     /**
      * @author 丛枭钰
      * @create 2019-11-28 13:06
@@ -36,7 +37,6 @@ public class StudentService extends BaseService {
         TbStudent Student = getOne(conditions);
         return Student;
     }
-
 
 
     /**
@@ -72,7 +72,7 @@ public class StudentService extends BaseService {
      * @param
      * @return
      */
-    public List<TbStudent>listStudent(String keywords, String admissionData, Integer studentState, Pager pager) {
+    public List<TbStudent> listStudent(String keywords, String admissionData, Integer studentState, Pager pager) {
         Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -93,7 +93,7 @@ public class StudentService extends BaseService {
 
             }
             if (studentState == TbStudent.STATE_GRADUATE) {//毕业
-                    conditions.putEWIfOk("schoolState", TbStudent.STATE_GRADUATE);
+                conditions.putEWIfOk("schoolState", TbStudent.STATE_GRADUATE);
                 if (split.length != 1) {
                     conditions.putBW("graduationDate", split[0], split[1]);
                 }
@@ -160,21 +160,37 @@ public class StudentService extends BaseService {
 
     /**
      * 渠道统计
+     *
      * @return
      */
-    public  List<FollowBean> listFollowBean(Integer channelId){
+    public List<FollowBean> listFollowBean(Integer channelId) {
 
         List<TbDictionary> channelList = dictionaryService.list(TbDictionary.TYPE_CHANNEL, null, null);
         List<FollowBean> list = new ArrayList<>();
-        for(TbDictionary channel:channelList){
-            FollowBean followBean = new FollowBean();
-            followBean.setChannelName(channel.getName());
-            Conditions conditions = getConditions();
-            conditions.putEW("channelId",channel.getId());
-            int count = getCount(conditions);
-            followBean.setNum(count);
-            list.add(followBean);
+        if (channelId == null || channelId == 0) {
+            for (TbDictionary channel : channelList) {
+                FollowBean followBean = new FollowBean();
+                followBean.setChannelName(channel.getName());
+                Conditions conditions = getConditions();
+                conditions.putEW("channelId", channel.getId());
+                int count = getCount(conditions);
+                followBean.setNum(count);
+                list.add(followBean);
+            }
+        } else {
+            for (TbDictionary channel : channelList) {
+                if (channelId == channel.getId()) {
+                    FollowBean followBean = new FollowBean();
+                    followBean.setChannelName(channel.getName());
+                    Conditions conditions = getConditions();
+                    conditions.putEW("channelId", channel.getId());
+                    int count = getCount(conditions);
+                    followBean.setNum(count);
+                    list.add(followBean);
+                }
+            }
         }
+
         return list;
     }
 }
