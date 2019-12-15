@@ -177,11 +177,11 @@ public class StudentService extends BaseService {
             followBean.setChannelId(channel.getId());
             list.add(followBean);
         }
-        if (channelId != null || channelId != 0) {
+        if (channelId!=null) {
             FollowBean followNew = new FollowBean();
-            for(FollowBean follow:list){
-                if(channelId==follow.getChannelId()){
-                    followNew=follow;
+            for (FollowBean follow : list) {
+                if (channelId == follow.getChannelId()) {
+                    followNew = follow;
                     list.clear();
                     list.add(followNew);
                     break;
