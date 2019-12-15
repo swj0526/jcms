@@ -5,7 +5,6 @@ import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.RandomSn;
-import net.atomarrow.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,14 +62,19 @@ public abstract class BaseService extends Service {
             return error("上传失败,请选择文件");
         }
         Calendar now = Calendar.getInstance();//将文件名称改成秒数
-        File dest = new File(filePath + now.getTimeInMillis()+ RandomSn.getSn(3));
+        boolean hasXls = file.getOriginalFilename().contains(".xls");
+        String path =filePath + now.getTimeInMillis() + RandomSn.getSn(3);
+        if (hasXls) {
+            path=path+".xls";
+        }
+        File dest = new File(path);
         // 检测是否存在目录
         if (!dest.getParentFile().exists()) {
-               dest.mkdirs();
+            dest.mkdirs();
         }
         try {
             file.transferTo(dest);
-            allFile =dest+""; //上传成功之后返回路径
+            allFile = dest + ""; //上传成功之后返回路径
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
             return error("上传失败!");

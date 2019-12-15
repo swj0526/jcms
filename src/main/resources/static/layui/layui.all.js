@@ -5789,7 +5789,8 @@ layui.define(["laytpl", "laypage", "layer", "form", "util"], function (e) {
                     var l = t.field || e, n = i[l];
                     t.totalRow && (a[l] = (a[l] || 0) + (parseFloat(n) || 0))
                 })
-            }), t.dataTotal = {};
+            }),
+                t.dataTotal = {};
             var l = [];
             t.eachCols(function (e, n) {
                 var o = n.field || e, r = function () {

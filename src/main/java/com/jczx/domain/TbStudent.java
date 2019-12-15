@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @Component
 public class TbStudent extends Domain implements OptionInterface {
-    //缺在校状态
+
     @NotCreate
     public static final int STATE_AT_SCHOOL = 1;//在学
     @NotCreate
@@ -31,7 +31,6 @@ public class TbStudent extends Domain implements OptionInterface {
 
     @NotCreate
     public static final int STATE_NOT_ENTRANCE =4;//未入学未交费
-
 
     private Integer id;
     private Integer majorId;//班级id

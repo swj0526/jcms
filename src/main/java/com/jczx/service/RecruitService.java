@@ -1,4 +1,5 @@
 package com.jczx.service;
+
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -8,6 +9,7 @@ import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.stereotype.Component;
+
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
@@ -61,7 +63,7 @@ public class RecruitService extends BaseService {
     public ServiceResult modifyOne(Integer student) {
         Conditions conditions = getConditions();
         conditions.putEW("id", student);
-        modifyWithColumn(conditions, new Serializable[] {"entranceState",TbStudent.STATE_ENTRANCE});
+        modifyWithColumn(conditions, new Serializable[] {"entranceState",TbStudent.STATE_ENTRANCE,"schoolState",TbStudent.STATE_AT_SCHOOL});
         return SUCCESS;
     }
 
@@ -144,10 +146,30 @@ public class RecruitService extends BaseService {
      *导入学生信息
      * @return
      */
-    public InputStream inputStudent() throws Throwable {
-        List<TbStudent> listStudent = ExcelUtil.getListFromExcel("D:/IDEA_Project/", TbStudent.class, new String[]{"姓名"}, new boolean[]{false}, 2, null);
+    public InputStream inputStudent(String path) throws Throwable {
+
+        //解析标题必须按照顺序去填写字段名
+        List<TbStudent> listStudent = ExcelUtil.getListFromExcel(path, TbStudent.class, new String[]{"name","age"}, new boolean[]{false,false}, 2, null);
+
+       for (TbStudent list :listStudent){
+           System.out.println(list.getName());
+           System.out.println(list.getAge());
+
+       }
         addByBatch(listStudent);
         return null;
+    }
+
+    /**
+     * 判断是否已经入学
+     * @return
+     */
+    public ServiceResult hasEntrance(Integer id){
+        TbStudent student = getById(id);
+        if (student.getEntranceState()==TbStudent.STATE_NOT_ENTRANCE){
+            return error("未入学");
+        }
+        return SUCCESS;
     }
 
     @Override

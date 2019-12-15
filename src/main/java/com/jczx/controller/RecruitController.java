@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.bean.FollowBean;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
 import com.jczx.service.StudentService;
@@ -16,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,13 +44,16 @@ public class RecruitController extends BaseController {
     }
 
     /**
-     * 数据统计页面
+     * 到渠道统计页面
+     * 并且显示统计数据
      *
      * @return
      */
-    @RequestMapping("/todata")
-    private String recruitData() {
-        return "/recruit/recruitdata";
+    @RequestMapping("/tofollow")
+    public String follow(Map<String, Object> map,Integer channelId) {
+        List<FollowBean> list = studentService.listFollowBean(channelId);
+        map.put("list", list);
+        return "recruit/recruitdata";
     }
 
     /**
@@ -81,6 +83,7 @@ public class RecruitController extends BaseController {
         ServiceResult result = recruitService.addRecruit(student);
         return result;
     }
+
     /**
      * 修改招生信息
      */
@@ -88,6 +91,15 @@ public class RecruitController extends BaseController {
     @ResponseBody
     public ServiceResult modifyRecruit(TbStudent student) {
         ServiceResult result = recruitService.modifyRecruit(student);
+        return result;
+    }
+
+    /**
+     * 判断学生是否入学
+     */
+    @RequestMapping("/hasentrance")
+    public ServiceResult hasEntrance(Integer id) {
+        ServiceResult result = recruitService.hasEntrance(id);
         return result;
     }
 
@@ -112,20 +124,22 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult listRecruit(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
+    public ServiceResult listRecruit(String keywords, String labelIds, String createTime, Integer channelId, String sex, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, pager);
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime, channelId, sex, pager);
         return layuiList(list, pager);
     }
+
     @RequestMapping("/listname")
     @ResponseBody
-    public List<TbStudent> listRecruitName(String keywords, String labelIds,String createTime,Integer channelId, String sex, Integer page, Integer limit) {
-        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime,channelId,sex, null);
+    public List<TbStudent> listRecruitName(String keywords, String labelIds, String createTime, Integer channelId, String sex, Integer page, Integer limit) {
+        List<TbStudent> list = recruitService.listRecruit(keywords, labelIds, createTime, channelId, sex, null);
         return list;
     }
 
     /**
      * 导出
+     *
      * @param
      * @param labelIds
      * @param sex
@@ -134,39 +148,22 @@ public class RecruitController extends BaseController {
      */
     @RequestMapping("/exportExcel")
     @ResponseBody
-    public Render excel(String keywords, String labelIds,String createTime, Integer channelId,String sex) {
-        InputStream inputStream = recruitService.studentExcel(keywords, labelIds,createTime, sex,channelId);
+    public Render excel(String keywords, String labelIds, String createTime, Integer channelId, String sex) {
+        InputStream inputStream = recruitService.studentExcel(keywords, labelIds, createTime, sex, channelId);
         return Render.renderFile("招生信息表.xls", inputStream);
     }
+
     /**
      * 文件上传
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);//日志
+
     @PostMapping("/upload")
     @ResponseBody
-    public Map<String ,Object>upload(@RequestParam("file") MultipartFile file)  {
-
-        Map<String,Object> map = new HashMap<>();
-        if (file.isEmpty()) {
-            map.put("error","上传失败，请选择文件");
-            return map ;
-        }
-        String fileName = file.getOriginalFilename();//获取文件名称
-        String filePath = "E:/";
-        File dest = new File(filePath + fileName);
-        // 检测是否存在目录
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-            return map;
-        }
-        try {
-            file.transferTo(dest);
-            LOGGER.info("上传成功");
-            map.put("code",0);
-            return map;
-        } catch (Exception e) {
-            LOGGER.error(e.toString(), e);
-        }
+    public Map<String, Object> upload(@RequestParam("file") MultipartFile file) throws Throwable {
+        ServiceResult result = recruitService.upload(file, getExcelPath());
+        recruitService.inputStudent(result.getResult().toString());
+        Map map = uploadeResult(result);
         return map;
     }
 }

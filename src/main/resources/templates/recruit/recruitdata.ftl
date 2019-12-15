@@ -5,8 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <#include "../common/common.ftl"/>
     <title>饼状图比例分布数据</title>
-
-
 </head>
 
 
@@ -14,11 +12,17 @@
 <div>
     <fieldset class="layui-elem-field layuimini-search">
         <legend>搜索渠道统计</legend>
+        <form class="layui-form layui-form-pane" action="/recruit/tofollow" lay-filter="dataForm" id="data">
         <div style="margin: 10px 10px 10px 10px">
         <div class="layui-inline">
-            <label class="layui-form-label">关键字</label>
+            <label class="layui-form-label">渠道</label>
             <div class="layui-input-inline">
-                <input type="text" name="username" autocomplete="off" class="layui-input">
+                <div class="layui-inline" style="width: 190px">
+                    <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
+                            url="/dictionary/list/channel/options">
+                        <option value="">来源渠道</option>
+                    </select>
+                </div>
             </div>
         </div>
             <div class="layui-inline">
@@ -28,15 +32,16 @@
                 </div>
             </div>
         <div class="layui-inline">
-            <a class="layui-btn  layui-btn-primary" lay-submit="" lay-filter="data-search-btn">查询</a>
+            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
         </div>
         </div>
+        </form>
     </fieldset>
     <table class="layui-table" style="margin-top: 0px;">
         <tr style="background-color: #F2F2F2;">
             <th>渠道名称</th>
             <th>人数</th>
-            <th>百分比</th>
+
         </tr>
         <#list list as follow>
             <tr>
@@ -57,30 +62,25 @@
         <thead>
         <tr>
             <th></th>
-            <th>个人渠道</th>
-            <th>学校</th>
-            <th>网络渠道</th>
-            <th>介绍</th>
-            <th>山东</th>
-            <th>其他渠道</th>
+            <#list list as follow>
+            <th>${follow.channelName!''}</th>
 
+</#list>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th>1000</th>
-            <td>500</td>
-            <td>300</td>
-            <td>150</td>
-            <td>180</td>
-            <td>120</td>
-            <td>180</td>
+            <#list list as follow>
+
+            <td>${follow.num!''}</td>
+
+            </#list>
         </tr>
         </tbody>
     </table>
 </div>
 
-<div style="display: inline-block">
+<div style="display: none">
     <table id='myTable1' style="display: inline-block">
         <caption>学生性别</caption>
         <thead>
@@ -99,11 +99,11 @@
         </tbody>
     </table>
 </div>
+<script type="text/javascript" src="js/jsapi.js"></script>
+<script type="text/javascript" src="js/corechart.js"></script>
+<script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
 
-<script type="text/javascript" src="/js/jsapi.js"></script>
-<script type="text/javascript" src="/js/corechart.js"></script>
-<script type="text/javascript" src="/js/jquery.gvChart-1.0.1.min.js"></script>
-<script type="text/javascript" src="/js/jquery.ba-resize.min.js"></script>
 <script type="text/javascript">
     gvChartInit();
     $(document).ready(function () {
@@ -117,6 +117,7 @@
             }
         });
     });
+    sel();
 </script>
 
 <script type="text/javascript">

@@ -124,7 +124,6 @@
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">来源渠道<span  class="star">*</span></label>
-
                     <div class="layui-input-inline">
                         <div class="layui-inline" style="width: 190px">
                             <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
@@ -191,7 +190,7 @@
                 <div style="display: inline-block;float: left" style="height: 99px">
                     <label class="layui-form-label">意向<span  class="star">*</span></label>
                     <div class="layui-inline">
-                        <div id="demo1" class="xm-select-demo" required lay-verify="required" style=" width:510px"
+                        <div id="demo1" class="xm-select-demo" style=" width:510px"
                              ;></div>
                     </div>
                     <div class="layui-inline">

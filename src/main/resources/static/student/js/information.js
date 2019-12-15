@@ -5,6 +5,7 @@ layui.use(['element','jquery','table'], function(){
     let studentId = $("#baseId").val();
     /**
      * 缴费基本信息
+     * 有
      */
     table.render({
         elem: '#test',
@@ -31,6 +32,7 @@ layui.use(['element','jquery','table'], function(){
     });
     /**
      * 积分基本信息
+     * 有
      */
     table.render({
         elem: '#information',
