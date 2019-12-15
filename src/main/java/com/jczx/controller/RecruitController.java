@@ -50,8 +50,8 @@ public class RecruitController extends BaseController {
      * @return
      */
     @RequestMapping("/tofollow")
-    public String follow(Map<String, Object> map,Integer channelId) {
-        List<FollowBean> list =studentService.listFollowBean(channelId);
+    public String follow(Map<String, Object> map,Integer channelId,String time) {
+        List<FollowBean> list =studentService.listFollowBean(channelId,time);
         map.put("list", list);
         map.put("channelId",channelId);
         return "recruit/recruitdata";

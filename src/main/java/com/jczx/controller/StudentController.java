@@ -18,7 +18,7 @@ import java.util.Map;
 @RequestMapping("/student")
 public class StudentController extends BaseController {
     @Autowired
-    private StudentService studentService;//todo 于  需要查询所有的学生姓名 id 学号
+    private StudentService studentService;
 
     /**
      * 于振华

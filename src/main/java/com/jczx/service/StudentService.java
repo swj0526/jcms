@@ -163,8 +163,8 @@ public class StudentService extends BaseService {
      *
      * @return
      */
-    public List<FollowBean> listFollowBean(Integer channelId) {
-
+    public List<FollowBean> listFollowBean(Integer channelId,String time) {
+       /* String[] timeSplit = time.split(" - ");*/
         List<TbDictionary> channelList = dictionaryService.list(TbDictionary.TYPE_CHANNEL, null, null);
         List<FollowBean> list = new ArrayList<>();
         for (TbDictionary channel : channelList) {
@@ -172,6 +172,9 @@ public class StudentService extends BaseService {
             followBean.setChannelName(channel.getName());
             Conditions conditions = getConditions();
             conditions.putEW("channelId", channel.getId());
+           /* if (timeSplit.length != 1) {
+                conditions.putBW("createTime",timeSplit[0],timeSplit[1]);
+            }*/
             int count = getCount(conditions);
             followBean.setNum(count);
             followBean.setChannelId(channel.getId());
