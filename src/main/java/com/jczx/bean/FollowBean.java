@@ -9,6 +9,7 @@ public class FollowBean {
 
     private String channelName;//渠道名称
     private Integer num;//人数
+    private Integer channelId; // 渠道id
 
     public String getChannelName() {
         return channelName;
@@ -24,5 +25,13 @@ public class FollowBean {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public Integer getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Integer channelId) {
+        this.channelId = channelId;
     }
 }

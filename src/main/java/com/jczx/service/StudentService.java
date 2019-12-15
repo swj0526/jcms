@@ -167,30 +167,27 @@ public class StudentService extends BaseService {
 
         List<TbDictionary> channelList = dictionaryService.list(TbDictionary.TYPE_CHANNEL, null, null);
         List<FollowBean> list = new ArrayList<>();
-        if (channelId == null || channelId == 0) {
-            for (TbDictionary channel : channelList) {
-                FollowBean followBean = new FollowBean();
-                followBean.setChannelName(channel.getName());
-                Conditions conditions = getConditions();
-                conditions.putEW("channelId", channel.getId());
-                int count = getCount(conditions);
-                followBean.setNum(count);
-                list.add(followBean);
-            }
-        } else {
-            for (TbDictionary channel : channelList) {
-                if (channelId == channel.getId()) {
-                    FollowBean followBean = new FollowBean();
-                    followBean.setChannelName(channel.getName());
-                    Conditions conditions = getConditions();
-                    conditions.putEW("channelId", channel.getId());
-                    int count = getCount(conditions);
-                    followBean.setNum(count);
-                    list.add(followBean);
+        for (TbDictionary channel : channelList) {
+            FollowBean followBean = new FollowBean();
+            followBean.setChannelName(channel.getName());
+            Conditions conditions = getConditions();
+            conditions.putEW("channelId", channel.getId());
+            int count = getCount(conditions);
+            followBean.setNum(count);
+            followBean.setChannelId(channel.getId());
+            list.add(followBean);
+        }
+        if (channelId != null || channelId != 0) {
+            FollowBean followNew = new FollowBean();
+            for(FollowBean follow:list){
+                if(channelId==follow.getChannelId()){
+                    followNew=follow;
+                    list.clear();
+                    list.add(followNew);
+                    break;
                 }
             }
         }
-
         return list;
     }
 }
