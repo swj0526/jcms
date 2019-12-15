@@ -53,6 +53,7 @@ public class RecruitController extends BaseController {
     public String follow(Map<String, Object> map,Integer channelId) {
         List<FollowBean> list =studentService.listFollowBean(channelId);
         map.put("list", list);
+        map.put("channelId",channelId);
         return "recruit/recruitdata";
     }
 
