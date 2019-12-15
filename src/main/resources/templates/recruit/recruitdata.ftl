@@ -28,7 +28,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">时间</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="city" autocomplete="off" class="layui-input" id="t1">
+                    <input type="text" name="time" autocomplete="off" class="layui-input" id="time">
                 </div>
             </div>
         <div class="layui-inline">
@@ -131,6 +131,18 @@
                 width: 700,
                 height: 550
             }
+        });
+    });
+    layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+
+            laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#time'
+            ,range: true
+
         });
     });
 </script>
