@@ -76,13 +76,24 @@
 </body>
 <script type="text/javascript" src="/work/js/modifyWork.js"></script>
 <script>
-    $('#demoList').append("<tr id='old'><td>${attachment.name}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' id='oldDeleteBtn'>删除</button></td></tr>");
-    sel_garade();
-    $('#oldDeleteBtn').click(function () {
-        $.post("",{},function (result) {
-            
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        $('#demoList').append("<tr id='old'><td>${attachment.name}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' id='oldDeleteBtn'>删除</button></td></tr>");
+        sel_garade();
+        $('#oldDeleteBtn').click(function () {
+            $.post("/attachment/delete",{
+                linkId:'${attachment.id}'
+            },function (result) {
+                if(result.success==true){
+                    $('#old').remove();
+                }else{
+                    layer.msg('系统异常,删除失败!');
+                }
+            });
+
         });
-        $('#old').remove();
+
     });
+
 </script>
 </html>

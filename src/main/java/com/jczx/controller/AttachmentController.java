@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbAttachment;
 import com.jczx.service.AttachmentService;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class AttachmentController extends BaseController {
     @Autowired
     private AttachmentService attachmentService;
 
-    @RequestMapping("delete")
-    public ServiceResult delete(Integer linkId){
-      /*  attachmentService.de*/
-        return null;
+    @RequestMapping("/delete")
+    public ServiceResult delete(Integer linkId) {
+        return attachmentService.deleteAttachment(linkId, TbAttachment.TYPE_TEACHERFILE);
+
     }
 }

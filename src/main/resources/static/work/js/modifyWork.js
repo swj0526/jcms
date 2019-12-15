@@ -5,12 +5,6 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
     laydate = layui.laydate;
     var upload = layui.upload;
     form = layui.form;
-
-    //获取系统当前时间
-    function getNow(s) {
-        return s < 10 ? '0' + s : s;
-    }
-
     //加载上传的文件
 
     //选完文件后不自动上传
