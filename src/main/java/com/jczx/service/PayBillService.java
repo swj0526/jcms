@@ -1,10 +1,12 @@
 package com.jczx.service;
 
+import com.jczx.bean.RemindBean;
 import com.jczx.domain.TbPayBill;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -171,5 +174,15 @@ import java.util.List;
     @Override
     public String getTableName() {
         return TbPayBill.class.getSimpleName();
+    }
+
+    public List<RemindBean>  ListRemind(){
+        Conditions conditions = getConditions();
+        Date date = new Date();
+        conditions.putGT("endTime",date);
+        List<TbPayBill> list = getList(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+        return null;
+
     }
 }

@@ -45,7 +45,7 @@ class JcmsApplicationTests {
     @Test
     public void testFile() throws IOException {
 
-        File file = new File("static");
+        File file = new File("resources/");
         System.out.println(file);//打印路径
         file.renameTo(new File("D:/IDEA_Project/bb.txt"));//改名
         File file2 = new File("hehe.txt");
@@ -59,6 +59,7 @@ class JcmsApplicationTests {
         System.out.println(file.getPath()+"相对路径");//构建的时候如果是相对路径就是相对路径,如果是绝对路径返回的就是绝对路径
         System.out.println(file.getParent()+"父路径,也就是上一级");
         System.out.println(System.getProperty("user.dir")+"相对路径");
+
     }
     /**
      * 删除单个文件

@@ -9,15 +9,21 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         elem: '#test'//渲染目标
         /* , url: '/json/table.json'//数据接口*/
         , id: 'userTableReload'
+        //解析table 组件规定的数据结构
+        , parseData: function (res) { //res 即为原始返回的数据
+            /*   console.log(res);*/
+            return {
+                "code": "0",
+                "count": res.pager.dataTotal,
+                data: res.result
+            }
+        }
         , cols: [[
-            {field: 'studentNumber', title: '学号'},
-            {field: 'name', title: '学生姓名'},
-            {field: 'major', title: '所属专业'},
-            {field: 'grade', title: '所属班级'},
+            {field: 'name', title: '学生姓名/学号'},
+            {field: 'grade', title: '专业-班级'},
             {field: 'lastTime', title: '上次缴费时间'},
             {field: 'lastMoney', title: '上次缴费金额'},
             {field: 'expireTime', title: '学费到期时间'},
-            {field: 'parentPhone', title: '父母联系方式'},
             {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
         , data: [{
