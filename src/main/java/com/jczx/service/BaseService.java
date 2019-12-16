@@ -58,15 +58,15 @@ public abstract class BaseService extends Service {
      */
     public ServiceResult upload(MultipartFile file, String filePath) {
         String allFile = "";
+        String substring;
         if (file == null) {
             return error("上传失败,请选择文件");
         }
         Calendar now = Calendar.getInstance();//将文件名称改成秒数
-        boolean hasXls = file.getOriginalFilename().contains(".xls");
-        String path =filePath + now.getTimeInMillis() + RandomSn.getSn(3);
-        if (hasXls) {
-            path=path+".xls";
-        }
+        String path = filePath + now.getTimeInMillis() + RandomSn.getSn(3);
+        String fileName = file.getOriginalFilename();
+        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        path = path + "." + suffix;
         File dest = new File(path);
         // 检测是否存在目录
         if (!dest.getParentFile().exists()) {
@@ -75,12 +75,15 @@ public abstract class BaseService extends Service {
         try {
             file.transferTo(dest);
             allFile = dest + ""; //上传成功之后返回路径
+            int i = allFile.indexOf("\\upload");
+            substring = allFile.substring(i, allFile.length() - 1);
+
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
             return error("上传失败!");
         }
         LOGGER.info("上传成功");
-        return success(allFile);
+        return success(substring);
     }
 
 

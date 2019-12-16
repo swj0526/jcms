@@ -6,12 +6,16 @@ import com.jczx.service.AttachmentService;
 import com.jczx.service.HomeworkService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
+import net.atomarrow.render.FileRender;
+import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +31,8 @@ public class HomeworkController extends BaseController {
     private HomeworkService homeworkService;
     @Autowired
     private AttachmentService attachmentService;
+    @Autowired
+    private HttpServletResponse response;
     /**
      * 上传页面
      *
@@ -53,7 +59,7 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/upload")
     @ResponseBody
     public Map<String, Object> upload(MultipartFile file) {
-        ServiceResult result = homeworkService.uploadFile(file,getTeacherPath());
+        ServiceResult result = homeworkService.uploadFile(file, getTeacherPath());
         Map map = uploadeResult(result);
         return map;
     }
@@ -79,13 +85,13 @@ public class HomeworkController extends BaseController {
      */
     @RequestMapping("/add/homework")
     @ResponseBody
-    public ServiceResult addHomework(TbHomework homework,Integer attachmentId) {
-        if(attachmentId!=0){
+    public ServiceResult addHomework(TbHomework homework, Integer attachmentId) {
+        if (attachmentId != 0) {
             homework.setHasAttachment(true);
         }
         ServiceResult result = homeworkService.addHomework(homework);
-        Integer homeworkId =homework.getId();
-        ServiceResult attachmentResult = attachmentService.modifyAttachment(attachmentId,homeworkId);
+        Integer homeworkId = homework.getId();
+        ServiceResult attachmentResult = attachmentService.modifyAttachment(attachmentId, homeworkId);
         return attachmentResult;
     }
 
@@ -113,14 +119,17 @@ public class HomeworkController extends BaseController {
      */
     @RequestMapping("/get/homework")
 
-    public String getHomework(Integer id, Map<String, Object> map) {
+    public String getHomework(Integer id, Map<String, Object> map, Integer type) {
         TbHomework homework = homeworkService.getById(id);
-        System.out.println(id);
         map.put("homework", homework);
         TbAttachment attachment = attachmentService.getAttachment(homework.getId(), TbAttachment.TYPE_TEACHERFILE);
-
+        System.out.println(attachment.getURL());
         map.put("attachment", attachment);
-        return "/work/modifyWork";
+        if (type == 1) {
+            return "/work/modifyWork";
+        } else {
+            return "/work/detailsWork";
+        }
     }
 
     @RequestMapping("/modify/homework")
@@ -128,4 +137,12 @@ public class HomeworkController extends BaseController {
     public ServiceResult modifyHomework(TbHomework homework) {
         return homeworkService.modifyHomework(homework);
     }
+
+//    @RequestMapping("/doFile")
+//    @ResponseBody
+//    public InputStream doFile(String filePaths) throws IOException {
+//        File file = new File(filePaths);
+//       InputStream inputStream = new FileInputStream(file);
+//       return inputStream;
+//    }
 }

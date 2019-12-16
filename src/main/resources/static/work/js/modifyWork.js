@@ -14,7 +14,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         elem: '#testList'
         , url: '/upload/'
         , accept: 'file'
-        , multiple: true
+        //, multiple: true
         , auto: false
         , bindAction: '#testListAction'
         , choose: function (obj) {
