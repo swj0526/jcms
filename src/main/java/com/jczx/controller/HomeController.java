@@ -14,6 +14,7 @@ public class HomeController extends BaseController {
 
     @RequestMapping("/main")
     private String mianHome() {
+        getPath();
         return "/home/main";
     }
 

@@ -52,7 +52,7 @@
     </div>
     <div class="layui-upload" id="up" style="text-align: center">
         <div style="text-align: left">
-            <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+            <button class="layui-btn layui-btn-normal" id="testList" type="button">选择文件</button>
             <button class="layui-btn layui-btn-warm" id="testListAction" type="button">开始上传</button>
         </div>
         <div class="layui-upload-list">
@@ -76,22 +76,28 @@
 </body>
 <script type="text/javascript" src="/work/js/modifyWork.js"></script>
 <script>
-    layui.use('layer', function(){
-        var layer = layui.layer;
-        $('#demoList').append("<tr id='old'><td>${attachment.name!""}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' id='oldDeleteBtn'>删除</button></td></tr>");
+    layui.use('layer', function () {
         sel_garade();
+        var layer = layui.layer;
+
+        <#if attachment??>
+        $('#demoList').append("<tr id='old'><td>${attachment.name!""}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' id='oldDeleteBtn'>删除</button></td></tr>");
         $('#oldDeleteBtn').click(function () {
-            $.post("/attachment/delete",{
-                linkId:'${attachment.id}'
-            },function (result) {
-                if(result.success==true){
+            $.post("/attachment/delete", {
+                linkId: '${attachment.id}'
+            }, function (result) {
+                if (result.success == true) {
                     $('#old').remove();
-                }else{
+                } else {
                     layer.msg('系统异常,删除失败!');
                 }
             });
 
         });
+        <#else >
+
+        </#if>
+
 
     });
 

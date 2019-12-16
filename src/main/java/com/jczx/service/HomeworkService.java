@@ -81,7 +81,6 @@ public class HomeworkService extends BaseService {
 
         if (StringUtil.isNotBlank(scopeTime)) {
             String[] split = scopeTime.split(" - ");
-
             conditions.putBW("createTime", split[0], split[1]);
 
         }
