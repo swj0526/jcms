@@ -117,19 +117,28 @@ public class HomeworkController extends BaseController {
      * @param
      * @return
      */
-    @RequestMapping("/get/homework")
-
-    public String getHomework(Integer id, Map<String, Object> map, Integer type) {
+    @RequestMapping("/get/modify/homework")
+    public String getHomework(Integer id, Map<String, Object> map) {
         TbHomework homework = homeworkService.getById(id);
         map.put("homework", homework);
         TbAttachment attachment = attachmentService.getAttachment(homework.getId(), TbAttachment.TYPE_TEACHERFILE);
-        System.out.println(attachment.getURL());
         map.put("attachment", attachment);
-        if (type == 1) {
-            return "/work/modifyWork";
-        } else {
-            return "/work/detailsWork";
-        }
+        return "/work/modifyWork";
+    }
+
+    /**
+     * 用于查看详情
+     * @param id
+     * @param map
+     * @return
+     */
+    @RequestMapping("/get/details/homework")
+    public String getDetailsHomework(Integer id, Map<String, Object> map) {
+        TbHomework homework = homeworkService.getById(id);
+        map.put("homework", homework);
+        TbAttachment attachment = attachmentService.getAttachment(homework.getId(), TbAttachment.TYPE_TEACHERFILE);
+        map.put("attachment", attachment);
+        return "/work/detailsWork";
     }
 
     @RequestMapping("/modify/homework")

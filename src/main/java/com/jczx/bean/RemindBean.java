@@ -7,7 +7,6 @@ import java.util.Date;
  * @create 2019-12-15 20:22
  */
 public class RemindBean {
-    private Integer numberStudent;//学号
     private String name;//学生姓名
     private String majorName;//专业姓名
     private Date payDate;//上次缴费日期
@@ -15,13 +14,7 @@ public class RemindBean {
     private Date startTime;//开始时间
     private Date endTime;//结束时间
 
-    public Integer getNumberStudent() {
-        return numberStudent;
-    }
 
-    public void setNumberStudent(Integer numberStudent) {
-        this.numberStudent = numberStudent;
-    }
 
     public String getName() {
         return name;

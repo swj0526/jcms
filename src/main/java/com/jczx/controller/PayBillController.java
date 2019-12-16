@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.bean.RemindBean;
 import com.jczx.domain.TbPayBill;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -23,7 +24,7 @@ import java.util.Map;
 @Controller
 public class PayBillController extends BaseController {
     @Autowired
-    private PayBillService moneyService;
+    private PayBillService payBillService;
 
     /**
      * 缴费列表
@@ -52,7 +53,7 @@ public class PayBillController extends BaseController {
 
     @RequestMapping("/tomodify")
     public String toModify(int id, Map<String, Object> map) {
-        TbPayBill bill = moneyService.getBill(id);
+        TbPayBill bill = payBillService.getBill(id);
         map.put("bill", bill);
         return "money/modify";
     }
@@ -77,12 +78,13 @@ public class PayBillController extends BaseController {
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult add(TbPayBill payBill) {
-        ServiceResult add = moneyService.addBill(payBill);
+        ServiceResult add = payBillService.addBill(payBill);
         return add;
     }
 
     /**
      * 列表查询
+     *
      * @param time
      * @param keyword
      * @param typeId
@@ -92,26 +94,28 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public ServiceResult list(String time,String keyword, Integer typeId, Integer page, Integer limit) {
+    public ServiceResult list(String time, String keyword, Integer typeId, Integer page, Integer limit) {
         Pager pager = checkPager(limit, page);
-        List<TbPayBill> PayBillBean = moneyService.listBill(time,keyword, typeId, pager);
-        return layuiList(PayBillBean,pager);
+        List<TbPayBill> PayBillBean = payBillService.listBill(time, keyword, typeId, pager);
+        return layuiList(PayBillBean, pager);
     }
 
     /**
      * 修改
+     *
      * @param payBill
      * @return
      */
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modify(TbPayBill payBill) {
-        ServiceResult serviceResult = moneyService.modifyBill(payBill);
+        ServiceResult serviceResult = payBillService.modifyBill(payBill);
         return serviceResult;
     }
 
     /**
      * 导出
+     *
      * @param time
      * @param keyword
      * @param type
@@ -119,10 +123,19 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/toExcel")
     @ResponseBody
-    public Render ex(String time,String keyword, Integer type) {
-        InputStream inputStream = moneyService.exportExcel(time,keyword, type, null);
+    public Render ex(String time, String keyword, Integer type) {
+        InputStream inputStream = payBillService.exportExcel(time, keyword, type, null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
 
-
+    /**
+     * 缴费提醒列表
+     *
+     * @return
+     */
+    @RequestMapping("/list/remind")
+    @ResponseBody
+    public List<RemindBean> ListRemind() {
+        return payBillService.ListRemind();
+    }
 }

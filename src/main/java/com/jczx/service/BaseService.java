@@ -13,7 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author 孙文举
@@ -77,7 +80,6 @@ public abstract class BaseService extends Service {
             allFile = dest + ""; //上传成功之后返回路径
             int i = allFile.indexOf("\\upload");
             substring = allFile.substring(i, allFile.length() - 1);
-
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
             return error("上传失败!");
@@ -85,6 +87,19 @@ public abstract class BaseService extends Service {
         LOGGER.info("上传成功");
         return success(substring);
     }
-
-
+    /**
+     * 计算相差的天数
+     */
+    public int getDay(Date startDate,Date endDate){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        long startDateTime = 0;
+        long endDateTime=0;
+        try {
+            startDateTime = dateFormat.parse(dateFormat.format(startDate)).getTime();
+            endDateTime = dateFormat.parse(dateFormat.format(endDate)).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return (int) ((endDateTime - startDateTime) / (1000 * 3600 * 24));
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -176,13 +177,32 @@ import java.util.List;
         return TbPayBill.class.getSimpleName();
     }
 
+    /**
+     * 返回缴费提醒的列表
+     * @return
+     */
     public List<RemindBean>  ListRemind(){
         Conditions conditions = getConditions();
         Date date = new Date();
         conditions.putGT("endTime",date);
         List<TbPayBill> list = getList(conditions);
+        List<RemindBean> remindList = new ArrayList<>();
+        for(TbPayBill pay:list){
+            Date startDate = pay.getStartTime();
+            Date endDate = pay.getEndTime();
+            int day = getDay(startDate, endDate);
+            if(day<=30){
+                RemindBean remindBean = new RemindBean();
+                remindBean.setEndTime(pay.getEndTime());
+                remindBean.setFactAmount(pay.getFactAmount());
+                remindBean.setMajorName(pay.getMajorName());
+                remindBean.setName(pay.getName());
+                remindBean.setPayDate(pay.getPayDate());
+                remindBean.setStartTime(pay.getStartTime());
+                remindList.add(remindBean);
+            }
+        }
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
-        return null;
-
+        return remindList;
     }
 }

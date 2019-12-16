@@ -73,7 +73,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
         //console.log(obj)
         if (obj.event === 'modify') {
             var id = data.id;
-            parent_tab("work_modify" + id, '修改作业', "/work/get/homework?id=" + id + "&type=1");
+            parent_tab("work_modify" + id, '修改作业', "/work/get/modify/homework?id=" + id );
         } else if (obj.event === 'downloadWork') {
             layer.tab({
                 type: 1,
@@ -85,7 +85,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
             });
         } else if (obj.event === 'details') {
             var id = data.id;
-            parent_tab("work_details" + id, '查看作业详情', "/work/get/homework?id=" + id + "&type=2");
+            parent_tab("work_details" + id, '查看作业详情', "/work/get/details/homework?id=" + id );
         }
     });
     var $ = layui.$, active = {

@@ -55,9 +55,9 @@ public class BaseController<T> {
      */
     public String getPath() {
         String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-        int i = path.lastIndexOf("/classes");
-        String substring = path.substring(0, i);
-        return substring;
+        /*int i = path.lastIndexOf("/classes");
+        String substring = path.substring(0, i);*/
+        return path;
 
     }
 
