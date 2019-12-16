@@ -54,6 +54,7 @@ public class RecruitController extends BaseController {
         List<FollowBean> list =studentService.listFollowBean(channelId,time);
         map.put("list", list);
         map.put("channelId",channelId);
+        map.put("time",time);
         return "recruit/recruitdata";
     }
 

@@ -10,7 +10,7 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         /* , url: '/json/table.json'//数据接口*/
         , id: 'userTableReload'
         , cols: [[
-            {field: 'stuID', title: '学号'},
+            {field: 'studentNumber', title: '学号'},
             {field: 'name', title: '学生姓名'},
             {field: 'major', title: '所属专业'},
             {field: 'grade', title: '所属班级'},

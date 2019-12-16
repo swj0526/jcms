@@ -24,7 +24,7 @@
                                 <input type="text" name="keys" autocomplete="off" class="layui-input" placeholder="张三/201932094/5000">
                             </div>
                             <label class="layui-form-label">专业-班级</label>
-                            <div class="layui-input-inline" lay-verify="required" lay-search="">
+                            <div class="layui-input-inline" lay-search="">
                                 <select name="major">
                                     <option value="">请选择专业-班级</option>
                                     <optgroup label="影视专业">
