@@ -70,17 +70,13 @@
 <script>
     layui.use('layer', function () {
         sel_garade();
+        var id =${attachment.id};
         <#if attachment??>
-        $('#demoList').append("<tr id='old'><td>${attachment.name!""}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' ><a id='uplad' href='E:\\work\\jcms\\target\\classes\\upload\\teacherFile\\15764838700186RB.docx'>下载</a></button></td></tr>");
+        $('#demoList').append("<tr id='old'><td>${attachment.name!""}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete'id='upload' ><a href='/work/dofile?id="+id+"'>下载</a></button></td></tr>");
         <#else >
 
         </#if>
-$("#upload").click(function () {
-    window.open('../../../upload/teacherFile/15764838700186RB.docx');
-   /* window.open('E:\\work\\jcms\\target\\classes\\upload\\teacherFile\\15764838700186RB.docx');*/
-    /*window.location.href='E:\\work\\jcms\\target\\classes\\upload\\teacherFile\\15764838700186RB.docx';*/
 
-})
 
     });
 

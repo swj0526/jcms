@@ -149,11 +149,11 @@ public class HomeworkController extends BaseController {
         return homeworkService.modifyHomework(homework);
     }
 
-//    @RequestMapping("/doFile")
-//    @ResponseBody
-//    public InputStream doFile(String filePaths) throws IOException {
-//        File file = new File(filePaths);
-//       InputStream inputStream = new FileInputStream(file);
-//       return inputStream;
-//    }
+    @RequestMapping("/dofile")
+    public Render dofile(Integer id) throws IOException {
+        TbAttachment attachment = attachmentService.getById(id);
+        String path = getPath().substring(1, getPath().length() - 1);
+        File file = new File(path + attachment.getURL());
+        return Render.renderFile(attachment.getName(), new FileInputStream(file));
+    }
 }
