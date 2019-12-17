@@ -17,22 +17,19 @@ layui.use(['jquery', 'layer', 'table', 'form', 'laydate'], function () {
                 sel();
                 $("#score").val('')
                 $(".layui-laypage-btn").click();
-
             }
         });
     })
-
     $("#revocationBtn").click(function () {
         parent.layer.close(index);
     })
-    form.on('select', function (data) {
+    form.on('select(reason)', function (data) {
         $.post('/integralitem/get', {
             id: data.value
         }, function (result) {
             $("#score").val(result.score)
         })
-    })
-
+    });
     $("#submitBtn").click(function () {
         var data = $('#addForm').serialize();
         $.post('/history/add',

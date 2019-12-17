@@ -69,4 +69,7 @@
 <script>
     sel_garade();
 </script>
+<script id="createTime" type="text/html">
+
+</script>
 </html>

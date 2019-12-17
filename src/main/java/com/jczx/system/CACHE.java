@@ -1,14 +1,8 @@
 package com.jczx.system;
 
 
-import com.jczx.domain.TbDictionary;
-import com.jczx.domain.TbMajor;
-import com.jczx.domain.TbStudent;
-import com.jczx.domain.TbTeacher;
-import com.jczx.service.DictionaryService;
-import com.jczx.service.MajorService;
-import com.jczx.service.StudentService;
-import com.jczx.service.TeacherService;
+import com.jczx.domain.*;
+import com.jczx.service.*;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.RandomSn;
 import net.atomarrow.util.SpringContextUtil;
@@ -45,6 +39,10 @@ public class CACHE {
 
     private static Service getTeacherService() {
         return SpringContextUtil.getBean(TeacherService.class);
+    }
+
+    private static Service getIntegralItemService() {
+        return SpringContextUtil.getBean(IntegralItemService.class);
     }
 
     private static Service getStudentService() {
@@ -264,6 +262,7 @@ public class CACHE {
         return teacher.getName();
     }
 
+
     /**
      * 学生对象
      *
@@ -278,7 +277,7 @@ public class CACHE {
         if (student != null) {
             return student;
         }
-        TbStudent studentDB = getDictionaryService().getById(TbStudent.class.getSimpleName(), id);
+        TbStudent studentDB = getStudentService().getById(TbStudent.class.getSimpleName(), id);
         if (studentDB == null) {
             return null;
         }
@@ -300,6 +299,42 @@ public class CACHE {
             return "";
         }
         return student.getName();
+    }
+    /**
+     * 事由对象
+     *
+     * @param id
+     * @return
+     */
+    private static TbIntegralItem getIntegerItem(Integer id) {
+        if (id == 0 || id == null) {
+            return null;
+        }
+        TbIntegralItem integerItem = (TbIntegralItem) getUtil().get(getKey(TbIntegralItem.class.getSimpleName(), id));
+        if (integerItem != null) {
+            return integerItem;
+        }
+        TbIntegralItem integerItemDB = getIntegralItemService().getById(TbIntegralItem.class.getSimpleName(), id);
+        if (integerItemDB == null) {
+            return null;
+        }
+        getUtil().set(getKey(TbIntegralItem.class.getSimpleName(), id), integerItemDB);
+        return integerItemDB;
+    }
+    /**
+     * 获取事由名字
+     * @param IntegralItemId
+     * @return
+     */
+    public static String getIntegralItemName(Integer IntegralItemId) {
+        if (IntegralItemId == null || IntegralItemId == 0) {
+            return "";
+        }
+        TbIntegralItem integralItem = getIntegerItem(IntegralItemId);
+        if (integralItem == null) {
+            return "";
+        }
+        return integralItem.getReason();
     }
 
     /**

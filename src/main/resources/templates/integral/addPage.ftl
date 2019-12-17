@@ -16,7 +16,7 @@
                     <div class="layui-inline" style="width: 359px">
                         <label class="layui-form-label">事由<span class="star">*</span></label>
                         <div class="layui-inline " style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
-                            <select name="reason" lay-verify="required" class="decSelect"
+                            <select lay-filter="reason" name="reasonId" lay-verify="required" class="decSelect"
                                     url="/integralitem/list" selectedId="" id="reasonSelect">
                                 <option value="">请选择</option>
 
@@ -29,7 +29,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">学生姓名<span class="star">*</span></label>
                         <div class="layui-inline">
-                            <select name="studentId" lay-verify="" class="decSelect" lay-search url="/student/listname">
+                            <select  name="studentId" lay-verify="" class="decSelect" lay-search url="/student/liststudentinteger">
                                 <option value="">请输入</option>
                             </select>
                         </div>

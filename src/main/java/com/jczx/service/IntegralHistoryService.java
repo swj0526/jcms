@@ -8,6 +8,7 @@ import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,11 +20,13 @@ import java.util.List;
 @Component
 public class IntegralHistoryService extends BaseService {
     @Autowired
-    private  StudentService studentService;
-    @Autowired IntegralItemService integralItemService;
+    private StudentService studentService;
+    @Autowired
+    IntegralItemService integralItemService;
 
     /**
      * 查询历史记录
+     *
      * @param id
      * @return
      */
@@ -42,7 +45,7 @@ public class IntegralHistoryService extends BaseService {
             conditions.or();
             conditions.putLIKE("integralHistory.reason", keyword);
         }
-       conditions.putLIKEIfOK("student.majorId",majorId);
+        conditions.putLIKEIfOK("student.majorId", majorId);
         if (StringUtil.isNotBlank(recordTime)) {
             String[] split = recordTime.split(" - ");
             conditions.putBW("integralHistory.recordTime", split[0], split[1]);
@@ -53,19 +56,21 @@ public class IntegralHistoryService extends BaseService {
         List<TbIntegralHistory> list = getListByPage(conditions, pager);
         return list;
     }
+
     public ServiceResult addIntegralHistory(TbIntegralHistory integralHistory) {
         if (StringUtil.isBlank(integralHistory.getName())
-                ||StringUtil.isBlank(integralHistory.getReason())
-                || integralHistory.getScore() == null
-                || integralHistory.getRecordTime() == null) {
+                || integralHistory.getReasonId() == null
+                ||integralHistory.getScore() == null
+                || integralHistory.getRecordTime() == null){
             return error("必填项不能为空");
         }
         integralHistory.setCreateTime(SC.getNowDate());
         add(integralHistory);
         return SUCCESS;
     }
+
     public ServiceResult modify(TbIntegralHistory integralHistory) {
-        if (StringUtil.isBlank(integralHistory.getReason()) || integralHistory.getScore() == null || integralHistory.getRecordTime() == null) {
+        if (integralHistory.getReasonId()==null || integralHistory.getScore() == null || integralHistory.getRecordTime() == null) {
             return error("必填项不能为空");
         }
         modify(integralHistory);

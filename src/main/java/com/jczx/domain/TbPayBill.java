@@ -28,14 +28,14 @@ public class TbPayBill extends Domain {
     private Integer semesterId;//学期
     private Integer totalAmount;//应付金额
     private Integer payAmount;//金额
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date payDate;//缴费日期//
     private Boolean hasInstalment;//是否分期
     private Integer discountAmount;//优惠金额
     private Integer factAmount;//实付金额//
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date startTime;//开始时间
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date endTime;//结束时间//end
     private Boolean hasAttachment;//是否有附件
     private Integer operatorId;//操作人id
@@ -43,35 +43,19 @@ public class TbPayBill extends Domain {
     private String remark;//备注
 
     public String getInstalment() {
-        if (hasInstalment) {
-            return Instalment = "是";
+        if (hasInstalment){
+            return Instalment="是";
         }
-        return Instalment = "否";
+        return Instalment="否";
     }
 
     public void setInstalment(String instalment) {
         Instalment = instalment;
     }
 
-    /**
-     * 学生姓名+学号
-     *
-     * @return
-     */
     public String getName() {
         TbStudent student = CACHE.getStudent(studentId);
-        return student.getName() + "(" + student.getStudentNumber() + ")";
-    }
-
-    /**
-     * 获取专业班级名称
-     *
-     * @return
-     */
-    public String getMajorName() {
-        TbStudent student = CACHE.getStudent(studentId);
-        Integer majorId = student.getMajorId();
-        return CACHE.getMajorName(majorId);
+        return student.getName()+"("+student.getStudentNumber()+")";
     }
 
     public Integer getId() {
@@ -219,32 +203,40 @@ public class TbPayBill extends Domain {
     }
 
 
+
     /**
      * 缴费类型
-     *
      * @return
      */
-    public String getTypeName() {
+    public String getTypeName(){
         return CACHE.getTypeName(typeId);
     }
 
     /**
      * 缴费方式
-     *
      * @return
      */
-    public String getPaymentMethodName() {
+    public String getPaymentMethodName(){
 
         return CACHE.getPaymentMethodName(paymentMethodId);
     }
 
     /**
      * 学年
+     * @return
+     */
+    public String getSemesterName(){
+
+        return CACHE.getSemesterName(semesterId);
+    }
+    /**
+     * 获取专业班级名称
      *
      * @return
      */
-    public String getSemesterName() {
-
-        return CACHE.getSemesterName(semesterId);
+    public String getMajorName() {
+        TbStudent student = CACHE.getStudent(studentId);
+        Integer majorId = student.getMajorId();
+        return CACHE.getMajorName(majorId);
     }
 }
