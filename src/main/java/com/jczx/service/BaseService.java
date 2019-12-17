@@ -79,7 +79,7 @@ public abstract class BaseService extends Service {
             file.transferTo(dest);
             allFile = dest + ""; //上传成功之后返回路径
             int i = allFile.indexOf("\\upload");
-            substring = allFile.substring(i, allFile.length() - 1);
+            substring = allFile.substring(i, allFile.length());
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
             return error("上传失败!");

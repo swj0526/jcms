@@ -164,6 +164,7 @@ public class RecruitController extends BaseController {
     @ResponseBody
     public Map<String, Object> upload(@RequestParam("file") MultipartFile file) throws Throwable {
         ServiceResult result = recruitService.upload(file, getExcelPath());
+        System.out.println(result.getResult());
         recruitService.inputStudent(result.getResult().toString());
         Map map = uploadeResult(result);
         return map;

@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -184,7 +186,15 @@ import java.util.List;
     public List<RemindBean>  ListRemind(){
         Conditions conditions = getConditions();
         Date date = new Date();
-        conditions.putGT("endTime",date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String time = dateFormat.format(date);
+        Date endTime = null;
+        try {
+            endTime = dateFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        conditions.putGT("endTime",endTime);
         List<TbPayBill> list = getList(conditions);
         List<RemindBean> remindList = new ArrayList<>();
         for(TbPayBill pay:list){

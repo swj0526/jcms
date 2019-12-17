@@ -31,8 +31,6 @@ public class HomeworkController extends BaseController {
     private HomeworkService homeworkService;
     @Autowired
     private AttachmentService attachmentService;
-    @Autowired
-    private HttpServletResponse response;
     /**
      * 上传页面
      *
@@ -128,6 +126,7 @@ public class HomeworkController extends BaseController {
 
     /**
      * 用于查看详情
+     *
      * @param id
      * @param map
      * @return
@@ -143,7 +142,10 @@ public class HomeworkController extends BaseController {
 
     @RequestMapping("/modify/homework")
     @ResponseBody
-    public ServiceResult modifyHomework(TbHomework homework) {
+    public ServiceResult modifyHomework(TbHomework homework, Integer attachmentId) {
+        TbAttachment attachment = attachmentService.getById(attachmentId);
+        attachment.setLinkId(homework.getId());
+        attachmentService.modify(attachment);
         return homeworkService.modifyHomework(homework);
     }
 
