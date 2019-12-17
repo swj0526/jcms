@@ -229,4 +229,14 @@ public class TbPayBill extends Domain {
 
         return CACHE.getSemesterName(semesterId);
     }
+    /**
+     * 获取专业班级名称
+     *
+     * @return
+     */
+    public String getMajorName() {
+        TbStudent student = CACHE.getStudent(studentId);
+        Integer majorId = student.getMajorId();
+        return CACHE.getMajorName(majorId);
+    }
 }
