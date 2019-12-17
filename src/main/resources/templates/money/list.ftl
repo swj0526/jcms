@@ -42,9 +42,11 @@
                             <div class="layui-inline">
                                 <button class="layui-btn" type="button" lay-filter="data-search-btn" id="listBtn">查询
                                 </button>
-                                <button class="layui-btn" type="button" lay-filter="data-search-btn" id="addPayBillBtn">添加
+                                <button class="layui-btn" type="button" lay-filter="data-search-btn" id="addPayBillBtn">
+                                    添加
                                 </button>
-                                <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn" id="excelBtn">导出
+                                <button class="layui-btn layui-btn-warm" type="button" lay-filter="data-search-btn"
+                                        id="excelBtn">导出
                                 </button>
                             </div>
                         </div>
@@ -54,6 +56,27 @@
             </div>
         </fieldset>
 
+    </div>
+    <div style="display: none" id="UploadBtn">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+            <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+            <span style="color: red;font-size: 20px">只可以上传jpg格式的照片</span>
+            <div  class="layui-upload-list">
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>预览</th>
+                        <th>大小</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="demoList"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <table class="layui-hide" id="test" lay-filter="test"></table>
     <script id="barDemo" type="text/html">

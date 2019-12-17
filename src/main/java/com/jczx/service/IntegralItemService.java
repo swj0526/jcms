@@ -24,7 +24,6 @@ public class IntegralItemService extends BaseService {
         List<TbIntegralItem> list = getList(conditions);
         return list;
     }
-
     /**
      * 添加
      * @param integralItem

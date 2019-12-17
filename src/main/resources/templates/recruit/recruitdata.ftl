@@ -6,8 +6,6 @@
     <#include "../common/common.ftl"/>
     <title>饼状图比例分布数据</title>
 </head>
-
-
 <body>
 <div>
     <fieldset class="layui-elem-field layuimini-search">

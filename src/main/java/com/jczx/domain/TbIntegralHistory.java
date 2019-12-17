@@ -21,11 +21,16 @@ public class TbIntegralHistory extends Domain {
     @FieldType(type = Type.DATETIME)
     @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm:ss")
     private Date recordTime;//事发时间
-    private String reason;//事由
+    private Integer reasonId;//事由Id
     private Integer score;//分数
     private String remark;//备注
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
+
+    public String getReasonName(){
+
+        return CACHE.getIntegralItemName(reasonId);
+    }
 
     public String getName() {
         return CACHE.getStudentName(studentId);
@@ -59,12 +64,12 @@ public class TbIntegralHistory extends Domain {
         this.recordTime = recordTime;
     }
 
-    public String getReason() {
-        return reason;
+    public Integer getReasonId() {
+        return reasonId;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setReasonId(Integer reasonId) {
+        this.reasonId = reasonId;
     }
 
     public Integer getScore() {

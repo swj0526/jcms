@@ -52,6 +52,12 @@ public class StudentController extends BaseController {
         List<TbStudent> studentList = studentService.listStudent(keywords, admissionData, studentState, null);
         return studentList;
     }
+    @RequestMapping("/liststudentinteger")
+    @ResponseBody
+    public List<TbStudent> listStudentInteger(){
+        List<TbStudent> Student = studentService.listStudentInteger();
+        return Student;
+    }
     /**
      * 查询当前学生信息
      *
