@@ -19,7 +19,7 @@
                             <label class="layui-form-label">用户姓名<span  class="star">*</span></label>
                             <div class="layui-input-inline">
                                 <input required type="text" id="name" required lay-verify="required" name="name"
-                                       value=${bill.optionText!""} autocomplete="off" class="layui-input">
+                                       value=${bill.name!""} autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">

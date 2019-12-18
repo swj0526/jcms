@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.bean.RemindBean;
+import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbPayBill;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -12,6 +13,7 @@ import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.text.ParseException;
@@ -33,6 +35,8 @@ import java.util.List;
     private RecruitService recruitService;
     @Autowired
     private IntegralService integralService;
+    @Autowired
+    private AttachmentService attachmentService;
 
     /**
      * 添加
@@ -160,6 +164,25 @@ import java.util.List;
         Conditions conditions = getConditions();
         conditions.putEW("typeId", id);
         return getList(conditions);
+    }
+
+    public ServiceResult uploadFile(MultipartFile file, String path,Integer likeId,Integer studentID) {
+        ServiceResult result = upload(file, path);
+        Integer id=0;
+        if (result.isSuccess()) {
+            TbAttachment attachment = new TbAttachment();//
+            attachment.setCreateTime(SC.getNowDate());
+            attachment.setOperatorId(SC.getOperatorId());
+            attachment.setType(TbAttachment.TYPE_BILL);
+            attachment.setURL(result.getResult() + "");
+            attachment.setLinkId(TbAttachment.TYPE_BILL+likeId);
+            attachment.setStudentId(studentID);
+            attachment.setName(file.getOriginalFilename());
+            ServiceResult attachmentResult = attachmentService.addAttachment(attachment);
+            id= (Integer) attachmentResult.getResult();
+        }
+        result.setResult(id);
+        return result;
     }
 
     /**
