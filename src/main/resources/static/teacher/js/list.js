@@ -132,7 +132,7 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
         index=layer.open({
             type: 1,
             title: "添加老师信息",
-            content: $("#add"),
+            content: $("#addMsgbox"),
             area: ['350px', '400px'],
             success: function () {
                 //清空表单数据
@@ -143,7 +143,7 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
             var addName=$('#addName').val();
             var addGender=$('#addGender').val();
             var addPhone=$('#addPhone').val();
-            if (phone.length<=11&&phone.length>=11){
+            if (addPhone.length<=11 && addPhone.length>=11){
                 $.post('/teacher/add', {
                     name : addName,
                     gender:addGender,
@@ -166,7 +166,7 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
     });
     //导出点击事件
     $('#excel').click(function () {
-        window.location.href="/teacher/doExcel";
+        window.location.href="/teacher/exportExcel";
     });
 
     //导入
@@ -185,7 +185,7 @@ layui.use(['form', 'table', 'laydate','layer', 'element','upload'], function () 
 
         //下载模板
         $('#template').click(function () {
-            window.location.href="/teacher/excel";
+            window.location.href="/teacher/exportTemplate";
         });
 
         //多文件列表示例

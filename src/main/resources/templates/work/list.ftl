@@ -46,6 +46,7 @@
     <table class="layui-hide" id="workTable" lay-filter="workTable"  lay-size="sm"></table>
     <script id="barDemo" type="text/html">
         <a class="layui-btn  layui-btn-xs" lay-event="modify">修改</a>
+        <a class="layui-btn  layui-btn-xs layui-btn-warm" lay-event="delete">删除</a>
         <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="details">详情</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="downloadWork">下载学生作业</a>
     </script>

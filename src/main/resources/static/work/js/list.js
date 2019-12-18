@@ -16,8 +16,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , {field: 'majorName', title: '专业班级'}
                 , {field: 'createTime', title: '发布日期'}
                 , {field: 'endTime', title: '截止日期'}
-                , {field: 'content', title: '内容', width: 100}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 230}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300}
             ]], toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: [{
                 title: '刷新表格'
@@ -71,8 +70,8 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
     table.on('tool(workTable)', function (obj) {
         data = obj.data;
         //console.log(obj)
+        var id =data.id;
         if (obj.event === 'modify') {
-            var id = data.id;
             parent_tab("work_modify" + id, '修改作业', "/work/get/modify/homework?id=" + id );
         } else if (obj.event === 'downloadWork') {
             layer.tab({
@@ -84,8 +83,14 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 }]
             });
         } else if (obj.event === 'details') {
-            var id = data.id;
             parent_tab("work_details" + id, '查看作业详情', "/work/get/details/homework?id=" + id );
+        } else if (obj.event === 'delete') {
+           $.post('/work/delete',{id:id},function (result) {
+                  if(result.success){
+                      layer.msg("删除成功！");
+                      tableIns.reload();
+                  }
+           });
         }
     });
     var $ = layui.$, active = {

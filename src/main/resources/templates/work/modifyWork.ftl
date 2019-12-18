@@ -84,7 +84,7 @@
         $('#demoList').append("<tr id='old'><td>${attachment.name!""}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete' id='oldDeleteBtn'>删除</button></td></tr>");
         $('#oldDeleteBtn').click(function () {
             $.post("/attachment/delete", {
-                linkId: '${attachment.id}'
+                linkId: '${homework.id}'
             }, function (result) {
                 if (result.success == true) {
                     $('#old').remove();
@@ -95,7 +95,6 @@
 
         });
         <#else >
-
         </#if>
 
 

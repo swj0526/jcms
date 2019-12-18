@@ -149,6 +149,15 @@ public class HomeworkController extends BaseController {
         return homeworkService.modifyHomework(homework);
     }
 
+    @RequestMapping("/delete")
+    @ResponseBody
+    public ServiceResult delete(Integer id) {
+        TbHomework homework = homeworkService.getById(id);
+        homeworkService.del(homework);
+        ServiceResult result = attachmentService.deleteAttachment(id, TbAttachment.TYPE_TEACHERFILE);
+        return result;
+    }
+
     @RequestMapping("/dofile")
     public Render dofile(Integer id) throws IOException {
         TbAttachment attachment = attachmentService.getById(id);

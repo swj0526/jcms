@@ -95,7 +95,7 @@ public class HomeworkService extends BaseService {
             TbAttachment attachment = new TbAttachment();
             attachment.setCreateTime(SC.getNowDate());
             attachment.setOperatorId(SC.getOperatorId());
-            attachment.setType(TbAttachment.TYPE_BILL);
+            attachment.setType(TbAttachment.TYPE_TEACHERFILE);
             attachment.setURL(result.getResult() + "");
             attachment.setName(file.getOriginalFilename());
             ServiceResult attachmentResult = attachmentService.addAttachment(attachment);

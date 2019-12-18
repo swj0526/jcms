@@ -9,11 +9,10 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
     //加载上传的文件
 
     //选完文件后不自动上传
-    var currPage = 1;
     var demoListView = $('#demoList')
         , uploadListIns = upload.render({
         elem: '#testList'
-        , url: '/upload/'
+        , url: '/work/upload'
         , accept: 'file'
         //, multiple: true
         , auto: false

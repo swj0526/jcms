@@ -3,6 +3,7 @@ package com.jczx.service;
 import com.jczx.domain.TbAttachment;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.db.parser.JdbcParser;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -56,6 +57,7 @@ public class AttachmentService extends BaseService {
         conditions.putEW("linkId", linkId);
         conditions.putEW("type", type);
         TbAttachment attachment = getOne(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return attachment;
     }
 
@@ -68,13 +70,15 @@ public class AttachmentService extends BaseService {
      */
     public ServiceResult deleteAttachment(Integer linkId, Integer type) {
         Conditions conditions = getConditions();
-        conditions.putEW("linkId",linkId);
-        conditions.putEW("type",type);
+        conditions.putEW("linkId", linkId);
+        conditions.putEW("type", type);
         TbAttachment attachment = getOne(conditions);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         String url = attachment.getURL();
-        del(attachment);
+        System.out.println(url);
         File file = new File(url);
         file.delete();
+        del(attachment);
         return SUCCESS;
     }
 }
