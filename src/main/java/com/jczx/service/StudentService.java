@@ -1,5 +1,7 @@
 package com.jczx.service;
 
+import com.jczx.bean.FollowBean;
+import com.jczx.domain.TbDictionary;
 import com.jczx.domain.TbStudent;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -8,9 +10,11 @@ import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +23,8 @@ import java.util.List;
  */
 @Component
 public class StudentService extends BaseService {
+    @Autowired
+    private DictionaryService dictionaryService;
 
     /**
      * @author 丛枭钰
@@ -31,7 +37,6 @@ public class StudentService extends BaseService {
         TbStudent Student = getOne(conditions);
         return Student;
     }
-
 
 
     /**
@@ -59,12 +64,7 @@ public class StudentService extends BaseService {
         conditions.putEW("channelId", channelId);
         return getList(conditions);
     }
-    public List<TbStudent> listStudentInteger(){
-        Conditions conditions = getConditions();
-        conditions.putEW("schoolState",TbStudent.STATE_AT_SCHOOL);
-        List<TbStudent> list = getList(conditions);
-        return list;
-    }
+
 
     /**
      * 查询入学学生信息
@@ -72,8 +72,7 @@ public class StudentService extends BaseService {
      * @param
      * @return
      */
-
-    public List<TbStudent>listStudent(String keywords, String admissionData, Integer studentState, Pager pager) {
+    public List<TbStudent> listStudent(String keywords, String admissionData, Integer studentState, Pager pager) {
         Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keywords)) {
             conditions.parenthesesStart();
@@ -94,7 +93,7 @@ public class StudentService extends BaseService {
 
             }
             if (studentState == TbStudent.STATE_GRADUATE) {//毕业
-                    conditions.putEWIfOk("schoolState", TbStudent.STATE_GRADUATE);
+                conditions.putEWIfOk("schoolState", TbStudent.STATE_GRADUATE);
                 if (split.length != 1) {
                     conditions.putBW("graduationDate", split[0], split[1]);
                 }
@@ -157,5 +156,41 @@ public class StudentService extends BaseService {
     @Override
     public String getTableName() {
         return TbStudent.class.getSimpleName();
+    }
+
+    /**
+     * 渠道统计
+     *
+     * @return
+     */
+    public List<FollowBean> listFollowBean(Integer channelId, String time) {
+        List<TbDictionary> channelList = dictionaryService.list(TbDictionary.TYPE_CHANNEL, null, null);
+        List<FollowBean> list = new ArrayList<>();
+        for (TbDictionary channel : channelList) {
+            FollowBean followBean = new FollowBean();
+            followBean.setChannelName(channel.getName());
+            Conditions conditions = getConditions();
+            conditions.putEW("channelId", channel.getId());
+           if (StringUtil.isNotBlank(time)){
+               String[] split = time.split(" - ");
+               conditions.putBW("createTime", split[0], split[1]);
+           }
+            int count = getCount(conditions);
+            followBean.setNum(count);
+            followBean.setChannelId(channel.getId());
+            list.add(followBean);
+        }
+        if (channelId != null) {
+            FollowBean followNew = new FollowBean();
+            for (FollowBean follow : list) {
+                if (channelId == follow.getChannelId()) {
+                    followNew = follow;
+                    list.clear();
+                    list.add(followNew);
+                    break;
+                }
+            }
+        }
+        return list;
     }
 }

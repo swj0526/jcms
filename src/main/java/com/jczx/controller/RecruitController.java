@@ -30,7 +30,7 @@ public class RecruitController extends BaseController {
     @Autowired
     private RecruitService recruitService;
     @Autowired
-    private StudentService studentService;
+  private StudentService studentService;
 
     /**
      * 到招生页面
