@@ -67,11 +67,11 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
                 }
             });
         } else if (obj.event === 'invoiceBtn') {
-            $.post('/money/listimg', {
+            $.post('/attachment/listimg', {
                 likeId:data.id,
                 studentId:data.studentId
             }, function (result) {
-                alert(result);
+                alert(result.URL);
 
             })
             layer.open({

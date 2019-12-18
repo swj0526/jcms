@@ -2,11 +2,15 @@ package com.jczx.controller;
 
 import com.jczx.domain.TbAttachment;
 import com.jczx.service.AttachmentService;
+import com.jczx.service.PayBillService;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @author 孙文举
@@ -18,10 +22,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AttachmentController extends BaseController {
     @Autowired
     private AttachmentService attachmentService;
+    @Autowired
+    private PayBillService payBillService;
 
     @RequestMapping("/delete")
     public ServiceResult delete(Integer linkId) {
         return attachmentService.deleteAttachment(linkId, TbAttachment.TYPE_TEACHERFILE);
 
+    }
+    @RequestMapping("/listimg")
+    @ResponseBody
+    public List<TbAttachment> listImg(Integer linkId, Integer studentID) {
+        List<TbAttachment> list = attachmentService.listImg(linkId, studentID);
+        return list;
     }
 }

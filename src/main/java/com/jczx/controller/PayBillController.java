@@ -137,13 +137,6 @@ public class PayBillController extends BaseController {
         Map map = uploadeResult(result);
         return map;
     }
-    @RequestMapping("/listimg")
-    @ResponseBody
-    public List<TbAttachment> listImg(Integer likeId, Integer studentID) {
-        List<TbAttachment> list = payBillService.listImg(likeId, studentID);
-        return list;
-    }
-
     /**
      * 缴费提醒列表
      *

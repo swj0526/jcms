@@ -170,11 +170,11 @@ import java.util.List;
      * 上传
      * @param file
      * @param path
-     * @param likeId
+     * @param linkId
      * @param studentID
      * @return
      */
-    public ServiceResult uploadFile(MultipartFile file, String path,Integer likeId,Integer studentID) {
+    public ServiceResult uploadFile(MultipartFile file, String path,Integer linkId,Integer studentID) {
         ServiceResult result = upload(file, path);
         Integer id=0;
         if (result.isSuccess()) {
@@ -183,7 +183,7 @@ import java.util.List;
             attachment.setOperatorId(SC.getOperatorId());
             attachment.setType(TbAttachment.TYPE_BILL);
             attachment.setURL(result.getResult() + "");
-            attachment.setLinkId(likeId);
+            attachment.setLinkId(linkId);
             attachment.setStudentId(studentID);
             attachment.setName(file.getOriginalFilename());
             ServiceResult attachmentResult = attachmentService.addAttachment(attachment);
@@ -191,14 +191,6 @@ import java.util.List;
         }
         result.setResult(id);
         return result;
-    }
-
-    public List<TbAttachment> listImg(Integer likeId,Integer studentID){
-        Conditions conditions = getConditions();
-        conditions.putEWIfOk("likeId",likeId);
-        conditions.putEWIfOk("studentId",studentID);
-        List<TbAttachment> list = getList(conditions);
-        return list;
     }
 
     /**

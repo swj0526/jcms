@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * @author 孙文举
@@ -31,6 +32,13 @@ public class AttachmentService extends BaseService {
     public ServiceResult addAttachment(TbAttachment attachment) {
         add(attachment);
         return success(attachment.getId());
+    }
+    public List<TbAttachment> listImg(Integer linkId, Integer studentID){
+        Conditions conditions = getConditions();
+        conditions.putEWIfOk("linkId",linkId);
+        conditions.putEWIfOk("studentId",studentID);
+        List<TbAttachment> list = getList(conditions);
+        return list;
     }
 
     /**
