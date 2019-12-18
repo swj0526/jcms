@@ -90,11 +90,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
                 , btn: ['确定']
                 , content: $("#UploadBtn")
                 ,success:function () {
+                    likeId=data.id;
+                    studentId=data.studentId;
                     $('#demo2').html("");
                 }
             })
         }
     });
+    var likeId;
+    var studentId;
     laydate.render({
         elem: '#date'
         , range: true
@@ -124,7 +128,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
         ,auto: false
         ,bindAction: '#testListAction'
         ,before: function(obj){
-            this.data={'id':'1'};//关键代码
+            this.data={'linkId':likeId,'studentId':studentId};//关键代码
         }
         ,choose: function(obj){
             var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列

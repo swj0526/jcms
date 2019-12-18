@@ -65,6 +65,20 @@ layui.use(['form', 'layedit', 'laydate','upload'], function () {
             }
         });
     });
+    $("#browse").click(function () {
+        /*layer.open({
+            btnAlign: 'c'
+            ,type: 2
+            ,title:'文章类型'
+            ,area: ['720px', '350px']
+            ,btn:['确定','取消']
+            ,content: 'details'
+            ,end:function () {
+                sel();
+            }
+        });*/
+        parent_tab("article_browse","浏览文章","/article/details")
+    });
     //多文件列表示例
     var demoListView = $('#demoList')
         ,uploadListIns = upload.render({

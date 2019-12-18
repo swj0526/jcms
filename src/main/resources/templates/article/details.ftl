@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>详情页</title>
-    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
-    <script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../layui/layui.js"></script>
-    <script type="text/javascript" src="/article/js/details.js"></script>
+    <#include "../common/common.ftl"/>
 </head>
 <body>
     <h1 align="center">标题</h1>
@@ -22,5 +16,6 @@
         <p>若是自己没有尽力，就没有资格批评别人不用心。开口抱怨很容易，但是闭嘴努力的人更加值得尊敬。</p>
         <br />
     </div>
+    <script type="text/javascript" src="/article/js/details.js"></script>
 </body>
 </html>

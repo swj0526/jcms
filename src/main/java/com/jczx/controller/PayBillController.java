@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.jczx.service.PayBillService;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.util.List;
@@ -57,7 +58,6 @@ public class PayBillController extends BaseController {
         map.put("bill", bill);
         return "money/modify";
     }
-
     /**
      * 添加页面
      *
@@ -112,7 +112,6 @@ public class PayBillController extends BaseController {
         ServiceResult serviceResult = payBillService.modifyBill(payBill);
         return serviceResult;
     }
-
     /**
      * 导出
      *
@@ -127,7 +126,13 @@ public class PayBillController extends BaseController {
         InputStream inputStream = payBillService.exportExcel(time, keyword, type, null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
-
+    @RequestMapping("/upload")
+    @ResponseBody
+    public Map<String, Object> upload(Integer linkId,Integer studentId,MultipartFile file) {
+        ServiceResult result = payBillService.uploadFile(file, getImgPath(),linkId,studentId);
+        Map map = uploadeResult(result);
+        return map;
+    }
     /**
      * 缴费提醒列表
      *

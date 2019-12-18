@@ -18,8 +18,6 @@ import java.util.Date;
 public class TbPayBill extends Domain {
     @NotCreate
     private String Instalment;
-    @NotCreate
-    private String name;//学生姓名
     private Integer id;
     private Integer pid;//关联上次交费数据id
     private Integer studentId;//学生id

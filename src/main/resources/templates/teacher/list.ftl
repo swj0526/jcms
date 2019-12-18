@@ -7,27 +7,27 @@
 </head>
 <body>
 <#--添加-->
-<div id="addMsgbox" style="display: none"> //代表弹窗
+<div id="addMsgbox" style="display: none">
     <div style="margin: 10px 10px 10px 10px">
         <form class="layui-form " lay-filter="dataForm" id="dataFrm" action="">
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名<span class="star">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off"
-                           class="layui-input" id="name">
+                           class="layui-input" id="addName">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">手机号<span class="star">*</span></label>
                 <div class="layui-input-inline">
                     <input name="phone" class="layui-input" type="tel" autocomplete="off"
-                           lay-verify="required|phone" id="phone">
+                           lay-verify="required|phone" id="addPhone">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">性别<span class="star">*</span></label>
                 <div class="layui-input-inline">
-                    <select name="gender" lay-verify="" id="gender">
+                    <select name="gender" lay-verify="" id="addGender">
                         <option value="">选择性别</option>
                         <option value="男">男</option>
                         <option value="女">女</option>
@@ -118,7 +118,7 @@
                 <label class="layui-form-label">关键词</label>
                 <div class="layui-input-inline">
                     <input type="text" name="name" autocomplete="off" class="layui-input"
-                           placeholder="张三/手机号" id="queryName">
+                           placeholder="姓名/手机号" id="queryName">
                 </div>
             </div>
             <div class="layui-inline">
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <button class="layui-btn data-add-btn" type="button" id="query">查询</button>
-            <button type="button" class="layui-btn " id="add1">添加</button>
+            <button type="button" class="layui-btn" id="add1">添加</button>
             <button type="button" class="layui-btn layui-btn-warm" id="import">导入</button>
             <button type="button" class="layui-btn layui-btn-warm" id="excel">导出</button>
         </div>

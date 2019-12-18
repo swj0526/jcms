@@ -37,7 +37,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                     , content: $("#add")
                     , yes: function (index, layero) {
                         $.post('/integralitem/add',{
-                            reasonId:$("#addReason").val(),
+                            reason:$("#addReason").val(),
                             score:$("#addScore").val(),
                             remark:$("#addRemark").val(),
                             type:$("#addType").val()
@@ -68,7 +68,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , content: $("#modify")
                 , yes: function (index, layero) {
                     $.post('/integralitem/modify',{
-                        reasonId:$("#modifyReason").val(),
+                        reason:$("#modifyReason").val(),
                         score:$("#modifyScore").val(),
                         remark:$("#modifyRemark").val(),
                         type:$("#modifyType").val(),

@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<base href="${basePath}">
-		<meta charset="utf-8">
 		<title>发布文章</title>
-		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
-		<link rel="stylesheet" href="/static/common/css/all.css" media="all">
-		<script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="/layui/layui.js"></script>
-		<script type="text/javascript" src="/static/common/js/all.js"></script>
-		<script type="text/javascript" src="/article/js/dispatch.js"></script>
-		<script type="text/javascript" src="/article/js/xm.js"></script>
+		<#include "../common/common.ftl"/>
+
 	</head>
 	<body>
     <#--添加文章-->
@@ -23,9 +16,9 @@
 		  </div>
 		  <div class="layui-form-item" >
 			  <label class="layui-form-label">接收人<span class="star">*</span></label>
-			  <#--<div class="layui-inline">
+			  <div class="layui-inline">
 				  <div id="demo2" class="xm-select-demo" required lay-verify="required" style=" width:200px";></div>
-			  </div>-->
+			  </div>
 				  <div class="layui-inline" style="margin-bottom: 0px">
 					  <label class="layui-form-label">文章类型<span class="star">*</span></label>
 					  <div class="layui-inline" style="width: 115px;margin-right: 0px;margin-bottom: 0px;">
@@ -52,11 +45,13 @@
 				<div class="layui-upload-list">
 					<table class="layui-table">
 						<thead>
-						<tr><th>文件名</th>
+						<tr>
+							<th>文件名</th>
 							<th>大小</th>
 							<th>状态</th>
 							<th>操作</th>
-						</tr></thead>
+						</tr>
+						</thead>
 						<tbody id="demoList"></tbody>
 					</table>
 				</div>
@@ -65,12 +60,14 @@
 			<br>
 		  <div class="layui-form-item">
 		      <button class="layui-btn" type="submit" lay-filter="demo1" lay-submit="">立即提交</button>
-		      <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+			  <button class="layui-btn" type="button" id="browse" >预览</button>
+			  <button class="layui-btn layui-btn-primary" type="reset">重置</button>
 		  </div>
 		</form>
+	<script type="text/javascript" src="/article/js/dispatch.js"></script>
+	<script type="text/javascript" src="/article/js/xm.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script>
-
 		var demo2 = xmSelect.render({
 			el: '#demo2',
 			language: 'zn',

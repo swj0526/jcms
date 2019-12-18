@@ -30,7 +30,7 @@ public class IntegralItemService extends BaseService {
      * @return
      */
     public ServiceResult addItem(TbIntegralItem integralItem) {
-        if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null || StringUtil.isBlank(integralItem.getRemark())) {
+        if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null) {
             return error("必选项为空");
         }
         if (integralItem.getType()==1&&integralItem.getScore()>0){
@@ -47,7 +47,7 @@ public class IntegralItemService extends BaseService {
      * @return
      */
     public ServiceResult modifyItem(TbIntegralItem integralItem) {
-        if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null || StringUtil.isBlank(integralItem.getRemark())) {
+        if (StringUtil.isBlank(integralItem.getReason()) || integralItem.getScore() == null) {
             return error("");
         }
         if (integralItem.getType()==1&&integralItem.getScore()>0){
