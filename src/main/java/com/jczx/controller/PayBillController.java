@@ -1,6 +1,7 @@
 package com.jczx.controller;
 
 import com.jczx.bean.RemindBean;
+import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbPayBill;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -58,6 +59,7 @@ public class PayBillController extends BaseController {
         map.put("bill", bill);
         return "money/modify";
     }
+
     /**
      * 添加页面
      *
@@ -112,6 +114,7 @@ public class PayBillController extends BaseController {
         ServiceResult serviceResult = payBillService.modifyBill(payBill);
         return serviceResult;
     }
+
     /**
      * 导出
      *
@@ -126,13 +129,21 @@ public class PayBillController extends BaseController {
         InputStream inputStream = payBillService.exportExcel(time, keyword, type, null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
+
     @RequestMapping("/upload")
     @ResponseBody
-    public Map<String, Object> upload(Integer linkId,Integer studentId,MultipartFile file) {
-        ServiceResult result = payBillService.uploadFile(file, getImgPath(),linkId,studentId);
+    public Map<String, Object> upload(Integer linkId, Integer studentId, MultipartFile file) {
+        ServiceResult result = payBillService.uploadFile(file, getImgPath(), linkId, studentId);
         Map map = uploadeResult(result);
         return map;
     }
+    @RequestMapping("/listimg")
+    @ResponseBody
+    public List<TbAttachment> listImg(Integer likeId, Integer studentID) {
+        List<TbAttachment> list = payBillService.listImg(likeId, studentID);
+        return list;
+    }
+
     /**
      * 缴费提醒列表
      *
