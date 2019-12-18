@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbArticle;
+import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -20,11 +21,13 @@ public class ArticleService extends BaseService {
     /**
      * 发布文章
      *
-     * @param tbArticle
+     * @param article
      * @return
      */
-    public ServiceResult addArticle(TbArticle tbArticle) {
-        add(tbArticle);//todo #宋家新    没时间
+    public ServiceResult addArticle(TbArticle article) {
+        article.setCreateTime(SC.getNowDate());
+        article.setOperatorId(SC.getOperatorId());
+        add(article);
         return SUCCESS;
     }
 
@@ -37,7 +40,7 @@ public class ArticleService extends BaseService {
      * @return
      */
     public List<TbArticle> articleList(String keyword,Integer typeId,Integer state,String time,Pager pager) {
-        Conditions conditions = new Conditions(getTableName());//todo #宋家新
+        Conditions conditions = getConditions();
         if (StringUtil.isNotBlank(keyword)) {
             conditions.parenthesesStart();
             conditions.putLIKE("title", keyword);
@@ -48,14 +51,8 @@ public class ArticleService extends BaseService {
         conditions.putEWIfOk("typeId",typeId);
         conditions.putEWIfOk("state", state);
         if (StringUtil.isNotBlank(time)) {
-            String startTime=time.substring(0,10);
-            String endTime=time.substring(13);
-            System.out.println(startTime);//todo #宋家新
-            System.out.println(endTime);
-            conditions.parenthesesStart();
-            conditions.putSTIfOk("createTime", startTime);
-            conditions.putGTIfOk("createTime", endTime);
-            conditions.parenthesesEnd();
+          String time1[]= time.split(" - ");
+            conditions.putBW("createTime",time1[0],time1[1]);
         }
         pager.setDataTotal(getCount(conditions));
         List<TbArticle> articles = getListByPage(conditions, pager);
@@ -71,7 +68,6 @@ public class ArticleService extends BaseService {
         modify(article);
         return SUCCESS;
     }
-
 
     public List<TbArticle> checkType(Integer typeId) {
         Conditions conditions = getConditions();

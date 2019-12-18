@@ -14,6 +14,8 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
+ * 教职工档案
+ *
  * @author 宋家新
  * @create 2019-11-20 21:34
  */
@@ -30,17 +32,15 @@ public class TeacherController extends BaseController{
 
     @RequestMapping("/add")
     @ResponseBody
-    public ServiceResult addTeacher(TbTeacher teacher) {//#todo 宋
-
-        ServiceResult add = teacherService.addTeacher(teacher);
-        return add;
+    public ServiceResult addTeacher(TbTeacher teacher) {
+        System.out.println("进入方法");
+        return teacherService.addTeacher(teacher);
     }
 
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modifyTeacher(TbTeacher teacher){
-        ServiceResult modify=teacherService.modifyTeacher(teacher);
-        return modify;
+        return teacherService.modifyTeacher(teacher);
     }
 
     @RequestMapping("/list")
@@ -54,23 +54,19 @@ public class TeacherController extends BaseController{
     @RequestMapping("/delete")
     @ResponseBody
     public ServiceResult deleteTeacher(TbTeacher teacher){
-        ServiceResult delete= teacherService.deleteTeacher(teacher);
-        return delete;
+        return teacherService.deleteTeacher(teacher);
     }
 
-    @RequestMapping("/doExcel")
+    @RequestMapping("/exportExcel")
     @ResponseBody
     public Render doExcel(String name, Boolean hasQuit){
-        Pager pager = new Pager();//#todo 宋
-        pager.setPageSize(100000);
-        pager.setCurrentPage(1);
-        InputStream inputStream = teacherService.teacherExcel(name,hasQuit,pager);
+        InputStream inputStream = teacherService.teacherExcel(name,hasQuit);
         return Render.renderFile("老师信息.xls", inputStream);
     }
 
-    @RequestMapping("/exporttemplate")
+    @RequestMapping("/exportTemplate")
     @ResponseBody
-    public Render exportTemplate(){//#todo 宋
+    public Render exportTemplate(){
         InputStream inputStream = teacherService.excel();
         return Render.renderFile("老师模板.xls", inputStream);
     }
