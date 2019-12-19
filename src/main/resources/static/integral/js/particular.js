@@ -14,7 +14,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 , {field: 'name', title: '姓名'}
                 , {field: 'majorName', title: '班级'}
                 , {field: 'recordTime', title: '时间'}
-                , {field: 'reason', title: '事由'}
+                , {field: 'reasonName', title: '事由'}
                 , {field: 'score', title: '分数' }
             ]]
             , data: [{}]
