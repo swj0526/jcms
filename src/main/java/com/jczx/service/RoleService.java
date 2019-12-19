@@ -47,6 +47,11 @@ public class RoleService extends BaseService {
         return list;
     }
 
+    /**
+     * 修改
+     * @param role
+     * @return
+     */
     public ServiceResult modifyRole(TbRole role) {
         TbRole roleDB = getById(role.getId());
         roleDB.setName(role.getName());
@@ -55,6 +60,15 @@ public class RoleService extends BaseService {
         return SUCCESS;
     }
 
+    /**
+     * 删除
+     * @return
+     */
+    public ServiceResult deleteRole(Integer id){
+        delById(getTableName(),id);
+        //TODO 要判断下面有没有账号
+        return SUCCESS;
+    }
 
     @Override
     public String getTableName() {
