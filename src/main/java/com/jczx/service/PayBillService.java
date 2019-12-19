@@ -232,7 +232,9 @@ import java.util.List;
             Date startDate = pay.getStartTime();
             Date endDate = pay.getEndTime();
             int day = getDay(startDate, endDate);
+
             if(day<=30){
+                System.out.println("小于30");
                 RemindBean remindBean = new RemindBean();
                 remindBean.setEndTime(pay.getEndTime());
                 remindBean.setFactAmount(pay.getFactAmount());
@@ -242,8 +244,9 @@ import java.util.List;
                 remindBean.setStartTime(pay.getStartTime());
                 remindList.add(remindBean);
             }
+
         }
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
+
         return remindList;
     }
 }

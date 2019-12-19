@@ -33,11 +33,14 @@ public class AttachmentService extends BaseService {
         add(attachment);
         return success(attachment.getId());
     }
+
+
     public List<TbAttachment> listImg(Integer linkId, Integer studentID){
         Conditions conditions = getConditions();
         conditions.putEWIfOk("linkId",linkId);
         conditions.putEWIfOk("studentId",studentID);
         List<TbAttachment> list = getList(conditions);
+
         return list;
     }
 

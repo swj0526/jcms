@@ -67,20 +67,28 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
                 }
             });
         } else if (obj.event === 'invoiceBtn') {
+            var url;
             $.post('/attachment/listimg', {
                 likeId:data.id,
                 studentId:data.studentId
             }, function (result) {
-                alert(result.URL);
+
+                $.each(result,function (key,value) {
+                     var a='<img src="'+value.url+'" style="width: 100%;height: 100%">'
+                    url=url+a;
+
+                })
+                layer.open({
+                    btnAlign: 'c'
+                    , type: 1
+                    , area: ['700px', '700px']
+                    , btn: ['确定']
+                    , content: url
+                })
+
 
             })
-            layer.open({
-                btnAlign: 'c'
-                , type: 1
-                , area: ['700px', '700px']
-                , btn: ['确定']
-                , content: '<img src="/money/img/1.png" style="width: 100%;height: 100%">'
-            })
+
         } else if (obj.event === 'remarkBtn') {
             layer.open({
                 btnAlign: 'c'

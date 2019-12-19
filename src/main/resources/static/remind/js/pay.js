@@ -15,7 +15,7 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
             return {
                 "code": "0",
                 "count": res.pager,
-                data: res.result
+                data: res
             }
         }
         , cols: [[

@@ -108,6 +108,7 @@ public class TbAttachment extends Domain {
     }
 
     public String getName() {
+
         return name;
     }
 

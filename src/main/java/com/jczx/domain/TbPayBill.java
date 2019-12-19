@@ -237,4 +237,29 @@ public class TbPayBill extends Domain {
         Integer majorId = student.getMajorId();
         return CACHE.getMajorName(majorId);
     }
+
+    @Override
+    public String toString() {
+        return "TbPayBill{" +
+                "Instalment='" + Instalment + '\'' +
+                ", id=" + id +
+                ", pid=" + pid +
+                ", studentId=" + studentId +
+                ", typeId=" + typeId +
+                ", paymentMethodId=" + paymentMethodId +
+                ", semesterId=" + semesterId +
+                ", totalAmount=" + totalAmount +
+                ", payAmount=" + payAmount +
+                ", payDate=" + payDate +
+                ", hasInstalment=" + hasInstalment +
+                ", discountAmount=" + discountAmount +
+                ", factAmount=" + factAmount +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", hasAttachment=" + hasAttachment +
+                ", operatorId=" + operatorId +
+                ", createTime=" + createTime +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }
