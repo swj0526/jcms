@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="${basePath}">
-    <meta charset="UTF-8">
-    <title>权限管理</title>
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css"/>
-    <script type="text/javascript" src="/layui/layui.js">
-    </script>
-    <script type="text/javascript" src="/static/common/js/all.js"></script>
-    <script type="text/javascript" src="/account/js/role.js"></script>
 
+    <title>权限管理</title>
+    <#include "../common/common.ftl"/>
 </head>
 <body>
 
 <div style="display: none" id="add">
-    <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
+    <form class="layui-form  layui-form-pane"  action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
-            <label class="layui-form-label">角色姓名</label>
+            <label class="layui-form-label">角色姓名<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input type="text" name="name"  lay-verify="required"  autocomplete="off" class="layui-input">
+                <input type="text" name="name"  required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
-            <label class="layui-form-label">角色描述</label>
+            <label class="layui-form-label">角色备注<span class="star"></span></label>
             <div class="layui-input-inline">
-                <input type="text" name="describe"  lay-verify="required"  autocomplete="off" class="layui-input">
-            </div>
-        </div> <div class="layui-form-item">
-            <label class="layui-form-label">角色备注</label>
-            <div class="layui-input-inline">
-                <input type="text" name="remark"  lay-verify="required"  autocomplete="off" class="layui-input">
+                <input type="text" name="remark" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button class="layui-btn" type="button" lay-submit="" lay-filter="formDemo" id="addBtn">立即提交</button>
             </div>
         </div>
     </form>
@@ -47,24 +37,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">角色姓名</label>
             <div class="layui-input-inline">
-                <input type="text" name="name"  lay-verify="required"  autocomplete="off" class="layui-input">
+                <input type="text" name="name" lay-verify="required" required autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">角色描述</label>
-            <div class="layui-input-inline">
-                <input type="text" name="describe"  lay-verify="required"  autocomplete="off" class="layui-input">
-            </div>
-        </div> <div class="layui-form-item">
             <label class="layui-form-label">角色备注</label>
             <div class="layui-input-inline">
-                <input type="text" name="remark"  lay-verify="required"  autocomplete="off" class="layui-input">
+                <input type="text" name="remark"  autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">确定修改</button>
+                <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="modifyBtn">确定修改</button>
             </div>
         </div>
     </form>
@@ -81,13 +66,16 @@
                     <table class="layui-hide" id="test" lay-filter="test"></table>
 
                     <script type="text/html" id="barDemo">
-                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit" data-method="confirmTrans">
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"
+                                data-method="confirmTrans">
                             修改
                         </button>
-                        <button type="button" class="layui-btn  layui-btn-xs" lay-event="fun" data-method="confirmTrans">
-                             设置权限
+                        <button type="button" class="layui-btn  layui-btn-xs" lay-event="fun"
+                                data-method="confirmTrans">
+                            设置权限
                         </button>
-                        <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete" data-method="confirmTrans">
+                        <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete"
+                                data-method="confirmTrans">
                             删除
                         </button>
                     </script>
@@ -97,4 +85,5 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="/account/js/role.js"></script>
 </html>

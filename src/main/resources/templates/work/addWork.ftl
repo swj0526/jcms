@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>添加作业</title>
     <#include "../common/common.ftl"/>
 </head>
 <body>
