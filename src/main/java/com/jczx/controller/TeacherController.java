@@ -33,7 +33,6 @@ public class TeacherController extends BaseController{
     @RequestMapping("/add")
     @ResponseBody
     public ServiceResult addTeacher(TbTeacher teacher) {
-        System.out.println("进入方法");
         return teacherService.addTeacher(teacher);
     }
 

@@ -1,100 +1,188 @@
-layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form', 'tree', 'element'], function () {
-    var table = layui.table;
-    var layer = layui.layer;
-    var $ = layui.jquery;
-    var form = layui.form;
-    var transfer = layui.transfer;
-    var layer = layui.layer;
-    var util = layui.util;
-    var tree = layui.tree;
-    var element = layui.element;
-
-    //渲染数据表格
+layui.use(['form', 'table', 'jquery'], function () {
+    var $ = layui.jquery,
+        form = layui.form,
+        table = layui.table;
+    var currPage = 1;
+    var data;
+    var res;
     var tableIns = table.render({
-        elem: '#test'//渲染目标
-        /* , url: '/json/table.json'//数据接口*/
-        , id: 'userTableReload'
-        , cols: [[
-            {field: 'name', title: '角色名称'},
-            {field: 'describe', title: '角色描述'},
-            {field: 'remark', title: '备注'},
-            {fixed: 'right', title: '操作', toolbar: '#barDemo'}
-        ]]
-        , data: [{
-            name: "超级管理员",
-            describe: '权限最大',
-            remark: '该角色不可以进行修改或删除'
+        elem: '#followTable'
+        , url: '/dictionary/list/channel',
+        cols: [
+            [
+                {
+                    field: 'name',
+                    title: '渠道名称',
+                },
+                {
+                    field: 'remark',
+                    title: '渠道备注',
+                },
+                {
+                    title: '操作',
+                    minWidth: 50,
+                    templet: '#currentTableBar',
+                    fixed: "right",
+                    align: "center",
+                }
+            ]
+        ], toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+        , defaultToolbar: [{
+            title: '刷新表格'
+            , layEvent: 'refreshBtn'
+            , icon: 'layui-icon-refresh'
         }, {
-            name: "学生",
-            describe: '学生',
-            remark: '该角色不可以进行修改或删除'
-        }, {
-            name: "任课老师",
-            describe: '负责具体的讲课内容',
-            remark: '无'
-        }, {
-            name: "教务",
-            describe: '对学生进行日常管理',
-            remark: '无'
-        }, {
-            name: "校长",
-            describe: '管理者',
-            remark: '无'
-        }]
-        , page: true
+            title: '添加'
+            , layEvent: 'addBtn'
+            , icon: 'layui-icon-add-circle'
+        }],
+        page: true,
+        done: function (rest, curr, count) {
+            currPage = curr;
+            res = rest;
+            console.log(currPage);
+            console.log(rest);
+
+        },
+        parseData: function (res) { //res 即为原始返回的数据
+            /*   console.log(res);*/
+            return {
+                "code": "0",
+                "count": res.pager.dataTotal,
+                data: res.result
+            }
+        },
+        id: 'followRender'
     });
 
-    //添加弹窗
-    $('#roleAdd').click(function () {
+    // 监听搜索操作
+    form.on('submit(data-search-btn)', function (data) {
+        var keywords = $('[name="keywords"]').val();
+
+
+        //执行搜索重载
+        table.reload('followRender', {
+            page: {
+                curr: currPage
+            },
+            where: {
+                keywords: keywords
+
+            }
+        }, 'data');
+
+
+    });
+    //头工具栏事件
+    table.on('toolbar(followTable)', function (obj) {
+        var checkStatus = table.checkStatus(obj.config.id);
+        switch (obj.event) {
+            case 'addBtn':
+                mainIndex = layer.open({
+                    type: 1,
+                    title: "添加渠道信息",
+                    area: ['400px'], //设置宽高
+                    content: $("#addPopups"),
+                    success: function (index) {
+                        //清空
+                        $("#dataFor")[0].reset();
+                        //刷新
+                        tableIns.reload();
+
+                    }
+                });
+                break;
+            case 'refreshBtn':
+                tableIns.reload();
+                break;
+        }
+        ;
+    });
+
+    // 监听删除操作
+    $(".data-delete-btn").on("click", function () {
+        var checkStatus = table.checkStatus('currentTableId'),
+            data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+    });
+
+    //修改弹窗
+    var mainIndex;
+
+    function modifyStudents(data) {
         mainIndex = layer.open({
             type: 1,
-            title: "添加新角色",
-            // skin: 'layui-layer-rim', //加上边框
-            area: ['350px', '300px'], //设置宽高
-            content: $("#add"),
+            title: "修改渠道信息",
+            area: ['400px'], //设置宽高
+            content: $("#modifyPopups"),
             success: function (index) {
-                //清空
-                $("#dataFor")[0].reset();
-                url = "/";
+                //获取
+                form.val("dataForm", data);
+
+
+            }
+        });
+    }
+
+    $('#addFollowBtn').click(function () {
+        var name = $("[name='addName']").val();
+        var remark = $("[name='addRemark']").val();
+        $.post("/dictionary/add/channel", {
+            name: name,
+            remark: remark
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+            } else {
 
             }
         });
     });
-    //监听工具条
-    table.on('tool(test)', function (obj) {
-        var data = obj.data;
-        if (obj.event === 'detail') {
-            layer.msg('ID：' + data.id + ' 的查看操作');
+    $('#modifyFollowBtn').click(function () {
+        var name = $("[name='modifyName']").val();
+        var remark = $("[name='modifyRemark']").val();
+        $.post("/dictionary/modify", {
+            name: name,
+            remark: remark,
+            id: data.id
+        }, function (result) {
+            if (result.success) {
+                layer.close(mainIndex);
+                //刷新
+                tableIns.reload();
+            } else {
+
+            }
+        });
+    });
+
+    table.on('tool(followTable)', function (obj) {
+        data = obj.data;
+        if (obj.event === 'edit') {
+            modifyStudents(data);
         } else if (obj.event === 'delete') {
-            layer.confirm('真的删除行么', function (index) {
-                obj.del();
-                layer.close(index);
-            });
-        } else if (obj.event === 'edit') {
-            //layer.alert('编辑行：<br>'+ JSON.stringify(data))
-            layer.open({
-                type: 1,
-                title: "修改角色",
-                // skin: 'layui-layer-rim', //加上边框
-                area: ['350px', '300px'], //设置宽高
-                content: $("#update"),
-                success: function (index) {
+            layer.confirm('真的删除行么', {
+                    btn: ['确定', '取消'],
+                    yes: function (index, layero) {
+                        $.post('/dictionary/delete/channel', {id: data.id}, function (result) {
+                            if (result.success) {
+                                layer.msg("删除成功!");
+                                layer.close(index);
+                                tableIns.reload();
+                                if (res.data.length - 1 == 0) {
+                                    window.location.reload();//默认刷新第一页
+                                }
+                            } else {
+                                layer.msg(result.msg);
+                            }
+                        });
 
-
+                    }, no: function (index) {
+                        layer.close(index);
+                    }
                 }
-            });
-        } else if (obj.event === 'fun') {
-             var id="account_privilege";
-             var title="角色权限设置";
-             var src="/account/toprivilege"
-             parent_tab(id,title,src);
+            );
         }
-    });
-
-    $('#affirm').click(function () {
-        layer.msg('修改成功!');
-    });
-    $('#cancel ').click(function () {
 
     });
 
