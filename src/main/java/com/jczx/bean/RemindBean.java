@@ -63,4 +63,16 @@ public class RemindBean {
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
+
+    @Override
+    public String toString() {
+        return "RemindBean{" +
+                "name='" + name + '\'' +
+                ", majorName='" + majorName + '\'' +
+                ", payDate=" + payDate +
+                ", factAmount=" + factAmount +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }

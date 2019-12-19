@@ -369,6 +369,13 @@ public class TbStudent extends Domain implements OptionInterface {
      * 状态
      */
     public String getStateName() {
+
+        if (schoolState == STATE_AT_SCHOOL) {
+            return STATE_AT_SCHOOL_NAME;
+        }
+        return STATE_GRADUATE_NAME;
+    }
+    public String setStateName() {
         if (schoolState == STATE_AT_SCHOOL) {
             return STATE_AT_SCHOOL_NAME;
         }
@@ -384,4 +391,5 @@ public class TbStudent extends Domain implements OptionInterface {
     public String getOptionValue() {
         return id+"";
     }
+
 }
