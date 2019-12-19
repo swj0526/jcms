@@ -34,6 +34,10 @@ public class AttachmentController extends BaseController {
     @ResponseBody
     public List<TbAttachment> listImg(Integer linkId, Integer studentID) {
         List<TbAttachment> list = attachmentService.listImg(linkId, studentID);
+        String path = getPath().substring(1, getPath().length() - 1);
+        for (int a=0;a<list.size();++a){
+            list.get(a).setURL(path+list.get(a).getURL());
+        }
         return list;
     }
 }

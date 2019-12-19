@@ -52,6 +52,9 @@ public class TbPayBill extends Domain {
     }
 
     public String getName() {
+        if (studentId==null||studentId==0){
+            return null;
+        }
         TbStudent student = CACHE.getStudent(studentId);
         return student.getName()+"("+student.getStudentNumber()+")";
     }

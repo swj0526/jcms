@@ -68,8 +68,7 @@ import java.util.List;
      * @return
      */
     public ServiceResult modifyBill(TbPayBill payBill) {
-        if (StringUtil.isBlank(payBill.getName())
-                || payBill.getTotalAmount() == null
+        if (payBill.getTotalAmount() == null
                 || payBill.getPayDate() == null
                 || payBill.getPayAmount() == null
                 || payBill.getFactAmount() == null

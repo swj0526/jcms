@@ -111,6 +111,7 @@ public class PayBillController extends BaseController {
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modify(TbPayBill payBill) {
+        System.out.println(payBill.getStudentId());
         ServiceResult serviceResult = payBillService.modifyBill(payBill);
         return serviceResult;
     }

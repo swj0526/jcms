@@ -83,7 +83,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
                     , type: 1
                     , area: ['700px', '700px']
                     , btn: ['确定']
-                    , content: url
+                    , content: '<img src="D:/workbase/jcms/target/classes/upload/img/1576636136450QT8.jpg" style="width: 100%;height: 100%">'
                 })
 
 
