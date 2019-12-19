@@ -111,6 +111,13 @@ public class StudentService extends BaseService {
         return list;
     }
 
+    public List<TbStudent> List(){
+        Conditions conditions = getConditions();
+        conditions.putEW("entranceState",TbStudent.STATE_ENTRANCE);
+        List<TbStudent> list = getList(conditions);
+        return list;
+    }
+
     /**
      * 修改学生的基本信息
      *

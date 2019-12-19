@@ -28,7 +28,6 @@ public class TbStudent extends Domain implements OptionInterface {
     public static final String STATE_GRADUATE_NAME = "毕业";//毕业
     @NotCreate
     public static final int STATE_ENTRANCE = 3;//入学已缴费
-
     @NotCreate
     public static final int STATE_NOT_ENTRANCE =4;//未入学未交费
 

@@ -111,6 +111,12 @@ public class StudentController extends BaseController {
         InputStream inputStream = studentService.studentExcel(keywords, admissionData, studentState, null);
         return Render.renderFile("学生信息表.xls", inputStream);
     }
+    @RequestMapping("/liststudentinteger")
+    @ResponseBody
+    public List<TbStudent> ListStudentInteger(){
+        List<TbStudent> list = studentService.List();
+        return list;
+    }
 
 }
 
