@@ -16,8 +16,8 @@ public class HomeController extends BaseController {
 @Autowired
 private PayBillService payBillService;
     @RequestMapping("/main")
-    private String mianHome() {
-       payBillService.ListRemind();
+    private String mianHome(String keywords,String startTime) {
+       payBillService.ListRemind(keywords,startTime);
         return "/home/main";
     }
 

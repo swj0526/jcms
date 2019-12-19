@@ -70,6 +70,7 @@
                                             <li>
                                                 <div class="sd"><span>意向:${st.listLabelName()!''}</span></div>
                                             </li>
+
                                             <li>
                                                 <div class="sd"><span>备注:${st.remark!''}</span></div>
                                             </li>
@@ -83,6 +84,8 @@
                                                 </div>
                                             </li>
                                         </#list>
+
+
 
                                     </ul>
                                 </div>

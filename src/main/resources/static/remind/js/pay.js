@@ -39,6 +39,7 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
                 }
                 , where: {
                     'keywords': $("#keywords").val(),
+                    'startTime':$("#searchTime").val()
 
                 }
             }, 'data');
@@ -53,7 +54,7 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         layer.msg("跳到学生档案页面查看详情");
     });
     laydate.render({
-        elem: '#a' //指定元素
+        elem: '#searchTime' //指定元素
         , range: true
     });
 

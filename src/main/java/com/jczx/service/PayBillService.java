@@ -213,7 +213,7 @@ import java.util.List;
      * 返回缴费提醒的列表
      * @return
      */
-    public List<RemindBean>  ListRemind(){
+    public List<RemindBean>  ListRemind(String keywords,String startTime){
         Conditions conditions = getConditions();
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -224,7 +224,17 @@ import java.util.List;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        conditions.putGT("endTime",endTime);
+        conditions.setSelectValue("*");
+        conditions.setJoin(" payBill join TbStudent  student on payBill.studentId = student.id");
+        conditions.putGT("payBill.endTime",endTime);
+
+        conditions.putLIKEIfOK("student.name",keywords);
+
+        if (StringUtil.isNotBlank(startTime)) {
+            String[] splitTime = startTime.split(" - ");
+            conditions.putBW("startTime", splitTime[0], splitTime[1]);
+        }
+
         List<TbPayBill> list = getList(conditions);
         List<RemindBean> remindList = new ArrayList<>();
         for(TbPayBill pay:list){
@@ -245,7 +255,7 @@ import java.util.List;
             }
 
         }
-
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return remindList;
     }
 }

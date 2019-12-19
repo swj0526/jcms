@@ -1,6 +1,7 @@
 package com.jczx.core.config;
 
 
+import com.jczx.bean.RemindBean;
 import net.atomarrow.configs.Config;
 import net.atomarrow.db.orm.OrmContext;
 import org.springframework.stereotype.Component;
@@ -63,6 +64,7 @@ public class ProjectConfig extends Config {
      */
     @Override
     public void configOrmBean(OrmContext ormContext) {
+        ormContext.addBean(RemindBean.class);
        /* ormContext.addBean(PageBean.class);
         ormContext.addBean(ResultBean.class);
         ormContext.addBean(StudentScoreBean.class);*/
