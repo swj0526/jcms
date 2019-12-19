@@ -49,7 +49,7 @@ layui.use(['element', 'jquery', 'layer'], function () {
             var src = "/article/list";
             all_tab(id, title, src);
         } else if (id == "work_upload") {
-            var src = "/work/upload";
+            var src = "/work/toupload";
             all_tab(id, title, src);
         } else if (id == "work_list") {
             var src = "/work/tolist";

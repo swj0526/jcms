@@ -36,7 +36,10 @@ public class HomeworkController extends BaseController {
      *
      * @return
      */
-
+    @RequestMapping("/toupload")
+public String toUpload(){
+    return "/work/upload";
+}
 
     /**
      * 作业列表
