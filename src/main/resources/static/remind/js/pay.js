@@ -8,7 +8,7 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
     var tableIns = table.render({
         elem: '#test'//渲染目标
        , url: '/money/list/remind'
-        , id: 'userTableReload'
+        , id: 'testReload'
         //解析table 组件规定的数据结构
         , parseData: function (res) { //res 即为原始返回的数据
             /*   console.log(res);*/
@@ -21,13 +21,33 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         , cols: [[
             {field: 'name', title: '学生姓名/学号'},
             {field: 'majorName', title: '专业-班级'},
-            {field: 'lastTime', title: '上次缴费时间'},
-            {field: 'lastMoney', title: '上次缴费金额'},
-            {field: 'expireTime', title: '学费到期时间'},
-            {fixed: 'right', title: '操作', toolbar: '#barDemo'}
+            {field: 'startTime', title: '上次缴费时间'},
+            {field: 'factAmount', title: '上次缴费金额'},
+            {field: 'endTime', title: '学费到期时间'},
+           /* {fixed: 'right', title: '操作', toolbar: '#barDemo'}*/
         ]]
 
         , page: true
+    });
+    // 搜索操作
+    var $ = layui.$, active = {
+        reload: function () {
+            //执行重载
+            table.reload('testReload', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {
+                    'keywords': $("#keywords").val(),
+
+                }
+            }, 'data');
+        }
+    };
+    $('.demoTable .layui-btn').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+
     });
     $('#see').click(function () {
         layer.msg("跳到学生档案页面查看详情");
