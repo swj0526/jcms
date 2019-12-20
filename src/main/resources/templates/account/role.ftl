@@ -7,32 +7,32 @@
 </head>
 <body>
 
-<div style="display: none" id="add">
+<div style="display: none" id="addPop">
     <form class="layui-form  layui-form-pane"  action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
             <label class="layui-form-label">角色姓名<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input type="text" name="name"  required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="addName"  required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">角色备注<span class="star"></span></label>
             <div class="layui-input-inline">
-                <input type="text" name="remark" lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="addRemark" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item" style="margin-left: 30%">
             <div class="layui-input-inline">
-                <button class="layui-btn" type="button" lay-submit="" lay-filter="formDemo" id="addBtn">立即提交</button>
+                <button class="layui-btn" type="button" lay-submit="" lay-filter="addRoleBtn" id="addBtn">立即提交</button>
             </div>
         </div>
     </form>
 
 </div>
 <!--弹出框修改-->
-<div style="display: none" id="update">
+<div style="display: none" id="updatePop">
     <form class="layui-form" action="" lay-filter="dataForm1" id="dataFor">
         <div class="layui-form-item">
             <label class="layui-form-label">角色姓名</label>
@@ -55,7 +55,7 @@
     </form>
 
 </div>
-<div class="layui-tab layui-tab-card" lay-filter="demo">
+<div class="layui-tab " lay-filter="roleTable" id="roleTable">
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
             <div class="layuimini-container">
@@ -65,7 +65,7 @@
                     </div>
                     <table class="layui-hide" id="test" lay-filter="test"></table>
 
-                    <script type="text/html" id="barDemo">
+                    <script type="text/html" id="currentTableBar">
                         <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"
                                 data-method="confirmTrans">
                             修改

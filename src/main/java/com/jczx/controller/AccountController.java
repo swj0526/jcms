@@ -80,14 +80,24 @@ public class AccountController extends BaseController {
      */
     @RequestMapping("/role/list")
     @ResponseBody
-    private List<TbRole> list(Integer limit, Integer page) {
+    private ServiceResult list(Integer limit, Integer page) {
         Pager pager = checkPager(limit, page);
-        return roleService.ListRole(pager);
+        List<TbRole> list = roleService.ListRole(pager);
+        return layuiList(list, pager);
+
     }
 
     @RequestMapping("/modify")
     @ResponseBody
-    private ServiceResult modify(TbRole role){
-       return roleService.modifyRole(role);
+    private ServiceResult modify(TbRole role) {
+        return roleService.modifyRole(role);
     }
+    @RequestMapping("/delete")
+    @ResponseBody
+    private ServiceResult delete(Integer id) {
+        return roleService.deleteRole(id);
+    }
+
+
+
 }

@@ -1,4 +1,4 @@
-layui.use(['table', 'transfer', 'layer', 'util', 'jquery', 'form', 'tree'], function () {
+layui.use([ 'layer', 'util', 'jquery', 'tree'], function () {
     var layer = layui.layer;
     var tree = layui.tree;
     var data2 = [{
