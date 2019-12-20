@@ -70,7 +70,7 @@
 <script>
     layui.use('layer', function () {
         sel_garade();
-        var id =${homework.id};
+        var id =${attachment.id};
         <#if attachment??>
         $('#demoList').append("<tr id='old'><td>${attachment.name!""}</td><td>已上传</td><td><button class='layui-btn layui-btn-xs layui-btn-danger demo-delete'id='upload' ><a href='/work/dofile?id="+id+"'>下载</a></button></td></tr>");
         <#else >
