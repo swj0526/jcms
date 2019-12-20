@@ -1,7 +1,11 @@
 package com.jczx.controller;
 
 import com.jczx.domain.TbRole;
+import com.jczx.domain.TbStudent;
+import com.jczx.domain.TbUser;
 import com.jczx.service.RoleService;
+import com.jczx.service.StudentService;
+import com.jczx.service.UserService;
 import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -22,6 +26,10 @@ import java.util.List;
 public class AccountController extends BaseController {
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 账号列表页面
@@ -69,7 +77,7 @@ public class AccountController extends BaseController {
      */
     @RequestMapping("/role/add")
     @ResponseBody
-    private ServiceResult roleAdd(TbRole role) {
+    private ServiceResult addRole(TbRole role) {
         return roleService.addRole(role);
     }
 
@@ -87,17 +95,63 @@ public class AccountController extends BaseController {
 
     }
 
+    /**
+     * 修改角色
+     *
+     * @param role
+     * @return
+     */
     @RequestMapping("/modify")
     @ResponseBody
-    private ServiceResult modify(TbRole role) {
+    private ServiceResult modifyRole(TbRole role) {
         return roleService.modifyRole(role);
     }
+
+    /**
+     * 删除角色
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping("/delete")
     @ResponseBody
-    private ServiceResult delete(Integer id) {
+    private ServiceResult deleteRole(Integer id) {
         return roleService.deleteRole(id);
     }
 
+    /**
+     * 新增用户
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/user/activate")
+    @ResponseBody
+    private ServiceResult activateUser(Integer id) {
+        TbUser user = userService.getById(id);
+        return userService.activateUser(user);
+    }
 
-
+    /**
+     * 锁定用户
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/user/cancel")
+    @ResponseBody
+    private ServiceResult cancelUser(Integer id) {
+        TbUser user = userService.getById(id);
+        return userService.cancelUser(user);
+    }
+    @RequestMapping("/list/user")
+    @ResponseBody
+    private ServiceResult listUser(String keywords, Integer limit, Integer page) {
+        Pager pager = checkPager(limit, page);
+        List<TbUser> list = userService.listUser(keywords, pager);
+        for(TbUser user:list){
+            System.out.println("..."+user.getStudentName(user.getAccountId()));
+        }
+        return layuiList(list, pager);
+    }
 }

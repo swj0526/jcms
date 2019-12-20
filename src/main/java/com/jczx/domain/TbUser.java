@@ -1,5 +1,6 @@
 package com.jczx.domain;
 
+import com.jczx.system.CACHE;
 import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.db.enums.Type;
@@ -117,4 +118,23 @@ public class TbUser extends Domain {
     public void setRoleIds(String roleIds) {
         this.roleIds = roleIds;
     }
+
+    /**
+     * 获取学生姓名
+     * @param accountId
+     * @return
+     */
+    public String getStudentName(Integer accountId) {
+
+        return CACHE.getStudentName(accountId);
+    }
+    /**
+     * 获取老师姓名
+     * @param accountId
+     * @return
+     */
+    public String getTeacherName(Integer accountId) {
+        return CACHE.getTeacherName(accountId);
+    }
+
 }
