@@ -79,7 +79,7 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element'], function () {
                 area: ['100%', '100%'],
                 tab: [{
                     title: '学生作业下载',
-                    content: '<iframe src="/work/download" frameborder="0" height="800px" width="100%"></iframe>',
+                    content: '<iframe src="/work/download?id='+data.id+'" frameborder="0" height="800px" width="100%"></iframe>',
                 }]
             });
         } else if (obj.event === 'details') {

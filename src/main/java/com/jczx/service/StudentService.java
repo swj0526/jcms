@@ -11,6 +11,7 @@ import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -111,9 +112,10 @@ public class StudentService extends BaseService {
         return list;
     }
 
-    public List<TbStudent> List(){
+    public List<TbStudent> ListInteger(){
         Conditions conditions = getConditions();
         conditions.putEW("entranceState",TbStudent.STATE_ENTRANCE);
+        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         List<TbStudent> list = getList(conditions);
         return list;
     }

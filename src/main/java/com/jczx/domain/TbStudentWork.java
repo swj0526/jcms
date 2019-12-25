@@ -1,29 +1,39 @@
 package com.jczx.domain;
 
+import com.jczx.service.AttachmentService;
 import net.atomarrow.domains.Domain;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 学生作业上传表
+ *
  * @author 丛枭钰
  * @create 2019-11-19 13:58
- *
  */
 @Component
 public class TbStudentWork extends Domain {
+    @Autowired
+    private AttachmentService attachmentService;
     private Integer id;
     private Integer studentId;//学生表id
     private Integer homeworkId;//作业id//homeworkId
     private Boolean hasAttachment;//是否有附件//
-
     private String content;//内容
     private String estimateContent;//评价
     private Integer score;//分数
-    private  Integer teacherId;//评价老师
+    private Integer teacherId;//评价老师
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
+
+    public List<TbAttachment> getWork() {
+        List<TbAttachment> tbAttachments = attachmentService.listWork(id, studentId);
+        return tbAttachments;
+    }
+
 
     public Integer getId() {
         return id;
