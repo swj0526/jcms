@@ -107,7 +107,7 @@ layui.use(['form', 'table', 'jquery'], function () {
     }
 
     $('#roleAdd').click(function () {
-       addStudents(data);
+        addStudents(data);
     });
     //添加弹窗
     var addPop;
@@ -126,19 +126,20 @@ layui.use(['form', 'table', 'jquery'], function () {
             }
         });
     }
+
     form.on('submit(addRoleBtn)', function (data) {
-            var name = $("[name='addName']").val();
-            var remark = $("[name='addRemark']").val();
-            $.post("/account/role/add", {
-                name: name,
-                remark: remark
-            }, function (result) {
-                if (result.success) {
-                    layer.close(addPop);
-                } else {
-                    layer.msg(result.msg);
-                }
-            });
+        var name = $("[name='addName']").val();
+        var remark = $("[name='addRemark']").val();
+        $.post("/account/role/add", {
+            name: name,
+            remark: remark
+        }, function (result) {
+            if (result.success) {
+                layer.close(addPop);
+            } else {
+                layer.msg(result.msg);
+            }
+        });
     });
     $('#modifyBtn').click(function () {
         var name = $("[name='name']").val();
@@ -159,7 +160,8 @@ layui.use(['form', 'table', 'jquery'], function () {
     });
 
     table.on('tool(roleTable)', function (obj) {
-        data = obj.data;
+       var data = obj.data;
+
         if (obj.event === 'edit') {
             modifyStudents(data);
         } else if (obj.event === 'delete') {
@@ -184,9 +186,8 @@ layui.use(['form', 'table', 'jquery'], function () {
                     }
                 }
             );
-        }else if (obj.event === 'fun') {
-            parent_tab("privilege","权限管理","/account/toprivilege");
-
+        } else if (obj.event === 'fun') {
+            parent_tab("privilege", "权限管理", "/account/toprivilege?roleId=" + data.id);
         }
 
     });

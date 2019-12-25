@@ -49,6 +49,10 @@ public class CACHE {
         return SpringContextUtil.getBean(StudentService.class);
     }
 
+    private static Service getRoleService() {
+        return SpringContextUtil.getBean(RoleService.class);
+    }
+
     private static String PREFEX = RandomSn.getLowSn(3);
 
     /**
@@ -229,7 +233,7 @@ public class CACHE {
      * @param id
      * @return
      */
-    private static TbTeacher getTeacher(Integer id) {
+    public static TbTeacher getTeacher(Integer id) {
         if (id == 0 || id == null) {
             return null;
         }
@@ -287,6 +291,7 @@ public class CACHE {
 
     /**
      * 获取学生名字
+     *
      * @param studentId
      * @return
      */
@@ -300,6 +305,7 @@ public class CACHE {
         }
         return student.getName();
     }
+
     /**
      * 事由对象
      *
@@ -321,8 +327,10 @@ public class CACHE {
         getUtil().set(getKey(TbIntegralItem.class.getSimpleName(), id), integerItemDB);
         return integerItemDB;
     }
+
     /**
      * 获取事由名字
+     *
      * @param IntegralItemId
      * @return
      */
@@ -336,6 +344,55 @@ public class CACHE {
         }
         return integralItem.getReason();
     }
+
+    /**
+     * 获取角色对象
+     *
+     * @param id
+     * @return
+     */
+    private static TbRole getRole(Integer id) {
+        if (id == 0 || id == null) {
+            return null;
+        }
+        TbRole role = (TbRole) getUtil().get(getKey(TbRole.class.getSimpleName(), id));
+        if (role != null) {
+            return role;
+        }
+        TbRole roleDB = getRoleService().getById(TbRole.class.getSimpleName(), id);
+        if (roleDB == null) {
+            return null;
+        }
+        getUtil().set(getKey(TbRole.class.getSimpleName(), id), roleDB);
+        return roleDB;
+    }
+
+    /**
+     * 获取角色列表的名称
+     *
+     * @param roleIds
+     * @return
+     */
+    public static String getRoleNames(String roleIds) {
+        if (StringUtil.isBlank(roleIds)) {
+            return "";
+        }
+        String[] split = roleIds.split(",");
+        String names = "";
+        for (int i = 1; i < split.length; i++) {
+            TbRole role = getRole(Integer.valueOf(split[i]));
+            if (role != null) {
+                if (i == split.length - 1) {
+                    names = names + role.getName();
+                } else {
+                    names = names + role.getName() + ",";
+                }
+
+            }
+        }
+        return names;
+    }
+
 
     /**
      * 修改删除的时候调用该方法,清空该缓存对象

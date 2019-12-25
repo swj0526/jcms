@@ -29,7 +29,7 @@ public class TbStudent extends Domain implements OptionInterface {
     @NotCreate
     public static final int STATE_ENTRANCE = 3;//入学已缴费
     @NotCreate
-    public static final int STATE_NOT_ENTRANCE =4;//未入学未交费
+    public static final int STATE_NOT_ENTRANCE = 4;//未入学未交费
 
     private Integer id;
     private Integer majorId;//班级id
@@ -369,23 +369,37 @@ public class TbStudent extends Domain implements OptionInterface {
      * 状态
      */
     public String getStateName() {
-        if (schoolState==null||schoolState==0){
-            return "";
-        }
+
         if (schoolState == STATE_AT_SCHOOL) {
             return STATE_AT_SCHOOL_NAME;
         }
         return STATE_GRADUATE_NAME;
     }
 
+    public String setStateName() {
+        if (schoolState == STATE_AT_SCHOOL) {
+            return STATE_AT_SCHOOL_NAME;
+        }
+        return STATE_GRADUATE_NAME;
+    }
+
+    /**
+     * 获取专业班级名称
+     *
+     * @return
+     */
+    public String getMajorName() {
+        return CACHE.getMajorName(majorId);
+    }
+
     @Override
     public String getOptionText() {
-        return name+"("+studentNumber+")";
+        return name + "(" + studentNumber + ")";
     }
 
     @Override
     public String getOptionValue() {
-        return id+"";
+        return id + "";
     }
 
 }

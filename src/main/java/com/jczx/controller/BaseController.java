@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,9 +56,7 @@ public class BaseController<T> {
      * @return
      */
     public String getPath() {
-        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-
-        return path;
+        return System.getProperty("user.dir") + "\\src\\main\\resources\\static";
 
     }
 

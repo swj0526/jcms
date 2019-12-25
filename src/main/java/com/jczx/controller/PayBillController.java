@@ -1,14 +1,16 @@
 package com.jczx.controller;
 
 import com.jczx.bean.RemindBean;
+import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbPayBill;
-import com.jczx.service.PayBillService;
+import com.jczx.service.UserService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.jczx.service.PayBillService;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,6 +28,7 @@ import java.util.Map;
 public class PayBillController extends BaseController {
     @Autowired
     private PayBillService payBillService;
+
 
     /**
      * 缴费列表
@@ -80,6 +83,7 @@ public class PayBillController extends BaseController {
     @ResponseBody
     public ServiceResult add(TbPayBill payBill) {
         ServiceResult add = payBillService.addBill(payBill);
+
         return add;
     }
 
@@ -144,8 +148,7 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list/remind")
     @ResponseBody
-    public List<RemindBean> ListRemind(String keywords,String startTime) {
-        System.out.println(startTime);
-        return payBillService.ListRemind(keywords,startTime);
+    public List<RemindBean> ListRemind() {
+        return payBillService.ListRemind();
     }
 }

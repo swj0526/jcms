@@ -7,7 +7,6 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
-import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
@@ -37,7 +36,10 @@ import java.util.List;
     private IntegralService integralService;
     @Autowired
     private AttachmentService attachmentService;
-
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private StudentService studentService;
     /**
      * 添加
      *
@@ -59,6 +61,7 @@ import java.util.List;
         add(payBill);
         recruitService.modifyOne(payBill.getStudentId());
         integralService.addList(payBill.getStudentId());
+        userService.addStudentUser(studentService.get(payBill.getStudentId()));
         return SUCCESS;
     }
 

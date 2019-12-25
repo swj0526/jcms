@@ -60,7 +60,7 @@ public abstract class BaseService extends Service {
      * @return
      */
     public ServiceResult upload(MultipartFile file, String filePath) {
-        String allFile = "";
+        String  allFile = "";
         String substring;
         if (file == null) {
             return error("上传失败,请选择文件");
@@ -79,7 +79,9 @@ public abstract class BaseService extends Service {
             file.transferTo(dest);
             allFile = dest + ""; //上传成功之后返回路径
             int i = allFile.indexOf("\\upload");
+            System.out.println(allFile);
             substring = allFile.substring(i, allFile.length());
+
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
             return error("上传失败!");

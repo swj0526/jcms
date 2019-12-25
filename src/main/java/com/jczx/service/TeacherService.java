@@ -7,6 +7,7 @@ import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -20,6 +21,8 @@ import java.util.List;
  */
 @Component
 public class TeacherService extends BaseService {
+    @Autowired
+    private UserService userService;
 
     /**
      * 添加老师
@@ -38,6 +41,8 @@ public class TeacherService extends BaseService {
             return error("请输入姓名和手机号");
         }
         add(teacher);
+        userService.addTeacherUser(teacher);
+
         return SUCCESS;
     }
 
