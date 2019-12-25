@@ -50,7 +50,6 @@ public class TbPayBill extends Domain {
     public void setInstalment(String instalment) {
         Instalment = instalment;
     }
-
     public String getName() {
         if (studentId==null||studentId==0){
             return null;
@@ -58,7 +57,6 @@ public class TbPayBill extends Domain {
         TbStudent student = CACHE.getStudent(studentId);
         return student.getName()+"("+student.getStudentNumber()+")";
     }
-
     public Integer getId() {
         return id;
     }

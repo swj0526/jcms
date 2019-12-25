@@ -17,7 +17,7 @@
             <legend>缴费提醒搜索</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <div class="demoTable">
-                <form class="layui-form layui-form-pane" action="">
+                <form class="layui-form layui-form-pane" action="" id="dataForm">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">关键字</label>
@@ -49,10 +49,11 @@
                             <a class="layui-btn" lay-submit="" lay-filter="data-search-btn" data-type="reload">查询</a>
                         </div>
                         <div class="layui-inline">
-                            <button class="layui-btn layui-btn-danger data-delete-btn">导出学生信息</button>
+                            <button class="layui-btn layui-btn-danger data-delete-btn" type="button" id="exportExcel">导出学生信息</button>
                         </div>
                     </div>
                 </form>
+
                     </div>
             </div>
         </fieldset>

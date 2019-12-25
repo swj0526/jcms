@@ -1,16 +1,14 @@
 package com.jczx.controller;
 
 import com.jczx.bean.RemindBean;
-import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbPayBill;
-import com.jczx.service.UserService;
+import com.jczx.service.PayBillService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.jczx.service.PayBillService;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -148,7 +146,8 @@ public class PayBillController extends BaseController {
      */
     @RequestMapping("/list/remind")
     @ResponseBody
-    public List<RemindBean> ListRemind() {
-        return payBillService.ListRemind();
+    public List<RemindBean> ListRemind(String keywords, String startTime, Integer page, Integer limit) {
+        Pager pager = checkPager(limit, page);
+        return payBillService.ListRemind(keywords,startTime,pager);
     }
 }

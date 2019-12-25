@@ -11,11 +11,10 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         , id: 'testReload'
         //解析table 组件规定的数据结构
         , parseData: function (res) { //res 即为原始返回的数据
-            /*   console.log(res);*/
             return {
                 "code": "0",
-                "count": res.pager,
-                data: res
+                "count": res.pager.dataTotal,
+                data: res.result
             }
         }
         , cols: [[
@@ -50,8 +49,10 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         active[type] ? active[type].call(this) : '';
 
     });
-    $('#see').click(function () {
-        layer.msg("跳到学生档案页面查看详情");
+    $('#exportExcel').click(function () {
+        alert("88888888");
+        let serialize = $("#dataForm").serialize();
+       window.location.href="/money/exportexcel?"+serialize;
     });
     laydate.render({
         elem: '#searchTime' //指定元素

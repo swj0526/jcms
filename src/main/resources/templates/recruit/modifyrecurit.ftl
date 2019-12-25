@@ -38,7 +38,7 @@
             <div class="layui-input-inline">
                 <input type="text" name="name"  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.name}>
             </div>
-
+<#--存放性别-->
             <input type="text" style="display: none" id="Instalment" value=${student.sex}>
             <label class="layui-form-label">性别</label>
             <div class="layui-inline">
@@ -88,6 +88,7 @@
 
         </div>
         <div class="layui-form-item">
+
             <label class="layui-form-label">父亲电话</label>
             <div class="layui-input-inline">
                 <input type="number" name="fatherPhone" value=${student.fatherPhone} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
@@ -102,6 +103,26 @@
 
                 </div>
             </div>
+        </div>
+
+        <div class="layui-form-item">
+            <input type="text" style="display: none" id="entranceName" value=${student.etranceState!""}>
+            <label class="layui-form-label">是否试学</label>
+            <div class="layui-inline">
+                <div class="layui-inline" style="width: 190px">
+                    <select name="entranceState" lay-verify="" id="entranceState">
+                        <#if student.entranceState==4>
+                            <option value="4">是</option>
+                            <option value="0">否</option>
+                            <#else >
+                                <option value="0">否</option>
+                                <option value="4">是</option>
+                        </#if>
+
+                    </select>
+                </div>
+            </div>
+
         </div>
 
         <div class="layui-form-item">
@@ -127,7 +148,8 @@
 
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/recruit/js/axios.js"></script>
+
 <script src="/recruit/js/recruit.js"></script>
 <script src="/recruit/js/detailfollow.js"></script>
 

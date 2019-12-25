@@ -14,8 +14,6 @@ public class RemindBean {
     private Date startTime;//开始时间
     private Date endTime;//结束时间
 
-
-
     public String getName() {
         return name;
     }

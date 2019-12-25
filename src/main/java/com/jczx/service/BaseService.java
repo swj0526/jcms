@@ -87,7 +87,6 @@ public abstract class BaseService extends Service {
             return error("上传失败!");
         }
         String s = substring.replaceAll("\\\\", "/");
-        System.out.println(s);
         LOGGER.info("上传成功");
         return success(s);
     }

@@ -7,6 +7,7 @@ import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.db.parser.JdbcParser;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
@@ -216,7 +217,7 @@ import java.util.List;
      * 返回缴费提醒的列表
      * @return
      */
-    public List<RemindBean>  ListRemind(String keywords,String startTime){
+    public List<RemindBean>  ListRemind(String keywords, String startTime, Pager pager){
         Conditions conditions = getConditions();
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -238,7 +239,7 @@ import java.util.List;
             conditions.putBW("startTime", splitTime[0], splitTime[1]);
         }
 
-        List<TbPayBill> list = getList(conditions);
+        List<TbPayBill> list = getListByPage(conditions,pager);
         List<RemindBean> remindList = new ArrayList<>();
         for(TbPayBill pay:list){
             Date startDate = pay.getStartTime();
@@ -261,4 +262,21 @@ import java.util.List;
         System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return remindList;
     }
+
+    /**
+     *导出提醒信息
+     * @param keywords
+     * @param startTime
+     * @return
+     */
+    public InputStream RemindExcel(String keywords, String startTime){
+        List<RemindBean> list = ListRemind(keywords, startTime, null);
+        ExcelDatas excelDatas = new ExcelDatas();
+        excelDatas.addStringArray(0, 0, new String[]{"姓名/学号", "专业-班级", "上次缴费时间", "上次交费金额", "学费到期时间"});
+        excelDatas.addObjectList(1, 0, list, new String[]{"name", "majorName", "startTime", "factAmount", "endTime"});
+        InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
+    }
+
+
 }

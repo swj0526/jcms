@@ -57,6 +57,7 @@
 
 
 </div>
+
 <div id="recruit" style="margin-left: 25%">
     <div >
     <form class="layui-form layui-form-pane" lay-filter="addDataForm" id="dataFor" method="post">
@@ -145,7 +146,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label"> 母亲电话</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="motherPhone" lay-verify="required" placeholder="" autocomplete="off"
+                        <input type="text" name="motherPhone"  placeholder="" autocomplete="off"
                                class="layui-input">
                     </div>
                 </div>
@@ -172,7 +173,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label"> 应急联系人</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="otherRelativesName" lay-verify="required" placeholder="" autocomplete="off"
+                        <input type="text" name="otherRelativesName"  placeholder="" autocomplete="off"
                                class="layui-input">
                     </div>
                 </div>
@@ -180,7 +181,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label"> 应急电话</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="emergencyPhone" lay-verify="required" placeholder="" autocomplete="off"
+                            <input type="text" name="emergencyPhone"  placeholder="" autocomplete="off"
                                    class="layui-input">
                         </div>
                     </div>
@@ -225,7 +226,7 @@
 
 <script type="text/javascript" src="/common/js/all.js"></script>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/recruit/js/axios.js"></script>
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
 <script src="/recruit/js/recruit.js"></script>

@@ -23,6 +23,7 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate'], function () {
 
         });
     });
+
 //删除
     $(".delete").click(function () {
         var id = $(this).val();
@@ -69,7 +70,7 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate'], function () {
 
         $("#modifySubmit").click(function () {
             var seList = new Array();
-            var selectArr = modDetail.getValue().valueOf();//获取复选框的值
+            var selectArr = modifydiv.getValue().valueOf();//获取复选框的值
             $.each(selectArr, function (k, v) {
                 $.each(v, function (k1, v1) {
                     if (k1 == "id") {

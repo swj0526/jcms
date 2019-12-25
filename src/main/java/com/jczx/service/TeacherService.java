@@ -87,7 +87,6 @@ public class TeacherService extends BaseService {
         if (hasQuit != null) {
             conditions.putEW("hasQuit", hasQuit);
         }
-        System.out.println(getCount(conditions));
         pager.setDataTotal(8);//调用分页之前给设置总条数
         return getListByPage(conditions, pager);
     }

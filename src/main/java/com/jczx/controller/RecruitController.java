@@ -169,4 +169,16 @@ public class RecruitController extends BaseController {
         Map map = uploadeResult(result);
         return map;
     }
+
+    /**
+     * 导入
+     * @return
+     */
+    @RequestMapping("/exportTemplate")
+    @ResponseBody
+    public Render exportTemplate(){
+        InputStream inputStream = recruitService.excel();
+        return Render.renderFile("导入学生模板.xls", inputStream);
+    }
+
 }

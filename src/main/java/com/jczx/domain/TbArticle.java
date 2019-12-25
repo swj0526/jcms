@@ -18,7 +18,6 @@ import java.util.Date;
 public class TbArticle extends Domain {
     @NotCreate
     private String quit;
-
     private Integer id;
     private String title;//标题
     private String receiverRoleIds;//接收人,长度40够用

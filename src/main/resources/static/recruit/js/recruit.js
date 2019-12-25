@@ -92,10 +92,9 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     });
 
 //下拉选赋值;
-    var a=$("#Instalment").val();
+    var a = $("#Instalment").val();
     var select = 'dd[lay-value=' + a + ']';
     $('#select1').siblings("div.layui-form-select").find('dl').find(select).click();
-
 
     // 搜索操作
     var $ = layui.$, active = {
@@ -123,8 +122,8 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                     'keywords': $("#keywords").val(),
                     'labelIds': label,
                     'sex': sex.val(),
-                    'createTime':createTime.val(),
-                    'channelId':$("#channelId").val(),
+                    'createTime': createTime.val(),
+                    'channelId': $("#channelId").val(),
 
                 }
             }, 'data');
@@ -137,7 +136,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     });
     //监听导出事件
     $("#downloadbtn").click(function () {
-        window.location.href="/recruit/exportExcel";
+        window.location.href = "/recruit/exportExcel";
     });
     //监听导入事件
     $("#uploadbtn").click(function () {
@@ -167,37 +166,37 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     }
 
     //监听添加招生提交
-    form.on('submit(addRecruitBtn)', function(data){
-    //添加招生信息
-    $("#addSubmit").click(function () {
-        var seList = new Array();
-        var selectArr = demo1.getValue().valueOf();//获取复选框的值
-        $.each(selectArr, function (k, v) {
-            $.each(v, function (k1, v1) {
-                if (k1 == "value") {
-                    seList.push(v1);
-                }
-            });
-        });
-        let label = seList.join(",");
-        var labelIds = ("," + label + ",");
-        var recruit = $("#dataFor").serialize();
-
-        //发送ajax请求
-        $.post('/recruit/add', recruit + "&labelIds=" + labelIds, function (result) {
-            //下面就是提交成功后关闭自己
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            if (result.success == true) {
-                setTimeout(function () {
-                    parent.layer.close(index);//关闭弹出层
-                    parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
+    form.on('submit(addRecruitBtn)', function (data) {
+        //添加招生信息
+        $("#addSubmit").click(function () {
+            var seList = new Array();
+            var selectArr = demo1.getValue().valueOf();//获取复选框的值
+            $.each(selectArr, function (k, v) {
+                $.each(v, function (k1, v1) {
+                    if (k1 == "value") {
+                        seList.push(v1);
+                    }
                 });
-            } else  if (result.error==false) {
-                layer.msg("学生电话,母亲电话有重复");
+            });
+            let label = seList.join(",");
+            var labelIds = ("," + label + ",");
+            var recruit = $("#dataFor").serialize();
 
-            }
-        })
-    });
+            //发送ajax请求
+            $.post('/recruit/add', recruit + "&labelIds=" + labelIds, function (result) {
+                //下面就是提交成功后关闭自己
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                if (result.success == true) {
+                    setTimeout(function () {
+                        parent.layer.close(index);//关闭弹出层
+                        parent.location.reload();//更新父级页面（提示：如果需要跳转到其它页面见下文）
+                    });
+                } else if (result.error == false) {
+                    layer.msg("学生电话,母亲电话有重复");
+
+                }
+            })
+        });
     });
     //修改招生信息
     $("#modifySubmit").click(function () {
@@ -226,30 +225,32 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             }
         })
     });
+    $("#export").click(function () {
+        window.location.href = "/recruit/exportTemplate";
+
+    });
     //标签弹窗
     var index;
     $("#label").click(function () {
-       index= layer.open({
+        index = layer.open({
             type: 1,
             title: "添加标签",
-
             area: ['400px'], //设置宽高
             content: $("#addlabel"),
 
         });
     });
     //监听提交
-    form.on('submit(addlabelbtn)', function(data){
+    form.on('submit(addlabelbtn)', function (data) {
         //添加标签
-        $("#addlabelbtn").click(function () {
+
             var label = $("#data").serialize();
-            $.post('/dictionary/add/label',label,function () {
+            $.post('/dictionary/add/label', label, function () {
                 layer.close(index);
             })
-        });
+
 
     });
-
 
 
 //监听行
@@ -282,12 +283,12 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             layer.open({
                 type: 2,
                 area: ['100%', '100%'],
-                title: data.name+"详情",
-                content: '/detail/todetail?id='+id,
-                success:function () {
+                title: data.name + "详情",
+                content: '/detail/todetail?id=' + id,
+                success: function () {
                 }
             });
-        }else if (obj.event === 'setSign') {
+        } else if (obj.event === 'setSign') {
 
             parent_tab("list" + id, "学生详情", "/student/information?id=" + id);
 
@@ -301,7 +302,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         searchTips: '搜索标签',
         tips: '请选择意向',
         height: '500px',
-        code:0,
+        code: 0,
         prop: {
             name: 'name',
             value: 'id',

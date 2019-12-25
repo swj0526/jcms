@@ -1,5 +1,6 @@
 package com.jczx.service;
 
+import com.jczx.domain.TbInternship;
 import com.jczx.domain.TbStudent;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
@@ -8,6 +9,7 @@ import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -15,15 +17,15 @@ import java.io.Serializable;
 import java.util.List;
 /**
  * 招生
- *
  * @author 于振华
  * @create 2019-11-21 19:38
  */
 @Component
 public class RecruitService extends BaseService {
+    @Autowired
+    private InternshipService internshipService;
     /**
      * 添加
-     *
      * @param student
      * @return
      */
@@ -32,13 +34,17 @@ public class RecruitService extends BaseService {
                         || StringUtil.isBlank(student.getLabelIds())//意向标签
                         || StringUtil.isBlank(student.getStudentPhone())//学生电话
                         || StringUtil.isBlank(student.getSex())//学生性别
-
         ) {
             return error("姓名,意向,学生电话,性别必须填写");
         }
         student.setCreateTime(SC.getNowDate());//操作时间
         student.setOperatorId(SC.getOperatorId());//操作人
         add(student);
+        Integer id = student.getId();
+        TbInternship internship = new TbInternship();
+        internship.setStudentId(id);
+        internshipService.addInternship(internship);//试课
+
         return SUCCESS;
 
     }
@@ -170,6 +176,18 @@ public class RecruitService extends BaseService {
             return error("未入学");
         }
         return SUCCESS;
+    }
+
+    /**
+     * 下载模板
+     *
+     * @return
+     */
+    public InputStream excel() {
+        ExcelDatas excelDatas = new ExcelDatas();
+        excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别",  "出生年月", "学校", "手机号", "QQ号", "微信", "渠道"});
+        InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
     }
 
     @Override

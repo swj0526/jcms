@@ -97,6 +97,7 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
         <script type="text/html" id="currentTableBar">
             {{# if(d.state=="1"){ }}
+
             {{# } }}
             {{# if(d.state=="2"){ }}
             {{# } }}
@@ -104,14 +105,17 @@
             {{# } }}
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="follow">跟进详情</a>
             <a class="layui-btn layui-btn-xs data-count-edit  layui-btn-normal" lay-event="edit">修改</a>
+            {{# if(d.entranceState!="3"){ }}
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+            {{# } }}
+
         </script>
     </div>
 </div>
 <div id="downloadtable"style="display: none;width:60%;margin: 0 auto">
     <div style="margin-top: 10%">
-        <p><span style="font-size: 15px;color: red">注意:请按照指定的格式上传文件,点击下载模板</span></p>
-        <button class="layui-btn layui-btn-danger "type="button" >下载模板</button>
+        <p><span style="font-size: 15px;color: red">注意:请按照指定的格式上传导入文件,点击下载模板</span></p>
+        <button class="layui-btn layui-btn-danger "type="button" id="export" >下载导入模板</button>
     </div>
     <div class="layui-upload"style="margin-top: 10%">
 
@@ -136,7 +140,7 @@
 
 
 <#--下拉复选-->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/recruit/js/axios.js"></script>
 <script src="/recruit/js/label.js"></script>
 <script src="/recruit/js/xm.js"></script>
 
