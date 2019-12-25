@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbRole;
+import com.jczx.domain.TbUser;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -42,13 +43,17 @@ public class RoleService extends BaseService {
     public List<TbRole> ListRole(Pager pager) {
         Conditions conditions = getConditions();
         int count = getCount(conditions);
-        pager.setDataTotal(count);
+        if (pager != null) {
+            pager.setDataTotal(count);
+        }
         List<TbRole> list = getListByPage(conditions, pager);
         return list;
     }
 
+
     /**
      * 修改
+     *
      * @param role
      * @return
      */
@@ -61,11 +66,26 @@ public class RoleService extends BaseService {
     }
 
     /**
-     * 删除
+     * 修改角色权限列表
+     *
+     * @param functionIds
+     * @param roleId
      * @return
      */
-    public ServiceResult deleteRole(Integer id){
-        delById(getTableName(),id);
+    public ServiceResult modifyRoleByFunctionIds(String functionIds, Integer roleId) {
+        TbRole role = getById(roleId);
+        role.setFunctionIds(functionIds);
+        modify(role);
+        return SUCCESS;
+    }
+
+    /**
+     * 删除
+     *
+     * @return
+     */
+    public ServiceResult deleteRole(Integer id) {
+        delById(getTableName(), id);
         //TODO 要判断下面有没有账号
         return SUCCESS;
     }

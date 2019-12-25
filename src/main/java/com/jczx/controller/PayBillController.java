@@ -3,6 +3,7 @@ package com.jczx.controller;
 import com.jczx.bean.RemindBean;
 import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbPayBill;
+import com.jczx.service.UserService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class PayBillController extends BaseController {
     @Autowired
     private PayBillService payBillService;
+
 
     /**
      * 缴费列表
@@ -81,6 +83,7 @@ public class PayBillController extends BaseController {
     @ResponseBody
     public ServiceResult add(TbPayBill payBill) {
         ServiceResult add = payBillService.addBill(payBill);
+
         return add;
     }
 

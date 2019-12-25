@@ -1,12 +1,11 @@
 package com.jczx.controller;
 
+import com.jczx.domain.TbFunction;
 import com.jczx.domain.TbRole;
-import com.jczx.domain.TbStudent;
 import com.jczx.domain.TbUser;
+import com.jczx.service.PrivilegeService;
 import com.jczx.service.RoleService;
-import com.jczx.service.StudentService;
 import com.jczx.service.UserService;
-import com.sun.org.apache.regexp.internal.RE;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author swj
@@ -27,9 +28,10 @@ public class AccountController extends BaseController {
     @Autowired
     private RoleService roleService;
     @Autowired
-    private StudentService studentService;
+    private PrivilegeService privilegeService;
     @Autowired
     private UserService userService;
+
 
     /**
      * 账号列表页面
@@ -57,7 +59,10 @@ public class AccountController extends BaseController {
      * @return
      */
     @RequestMapping("/toprivilege")
-    public String toPrivilege() {
+    public String toPrivilege(Map<String, Object> map, Integer roleId) {
+        List<TbFunction> list = privilegeService.listFunctions();
+        map.put("list", list);
+        map.put("roleId", roleId);
         return "account/privilege";
     }
 
@@ -67,6 +72,19 @@ public class AccountController extends BaseController {
     @RequestMapping("/tomodpassword")
     private String toModPassword() {
         return "account/modPassword";
+    }
+
+    /**
+     * 修改密码
+     */
+    @RequestMapping("/tosetrole")
+    private String toSetRole(Map<String, Object> map, Integer id) {
+        List<TbRole> list = roleService.ListRole(null);
+        Set<Integer> listRoleId = userService.listRoleIds(id);
+        map.put("id", id);
+        map.put("list", list);
+        map.put("listRoleId", listRoleId);
+        return "account/setRole";
     }
 
     /**
@@ -144,14 +162,89 @@ public class AccountController extends BaseController {
         TbUser user = userService.getById(id);
         return userService.cancelUser(user);
     }
-    @RequestMapping("/list/user")
+
+    /**
+     * 返回学生用户表
+     *
+     * @param keywords
+     * @param limit
+     * @param page
+     * @return
+     */
+    @RequestMapping("/student/list")
     @ResponseBody
-    private ServiceResult listUser(String keywords, Integer limit, Integer page) {
+    private ServiceResult studentList(String keywords, Integer limit, Integer page) {
         Pager pager = checkPager(limit, page);
-        List<TbUser> list = userService.listUser(keywords, pager);
-        for(TbUser user:list){
-            System.out.println("..."+user.getStudentName(user.getAccountId()));
-        }
+        List<TbUser> list = userService.listStudentUser(pager, keywords);
         return layuiList(list, pager);
+    }
+
+    /**
+     * 返回教师用户表
+     *
+     * @param keywords
+     * @param limit
+     * @param page
+     * @return
+     */
+    @RequestMapping("/teacher/list")
+    @ResponseBody
+    private ServiceResult teacherList(String keywords, Integer limit, Integer page) {
+        Pager pager = checkPager(limit, page);
+        List<TbUser> list = userService.listTeacherUser(pager, keywords);
+        return layuiList(list, pager);
+    }
+
+    /**
+     * 重置学生密码
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/reset")
+    @ResponseBody
+    private ServiceResult doReset(Integer id, Integer type) {
+        return userService.doReset(id, type);
+    }
+
+    /**
+     * 修改角色列表
+     *
+     * @param roleId
+     * @param id
+     * @return
+     */
+    @RequestMapping("/modifyroleid")
+    @ResponseBody
+    private ServiceResult modifyRoleId(Integer roleId, Integer id) {
+        return userService.modifyRoleId(roleId, id);
+
+    }
+
+    /**
+     * 取消单个角色
+     *
+     * @param roleId
+     * @param id
+     * @return
+     */
+    @RequestMapping("/cancelroleid")
+    @ResponseBody
+    private ServiceResult cancelRoleId(Integer roleId, Integer id) {
+        return userService.modifyCancelRoleId(roleId, id);
+
+    }
+
+    /**
+     * 修改角色的权限列表
+     *
+     * @param functionIds
+     * @param roleId
+     * @return
+     */
+    @RequestMapping("/rolepermission")
+    @ResponseBody
+    private ServiceResult rolePermission(String functionIds, Integer roleId) {
+        return roleService.modifyRoleByFunctionIds(functionIds, roleId);
     }
 }

@@ -68,7 +68,6 @@ public class AttachmentService extends BaseService {
         conditions.putEW("linkId", linkId);
         conditions.putEW("type", type);
         TbAttachment attachment = getOne(conditions);
-        System.out.println(JdbcParser.getInstance().getSelectHql(conditions));
         return attachment;
     }
 

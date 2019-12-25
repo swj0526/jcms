@@ -66,18 +66,23 @@
                     <table class="layui-hide" id="test" lay-filter="test"></table>
 
                     <script type="text/html" id="currentTableBar">
-                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"
-                                data-method="confirmTrans">
-                            修改
-                        </button>
+
                         <button type="button" class="layui-btn  layui-btn-xs" lay-event="fun"
                                 data-method="confirmTrans">
                             设置权限
                         </button>
+                        {{# if(d.id!="1"){ }}
                         <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete"
                                 data-method="confirmTrans">
                             删除
                         </button>
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"
+                                data-method="confirmTrans">
+                            修改
+                        </button>
+
+                        {{# } }}
+
                     </script>
                 </div>
             </div>

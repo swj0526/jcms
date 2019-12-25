@@ -4,168 +4,79 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     var $ = layui.jquery;
     var form = layui.form;
     var selectRole = "";
+    var id;
     //渲染数据表格
     var tableIns = table.render({
         elem: '#test1'//渲染目标
-        /* , url: '/json/table.json'//数据接口*/
+        , url: '/account/teacher/list'//数据接口
         , id: 'userTableReload1'
         , cols: [[
-            {field: 'name', title: '职工姓名'},
-            {field: 'department', title: '所属部门'},
-            {field: 'postName', title: '岗位名称'},
+            {field: 'teacherName', title: '职工姓名'},
             {field: 'phone', title: '电话号码'},
-            {
-                field: 'role',
-                title: '角色'
-            },
+            {field: 'roleNames', title: '角色'},
             {field: 'lockDemo1', title: '是否激活账号', templet: '#checkboxTpl1', unresize: true},
-            {fixed: 'right', title: '操作', toolbar: '#barDemo1',width:174}
+            {fixed: 'right', title: '操作', toolbar: '#barDemo1', width: 174}
         ]]
-        , data: [{
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: ' 教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: ' 教师,管理员 ',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }, {
-            name: "王老师",
-            department: '教务部',
-            postName: '教务老师',
-            role: '教师,管理员',
-            phone: '18653525596'
-        }]
+        , parseData: function (res) { //res 即为原始返回的数据
+            /*   console.log(res);*/
+            return {
+                "code": "0",
+                "count": res.pager.dataTotal,
+                data: res.result
+            }
+        }
+
         , page: true
     });
     //监听工具条
     table.on('tool(test1)', function (obj) {
         var data = obj.data;
         if (obj.event === 'reset1') {
-            layer.open({
+            var resetPop = layer.open({
                 type: 1,
                 title: "重置密码",
-                content: "<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为abcd?</div>",
+                content: "<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为abcd123?</div>",
                 area: ['300px', '150px'], //设置宽高
                 btn: ['确定重置密码', '取消'],
-                btnAlign: "c"
+                btnAlign: "c",
+                yes: function () {
+                    $.post("/account/reset", {id: data.id, type: 2}, function (result) {
+                        if (result.success) {
+                            layer.close(resetPop);
+                        }
+                    });
+                }
             });
         } else if (obj.event === 'reset2') {
+            var roleId = data.id;
             layer.open({
-                type: 1,
+                type: 2,
                 title: "设置角色",
-                area: ['720px', '350px'], //设置宽高
-                content: $("#roleDemo"),
-                btn: ['确定', '取消'],
-                success: function (index) {
-
-                },
-                yes: function (index) {
-
-                    layer.close(index);
-                },
-                btn2: function () {
-                    alert('取消');
-                }
+                area: ['720px', '300px'], //设置宽高
+                content: '/account/tosetrole?id=' + roleId
             });
         }
     });
-
     //监听锁定操作
     form.on('checkbox(lockDemo1)', function (obj) {
         // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+        var id = this.value;
         if (obj.elem.checked) {
-            layer.msg("账号已激活,初始密码为abcd,请提醒用户重新进行密码更改!");
+            $.post('/account/user/activate', {id: id}, function (result) {
+                if (result.success == true) {
+                    layer.msg("账号已激活,初始密码为abcd123,请提醒用户重新进行密码更改!");
+                } else {
+                    layer.msg("激活失败!");
+                }
+            });
         } else {
-            layer.msg("账号已锁定!");
+            $.post('/account/user/cancel', {id: id}, function (result) {
+                if (result.success == true) {
+                    layer.msg("账号已锁定!");
+                } else {
+                    layer.msg("锁定失败!");
+                }
+            });
         }
 
     });

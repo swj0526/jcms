@@ -17,7 +17,7 @@ public class HomeController extends BaseController {
 private PayBillService payBillService;
     @RequestMapping("/main")
     private String mianHome() {
-       payBillService.ListRemind();
+      getPath();
         return "/home/main";
     }
 

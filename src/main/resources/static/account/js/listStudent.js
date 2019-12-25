@@ -3,10 +3,11 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     var layer = layui.layer;
     var $ = layui.jquery;
     var form = layui.form;
+    var id;
     //渲染数据表格
     var tableIns = table.render({
         elem: '#test'//渲染目标
-        , url: '/account/list/user'
+        , url: '/account/student/list'
         , id: 'userTableReload'
         , cols: [[
             {
@@ -34,19 +35,43 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
 
     table.on('tool(test)', function (obj) {
         var data = obj.data;
-
+        id = data.id;
         if (obj.event === 'reset') {
-            alert(lockId);
-            layer.open({
+            var resetPop = layer.open({
                 type: 1,
                 title: "重置密码",
                 content: "<div style='text-align: center;padding-top: 10px;'>该账号的密码重置为123456?</div>",
                 area: ['300px', '150px'], //设置宽高
                 btn: ['确定重置密码', '取消'],
-                btnAlign: "c"
+                btnAlign: "c",
+                yes: function () {
+                    $.post("/account/reset", {id: id,type:1}, function (result) {
+                        if (result.success) {
+                            layer.close(resetPop);
+                        }
+                    });
+                }
+            });
+        }else if(obj.event === 'setRole') {
+            var resetPop = layer.open({
+                type: 1,
+                title: "设置角色",
+                content: "",
+                area: ['400px', '250px'], //设置宽高
+                btn: ['确定', '取消'],
+                btnAlign: "c",
+                yes: function () {
+                    $.post("", {id: id}, function (result) {
+                        if (result.success) {
+                            layer.close(resetPop);
+                        }
+                    });
+                }
             });
         }
     });
+
+
     //监听锁定操作
     form.on('checkbox(lockDemo)', function (obj) {
         // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);

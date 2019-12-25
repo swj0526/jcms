@@ -33,6 +33,9 @@ public class ProjectConfig extends Config {
         list.add("add");
         list.add("modify");
         list.add("delete");
+        list.add("update");
+        list.add("do");
+        list.add("execute");
         return list;
     }
 

@@ -121,20 +121,53 @@ public class TbUser extends Domain {
 
     /**
      * 获取学生姓名
-     * @param accountId
+     *
      * @return
      */
-    public String getStudentName(Integer accountId) {
+    public String getStudentName() {
+        TbStudent student = CACHE.getStudent(accountId);
+        if (student == null) {
+            return "";
+        }
+        return student.getName() + "(" + student.getStudentNumber() + ")";
+    }
 
-        return CACHE.getStudentName(accountId);
-    }
     /**
-     * 获取老师姓名
-     * @param accountId
+     * 获取教师姓名
+     *
      * @return
      */
-    public String getTeacherName(Integer accountId) {
-        return CACHE.getTeacherName(accountId);
+    public String getTeacherName() {
+        TbTeacher teacher = CACHE.getTeacher(accountId);
+        if (teacher == null) {
+            return "";
+        }
+
+        return teacher.getName();
     }
+
+    /**
+     * 获取专业-班级名称
+     *
+     * @return
+     */
+    public String getMajorName() {
+        TbStudent student = CACHE.getStudent(accountId);
+        if (student == null) {
+            return "";
+        }
+        return CACHE.getMajorName(student.getMajorId());
+
+    }
+
+    /**
+     * 获取角色名称列表
+     *
+     * @return
+     */
+    public String getRoleNames() {
+        return CACHE.getRoleNames(roleIds);
+    }
+
 
 }

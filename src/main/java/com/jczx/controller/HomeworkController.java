@@ -161,8 +161,9 @@ public class HomeworkController extends BaseController {
     @RequestMapping("/dofile")
     public Render dofile(Integer id) throws IOException {
         TbAttachment attachment = attachmentService.getById(id);
-        String path = getPath().substring(1, getPath().length() - 1);
-        File file = new File(path + attachment.getURL());
+        File file = new File("E:/work/jcms/src/main/resources/static/upload/teacherFile/1577176050025R6R.png");
+        System.out.println(getPath());
+        System.out.println(attachment.getURL());
         return Render.renderFile(attachment.getName(), new FileInputStream(file));
     }
 }
