@@ -114,7 +114,7 @@ public class StudentController extends BaseController {
     @RequestMapping("/liststudentinteger")
     @ResponseBody
     public List<TbStudent> ListStudentInteger(){
-        List<TbStudent> list = studentService.List();
+        List<TbStudent> list = studentService.ListInteger();
         return list;
     }
 

@@ -2,6 +2,7 @@ package com.jczx.service;
 
 import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbHomework;
+import com.jczx.domain.TbStudentWork;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -44,7 +45,12 @@ public class HomeworkService extends BaseService {
         add(homework);
         return SUCCESS;
     }
-
+    public List<TbStudentWork> listWork(Integer homeWorkId){
+        Conditions conditions = getConditions();
+        conditions.putEW("homeworkId",homeWorkId);
+        List<TbStudentWork> list = getList(conditions);
+        return list;
+    }
     /**
      * 根据id修改
      *

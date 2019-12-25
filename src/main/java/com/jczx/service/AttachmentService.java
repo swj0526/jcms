@@ -33,6 +33,14 @@ public class AttachmentService extends BaseService {
         add(attachment);
         return success(attachment.getId());
     }
+    public List<TbAttachment> listWork(Integer linkId,Integer studentId){
+        Conditions conditions = getConditions();
+        conditions.putEW("type",TbAttachment.TYPE_STUDENTFILE);
+        conditions.putEW("linkId",linkId);
+        conditions.putEW("studentId",studentId);
+        List<TbAttachment> list = getList(conditions);
+        return list;
+    }
 
 
     public List<TbAttachment> listImg(Integer linkId, Integer studentID){

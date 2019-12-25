@@ -2,6 +2,7 @@ package com.jczx.controller;
 
 import com.jczx.domain.TbAttachment;
 import com.jczx.domain.TbHomework;
+import com.jczx.domain.TbStudentWork;
 import com.jczx.service.AttachmentService;
 import com.jczx.service.HomeworkService;
 import net.atomarrow.bean.Pager;
@@ -31,12 +32,16 @@ public class HomeworkController extends BaseController {
     private HomeworkService homeworkService;
     @Autowired
     private AttachmentService attachmentService;
+
     /**
      * 上传页面
      *
      * @return
      */
-
+    @RequestMapping("/toupload")
+    public String toUpload() {
+        return "/work/upload";
+    }
 
     /**
      * 作业列表
@@ -64,7 +69,9 @@ public class HomeworkController extends BaseController {
 
 
     @RequestMapping("/download")
-    public String download() {
+    public String download(Integer id, Map<String, Object> map) {
+        List<TbStudentWork> StudentWork = homeworkService.listWork(id);
+        map.put("StudentWork", StudentWork);
         return "/work/workDownload";
     }
 
