@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class TbFunction extends Domain {
     private Integer id;
     private String name; //功能名称
-    private String funCode;//功能编码
+    private Integer funCode;//功能编码
     private Integer pid;//关联上管理的功能id
 
     public Integer getId() {
@@ -31,11 +31,11 @@ public class TbFunction extends Domain {
         this.name = name;
     }
 
-    public String getFunCode() {
+    public Integer getFunCode() {
         return funCode;
     }
 
-    public void setFunCode(String funCode) {
+    public void setFunCode(Integer funCode) {
         this.funCode = funCode;
     }
 

@@ -34,11 +34,37 @@
                 , children: [
                     <#list list  as fun>
                     <#if fun.pid==listp.id>
+                    <#if (functionList?size>0)>
+                     <#list functionList as ddd>
+                    <#assign a="${ddd?c}">
+                    <#assign b="${fun.funCode?c}">
+                       <#if a==b>
                     {
                         title: '${fun.name}'
                         , id: '${fun.funCode}'
+                        , checked: true
                         , field: 'name'
                     },
+                    <#break >
+                    <#else >
+                    {
+                        title: '${fun.name}'
+                        , id: '${fun.funCode}'
+                        , checked: false
+                        , field: 'name'
+                    },
+                    <#break >
+                       </#if>
+                     </#list>
+                    <#else >
+                    {
+                        title: '${fun.name}'
+                        , id: '${fun.funCode}'
+                        , checked: false
+                        , field: 'name'
+                    },
+                    </#if>
+
                     </#if>
                     </#list>
                 ]
@@ -60,8 +86,10 @@
                     data = data + val.id + ","
                 })
             });
-            $.post("/account/rolepermission", {functionIds: data, roleId: roleId}, function () {
-
+            $.post("/account/rolepermission", {functionIds: data, roleId: roleId}, function (result) {
+                if (result.success == true) {
+                    close_tab("privilege_" + roleId,"account_role","角色权限管理", "/account/torole");
+                }
             });
             alert(data);
         })
