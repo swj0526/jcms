@@ -1,10 +1,13 @@
 package com.jczx.domain;
 
 import com.jczx.service.AttachmentService;
+import com.jczx.system.CACHE;
+import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +19,6 @@ import java.util.List;
  */
 @Component
 public class TbStudentWork extends Domain {
-    @Autowired
-    private AttachmentService attachmentService;
     private Integer id;
     private Integer studentId;//学生表id
     private Integer homeworkId;//作业id//homeworkId
@@ -28,12 +29,24 @@ public class TbStudentWork extends Domain {
     private Integer teacherId;//评价老师
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
+    private List<TbAttachment> list;
 
-    public List<TbAttachment> getWork() {
-        List<TbAttachment> tbAttachments = attachmentService.listWork(id, studentId);
-        return tbAttachments;
+    public List<TbAttachment> getList() {
+        return list;
     }
 
+    public void setList(List<TbAttachment> list) {
+        this.list = list;
+    }
+
+    public String getName() {
+        return CACHE.getStudentName(studentId);
+    }
+
+    public String getMajor() {
+        System.out.println(CACHE.getMajorName(studentId));
+        return CACHE.getMajorName(studentId);
+    }
 
     public Integer getId() {
         return id;

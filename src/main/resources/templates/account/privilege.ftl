@@ -33,30 +33,23 @@
                 , spread: true
                 , children: [
                     <#list list  as fun>
+                    <#assign a=0>
                     <#if fun.pid==listp.id>
                     <#if (functionList?size>0)>
-                     <#list functionList as ddd>
-                    <#assign a="${ddd?c}">
-                    <#assign b="${fun.funCode?c}">
-                       <#if a==b>
+                    <#list functionList as ddd>
+                    <#if ddd == fun.funCode>
                     {
-                        title: '${fun.name}'
+                        title: '${fun.name+ddd}'
                         , id: '${fun.funCode}'
                         , checked: true
                         , field: 'name'
                     },
+                    <#assign a=1>
                     <#break >
-                    <#else >
-                    {
-                        title: '${fun.name}'
-                        , id: '${fun.funCode}'
-                        , checked: false
-                        , field: 'name'
-                    },
-                    <#break >
-                       </#if>
-                     </#list>
-                    <#else >
+                    </#if>
+
+                    </#list>
+                    <#if a==0 >
                     {
                         title: '${fun.name}'
                         , id: '${fun.funCode}'
@@ -64,7 +57,7 @@
                         , field: 'name'
                     },
                     </#if>
-
+                    </#if>
                     </#if>
                     </#list>
                 ]
@@ -88,10 +81,9 @@
             });
             $.post("/account/rolepermission", {functionIds: data, roleId: roleId}, function (result) {
                 if (result.success == true) {
-                    close_tab("privilege_" + roleId,"account_role","角色权限管理", "/account/torole");
+                    close_tab("privilege_" + roleId, "account_role", "角色权限管理", "/account/torole");
                 }
             });
-            alert(data);
         })
     });
 </script>
