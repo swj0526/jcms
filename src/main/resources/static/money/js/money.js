@@ -76,19 +76,15 @@ layui.use(['table', 'jquery', 'laydate', 'form', 'element', 'upload'], function 
                 $.each(result,function (key,value) {
                      var a='<img src="'+value.url+'" style="width: 100%;height: 100%">'
                     url=url+a;
-
                 })
                 layer.open({
                     btnAlign: 'c'
                     , type: 1
                     , area: ['700px', '700px']
                     , btn: ['确定']
-                    , content: '<img src="D:/workbase/jcms/target/classes/upload/img/1576636136450QT8.jpg" style="width: 100%;height: 100%">'
+                    , content: '<img src="\\upload\\1576636136450QT8.jpg" style="width: 100%;height: 100%">'
                 })
-
-
             })
-
         } else if (obj.event === 'remarkBtn') {
             layer.open({
                 btnAlign: 'c'

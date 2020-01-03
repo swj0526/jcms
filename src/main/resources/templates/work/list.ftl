@@ -11,13 +11,13 @@
 
             <form class="layui-form layui-form-pane">
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">关键词</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="keywords" autocomplete="off" class="layui-input"
-                                   placeholder="作业名称/作业内容">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键词</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="keywords" autocomplete="off" class="layui-input"
+                                       placeholder="作业名称/作业内容">
+                            </div>
                         </div>
-                    </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">专业-班级</label>
                         <div class="layui-input-inline">

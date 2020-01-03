@@ -187,7 +187,7 @@ layui.use(['form', 'table', 'jquery'], function () {
                 }
             );
         } else if (obj.event === 'fun') {
-            parent_tab("privilege", "权限管理", "/account/toprivilege?roleId=" + data.id);
+            parent_tab("privilege_"+data.id, "权限管理", "/account/toprivilege?roleId=" + data.id);
         }
 
     });

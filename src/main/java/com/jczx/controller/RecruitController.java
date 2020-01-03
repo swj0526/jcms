@@ -160,7 +160,7 @@ public class RecruitController extends BaseController {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);//日志
 
-    @PostMapping("/upload")
+    @PostMapping("/static/upload")
     @ResponseBody
     public Map<String, Object> upload(@RequestParam("file") MultipartFile file) throws Throwable {
         ServiceResult result = recruitService.upload(file, getExcelPath());

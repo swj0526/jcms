@@ -40,12 +40,21 @@ public class TbUser extends Domain {
     private Integer type;//类型 1.学生 2.教职工
     private Integer accountId;//跟具体的信息表关联id
     private String phone;//手机号码,登录时的用户名
+    private String name;//用户姓名
     private String password;//密码
     private String roleIds;//角色列表
     private Integer operatorId;//操作人
     @FieldType(type = Type.DATETIME)
     private Date createTime;//操作时间
     private Boolean enable;//该账号是否被激活//0.未激活,1.已激活
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;

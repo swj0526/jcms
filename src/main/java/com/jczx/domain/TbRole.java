@@ -44,6 +44,7 @@ public class TbRole extends Domain {
     }
 
     public String getFunctionIds() {
+        System.out.println(functionIds);
         return functionIds;
     }
 

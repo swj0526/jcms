@@ -63,6 +63,8 @@ public class AccountController extends BaseController {
         List<TbFunction> list = privilegeService.listFunctions();
         map.put("list", list);
         map.put("roleId", roleId);
+        List<Integer> functionList = roleService.functionList(roleId);// 角色权限列表
+        map.put("functionList", functionList);
         return "account/privilege";
     }
 
@@ -173,9 +175,9 @@ public class AccountController extends BaseController {
      */
     @RequestMapping("/student/list")
     @ResponseBody
-    private ServiceResult studentList(String keywords, Integer limit, Integer page) {
+    private ServiceResult studentList(String keywords, Integer limit, Integer page,Integer majorId,Boolean enable) {
         Pager pager = checkPager(limit, page);
-        List<TbUser> list = userService.listStudentUser(pager, keywords);
+        List<TbUser> list = userService.listStudentUser(pager, keywords,majorId,enable);
         return layuiList(list, pager);
     }
 
@@ -189,9 +191,9 @@ public class AccountController extends BaseController {
      */
     @RequestMapping("/teacher/list")
     @ResponseBody
-    private ServiceResult teacherList(String keywords, Integer limit, Integer page) {
+    private ServiceResult teacherList(String keywords, Integer limit, Integer page,Boolean enable) {
         Pager pager = checkPager(limit, page);
-        List<TbUser> list = userService.listTeacherUser(pager, keywords);
+        List<TbUser> list = userService.listTeacherUser(pager, keywords,enable);
         return layuiList(list, pager);
     }
 

@@ -132,7 +132,7 @@ public class PayBillController extends BaseController {
         return Render.renderFile("学生信息表.xls", inputStream);
     }
 
-    @RequestMapping("/upload")
+    @RequestMapping("/static/upload")
     @ResponseBody
     public Map<String, Object> upload(Integer linkId, Integer studentId, MultipartFile file) {
         ServiceResult result = payBillService.uploadFile(file, getImgPath(), linkId, studentId);

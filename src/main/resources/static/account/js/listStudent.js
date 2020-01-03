@@ -4,6 +4,9 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     var $ = layui.jquery;
     var form = layui.form;
     var id;
+    var currPage = 1;
+    var data;
+    var res;
     //渲染数据表格
     var tableIns = table.render({
         elem: '#test'//渲染目标
@@ -20,9 +23,16 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'lockDemo', title: '是否激活账号', templet: '#checkboxTpl', unresize: true},
             {fixed: 'right', title: '操作', toolbar: '#barDemo'}
         ]]
-        , page: true
+        , page: true,
         //解析table 组件规定的数据结构
-        , parseData: function (res) { //res 即为原始返回的数据
+        done: function (rest, curr, count) {
+            currPage = curr;
+            res = rest;
+            console.log(currPage);
+            console.log(rest);
+
+        },
+        parseData: function (res) { //res 即为原始返回的数据
             /*   console.log(res);*/
             return {
                 "code": "0",
@@ -30,6 +40,25 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
                 data: res.result
             }
         }
+    });
+    // 监听搜索操作
+    form.on('submit(data-search-btn)', function (data) {
+        var keywords = $('[name="keywords"]').val();
+        var majorId = $('[name="majorId"]').val();
+        var enable = $('[name="enable"]').val();
+        //执行搜索重载
+        table.reload('userTableReload', {
+            page: {
+                curr: currPage
+            },
+            where: {
+                keywords: keywords,
+                majorId: majorId,
+                enable: enable
+            }
+        }, 'data');
+
+
     });
     //监听工具条
 
@@ -45,14 +74,14 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
                 btn: ['确定重置密码', '取消'],
                 btnAlign: "c",
                 yes: function () {
-                    $.post("/account/reset", {id: id,type:1}, function (result) {
+                    $.post("/account/reset", {id: id, type: 1}, function (result) {
                         if (result.success) {
                             layer.close(resetPop);
                         }
                     });
                 }
             });
-        }else if(obj.event === 'setRole') {
+        } else if (obj.event === 'setRole') {
             var resetPop = layer.open({
                 type: 1,
                 title: "设置角色",

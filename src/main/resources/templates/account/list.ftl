@@ -24,7 +24,7 @@
                             <label class="layui-form-label">关键词</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="keywords" autocomplete="off" class="layui-input"
-                                       placeholder="姓名/手机号码/学号">
+                                       placeholder="姓名/手机号码">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -43,11 +43,11 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">是否被激活</label>
                             <div class="layui-input-inline">
-                                <select name="type" lay-verify="" required
+                                <select name="enable" lay-verify="" required
                                         lay-verify="required">
                                     <option value=""></option>
-                                    <option value="">激活</option>
-                                    <option value="">锁定</option>
+                                    <option value="true">激活</option>
+                                    <option value="false">锁定</option>
                                 </select>
                             </div>
                             <div class="layui-inline">
@@ -84,10 +84,10 @@
                                         <label class="layui-form-label">关键词</label>
                                         <div class="layui-input-inline">
                                             <input type="text" name="keys1" autocomplete="off" class="layui-input"
-                                                   placeholder="张三/201932094/5000">
+                                                   placeholder="姓名/手机号">
                                         </div>
                                     </div>
-                                    <div class="layui-inline">
+                                    <#--<div class="layui-inline">
                                         <label class="layui-form-label">角色</label>
                                         <div class="layui-input-inline">
                                             <select name="role1" lay-verify="">
@@ -109,14 +109,14 @@
                                                 <option value="">教务</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="layui-inline">
                                         <label class="layui-form-label">是否被激活</label>
                                         <div class="layui-input-inline">
                                             <select name="lock1" lay-verify="">
                                                 <option value=""></option>
-                                                <option value="">激活</option>
-                                                <option value="">锁定</option>
+                                                <option value="true">激活</option>
+                                                <option value="false">锁定</option>
                                             </select>
                                         </div>
 

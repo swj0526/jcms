@@ -64,35 +64,35 @@ public class BaseController<T> {
      * 获取上传文章存放的文件路径
      */
     public String getArticlePath() {
-        return getPath() + "/upload/article/";
+        return getPath() + "/static/upload/article/";
     }
 
     /**
      * 获取上传excel存放的文件路径
      */
     public String getExcelPath() {
-        return getPath() + "/upload/excel/";
+        return getPath() + "/static/upload/excel/";
     }
 
     /**
      * 获取上传单据存放的文件路径
      */
     public String getImgPath() {
-        return getPath() + "/upload/img/";
+        return getPath() + "/templates/img/";
     }
 
     /**
      * 获取学生上传文件的路径
      */
     public String getStudentPath() {
-        return getPath() + "/upload/studentFile/";
+        return getPath() + "/static/upload/studentFile/";
     }
 
     /**
      * 获取老师上传文件的路径
      */
     public String getTeacherPath() {
-        return getPath() + "/upload/teacherFile/";
+        return getPath() + "/static/upload/teacherFile/";
     }
 
 }

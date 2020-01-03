@@ -5,6 +5,9 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
     var form = layui.form;
     var selectRole = "";
     var id;
+    var currPage = 1;
+    var data;
+    var res;
     //渲染数据表格
     var tableIns = table.render({
         elem: '#test1'//渲染目标
@@ -17,7 +20,16 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
             {field: 'lockDemo1', title: '是否激活账号', templet: '#checkboxTpl1', unresize: true},
             {fixed: 'right', title: '操作', toolbar: '#barDemo1', width: 174}
         ]]
-        , parseData: function (res) { //res 即为原始返回的数据
+        , page: true,
+        //解析table 组件规定的数据结构
+        done: function (rest, curr, count) {
+            currPage = curr;
+            res = rest;
+            console.log(currPage);
+            console.log(rest);
+
+        },
+        parseData: function (res) { //res 即为原始返回的数据
             /*   console.log(res);*/
             return {
                 "code": "0",
@@ -25,8 +37,23 @@ layui.use(['table', 'layer', 'jquery', 'form'], function () {
                 data: res.result
             }
         }
+    });
+    // 监听搜索操作
+    form.on('submit(data-search-btn)', function (data) {
+        var keywords = $('[name="keywords"]').val();
+        var lock1 = $('[name="lock1"]').val();
+        //执行搜索重载
+        table.reload('userTableReload1', {
+            page: {
+                curr: currPage
+            },
+            where: {
+                keywords: keywords,
+                enable: lock1
+            }
+        }, 'data');
 
-        , page: true
+
     });
     //监听工具条
     table.on('tool(test1)', function (obj) {

@@ -5,6 +5,7 @@ import com.jczx.domain.TbHomework;
 import com.jczx.domain.TbStudentWork;
 import com.jczx.service.AttachmentService;
 import com.jczx.service.HomeworkService;
+import com.jczx.service.StudentWorkService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +31,8 @@ public class HomeworkController extends BaseController {
     private HomeworkService homeworkService;
     @Autowired
     private AttachmentService attachmentService;
+    @Autowired
+    private StudentWorkService studentWorkService;
 
     /**
      * 上传页面
@@ -59,22 +60,33 @@ public class HomeworkController extends BaseController {
      * @param file
      * @return
      */
-    @RequestMapping("/upload")
+    @RequestMapping("/static/upload")
     @ResponseBody
     public Map<String, Object> upload(MultipartFile file) {
         ServiceResult result = homeworkService.uploadFile(file, getTeacherPath());
         Map map = uploadeResult(result);
         return map;
     }
+    @RequestMapping("/modifyscore")
+    @ResponseBody
+    public ServiceResult modifyScore(Integer id,Integer studentId,Integer score){
+        ServiceResult serviceResult = studentWorkService.modifyScore(id, studentId, score);
+        return serviceResult;
+    }
+    @RequestMapping("/modifyestimateContent")
+    @ResponseBody
+    public ServiceResult modifyScore(Integer id,Integer studentId,String estimateContent){
+        ServiceResult serviceResult = studentWorkService.modifyEstimateContent(id, studentId, estimateContent);
+        return serviceResult;
+    }
 
 
     @RequestMapping("/download")
     public String download(Integer id, Map<String, Object> map) {
-        List<TbStudentWork> StudentWork = homeworkService.listWork(id);
-        map.put("StudentWork", StudentWork);
+        List<TbStudentWork> studentWork = studentWorkService.listWork(id);
+        map.put("studentWork", studentWork);
         return "/work/workDownload";
     }
-
     /**
      * 添加修改页面公用一个页面
      *

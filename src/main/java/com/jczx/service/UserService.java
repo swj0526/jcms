@@ -5,10 +5,13 @@ import com.jczx.domain.TbStudent;
 import com.jczx.domain.TbTeacher;
 import com.jczx.domain.TbUser;
 import com.jczx.system.SC;
+import jdk.nashorn.internal.objects.NativeUint8Array;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.util.StringUtil;
 import org.apache.poi.ss.formula.functions.T;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -23,6 +26,9 @@ import java.util.Set;
  */
 @Component
 public class UserService extends BaseService {
+
+    @Autowired
+    private StudentService studentService;
 
     /**
      * 新增账号
@@ -96,12 +102,28 @@ public class UserService extends BaseService {
      *
      * @return
      */
-    public List<TbUser> listStudentUser(Pager pager, String keywords) {
+    public List<TbUser> listStudentUser(Pager pager, String keywords, Integer majorId, Boolean enable) {
         Conditions conditions = getConditions();
         conditions.putEW("type", TbUser.TYPE_STUDENT);
+        conditions.putEWIfOk("enable", enable);
+        if (StringUtil.isNotBlank(keywords)) {
+            conditions.parenthesesStart();
+            conditions.putLIKE("name", keywords);
+            conditions.or();
+            conditions.putLIKE("phone", keywords);
+            conditions.parenthesesEnd();
+        }
         int count = getCount(conditions);
         pager.setDataTotal(count);
         List<TbUser> list = getListByPage(conditions, pager);
+        if (majorId != null) {
+            for (TbUser user : list) {
+                TbStudent student = studentService.get(user.getAccountId());
+                if (student.getMajorId() != majorId) {
+                    list.remove(user);
+                }
+            }
+        }
         return list;
     }
 
@@ -111,9 +133,17 @@ public class UserService extends BaseService {
      *
      * @return
      */
-    public List<TbUser> listTeacherUser(Pager pager, String keywords) {
+    public List<TbUser> listTeacherUser(Pager pager, String keywords,Boolean enable) {
         Conditions conditions = getConditions();
         conditions.putEW("type", TbUser.TYPE_TEACHER);
+        conditions.putEWIfOk("enable", enable);
+        if (StringUtil.isNotBlank(keywords)) {
+            conditions.parenthesesStart();
+            conditions.putLIKE("name", keywords);
+            conditions.or();
+            conditions.putLIKE("phone", keywords);
+            conditions.parenthesesEnd();
+        }
         int count = getCount(conditions);
         pager.setDataTotal(count);
         List<TbUser> list = getListByPage(conditions, pager);
@@ -157,6 +187,7 @@ public class UserService extends BaseService {
 
     /**
      * 修改角色列表
+     *
      * @param roleId
      * @param id
      * @return
@@ -173,8 +204,10 @@ public class UserService extends BaseService {
         modify(user);
         return SUCCESS;
     }
+
     /**
      * 取消具体角色列表
+     *
      * @param roleId
      * @param id
      * @return
@@ -191,6 +224,7 @@ public class UserService extends BaseService {
         modify(user);
         return SUCCESS;
     }
+
     @Override
     public String getTableName() {
         return TbUser.class.getSimpleName();

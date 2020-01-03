@@ -105,4 +105,5 @@ public abstract class BaseService extends Service {
         }
         return (int) ((endDateTime - startDateTime) / (1000 * 3600 * 24));
     }
+
 }

@@ -10,6 +10,7 @@ import net.atomarrow.util.StringUtil;
 import org.springframework.stereotype.Component;
 
 import javax.management.relation.Role;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,6 +89,27 @@ public class RoleService extends BaseService {
         delById(getTableName(), id);
         //TODO 要判断下面有没有账号
         return SUCCESS;
+    }
+
+    /**
+     * 根据id获得角色的权限功能列表
+     *
+     * @param roleId
+     * @return
+     */
+    public List<Integer> functionList(Integer roleId) {
+        TbRole role = getById(roleId);
+        List<Integer> list = new ArrayList<>();
+        String functionIds = role.getFunctionIds();
+        if (functionIds != null) {
+            String[] split = functionIds.split(",");
+            for (int i = 0; i < split.length; i++) {
+                if (!split[i].equals("")) {
+                    list.add(Integer.parseInt(split[i]));
+                }
+            }
+        }
+        return list;
     }
 
     @Override
