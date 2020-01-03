@@ -1,6 +1,6 @@
 package com.jczx.controller;
 
-import com.jczx.domain.TbStudent;
+import com.jczx.domain.TbInternship;
 import com.jczx.service.InternshipService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -33,24 +33,6 @@ public class InternshipController extends BaseController {
 
 
     /**
-     * 查看试学人员
-     *
-     * @param keywords
-     * @param
-     * @param page
-     * @param limit
-     * @return
-     */
-    @RequestMapping("/list")
-    @ResponseBody
-    public ServiceResult listInternship(String keywords, String searchTime, Integer timeState, Integer page, Integer limit) {
-        Pager pager = checkPager(limit, page);
-        List<TbStudent> list = internshipService.listInternship(keywords, searchTime, timeState, pager);
-        return layuiList(list, pager);
-
-    }
-
-    /**
      * 编辑试学时间
      *
      * @param id
@@ -67,14 +49,30 @@ public class InternshipController extends BaseController {
     /**
      * 删除试学信息
      *
-     * @param student
+     * @param
      * @return
      */
     @RequestMapping("/delete")
     @ResponseBody
-    public ServiceResult deleteInternship(TbStudent student) {
-        ServiceResult result = internshipService.deleteInternship(student);
+    public ServiceResult deleteInternship(TbInternship internship) {
+        ServiceResult result = internshipService.deleteInternship(internship);
         return result;
+
+    }
+
+    /**
+     *查询试课学生信息
+     * @param page
+     * @param limit
+     * @return
+     */
+    @RequestMapping("/get")
+    @ResponseBody
+    public ServiceResult listInter(String keywords, String searchTime, Integer timeState,Integer page,Integer limit){
+
+        Pager pager = checkPager(limit, page);
+        List<TbInternship> internships = internshipService.listInternship(keywords, searchTime, timeState,pager);
+        return layuiList(internships,pager);
 
     }
 }

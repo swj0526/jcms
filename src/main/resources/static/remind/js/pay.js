@@ -13,8 +13,8 @@ layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
         , parseData: function (res) { //res 即为原始返回的数据
             return {
                 "code": "0",
-                "count": res.pager.dataTotal,
-                data: res.result
+                "count": res,
+                data: res
             }
         }
         , cols: [[

@@ -30,6 +30,7 @@
                 layer.msg('验证码不能为空');
                 return false;
             }
+
             layer.msg('登录成功', function () {
                 window.location = '/index.html';
             });

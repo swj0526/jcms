@@ -7,7 +7,6 @@ import com.jczx.service.AttachmentService;
 import com.jczx.service.HomeworkService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
-import net.atomarrow.render.FileRender;
 import net.atomarrow.render.Render;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 

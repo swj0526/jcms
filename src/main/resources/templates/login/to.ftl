@@ -10,8 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+
     <link rel="stylesheet" type="text/css" href="../../login/css/login.css"/>
+    <#include "../common/common.ftl"/>
 
 </head>
 <body>
@@ -48,9 +49,8 @@
         </div>
     </div>
 </div>
-<script src="../../login/js/jquery.js" charset="utf-8"></script>
-<script src="../../layui/layui.js" charset="utf-8"></script>
-<script src="../../login/js/jquery.particleground.min.js" charset="utf-8"></script>
-<script src="../../login/js/login.js"></script>
+<script src="/login/js/jquery.js" charset="utf-8"></script>
+<script src="/login/js/jquery.particleground.min.js" charset="utf-8"></script>
+<script src="/login/js/login.js"></script>
 </body>
 </html>

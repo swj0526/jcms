@@ -201,6 +201,19 @@
                     </div>
                 </div>
             </div>
+            <div class="layui-form-item">
+                <input type="text" style="display: none" id="entranceName">
+                <label class="layui-form-label">是否试学</label>
+                <div class="layui-inline">
+                    <div class="layui-inline" style="width: 190px">
+                        <select name="entranceState" lay-verify="" id="entranceState">
+                                <option value="0">否</option>
+                                <option value="4">是</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
             <div style="display: inline-block">
                 <label class="layui-form-label">备注</label>
                 <div class="layui-input-block" style=" width:510px">
@@ -213,9 +226,7 @@
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
-
         </div>
-
     </form>
     </div>
 

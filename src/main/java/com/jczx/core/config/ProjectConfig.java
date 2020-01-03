@@ -68,6 +68,7 @@ public class ProjectConfig extends Config {
     @Override
     public void configOrmBean(OrmContext ormContext) {
         ormContext.addBean(RemindBean.class);
+       /* ormContext.addBean(InternshipBean.class);*/
        /* ormContext.addBean(PageBean.class);
         ormContext.addBean(ResultBean.class);
         ormContext.addBean(StudentScoreBean.class);*/

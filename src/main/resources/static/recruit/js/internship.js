@@ -21,10 +21,10 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate','table'], function ()
 
     });
 
-    table.render({
+     var tableIns=table.render({
         elem: '#test'
         , title: '用户数据表'
-        , url: "/internship/list"
+        , url: "/internship/get"
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
                     "code": "0",
@@ -35,20 +35,20 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate','table'], function ()
             ,id: 'testReload'
         ,cols: [
             [{
-                field: 'name',
+                field: 'student.name',
                 title: '姓名',
                 event: 'setSign',
-                templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.id}} >{{d.name}}</a></div>',
+                templet: '<div><a style="color: #1E9FFF;cursor:pointer;" class="info" value={{d.id}} >{{d.student.name}}</a></div>',
                 width: 90
             },
                 {
-                    field: 'sex',
+                    field: 'studentSex',
                     title: '性别',
                     align: 'center',
                     width: 90
                 },
                 {
-                    field: 'school',
+                    field: 'studentSchool',
                     title: '学校'
                 },
                 {
@@ -116,26 +116,31 @@ layui.use(['element', 'layer', 'form', 'jquery', 'laydate','table'], function ()
     table.on('tool(test)', function (obj) {
         var data = obj.data;
         let id = data.id;
+        let studentId = data.studentId;
         //console.log(obj)
         if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
                 obj.del();
                 layer.close(index);
-                $.post('/internship/delete'+'?id='+id,function (result) {
+                $.post('/internship/delete'+'?studentId='+studentId,function (result) {
                     if (result.success==true){
                     layer.msg("删除成功")
+                        tableIns.reload();
+                        if (res.data.length - 1 == 0) {
+                            window.location.reload();
+                        }
                     }
                 })
             });
         } else if (obj.event === 'edit') {
             addStudents(data);
         } else if (obj.event === 'setSign') {
-            parent_tab("list" + id, "学生详情", "/student/information?id=" + id);
+            parent_tab("list" + id, "学生详情", "/student/information?id=" + studentId);
         }
 
         form.on('submit(addRecruitBtn)', function(data){
             let serialize = $("#data").serialize();
-            $.post("/internship/modify" + '?id=' + id,serialize,function (result) {
+            $.post("/internship/modify" + '?id=' + studentId,serialize,function (result) {
                 layer.close(mainIndex);
 
 
