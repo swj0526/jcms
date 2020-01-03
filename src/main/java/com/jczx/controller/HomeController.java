@@ -17,7 +17,6 @@ public class HomeController extends BaseController {
 private PayBillService payBillService;
     @RequestMapping("/main")
     private String mianHome() {
-      getPath();
         return "/home/main";
     }
 

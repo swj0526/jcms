@@ -19,7 +19,7 @@
             </a>
             <dl class="layui-nav-child" >
                 <dd><a class="add" id="account_modPassword">修改密码</a></dd>
-                <dd><a href="">注销</a></dd>
+                <dd><a href="/loginout">注销</a></dd>
             </dl>
         </li>
 

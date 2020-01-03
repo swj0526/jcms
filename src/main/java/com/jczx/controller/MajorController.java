@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @RequestMapping("/major")
 @Controller
-public class MajorController {
+public class MajorController extends BaseController {
     @Autowired
     private MajorService majorService;
 

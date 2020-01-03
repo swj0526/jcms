@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.annotation.Permission;
 import com.jczx.bean.FollowBean;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
@@ -38,6 +39,7 @@ public class RecruitController extends BaseController {
      *
      * @return
      */
+    @Permission()
     @RequestMapping("/torecruit")
     public String recruit() {
         return "/recruit/recruit";

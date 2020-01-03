@@ -133,7 +133,7 @@ public class UserService extends BaseService {
      *
      * @return
      */
-    public List<TbUser> listTeacherUser(Pager pager, String keywords,Boolean enable) {
+    public List<TbUser> listTeacherUser(Pager pager, String keywords, Boolean enable) {
         Conditions conditions = getConditions();
         conditions.putEW("type", TbUser.TYPE_TEACHER);
         conditions.putEWIfOk("enable", enable);
@@ -224,6 +224,30 @@ public class UserService extends BaseService {
         modify(user);
         return SUCCESS;
     }
+
+    /**
+     * 根据账号密码获取用户,用于登录检测
+     * @param phone
+     * @param password
+     * @return
+     */
+    public ServiceResult get(String phone, String password) {
+        if(StringUtil.isBlank(phone)){
+            return error("手机号码不可为空!");
+        }
+        if(StringUtil.isBlank(password)){
+            return error("密码不可为空!");
+        }
+        Conditions conditions = getConditions();
+        conditions.putEW("phone", phone);
+        conditions.putEW("password", password);
+        TbUser user = getOne(conditions);
+        if (user == null) {
+            return error("用户名或密码错误!");
+        }
+        return success(user);
+    }
+
 
     @Override
     public String getTableName() {

@@ -1,5 +1,6 @@
 package com.jczx.controller;
 
+import com.jczx.annotation.Permission;
 import com.jczx.domain.TbFunction;
 import com.jczx.domain.TbRole;
 import com.jczx.domain.TbUser;
@@ -38,6 +39,7 @@ public class AccountController extends BaseController {
      *
      * @return
      */
+    @Permission(value = "101")
     @RequestMapping("/tolist")
     public String toList() {
         return "account/list";
@@ -48,6 +50,7 @@ public class AccountController extends BaseController {
      *
      * @return
      */
+    @Permission(value = "102")
     @RequestMapping("/torole")
     public String toRole() {
         return "account/role";

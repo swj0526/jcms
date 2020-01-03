@@ -1,5 +1,6 @@
 package com.jczx.core.Interceptor;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -11,6 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class ConfigInterceptor implements WebMvcConfigurer {
+    @Bean
+    public LoginHandlerInterceptor getSessionInterceptor() {
+        return new LoginHandlerInterceptor();
+    }
+
     /**
      * 注册拦截器
      *
@@ -18,9 +24,11 @@ public class ConfigInterceptor implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-         InterceptorRegistration inter = registry.addInterceptor(new LoginHandlerInterceptor());
-         inter.addPathPatterns("/**"); //拦截的路径
-         inter.excludePathPatterns("/", "/logout", "/register", "/loginCheck",
-         "/registerCheck", "/**/*.css", "/**/*.js"); //除了什么不拦截
+        registry.addInterceptor(getSessionInterceptor());
+        InterceptorRegistration inter = registry.addInterceptor(new LoginHandlerInterceptor());
+        inter.addPathPatterns("/**"); //拦截的路径
+        //  inter.excludePathPatterns("/login", "/**/*.css", "/**/*.js", "../common/common.ftl"); //除了什么不拦截
     }
+
+
 }

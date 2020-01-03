@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <#include "../common/common.ftl"/>
-
+    <title>账号管理</title>
     <style>
         .layui-layer-btn {
             text-align: center;
