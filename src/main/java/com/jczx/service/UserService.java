@@ -176,12 +176,15 @@ public class UserService extends BaseService {
         TbUser user = getById(id);
         Set<Integer> list = new HashSet<>();
         String roleIds = user.getRoleIds();
-        String[] split = roleIds.split(",");
-        for (int i = 0; i < split.length; i++) {
-            if (!split[i].equals("")) {
-                list.add(Integer.parseInt(split[i]));
+        if (StringUtil.isNotBlank(roleIds)){
+            String[] split = roleIds.split(",");
+            for (int i = 0; i < split.length; i++) {
+                if (!split[i].equals("")) {
+                    list.add(Integer.parseInt(split[i]));
+                }
             }
         }
+
         return list;
     }
 
