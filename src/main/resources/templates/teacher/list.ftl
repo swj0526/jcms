@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>layui</title>
+    <title>教职工档案管理</title>
     <#include "../common/common.ftl"/>
 
 </head>
@@ -72,8 +72,8 @@
                     <label class="layui-form-label">状态<span class="star">*</span></label>
                     <div class="layui-input-inline">
                         <select name="hasQuit" lay-search="" lay-verify="required" id="hasQuit1">
-                            <option value=true>在职</option>
-                            <option value=false>离职</option>
+                            <option value="true">在职</option>
+                            <option value="false">离职</option>
                         </select>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
     </div>
 </div>
 <#--导入-->
-<div style="display: none" id="importForm">
+<div style="display: none; padding: 10px;" id="importForm">
     <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传
         <button type="button" class="layui-btn layui-btn-normal" id="template">下载模板</button>
     </blockquote>
@@ -139,15 +139,12 @@
     </form>
 </div>
 <#--数据表格-->
-<table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+<table class="layui-hide" id="currentTableId" lay-filter="currentTableId"></table>
 
 <script type="text/html" id="currentTableBar">
     <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <#-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
 </script>
 </body>
 <script src="/teacher/js/list.js"></script>
-<script>
-
-</script>
 </html>

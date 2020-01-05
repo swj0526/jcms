@@ -25,17 +25,17 @@
                     <input type="password" name="password" lay-verify="required|password" placeholder="密码"
                            autocomplete="off" class="layui-input" >
                 </div>
-                <div class="layui-form-item">
+                <#--<div class="layui-form-item">
                     <label class="layui-icon layui-icon-vercode" for="captcha"></label>
                     <input type="text" name="captcha" lay-verify="required|captcha" placeholder="图形验证码"
                            autocomplete="off" class="layui-input verification captcha" value="xszg">
                     <div class="captcha-img">
                         <img id="captchaPic" src="../login/images/captcha.jpg">
                     </div>
-                </div>
-                <div class="layui-form-item">
+                </div>-->
+                <#--<div class="layui-form-item">
                     <input type="checkbox" name="rememberMe" value="true" lay-skin="primary" title="记住密码">
-                </div>
+                </div>-->
                 <div class="layui-form-item">
                     <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="login">登 录</button>
                 </div>

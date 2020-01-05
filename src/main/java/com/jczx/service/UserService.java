@@ -227,15 +227,16 @@ public class UserService extends BaseService {
 
     /**
      * 根据账号密码获取用户,用于登录检测
+     *
      * @param phone
      * @param password
      * @return
      */
     public ServiceResult get(String phone, String password) {
-        if(StringUtil.isBlank(phone)){
+        if (StringUtil.isBlank(phone)) {
             return error("手机号码不可为空!");
         }
-        if(StringUtil.isBlank(password)){
+        if (StringUtil.isBlank(password)) {
             return error("密码不可为空!");
         }
         Conditions conditions = getConditions();
@@ -248,6 +249,51 @@ public class UserService extends BaseService {
         return success(user);
     }
 
+    /**
+     * 根据状态,id查找用户表是否有这个教师
+     *
+     * @return
+     */
+    public TbUser getUser(Integer accountId, Integer type) {
+        Conditions conditions = getConditions();
+        conditions.putEW("accountId", accountId);
+        conditions.putEW("type", type);
+        return getOne(conditions);
+    }
+
+    /**
+     * 当教职工的状态改为离职之后,则会在用户表里删除该账号
+     *
+     * @param accountId
+     * @param type
+     * @return
+     */
+    public ServiceResult deleteUser(Integer accountId, Integer type) {
+        Conditions conditions = getConditions();
+        conditions.putEW("accountId", accountId);
+        conditions.putEW("type", type);
+        delByBatch(conditions);
+        return SUCCESS;
+    }
+
+    /**
+     * 修改用户表的用户名跟手机号码一些基本信息
+     * @param type
+     * @param name
+     * @param phone
+     * @param accountId
+     * @return
+     */
+    public ServiceResult modifyUser(Integer type, String name, String phone, Integer accountId) {
+        Conditions conditions = getConditions();
+        conditions.putEW("accountId", accountId);
+        conditions.putEW("type", type);
+        TbUser user = getOne(conditions);
+        user.setName(name);
+        user.setPhone(phone);
+        modify(user);
+        return SUCCESS;
+    }
 
     @Override
     public String getTableName() {

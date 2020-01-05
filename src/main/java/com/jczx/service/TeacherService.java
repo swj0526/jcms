@@ -1,6 +1,7 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbTeacher;
+import com.jczx.domain.TbUser;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
@@ -23,6 +24,9 @@ import java.util.List;
 public class TeacherService extends BaseService {
     @Autowired
     private UserService userService;
+
+
+
 
     /**
      * 添加老师
@@ -67,6 +71,17 @@ public class TeacherService extends BaseService {
             return error("请输入姓名和手机号");
         }
         modify(teacher);
+        userService.modifyUser(TbUser.TYPE_TEACHER,teacher.getName(),teacher.getPhone(),teacher.getId());
+        //判断是否修改老师的状态,
+        if (teacher.getHasQuit()) { //修改为在职
+            TbUser user = userService.getUser(teacher.getId(), TbUser.TYPE_TEACHER);
+            if(user==null){
+                userService.addTeacherUser(teacher);
+            }
+
+        } else { //离职
+            userService.deleteUser(teacher.getId(), TbUser.TYPE_TEACHER);
+        }
         return SUCCESS;
     }
 
@@ -75,7 +90,7 @@ public class TeacherService extends BaseService {
      *
      * @return
      */
-    public List<TbTeacher> teacherList(String keyword,Boolean hasQuit,Pager pager) {
+    public List<TbTeacher> teacherList(String keyword, Boolean hasQuit, Pager pager) {
         Conditions conditions = new Conditions(getTableName());
         if (StringUtil.isNotBlank(keyword)) {
             conditions.parenthesesStart();
@@ -109,7 +124,7 @@ public class TeacherService extends BaseService {
      * @param hasQuit
      * @return
      */
-    public InputStream teacherExcel(String name,Boolean hasQuit) {
+    public InputStream teacherExcel(String name, Boolean hasQuit) {
         ExcelDatas excelDatas = new ExcelDatas();
         List<TbTeacher> list = teacherList(name, hasQuit, null);
         excelDatas.addStringArray(0, 0, new String[]{"姓名", "性别", "手机号", "是否在职"});
