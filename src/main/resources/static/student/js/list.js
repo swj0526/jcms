@@ -102,6 +102,11 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
         limit: 10,
         page: true
     });
+    //下载模板
+    $("#download").click(function () {
+        window.location.href="/student/exportstudent";
+
+    });
 
     // 监听搜索操作
     var $ = layui.$, active = {
@@ -197,7 +202,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
     var demoListView = $('#demoList')
         , uploadListIns = upload.render({
         elem: '#testList'
-        , url: '/upload/'
+        , url: '/student/upload'
         , accept: 'file'
         , multiple: true
         , auto: false

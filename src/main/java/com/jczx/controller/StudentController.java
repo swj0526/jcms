@@ -5,10 +5,15 @@ import com.jczx.service.StudentService;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.render.Render;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.util.List;
@@ -116,6 +121,33 @@ public class StudentController extends BaseController {
     public List<TbStudent> ListStudentInteger(){
         List<TbStudent> list = studentService.ListInteger();
         return list;
+    }
+
+    /**
+     * 下载学生模板
+     * @return
+     */
+    @RequestMapping("/exportstudent")
+    @ResponseBody
+    public Render exportTemplate(){
+        InputStream inputStream = studentService.excel();
+        return Render.renderFile("导入学生模板.xls", inputStream);
+    }
+
+    /**
+     * 文件上传 导入excel招生信息
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);//日志
+
+    @PostMapping("/upload")
+    @ResponseBody
+    public Map<String, Object> upload(@RequestParam("file") MultipartFile file) throws Throwable {
+        System.out.println("上传");
+        ServiceResult result = studentService.upload(file, getExcelPath());
+        System.out.println(result.getResult());
+        studentService.inputStudent(result.getResult().toString());
+        Map map = uploadeResult(result);
+        return map;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.jczx.controller;
 
-import com.jczx.annotation.Permission;
 import com.jczx.bean.FollowBean;
 import com.jczx.domain.TbStudent;
 import com.jczx.service.RecruitService;
@@ -39,7 +38,6 @@ public class RecruitController extends BaseController {
      *
      * @return
      */
-    @Permission()
     @RequestMapping("/torecruit")
     public String recruit() {
         return "/recruit/recruit";
@@ -158,7 +156,7 @@ public class RecruitController extends BaseController {
     }
 
     /**
-     * 文件上传
+     * 文件上传 导入excel招生信息
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(RecruitController.class);//日志
 
@@ -173,7 +171,7 @@ public class RecruitController extends BaseController {
     }
 
     /**
-     * 导入
+     * 下载学生模板
      * @return
      */
     @RequestMapping("/exportTemplate")

@@ -17,7 +17,6 @@ import java.util.Date;
  */
 @Component
 public class TbStudent extends Domain implements OptionInterface {
-
     @NotCreate
     public static final int STATE_AT_SCHOOL = 1;//在学
     @NotCreate

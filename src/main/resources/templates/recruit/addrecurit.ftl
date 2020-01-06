@@ -102,7 +102,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label"> 手机号码<span  class="star">*</span></label>
                     <div class="layui-input-inline">
-                        <input type="text" name="studentPhone" lay-verify="required" placeholder="" autocomplete="off"
+                        <input type="text" name="studentPhone" lay-verify="required|phone|number" placeholder="" autocomplete="off"
                                class="layui-input">
                     </div>
                 </div>

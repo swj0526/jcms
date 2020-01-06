@@ -200,7 +200,7 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     });
     //修改招生信息
     $("#modifySubmit").click(function () {
-        var seList = new Array();
+       let seList = new Array();
         let selectArr = modifydiv.getValue().valueOf();
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
@@ -215,19 +215,24 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         var id = $("#modifySubmit").val();
         //发送ajax请求
         $.post('/recruit/modify' + '?id=' + id, recruit + "&labelIds=" + labelIds, function (result) {
+
             //下面就是提交成功后关闭自己
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+          /*  var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             if (result.success == true) {
+                layer.msg("成功");
+
                 setTimeout(function () {
                     parent.layer.close(index);//关闭弹出层
-                    /* parent.location.reload();*///更新父级页面（提示：如果需要跳转到其它页面见下文）
+                    /!* parent.location.reload();*!///更新父级页面（提示：如果需要跳转到其它页面见下文）
                 }, 500);
-            }
+            }*/
         })
     });
+
+
+//导出
     $("#export").click(function () {
         window.location.href = "/recruit/exportTemplate";
-
     });
     //标签弹窗
     var index;
@@ -243,16 +248,11 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     //监听提交
     form.on('submit(addlabelbtn)', function (data) {
         //添加标签
-
             var label = $("#data").serialize();
             $.post('/dictionary/add/label', label, function () {
                 layer.close(index);
             })
-
-
     });
-
-
 //监听行
     table.on('tool(currentTableFilter)', function (obj) {
         var data = obj.data;
@@ -285,13 +285,10 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 area: ['100%', '100%'],
                 title: data.name + "详情",
                 content: '/detail/todetail?id=' + id,
-                success: function () {
-                }
+
             });
         } else if (obj.event === 'setSign') {
-
             parent_tab("list" + id, "学生详情", "/student/information?id=" + id);
-
         }
     });
 //下拉复选赋值

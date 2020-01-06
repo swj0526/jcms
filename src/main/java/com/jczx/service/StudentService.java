@@ -11,7 +11,6 @@ import net.atomarrow.util.StringUtil;
 import net.atomarrow.util.excel.ExcelDatas;
 import net.atomarrow.util.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -201,5 +200,34 @@ public class StudentService extends BaseService {
             }
         }
         return list;
+    }
+    /**
+     * 下载模板
+     *
+     * @return
+     */
+    public InputStream excel() {
+        ExcelDatas excelDatas = new ExcelDatas();
+        excelDatas.addStringArray(0, 0, new String[]{"学号","姓名", "性别", "出生年月","年龄", "联系方式"});
+        InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
+        return inputStream;
+    }
+    /**
+     * 导入学生信息
+     *
+     * @return
+     */
+    public InputStream inputStudent(String path) throws Throwable {
+
+        //解析标题必须按照顺序去填写字段名
+        List<TbStudent> listStudent = ExcelUtil.getListFromExcel(path, TbStudent.class, new String[]{"学号","姓名", "性别", "出生年月","年龄", "联系方式"}, new boolean[]{false, false}, 2, null);
+
+        for (TbStudent list : listStudent) {
+            System.out.println(list.getName());
+            System.out.println(list.getAge());
+
+        }
+        addByBatch(listStudent);
+        return null;
     }
 }

@@ -36,10 +36,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-inline">
-                <input type="text" name="name"  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.name}>
+                <input type="text" name="name"  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.name!''}>
             </div>
 <#--存放性别-->
-            <input type="text" style="display: none" id="Instalment" value=${student.sex}>
+            <input type="text" style="display: none" id="Instalment" value=${student.sex!''}>
             <label class="layui-form-label">性别</label>
             <div class="layui-inline">
                 <div class="layui-inline" style="width: 190px">
@@ -61,29 +61,29 @@
 
             <label class="layui-form-label">毕业院校</label>
             <div class="layui-input-inline">
-                <input type="text" name="school" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.school}>
+                <input type="text" name="school" required  lay-verify="required|phone|number" placeholder="" autocomplete="off" class="layui-input" value=${student.school!''}>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">手机号</label>
             <div class="layui-input-inline">
-                <input type="number" name="studentPhone" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input"value=${student.studentPhone}>
+                <input type="number" name="studentPhone"  lay-verify="required|phone|number" placeholder="" autocomplete="off" class="layui-input"value=${student.studentPhone!''}>
             </div>
             <label class="layui-form-label">QQ号</label>
             <div class="layui-input-inline">
-                <input type="number" name="qq" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.qq}>
+                <input type="number" name="qq" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value=${student.qq!''}>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">微信号</label>
             <div class="layui-input-inline">
-                <input type="number" name="weChat" value=${student.weChat} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <input type="number" name="weChat" value=${student.weChat!''} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
             <label class="layui-form-label">母亲电话</label>
             <div class="layui-input-inline">
-                <input type="number" name="motherPhone" value=${student.motherPhone} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <input type="number" name="motherPhone" value=${student.motherPhone!''} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
 
         </div>
@@ -91,13 +91,13 @@
 
             <label class="layui-form-label">父亲电话</label>
             <div class="layui-input-inline">
-                <input type="number" name="fatherPhone" value=${student.fatherPhone} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <input type="number" name="fatherPhone" value=${student.fatherPhone!''} required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
             </div>
             <label class="layui-form-label">来源渠道</label>
             <div class="layui-input-inline">
                 <div class="layui-inline" style="width: 190px">
                     <select name="channelId" lay-verify="" class="decSelect" required lay-verify="required"
-                            url="/dictionary/list/channel/options" selectedId="${student.channelId}">
+                            url="/dictionary/list/channel/options" selectedId="${student.channelId!''}">
 
                     </select>
 
@@ -139,7 +139,7 @@
     </form>
     <div class="layui-form-item"style="margin-left: 20%">
         <div class="layui-input-inline">
-            <button class="layui-btn" type="button" lay-submit id="modifySubmit" value="${student.id}">立即提交</button>
+            <button  type="button" class="layui-btn"  lay-submit="" id="modifySubmit" lay-filter="modifySubmit"value="${student.id!''}">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
