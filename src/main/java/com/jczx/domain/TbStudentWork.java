@@ -29,6 +29,7 @@ public class TbStudentWork extends Domain {
     private Integer teacherId;//评价老师
     private Integer operatorId;//操作人id
     private Date createTime;//操作时间
+    @NotCreate
     private List<TbAttachment> list;
 
     public List<TbAttachment> getList() {

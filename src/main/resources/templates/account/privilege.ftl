@@ -21,7 +21,7 @@
         var tree = layui.tree;
         var $ = layui.jquery;
         var roleId =${roleId};
-        alert(roleId);
+      /*  alert(roleId);*/
         var data2 = [
             <#list list as listp>
             <#if listp.pid==0>
