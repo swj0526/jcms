@@ -7,6 +7,7 @@ import com.jczx.service.UserService;
 import net.atomarrow.services.Service;
 import net.atomarrow.util.DateUtil;
 import net.atomarrow.util.SpringContextUtil;
+import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,6 +42,9 @@ public class SC {
         HttpSession session = request.getSession();
         TbUser user = (TbUser) request.getSession().getAttribute("user");
         String roleIds = user.getRoleIds();
+        if(StringUtil.isBlank(roleIds)){
+            return null;
+        }
         Set<Integer> list = new HashSet<>();
         Set<Integer> functionList = new HashSet<>();
         String[] split = roleIds.split(",");

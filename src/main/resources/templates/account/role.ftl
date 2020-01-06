@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                              <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -7,12 +7,12 @@
 </head>
 <body>
 
-<div style="display: none" id="addPop">
-    <form class="layui-form  layui-form-pane"  action="" lay-filter="dataForm" id="dataFor">
+<div style="display: none;padding: 15px;" id="addPop">
+    <form class="layui-form" action="" lay-filter="dataForm" id="dataFor">
         <div class="layui-form-item">
             <label class="layui-form-label">角色姓名<span class="star">*</span></label>
             <div class="layui-input-inline">
-                <input type="text" name="addName"  required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="addName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -43,7 +43,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">角色备注</label>
             <div class="layui-input-inline">
-                <input type="text" name="remark"  autocomplete="off" class="layui-input">
+                <input type="text" name="remark" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -66,12 +66,19 @@
                     <table class="layui-hide" id="test" lay-filter="test"></table>
 
                     <script type="text/html" id="currentTableBar">
-
+                        <#--<button type="button" class="layui-btn  layui-btn-xs" lay-event="fun"
+                                data-method="confirmTrans">
+                            设置权限
+                        </button>-->
+                        {{# if(d.id!=1){ }}
                         <button type="button" class="layui-btn  layui-btn-xs" lay-event="fun"
                                 data-method="confirmTrans">
                             设置权限
                         </button>
-                        {{# if(d.id!="1"){ }}
+
+                        {{# } }}
+
+                        {{# if(d.state!=true){ }}
                         <button type="button" class="layui-btn  layui-btn-danger  layui-btn-xs" lay-event="delete"
                                 data-method="confirmTrans">
                             删除

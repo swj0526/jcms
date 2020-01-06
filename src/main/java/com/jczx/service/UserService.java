@@ -176,15 +176,12 @@ public class UserService extends BaseService {
         TbUser user = getById(id);
         Set<Integer> list = new HashSet<>();
         String roleIds = user.getRoleIds();
-        if (StringUtil.isNotBlank(roleIds)){
-            String[] split = roleIds.split(",");
-            for (int i = 0; i < split.length; i++) {
-                if (!split[i].equals("")) {
-                    list.add(Integer.parseInt(split[i]));
-                }
+        String[] split = roleIds.split(",");
+        for (int i = 0; i < split.length; i++) {
+            if (!split[i].equals("")) {
+                list.add(Integer.parseInt(split[i]));
             }
         }
-
         return list;
     }
 
@@ -296,6 +293,22 @@ public class UserService extends BaseService {
         user.setPhone(phone);
         modify(user);
         return SUCCESS;
+    }
+
+    /**
+     * 删除角色的时候,判断角色下面是否存在用户
+     * @param id
+     * @return
+     */
+    public Boolean hasRoleId(Integer id) {
+        Conditions conditions = getConditions();
+        List<TbUser> list = getList(conditions);
+        for (TbUser user : list) {
+            if (user.getRoleIds().indexOf("" + id) != -1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

@@ -215,8 +215,8 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
             , uploadListIns = upload.render({
             elem: '#testList'
             , url: '/upload/'
-            , accept: 'file'
-            , multiple: true
+            , accept: 'xls'
+         /*   , multiple: true*/
             , auto: false
             , bindAction: '#testListAction'
             , choose: function (obj) {

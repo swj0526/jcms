@@ -140,7 +140,7 @@ public class TeacherService extends BaseService {
      */
     public InputStream excel() {
         ExcelDatas excelDatas = new ExcelDatas();
-        excelDatas.addStringArray(0, 0, new String[]{"id", "姓名", "性别", "手机号", "是否在职"});
+        excelDatas.addStringArray(0, 0, new String[]{ "姓名", "性别", "手机号", "是否在职"});
         InputStream inputStream = ExcelUtil.exportExcel(excelDatas);
         return inputStream;
     }

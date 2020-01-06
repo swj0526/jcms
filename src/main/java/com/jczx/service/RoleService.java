@@ -7,6 +7,7 @@ import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
 import net.atomarrow.db.parser.Conditions;
 import net.atomarrow.util.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.management.relation.Role;
@@ -20,6 +21,9 @@ import java.util.List;
  */
 @Component
 public class RoleService extends BaseService {
+    @Autowired
+    private UserService userService;
+
     /**
      * 新增角色
      *
@@ -81,13 +85,22 @@ public class RoleService extends BaseService {
     }
 
     /**
-     * 删除
+     * 删除，判断有两个不可删除的角色
      *
      * @return
      */
     public ServiceResult deleteRole(Integer id) {
-        delById(getTableName(), id);
-        //TODO 要判断下面有没有账号
+        TbRole role = getById(id);
+        System.out.println(role.getState()+"判断");
+        //先判断是否有两个不可删除的角色
+        if (!role.getState()) {
+            return error("该角色不可以删除");
+        }
+        if (userService.hasRoleId(id)) {
+            delById(getTableName(), id);
+        } else {
+            return error("该角色不可删除,该角色下面还有用户");
+        }
         return SUCCESS;
     }
 

@@ -66,6 +66,10 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
             } else {
                 LOGGER.info("已登录");
                 HashSet functionIds = SC.getFunctionIds(request);
+                if (functionIds==null){
+                    LOGGER.info("没有任何权限");
+                    return false;
+                }
                 //判断是否存在permission注解
                 boolean hasPermissionAnnotation = method.getMethod().isAnnotationPresent(Permission.class);
                 if (hasPermissionAnnotation) {
@@ -75,6 +79,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
                     Permission annotation = h.getMethodAnnotation(Permission.class);
                     //获取当前请求接口中的name属性
                     Integer value = Integer.parseInt(annotation.value());
+
                     if (functionIds.contains(value)) {
                         LOGGER.info("有权限");
                         return true;

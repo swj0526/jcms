@@ -88,12 +88,12 @@
 </div>
 <#--导入-->
 <div style="display: none; padding: 10px;" id="importForm">
-    <blockquote class="layui-elem-quote layui-quote-nm">请下载excel文件按照文件格式填写内容后上传
+    <blockquote class="layui-elem-quote layui-quote-nm" style="color: red;">请下载excel文件按照文件格式填写内容后上传
         <button type="button" class="layui-btn layui-btn-normal" id="template">下载模板</button>
     </blockquote>
 
     <div class="layui-upload">
-        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择excel表格</button>
         <button type="button" class="layui-btn" id="testListAction">开始上传</button>
         <div class="layui-upload-list">
             <table class="layui-table">
