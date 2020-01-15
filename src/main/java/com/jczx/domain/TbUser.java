@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.db.enums.Type;
@@ -15,6 +18,9 @@ import java.util.Date;
  * @create 2019-11-18 16:45
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbUser extends Domain {
     /**
      * 学生
@@ -48,85 +54,7 @@ public class TbUser extends Domain {
     private Date createTime;//操作时间
     private Boolean enable;//该账号是否被激活//0.未激活,1.已激活
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Boolean getEnable() {
-        return enable;
-    }
-
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
-
-    public String getRoleIds() {
-        return roleIds;
-    }
-
-    public void setRoleIds(String roleIds) {
-        this.roleIds = roleIds;
-    }
 
     /**
      * 获取学生姓名

@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.db.enums.Type;
@@ -15,6 +18,9 @@ import java.util.Date;
  * @create 2019-11-18 21:11
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbArticle extends Domain {
     @NotCreate
     private String quit;
@@ -48,109 +54,7 @@ public class TbArticle extends Domain {
         return null;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getReceiverRoleIds() {
-        return receiverRoleIds;
-    }
-
-    public void setReceiverRoleIds(String receiverRoleIds) {
-        this.receiverRoleIds = receiverRoleIds;
-    }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getReadCount() {
-        return readCount;
-    }
-
-    public void setReadCount(Integer readCount) {
-        this.readCount = readCount;
-    }
-
-    public Integer getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(Integer totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public String getReadIds() {
-        return readIds;
-    }
-
-    public void setReadIds(String readIds) {
-        this.readIds = readIds;
-    }
-
-    public String getTotalIds() {
-        return totalIds;
-    }
-
-    public void setTotalIds(String totalIds) {
-        this.totalIds = totalIds;
-    }
-
-    public Boolean getHasAttachment() {
-        return hasAttachment;
-    }
-
-    public void setHasAttachment(Boolean hasAttachment) {
-        this.hasAttachment = hasAttachment;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
 
     public String getTypeName() {
         return CACHE.getArticleTypeName(typeId);

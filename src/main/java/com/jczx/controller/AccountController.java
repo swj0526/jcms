@@ -47,7 +47,6 @@ public class AccountController extends BaseController {
 
     /**
      * 角色列表页面
-     *
      * @return
      */
     @Permission(value = "102")
@@ -106,7 +105,6 @@ public class AccountController extends BaseController {
 
     /**
      * 角色列表
-     *
      * @return
      */
     @RequestMapping("/role/list")
@@ -120,7 +118,6 @@ public class AccountController extends BaseController {
 
     /**
      * 修改角色
-     *
      * @param role
      * @return
      */
@@ -132,7 +129,6 @@ public class AccountController extends BaseController {
 
     /**
      * 删除角色
-     *
      * @param id
      * @return
      */

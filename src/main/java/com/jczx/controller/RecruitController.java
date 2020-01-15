@@ -39,6 +39,7 @@ public class RecruitController extends BaseController {
      * @return
      */
     @RequestMapping("/torecruit")
+
     public String recruit() {
         return "/recruit/recruit";
     }
@@ -92,6 +93,7 @@ public class RecruitController extends BaseController {
     @RequestMapping("/modify")
     @ResponseBody
     public ServiceResult modifyRecruit(TbStudent student) {
+
         ServiceResult result = recruitService.modifyRecruit(student);
         return result;
     }

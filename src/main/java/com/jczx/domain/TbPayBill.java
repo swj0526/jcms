@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +18,9 @@ import java.util.Date;
  * @create 2019-11-19 13:14
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbPayBill extends Domain {
     @NotCreate
     private String Instalment;
@@ -57,151 +63,6 @@ public class TbPayBill extends Domain {
         TbStudent student = CACHE.getStudent(studentId);
         return student.getName()+"("+student.getStudentNumber()+")";
     }
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public Integer getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(Integer paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
-    }
-
-    public Integer getSemesterId() {
-        return semesterId;
-    }
-
-    public void setSemesterId(Integer semesterId) {
-        this.semesterId = semesterId;
-    }
-
-    public Integer getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(Integer totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public Integer getPayAmount() {
-        return payAmount;
-    }
-
-    public void setPayAmount(Integer payAmount) {
-        this.payAmount = payAmount;
-    }
-
-    public Date getPayDate() {
-        return payDate;
-    }
-
-    public void setPayDate(Date payDate) {
-        this.payDate = payDate;
-    }
-
-    public Boolean getHasInstalment() {
-        return hasInstalment;
-    }
-
-    public void setHasInstalment(Boolean hasInstalment) {
-        this.hasInstalment = hasInstalment;
-    }
-
-    public Integer getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(Integer discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public Integer getFactAmount() {
-        return factAmount;
-    }
-
-    public void setFactAmount(Integer factAmount) {
-        this.factAmount = factAmount;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public Boolean getHasAttachment() {
-        return hasAttachment;
-    }
-
-    public void setHasAttachment(Boolean hasAttachment) {
-        this.hasAttachment = hasAttachment;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-
 
     /**
      * 缴费类型

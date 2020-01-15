@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,9 @@ import java.util.Date;
  * @create 2019-11-17 12:57
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbIntegral extends Domain {
     private Integer id;
     private Integer studentId;// 学生id
@@ -24,47 +30,8 @@ public class TbIntegral extends Domain {
         return CACHE.getStudentName(studentId);
     }
     public String getMajorName() {
-
         return CACHE.getMajorName(CACHE.getStudent(studentId).getMajorId());
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
-    public Integer getTotalScore() {
-        return totalScore;
-    }
-
-    public void setTotalScore(Integer totalScore) {
-        this.totalScore = totalScore;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

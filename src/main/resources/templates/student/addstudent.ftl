@@ -132,7 +132,24 @@
                     <input type="number" name="studentNumber" lay-verify="required" placeholder="" autocomplete="off"
                            class="layui-input" value="${student.studentNumber!''}">
                 </div>
-            </div>    </div>
+            </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label"> 性别<span  class="star">*</span></label>
+                    <div class="layui-input-inline">
+                        <select name="sex" lay-verify="" id="schoolState">
+                            <#if student.sex=='男'>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                                <#else >
+                                    <option value="女">女</option>
+                                    <option value="男">男</option>
+                            </#if>
+
+
+                        </select>
+                    </div>
+                </div>
+            </div>
 
             <div class="layui-form-item" >
                 <div class="layui-input-inline" style="margin-left: 18%">

@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.OptionInterface;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
@@ -14,6 +17,9 @@ import java.util.Date;
  * @create 2019-11-20 19:30
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbIntegralItem extends Domain implements OptionInterface {
     /**
      * 加分
@@ -32,64 +38,6 @@ public class TbIntegralItem extends Domain implements OptionInterface {
     private String remark;//备注
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
-
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     @Override
     public String getOptionText() {
         return reason;

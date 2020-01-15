@@ -2,6 +2,9 @@ package com.jczx.domain;
 
 import com.jczx.system.CACHE;
 import com.jczx.system.OptionInterface;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +19,9 @@ import java.util.Date;
  * @create 2019-11-17 12:52
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbStudent extends Domain implements OptionInterface {
     @NotCreate
     public static final int STATE_AT_SCHOOL = 1;//在学
@@ -70,290 +76,15 @@ public class TbStudent extends Domain implements OptionInterface {
     private Date createTime;//操作时间
     private Integer operatorId;//操作人
 
-    public Integer getSchoolState() {
-        return schoolState;
-    }
-
-    public void setSchoolState(Integer schoolState) {
-        this.schoolState = schoolState;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStudentNumber() {
-        return studentNumber;
-    }
-
-    public void setStudentNumber(Integer studentNumber) {
-        this.studentNumber = studentNumber;
-    }
-
-    public Integer getMajorId() {
-        return majorId;
-    }
-
-    public void setMajorId(Integer majorId) {
-        this.majorId = majorId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getNativePlace() {
-        return nativePlace;
-    }
-
-    public void setNativePlace(String nativePlace) {
-        this.nativePlace = nativePlace;
-    }
-
-    public String getBloodType() {
-        return bloodType;
-    }
-
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getGraduationDate() {
-        return graduationDate;
-    }
-
-    public void setGraduationDate(Date graduationDate) {
-        this.graduationDate = graduationDate;
-    }
-
-    public Integer getEntranceState() {
-        return entranceState;
-    }
-
-    public void setEntranceState(Integer entranceState) {
-        this.entranceState = entranceState;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public String getMotherName() {
-        return motherName;
-    }
-
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
-    }
-
-    public String getFatherName() {
-        return fatherName;
-    }
-
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
-    }
-
-    public String getOtherRelativesName() {
-        return otherRelativesName;
-    }
-
-    public void setOtherRelativesName(String otherRelativesName) {
-        this.otherRelativesName = otherRelativesName;
-    }
-
-    public String getMotherPhone() {
-        return motherPhone;
-    }
-
-    public void setMotherPhone(String motherPhone) {
-        this.motherPhone = motherPhone;
-    }
-
-    public String getFatherPhone() {
-        return fatherPhone;
-    }
-
-    public void setFatherPhone(String fatherPhone) {
-        this.fatherPhone = fatherPhone;
-    }
-
-    public String getEmergencyPhone() {
-        return emergencyPhone;
-    }
-
-    public void setEmergencyPhone(String emergencyPhone) {
-        this.emergencyPhone = emergencyPhone;
-    }
-
-    public String getLabelIds() {
-        return labelIds;
-    }
-
-    public void setLabelIds(String labelIds) {
-        this.labelIds = labelIds;
-    }
-
-    public Integer getChannelId() {
-        return channelId;
-    }
-
-    public void setChannelId(Integer channelId) {
-        this.channelId = channelId;
-    }
-
-    public String getIntention() {
-        return intention;
-    }
-
-    public void setIntention(String intention) {
-        this.intention = intention;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Date getAdmissionData() {
-        return admissionData;
-    }
-
-    public void setAdmissionData(Date admissionData) {
-        this.admissionData = admissionData;
-    }
-
-    public String getNation() {
-        return nation;
-    }
-
-    public void setNation(String nation) {
-        this.nation = nation;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    public String getIDCard() {
-        return IDCard;
-    }
-
-    public void setIDCard(String IDCard) {
-        this.IDCard = IDCard;
-    }
-
-    public String getStudentPhone() {
-        return studentPhone;
-    }
-
-    public void setStudentPhone(String studentPhone) {
-        this.studentPhone = studentPhone;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public String getWeChat() {
-        return weChat;
-    }
-
-    public void setWeChat(String weChat) {
-        this.weChat = weChat;
-    }
-
-    public Integer getIntegralId() {
-        return integralId;
-    }
-
-    public void setIntegralId(Integer integralId) {
-        this.integralId = integralId;
-    }
-
+    /**
+     * 渠道名
+     * @return
+     */
     public String getChannelName() {
-
         return CACHE.getChannelName(channelId);
     }
 
-    public String getHobby() {
-        return hobby;
-    }
 
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
-    }
-
-    public String getSpeciality() {
-        return speciality;
-    }
-
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 
     /**
      * 意向标签

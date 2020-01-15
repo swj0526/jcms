@@ -1,5 +1,8 @@
 package com.jczx.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +15,9 @@ import java.util.Date;
  * @create 2019-11-20 14:41
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbTeacher extends Domain {
     private Integer id;
     private String name;//姓名
@@ -30,59 +36,5 @@ public class TbTeacher extends Domain {
     }
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Boolean getHasQuit() {
-        return hasQuit;
-    }
-
-    public void setHasQuit(Boolean hasQuit) {
-        this.hasQuit = hasQuit;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

@@ -1,5 +1,8 @@
 package com.jczx.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +15,9 @@ import java.util.Date;
  * @create 2019-11-18 21:09
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbLeave extends Domain {
 
     private Integer id;
@@ -31,131 +37,4 @@ public class TbLeave extends Domain {
     private Date secondOperatorTime;//二审操作时间
     private Integer operatorId;//操作人,学生id
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
-    public Date getLeaveTime() {
-        return leaveTime;
-    }
-
-    public void setLeaveTime(Date leaveTime) {
-        this.leaveTime = leaveTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Double getDayCount() {
-        return dayCount;
-    }
-
-    public void setDayCount(Double dayCount) {
-        this.dayCount = dayCount;
-    }
-
-    public Integer getFirstTeacherId() {
-        return firstTeacherId;
-    }
-
-    public void setFirstTeacherId(Integer firstTeacherId) {
-        this.firstTeacherId = firstTeacherId;
-    }
-
-    public Boolean getFirstState() {
-        return firstState;
-    }
-
-    public void setFirstState(Boolean firstState) {
-        this.firstState = firstState;
-    }
-
-    public String getFirstContent() {
-        return firstContent;
-    }
-
-    public void setFirstContent(String firstContent) {
-        this.firstContent = firstContent;
-    }
-
-    public Date getFirstOperatorTime() {
-        return firstOperatorTime;
-    }
-
-    public void setFirstOperatorTime(Date firstOperatorTime) {
-        this.firstOperatorTime = firstOperatorTime;
-    }
-
-    public Integer getSecondTeacherId() {
-        return secondTeacherId;
-    }
-
-    public void setSecondTeacherId(Integer secondTeacherId) {
-        this.secondTeacherId = secondTeacherId;
-    }
-
-    public String getSecondContent() {
-        return secondContent;
-    }
-
-    public void setSecondContent(String secondContent) {
-        this.secondContent = secondContent;
-    }
-
-    public Boolean getSecondState() {
-        return secondState;
-    }
-
-    public void setSecondState(Boolean secondState) {
-        this.secondState = secondState;
-    }
-
-    public Date getSecondOperatorTime() {
-        return secondOperatorTime;
-    }
-
-    public void setSecondOperatorTime(Date secondOperatorTime) {
-        this.secondOperatorTime = secondOperatorTime;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
 }

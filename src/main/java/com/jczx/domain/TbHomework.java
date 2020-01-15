@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
@@ -16,6 +19,9 @@ import java.util.Date;
  * @create 2019-11-19 13:25
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbHomework extends Domain {
     private Integer id;
     private String name;//作业名称
@@ -37,117 +43,7 @@ public class TbHomework extends Domain {
     private String remark;//备注
     private Date createTime;//创建时间
 
-    public String getRemark() {
-        return remark;
-    }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public Integer getMajorId() {
-        return majorId;
-    }
-
-    public void setMajorId(Integer majorId) {
-        this.majorId = majorId;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Boolean getHasAttachment() {
-        return hasAttachment;
-    }
-
-    public void setHasAttachment(Boolean hasAttachment) {
-        this.hasAttachment = hasAttachment;
-    }
-
-    public Integer getSubmitCount() {
-        return submitCount;
-    }
-
-    public void setSubmitCount(Integer submitCount) {
-        this.submitCount = submitCount;
-    }
-
-    public String getSubmitIds() {
-        return submitIds;
-    }
-
-    public void setSubmitIds(String submitIds) {
-        this.submitIds = submitIds;
-    }
-
-    public String getNotSubmitIds() {
-        return notSubmitIds;
-    }
-
-    public void setNotSubmitIds(String notSubmitIds) {
-        this.notSubmitIds = notSubmitIds;
-    }
-
-    public Integer getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(Integer totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public String getMajorName() {
 

@@ -1,13 +1,13 @@
 package com.jczx.domain;
 
-import com.jczx.service.AttachmentService;
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +18,9 @@ import java.util.List;
  * @create 2019-11-19 13:58
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbStudentWork extends Domain {
     private Integer id;
     private Integer studentId;//学生表id
@@ -45,87 +48,9 @@ public class TbStudentWork extends Domain {
     }
 
     public String getMajor() {
-        System.out.println(CACHE.getMajorName(studentId));
+
         return CACHE.getMajorName(studentId);
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
-    public Integer getHomeworkId() {
-        return homeworkId;
-    }
-
-    public void setHomeworkId(Integer homeworkId) {
-        this.homeworkId = homeworkId;
-    }
-
-    public Boolean getHasAttachment() {
-        return hasAttachment;
-    }
-
-    public void setHasAttachment(Boolean hasAttachment) {
-        this.hasAttachment = hasAttachment;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getEstimateContent() {
-        return estimateContent;
-    }
-
-    public void setEstimateContent(String estimateContent) {
-        this.estimateContent = estimateContent;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public Integer getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

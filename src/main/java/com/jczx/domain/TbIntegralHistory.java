@@ -1,8 +1,10 @@
 package com.jczx.domain;
 
 import com.jczx.system.CACHE;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.FieldType;
-import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +17,9 @@ import java.util.Date;
  * @create 2019-11-29 11:30
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbIntegralHistory extends Domain {
     private Integer id;//id
     private Integer studentId;//学生id
@@ -40,68 +45,6 @@ public class TbIntegralHistory extends Domain {
         return CACHE.getMajorName(CACHE.getStudent(studentId).getMajorId());
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
-    public Date getRecordTime() {
-        return recordTime;
-    }
-
-    public void setRecordTime(Date recordTime) {
-        this.recordTime = recordTime;
-    }
-
-    public Integer getReasonId() {
-        return reasonId;
-    }
-
-    public void setReasonId(Integer reasonId) {
-        this.reasonId = reasonId;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }
 

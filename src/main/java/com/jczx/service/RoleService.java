@@ -1,7 +1,6 @@
 package com.jczx.service;
 
 import com.jczx.domain.TbRole;
-import com.jczx.domain.TbUser;
 import com.jczx.system.SC;
 import net.atomarrow.bean.Pager;
 import net.atomarrow.bean.ServiceResult;
@@ -10,7 +9,6 @@ import net.atomarrow.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +89,6 @@ public class RoleService extends BaseService {
      */
     public ServiceResult deleteRole(Integer id) {
         TbRole role = getById(id);
-        System.out.println(role.getState()+"判断");
         //先判断是否有两个不可删除的角色
         if (!role.getState()) {
             return error("该角色不可以删除");

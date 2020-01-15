@@ -198,9 +198,10 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
             })
         });
     });
+
     //修改招生信息
     $("#modifySubmit").click(function () {
-       let seList = new Array();
+        let seList = new Array();
         let selectArr = modifydiv.getValue().valueOf();
         $.each(selectArr, function (k, v) {
             $.each(v, function (k1, v1) {
@@ -215,18 +216,17 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
         var id = $("#modifySubmit").val();
         //发送ajax请求
         $.post('/recruit/modify' + '?id=' + id, recruit + "&labelIds=" + labelIds, function (result) {
-
             //下面就是提交成功后关闭自己
-          /*  var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            if (result.success == true) {
-                layer.msg("成功");
+             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 
-                setTimeout(function () {
-                    parent.layer.close(index);//关闭弹出层
-                    /!* parent.location.reload();*!///更新父级页面（提示：如果需要跳转到其它页面见下文）
-                }, 500);
-            }*/
-        })
+             if (result.success == true) {
+                 layer.msg("成功");
+                 setTimeout(function () {
+                     parent.layer.close(index);//关闭弹出层
+                     /* parent.location.reload();*///更新父级页面（提示：如果需要跳转到其它页面见下文）
+                 }, 500);
+             }
+        });
     });
 
 
@@ -248,10 +248,10 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
     //监听提交
     form.on('submit(addlabelbtn)', function (data) {
         //添加标签
-            var label = $("#data").serialize();
-            $.post('/dictionary/add/label', label, function () {
-                layer.close(index);
-            })
+        var label = $("#data").serialize();
+        $.post('/dictionary/add/label', label, function () {
+            layer.close(index);
+        })
     });
 //监听行
     table.on('tool(currentTableFilter)', function (obj) {
@@ -264,9 +264,9 @@ layui.use(['form', 'table', 'laydate', "jquery"], function () {
                 area: ['100%', '100%'], //设置宽高
                 // //查询数据库当前行内容
                 content: '/recruit/tomodify?id=' + id,
-                end: function () {//修改后刷新当前页
-                    $(".layui-laypage-btn").click();
-                }
+                /* end: function () {//修改后刷新当前页
+                     $(".layui-laypage-btn").click();
+                 }*/
             });
         } else if (obj.event === 'delete') {
             layer.confirm('是否删除:' + data.name, function (index) {

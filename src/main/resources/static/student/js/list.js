@@ -148,18 +148,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
         console.log(obj)
     });
 
-    function modify(data) {
-        layer.open({
-            type: 1,
-            title: "修改学生信息",
-            content: $("#aaa"),
-            btn: "提交",
-            area: ['750px', '320px'],
-            success: function (index) {
-                form.val("dataForm", data)
-            }
-        })
-    }
+
 //导出学生档案
     $("#output").click(function () {
         let serialize = $("#formexcel").serialize();
@@ -195,7 +184,7 @@ layui.use(['form', 'table', 'laydate', 'layer', 'element', 'upload'], function (
             type: 1,
             title: "导入excel表格",
             content: $("#importForm"),
-            btn: "提交",
+            btn: "关闭",
             area: ['750px', '320px'],
         })
     });

@@ -53,7 +53,7 @@ public class StudentController extends BaseController {
 
     @RequestMapping("/listname")
     @ResponseBody
-    public List<TbStudent> listStudentName(String keywords, String admissionData, Integer studentState, Integer page, Integer limit) {
+    public List<TbStudent> listStudentName(String keywords, String admissionData, Integer studentState) {
         List<TbStudent> studentList = studentService.listStudent(keywords, admissionData, studentState, null);
         return studentList;
     }

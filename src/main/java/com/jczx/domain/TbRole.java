@@ -1,5 +1,8 @@
 package com.jczx.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.enums.Type;
 import net.atomarrow.domains.Domain;
@@ -13,6 +16,9 @@ import java.util.Date;
  * @create 2019-11-18 16:11
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbRole extends Domain {
     private Integer id;
     private String name;//角色名称
@@ -23,60 +29,12 @@ public class TbRole extends Domain {
     private Integer operatorId;//操作人
     private Date createTime;//操作时间
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
 
     public String getFunctionIds() {
-        System.out.println(functionIds);
+
         return functionIds;
     }
 
-    public void setFunctionIds(String functionIds) {
-        this.functionIds = functionIds;
-    }
 
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Boolean getState() {
-        return state;
-    }
-
-    public void setState(Boolean state) {
-        this.state = state;
-    }
 }

@@ -1,6 +1,9 @@
 package com.jczx.domain;
 
 import com.jczx.system.OptionInterface;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.domains.Domain;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,9 @@ import java.util.Date;
  * @create 2019-11-18 23:32
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbDictionary extends Domain implements OptionInterface {
     /**
      *  意向标签
@@ -51,53 +57,6 @@ public class TbDictionary extends Domain implements OptionInterface {
     private Date createTime;//创建时间
     private Integer operatorId;//操作人
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
 
     @Override
     public String getOptionText() {

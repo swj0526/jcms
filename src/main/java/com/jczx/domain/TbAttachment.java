@@ -1,5 +1,8 @@
 package com.jczx.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.atomarrow.db.annotation.FieldType;
 import net.atomarrow.db.annotation.NotCreate;
 import net.atomarrow.db.enums.Type;
@@ -15,6 +18,9 @@ import java.util.Date;
  * @create 2019-11-20 14:00
  */
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TbAttachment extends Domain {
     /**
      * 导入的excel 类型
@@ -51,67 +57,4 @@ public class TbAttachment extends Domain {
     private Integer operatorId;//操作人id
     private Date createTime;//创建时间
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getLinkId() {
-        return linkId;
-    }
-
-    public void setLinkId(Integer linkId) {
-        this.linkId = linkId;
-    }
-
-    public String getURL() {
-        return URL;
-    }
-
-    public void setURL(String URL) {
-        this.URL = URL;
-    }
-
-    public Integer getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
-    public String getName() {
-
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
 }
